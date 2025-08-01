@@ -4,11 +4,13 @@ import MainMenu from './components/MainMenu';
 import ArmyListBuilder from './components/ArmyListBuilder';
 import LoadArmyList from './components/LoadArmyList';
 import CustomUnitsManager from './components/CustomUnitsManager';
-import type { ArmyList } from './types/army';
+import CustomDetachmentsManager from './components/CustomDetachmentsManager';
+import RulesBrowser from './components/RulesBrowser';
+import type { Army } from './types/army';
 
 function App() {
   const [currentView, setCurrentView] = useState<'menu' | 'newList' | 'loadList' | 'editUnits' | 'editDetachments' | 'rulesBrowser'>('menu');
-  const [currentArmyList, setCurrentArmyList] = useState<ArmyList | null>(null);
+  const [currentArmyList, setCurrentArmyList] = useState<Army | null>(null);
 
   const handleNewList = () => {
     console.log('Create New Army List clicked');
@@ -40,7 +42,7 @@ function App() {
     setCurrentArmyList(null);
   };
 
-  const handleLoadExistingList = (armyList: ArmyList) => {
+  const handleLoadExistingList = (armyList: Army) => {
     setCurrentArmyList(armyList);
     setCurrentView('newList'); // Use the same view as new list
   };
@@ -80,19 +82,15 @@ function App() {
         );
       case 'editDetachments':
         return (
-          <div className="placeholder-view">
-            <h2>Edit Detachments</h2>
-            <p>This feature is not yet implemented.</p>
-            <button onClick={handleBackToMenu}>Back to Menu</button>
-          </div>
+          <CustomDetachmentsManager
+            onBackToMenu={handleBackToMenu}
+          />
         );
       case 'rulesBrowser':
         return (
-          <div className="placeholder-view">
-            <h2>Rules Browser</h2>
-            <p>This feature is not yet implemented.</p>
-            <button onClick={handleBackToMenu}>Back to Menu</button>
-          </div>
+          <RulesBrowser
+            onBackToMenu={handleBackToMenu}
+          />
         );
 
       default:

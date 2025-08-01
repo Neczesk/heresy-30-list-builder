@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ArmyListStorage } from '../utils/armyListStorage';
-import type { ArmyListMetadata } from '../types/army';
+import type { ArmyListMetadata, Army } from '../types/army';
 import './LoadArmyList.css';
 
 interface LoadArmyListProps {
   onBackToMenu: () => void;
-  onLoadList: (armyList: any) => void;
+  onLoadList: (armyList: Army) => void;
 }
 
 const LoadArmyList: React.FC<LoadArmyListProps> = ({ 

@@ -1,0 +1,245 @@
+.load-custom-detachment-modal {
+  max-width: 800px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.load-custom-detachment-modal .modal-header h2 {
+  color: #4a90e2;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.load-custom-detachment-modal .current-detachment-info {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.load-custom-detachment-modal .current-detachment-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #ffd700;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.load-custom-detachment-modal .current-detachment-info p {
+  margin: 0 0 1rem 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.load-custom-detachment-modal .current-detachment-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+.load-custom-detachment-modal .detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.load-custom-detachment-modal .detail-item .label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+.load-custom-detachment-modal .detail-item .value {
+  color: white;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.load-custom-detachment-modal .no-custom-detachments {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+
+.load-custom-detachment-modal .no-custom-detachments p {
+  margin: 0 0 0.5rem 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+}
+
+.load-custom-detachment-modal .no-custom-detachments .hint {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.load-custom-detachment-modal .custom-detachments-list h3 {
+  margin: 0 0 1rem 0;
+  color: #4a90e2;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.load-custom-detachment-modal .detachments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.load-custom-detachment-modal .detachment-option {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.load-custom-detachment-modal .detachment-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(74, 144, 226, 0.3);
+  transform: translateY(-2px);
+}
+
+.load-custom-detachment-modal .detachment-option.selected {
+  background: rgba(74, 144, 226, 0.2);
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+}
+
+.load-custom-detachment-modal .detachment-option .detachment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.load-custom-detachment-modal .detachment-option h4 {
+  margin: 0;
+  color: #ffd700;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.load-custom-detachment-modal .detachment-option .detachment-date {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.load-custom-detachment-modal .detachment-option .detachment-description {
+  margin: 0 0 0.75rem 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.load-custom-detachment-modal .detachment-option .detachment-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.load-custom-detachment-modal .detachment-option .faction,
+.load-custom-detachment-modal .detachment-option .subfaction {
+  background: rgba(74, 144, 226, 0.2);
+  color: #4a90e2;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.load-custom-detachment-modal .error-message {
+  background: rgba(220, 53, 69, 0.2);
+  border: 1px solid rgba(220, 53, 69, 0.5);
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  color: #ff6b6b;
+  font-size: 0.9rem;
+}
+
+.load-custom-detachment-modal .modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.load-custom-detachment-modal .cancel-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.load-custom-detachment-modal .cancel-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.load-custom-detachment-modal .load-button {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.load-custom-detachment-modal .load-button:hover:not(:disabled) {
+  background: #357abd;
+  transform: translateY(-1px);
+}
+
+.load-custom-detachment-modal .load-button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.load-custom-detachment-modal .load-button:disabled:hover {
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .load-custom-detachment-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .load-custom-detachment-modal .detachments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .load-custom-detachment-modal .current-detachment-details {
+    grid-template-columns: 1fr;
+  }
+
+  .load-custom-detachment-modal .modal-actions {
+    flex-direction: column;
+  }
+
+  .load-custom-detachment-modal .detachment-option .detachment-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+} 

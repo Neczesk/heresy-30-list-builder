@@ -1,0 +1,164 @@
+.save-custom-detachment-modal {
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.save-custom-detachment-modal .modal-header h2 {
+  color: #4a90e2;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.save-custom-detachment-modal .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.save-custom-detachment-modal .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.save-custom-detachment-modal .form-group input,
+.save-custom-detachment-modal .form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease;
+}
+
+.save-custom-detachment-modal .form-group input:focus,
+.save-custom-detachment-modal .form-group textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.save-custom-detachment-modal .form-group input::placeholder,
+.save-custom-detachment-modal .form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.save-custom-detachment-modal .error-message {
+  background: rgba(220, 53, 69, 0.2);
+  border: 1px solid rgba(220, 53, 69, 0.5);
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  color: #ff6b6b;
+  font-size: 0.9rem;
+}
+
+.save-custom-detachment-modal .detachment-preview {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.save-custom-detachment-modal .detachment-preview h3 {
+  margin: 0 0 1rem 0;
+  color: #4a90e2;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.save-custom-detachment-modal .preview-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.save-custom-detachment-modal .preview-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0;
+}
+
+.save-custom-detachment-modal .preview-item .label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+.save-custom-detachment-modal .preview-item .value {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.save-custom-detachment-modal .modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.save-custom-detachment-modal .cancel-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.save-custom-detachment-modal .cancel-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.save-custom-detachment-modal .save-button {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.save-custom-detachment-modal .save-button:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+.save-custom-detachment-modal .save-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .save-custom-detachment-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .save-custom-detachment-modal .modal-actions {
+    flex-direction: column;
+  }
+
+  .save-custom-detachment-modal .preview-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .save-custom-detachment-modal .preview-item .value {
+    text-align: left;
+  }
+} 

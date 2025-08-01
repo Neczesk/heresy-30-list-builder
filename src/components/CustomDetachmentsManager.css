@@ -1,0 +1,388 @@
+.custom-detachments-manager-page {
+  min-height: 100vh;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-detachments-manager-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.custom-detachments-manager-header {
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 20px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom-detachments-manager-header h1 {
+  margin: 0;
+  color: #333;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.back-button {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-button:hover {
+  background: #5a6268;
+}
+
+.custom-detachments-manager-body {
+  flex: 1;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.no-custom-detachments {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.no-custom-detachments p {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+}
+
+.no-custom-detachments p:last-child {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.custom-detachments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.custom-detachment-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  background: white;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.custom-detachment-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.custom-detachment-info {
+  flex: 1;
+}
+
+.custom-detachment-header {
+  margin-bottom: 16px;
+}
+
+.detachment-name-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.detachment-name {
+  margin: 0;
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.custom-badge {
+  background: #4a90e2;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rename-input-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rename-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid #4a90e2;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  background: white;
+}
+
+.rename-input:focus {
+  outline: none;
+  border-color: #357abd;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.rename-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.save-rename-button,
+.cancel-rename-button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.save-rename-button {
+  background: #28a745;
+  color: white;
+}
+
+.save-rename-button:hover {
+  background: #218838;
+}
+
+.cancel-rename-button {
+  background: #dc3545;
+  color: white;
+}
+
+.cancel-rename-button:hover {
+  background: #c82333;
+}
+
+.detachment-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #666;
+  min-width: 120px;
+  font-size: 0.9rem;
+}
+
+.detail-value {
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.detail-value.description {
+  font-style: italic;
+  color: #666;
+}
+
+.custom-detachment-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 100px;
+}
+
+.edit-button,
+.rename-button,
+.delete-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.edit-button {
+  background: #4a90e2;
+  color: white;
+}
+
+.edit-button:hover {
+  background: #357abd;
+}
+
+.rename-button {
+  background: #ffc107;
+  color: #212529;
+}
+
+.rename-button:hover {
+  background: #e0a800;
+}
+
+.delete-button {
+  background: #dc3545;
+  color: white;
+}
+
+.delete-button:hover {
+  background: #c82333;
+}
+
+.delete-confirm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.delete-confirm-content {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.delete-confirm-content h3 {
+  margin: 0 0 16px 0;
+  color: #dc3545;
+  font-size: 1.3rem;
+}
+
+.delete-confirm-content p {
+  margin: 0 0 12px 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+.delete-confirm-content .warning {
+  color: #dc3545;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.delete-confirm-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.delete-confirm-actions .cancel-button,
+.delete-confirm-actions .delete-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-width: 80px;
+}
+
+.delete-confirm-actions .cancel-button {
+  background: #6c757d;
+  color: white;
+}
+
+.delete-confirm-actions .cancel-button:hover {
+  background: #5a6268;
+}
+
+.delete-confirm-actions .delete-button {
+  background: #dc3545;
+  color: white;
+}
+
+.delete-confirm-actions .delete-button:hover {
+  background: #c82333;
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .custom-detachments-manager-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .custom-detachments-manager-body {
+    padding: 20px 10px;
+  }
+
+  .custom-detachment-item {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .custom-detachment-actions {
+    flex-direction: row;
+    justify-content: center;
+    min-width: auto;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .detail-label {
+    min-width: auto;
+  }
+} 

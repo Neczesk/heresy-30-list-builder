@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { DataLoader } from '../utils/dataLoader';
 import AlliedFactionSelector from './AlliedFactionSelector';
 import DetachmentSlots from './DetachmentSlots';
-import type { Detachment, ArmyList, Faction } from '../types/army';
+import type { Detachment, Army, Faction } from '../types/army';
 import './AddDetachmentModal.css';
 
 interface AddDetachmentModalProps {
-  armyList: ArmyList;
+  armyList: Army;
   onAddDetachment: (detachment: Detachment) => void;
   onClose: () => void;
 }
@@ -144,7 +144,16 @@ const AddDetachmentModal: React.FC<AddDetachmentModalProps> = ({
                   {/* Visual Slot Display */}
                   <DetachmentSlots 
                     detachment={detachment}
-                    armyDetachment={{ detachmentId: detachment.id, units: [], primeAdvantages: [] }}
+                    armyDetachment={{ 
+                      id: `${detachment.id}-preview`,
+                      detachmentId: detachment.id,
+                      customName: undefined,
+                      points: 0,
+                      baseSlots: detachment.slots,
+                      modifiedSlots: detachment.slots,
+                      primeAdvantages: [],
+                      units: []
+                    }}
                     armyList={armyList}
                     onUnitSelected={() => {}} // No-op for display only
                   />

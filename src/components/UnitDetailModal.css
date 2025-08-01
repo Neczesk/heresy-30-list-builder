@@ -1,0 +1,459 @@
+.unit-detail-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.unit-detail-modal {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 1200px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.close-button:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.modal-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.unit-overview {
+  margin-bottom: 30px;
+}
+
+.unit-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.info-value {
+  color: #666;
+  font-size: 1rem;
+}
+
+.unit-description h3 {
+  margin: 0 0 12px 0;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.unit-description p {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.models-section {
+  margin-bottom: 30px;
+}
+
+.models-section h3 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.model-section {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.model-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.model-header h4 {
+  margin: 0;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.model-type-badge {
+  background: #4a90e2;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.model-content {
+  padding: 20px;
+}
+
+.characteristics-section,
+.weapons-section,
+.wargear-section,
+.special-rules-section {
+  margin-bottom: 24px;
+}
+
+.characteristics-section h5,
+.weapons-section h5,
+.wargear-section h5,
+.special-rules-section h5 {
+  margin: 0 0 12px 0;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.characteristics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.characteristics-table th {
+  background: #4a90e2;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.characteristics-table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+}
+
+.characteristics-table tr:last-child td {
+  border-bottom: none;
+}
+
+.weapon-type-section {
+  margin-bottom: 20px;
+}
+
+.weapon-type-section h4 {
+  margin: 0 0 12px 0;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.weapon-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.weapon-table th {
+  background: #4a90e2;
+  color: white;
+  padding: 8px 4px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.weapon-table th:first-child {
+  padding-left: 12px;
+}
+
+.weapon-table th:last-child {
+  padding-right: 12px;
+}
+
+.weapon-table td {
+  padding: 8px 4px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: top;
+  color: #333;
+}
+
+.weapon-table td:first-child {
+  padding-left: 12px;
+}
+
+.weapon-table td:last-child {
+  padding-right: 12px;
+}
+
+.weapon-table tr:last-child td {
+  border-bottom: none;
+}
+
+.weapon-name {
+  font-weight: 600;
+  color: #333;
+  min-width: 120px;
+}
+
+.weapon-mount {
+  color: #666;
+  font-style: italic;
+  font-weight: normal;
+}
+
+.weapon-count {
+  color: #4a90e2;
+  font-weight: 600;
+}
+
+.weapon-table td:nth-child(2),
+.weapon-table td:nth-child(3),
+.weapon-table td:nth-child(4),
+.weapon-table td:nth-child(5),
+.weapon-table td:nth-child(6) {
+  text-align: center;
+  min-width: 60px;
+}
+
+.weapon-table td:nth-child(7),
+.weapon-table td:nth-child(8) {
+  min-width: 120px;
+  max-width: 200px;
+  word-wrap: break-word;
+}
+
+.wargear-list,
+.special-rules-list,
+.traits-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.wargear-item,
+.special-rule-item,
+.trait-item {
+  background: #f8f9fa;
+  color: #333;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.unit-special-rules,
+.unit-traits {
+  margin-bottom: 20px;
+}
+
+.unit-special-rules h3,
+.unit-traits h3 {
+  margin: 0 0 12px 0;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+  .unit-detail-modal {
+    width: 95vw;
+    max-height: 95vh;
+  }
+
+  .modal-content {
+    padding: 15px;
+  }
+
+  .unit-info-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+  }
+
+  .model-content {
+    padding: 15px;
+  }
+
+  .characteristics-table,
+  .weapon-table {
+    font-size: 0.8rem;
+  }
+
+  .characteristics-table th,
+  .characteristics-table td,
+  .weapon-table th,
+  .weapon-table td {
+    padding: 6px 3px;
+  }
+
+  .weapon-table th:first-child,
+  .weapon-table td:first-child {
+    padding-left: 8px;
+  }
+
+  .weapon-table th:last-child,
+  .weapon-table td:last-child {
+    padding-right: 8px;
+  }
+
+  .weapon-name {
+    min-width: 100px;
+  }
+
+  .weapon-table td:nth-child(2),
+  .weapon-table td:nth-child(3),
+  .weapon-table td:nth-child(4),
+  .weapon-table td:nth-child(5),
+  .weapon-table td:nth-child(6) {
+    min-width: 50px;
+  }
+
+  .weapon-table td:nth-child(7),
+  .weapon-table td:nth-child(8) {
+    min-width: 100px;
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .unit-detail-modal-overlay {
+    padding: 10px;
+  }
+
+  .unit-detail-modal {
+    width: 100vw;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .modal-header {
+    padding: 15px;
+  }
+
+  .modal-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .modal-content {
+    padding: 10px;
+  }
+
+  .unit-info-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .model-content {
+    padding: 10px;
+  }
+
+  .characteristics-table,
+  .weapon-table {
+    font-size: 0.7rem;
+  }
+
+  .characteristics-table th,
+  .characteristics-table td,
+  .weapon-table th,
+  .weapon-table td {
+    padding: 4px 2px;
+  }
+
+  .weapon-table th:first-child,
+  .weapon-table td:first-child {
+    padding-left: 6px;
+  }
+
+  .weapon-table th:last-child,
+  .weapon-table td:last-child {
+    padding-right: 6px;
+  }
+
+  .weapon-name {
+    min-width: 80px;
+  }
+
+  .weapon-table td:nth-child(2),
+  .weapon-table td:nth-child(3),
+  .weapon-table td:nth-child(4),
+  .weapon-table td:nth-child(5),
+  .weapon-table td:nth-child(6) {
+    min-width: 40px;
+  }
+
+  .weapon-table td:nth-child(7),
+  .weapon-table td:nth-child(8) {
+    min-width: 80px;
+    max-width: 120px;
+  }
+} 

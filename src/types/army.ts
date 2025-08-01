@@ -189,8 +189,6 @@ export interface Unit {
   legionSpecific?: string[]; // Legion IDs if unit is legion-specific
 }
 
-
-
 export interface WargearOption {
   id: string;
   name: string;
@@ -278,70 +276,100 @@ export interface UpgradeOption {
   maxCount?: number; // Maximum number of times this upgrade can be applied
 }
 
-// Army list building interfaces
-export interface ArmyList {
+// RATIONALIZED ARMY STRUCTURE
+// ===========================
+
+// Army metadata and configuration
+export interface Army {
   id: string;
   name: string;
-  faction: string;
-  allegiance: Allegiance; // New field to track army allegiance
+  allegiance: Allegiance;
+  faction: string; // Main faction ID
+  subfaction?: string; // Subfaction ID (if applicable)
   pointsLimit: number;
   totalPoints: number;
-  detachments: ArmyDetachment[];
   riteOfWar?: string;
   validationErrors: string[];
   createdAt: string;
   updatedAt: string;
-  isNamed: boolean; // Whether the user has given it a name
+  isNamed: boolean;
+  detachments: ArmyDetachment[];
 }
 
+// Detachment with metadata and modifications
 export interface ArmyDetachment {
-  detachmentId: string;
-  units: ArmyUnit[];
-  primeAdvantages: PrimeAdvantage[];
-  customSlots?: DetachmentSlot[]; // Custom slots added by prime advantages
+  id: string; // Unique ID for this detachment instance
+  detachmentId: string; // Reference to the base detachment definition
+  customName?: string; // Optional custom name for this detachment
+  points: number; // Total points for this detachment
+  baseSlots: DetachmentSlot[]; // Original slots from the detachment definition
+  modifiedSlots: DetachmentSlot[]; // Slots after modifications (prime advantages, etc.)
+  primeAdvantages: PrimeAdvantage[]; // Prime advantages applied to this detachment
+  units: ArmyUnit[]; // Units in this detachment
   triggeredBy?: {
     unitId: string; // ID of the unit that triggered this detachment
     slotId: string; // ID of the slot the triggering unit occupies
   };
 }
 
+// Unit with complete data for editing and export
 export interface ArmyUnit {
-  unitId: string;
-  size: number;
-  models: ArmyModel[]; // Models in this unit
-  wargear: string[]; // Wargear option IDs
-  upgrades: ArmyUpgrade[];
-  points: number;
+  id: string; // Unique ID for this unit instance
+  unitId: string; // Reference to the base unit definition
+  customName?: string; // Optional custom name for this unit
+  size: number; // Current unit size
+  points: number; // Total points for this unit
   slotId?: string; // ID of the specific slot this unit occupies
-  primeAdvantages?: PrimeAdvantage[]; // Prime advantages applied to this unit
-  // Instance-specific modifications
-  weaponReplacements?: { [modelId: string]: { [oldWeaponId: string]: string } }; // modelId -> oldWeaponId -> newWeaponId
-  modelModifications?: { [modelId: string]: any }; // Future: for model characteristic modifications
-  // Per-model-instance weapon modifications (for tracking which specific models have upgrades)
-  modelInstanceWeaponChanges?: { [modelId: string]: { [instanceIndex: number]: { removed: Array<{ id: string; mount?: string; count?: number }>, added: Array<{ id: string; mount?: string; count?: number }> } } }; // modelId -> instanceIndex -> { removed: weapon objects[], added: weapon objects[] }
-  // Per-model-instance wargear modifications (for tracking which specific models have wargear upgrades)
-  modelInstanceWargearChanges?: { [modelId: string]: { [instanceIndex: number]: { removed: string[], added: string[] } } }; // modelId -> instanceIndex -> { removed: string[], added: string[] }
+  
+  // Custom unit tracking
+  originalCustomUnitId?: string; // ID of the original custom unit if this was created from one
+  
+  // Model data
+  models: { [modelId: string]: number }; // Model ID to count mapping
+  
+  // Wargear and equipment
+  wargear: string[]; // Selected wargear option IDs
+  weapons: { [modelId: string]: Array<{ id: string; mount?: string; count?: number }> }; // Model ID to weapons mapping
+  
+  // Upgrades and modifications
+  upgrades: ArmyUpgrade[]; // Applied upgrades
+  primeAdvantages: PrimeAdvantage[]; // Prime advantages applied to this unit
+  
+  // Special rules and characteristics
+  specialRules: string[]; // IDs of special rules
+  specialRuleValues: { [ruleId: string]: number }; // Values for special rules that require them
+  
+  // Model-specific modifications
+  modelModifications: { [modelId: string]: ModelModification }; // Model characteristic modifications
+  
+  // Weapon and wargear changes per model instance
+  modelInstanceWeaponChanges: { [modelId: string]: { [instanceIndex: number]: WeaponChange } };
+  modelInstanceWargearChanges: { [modelId: string]: { [instanceIndex: number]: WargearChange } };
 }
 
-export interface ArmyModel {
-  modelId: string;
-  count: number; // How many of this model type
-  wargear: string[]; // IDs of wargear options for this model
-  weapons: string[]; // IDs of weapons for this model
-  specialRules: string[]; // IDs of special rules for this model
-  specialRuleValues?: { [ruleId: string]: number }; // Values for special rules that require them
+// Model modification data
+export interface ModelModification {
+  characteristics?: Partial<InfantryModelCharacteristics | VehicleModelCharacteristics>;
+  specialRules?: string[];
+  specialRuleValues?: { [ruleId: string]: number };
 }
 
-export interface ArmyUpgrade {
-  upgradeId: string;
-  optionId?: string; // For upgrades with options
-  count: number; // How many times this upgrade is applied
-  points: number;
+// Weapon change tracking
+export interface WeaponChange {
+  removed: Array<{ id: string; mount?: string; count?: number }>;
+  added: Array<{ id: string; mount?: string; count?: number }>;
 }
 
+// Wargear change tracking
+export interface WargearChange {
+  removed: string[];
+  added: string[];
+}
+
+// Prime advantage with slot modification data
 export interface PrimeAdvantage {
-  slotId: string; // Which prime slot this applies to
-  advantageId: string;
+  advantageId: string; // Reference to the prime advantage definition
+  slotId?: string; // Which prime slot this applies to (for unit-level advantages)
   description: string;
   effect: string;
   slotModification?: {
@@ -359,11 +387,19 @@ export interface PrimeAdvantageDefinition {
   restrictions?: string[];
 }
 
+// Upgrade tracking
+export interface ArmyUpgrade {
+  upgradeId: string;
+  optionId?: string; // For upgrades with options
+  count: number; // How many times this upgrade is applied
+  points: number;
+}
+
 // Storage interfaces
 export interface StoredArmyList {
   id: string;
   name: string;
-  data: ArmyList;
+  data: Army;
   isNamed: boolean;
   createdAt: string;
   updatedAt: string;
@@ -373,7 +409,7 @@ export interface ArmyListMetadata {
   id: string;
   name: string;
   faction: string;
-  allegiance: Allegiance; // New field to track army allegiance
+  allegiance: Allegiance;
   pointsLimit: number;
   totalPoints: number;
   isNamed: boolean;
@@ -389,9 +425,9 @@ export interface CustomUnit {
   faction: string; // Faction ID
   subfaction?: string; // Subfaction ID (if applicable)
   upgrades: ArmyUpgrade[]; // Selected upgrades
-  primeAdvantages?: PrimeAdvantage[]; // Prime advantages (if any)
-  modelInstanceWeaponChanges?: { [modelId: string]: { [instanceIndex: number]: { removed: Array<{ id: string; mount?: string; count?: number }>, added: Array<{ id: string; mount?: string; count?: number }> } } };
-  modelInstanceWargearChanges?: { [modelId: string]: { [instanceIndex: number]: { removed: string[], added: string[] } } };
+  primeAdvantages: PrimeAdvantage[]; // Prime advantages (if any)
+  modelInstanceWeaponChanges: { [modelId: string]: { [instanceIndex: number]: WeaponChange } };
+  modelInstanceWargearChanges: { [modelId: string]: { [instanceIndex: number]: WargearChange } };
   createdAt: string; // ISO timestamp
   updatedAt: string; // ISO timestamp
   description?: string; // Optional description
@@ -406,4 +442,68 @@ export interface CustomUnitMetadata {
   createdAt: string;
   updatedAt: string;
   description?: string;
+}
+
+export interface CustomDetachment {
+  id: string; // Unique identifier (name-based)
+  name: string; // Display name
+  baseDetachmentId: string; // ID of the original detachment this is based on
+  faction: string; // Faction ID
+  subfaction?: string; // Subfaction ID (if applicable)
+  customName?: string; // Optional custom name for this detachment
+  description: string; // User-provided description
+  units: ArmyUnit[]; // Units in this detachment
+  primeAdvantages: PrimeAdvantage[]; // Prime advantages applied to this detachment
+  createdAt: string; // ISO timestamp
+  updatedAt: string; // ISO timestamp
+}
+
+export interface CustomDetachmentMetadata {
+  id: string;
+  name: string;
+  baseDetachmentId: string;
+  faction: string;
+  subfaction?: string;
+  customName?: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+// Legacy interfaces for backward compatibility
+// These will be gradually phased out as the new structure is implemented
+export interface ArmyList extends Army {}
+export interface ArmyDetachmentLegacy {
+  detachmentId: string;
+  units: ArmyUnit[];
+  primeAdvantages: PrimeAdvantage[];
+  customSlots?: DetachmentSlot[];
+  triggeredBy?: {
+    unitId: string;
+    slotId: string;
+  };
+}
+
+export interface ArmyUnitLegacy {
+  unitId: string;
+  size: number;
+  models: ArmyModel[];
+  wargear: string[];
+  upgrades: ArmyUpgrade[];
+  points: number;
+  slotId?: string;
+  primeAdvantages?: PrimeAdvantage[];
+  weaponReplacements?: { [modelId: string]: { [oldWeaponId: string]: string } };
+  modelModifications?: { [modelId: string]: any };
+  modelInstanceWeaponChanges?: { [modelId: string]: { [instanceIndex: number]: { removed: Array<{ id: string; mount?: string; count?: number }>, added: Array<{ id: string; mount?: string; count?: number }> } } };
+  modelInstanceWargearChanges?: { [modelId: string]: { [instanceIndex: number]: { removed: string[], added: string[] } } };
+}
+
+export interface ArmyModel {
+  modelId: string;
+  count: number;
+  wargear: string[];
+  weapons: string[];
+  specialRules: string[];
+  specialRuleValues?: { [ruleId: string]: number };
 } 

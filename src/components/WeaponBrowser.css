@@ -1,0 +1,378 @@
+.weapon-browser {
+  width: 95%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.browser-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.back-to-menu-button {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.back-to-menu-button:hover {
+  background: #5a6268;
+}
+
+.browser-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.search-section {
+  margin-bottom: 30px;
+}
+
+.search-container {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.search-input-wrapper {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.clear-search-button {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.clear-search-button:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #666;
+}
+
+.search-results {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.results-count {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.weapons-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.weapon-table-section {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.weapon-table-section h3 {
+  margin: 0;
+  padding: 20px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.no-weapons {
+  padding: 40px 20px;
+  text-align: center;
+  color: #666;
+}
+
+.no-weapons p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.table-container {
+  overflow-x: auto;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.weapon-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background-color: white;
+}
+
+.weapon-table th {
+  background: #4a90e2;
+  color: white;
+  padding: 12px 8px;
+  text-align: left;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.weapon-table th:first-child {
+  padding-left: 16px;
+}
+
+.weapon-table th:last-child {
+  padding-right: 16px;
+}
+
+.weapon-table td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: top;
+  color: #333;
+  background-color: white;
+}
+
+.weapon-table td:first-child {
+  padding-left: 16px;
+}
+
+.weapon-table td:last-child {
+  padding-right: 16px;
+}
+
+.weapon-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.weapon-table tr:hover td {
+  color: #333;
+}
+
+.weapon-name {
+  font-weight: 600;
+  color: #333;
+  min-width: 150px;
+}
+
+/* Weapon group styling */
+.weapon-header-row {
+  background-color: #e3f2fd !important;
+}
+
+.weapon-group-header {
+  padding: 16px !important;
+  border-bottom: 2px solid #2196f3 !important;
+}
+
+.weapon-group-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  color: #1976d2;
+  font-size: 1.1rem;
+}
+
+.profile-count {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.profile-row {
+  background-color: #fafafa;
+}
+
+.profile-row:hover {
+  background-color: #f0f0f0 !important;
+}
+
+.profile-name {
+  font-weight: 600;
+  color: #555;
+  font-style: italic;
+  padding-left: 24px !important;
+  min-width: 150px;
+}
+
+.weapon-table td:nth-child(2),
+.weapon-table td:nth-child(3),
+.weapon-table td:nth-child(4),
+.weapon-table td:nth-child(5),
+.weapon-table td:nth-child(6) {
+  text-align: center;
+  min-width: 80px;
+}
+
+.weapon-table td:nth-child(7),
+.weapon-table td:nth-child(8) {
+  min-width: 200px;
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+/* Scrollbar styling */
+.table-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+@media (max-width: 1200px) {
+  .weapon-browser {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .browser-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .browser-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .search-container {
+    padding: 15px;
+  }
+
+  .weapon-table-section h3 {
+    padding: 15px;
+    font-size: 1.1rem;
+  }
+
+  .weapon-table {
+    font-size: 0.8rem;
+  }
+
+  .weapon-table th,
+  .weapon-table td {
+    padding: 8px 4px;
+  }
+
+  .weapon-table th:first-child,
+  .weapon-table td:first-child {
+    padding-left: 12px;
+  }
+
+  .weapon-table th:last-child,
+  .weapon-table td:last-child {
+    padding-right: 12px;
+  }
+
+  .weapon-name {
+    min-width: 120px;
+  }
+
+  .weapon-table td:nth-child(2),
+  .weapon-table td:nth-child(3),
+  .weapon-table td:nth-child(4),
+  .weapon-table td:nth-child(5),
+  .weapon-table td:nth-child(6) {
+    min-width: 60px;
+  }
+
+  .weapon-table td:nth-child(7),
+  .weapon-table td:nth-child(8) {
+    min-width: 150px;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .weapon-browser {
+    padding: 5px;
+  }
+
+  .weapon-table {
+    font-size: 0.7rem;
+  }
+
+  .weapon-table th,
+  .weapon-table td {
+    padding: 6px 2px;
+  }
+
+  .weapon-name {
+    min-width: 100px;
+  }
+
+  .weapon-table td:nth-child(2),
+  .weapon-table td:nth-child(3),
+  .weapon-table td:nth-child(4),
+  .weapon-table td:nth-child(5),
+  .weapon-table td:nth-child(6) {
+    min-width: 50px;
+  }
+
+  .weapon-table td:nth-child(7),
+  .weapon-table td:nth-child(8) {
+    min-width: 120px;
+    max-width: 150px;
+  }
+} 

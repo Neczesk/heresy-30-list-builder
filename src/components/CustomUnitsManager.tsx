@@ -294,14 +294,20 @@ const CustomUnitsManager: React.FC<CustomUnitsManagerProps> = ({
           <UnitManagementModal
             isOpen={showUnitManagementModal}
             unit={{
+              id: `${editingUnit.baseUnitId}-edit`,
               unitId: editingUnit.baseUnitId,
+              customName: undefined,
               size: 1,
-              models: [],
-              wargear: [],
-              upgrades: editingUnit.upgrades,
               points: 0,
               slotId: 'custom-edit',
+              models: {},
+              wargear: [],
+              weapons: {},
+              upgrades: editingUnit.upgrades,
               primeAdvantages: editingUnit.primeAdvantages,
+              specialRules: [],
+              specialRuleValues: {},
+              modelModifications: {},
               modelInstanceWeaponChanges: editingUnit.modelInstanceWeaponChanges,
               modelInstanceWargearChanges: editingUnit.modelInstanceWargearChanges
             }}
@@ -322,9 +328,17 @@ const CustomUnitsManager: React.FC<CustomUnitsManagerProps> = ({
             }}
             onClose={handleUnitManagementClose}
             onUnitUpdated={handleUnitUpdated}
-            onDetachmentUpdated={() => {}}
             faction={editingUnit.faction}
             subfaction={editingUnit.subfaction}
+            customUnitData={{
+              id: editingUnit.id,
+              name: editingUnit.name,
+              baseUnitId: editingUnit.baseUnitId,
+              faction: editingUnit.faction,
+              subfaction: editingUnit.subfaction,
+              createdAt: editingUnit.createdAt,
+              updatedAt: editingUnit.updatedAt
+            }}
           />
         )}
       </div>

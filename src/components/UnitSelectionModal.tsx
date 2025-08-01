@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { DataLoader } from '../utils/dataLoader';
 import { CustomUnitStorage } from '../utils/customUnitStorage';
-import type { Unit, CustomUnit, ArmyList } from '../types/army';
+import type { Unit, CustomUnit, Army } from '../types/army';
 import './UnitSelectionModal.css';
 
 interface UnitSelectionModalProps {
   isOpen: boolean;
   roleId: string;
   roleName: string;
-  armyList: ArmyList;
+  armyList: Army;
   detachment: any;
   onUnitSelected: (unitId: string) => void;
   onClose: () => void;

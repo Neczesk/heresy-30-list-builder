@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { DataLoader } from '../utils/dataLoader';
+import { CustomUnitStorage } from '../utils/customUnitStorage';
 import { UpgradeValidator } from '../utils/upgradeValidator';
 import type { UpgradeValidationContext } from '../utils/upgradeValidator';
 import { UnitViewer } from './UnitViewer';
 import SaveCustomUnitModal from './SaveCustomUnitModal';
-import type { ArmyList, ArmyUnit, ArmyUpgrade, ArmyDetachment } from '../types/army';
+import type { Army, ArmyUnit, ArmyUpgrade } from '../types/army';
 import './UnitManagementModal.css';
 
 interface UnitManagementModalProps {
@@ -12,14 +13,23 @@ interface UnitManagementModalProps {
   unit: ArmyUnit;
   slotId: string;
   detachmentId: string;
-  armyList: ArmyList;
+  armyList: Army;
   onClose: () => void;
   onUnitUpdated: (slotId: string, updatedUnit: ArmyUnit) => void;
-  onDetachmentUpdated?: (detachmentId: string, updatedDetachment: ArmyDetachment) => void;
   onDetachmentPrompt?: (roleId: string, slotIndex: number) => void;
   onDetachmentRemoved?: (detachmentId: string) => void;
   faction: string;
   subfaction?: string;
+  // Custom unit data for editing custom units
+  customUnitData?: {
+    id: string;
+    name: string;
+    baseUnitId: string;
+    faction: string;
+    subfaction?: string;
+    createdAt: string;
+    updatedAt: string;
+  };
 }
 
 const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
@@ -30,11 +40,11 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
   armyList,
   onClose,
   onUnitUpdated,
-  onDetachmentUpdated,
   onDetachmentPrompt,
   onDetachmentRemoved,
   faction,
-  subfaction
+  subfaction,
+  customUnitData
 }) => {
   const [activeTab, setActiveTab] = useState<'unit' | 'upgrades' | 'detachments' | 'prime' | 'custom'>('unit');
   const [showSaveCustomUnitModal, setShowSaveCustomUnitModal] = useState(false);
@@ -135,15 +145,13 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
   // Create a temporary army unit instance for preview based on current selected upgrades
   const previewArmyUnit: ArmyUnit = {
     ...unit,
-    models: Object.entries(previewModels).map(([modelId, count]) => ({
-      modelId,
-      count,
-      wargear: [],
-      weapons: [],
-      specialRules: [],
-      specialRuleValues: {}
-    })),
-    weaponReplacements: {}
+    models: previewModels,
+    weapons: {},
+    specialRules: unit.specialRules || [],
+    specialRuleValues: unit.specialRuleValues || {},
+    modelModifications: {},
+    modelInstanceWeaponChanges: {},
+    modelInstanceWargearChanges: {}
   };
   
   console.log('Preview models:', previewModels);
@@ -666,14 +674,7 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
 
     const updatedUnit: ArmyUnit = {
       ...unit,
-      models: Object.entries(updatedModels).map(([modelId, count]) => ({
-        modelId,
-        count,
-        wargear: [],
-        weapons: [],
-        specialRules: [],
-        specialRuleValues: {}
-      })),
+      models: updatedModels,
       upgrades: selectedUpgrades.map(upgrade => ({
         upgradeId: upgrade.upgradeId,
         optionId: upgrade.optionId,
@@ -681,9 +682,32 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
         points: upgrade.points
       })),
       points: baseUnitData.points + calculateUpgradePoints(), // Update points to reflect total
-      modelInstanceWeaponChanges: Object.keys(modelInstanceWeaponChanges).length > 0 ? modelInstanceWeaponChanges : undefined,
-      modelInstanceWargearChanges: Object.keys(modelInstanceWargearChanges).length > 0 ? modelInstanceWargearChanges : undefined
+      modelInstanceWeaponChanges: Object.keys(modelInstanceWeaponChanges).length > 0 ? modelInstanceWeaponChanges : {},
+      modelInstanceWargearChanges: Object.keys(modelInstanceWargearChanges).length > 0 ? modelInstanceWargearChanges : {}
     };
+    
+    // If editing a custom unit in CustomUnitsManager, auto-save to custom unit storage
+    if (customUnitData) {
+      const customUnit = {
+        id: customUnitData.id,
+        name: customUnitData.name,
+        baseUnitId: unit.unitId,
+        faction: customUnitData.faction,
+        subfaction: customUnitData.subfaction,
+        upgrades: updatedUnit.upgrades,
+        primeAdvantages: updatedUnit.primeAdvantages,
+        modelInstanceWeaponChanges: updatedUnit.modelInstanceWeaponChanges,
+        modelInstanceWargearChanges: updatedUnit.modelInstanceWargearChanges,
+        createdAt: customUnitData.createdAt,
+        updatedAt: new Date().toISOString()
+      };
+      
+      CustomUnitStorage.saveCustomUnit(customUnit);
+      console.log('Custom unit updated:', customUnit);
+    }
+    
+    // Note: If unit.originalCustomUnitId exists, we don't auto-save to preserve the original custom unit
+    // User must explicitly choose to save as new or overwrite original
     
     onUnitUpdated(slotId, updatedUnit);
   };
@@ -859,6 +883,34 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
     setPendingLogisticalBenefit(false);
   };
 
+  const handleOverwriteCustomUnit = () => {
+    if (!unit.originalCustomUnitId) return;
+    
+    // Get the original custom unit
+    const originalCustomUnit = CustomUnitStorage.getCustomUnit(unit.originalCustomUnitId);
+    if (!originalCustomUnit) {
+      console.error('Original custom unit not found:', unit.originalCustomUnitId);
+      return;
+    }
+    
+    // Create updated custom unit with current unit's configuration
+    const updatedCustomUnit = {
+      ...originalCustomUnit,
+      upgrades: unit.upgrades,
+      primeAdvantages: unit.primeAdvantages,
+      modelInstanceWeaponChanges: unit.modelInstanceWeaponChanges,
+      modelInstanceWargearChanges: unit.modelInstanceWargearChanges,
+      updatedAt: new Date().toISOString()
+    };
+    
+    // Save the updated custom unit
+    CustomUnitStorage.saveCustomUnit(updatedCustomUnit);
+    console.log('Original custom unit overwritten:', updatedCustomUnit);
+    
+    // Show success message or notification
+    alert('Original custom unit has been updated with your changes.');
+  };
+
   const handleSavePrimeAdvantages = () => {
     console.log('Saving prime advantages for unit:', unit.unitId);
     console.log('Selected advantages:', selectedPrimeAdvantages);
@@ -868,7 +920,6 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
     const newPrimeAdvantages = selectedPrimeAdvantages.map(advantageId => {
       const advantage = DataLoader.getPrimeAdvantageById(advantageId);
       const primeAdvantage: any = {
-        slotId: slotId,
         advantageId: advantageId,
         description: advantage?.description || '',
         effect: advantage?.effect || ''
@@ -895,46 +946,30 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
     
     console.log('Updated unit:', updatedUnit);
     
-    // Handle custom slots for logistical-benefit at the detachment level
-    if (selectedPrimeAdvantages.includes('logistical-benefit')) {
-      const detachmentIndex = armyList.detachments.findIndex(d => d.detachmentId === detachmentId);
-      if (detachmentIndex !== -1) {
-        const currentDetachment = armyList.detachments[detachmentIndex];
-        let customSlots = currentDetachment.customSlots || [];
-        
-        // Remove any existing custom slots for this unit's logistical-benefit
-        customSlots = customSlots.filter(slot => 
-          !slot.description?.includes(`Custom slot added by Logistical Benefit for unit ${unit.unitId}`)
-        );
-        
-        // Add new custom slot for logistical-benefit
-        const logisticalBenefit = newPrimeAdvantages.find(pa => pa.advantageId === 'logistical-benefit');
-        if (logisticalBenefit?.slotModification) {
-          customSlots.push({
-            roleId: logisticalBenefit.slotModification.roleId,
-            count: logisticalBenefit.slotModification.count,
-            isPrime: false,
-            description: `Custom slot added by Logistical Benefit for unit ${unit.unitId}`
-          });
-        }
-        
-        const updatedDetachment = {
-          ...currentDetachment,
-          customSlots: customSlots
-        };
-        
-        console.log('Updated detachment with custom slots:', updatedDetachment);
-        
-        // Update both the unit and the detachment
-        onUnitUpdated(slotId, updatedUnit);
-        if (onDetachmentUpdated) {
-          onDetachmentUpdated(detachmentId, updatedDetachment);
-        }
-        return;
-      }
+    // If editing a custom unit in CustomUnitsManager, auto-save to custom unit storage
+    if (customUnitData) {
+      const customUnit = {
+        id: customUnitData.id,
+        name: customUnitData.name,
+        baseUnitId: unit.unitId,
+        faction: customUnitData.faction,
+        subfaction: customUnitData.subfaction,
+        upgrades: updatedUnit.upgrades,
+        primeAdvantages: updatedUnit.primeAdvantages,
+        modelInstanceWeaponChanges: updatedUnit.modelInstanceWeaponChanges,
+        modelInstanceWargearChanges: updatedUnit.modelInstanceWargearChanges,
+        createdAt: customUnitData.createdAt,
+        updatedAt: new Date().toISOString()
+      };
+      
+      CustomUnitStorage.saveCustomUnit(customUnit);
+      console.log('Custom unit prime advantages updated:', customUnit);
     }
     
-    // If no logistical-benefit, just update the unit
+    // Note: If unit.originalCustomUnitId exists, we don't auto-save to preserve the original custom unit
+    // User must explicitly choose to save as new or overwrite original
+    
+    // Update the unit - the detachment will recalculate its slots based on unit prime advantages
     onUnitUpdated(slotId, updatedUnit);
   };
 
@@ -942,7 +977,9 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
     <div className="unit-management-overlay" onClick={onClose}>
       <div className="unit-management-content" onClick={(e) => e.stopPropagation()}>
         <div className="unit-management-header">
-          <h3>{baseUnitData.name} Management</h3>
+          <h3>
+            {customUnitData ? `${customUnitData.name} (${baseUnitData.name})` : `${baseUnitData.name} Management`}
+          </h3>
           <button className="close-button" onClick={onClose}>×</button>
         </div>
         
@@ -968,6 +1005,40 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
               <div className="special-rule">
                 <span className="rule-icon">⚡</span>
                 <span className="rule-text">Officer of the Line - Can trigger up to {maxDetachments} detachment{maxDetachments > 1 ? 's' : ''}.</span>
+              </div>
+            )}
+            
+            {/* Custom Unit Info */}
+            {customUnitData && (
+              <div className="custom-unit-info">
+                <div className="custom-unit-header">
+                  <span className="custom-unit-icon">⚙️</span>
+                  <span className="custom-unit-label">Custom Unit Details</span>
+                </div>
+                <div className="custom-unit-details">
+                  <div className="custom-unit-field">
+                    <span className="field-label">Name:</span>
+                    <span className="field-value">{customUnitData.name}</span>
+                  </div>
+                  <div className="custom-unit-field">
+                    <span className="field-label">Faction:</span>
+                    <span className="field-value">{DataLoader.getFactionById(customUnitData.faction)?.name || customUnitData.faction}</span>
+                  </div>
+                  {customUnitData.subfaction && (
+                    <div className="custom-unit-field">
+                      <span className="field-label">Subfaction:</span>
+                      <span className="field-value">{DataLoader.getFactionById(customUnitData.subfaction)?.name || customUnitData.subfaction}</span>
+                    </div>
+                  )}
+                  <div className="custom-unit-field">
+                    <span className="field-label">Created:</span>
+                    <span className="field-value">{new Date(customUnitData.createdAt).toLocaleDateString()}</span>
+                  </div>
+                  <div className="custom-unit-field">
+                    <span className="field-label">Last Modified:</span>
+                    <span className="field-value">{new Date(customUnitData.updatedAt).toLocaleDateString()}</span>
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -1383,12 +1454,45 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                 </div>
 
                 <div className="custom-actions">
-                  <button 
-                    className="save-custom-unit-button"
-                    onClick={() => setShowSaveCustomUnitModal(true)}
-                  >
-                    Save as Custom Unit
-                  </button>
+                  {customUnitData ? (
+                    // Editing a custom unit in CustomUnitsManager - auto-save
+                    <div className="custom-unit-save-info">
+                      <p>This custom unit is being automatically saved as you make changes.</p>
+                      <button 
+                        className="save-custom-unit-button disabled"
+                        disabled
+                      >
+                        Auto-Saving Enabled
+                      </button>
+                    </div>
+                  ) : unit.originalCustomUnitId ? (
+                    // Editing a custom unit that was added to an army list - manual save
+                    <div className="custom-unit-save-info">
+                      <p>This unit was created from a custom unit. Changes will only affect this army list.</p>
+                      <div className="save-options">
+                        <button 
+                          className="save-custom-unit-button"
+                          onClick={() => setShowSaveCustomUnitModal(true)}
+                        >
+                          Save as New Custom Unit
+                        </button>
+                        <button 
+                          className="save-custom-unit-button overwrite"
+                          onClick={() => handleOverwriteCustomUnit()}
+                        >
+                          Overwrite Original Custom Unit
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    // Editing a regular unit - normal save
+                    <button 
+                      className="save-custom-unit-button"
+                      onClick={() => setShowSaveCustomUnitModal(true)}
+                    >
+                      Save as Custom Unit
+                    </button>
+                  )}
                 </div>
 
                 <div className="custom-unit-preview">

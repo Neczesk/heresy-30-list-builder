@@ -31,9 +31,14 @@ export function testAlliedDetachmentAvailability() {
   // Create a test army list
   const testArmyList = ArmyListStorage.createNewArmyList('dark-angels', 2000, 'Loyalist');
   testArmyList.detachments.push({
+    id: 'crusade-primary-test',
     detachmentId: 'crusade-primary',
-    units: [],
-    primeAdvantages: []
+    customName: undefined,
+    points: 0,
+    baseSlots: [],
+    modifiedSlots: [],
+    primeAdvantages: [],
+    units: []
   });
   
   console.log('Test Army List:', {

@@ -8,7 +8,7 @@ import primeAdvantagesData from '../data/primeAdvantages.json';
 import specialRulesData from '../data/specialRules.json';
 import modelsData from '../data/models.json';
 import weaponsData from '../data/weapons.json';
-import type { Faction, Detachment, Unit, UnitUpgrade, UpgradeOption, ArmyUnit, BattlefieldRole, RiteOfWar, PrimeAdvantageDefinition, ArmyList, Allegiance, SpecialRule, Model, Weapon, RangedWeapon, MeleeWeapon } from '../types/army';
+import type { Faction, Detachment, Unit, UnitUpgrade, UpgradeOption, ArmyUnit, BattlefieldRole, RiteOfWar, PrimeAdvantageDefinition, Army, Allegiance, SpecialRule, Model, Weapon, RangedWeapon, MeleeWeapon } from '../types/army';
 
 export class DataLoader {
   // Special Rules methods
@@ -257,7 +257,7 @@ export class DataLoader {
   }
 
   // New methods for detachment availability
-  static getAvailableDetachments(armyList: ArmyList): Detachment[] {
+  static getAvailableDetachments(armyList: Army): Detachment[] {
     const availableDetachments: Detachment[] = [];
     const allDetachments = this.getDetachments();
 
@@ -270,7 +270,7 @@ export class DataLoader {
     return availableDetachments;
   }
 
-  static isDetachmentAvailable(detachment: Detachment, armyList: ArmyList): boolean {
+  static isDetachmentAvailable(detachment: Detachment, armyList: Army): boolean {
     // Check if detachment is already added
     const existingDetachment = armyList.detachments.find(d => d.detachmentId === detachment.id);
     if (existingDetachment) {
@@ -295,7 +295,7 @@ export class DataLoader {
     return true;
   }
 
-  private static checkDetachmentRequirements(detachment: Detachment, armyList: ArmyList): boolean {
+  private static checkDetachmentRequirements(detachment: Detachment, armyList: Army): boolean {
     for (const requirement of detachment.requirements) {
       switch (requirement.type) {
         case 'faction':
@@ -331,7 +331,7 @@ export class DataLoader {
     return true;
   }
 
-  private static checkDetachmentRestrictions(detachment: Detachment, armyList: ArmyList): boolean {
+  private static checkDetachmentRestrictions(detachment: Detachment, armyList: Army): boolean {
     if (!detachment.restrictions) return true;
 
     for (const restriction of detachment.restrictions) {
@@ -384,7 +384,7 @@ export class DataLoader {
     return true;
   }
 
-  private static checkDetachmentTriggers(detachment: Detachment, armyList: ArmyList): boolean {
+  private static checkDetachmentTriggers(detachment: Detachment, armyList: Army): boolean {
     if (!detachment.triggers) return true;
 
     for (const trigger of detachment.triggers) {
@@ -404,7 +404,7 @@ export class DataLoader {
     return false;
   }
 
-  private static hasSpecificUnitInSlot(armyList: ArmyList, requiredUnitId: string, requiredSlotType: 'Command' | 'High Command'): boolean {
+  private static hasSpecificUnitInSlot(armyList: Army, requiredUnitId: string, requiredSlotType: 'Command' | 'High Command'): boolean {
     const roleId = requiredSlotType === 'Command' ? 'command' : 'high-command';
     
     for (const armyDetachment of armyList.detachments) {
@@ -424,7 +424,7 @@ export class DataLoader {
     return false;
   }
 
-  private static hasFilledSlot(armyList: ArmyList, roleId: string): boolean {
+  private static hasFilledSlot(armyList: Army, roleId: string): boolean {
     for (const armyDetachment of armyList.detachments) {
       const detachment = this.getDetachmentById(armyDetachment.detachmentId);
       if (!detachment) continue;
@@ -504,27 +504,38 @@ export class DataLoader {
     // Create a deep copy of the base unit
     const instanceUnit: Unit = JSON.parse(JSON.stringify(baseUnit));
 
-    // Apply weapon replacements from the army unit instance
-    if (armyUnit.weaponReplacements) {
-      Object.entries(armyUnit.weaponReplacements).forEach(([modelId, replacements]) => {
+    // Apply weapon changes from the army unit instance (new structure uses modelInstanceWeaponChanges)
+    if (armyUnit.modelInstanceWeaponChanges) {
+      Object.entries(armyUnit.modelInstanceWeaponChanges).forEach(([modelId, instanceChanges]) => {
         const model = this.getModelById(modelId);
         if (model) {
           // Create a copy of the model for this instance
           const instanceModel = JSON.parse(JSON.stringify(model));
           
-          // Apply weapon replacements
-          Object.entries(replacements).forEach(([oldWeaponId, newWeaponId]) => {
-            const weaponIndex = instanceModel.weapons.indexOf(oldWeaponId);
-            if (weaponIndex !== -1) {
-              instanceModel.weapons[weaponIndex] = newWeaponId;
-              console.log(`getUnitInstanceData: Replaced weapon in ${modelId} from ${oldWeaponId} to ${newWeaponId}`);
-            }
+          // Apply weapon changes from all instances
+          Object.values(instanceChanges).forEach(changes => {
+            changes.removed.forEach(weaponToRemove => {
+              const weaponId = typeof weaponToRemove === 'string' ? weaponToRemove : weaponToRemove.id;
+              const weaponIndex = instanceModel.weapons.findIndex((w: any) => 
+                typeof w === 'string' ? w === weaponId : w.id === weaponId
+              );
+              if (weaponIndex !== -1) {
+                instanceModel.weapons.splice(weaponIndex, 1);
+                console.log(`getUnitInstanceData: Removed weapon ${weaponId} from ${modelId}`);
+              }
+            });
+            
+            changes.added.forEach(weaponToAdd => {
+              const weaponId = typeof weaponToAdd === 'string' ? weaponToAdd : weaponToAdd.id;
+              instanceModel.weapons.push(weaponId);
+              console.log(`getUnitInstanceData: Added weapon ${weaponId} to ${modelId}`);
+            });
           });
           
           // Update the model in the instance unit
           // Note: We need to update the model data that will be used by the UnitViewer
           // Since the UnitViewer gets models through getModelsForUnit, we need to ensure
-          // the weapon replacements are applied when that function is called
+          // the weapon changes are applied when that function is called
         }
       });
     }
@@ -538,10 +549,8 @@ export class DataLoader {
     
     const models: { model: Model; count: number }[] = [];
     
-    // Use armyUnit.models if available (for updated model composition), otherwise fall back to baseUnit.models
-    const modelComposition = armyUnit.models && armyUnit.models.length > 0 
-      ? armyUnit.models 
-      : Object.entries(baseUnit.models || {}).map(([modelId, count]) => ({ modelId, count }));
+    // Use armyUnit.models (new structure: { modelId: count })
+    const modelComposition = Object.entries(armyUnit.models || {}).map(([modelId, count]) => ({ modelId, count }));
     
     modelComposition.forEach(armyModel => {
       const baseModel = this.getModelById(armyModel.modelId);
@@ -549,13 +558,27 @@ export class DataLoader {
         // Create a copy of the model for this instance
         const instanceModel = JSON.parse(JSON.stringify(baseModel));
         
-        // Apply weapon replacements for this model
-        if (armyUnit.weaponReplacements && armyUnit.weaponReplacements[armyModel.modelId]) {
-          Object.entries(armyUnit.weaponReplacements[armyModel.modelId] as { [key: string]: string }).forEach(([oldWeaponId, newWeaponId]) => {
-            const weaponIndex = instanceModel.weapons.indexOf(oldWeaponId);
-            if (weaponIndex !== -1) {
-              instanceModel.weapons[weaponIndex] = newWeaponId;
-            }
+        // Apply weapon changes for this model (new structure uses modelInstanceWeaponChanges)
+        if (armyUnit.modelInstanceWeaponChanges && armyUnit.modelInstanceWeaponChanges[armyModel.modelId]) {
+          // For now, we'll apply changes to all instances of this model
+          // In a more sophisticated implementation, you might want to handle per-instance changes
+          const instanceChanges = armyUnit.modelInstanceWeaponChanges[armyModel.modelId];
+          Object.values(instanceChanges).forEach(changes => {
+            // Apply weapon changes to the model
+            changes.removed.forEach(weaponToRemove => {
+              const weaponId = typeof weaponToRemove === 'string' ? weaponToRemove : weaponToRemove.id;
+              const weaponIndex = instanceModel.weapons.findIndex((w: any) => 
+                typeof w === 'string' ? w === weaponId : w.id === weaponId
+              );
+              if (weaponIndex !== -1) {
+                instanceModel.weapons.splice(weaponIndex, 1);
+              }
+            });
+            
+            changes.added.forEach(weaponToAdd => {
+              const weaponId = typeof weaponToAdd === 'string' ? weaponToAdd : weaponToAdd.id;
+              instanceModel.weapons.push(weaponId);
+            });
           });
         }
 
@@ -573,10 +596,8 @@ export class DataLoader {
     
     const weaponCounts: { [key: string]: { weaponId: string; count: number; mount?: string } } = {};
     
-    // Get model composition
-    const modelComposition = armyUnit.models && armyUnit.models.length > 0 
-      ? armyUnit.models 
-      : Object.entries(baseUnit.models || {}).map(([modelId, count]) => ({ modelId, count }));
+    // Get model composition (new structure: { modelId: count })
+    const modelComposition = Object.entries(armyUnit.models || {}).map(([modelId, count]) => ({ modelId, count }));
     
     console.log('=== calculateWeaponCounts START ===');
     console.log('Unit ID:', unitId);

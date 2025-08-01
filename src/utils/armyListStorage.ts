@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import type { ArmyList, StoredArmyList, ArmyListMetadata, Allegiance } from '../types/army';
+import type { Army, StoredArmyList, ArmyListMetadata, Allegiance } from '../types/army';
 
 const STORAGE_KEY = 'heresy-3.0-army-lists';
 const METADATA_KEY = 'heresy-3.0-army-lists-metadata';
@@ -16,7 +16,7 @@ export class ArmyListStorage {
   }
 
   // Create a new empty army list
-  static createNewArmyList(faction: string, pointsLimit: number, allegiance: Allegiance): ArmyList {
+  static createNewArmyList(faction: string, pointsLimit: number, allegiance: Allegiance): Army {
     return {
       id: this.generateId(),
       name: 'New Army List',
@@ -33,7 +33,7 @@ export class ArmyListStorage {
   }
 
   // Save an army list to local storage
-  static saveArmyList(armyList: ArmyList): void {
+  static saveArmyList(armyList: Army): void {
     try {
       // Update the timestamp
       armyList.updatedAt = this.getTimestamp();
@@ -63,7 +63,7 @@ export class ArmyListStorage {
   }
 
   // Load an army list from local storage
-  static loadArmyList(id: string): ArmyList | null {
+  static loadArmyList(id: string): Army | null {
     try {
       const storedLists = this.getAllStoredLists();
       const storedList = storedLists[id];
@@ -171,7 +171,7 @@ export class ArmyListStorage {
     }
   }
 
-  private static updateMetadata(armyList: ArmyList): void {
+  private static updateMetadata(armyList: Army): void {
     try {
       const metadata: ArmyListMetadata = {
         id: armyList.id,

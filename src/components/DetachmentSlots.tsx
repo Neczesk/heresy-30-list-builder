@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { DataLoader } from '../utils/dataLoader';
 import UnitSelectionModal from './UnitSelectionModal';
-import type { Detachment, ArmyDetachment, ArmyList, ArmyUnit } from '../types/army';
+import type { Detachment, ArmyDetachment, Army, ArmyUnit } from '../types/army';
 
 import './DetachmentSlots.css';
 
 interface DetachmentSlotsProps {
   detachment: Detachment;
   armyDetachment: ArmyDetachment;
-  armyList: ArmyList;
+  armyList: Army;
   onUnitSelected: (detachmentId: string, slotId: string, unitId: string) => void;
   onDetachmentPrompt?: (roleId: string, slotIndex: number) => void;
   onUnitUpdated?: (slotId: string, updatedUnit: ArmyUnit) => void;
@@ -235,42 +235,14 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
   // Track total slot index across all roles
   let globalSlotIndex = 0;
   
-  // First, process base detachment slots
-  detachment.slots.forEach(slot => {
-    const existing = groupedSlots.find(g => g.roleId === slot.roleId);
-    if (existing) {
-      // Add multiple slots of the same type
-      for (let i = 0; i < slot.count; i++) {
-        existing.slots.push({ 
-          ...slot, 
-          count: 1, 
-          slotIndex: globalSlotIndex,
-          isCustomSlot: false 
-        });
-        globalSlotIndex++;
-      }
-    } else {
-      const newGroup: SlotGroup = {
-        roleId: slot.roleId,
-        roleName: DataLoader.getBattlefieldRoleById(slot.roleId)?.name || 'Unknown',
-        slots: []
-      };
-      // Add multiple slots of the same type
-      for (let i = 0; i < slot.count; i++) {
-        newGroup.slots.push({ 
-          ...slot, 
-          count: 1, 
-          slotIndex: globalSlotIndex,
-          isCustomSlot: false 
-        });
-        globalSlotIndex++;
-      }
-      groupedSlots.push(newGroup);
-    }
-  });
+  // Use modifiedSlots as the source of truth (includes any modifications from prime advantages)
+  // If modifiedSlots is empty, fall back to the base detachment slots
+  const slotsToProcess = armyDetachment.modifiedSlots.length > 0 
+    ? armyDetachment.modifiedSlots 
+    : detachment.slots;
   
-  // Then, process custom slots
-  (armyDetachment.customSlots || []).forEach(slot => {
+  // Process all slots
+  slotsToProcess.forEach(slot => {
     const existing = groupedSlots.find(g => g.roleId === slot.roleId);
     if (existing) {
       // Add multiple slots of the same type
@@ -279,7 +251,7 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
           ...slot, 
           count: 1, 
           slotIndex: globalSlotIndex,
-          isCustomSlot: true 
+          isCustomSlot: false // All slots are treated as base slots since we're using modifiedSlots as source
         });
         globalSlotIndex++;
       }
@@ -295,7 +267,7 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
           ...slot, 
           count: 1, 
           slotIndex: globalSlotIndex,
-          isCustomSlot: true 
+          isCustomSlot: false // All slots are treated as base slots since we're using modifiedSlots as source
         });
         globalSlotIndex++;
       }

@@ -2,25 +2,27 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { ArmyListStorage } from '../utils/armyListStorage';
 import { DataLoader } from '../utils/dataLoader';
 import { CustomUnitStorage } from '../utils/customUnitStorage';
-import type { ArmyList, Detachment, Faction, ArmyUnit, Allegiance, ArmyDetachment } from '../types/army';
+import type { Army, Detachment, Faction, ArmyUnit, Allegiance, ArmyDetachment } from '../types/army';
 import DetachmentSelector from './DetachmentSelector';
 import AddDetachmentModal from './AddDetachmentModal';
 import DetachmentSlots from './DetachmentSlots';
 import DetachmentPromptModal from './DetachmentPromptModal';
 import UnitManagementModal from './UnitManagementModal';
+import SaveCustomDetachmentModal from './SaveCustomDetachmentModal';
+import LoadCustomDetachmentModal from './LoadCustomDetachmentModal';
 import { testAlliedDetachmentAvailability } from '../utils/testDataStructure';
 import './ArmyListBuilder.css';
 
 interface ArmyListBuilderProps {
   onBackToMenu: () => void;
-  initialArmyList?: ArmyList | null;
+  initialArmyList?: Army | null;
 }
 
 const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
   onBackToMenu,
   initialArmyList
 }) => {
-  const [armyList, setArmyList] = useState<ArmyList | null>(initialArmyList || null);
+  const [armyList, setArmyList] = useState<Army | null>(initialArmyList || null);
   const [showNameDialog, setShowNameDialog] = useState(false);
   const [tempName, setTempName] = useState('');
   const [showDetachmentSelector, setShowDetachmentSelector] = useState(false);
@@ -36,6 +38,10 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     slotId: string;
     detachmentId: string;
   } | null>(null);
+  const [showSaveCustomDetachmentModal, setShowSaveCustomDetachmentModal] = useState(false);
+  const [detachmentToSave, setDetachmentToSave] = useState<ArmyDetachment | null>(null);
+  const [showLoadCustomDetachmentModal, setShowLoadCustomDetachmentModal] = useState(false);
+  const [detachmentToLoad, setDetachmentToLoad] = useState<ArmyDetachment | null>(null);
   const [showPointsLimitInput, setShowPointsLimitInput] = useState(false);
   const [tempPointsLimit, setTempPointsLimit] = useState('');
 
@@ -57,7 +63,7 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     }
   }, [armyList]);
 
-  const updateArmyList = useCallback((updater: (list: ArmyList) => ArmyList) => {
+  const updateArmyList = useCallback((updater: (list: Army) => Army) => {
     setArmyList(prevList => {
       if (!prevList) return prevList;
       const updatedList = updater(prevList);
@@ -92,11 +98,9 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     }
   };
 
-  const calculateTotalPoints = (list: ArmyList): number => {
-    return list.detachments.reduce((total, detachment) => {
-      return total + detachment.units.reduce((detachmentTotal, unit) => {
-        return detachmentTotal + unit.points;
-      }, 0);
+  const calculateTotalPoints = (list: Army): number => {
+    return list.detachments.reduce((total: number, detachment: ArmyDetachment) => {
+      return total + calculateDetachmentPoints(detachment);
     }, 0);
   };
 
@@ -124,9 +128,14 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     const newList = ArmyListStorage.createNewArmyList(finalFaction.id, 2000, allegiance);
     newList.name = subFaction ? `${subFaction.name} Army` : `${faction.name} Army`;
     newList.detachments.push({
+      id: `${detachment.id}-${Date.now()}`,
       detachmentId: detachment.id,
-      units: [],
-      primeAdvantages: []
+      customName: undefined,
+      points: 0,
+      baseSlots: detachment.slots,
+      modifiedSlots: detachment.slots,
+      primeAdvantages: [],
+      units: []
     });
     
     setArmyList(newList);
@@ -137,9 +146,14 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     if (!armyList) return;
     
     const newDetachment = {
+      id: `${detachment.id}-${Date.now()}`,
       detachmentId: detachment.id,
-      units: [],
-      primeAdvantages: []
+      customName: undefined,
+      points: 0,
+      baseSlots: detachment.slots,
+      modifiedSlots: detachment.slots,
+      primeAdvantages: [],
+      units: []
     };
     
     updateArmyList(list => ({
@@ -222,9 +236,14 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     
     // Add the selected detachment to the army list with the triggering unit reference
     const newDetachment = {
+      id: `${detachment.id}-${Date.now()}`,
       detachmentId: detachment.id,
-      units: [],
+      customName: undefined,
+      points: 0,
+      baseSlots: detachment.slots,
+      modifiedSlots: detachment.slots,
       primeAdvantages: [],
+      units: [],
       triggeredBy: {
         unitId: triggeringUnit.unitId,
         slotId: triggeringUnit.slotId // Use the actual slot ID from the unit
@@ -271,6 +290,10 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
           });
         }
         
+        // Recalculate slots after unit removal
+        const updatedDetachment = recalculateDetachmentSlots(detachment);
+        updatedDetachments[detachmentIndex] = updatedDetachment;
+        
         return {
           ...list,
           detachments: updatedDetachments
@@ -289,20 +312,21 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
 
         // Create army unit from custom unit
         const newArmyUnit = {
+          id: `${customUnit.baseUnitId}-${Date.now()}`,
           unitId: customUnit.baseUnitId, // Use the base unit ID
+          customName: undefined,
           size: baseUnitData.baseSize,
-          models: Object.entries(baseUnitData.models || {}).map(([modelId, count]) => ({
-            modelId,
-            count,
-            wargear: [],
-            weapons: [],
-            specialRules: []
-          })),
-          wargear: (baseUnitData.wargear || []).filter(w => w.isDefault).map(w => w.id),
-          upgrades: customUnit.upgrades,
           points: baseUnitData.points + customUnit.upgrades.reduce((total: number, upgrade: any) => total + (upgrade.points * upgrade.count), 0),
           slotId: slotId,
+          originalCustomUnitId: customUnitId, // Track the original custom unit ID
+          models: baseUnitData.models || {},
+          wargear: (baseUnitData.wargear || []).filter(w => w.isDefault).map(w => w.id),
+          weapons: {},
+          upgrades: customUnit.upgrades,
           primeAdvantages: customUnit.primeAdvantages,
+          specialRules: baseUnitData.specialRules || [],
+          specialRuleValues: baseUnitData.specialRuleValues || {},
+          modelModifications: {},
           modelInstanceWeaponChanges: customUnit.modelInstanceWeaponChanges,
           modelInstanceWargearChanges: customUnit.modelInstanceWargearChanges
         };
@@ -316,6 +340,10 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
           // Add unit to detachment
           detachment.units.push(newArmyUnit);
         }
+
+        // Recalculate slots after unit addition/replacement
+        const updatedDetachment = recalculateDetachmentSlots(detachment);
+        updatedDetachments[detachmentIndex] = updatedDetachment;
 
         return {
           ...list,
@@ -333,51 +361,85 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
         console.log('Unit already exists in slot, replacing:', slotId);
         // Replace the existing unit
         const newArmyUnit = {
+          id: `${unitId}-${Date.now()}`,
           unitId: unitId,
+          customName: undefined,
           size: unitData.baseSize,
-          models: Object.entries(unitData.models || {}).map(([modelId, count]) => ({
-            modelId,
-            count,
-            wargear: [],
-            weapons: [],
-            specialRules: []
-          })),
-          wargear: (unitData.wargear || []).filter(w => w.isDefault).map(w => w.id),
-          upgrades: [],
           points: unitData.points,
           slotId: slotId,
-          primeAdvantages: []
+          models: unitData.models || {},
+          wargear: (unitData.wargear || []).filter(w => w.isDefault).map(w => w.id),
+          weapons: {},
+          upgrades: [],
+          primeAdvantages: [],
+          specialRules: unitData.specialRules || [],
+          specialRuleValues: unitData.specialRuleValues || {},
+          modelModifications: {},
+          modelInstanceWeaponChanges: {},
+          modelInstanceWargearChanges: {}
         };
         
         detachment.units[existingUnitIndex] = newArmyUnit;
       } else {
         // Create new army unit with slot assignment
         const newArmyUnit = {
+          id: `${unitId}-${Date.now()}`,
           unitId: unitId,
+          customName: undefined,
           size: unitData.baseSize,
-          models: Object.entries(unitData.models || {}).map(([modelId, count]) => ({
-            modelId,
-            count,
-            wargear: [],
-            weapons: [],
-            specialRules: []
-          })),
-          wargear: (unitData.wargear || []).filter(w => w.isDefault).map(w => w.id),
-          upgrades: [],
           points: unitData.points,
           slotId: slotId,
-          primeAdvantages: []
+          models: unitData.models || {},
+          wargear: (unitData.wargear || []).filter(w => w.isDefault).map(w => w.id),
+          weapons: {},
+          upgrades: [],
+          primeAdvantages: [],
+          specialRules: unitData.specialRules || [],
+          specialRuleValues: unitData.specialRuleValues || {},
+          modelModifications: {},
+          modelInstanceWeaponChanges: {},
+          modelInstanceWargearChanges: {}
         };
         
         // Add unit to detachment
         detachment.units.push(newArmyUnit);
       }
       
+      // Recalculate slots after unit addition/replacement
+      const updatedDetachment = recalculateDetachmentSlots(detachment);
+      updatedDetachments[detachmentIndex] = updatedDetachment;
+      
       return {
         ...list,
         detachments: updatedDetachments
       };
     });
+  };
+
+  // Helper function to recalculate detachment slots based on unit prime advantages
+  const recalculateDetachmentSlots = (detachment: ArmyDetachment): ArmyDetachment => {
+    // Start with base slots
+    let modifiedSlots = [...detachment.baseSlots];
+    
+    // Check all units in this detachment for logistical-benefit prime advantages
+    detachment.units.forEach(unit => {
+      unit.primeAdvantages?.forEach(advantage => {
+        if (advantage.advantageId === 'logistical-benefit' && advantage.slotModification) {
+          // Add the custom slot from logistical-benefit
+          modifiedSlots.push({
+            roleId: advantage.slotModification.roleId,
+            count: advantage.slotModification.count,
+            isPrime: false,
+            description: `Custom slot added by Logistical Benefit for unit ${unit.unitId}`
+          });
+        }
+      });
+    });
+    
+    return {
+      ...detachment,
+      modifiedSlots
+    };
   };
 
   const handleUnitUpdated = (slotId: string, updatedUnit: ArmyUnit) => {
@@ -389,7 +451,10 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
         if (unitIndex !== -1) {
           const updatedUnits = [...detachment.units];
           updatedUnits[unitIndex] = updatedUnit;
-          return { ...detachment, units: updatedUnits };
+          
+          // Recalculate detachment slots based on updated unit prime advantages
+          const updatedDetachment = { ...detachment, units: updatedUnits };
+          return recalculateDetachmentSlots(updatedDetachment);
         }
         return detachment;
       });
@@ -401,23 +466,7 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     });
   };
 
-  const handleDetachmentUpdated = (detachmentId: string, updatedDetachment: ArmyDetachment) => {
-    if (!armyList) return;
-    
-    updateArmyList(list => {
-      const updatedDetachments = list.detachments.map(detachment => {
-        if (detachment.detachmentId === detachmentId) {
-          return updatedDetachment;
-        }
-        return detachment;
-      });
-      
-      return {
-        ...list,
-        detachments: updatedDetachments
-      };
-    });
-  };
+
 
   const handleDetachmentRemoved = (detachmentId: string) => {
     handleRemoveDetachment(detachmentId);
@@ -431,6 +480,58 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
   const handleUnitManagementClose = () => {
     setShowUnitManagementModal(false);
     setUnitManagementInfo(null);
+  };
+
+  const handleSaveCustomDetachment = (armyDetachment: ArmyDetachment) => {
+    setDetachmentToSave(armyDetachment);
+    setShowSaveCustomDetachmentModal(true);
+  };
+
+  const handleCustomDetachmentSaved = (customDetachmentId: string) => {
+    console.log('Custom detachment saved with ID:', customDetachmentId);
+    setShowSaveCustomDetachmentModal(false);
+    setDetachmentToSave(null);
+  };
+
+  const handleLoadCustomDetachment = (armyDetachment: ArmyDetachment) => {
+    setDetachmentToLoad(armyDetachment);
+    setShowLoadCustomDetachmentModal(true);
+  };
+
+  const handleCustomDetachmentLoaded = (customDetachment: any) => {
+    console.log('Loading custom detachment:', customDetachment.id);
+    
+    if (!armyList || !detachmentToLoad) return;
+
+    updateArmyList(list => {
+      const updatedDetachments = list.detachments.map(detachment => {
+        if (detachment.id === detachmentToLoad.id) {
+          // Create new ArmyDetachment with custom detachment data
+          const updatedDetachment: ArmyDetachment = {
+            ...detachment,
+            customName: customDetachment.customName,
+            units: customDetachment.units,
+            primeAdvantages: customDetachment.primeAdvantages,
+            // Recalculate slots based on the loaded units
+            modifiedSlots: recalculateDetachmentSlots({
+              ...detachment,
+              units: customDetachment.units,
+              primeAdvantages: customDetachment.primeAdvantages
+            }).modifiedSlots
+          };
+          return updatedDetachment;
+        }
+        return detachment;
+      });
+
+      return {
+        ...list,
+        detachments: updatedDetachments
+      };
+    });
+
+    setShowLoadCustomDetachmentModal(false);
+    setDetachmentToLoad(null);
   };
 
   const handleDebugTest = () => {
@@ -527,14 +628,31 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
                     <div className="detachment-header">
                       <h3>{detachment.name}</h3>
                       <span className="detachment-type">{detachment.type}</span>
-                      {index > 0 && (
+                      <div className="detachment-actions">
                         <button 
-                          className="remove-detachment-button"
-                          onClick={() => handleRemoveDetachment(armyDetachment.detachmentId)}
+                          className="load-detachment-button"
+                          onClick={() => handleLoadCustomDetachment(armyDetachment)}
+                          title="Load Custom Detachment"
                         >
-                          ×
+                          📂
                         </button>
-                      )}
+                        <button 
+                          className="save-detachment-button"
+                          onClick={() => handleSaveCustomDetachment(armyDetachment)}
+                          title="Save as Custom Detachment"
+                        >
+                          💾
+                        </button>
+                        {index > 0 && (
+                          <button 
+                            className="remove-detachment-button"
+                            onClick={() => handleRemoveDetachment(armyDetachment.detachmentId)}
+                            title="Remove Detachment"
+                          >
+                            ×
+                          </button>
+                        )}
+                      </div>
                     </div>
                     <p className="detachment-description">{detachment.description}</p>
                     
@@ -651,10 +769,38 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
           armyList={armyList}
           onClose={handleUnitManagementClose}
           onUnitUpdated={handleUnitUpdated}
-          onDetachmentUpdated={handleDetachmentUpdated}
           onDetachmentPrompt={handleDetachmentPrompt}
           onDetachmentRemoved={handleDetachmentRemoved}
           faction={armyList.faction}
+        />
+      )}
+
+      {/* Save Custom Detachment Modal */}
+      {showSaveCustomDetachmentModal && detachmentToSave && armyList && (
+        <SaveCustomDetachmentModal
+          isOpen={showSaveCustomDetachmentModal}
+          detachment={detachmentToSave}
+          faction={armyList.faction}
+          subfaction={armyList.subfaction}
+          onClose={() => {
+            setShowSaveCustomDetachmentModal(false);
+            setDetachmentToSave(null);
+          }}
+          onSaved={handleCustomDetachmentSaved}
+        />
+      )}
+
+      {/* Load Custom Detachment Modal */}
+      {showLoadCustomDetachmentModal && detachmentToLoad && armyList && (
+        <LoadCustomDetachmentModal
+          isOpen={showLoadCustomDetachmentModal}
+          baseDetachmentId={detachmentToLoad.detachmentId}
+          currentDetachment={detachmentToLoad}
+          onClose={() => {
+            setShowLoadCustomDetachmentModal(false);
+            setDetachmentToLoad(null);
+          }}
+          onLoad={handleCustomDetachmentLoaded}
         />
       )}
     </div>
