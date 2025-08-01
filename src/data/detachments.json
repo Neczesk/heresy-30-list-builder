@@ -1,0 +1,762 @@
+{
+  "detachments": [
+    {
+      "id": "crusade-primary",
+      "name": "Crusade Primary Detachment",
+      "type": "Primary",
+      "faction": "universal",
+      "description": "The standard Primary Detachment for all factions",
+      "requirements": [
+        {
+          "type": "faction",
+          "value": "any",
+          "description": "Available to any faction"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "high-command",
+          "count": 1,
+          "isPrime": false,
+          "description": "One High Command slot"
+        },
+        {
+          "roleId": "command",
+          "count": 1,
+          "isPrime": true,
+          "description": "One prime Command slot"
+        },
+        {
+          "roleId": "command",
+          "count": 2,
+          "isPrime": false,
+          "description": "Two additional Command slots"
+        },
+        {
+          "roleId": "troops",
+          "count": 1,
+          "isPrime": true,
+          "description": "One prime Troops slot"
+        },
+        {
+          "roleId": "troops",
+          "count": 3,
+          "isPrime": false,
+          "description": "Five additional Troops slots"
+        },
+        {
+          "roleId": "transport",
+          "count": 4,
+          "isPrime": false,
+          "description": "Six Transport slots"
+        }
+      ]
+    },
+    {
+      "id": "warlord-detachment",
+      "name": "Warlord Detachment",
+      "type": "Universal",
+      "faction": "legiones-astartes",
+      "description": "Special detachment for Primarchs and Warlords",
+      "requirements": [
+        {
+          "type": "unit",
+          "value": "warlord",
+          "description": "Must include a Warlord unit"
+        }
+      ],
+      "restrictions": [
+        {
+          "type": "faction-must-match",
+          "value": "primary-faction",
+          "description": "Must be same faction as primary detachment"
+        },
+        {
+          "type": "max-count",
+          "value": 1,
+          "description": "Only one Warlord detachment allowed"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "always-available",
+          "description": "Available when requirements are met"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "warlord",
+          "count": 1,
+          "isPrime": false,
+          "description": "One Warlord slot"
+        },
+        {
+          "roleId": "retinue",
+          "count": 1,
+          "isPrime": false,
+          "description": "One Retinue slot"
+        },
+        {
+          "roleId": "heavy-transport",
+          "count": 1,
+          "isPrime": false,
+          "description": "One Heavy Transport slot"
+        }
+      ]
+    },
+    {
+      "id": "lord-of-war-detachment",
+      "name": "Lord of War Detachment",
+      "type": "Universal",
+      "faction": "universal",
+      "description": "For Titan Legions and super-heavy units",
+      "requirements": [
+        {
+          "type": "unit",
+          "value": "titan",
+          "description": "Must include a Titan or super-heavy unit"
+        }
+      ],
+      "restrictions": [
+        {
+          "type": "faction-must-match",
+          "value": "primary-faction",
+          "description": "Must be same faction as primary detachment"
+        },
+        {
+          "type": "max-count",
+          "value": 1,
+          "description": "Only one Lord of War detachment allowed"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "always-available",
+          "description": "Available when requirements are met"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "lord-of-war",
+          "count": 2,
+          "isPrime": false,
+          "description": "Two Lord of War slots"
+        }
+      ]
+    },
+    {
+      "id": "allied-detachment",
+      "name": "Allied Detachment",
+      "type": "Allied",
+      "faction": "universal",
+      "description": "Allied forces from a different faction",
+      "requirements": [
+        {
+          "type": "faction",
+          "value": "any",
+          "description": "Must select a faction different from primary"
+        }
+      ],
+      "restrictions": [
+        {
+          "type": "faction-must-differ",
+          "value": "primary-faction",
+          "description": "Must be different faction from primary detachment"
+        },
+        {
+          "type": "max-count",
+          "value": 1,
+          "description": "Only one Allied detachment allowed"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "always-available",
+          "description": "Available when requirements are met"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "command",
+          "count": 2,
+          "isPrime": false,
+          "description": "Two Command slots"
+        },
+        {
+          "roleId": "troops",
+          "count": 2,
+          "isPrime": false,
+          "description": "Two Troops slots"
+        },
+        {
+          "roleId": "transport",
+          "count": 2,
+          "isPrime": false,
+          "description": "Two Transport slots"
+        }
+      ]
+    },
+    {
+      "id": "elite-transport",
+      "name": "Elite Transport Detachment",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "A detachment focused on elite transport capabilities",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "transport",
+          "count": 1,
+          "isPrime": true,
+          "description": "One prime Transport slot"
+        },
+        {
+          "roleId": "transport",
+          "count": 2,
+          "isPrime": false,
+          "description": "Two additional Transport slots"
+        },
+        {
+          "roleId": "heavy-transport",
+          "count": 2,
+          "isPrime": false,
+          "description": "Two Heavy Transport slots"
+        }
+      ],
+      "maxCount": null
+    },
+    {
+      "id": "armoured-fist",
+      "name": "Armoured Fist",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "Heavy transports like the Land Raider, plus additional light transports",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "heavy-transport",
+          "count": 3,
+          "isPrime": false,
+          "description": "Up to three Heavy Transport slots"
+        },
+        {
+          "roleId": "transport",
+          "count": 3,
+          "isPrime": false,
+          "description": "Up to three additional Transport slots"
+        }
+      ],
+      "maxCount": null
+    },
+    {
+      "id": "tactical-support",
+      "name": "Tactical Support",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "Additional Troops and Support slots",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "troops",
+          "count": 2,
+          "isPrime": false,
+          "description": "Up to two additional Troops slots"
+        },
+        {
+          "roleId": "support",
+          "count": 2,
+          "isPrime": false,
+          "description": "Up to two Support slots"
+        }
+      ],
+      "maxCount": null
+    },
+    {
+      "id": "armoured-support",
+      "name": "Armoured Support",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "Armour slots which you can fill with tanks and other armoured vehicles",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "armour",
+          "count": 3,
+          "isPrime": false,
+          "description": "Up to three Armour slots"
+        }
+      ],
+      "maxCount": null
+    },
+    {
+      "id": "heavy-support",
+      "name": "Heavy Support",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "War-engine slots for Dreadnoughts and other war machines",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "war-engine",
+          "count": 1,
+          "isPrime": false,
+          "description": "One War Engine slot"
+        }
+      ],
+      "maxCount": null
+    },
+    {
+      "id": "combat-pioneer",
+      "name": "Combat Pioneer",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "Reconnaissance slots for light infantry and bikes",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "reconnaissance",
+          "count": 2,
+          "isPrime": false,
+          "description": "Up to two Reconnaissance slots"
+        }
+      ],
+      "maxCount": null
+    },
+    {
+      "id": "shock-assault",
+      "name": "Shock Assault",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "Heavy Assault slots for Terminators",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "heavy-assault",
+          "count": 2,
+          "isPrime": false,
+          "description": "Up to two Heavy Assault slots"
+        }
+      ],
+      "maxCount": null
+    },
+    {
+      "id": "first-strike",
+      "name": "First Strike",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "Fast Attack slots for aircraft, jetbikes and speeders",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "fast-attack",
+          "count": 2,
+          "isPrime": false,
+          "description": "Up to two Fast Attack slots"
+        }
+      ],
+      "maxCount": null
+    },
+    {
+      "id": "combat-retinue",
+      "name": "Combat Retinue",
+      "type": "Apex",
+      "faction": "universal",
+      "description": "Command squads for officers",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment with High Command"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "high-command-filled",
+          "description": "Available when any High Command slot is filled"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "retinue",
+          "count": 3,
+          "isPrime": false,
+          "description": "Up to three Retinue slots"
+        }
+      ],
+      "maxCount": 1
+    },
+    {
+      "id": "officer-cadre",
+      "name": "Officer Cadre",
+      "type": "Apex",
+      "faction": "universal",
+      "description": "Additional Command slots",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment with High Command"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "high-command-filled",
+          "description": "Available when any High Command slot is filled"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "command",
+          "count": 1,
+          "isPrime": true,
+          "description": "One additional prime Command slot"
+        },
+        {
+          "roleId": "command",
+          "count": 2,
+          "isPrime": false,
+          "description": "Two additional Command slots"
+        }
+      ],
+      "maxCount": 1
+    },
+    {
+      "id": "army-vanguard",
+      "name": "Army Vanguard",
+      "type": "Apex",
+      "faction": "universal",
+      "description": "Elite units and specialists",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment with High Command"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "high-command-filled",
+          "description": "Available when any High Command slot is filled"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "elite",
+          "count": 1,
+          "isPrime": true,
+          "description": "One prime Elite slot"
+        },
+        {
+          "roleId": "elite",
+          "count": 2,
+          "isPrime": false,
+          "description": "Up to two Elite slots"
+        }
+      ],
+      "maxCount": 1
+    },
+    {
+      "id": "scout-tercio",
+      "name": "Scout Tercio",
+      "type": "Auxiliary",
+      "faction": "solar-auxilia",
+      "description": "A specialized reconnaissance detachment that can only be commanded by a Hermes Command Section.",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "specific-unit",
+          "description": "Can only be triggered by a Hermes Command Section in a Command slot",
+          "requiredUnitId": "hermes-command-section",
+          "requiredSlotType": "Command"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "reconnaissance",
+          "count": 2,
+          "isPrime": false,
+          "description": "Two Combat Pioneer slots (Hermes Light Sentinels only)",
+          "allowedUnits": ["hermes-light-sentinel-squadron"]
+        },
+        {
+          "roleId": "war-engine",
+          "count": 1,
+          "isPrime": false,
+          "description": "One War Engine slot (Aethon Heavy Sentinel only)",
+          "allowedUnits": ["aethon-heavy-sentinel"]
+        }
+      ],
+      "maxCount": 1
+    },
+    {
+      "id": "veletaris-tercio",
+      "name": "Veletaris Tercio",
+      "type": "Auxiliary",
+      "faction": "solar-auxilia",
+      "description": "An elite infantry detachment that can only be commanded by a Veletaris Command Section.",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "specific-unit",
+          "description": "Can only be triggered by a Veletaris Command Section in a Command slot",
+          "requiredUnitId": "veletaris-command-section",
+          "requiredSlotType": "Command"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "elite",
+          "count": 1,
+          "isPrime": true,
+          "description": "One prime Elite slot (Veletaris Storm Section or Veletaris Vanguard Section only)",
+          "allowedUnits": ["veletaris-storm-section", "veletaris-vanguard-section"]
+        },
+        {
+          "roleId": "elite",
+          "count": 1,
+          "isPrime": false,
+          "description": "One additional Elite slot (Veletaris Storm Section or Veletaris Vanguard Section only)",
+          "allowedUnits": ["veletaris-storm-section", "veletaris-vanguard-section"]
+        },
+        {
+          "roleId": "support",
+          "count": 1,
+          "isPrime": false,
+          "description": "One Support slot (Hermes Veletaris Squadron only)",
+          "allowedUnits": ["hermes-veletaris-squadron"]
+        },
+        {
+          "roleId": "transport",
+          "count": 2,
+          "isPrime": false,
+          "description": "Two Transport slots"
+        }
+      ],
+      "maxCount": 1
+    },
+    {
+      "id": "infantry-tercio",
+      "name": "Infantry Tercio",
+      "type": "Auxiliary",
+      "faction": "solar-auxilia",
+      "description": "A standard infantry detachment that can only be commanded by a Line Command Section.",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "specific-unit",
+          "description": "Can only be triggered by a Line Command Section in a Command slot",
+          "requiredUnitId": "line-command-section",
+          "requiredSlotType": "Command"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "troops",
+          "count": 1,
+          "isPrime": true,
+          "description": "One prime Troops slot (Lasrifle Section only)",
+          "allowedUnits": ["lasrifle-section"]
+        },
+        {
+          "roleId": "troops",
+          "count": 1,
+          "isPrime": false,
+          "description": "One additional Troops slot (Lasrifle Section only)",
+          "allowedUnits": ["lasrifle-section"]
+        },
+        {
+          "roleId": "reconnaissance",
+          "count": 1,
+          "isPrime": false,
+          "description": "One Reconnaissance slot (Hermes Light Sentinel Squadron only)",
+          "allowedUnits": ["hermes-light-sentinel-squadron"]
+        },
+        {
+          "roleId": "transport",
+          "count": 2,
+          "isPrime": false,
+          "description": "Two Transport slots"
+        }
+      ],
+      "maxCount": 1
+    },
+    {
+      "id": "artillery-tercio",
+      "name": "Artillery Tercio",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "A specialized artillery detachment providing heavy fire support.",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "specific-unit",
+          "description": "Can only be triggered by an Artillery Command Section in a Command slot",
+          "requiredUnitId": "artillery-command-section",
+          "requiredSlotType": "Command"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "support",
+          "count": 3,
+          "isPrime": false,
+          "description": "Three Support slots (Rapier Section, Basilisk Artillery Tank, or Medusa Artillery Tank only)",
+          "allowedUnits": ["rapier-section", "basilisk-artillery-tank", "medusa-artillery-tank"]
+        }
+      ],
+      "maxCount": 1
+    },
+    {
+      "id": "armour-tercio",
+      "name": "Armour Tercio",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "A specialized armored detachment providing heavy tank support.",
+      "requirements": [
+        {
+          "type": "detachment",
+          "value": "primary",
+          "description": "Requires Primary Detachment"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "specific-unit",
+          "description": "Can only be triggered by an Armoured Command Section in a Command slot",
+          "requiredUnitId": "armoured-command-section",
+          "requiredSlotType": "Command"
+        }
+      ],
+      "slots": [
+        {
+          "roleId": "armour",
+          "count": 3,
+          "isPrime": false,
+          "description": "Three Armour slots (Leman Russ Strike Tank, Leman Russ Assault Tank, or Malcador Heavy Tank only)",
+          "allowedUnits": ["leman-russ-strike-tank", "leman-russ-assault-tank", "malcador-heavy-tank"]
+        }
+      ],
+      "maxCount": 1
+    }
+  ]
+} 

@@ -1,0 +1,172 @@
+{
+  "ritesOfWar": [
+    {
+      "id": "pride-of-the-legion",
+      "name": "Pride of the Legion",
+      "faction": "legiones-astartes",
+      "description": "A force built around the core strength of the Legion - its Tactical Squads",
+      "restrictions": [
+        "Must include at least 3 Troops choices",
+        "No more than 2 Fast Attack choices",
+        "No more than 2 Heavy Support choices"
+      ],
+      "benefits": [
+        "Tactical Squads gain the Line unit type",
+        "Tactical Squads may re-roll failed Morale checks"
+      ],
+      "detachmentModifications": [
+        {
+          "detachmentType": "Primary",
+          "slotChanges": [
+            {
+              "role": "Troops",
+              "change": "modify",
+              "count": 8
+            }
+          ],
+          "restrictions": []
+        }
+      ]
+    },
+    {
+      "id": "armoured-spearhead",
+      "name": "Armoured Spearhead",
+      "faction": "legiones-astartes",
+      "description": "A mechanised force built around tanks and armoured vehicles",
+      "restrictions": [
+        "Must include at least 2 Armour choices",
+        "No more than 2 Troops choices",
+        "No Fast Attack choices"
+      ],
+      "benefits": [
+        "All Armour units gain the Line unit type",
+        "Armour units may re-roll failed Morale checks"
+      ],
+      "detachmentModifications": [
+        {
+          "detachmentType": "Primary",
+          "slotChanges": [
+            {
+              "role": "Armour",
+              "change": "add",
+              "count": 3
+            }
+          ],
+          "restrictions": []
+        }
+      ]
+    },
+    {
+      "id": "orbital-assault",
+      "name": "Orbital Assault",
+      "faction": "legiones-astartes",
+      "description": "A force designed for rapid deployment via drop pods and teleportation",
+      "restrictions": [
+        "Must include at least 2 Fast Attack choices",
+        "No more than 2 Armour choices",
+        "No Heavy Support choices"
+      ],
+      "benefits": [
+        "All units with Jump Packs or Terminator Armour gain the Line unit type",
+        "Units with Jump Packs or Terminator Armour may re-roll failed Morale checks"
+      ],
+      "detachmentModifications": [
+        {
+          "detachmentType": "Primary",
+          "slotChanges": [
+            {
+              "role": "Fast Attack",
+              "change": "add",
+              "count": 2
+            }
+          ],
+          "restrictions": []
+        }
+      ]
+    },
+    {
+      "id": "sky-hunters",
+      "name": "Sky Hunters",
+      "faction": "legiones-astartes",
+      "description": "A force built around air superiority and rapid strike capabilities",
+      "restrictions": [
+        "Must include at least 2 Fast Attack choices",
+        "No more than 2 Troops choices",
+        "No Heavy Support choices"
+      ],
+      "benefits": [
+        "All Fast Attack units gain the Line unit type",
+        "Fast Attack units may re-roll failed Morale checks"
+      ],
+      "detachmentModifications": [
+        {
+          "detachmentType": "Primary",
+          "slotChanges": [
+            {
+              "role": "Fast Attack",
+              "change": "add",
+              "count": 2
+            }
+          ],
+          "restrictions": []
+        }
+      ]
+    },
+    {
+      "id": "the-lords-of-war",
+      "name": "The Lords of War",
+      "faction": "legiones-astartes",
+      "description": "A force built around the mightiest war machines of the Legion",
+      "restrictions": [
+        "Must include at least 2 War Engine choices",
+        "No more than 2 Troops choices",
+        "No Fast Attack choices"
+      ],
+      "benefits": [
+        "All War Engine units gain the Line unit type",
+        "War Engine units may re-roll failed Morale checks"
+      ],
+      "detachmentModifications": [
+        {
+          "detachmentType": "Primary",
+          "slotChanges": [
+            {
+              "role": "War Engine",
+              "change": "add",
+              "count": 2
+            }
+          ],
+          "restrictions": []
+        }
+      ]
+    },
+    {
+      "id": "massive-onslaught",
+      "name": "Massive Onslaught",
+      "faction": "legiones-astartes",
+      "description": "A force built around overwhelming firepower and heavy support",
+      "restrictions": [
+        "Must include at least 2 Heavy Support choices",
+        "No more than 2 Troops choices",
+        "No Fast Attack choices"
+      ],
+      "benefits": [
+        "All Heavy Support units gain the Line unit type",
+        "Heavy Support units may re-roll failed Morale checks"
+      ],
+      "detachmentModifications": [
+        {
+          "detachmentType": "Primary",
+          "slotChanges": [
+            {
+              "role": "Heavy Support",
+              "change": "add",
+              "count": 2
+            }
+          ],
+          "restrictions": []
+        }
+      ]
+    }
+  ]
+} 

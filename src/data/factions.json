@@ -1,0 +1,341 @@
+{
+  "factions": [
+    {
+      "id": "legiones-astartes",
+      "name": "Legiones Astartes",
+      "type": "Legion",
+      "description": "The Space Marine Legions of the Great Crusade and Horus Heresy",
+      "allegiance": "Universal",
+      "specialRules": ["legion-tactics", "and-they-shall-know-no-fear"],
+      "ritesOfWar": [
+        "pride-of-the-legion",
+        "armoured-spearhead",
+        "orbital-assault",
+        "sky-hunters",
+        "the-lords-of-war",
+        "massive-onslaught"
+      ],
+      "isMainFaction": true
+    },
+    {
+      "id": "imperial-army",
+      "name": "Imperial Army",
+      "type": "Auxilia",
+      "description": "The vast armies of the Imperium",
+      "allegiance": "Universal",
+      "specialRules": ["loyalty-to-the-throne"],
+      "ritesOfWar": [
+        "combined-arms",
+        "armoured-regiment",
+        "airborne-assault"
+      ],
+      "isMainFaction": true
+    },
+    {
+      "id": "mechanicum",
+      "name": "Mechanicum",
+      "type": "Mechanicum",
+      "description": "The Adeptus Mechanicus and their war machines",
+      "allegiance": "Universal",
+      "specialRules": ["machine-spirit", "canticles-of-the-omnissiah"],
+      "ritesOfWar": [
+        "myrmidon-axiom",
+        "cybernetica-cohort",
+        "ordnance-tyrannus"
+      ],
+      "isMainFaction": true
+    },
+    {
+      "id": "knight-houses",
+      "name": "Knight Houses",
+      "type": "Knight",
+      "description": "The noble houses of Imperial Knights",
+      "allegiance": "Universal",
+      "specialRules": ["noble-household", "chivalric-code"],
+      "ritesOfWar": [
+        "noble-heritage",
+        "household-alliance"
+      ],
+      "isMainFaction": true
+    },
+    {
+      "id": "titan-legions",
+      "name": "Titan Legions",
+      "type": "Titan",
+      "description": "The god-machines of the Adeptus Titanicus",
+      "allegiance": "Universal",
+      "specialRules": ["machine-spirit", "princeps"],
+      "ritesOfWar": [
+        "legio-titanicus",
+        "maniple-formation"
+      ],
+      "isMainFaction": true
+    },
+    {
+      "id": "solar-auxilia",
+      "name": "Solar Auxilia",
+      "type": "Auxilia",
+      "description": "The elite regiments of the Imperial Army, representing the finest human soldiers in the galaxy",
+      "allegiance": "Universal",
+      "specialRules": ["cohort-doctrines"],
+      "ritesOfWar": [
+        "combined-arms",
+        "armoured-regiment",
+        "airborne-assault"
+      ],
+      "isMainFaction": true
+    },
+    {
+      "id": "dark-angels",
+      "name": "Dark Angels (I Legion)",
+      "type": "Legion",
+      "description": "The I Legion, the First and the most secretive of all Legions",
+      "allegiance": "Universal",
+      "specialRules": ["inner-circle", "dark-angels-tactics"],
+      "ritesOfWar": [
+        "pride-of-the-legion",
+        "sky-hunters",
+        "the-lords-of-war"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "emperor-children",
+      "name": "Emperor's Children (III Legion)",
+      "type": "Legion",
+      "description": "The III Legion, perfectionists and masters of close combat",
+      "allegiance": "Universal",
+      "specialRules": ["perfection", "emperors-children-tactics"],
+      "ritesOfWar": [
+        "pride-of-the-legion",
+        "sky-hunters"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "iron-warriors",
+      "name": "Iron Warriors (IV Legion)",
+      "type": "Legion",
+      "description": "The IV Legion, masters of siege warfare and artillery",
+      "allegiance": "Universal",
+      "specialRules": ["iron-within", "iron-warriors-tactics"],
+      "ritesOfWar": [
+        "armoured-spearhead",
+        "the-lords-of-war"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "white-scars",
+      "name": "White Scars (V Legion)",
+      "type": "Legion",
+      "description": "The V Legion, masters of lightning warfare and mounted combat",
+      "allegiance": "Universal",
+      "specialRules": ["lightning-strike", "white-scars-tactics"],
+      "ritesOfWar": [
+        "sky-hunters",
+        "massive-onslaught"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "space-wolves",
+      "name": "Space Wolves (VI Legion)",
+      "type": "Legion",
+      "description": "The VI Legion, the Wolves of Fenris and savage warriors",
+      "allegiance": "Universal",
+      "specialRules": ["savage-fury", "space-wolves-tactics"],
+      "ritesOfWar": [
+        "pride-of-the-legion",
+        "massive-onslaught"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "imperial-fists",
+      "name": "Imperial Fists (VII Legion)",
+      "type": "Legion",
+      "description": "The VII Legion, masters of siege warfare and fortification",
+      "allegiance": "Universal",
+      "specialRules": ["siege-masters", "imperial-fists-tactics"],
+      "ritesOfWar": [
+        "pride-of-the-legion",
+        "armoured-spearhead"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "night-lords",
+      "name": "Night Lords (VIII Legion)",
+      "type": "Legion",
+      "description": "The VIII Legion, terror incarnate and masters of psychological warfare",
+      "allegiance": "Universal",
+      "specialRules": ["terror-tactics", "night-lords-tactics"],
+      "ritesOfWar": [
+        "sky-hunters",
+        "massive-onslaught"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "blood-angels",
+      "name": "Blood Angels (IX Legion)",
+      "type": "Legion",
+      "description": "The IX Legion, noble warriors with a dark secret in their blood",
+      "allegiance": "Universal",
+      "specialRules": ["red-thirst", "blood-angels-tactics"],
+      "ritesOfWar": [
+        "pride-of-the-legion",
+        "sky-hunters"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "iron-hands",
+      "name": "Iron Hands (X Legion)",
+      "type": "Legion",
+      "description": "The X Legion, masters of technology and cybernetic enhancement",
+      "allegiance": "Universal",
+      "specialRules": ["machine-strength", "iron-hands-tactics"],
+      "ritesOfWar": [
+        "armoured-spearhead",
+        "the-lords-of-war"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "world-eaters",
+      "name": "World Eaters (XII Legion)",
+      "type": "Legion",
+      "description": "The XII Legion, berserkers who seek close combat above all else",
+      "allegiance": "Universal",
+      "specialRules": ["blood-madness", "world-eaters-tactics"],
+      "ritesOfWar": [
+        "massive-onslaught"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "ultramarines",
+      "name": "Ultramarines (XIII Legion)",
+      "type": "Legion",
+      "description": "The XIII Legion, masters of tactical warfare and the Codex Astartes",
+      "allegiance": "Universal",
+      "specialRules": ["codex-discipline", "ultramarines-tactics"],
+      "ritesOfWar": [
+        "pride-of-the-legion",
+        "armoured-spearhead",
+        "orbital-assault"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "death-guard",
+      "name": "Death Guard (XIV Legion)",
+      "type": "Legion",
+      "description": "The XIV Legion, masters of biological warfare and endurance",
+      "allegiance": "Universal",
+      "specialRules": ["endurance", "death-guard-tactics"],
+      "ritesOfWar": [
+        "pride-of-the-legion",
+        "armoured-spearhead"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "thousand-sons",
+      "name": "Thousand Sons (XV Legion)",
+      "type": "Legion",
+      "description": "The XV Legion, masters of psychic powers and sorcery",
+      "allegiance": "Universal",
+      "specialRules": ["psychic-powers", "thousand-sons-tactics"],
+      "ritesOfWar": [
+        "the-lords-of-war"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "luna-wolves",
+      "name": "Luna Wolves (XVI Legion)",
+      "type": "Legion",
+      "description": "The XVI Legion, the Warmaster's own and masters of precision strikes",
+      "allegiance": "Universal",
+      "specialRules": ["mournival", "luna-wolves-tactics"],
+      "ritesOfWar": [
+        "pride-of-the-legion",
+        "sky-hunters"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "word-bearers",
+      "name": "Word Bearers (XVII Legion)",
+      "type": "Legion",
+      "description": "The XVII Legion, the first to fall to Chaos and masters of faith",
+      "allegiance": "Universal",
+      "specialRules": ["dark-faith", "word-bearers-tactics"],
+      "ritesOfWar": [
+        "pride-of-the-legion",
+        "the-lords-of-war"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "salamanders",
+      "name": "Salamanders (XVIII Legion)",
+      "type": "Legion",
+      "description": "The XVIII Legion, masters of fire and the forge",
+      "allegiance": "Universal",
+      "specialRules": ["master-crafters", "salamanders-tactics"],
+      "ritesOfWar": [
+        "pride-of-the-legion",
+        "armoured-spearhead"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "raven-guard",
+      "name": "Raven Guard (XIX Legion)",
+      "type": "Legion",
+      "description": "The XIX Legion, masters of stealth and guerrilla warfare",
+      "allegiance": "Universal",
+      "specialRules": ["shadow-walk", "raven-guard-tactics"],
+      "ritesOfWar": [
+        "sky-hunters",
+        "massive-onslaught"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    },
+    {
+      "id": "alpha-legion",
+      "name": "Alpha Legion (XX Legion)",
+      "type": "Legion",
+      "description": "The XX Legion, masters of deception and infiltration",
+      "allegiance": "Universal",
+      "specialRules": ["hydra-dominatus", "alpha-legion-tactics"],
+      "ritesOfWar": [
+        "sky-hunters",
+        "massive-onslaught"
+      ],
+      "parentFaction": "legiones-astartes",
+      "isMainFaction": false
+    }
+  ]
+} 

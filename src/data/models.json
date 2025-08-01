@@ -1,0 +1,1900 @@
+{
+  "models": [
+    {
+      "id": "legion-commander-model",
+      "name": "Legion Commander",
+      "type": "Infantry",
+      "subType": "Command",
+      "characteristics": {
+        "movement": 6,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 3,
+        "wounds": 3,
+        "weaponSkill": 5,
+        "ballisticSkill": 5,
+        "leadership": 9,
+        "willpower": 8,
+        "cool": 8,
+        "intelligence": 8,
+        "armourSave": 3,
+        "invulnerableSave": 4
+      },
+      "specialRules": ["independent-character", "stubborn"],
+      "wargear": ["power-armor"],
+      "weapons": ["bolt-pistol", "power-weapon"],
+
+      "description": "A senior officer of the Legion, capable of leading multiple detachments."
+    },
+    {
+      "id": "tactical-sergeant-model",
+      "name": "Tactical Sergeant",
+      "type": "Infantry",
+      "subType": "Sergeant",
+      "characteristics": {
+        "movement": 6,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 2,
+        "wounds": 2,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 3
+      },
+      "specialRules": ["independent-character", "stubborn"],
+      "wargear": ["power-armor"],
+      "weapons": ["bolt-pistol", "chainsword"],
+
+      "description": "A veteran sergeant leading a tactical squad."
+    },
+    {
+      "id": "tactical-marine-model",
+      "name": "Tactical Marine",
+      "type": "Infantry",
+      "subType": "Heavy",
+      "characteristics": {
+        "movement": 6,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 1,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 3
+      },
+      "specialRules": ["and-they-shall-know-no-fear"],
+      "wargear": ["power-armor"],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"],
+
+      "description": "A standard Space Marine warrior."
+    },
+    {
+      "id": "rhino-transport-model",
+      "name": "Rhino Transport",
+      "type": "Vehicle",
+      "subType": "Transport",
+      "characteristics": {
+        "movement": 12,
+        "ballisticSkill": 3,
+        "frontArmour": 11,
+        "sideArmour": 11,
+        "rearArmour": 10,
+        "hullPoints": 3,
+        "transportCapacity": 10
+      },
+      "specialRules": ["machine-spirit"],
+      "wargear": ["smoke-launchers"],
+      "weapons": [],
+
+      "description": "A standard transport vehicle for Space Marines."
+    },
+    {
+      "id": "predator-tank-model",
+      "name": "Predator Tank",
+      "type": "Vehicle",
+      "subType": "Heavy",
+      "characteristics": {
+        "movement": 12,
+        "ballisticSkill": 4,
+        "frontArmour": 13,
+        "sideArmour": 11,
+        "rearArmour": 10,
+        "hullPoints": 3
+      },
+      "specialRules": ["machine-spirit", "heavy-support"],
+      "wargear": ["smoke-launchers"],
+      "weapons": ["heavy-bolter", "lascannon"],
+      "description": "A heavy tank armed with powerful weapons."
+    },
+    {
+      "id": "hermes-commander-model",
+      "name": "Hermes Commander",
+      "type": "Infantry",
+      "subType": "Command",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 3,
+        "attacks": 2,
+        "wounds": 2,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 5
+      },
+      "specialRules": ["independent-character", "scout-tercio-commander"],
+      "wargear": ["flak-armor", "vox-caster"],
+      "weapons": ["las-pistol", "power-sword"],
+      "description": "A Solar Auxilia command unit equipped with advanced communications and reconnaissance equipment."
+    },
+    {
+      "id": "lasrifle-trooper-model",
+      "name": "Lasrifle Trooper",
+      "type": "Infantry",
+      "subType": "Light",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 3,
+        "attacks": 1,
+        "wounds": 1,
+        "weaponSkill": 3,
+        "ballisticSkill": 3,
+        "leadership": 7,
+        "willpower": 6,
+        "cool": 6,
+        "intelligence": 6,
+        "armourSave": 5
+      },
+      "specialRules": ["rapid-fire", "first-rank-fire-second-rank-fire"],
+      "wargear": ["flak-armor"],
+      "weapons": ["lasrifle", "las-pistol", "frag-grenades"],
+      "description": "Standard infantry troops equipped with lasrifles and basic combat gear."
+    },
+    {
+      "id": "leman-russ-strike-model",
+      "name": "Leman Russ Strike Tank",
+      "type": "Vehicle",
+      "subType": "Heavy",
+      "characteristics": {
+        "movement": 10,
+        "ballisticSkill": 3,
+        "frontArmour": 14,
+        "sideArmour": 13,
+        "rearArmour": 10,
+        "hullPoints": 6,
+        "transportCapacity": null
+      },
+      "specialRules": [],
+      "wargear": [],
+      "weapons": [
+        { "id": "battlecannon", "mount": "Turret Mounted" },
+        { "id": "heavy-bolter", "mount": "Hull (Front) Mounted" }
+      ],
+      "description": "A versatile main battle tank armed with a battle cannon for general combat.",
+      "upgradeGroups": [
+        {
+          "id": "leman-russ-strike-turret-weapon-upgrade-group",
+          "name": "Turret Weapon Options",
+          "description": "Replace the Battle Cannon with different turret weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["leman-russ-strike-turret-weapon-upgrade"]
+        },
+        {
+          "id": "leman-russ-strike-hull-weapon-upgrade-group",
+          "name": "Hull Weapon Options",
+          "description": "Replace the Hull Heavy Bolter with different hull weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["leman-russ-strike-hull-weapon-upgrade"]
+        },
+        {
+          "id": "leman-russ-strike-pintle-weapon-upgrade-group",
+          "name": "Pintle Weapon Options",
+          "description": "Add pintle mounted weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["leman-russ-strike-pintle-weapon-upgrade"]
+        },
+        {
+          "id": "leman-russ-strike-wargear-upgrade-group",
+          "name": "Wargear Options",
+          "description": "Additional wargear options",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["leman-russ-strike-hunter-killer-missile-upgrade", "leman-russ-strike-searchlight-upgrade", "leman-russ-strike-dozer-blade-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "leman-russ-assault-model",
+      "name": "Leman Russ Assault Tank",
+      "type": "Vehicle",
+      "subType": "Heavy",
+      "characteristics": {
+        "movement": 10,
+        "ballisticSkill": 3,
+        "frontArmour": 14,
+        "sideArmour": 13,
+        "rearArmour": 10,
+        "hullPoints": 6,
+        "transportCapacity": null
+      },
+      "specialRules": [],
+      "wargear": [],
+      "weapons": [
+        { "id": "volkite-macro-saker", "mount": "Turret Mounted" },
+        { "id": "heavy-bolter", "mount": "Hull (Front) Mounted" }
+      ],
+      "description": "A heavily armored assault tank armed with volkite macro-saker for close-range combat.",
+      "upgradeGroups": [
+        {
+          "id": "leman-russ-assault-turret-weapon-upgrade-group",
+          "name": "Turret Weapon Options",
+          "description": "Replace the Volkite Macro-saker with different turret weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["leman-russ-assault-turret-weapon-upgrade"]
+        },
+        {
+          "id": "leman-russ-assault-hull-weapon-upgrade-group",
+          "name": "Hull Weapon Options",
+          "description": "Replace the Hull Heavy Bolter with different hull weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["leman-russ-assault-hull-weapon-upgrade"]
+        },
+        {
+          "id": "leman-russ-assault-pintle-weapon-upgrade-group",
+          "name": "Pintle Weapon Options",
+          "description": "Add pintle mounted weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["leman-russ-assault-pintle-weapon-upgrade"]
+        },
+        {
+          "id": "leman-russ-assault-wargear-upgrade-group",
+          "name": "Wargear Options",
+          "description": "Additional wargear options",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["leman-russ-assault-hunter-killer-missile-upgrade", "leman-russ-assault-searchlight-upgrade", "leman-russ-assault-dozer-blade-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "legatine-marshall-model",
+      "name": "Legatine Marshall",
+      "type": "Infantry",
+      "subType": "Command",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 4,
+        "attacks": 4,
+        "wounds": 4,
+        "weaponSkill": 5,
+        "ballisticSkill": 5,
+        "leadership": 10,
+        "willpower": 7,
+        "cool": 8,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": 5
+      },
+      "specialRules": ["line"],
+      "specialRuleValues": {
+        "line": 2
+      },
+      "wargear": [],
+      "weapons": ["las-pistol", "charnabal-sabre", "frag-grenades", "krak-grenades"],
+      "description": "A Legatine Marshall commanding the Legatine Command Section.",
+      "upgradeGroups": [
+        {
+          "id": "legatine-marshall-melee-weapons",
+          "name": "Melee Weapon Options",
+          "description": "Replace the Charnabal Sabre with different melee weapons",
+          "collapsible": true,
+          "defaultCollapsed": false,
+          "upgrades": ["legatine-marshall-weapon-upgrade"]
+        },
+        {
+          "id": "legatine-marshall-pistol-options",
+          "name": "Pistol Options",
+          "description": "Replace the Las Pistol with different pistol weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["legatine-marshall-pistol-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "lifeward-model",
+      "name": "Lifeward",
+      "type": "Infantry",
+      "subType": "Heavy",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 4,
+        "attacks": 2,
+        "wounds": 2,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 6,
+        "cool": 8,
+        "intelligence": 6,
+        "armourSave": 3,
+        "invulnerableSave": 5
+      },
+      "specialRules": ["line"],
+      "specialRuleValues": {
+        "line": 2
+      },
+      "wargear": [],
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"],
+      "description": "A Lifeward bodyguard in the Legatine Command Section.",
+      "upgradeGroups": [
+        {
+          "id": "lifeward-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Replace the Lasrifle with different weapon combinations",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["lifeward-weapon-upgrade", "lifeward-bayonet-upgrade", "lifeward-blast-charger-upgrade", "lifeward-melta-bomb-upgrade"]
+        },
+        {
+          "id": "lifeward-sabre-upgrade-group",
+          "name": "Sabre Options",
+          "description": "Replace the Charnabal Sabre with different melee weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["lifeward-sabre-upgrade"]
+        },
+        {
+          "id": "lifeward-pistol-options",
+          "name": "Pistol Options",
+          "description": "Replace the Lasrifle with different pistol weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["lifeward-pistol-upgrade"]
+        },
+        {
+          "id": "lifeward-wargear-options",
+          "name": "Wargear Options",
+          "description": "Add special wargear to Lifewards",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["lifeward-command-vox-upgrade", "lifeward-augury-scanner-upgrade", "lifeward-vexilla-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "auxilia-captain-model",
+      "name": "Auxilia Captain",
+      "type": "Infantry",
+      "subType": "Command",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 4,
+        "attacks": 3,
+        "wounds": 3,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 9,
+        "willpower": 7,
+        "cool": 8,
+        "intelligence": 6,
+        "armourSave": 3,
+        "invulnerableSave": 5
+      },
+      "specialRules": ["line", "officer-of-the-line"],
+      "specialRuleValues": {
+        "line": 1,
+        "officer-of-the-line": 2
+      },
+      "wargear": [],
+      "weapons": ["las-pistol", "charnabal-sabre", "frag-grenades", "krak-grenades"],
+      "description": "An Auxilia Captain leading a Tactical Command Section.",
+      "upgradeGroups": [
+        {
+          "id": "auxilia-captain-melee-weapons",
+          "name": "Melee Weapon Options",
+          "description": "Replace the Charnabal Sabre with different melee weapons",
+          "collapsible": true,
+          "defaultCollapsed": false,
+          "upgrades": ["auxilia-captain-weapon-upgrade"]
+        },
+        {
+          "id": "auxilia-captain-pistol-options",
+          "name": "Pistol Options",
+          "description": "Replace the Las Pistol with different pistol weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["auxilia-captain-pistol-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "companion-model",
+      "name": "Companion",
+      "type": "Infantry",
+      "subType": "Heavy",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 4,
+        "attacks": 2,
+        "wounds": 2,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 6,
+        "cool": 8,
+        "intelligence": 6,
+        "armourSave": 4,
+        "invulnerableSave": 5
+      },
+      "specialRules": ["line"],
+      "specialRuleValues": {
+        "line": 1
+      },
+      "wargear": [],
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"],
+      "description": "A Companion in the Tactical Command Section.",
+      "upgradeGroups": [
+        {
+          "id": "companion-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Replace the Lasrifle with different weapon combinations",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["companion-weapon-upgrade"]
+        },
+        {
+          "id": "companion-sabre-upgrade-group",
+          "name": "Sabre Options",
+          "description": "Replace the Charnabal Sabre with different melee weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["companion-sabre-upgrade"]
+        },
+        {
+          "id": "companion-pistol-options",
+          "name": "Pistol Options",
+          "description": "Replace the Lasrifle with different pistol weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["companion-pistol-upgrade"]
+        },
+        {
+          "id": "companion-weapon-additions",
+          "name": "Weapon Additions",
+          "description": "Additional weapons for Companions with Lasrifles",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["companion-bayonet-upgrade", "companion-blast-charger-upgrade", "companion-melta-bomb-upgrade"]
+        },
+        {
+          "id": "companion-wargear-options",
+          "name": "Wargear Options",
+          "description": "Wargear options for Companions",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["companion-command-vox-upgrade", "companion-augury-scanner-upgrade", "companion-vexilla-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "troop-master-model",
+      "name": "Troop Master",
+      "type": "Infantry",
+      "subType": "Sergeant",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 3,
+        "attacks": 2,
+        "wounds": 2,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 7,
+        "cool": 8,
+        "intelligence": 7,
+        "armourSave": 4,
+        "invulnerableSave": null
+      },
+      "specialRules": ["close-order"],
+      "specialRuleValues": {
+        "close-order": 1
+      },
+      "wargear": [],
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"],
+      "description": "A Troop Master leading a Line Command Section.",
+      "upgradeGroups": [
+        {
+          "id": "troop-master-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Replace the Lasrifle with different weapon combinations",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["troop-master-weapon-upgrade"]
+        },
+        {
+          "id": "troop-master-pistol-options",
+          "name": "Pistol Options",
+          "description": "Replace the Lasrifle with different pistol weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["troop-master-pistol-upgrade"]
+        },
+        {
+          "id": "troop-master-weapon-additions",
+          "name": "Weapon Additions",
+          "description": "Additional weapons for Troop Masters with Lasrifles",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["troop-master-bayonet-upgrade", "troop-master-blast-charger-upgrade", "troop-master-melta-bomb-upgrade"]
+        },
+        {
+          "id": "troop-master-wargear-options",
+          "name": "Wargear Options",
+          "description": "Wargear options for Troop Masters",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["troop-master-command-vox-upgrade", "troop-master-augury-scanner-upgrade", "troop-master-vexilla-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "veteran-model",
+      "name": "Veteran",
+      "type": "Infantry",
+      "subType": "",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 3,
+        "attacks": 1,
+        "wounds": 1,
+        "weaponSkill": 3,
+        "ballisticSkill": 4,
+        "leadership": 7,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 6,
+        "armourSave": 4,
+        "invulnerableSave": null
+      },
+      "specialRules": [],
+      "specialRuleValues": {},
+      "wargear": [],
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"],
+      "description": "A Veteran in the Line Command Section.",
+      "upgradeGroups": [
+        {
+          "id": "veteran-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Replace the Lasrifle with different weapon combinations",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veteran-weapon-upgrade"]
+        },
+        {
+          "id": "veteran-sabre-upgrade-group",
+          "name": "Sabre Options",
+          "description": "Replace the Charnabal Sabre with different melee weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veteran-sabre-upgrade"]
+        },
+        {
+          "id": "veteran-pistol-options",
+          "name": "Pistol Options",
+          "description": "Replace the Lasrifle with different pistol weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veteran-pistol-upgrade"]
+        },
+        {
+          "id": "veteran-weapon-additions",
+          "name": "Weapon Additions",
+          "description": "Additional weapons for Veterans with Lasrifles",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veteran-bayonet-upgrade", "veteran-blast-charger-upgrade", "veteran-melta-bomb-upgrade"]
+        },
+        {
+          "id": "veteran-wargear-options",
+          "name": "Wargear Options",
+          "description": "Wargear options for Veterans",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veteran-command-vox-upgrade", "veteran-augury-scanner-upgrade", "veteran-vexilla-upgrade"]
+        },
+        {
+          "id": "artillery-veteran-wargear-options",
+          "name": "Wargear Options",
+          "description": "Wargear options for Artillery Veterans",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["artillery-veteran-command-vox-upgrade", "artillery-veteran-augury-scanner-upgrade", "artillery-veteran-auxilia-vexilla-upgrade", "artillery-veteran-melta-bomb-upgrade"]
+        },
+        {
+          "id": "artillery-veteran-weapon-additions",
+          "name": "Weapon Additions",
+          "description": "Additional weapons for Artillery Veterans with Lasrifles",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["artillery-veteran-bayonet-upgrade", "artillery-veteran-blast-charger-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "first-prime-model",
+      "name": "First Prime",
+      "type": "Infantry",
+      "subType": "Champion, Sergeant",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 3,
+        "attacks": 3,
+        "wounds": 2,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 7,
+        "cool": 9,
+        "intelligence": 7,
+        "armourSave": 4,
+        "invulnerableSave": null
+      },
+      "specialRules": ["hold-the-line"],
+      "specialRuleValues": {
+        "hold-the-line": 1
+      },
+      "wargear": [],
+      "weapons": ["volkite-charger", "frag-grenades", "krak-grenades"],
+      "description": "A First Prime leading a Veletaris Command Section.",
+      "upgradeGroups": [
+        {
+          "id": "first-prime-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Replace the Volkite Charger with different weapon combinations",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["first-prime-weapon-upgrade"]
+        },
+        {
+          "id": "first-prime-tabar-upgrade-group",
+          "name": "Tabar Options",
+          "description": "Replace the Charnabal Tabar with different melee weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["first-prime-tabar-upgrade"]
+        },
+        {
+          "id": "first-prime-pistol-options",
+          "name": "Pistol Options",
+          "description": "Replace the Laspistol with different pistol weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["first-prime-pistol-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "veletarii-model",
+      "name": "Veletarii",
+      "type": "Infantry",
+      "subType": "",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 3,
+        "attacks": 2,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 7,
+        "willpower": 6,
+        "cool": 8,
+        "intelligence": 6,
+        "armourSave": 4,
+        "invulnerableSave": null
+      },
+      "specialRules": [],
+      "specialRuleValues": {},
+      "wargear": [],
+      "weapons": ["volkite-charger", "frag-grenades", "krak-grenades"],
+      "description": "A Veletarii in the Veletaris Command Section.",
+      "upgradeGroups": [
+        {
+          "id": "veletarii-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Replace the Volkite Charger with different weapon combinations",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veletarii-weapon-upgrade"]
+        },
+        {
+          "id": "veletarii-wargear-options",
+          "name": "Wargear Options",
+          "description": "Wargear options for Veletarii",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veletarii-command-vox-upgrade", "veletarii-augury-scanner-upgrade", "veletarii-vexilla-upgrade"]
+        },
+        {
+          "id": "veletaris-storm-vox-upgrade-group",
+          "name": "Vox Options",
+          "description": "Vox options for Veletaris Storm Section",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veletaris-storm-vox-upgrade"]
+        },
+        {
+          "id": "veletaris-storm-vexilla-upgrade-group",
+          "name": "Vexilla Options",
+          "description": "Vexilla options for Veletaris Storm Section",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veletaris-storm-vexilla-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "veletarii-vanguard-model",
+      "name": "Veletarii Vanguard",
+      "type": "Infantry",
+      "subType": "",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 3,
+        "attacks": 2,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 7,
+        "willpower": 6,
+        "cool": 8,
+        "intelligence": 6,
+        "armourSave": 4,
+        "invulnerableSave": null
+      },
+      "specialRules": [],
+      "specialRuleValues": {},
+      "wargear": [],
+      "weapons": ["heavy-flamer", "frag-grenades", "krak-grenades"],
+      "description": "A Veletarii in the Veletaris Vanguard Section.",
+      "upgradeGroups": [
+        {
+          "id": "veletaris-vanguard-vox-upgrade-group",
+          "name": "Vox Options",
+          "description": "Vox options for Veletaris Vanguard Section",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veletaris-vanguard-vox-upgrade"]
+        },
+        {
+          "id": "veletaris-vanguard-vexilla-upgrade-group",
+          "name": "Vexilla Options",
+          "description": "Vexilla options for Veletaris Vanguard Section",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veletaris-vanguard-vexilla-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "veletarii-prime-model",
+      "name": "Veletarii Prime",
+      "type": "Infantry",
+      "subType": "Sergeant",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 3,
+        "attacks": 2,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 6,
+        "cool": 8,
+        "intelligence": 6,
+        "armourSave": 4,
+        "invulnerableSave": null
+      },
+      "specialRules": [],
+      "specialRuleValues": {},
+      "wargear": [],
+      "weapons": ["volkite-charger", "frag-grenades", "krak-grenades"],
+      "description": "A Veletarii Prime leading a Veletaris Storm Section.",
+      "upgradeGroups": [
+        {
+          "id": "veletarii-prime-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Replace the Volkite Charger with different weapon combinations",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veletarii-prime-weapon-upgrade"]
+        },
+        {
+          "id": "veletarii-prime-tabar-upgrade-group",
+          "name": "Tabar Options",
+          "description": "Replace the Charnabal Tabar with different melee weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veletarii-prime-tabar-upgrade"]
+        },
+        {
+          "id": "veletarii-prime-pistol-options",
+          "name": "Pistol Options",
+          "description": "Replace the Laspistol with different pistol weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veletarii-prime-pistol-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "veletarii-vanguard-prime-model",
+      "name": "Veletarii Vanguard Prime",
+      "type": "Infantry",
+      "subType": "Sergeant",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 3,
+        "attacks": 2,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 6,
+        "cool": 8,
+        "intelligence": 6,
+        "armourSave": 4,
+        "invulnerableSave": null
+      },
+      "specialRules": [],
+      "specialRuleValues": {},
+      "wargear": [],
+      "weapons": ["heavy-flamer", "frag-grenades", "krak-grenades"],
+      "description": "A Veletarii Prime leading a Veletaris Vanguard Section.",
+      "upgradeGroups": [
+        {
+          "id": "veletarii-vanguard-prime-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Replace the Heavy Flamer with different weapon combinations",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veletarii-vanguard-prime-weapon-upgrade"]
+        },
+        {
+          "id": "veletarii-vanguard-prime-tabar-upgrade-group",
+          "name": "Tabar Options",
+          "description": "Replace the Charnabal Tabar with different melee weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veletarii-vanguard-prime-tabar-upgrade"]
+        },
+        {
+          "id": "veletarii-vanguard-prime-pistol-options",
+          "name": "Pistol Options",
+          "description": "Replace the Laspistol with different pistol weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["veletarii-vanguard-prime-pistol-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "auxilia-sergeant-model",
+      "name": "Auxilia Sergeant",
+      "type": "Infantry",
+      "subType": "Sergeant",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 3,
+        "attacks": 1,
+        "wounds": 1,
+        "weaponSkill": 3,
+        "ballisticSkill": 3,
+        "leadership": 7,
+        "willpower": 6,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 4,
+        "invulnerableSave": null
+      },
+      "specialRules": [],
+      "specialRuleValues": {},
+      "wargear": [],
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"],
+      "description": "An Auxilia Sergeant leading a Lasrifle Section.",
+      "upgradeGroups": [
+        {
+          "id": "auxilia-sergeant-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Replace the Lasrifle with different weapon combinations",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["auxilia-sergeant-weapon-upgrade"]
+        },
+        {
+          "id": "auxilia-sergeant-pistol-options",
+          "name": "Pistol Options",
+          "description": "Replace the Lasrifle with different pistol weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["auxilia-sergeant-pistol-upgrade"]
+        },
+        {
+          "id": "auxilia-sergeant-weapon-additions",
+          "name": "Weapon Additions",
+          "description": "Additional weapons for Auxilia Sergeants with Lasrifles",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["auxilia-sergeant-bayonet-upgrade", "auxilia-sergeant-blast-charger-upgrade", "auxilia-sergeant-melta-bomb-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "auxiliary-model",
+      "name": "Auxiliary",
+      "type": "Infantry",
+      "subType": "",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 3,
+        "attacks": 1,
+        "wounds": 1,
+        "weaponSkill": 3,
+        "ballisticSkill": 3,
+        "leadership": 6,
+        "willpower": 6,
+        "cool": 6,
+        "intelligence": 6,
+        "armourSave": 4,
+        "invulnerableSave": null
+      },
+      "specialRules": [],
+      "specialRuleValues": {},
+      "wargear": [],
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"],
+      "description": "An Auxiliary in the Lasrifle Section.",
+      "upgradeGroups": [
+        {
+          "id": "auxiliary-weapon-additions",
+          "name": "Weapon Additions",
+          "description": "Additional weapons for Auxiliaries with Lasrifles",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["auxiliary-bayonet-upgrade", "auxiliary-blast-charger-upgrade"]
+        },
+        {
+          "id": "auxiliary-wargear-options",
+          "name": "Wargear Options",
+          "description": "Wargear options for Auxiliaries",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["auxiliary-vox-upgrade", "auxiliary-vexilla-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "hermes-veletaris-sentinel-model",
+      "name": "Hermes Veletaris Sentinel",
+      "type": "Cavalry",
+      "subType": "",
+      "characteristics": {
+        "movement": 8,
+        "strength": 5,
+        "toughness": 5,
+        "initiative": 3,
+        "attacks": 1,
+        "wounds": 2,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 7,
+        "willpower": 6,
+        "cool": 9,
+        "intelligence": 6,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "specialRules": ["bulky", "implacable-advance", "move-through-cover", "vanguard"],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 2
+      },
+      "wargear": [],
+      "weapons": ["volkite-caliver", "frag-grenades", "krak-grenades"],
+      "description": "A Hermes Veletaris Sentinel in the Hermes Veletaris Squadron.",
+      "upgradeGroups": [
+        {
+          "id": "hermes-veletaris-sentinel-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Replace the Volkite Caliver with different weapon options",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["hermes-veletaris-sentinel-weapon-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "basilisk-model",
+      "name": "Basilisk",
+      "type": "Vehicle",
+      "subType": "",
+      "characteristics": {
+        "movement": 10,
+        "ballisticSkill": 3,
+        "frontArmour": 12,
+        "sideArmour": 12,
+        "rearArmour": 10,
+        "hullPoints": 5,
+        "transportCapacity": null
+      },
+      "specialRules": [],
+      "specialRuleValues": {},
+      "wargear": [],
+      "weapons": [
+        { "id": "earthshaker-cannon", "mount": "Centreline Mounted" }
+      ],
+      "description": "A Basilisk Artillery Tank.",
+      "upgradeGroups": [
+        {
+          "id": "basilisk-pintle-weapon-upgrade-group",
+          "name": "Pintle Weapon Options",
+          "description": "Add pintle-mounted weapons to the vehicle",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["basilisk-pintle-weapon-upgrade"]
+        },
+        {
+          "id": "basilisk-wargear-upgrade-group",
+          "name": "Wargear Options",
+          "description": "Add various wargear options to the vehicle",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["basilisk-hunter-killer-missile-upgrade", "basilisk-dozer-blade-upgrade", "basilisk-searchlight-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "medusa-model",
+      "name": "Medusa",
+      "type": "Vehicle",
+      "subType": "",
+      "characteristics": {
+        "movement": 10,
+        "ballisticSkill": 3,
+        "frontArmour": 12,
+        "sideArmour": 12,
+        "rearArmour": 10,
+        "hullPoints": 5,
+        "transportCapacity": null
+      },
+      "specialRules": [],
+      "specialRuleValues": {},
+      "wargear": [],
+      "weapons": [
+        { "id": "medusa-mortar", "mount": "Centreline Mounted" }
+      ],
+      "description": "A Medusa Artillery Tank.",
+      "upgradeGroups": [
+        {
+          "id": "medusa-pintle-weapon-upgrade-group",
+          "name": "Pintle Weapon Options",
+          "description": "Add pintle-mounted weapons to the vehicle",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["medusa-pintle-weapon-upgrade"]
+        },
+        {
+          "id": "medusa-wargear-upgrade-group",
+          "name": "Wargear Options",
+          "description": "Add various wargear options to the vehicle",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["medusa-hunter-killer-missile-upgrade", "medusa-dozer-blade-upgrade", "medusa-searchlight-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "rapier-gunner-model",
+      "name": "Rapier Gunner",
+      "type": "Infantry",
+      "subType": "Sergeant",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 3,
+        "attacks": 1,
+        "wounds": 1,
+        "weaponSkill": 3,
+        "ballisticSkill": 3,
+        "leadership": 6,
+        "willpower": 6,
+        "cool": 7,
+        "intelligence": 6,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "specialRules": ["slow-and-purposeful", "support-unit", "rapier-section"],
+      "specialRuleValues": {
+        "support-unit": 1
+      },
+      "wargear": [],
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"],
+      "description": "A Rapier Gunner in the Rapier Section.",
+      "upgradeGroups": []
+    },
+    {
+      "id": "rapier-carrier-model",
+      "name": "Rapier Carrier",
+      "type": "Infantry",
+      "subType": "",
+      "characteristics": {
+        "movement": 6,
+        "strength": 4,
+        "toughness": 6,
+        "initiative": 1,
+        "attacks": 0,
+        "wounds": 3,
+        "weaponSkill": 1,
+        "ballisticSkill": 3,
+        "leadership": 6,
+        "willpower": 6,
+        "cool": 7,
+        "intelligence": 1,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "specialRules": ["slow-and-purposeful", "support-unit", "rapier-section", "bulky"],
+      "specialRuleValues": {
+        "support-unit": 1,
+        "bulky": 4
+      },
+      "wargear": [],
+      "weapons": ["gravis-multi-laser-battery"],
+      "description": "A Rapier Carrier in the Rapier Section.",
+      "upgradeGroups": [
+        {
+          "id": "rapier-carrier-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Replace the Gravis Multi-Laser Battery with different weapon options",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["rapier-carrier-weapon-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "charonite-ogryn-model",
+      "name": "Charonite Ogryn",
+      "type": "Infantry",
+      "subType": "Skirmish",
+      "characteristics": {
+        "movement": 7,
+        "strength": 5,
+        "toughness": 5,
+        "initiative": 2,
+        "attacks": 4,
+        "wounds": 4,
+        "weaponSkill": 4,
+        "ballisticSkill": 2,
+        "leadership": 12,
+        "willpower": 6,
+        "cool": 10,
+        "intelligence": 2,
+        "armourSave": 4,
+        "invulnerableSave": null
+      },
+      "specialRules": ["heedless", "bitter-duty", "bulky", "expendable", "feel-no-pain", "impact"],
+      "specialRuleValues": {
+        "bulky": 4,
+        "expendable": 2,
+        "feel-no-pain": 5,
+        "impact": "A"
+      },
+      "wargear": [],
+      "weapons": ["charonite-claws"],
+      "description": "A Charonite Ogryn in the Charonite Ogryn Section.",
+      "upgradeGroups": []
+    },
+    {
+      "id": "hermes-lead-model",
+      "name": "Hermes Lead",
+      "type": "Cavalry",
+      "subType": "Sergeant, Light",
+      "characteristics": {
+        "movement": 10,
+        "strength": 5,
+        "toughness": 5,
+        "initiative": 3,
+        "attacks": 2,
+        "wounds": 3,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 7,
+        "cool": 9,
+        "intelligence": 7,
+        "armourSave": 4,
+        "invulnerableSave": null
+      },
+      "specialRules": ["bulky", "implacable-advance", "move-through-cover", "outflank", "pre-emptive-strike"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "wargear": [],
+      "weapons": ["multi-laser", "frag-grenades", "krak-grenades"],
+      "description": "A Hermes Lead in the Hermes Command Section.",
+      "upgradeGroups": [
+        {
+          "id": "hermes-lead-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Replace the Multi-laser with different weapon options",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["hermes-weapon-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "hermes-pathfinder-model",
+      "name": "Hermes Pathfinder",
+      "type": "Cavalry",
+      "subType": "Light",
+      "characteristics": {
+        "movement": 10,
+        "strength": 5,
+        "toughness": 5,
+        "initiative": 3,
+        "attacks": 1,
+        "wounds": 2,
+        "weaponSkill": 3,
+        "ballisticSkill": 4,
+        "leadership": 7,
+        "willpower": 6,
+        "cool": 8,
+        "intelligence": 6,
+        "armourSave": 4,
+        "invulnerableSave": null
+      },
+      "specialRules": ["bulky", "implacable-advance", "move-through-cover", "outflank"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "wargear": [],
+      "weapons": ["multi-laser", "frag-grenades", "krak-grenades"],
+      "description": "A Hermes Pathfinder in the Hermes Command Section.",
+      "upgradeGroups": [
+        {
+          "id": "hermes-pathfinder-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Replace the Multi-laser with different weapon options",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["hermes-pathfinder-weapon-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "ordnance-master-model",
+      "name": "Ordnance Master",
+      "type": "Infantry",
+      "subType": "Sergeant",
+      "characteristics": {
+        "movement": 6,
+        "strength": 3,
+        "toughness": 3,
+        "initiative": 3,
+        "attacks": 1,
+        "wounds": 2,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 7,
+        "cool": 8,
+        "intelligence": 7,
+        "armourSave": 4,
+        "invulnerableSave": null
+      },
+      "specialRules": ["precision-bombardment"],
+      "wargear": [],
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"],
+      "description": "An Ordnance Master in the Artillery Command Section.",
+      "upgradeGroups": [
+        {
+          "id": "ordnance-master-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Replace the Lasrifle with different weapon combinations",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["ordnance-master-weapon-upgrade"]
+        },
+        {
+          "id": "ordnance-master-pistol-options",
+          "name": "Pistol Options",
+          "description": "Replace the Laspistol with different pistol weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["ordnance-master-pistol-upgrade"]
+        },
+        {
+          "id": "ordnance-master-weapon-additions",
+          "name": "Weapon Additions",
+          "description": "Add bayonet and blast charger options",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["ordnance-master-bayonet-upgrade", "ordnance-master-blast-charger-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "command-tank-model",
+      "name": "Command Tank",
+      "type": "Vehicle",
+      "subType": "",
+      "characteristics": {
+        "movement": 10,
+        "ballisticSkill": 4,
+        "frontArmour": 14,
+        "sideArmour": 13,
+        "rearArmour": 10,
+        "hullPoints": 6,
+        "transportCapacity": null
+      },
+      "specialRules": ["armoured-warfare", "auto-repair"],
+      "specialRuleValues": {
+        "auto-repair": 4
+      },
+      "wargear": [],
+      "weapons": [
+        { "id": "battlecannon", "mount": "Turret Mounted" },
+        { "id": "heavy-bolter", "mount": "Hull (Front) Mounted" }
+      ],
+      "description": "A Command Tank in the Armoured Command Section.",
+      "upgradeGroups": [
+        {
+          "id": "command-tank-turret-weapon-upgrade-group",
+          "name": "Turret Weapon Options",
+          "description": "Replace the Battlecannon with different turret-mounted weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["command-tank-turret-weapon-upgrade"]
+        },
+        {
+          "id": "command-tank-hull-weapon-upgrade-group",
+          "name": "Hull Weapon Options",
+          "description": "Replace the Heavy Bolter with different hull-mounted weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["command-tank-hull-weapon-upgrade"]
+        },
+        {
+          "id": "command-tank-pintle-weapon-upgrade-group",
+          "name": "Pintle Weapon Options",
+          "description": "Add pintle-mounted weapons to the vehicle",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["command-tank-pintle-weapon-upgrade"]
+        },
+        {
+          "id": "command-tank-hunter-killer-missile-upgrade-group",
+          "name": "Hunter-Killer Missile",
+          "description": "Add a Hunter-Killer Missile to the vehicle",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["command-tank-hunter-killer-missile-upgrade"]
+        },
+        {
+          "id": "command-tank-wargear-upgrade-group",
+          "name": "Wargear Options",
+          "description": "Add various wargear options to the vehicle",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["command-tank-wargear-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "aethon-heavy-sentinel-model",
+      "name": "Aethon Heavy Sentinel",
+      "type": "Walker",
+      "subType": "Skirmish",
+      "characteristics": {
+        "movement": 7,
+        "strength": 6,
+        "toughness": 6,
+        "initiative": 3,
+        "attacks": 2,
+        "wounds": 5,
+        "weaponSkill": 3,
+        "ballisticSkill": 4,
+        "leadership": 9,
+        "willpower": 6,
+        "cool": 10,
+        "intelligence": 2,
+        "armourSave": 2,
+        "invulnerableSave": null
+      },
+      "specialRules": ["bulky", "slow-and-purposeful"],
+      "specialRuleValues": {
+        "bulky": 6
+      },
+      "wargear": [],
+      "weapons": ["multi-laser", "aethon-missile-battery"],
+      "description": "A heavily armed and armored walker designed for heavy support and anti-armor operations.",
+      "upgradeGroups": [
+        {
+          "id": "aethon-heavy-sentinel-multi-laser-upgrade-group",
+          "name": "Multi-Laser Replacement",
+          "description": "Replace the Multi-Laser with different weapon options",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["aethon-heavy-sentinel-multi-laser-upgrade"]
+        },
+        {
+          "id": "aethon-heavy-sentinel-missile-battery-upgrade-group",
+          "name": "Missile Battery Replacement",
+          "description": "Replace the Aethon Missile Battery with different weapon options",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["aethon-heavy-sentinel-missile-battery-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "arvus-lighter-model",
+      "name": "Arvus Lighter",
+      "type": "Vehicle",
+      "subType": "Transport, Flyer",
+      "characteristics": {
+        "movement": 18,
+        "ballisticSkill": 3,
+        "frontArmour": 11,
+        "sideArmour": 11,
+        "rearArmour": 11,
+        "hullPoints": 4,
+        "transportCapacity": 12
+      },
+      "specialRules": ["light-transport"],
+      "wargear": ["searchlights"],
+      "weapons": [],
+      "description": "A light transport aircraft designed for rapid deployment and extraction.",
+      "upgradeGroups": [
+        {
+          "id": "arvus-lighter-hull-weapon-upgrade-group",
+          "name": "Hull Weapon Options",
+          "description": "Add a Hull (Rear) mounted weapon to the vehicle",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["arvus-lighter-hull-weapon-upgrade"]
+        },
+        {
+          "id": "arvus-lighter-wargear-upgrade-group",
+          "name": "Wargear Options",
+          "description": "Add various wargear options to the vehicle",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["arvus-lighter-wargear-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "dracosan-model",
+      "name": "Dracosan",
+      "type": "Vehicle",
+      "subType": "Transport",
+      "characteristics": {
+        "movement": 12,
+        "ballisticSkill": 3,
+        "frontArmour": 13,
+        "sideArmour": 13,
+        "rearArmour": 11,
+        "hullPoints": 7,
+        "transportCapacity": 22
+      },
+      "specialRules": ["light-transport"],
+      "wargear": [],
+      "weapons": [
+        { "id": "twin-lascannon", "mount": "Hull (Front) Mounted" }
+      ],
+      "description": "A heavily armored transport vehicle designed for troop deployment and battlefield support.",
+      "upgradeGroups": [
+        {
+          "id": "dracosan-hull-weapon-upgrade-group",
+          "name": "Hull Weapon Options",
+          "description": "Replace the Twin Lascannon with different hull-mounted weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["dracosan-hull-weapon-upgrade"]
+        },
+        {
+          "id": "dracosan-pintle-weapon-upgrade-group",
+          "name": "Pintle Weapon Options",
+          "description": "Add pintle-mounted weapons to the vehicle",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["dracosan-pintle-weapon-upgrade"]
+        },
+        {
+          "id": "dracosan-hunter-killer-missile-upgrade-group",
+          "name": "Hunter-Killer Missiles",
+          "description": "Add Hull (Front) mounted Hunter-Killer Missiles to the vehicle",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["dracosan-hunter-killer-missile-upgrade"]
+        },
+        {
+          "id": "dracosan-wargear-upgrade-group",
+          "name": "Wargear Options",
+          "description": "Add various wargear options to the vehicle",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["dracosan-wargear-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "hermes-light-sentinel-model",
+      "name": "Hermes Light Sentinel",
+      "type": "Cavalry",
+      "subType": "Light",
+      "characteristics": {
+        "movement": 10,
+        "strength": 5,
+        "toughness": 5,
+        "initiative": 3,
+        "attacks": 1,
+        "wounds": 2,
+        "weaponSkill": 3,
+        "ballisticSkill": 3,
+        "leadership": 7,
+        "willpower": 6,
+        "cool": 8,
+        "intelligence": 6,
+        "armourSave": 4,
+        "invulnerableSave": null
+      },
+      "specialRules": ["bulky", "implacable-advance", "move-through-cover", "outflank"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "wargear": [],
+      "weapons": ["multi-laser", "frag-grenades", "krak-grenades"],
+      "description": "A fast, lightly armored walker used for reconnaissance and forward observation.",
+      "upgradeGroups": [
+        {
+          "id": "hermes-light-sentinel-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Replace the Multi-Laser with different weapon options",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["hermes-light-sentinel-weapon-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "primaris-lightning-model",
+      "name": "Primaris-Lightning",
+      "type": "Vehicle",
+      "subType": "Flyer",
+      "characteristics": {
+        "movement": 26,
+        "ballisticSkill": 3,
+        "frontArmour": 11,
+        "sideArmour": 11,
+        "rearArmour": 11,
+        "hullPoints": 4,
+        "transportCapacity": null
+      },
+      "specialRules": [],
+      "wargear": [],
+      "weapons": [
+        { "id": "twin-lascannon", "mount": "Centreline Mounted" },
+        { "id": "hellstrike-missiles", "mount": "Centreline Mounted", "count": 6 }
+      ],
+
+      "description": "A fast strike fighter designed for aerial combat and ground attack missions.",
+      "upgradeGroups": []
+    },
+    {
+      "id": "thunderbolt-model",
+      "name": "Thunderbolt",
+      "type": "Vehicle",
+      "subType": "Flyer",
+      "characteristics": {
+        "movement": 22,
+        "ballisticSkill": 3,
+        "frontArmour": 12,
+        "sideArmour": 12,
+        "rearArmour": 12,
+        "hullPoints": 5,
+        "transportCapacity": null
+      },
+      "specialRules": [],
+      "wargear": [],
+      "weapons": [
+        { "id": "twin-lascannon", "mount": "Centreline Mounted" },
+        { "id": "gravis-autocannon", "mount": "Centreline Mounted", "count": 2 }
+      ],
+
+      "description": "A heavy fighter aircraft designed for aerial combat and ground attack missions.",
+      "upgradeGroups": [
+      ]
+    },
+    {
+      "id": "malcador-model",
+      "name": "Malcador",
+      "type": "Vehicle",
+      "subType": "",
+      "characteristics": {
+        "movement": 12,
+        "ballisticSkill": 3,
+        "frontArmour": 13,
+        "sideArmour": 13,
+        "rearArmour": 11,
+        "hullPoints": 7,
+        "transportCapacity": null
+      },
+      "specialRules": ["independent-fire"],
+      "wargear": [],
+      "weapons": [
+        { "id": "battlecannon", "mount": "Hull (Front) Mounted" },
+        { "id": "heavy-bolter", "mount": "Hull (Front) Mounted" },
+        { "id": "multi-laser", "mount": "Sponson Mounted", "count": 2 }
+      ],
+
+      "description": "A heavy tank designed for battlefield dominance and firepower projection.",
+      "upgradeGroups": [
+        {
+          "id": "malcador-turret-weapon-upgrade-group",
+          "name": "Turret Weapon Options",
+          "description": "Replace the Battlecannon with different turret-mounted weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["malcador-turret-weapon-upgrade"]
+        },
+        {
+          "id": "malcador-hull-weapon-upgrade-group",
+          "name": "Hull Weapon Options",
+          "description": "Replace the Heavy Bolter with different hull-mounted weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["malcador-hull-weapon-upgrade"]
+        },
+        {
+          "id": "malcador-pintle-weapon-upgrade-group",
+          "name": "Pintle Weapon Options",
+          "description": "Add pintle-mounted weapons to the vehicle",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["malcador-pintle-weapon-upgrade"]
+        },
+        {
+          "id": "malcador-wargear-upgrade-group",
+          "name": "Wargear Options",
+          "description": "Add various wargear options to the vehicle",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["malcador-wargear-upgrade"]
+        },
+        {
+          "id": "malcador-sponson-weapon-upgrade-group",
+          "name": "Sponson Weapon Options",
+          "description": "Replace the Sponson Multi-lasers with different sponson-mounted weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["malcador-sponson-weapon-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "malcador-infernus-model",
+      "name": "Malcador Infernus",
+      "type": "Vehicle",
+      "subType": "Heavy",
+      "characteristics": {
+        "movement": 12,
+        "ballisticSkill": 3,
+        "frontArmour": 13,
+        "sideArmour": 13,
+        "rearArmour": 10,
+        "hullPoints": 7,
+        "transportCapacity": null
+      },
+      "specialRules": ["explodes"],
+      "specialRuleValues": {
+        "explodes": 3
+      },
+      "wargear": [],
+      "weapons": [
+        { "id": "infernus-cannon", "mount": "Centreline Mounted" },
+        { "id": "multi-laser", "mount": "Sponson Mounted", "count": 2 }
+      ],
+      "description": "A special weapons tank armed with an infernus cannon and sponson weapons.",
+      "upgradeGroups": [
+        {
+          "id": "malcador-infernus-sponson-weapon-upgrade-group",
+          "name": "Sponson Weapon Options",
+          "description": "Replace the Sponson Multi-lasers with different sponson weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["malcador-infernus-sponson-weapon-upgrade"]
+        },
+        {
+          "id": "malcador-infernus-pintle-weapon-upgrade-group",
+          "name": "Pintle Weapon Options",
+          "description": "Add pintle mounted weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["malcador-infernus-pintle-weapon-upgrade"]
+        },
+        {
+          "id": "malcador-infernus-wargear-upgrade-group",
+          "name": "Wargear Options",
+          "description": "Additional wargear options",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["malcador-infernus-hunter-killer-missile-upgrade", "malcador-infernus-searchlight-upgrade", "malcador-infernus-dozer-blade-upgrade", "malcador-infernus-flare-shield-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "valdor-tank-destroyer-model",
+      "name": "Valdor Tank Destroyer",
+      "type": "Vehicle",
+      "subType": "Heavy",
+      "characteristics": {
+        "movement": 12,
+        "ballisticSkill": 3,
+        "frontArmour": 13,
+        "sideArmour": 13,
+        "rearArmour": 11,
+        "hullPoints": 7,
+        "transportCapacity": null
+      },
+      "specialRules": ["explodes"],
+      "specialRuleValues": {
+        "explodes": 5
+      },
+      "wargear": [],
+      "weapons": [
+        { "id": "neutron-beam-laser", "mount": "Centreline Mounted" },
+        { "id": "multi-laser", "mount": "Sponson (Right) Mounted" }
+      ],
+      "description": "A specialized tank destroyer armed with a neutron beam laser for anti-armour operations.",
+      "upgradeGroups": [
+        {
+          "id": "valdor-sponson-weapon-upgrade-group",
+          "name": "Sponson Weapon Options",
+          "description": "Replace the Sponson (Right) Multi-laser with different sponson weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["valdor-sponson-weapon-upgrade"]
+        },
+        {
+          "id": "valdor-pintle-weapon-upgrade-group",
+          "name": "Pintle Weapon Options",
+          "description": "Add pintle mounted weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["valdor-pintle-weapon-upgrade"]
+        },
+        {
+          "id": "valdor-wargear-upgrade-group",
+          "name": "Wargear Options",
+          "description": "Additional wargear options",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["valdor-hunter-killer-missile-upgrade", "valdor-searchlight-upgrade", "valdor-dozer-blade-upgrade", "valdor-flare-shield-upgrade"]
+        }
+      ]
+    },
+    {
+      "id": "stormhammer-model",
+      "name": "Stormhammer",
+      "type": "Vehicle",
+      "subType": "Super-Heavy",
+      "characteristics": {
+        "movement": 10,
+        "ballisticSkill": 3,
+        "frontArmour": 14,
+        "sideArmour": 13,
+        "rearArmour": 12,
+        "hullPoints": 16,
+        "transportCapacity": null
+      },
+      "specialRules": [],
+      "wargear": [],
+      "weapons": [
+        { "id": "stormhammer-cannon", "mount": "Turret Mounted" },
+        { "id": "multi-laser", "mount": "Coaxial Mounted" },
+        { "id": "twin-battlecannon", "mount": "Hull (Front) Mounted" },
+        { "id": "multi-laser", "mount": "Hull (Front) Mounted" },
+        { "id": "multi-laser", "mount": "Hull (Left) Mounted", "count": 3 },
+        { "id": "multi-laser", "mount": "Hull (Right) Mounted", "count": 3 }
+      ],
+      "description": "A super-heavy assault tank armed with multiple weapons for devastating firepower.",
+      "upgradeGroups": [
+        {
+          "id": "stormhammer-hull-front-weapon-upgrade-group",
+          "name": "Hull (Front) Weapon Options",
+          "description": "Replace the Hull (Front) Multi-laser with different weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["stormhammer-hull-front-weapon-upgrade"]
+        },
+        {
+          "id": "stormhammer-hull-side-weapon-upgrade-group",
+          "name": "Hull (Side) Weapon Options",
+          "description": "Replace the Hull (Left) and Hull (Right) Multi-lasers with different weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["stormhammer-hull-side-weapon-upgrade"]
+        },
+        {
+          "id": "stormhammer-pintle-weapon-upgrade-group",
+          "name": "Pintle Weapon Options",
+          "description": "Add pintle mounted weapons",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["stormhammer-pintle-weapon-upgrade"]
+        },
+        {
+          "id": "stormhammer-wargear-upgrade-group",
+          "name": "Wargear Options",
+          "description": "Additional wargear options",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "upgrades": ["stormhammer-hunter-killer-missile-upgrade", "stormhammer-searchlight-upgrade", "stormhammer-flare-shield-upgrade"]
+        }
+      ]
+    }
+  ]
+} 

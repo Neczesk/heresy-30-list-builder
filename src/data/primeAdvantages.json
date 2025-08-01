@@ -1,0 +1,74 @@
+{
+  "primeAdvantages": [
+    {
+      "id": "combat-veterans",
+      "name": "Combat Veterans",
+      "description": "The unit has seen extensive combat and is hardened by experience",
+      "effect": "The unit gains +1 Leadership and may re-roll failed Morale checks",
+      "restrictions": ["Only available for Troops units"]
+    },
+    {
+      "id": "master-sergeant",
+      "name": "Master Sergeant",
+      "description": "The unit is led by an exceptional sergeant",
+      "effect": "The unit's sergeant gains +1 Attack and +1 Leadership",
+      "restrictions": ["Only available for Troops units"]
+    },
+    {
+      "id": "logistical-benefit",
+      "name": "Logistical Benefit",
+      "description": "The unit has excellent logistical support",
+      "effect": "Add one Battlefield Role slot of your choice to the detachment",
+      "restrictions": ["Cannot add Titan slots", "Cannot add slots that would exceed detachment limits"]
+    },
+    {
+      "id": "advanced-characteristics",
+      "name": "Advanced Characteristics",
+      "description": "The unit has been enhanced beyond normal standards",
+      "effect": "The unit gains +1 to one of its characteristics (WS, BS, S, T, W, I, A, Ld, Sv)",
+      "restrictions": ["Cannot increase Sv beyond 2+"]
+    },
+    {
+      "id": "specialist-training",
+      "name": "Specialist Training",
+      "description": "The unit has received specialized training",
+      "effect": "The unit gains a special rule of your choice from a predefined list",
+      "restrictions": ["Only available for Command units"]
+    },
+    {
+      "id": "elite-equipment",
+      "name": "Elite Equipment",
+      "description": "The unit has been equipped with the finest wargear",
+      "effect": "The unit gains +1 to its armour save",
+      "restrictions": ["Cannot improve armour save beyond 2+"]
+    },
+    {
+      "id": "tactical-expertise",
+      "name": "Tactical Expertise",
+      "description": "The unit has exceptional tactical acumen",
+      "effect": "The unit may re-roll one failed roll per turn",
+      "restrictions": ["Only available for High Command units"]
+    },
+    {
+      "id": "veteran-leadership",
+      "name": "Veteran Leadership",
+      "description": "The unit is led by a veteran officer",
+      "effect": "The unit gains the Fearless special rule",
+      "restrictions": ["Only available for Command units"]
+    },
+    {
+      "id": "enhanced-communications",
+      "name": "Enhanced Communications",
+      "description": "The unit has superior communication systems",
+      "effect": "The unit may use Command Benefits from friendly units within 12\"",
+      "restrictions": ["Only available for units with vox equipment"]
+    },
+    {
+      "id": "combat-readiness",
+      "name": "Combat Readiness",
+      "description": "The unit is always prepared for battle",
+      "effect": "The unit may re-roll failed Reserve rolls",
+      "restrictions": ["Only available for units that can be placed in Reserve"]
+    }
+  ]
+} 

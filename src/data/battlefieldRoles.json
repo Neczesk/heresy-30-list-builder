@@ -1,0 +1,98 @@
+{
+  "battlefieldRoles": [
+    {
+      "id": "high-command",
+      "name": "High Command",
+      "type": "High Command",
+      "description": "Senior officers and commanders",
+      "maxCount": 1
+    },
+    {
+      "id": "command",
+      "name": "Command",
+      "type": "Command",
+      "description": "Junior officers and specialists",
+      "maxCount": 3
+    },
+    {
+      "id": "troops",
+      "name": "Troops",
+      "type": "Troops",
+      "description": "Basic infantry units",
+      "minCount": 1
+    },
+    {
+      "id": "transport",
+      "name": "Transport",
+      "type": "Transport",
+      "description": "Light transport vehicles"
+    },
+    {
+      "id": "heavy-transport",
+      "name": "Heavy Transport",
+      "type": "Heavy Transport",
+      "description": "Heavy transport vehicles like Land Raiders"
+    },
+    {
+      "id": "support",
+      "name": "Support",
+      "type": "Support",
+      "description": "Special and heavy weapon squads"
+    },
+    {
+      "id": "armour",
+      "name": "Armour",
+      "type": "Armour",
+      "description": "Tanks and armoured vehicles"
+    },
+    {
+      "id": "war-engine",
+      "name": "War Engine",
+      "type": "War Engine",
+      "description": "Dreadnoughts and war machines"
+    },
+    {
+      "id": "reconnaissance",
+      "name": "Reconnaissance",
+      "type": "Reconnaissance",
+      "description": "Light infantry and bikes"
+    },
+    {
+      "id": "elite",
+      "name": "Elite",
+      "type": "Elite",
+      "description": "Elite infantry and vehicles"
+    },
+    {
+      "id": "heavy-assault",
+      "name": "Heavy Assault",
+      "type": "Heavy Assault",
+      "description": "Terminators and heavy assault units"
+    },
+    {
+      "id": "fast-attack",
+      "name": "Fast Attack",
+      "type": "Fast Attack",
+      "description": "Aircraft, jetbikes and speeders"
+    },
+    {
+      "id": "retinue",
+      "name": "Retinue",
+      "type": "Retinue",
+      "description": "Command squads and bodyguards"
+    },
+    {
+      "id": "warlord",
+      "name": "Warlord",
+      "type": "Warlord",
+      "description": "Army commanders and Primarchs",
+      "maxCount": 1
+    },
+    {
+      "id": "lord-of-war",
+      "name": "Lord of War",
+      "type": "Lord of War",
+      "description": "Lord of War units"
+    }
+  ]
+} 

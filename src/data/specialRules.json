@@ -1,0 +1,193 @@
+{
+  "specialRules": [
+
+    {
+      "id": "command-vox",
+      "name": "Command Vox",
+      "description": "Advanced communication system for coordinating battlefield operations",
+      "shortText": "This unit has enhanced communication capabilities for battlefield coordination.",
+      "longText": "Command Vox represents an advanced communication system that allows this unit to coordinate battlefield operations with enhanced efficiency. Units with this rule can communicate with other friendly units over greater distances, coordinate complex tactical maneuvers, and relay critical battlefield intelligence. The Command Vox system provides secure, encrypted communications that cannot be easily intercepted by enemy forces, making it essential for command and control operations.",
+      "type": "wargear"
+    },
+    {
+      "id": "augury-scanner",
+      "name": "Augury Scanner",
+      "description": "Advanced sensor system for detecting hidden enemies and threats",
+      "shortText": "This unit can detect hidden enemies and threats with advanced sensors.",
+      "longText": "Augury Scanner represents an advanced sensor system that can detect hidden enemies, concealed threats, and other battlefield hazards that would normally be invisible to standard detection methods. Units with this rule can identify enemy units in cover, detect ambushes, and locate hidden objectives or resources. The Augury Scanner provides enhanced situational awareness and can reveal enemy movements that would otherwise go unnoticed.",
+      "type": "wargear"
+    },
+    {
+      "id": "auxilia-vexilla",
+      "name": "Auxilia Vexilla",
+      "description": "Standard bearer carrying the banner of the Solar Auxilia",
+      "shortText": "This unit carries the banner of the Solar Auxilia, providing morale and tactical bonuses.",
+      "longText": "Auxilia Vexilla represents a standard bearer carrying the banner of the Solar Auxilia. This sacred banner serves as a rallying point for nearby friendly units, providing morale bonuses and tactical coordination. The presence of the banner inspires nearby troops and helps maintain unit cohesion during combat. The Auxilia Vexilla can only be carried by one model in a unit, and its presence provides benefits to the entire formation.",
+      "type": "wargear"
+    },
+    {
+      "id": "cohorts-vexilla",
+      "name": "Cohorts Vexilla",
+      "description": "Elite standard bearer carrying the banner of the cohort",
+      "shortText": "This unit carries the elite banner of the cohort, providing enhanced morale and tactical bonuses.",
+      "longText": "Cohorts Vexilla represents an elite standard bearer carrying the sacred banner of the cohort. This prestigious banner is a symbol of the cohort's honor and tradition, providing enhanced morale bonuses and tactical coordination compared to standard banners. The presence of the Cohorts Vexilla inspires nearby troops to greater acts of valor and helps maintain unit cohesion even in the most desperate situations. Only one model in a unit can carry this elite banner.",
+      "type": "wargear"
+    },
+    {
+      "id": "artillery-tercio-commander",
+      "name": "Artillery Tercio Commander",
+      "description": "Special ability to command Artillery Tercio detachments",
+      "shortText": "This unit can trigger Artillery Tercio detachments.",
+      "longText": "Artillery Tercio Commander is a special ability that allows this unit to trigger Artillery Tercio detachments. These specialized artillery detachments can only be commanded by units with this ability, representing their specialized training and equipment for coordinating artillery fire support operations. The Artillery Tercio Commander has access to unique tactical options and can coordinate specialized artillery assets for devastating long-range bombardment."
+    },
+    {
+      "id": "armour-tercio-commander",
+      "name": "Armour Tercio Commander",
+      "description": "Special ability to command Armour Tercio detachments",
+      "shortText": "This unit can trigger Armour Tercio detachments.",
+      "longText": "Armour Tercio Commander is a special ability that allows this unit to trigger Armour Tercio detachments. These specialized armored detachments can only be commanded by units with this ability, representing their specialized training and equipment for coordinating armored warfare operations. The Armour Tercio Commander has access to unique tactical options and can coordinate specialized armored assets for devastating tank assaults and armored breakthroughs.",
+      "hasValue": false
+    },
+    {
+      "id": "independent-character",
+      "name": "Independent Character",
+      "description": "This unit can operate independently and join other units",
+      "shortText": "This unit can operate independently and join other units.",
+      "longText": "Independent Character represents units that can operate independently on the battlefield and have the ability to join other units. These characters are typically officers, heroes, or special individuals who can provide leadership and support to nearby units. Independent Characters can move freely around the battlefield and join or leave units as needed, providing tactical flexibility and command bonuses.",
+      "hasValue": false
+    },
+    {
+      "id": "stubborn",
+      "name": "Stubborn",
+      "description": "This unit is particularly difficult to break in combat",
+      "shortText": "This unit is particularly difficult to break in combat.",
+      "longText": "Stubborn represents units that are particularly difficult to break in combat, maintaining their resolve even when outnumbered or taking heavy casualties. These units have enhanced morale and are less likely to flee from battle. Stubborn units are often veterans, elite troops, or units with strong leadership who refuse to give ground even in the face of overwhelming odds.",
+      "hasValue": false
+    },
+    {
+      "id": "line",
+      "name": "Line",
+      "description": "This unit can form a defensive line with enhanced capabilities",
+      "shortText": "This unit can form a defensive line with enhanced capabilities.",
+      "longText": "Line represents the ability of a unit to form a defensive line with enhanced capabilities. Units with this rule can coordinate their defensive efforts, providing mutual support and creating a more effective defensive position. The Line rule allows units to work together to create a cohesive defensive formation that is greater than the sum of its parts. This ability is particularly valuable for infantry units that need to hold ground against enemy assaults.",
+      "hasValue": true
+    },
+    {
+      "id": "heavy-fp",
+      "name": "Heavy (FP)",
+      "description": "This weapon has enhanced firepower capabilities",
+      "shortText": "This weapon has enhanced firepower capabilities.",
+      "longText": "Heavy (FP) represents weapons that have enhanced firepower capabilities, allowing them to generate additional hits or have improved effectiveness in certain situations. These weapons are typically more powerful than standard weapons of their type and can be particularly effective against certain targets or in specific tactical situations.",
+      "hasValue": false
+    },
+    {
+      "id": "pistol",
+      "name": "Pistol",
+      "description": "This weapon can be used in close combat",
+      "shortText": "This weapon can be used in close combat.",
+      "longText": "Pistol represents weapons that can be used in close combat situations. These weapons are compact and designed for use at very close range, allowing the wielder to fire them even when engaged in melee combat. Pistols are particularly useful for characters and units that may find themselves in close quarters situations.",
+      "hasValue": false
+    },
+    {
+      "id": "breaching",
+      "name": "Breaching",
+      "description": "This weapon is particularly effective against armored targets",
+      "shortText": "This weapon is particularly effective against armored targets.",
+      "longText": "Breaching represents weapons that are particularly effective against armored targets, fortified positions, and other heavily protected enemies. These weapons have enhanced armor penetration capabilities and can bypass or overcome defensive measures that would stop lesser weapons. Breaching weapons are essential for dealing with heavily armored enemies and fortified positions.",
+      "hasValue": true
+    },
+    {
+      "id": "duellists-edge",
+      "name": "Duellist's Edge",
+      "description": "This weapon provides advantages in single combat",
+      "shortText": "This weapon provides advantages in single combat.",
+      "longText": "Duellist's Edge represents weapons that provide advantages in single combat situations, particularly against enemy characters or elite units. These weapons are designed for precision and skill, allowing the wielder to gain tactical advantages in one-on-one combat scenarios. Duellist's Edge weapons are often used by skilled warriors and characters who excel in personal combat.",
+      "hasValue": true
+    },
+    {
+      "id": "critical-hit",
+      "name": "Critical Hit",
+      "description": "This weapon has enhanced critical hit capabilities",
+      "shortText": "This weapon has enhanced critical hit capabilities.",
+      "longText": "Critical Hit represents weapons that have enhanced critical hit capabilities, allowing them to cause devastating damage on successful critical hits. These weapons are particularly effective at bypassing armor and causing massive damage when they strike true. Critical Hit weapons are often master-crafted or have special properties that make them more lethal than standard weapons.",
+      "hasValue": true
+    },
+    {
+      "id": "close-order",
+      "name": "Close Order",
+      "description": "This model can maintain close formation with other models",
+      "shortText": "This model can maintain close formation with other models.",
+      "longText": "Close Order represents the ability of a model to maintain close formation with other models, allowing for enhanced coordination and tactical flexibility. Models with this rule can work together more effectively in tight formations, providing mutual support and creating more cohesive fighting units. This ability is particularly valuable for command models and leaders who need to coordinate with nearby troops.",
+      "hasValue": true
+    },
+    {
+      "id": "hold-the-line",
+      "name": "Hold the Line",
+      "description": "This model can maintain defensive positions with enhanced resolve",
+      "shortText": "This model can maintain defensive positions with enhanced resolve.",
+      "longText": "Hold the Line represents the ability of a model to maintain defensive positions with enhanced resolve and determination. Models with this rule are particularly effective at holding ground and resisting enemy assaults, even when outnumbered or under heavy pressure. This ability is especially valuable for command models and leaders who need to inspire their troops to stand firm in the face of overwhelming odds.",
+      "hasValue": true
+    },
+    {
+      "id": "deflagrate",
+      "name": "Deflagrate",
+      "description": "This weapon can cause additional damage through deflagration",
+      "shortText": "This weapon can cause additional damage through deflagration.",
+      "longText": "Deflagrate represents the ability of a weapon to cause additional damage through deflagration effects. When this weapon successfully wounds a target, it can potentially cause additional damage or effects beyond the normal damage. This ability is particularly effective against certain types of targets and can be devastating when used properly.",
+      "hasValue": true
+    },
+    {
+      "id": "duellists-edge",
+      "name": "Duellist's Edge",
+      "description": "This weapon provides enhanced capabilities in duels",
+      "shortText": "This weapon provides enhanced capabilities in duels.",
+      "longText": "Duellist's Edge represents the weapon's enhanced capabilities in one-on-one combat situations. Weapons with this rule are particularly effective when used against single targets or in dueling scenarios, providing additional benefits that make them superior choices for close combat against individual opponents.",
+      "hasValue": true
+    },
+    {
+      "id": "searchlight",
+      "name": "Searchlight",
+      "description": "Illuminates targets for improved accuracy",
+      "shortText": "Provides illumination for improved targeting accuracy.",
+      "longText": "A searchlight is a powerful illumination device mounted on vehicles that can light up targets in darkness or poor visibility conditions. This illumination improves targeting accuracy and can reveal hidden enemies. Searchlights are particularly useful in night fighting or in environments with limited visibility.",
+      "hasValue": false,
+      "type": "wargear"
+    },
+    {
+      "id": "dozer-blade",
+      "name": "Dozer Blade",
+      "description": "Reinforced blade for clearing obstacles and terrain",
+      "shortText": "Allows the vehicle to clear obstacles and difficult terrain.",
+      "longText": "A dozer blade is a reinforced blade mounted on the front of vehicles that allows them to clear obstacles, demolish barricades, and traverse difficult terrain more easily. The blade can be used to push aside debris, clear paths through rubble, or create makeshift ramps. Dozer blades are particularly useful for engineering vehicles and those operating in urban or heavily fortified environments.",
+      "hasValue": false,
+      "type": "wargear"
+    },
+    {
+      "id": "flare-shield",
+      "name": "Flare Shield",
+      "description": "Defensive shield that provides protection against incoming fire",
+      "shortText": "Provides defensive protection against incoming attacks.",
+      "longText": "A flare shield is a defensive energy shield that provides protection against incoming fire and attacks. The shield can deflect or absorb damage from various types of weapons, making the vehicle more survivable in combat. Flare shields are advanced defensive systems that represent the pinnacle of protective technology available to vehicle crews.",
+      "hasValue": false,
+      "type": "wargear"
+    },
+    {
+      "id": "flare-launchers",
+      "name": "Flare Launchers", 
+      "description": "Ranged weapon that can deploy flares to illuminate targets",
+      "shortText": "This unit can deploy flares to illuminate targets.",
+      "longText": "Flare Launchers represents a ranged weapon that can deploy flares to illuminate targets. Units with this rule can use their weapon to deploy flares, which can be used to illuminate targets or create a temporary beacon. Flare launchers are particularly useful for providing illumination in dark or poorly lit environments, allowing units to see their targets more easily. This ability is particularly valuable for units that operate in low-light conditions or need to provide illumination for other units.",
+      "hasValue": false,
+      "type": "wargear"
+    },
+    {
+      "id": "template-hellstorm",
+      "name": "Template (Hellstorm)",
+      "description": "This weapon can be used to deploy Hellstorm templates",
+      "shortText": "This weapon can be used to deploy Hellstorm templates.",
+      "longText": "Template (Hellstorm) represents the ability of a weapon to deploy Hellstorm templates. Weapons with this rule can be used to deploy Hellstorm templates, which can be used to create a temporary Hellstorm zone. Hellstorm templates are particularly useful for providing cover and protection from enemy fire. This ability is particularly valuable for units that need to create a temporary Hellstorm zone to protect themselves or other units.",
+      "hasValue": false,
+      "type": "special-rule"
+    }
+  ]
+} 

@@ -1,0 +1,306 @@
+.unit-viewer {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.unit-viewer-header {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.unit-viewer-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.close-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.unit-viewer-content {
+  padding: 20px;
+}
+
+.unit-info {
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-left: 4px solid #3498db;
+}
+
+.unit-info p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #2c3e50;
+}
+
+.unit-info strong {
+  color: #2c3e50;
+  min-width: 120px;
+  display: inline-block;
+}
+
+.unit-section {
+  margin-bottom: 30px;
+}
+
+.unit-section h3 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.characteristics-table,
+.weapons-table,
+.special-rules-table,
+.wargear-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.characteristics-table th,
+.weapons-table th,
+.special-rules-table th,
+.wargear-table th {
+  background: #34495e;
+  color: white;
+  padding: 12px 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.group-header {
+  background: #2c3e50 !important;
+  text-align: center !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  border-bottom: 2px solid #3498db;
+}
+
+.characteristics-table td,
+.weapons-table td,
+.special-rules-table td,
+.wargear-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #ecf0f1;
+  font-size: 13px;
+  vertical-align: top;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.characteristics-table tr:nth-child(even),
+.weapons-table tr:nth-child(even),
+.special-rules-table tr:nth-child(even),
+.wargear-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.characteristics-table tr:hover,
+.weapons-table tr:hover,
+.special-rules-table tr:hover,
+.wargear-table tr:hover {
+  background-color: #e8f4fd;
+}
+
+/* Responsive design for tables */
+@media (max-width: 768px) {
+  .unit-viewer {
+    margin: 10px;
+    max-width: none;
+  }
+  
+  .unit-viewer-content {
+    padding: 15px;
+  }
+  
+  .characteristics-table,
+  .weapons-table,
+  .special-rules-table,
+  .wargear-table {
+    font-size: 11px;
+  }
+  
+  .characteristics-table th,
+  .weapons-table th,
+  .special-rules-table th,
+  .wargear-table th,
+  .characteristics-table td,
+  .weapons-table td,
+  .special-rules-table td,
+  .wargear-table td {
+    padding: 6px 4px;
+  }
+}
+
+/* Scrollable tables for wide content */
+.characteristics-table,
+.weapons-table {
+  overflow-x: auto;
+  display: block;
+}
+
+.characteristics-table thead,
+.characteristics-table tbody,
+.weapons-table thead,
+.weapons-table tbody {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* Specific styling for different table types */
+.weapons-table th:nth-child(1),
+.weapons-table td:nth-child(1),
+.special-rules-table th:nth-child(1),
+.special-rules-table td:nth-child(1),
+.wargear-table th:nth-child(1),
+.wargear-table td:nth-child(1),
+.characteristics-table th:nth-child(1),
+.characteristics-table td:nth-child(1) {
+  width: 15%;
+  text-align: left;
+}
+
+.weapons-table th:nth-child(2),
+.weapons-table td:nth-child(2),
+.special-rules-table th:nth-child(2),
+.special-rules-table td:nth-child(2),
+.wargear-table th:nth-child(2),
+.wargear-table td:nth-child(2) {
+  width: 20%;
+}
+
+.weapons-table th:nth-child(9),
+.weapons-table td:nth-child(9),
+.special-rules-table th:nth-child(4),
+.special-rules-table td:nth-child(4),
+.wargear-table th:nth-child(4),
+.wargear-table td:nth-child(4) {
+  text-align: left;
+  width: 30%;
+}
+
+/* Weapons table specific column widths */
+.weapons-table th:nth-child(9),
+.weapons-table td:nth-child(9) {
+  width: 8%;
+  text-align: center;
+}
+
+.weapons-table th:nth-child(10),
+.weapons-table td:nth-child(10) {
+  width: 25%;
+  text-align: left;
+}
+
+/* Weapon group styling */
+.weapon-group-header {
+  background: #34495e !important;
+  color: white !important;
+  border-bottom: 2px solid #3498db !important;
+}
+
+.weapon-group-header td {
+  color: white !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+}
+
+.weapon-profile-row {
+  background: #f8f9fa;
+}
+
+.weapon-profile-row:hover {
+  background: #e8f4fd !important;
+}
+
+.weapon-profile-row td:first-child {
+  background: #ecf0f1;
+  border-right: 2px solid #bdc3c7;
+}
+
+/* Traits styling */
+.traits-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 4px solid #e74c3c;
+}
+
+.trait-tag {
+  background: #e74c3c;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+} 
+
+/* Prime Advantages */
+.prime-advantages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.prime-advantage-item {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.advantage-name {
+  font-weight: 600;
+  color: #ffd700;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.advantage-effect {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  line-height: 1.4;
+} 
