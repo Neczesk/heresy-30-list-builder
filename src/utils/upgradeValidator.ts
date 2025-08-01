@@ -1,5 +1,5 @@
 import { DataLoader } from './dataLoader';
-import type { UnitUpgrade, UpgradeOption, ArmyUpgrade } from '../types/army';
+import type { UnitUpgrade, ArmyUpgrade } from '../types/army';
 
 export interface UpgradeValidationContext {
   selectedUpgrades: ArmyUpgrade[];
@@ -54,7 +54,7 @@ export class UpgradeValidator {
    * Calculate max count based on model availability and weapon requirements
    */
   private static calculateModelBasedMaxCount(upgrade: UnitUpgrade, context: UpgradeValidationContext): number {
-    const { selectedUpgrades, previewModels } = context;
+    const { previewModels } = context;
     const targetModelId = upgrade.targetModelType!;
     const totalModels = previewModels[targetModelId] || 0;
 
@@ -89,8 +89,8 @@ export class UpgradeValidator {
         }
         
         // If the option adds a weapon that requires another weapon (like bayonets requiring lasrifles)
-        if (option.addWeapon && this.isWeaponRequirement(option.addWeapon)) {
-          const requiredWeapon = this.getRequiredWeaponForAddon(option.addWeapon);
+        if (option.addWeapon && this.isWeaponRequirement(option.addWeapon as string)) {
+          const requiredWeapon = this.getRequiredWeaponForAddon(option.addWeapon as string);
           if (requiredWeapon) {
             requirements.push(requiredWeapon);
           }
@@ -209,7 +209,7 @@ export class UpgradeValidator {
   /**
    * Get all upgrades that should be removed when selecting a mutually exclusive upgrade
    */
-  static getConflictingUpgrades(upgradeId: string, optionId: string | undefined): string[] {
+  static getConflictingUpgrades(upgradeId: string): string[] {
     const mutualExclusiveUpgrades = ['lifeward-vexilla-upgrade', 'companion-vexilla-upgrade'];
     
     if (mutualExclusiveUpgrades.includes(upgradeId)) {
@@ -224,7 +224,6 @@ export class UpgradeValidator {
    */
   static validateUpgradeSelection(
     upgradeId: string, 
-    optionId: string | undefined, 
     count: number, 
     context: UpgradeValidationContext
   ): string[] {

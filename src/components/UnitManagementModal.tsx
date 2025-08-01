@@ -64,7 +64,7 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
     return unit.primeAdvantages?.map(pa => pa.advantageId) || [];
   });
   const [showSlotSelectionModal, setShowSlotSelectionModal] = useState(false);
-  const [pendingLogisticalBenefit, setPendingLogisticalBenefit] = useState(false);
+  const [, setPendingLogisticalBenefit] = useState(false);
   const [selectedRoleForLogisticalBenefit, setSelectedRoleForLogisticalBenefit] = useState<string>(() => {
     // Get the selected role for logistical-benefit from the unit's prime advantages
     const logisticalBenefit = unit.primeAdvantages?.find(pa => pa.advantageId === 'logistical-benefit');
@@ -402,7 +402,7 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
       const existingIndex = prev.findIndex(u => u.upgradeId === upgradeId && u.optionId === optionId);
       
       // Handle mutually exclusive upgrades
-      const conflictingUpgrades = UpgradeValidator.getConflictingUpgrades(upgradeId, optionId);
+      const conflictingUpgrades = UpgradeValidator.getConflictingUpgrades(upgradeId);
       if (conflictingUpgrades.length > 0 && newCount > 0) {
         // Remove any existing conflicting options when adding a new one
         const filtered = prev.filter(u => !conflictingUpgrades.includes(u.upgradeId) || u.optionId === optionId);
@@ -429,7 +429,7 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
             previewModels: calculateUpdatedPreviewModels(filtered),
             baseUnitData
           };
-          const errors = UpgradeValidator.validateUpgradeSelection(upgradeId, optionId, newCount, context);
+          const errors = UpgradeValidator.validateUpgradeSelection(upgradeId, newCount, context);
           
           if (errors.length > 0) {
             console.warn('Upgrade validation errors:', errors);
@@ -467,7 +467,7 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
           previewModels: calculateUpdatedPreviewModels(prev),
           baseUnitData
         };
-        const errors = UpgradeValidator.validateUpgradeSelection(upgradeId, optionId, newCount, context);
+        const errors = UpgradeValidator.validateUpgradeSelection(upgradeId, newCount, context);
         
         if (errors.length > 0) {
           console.warn('Upgrade validation errors:', errors);

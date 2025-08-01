@@ -466,7 +466,7 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
       
       // Add special rules from wargear upgrades (only if they're actual special rules, not wargear)
       if (armyUnit?.modelInstanceWargearChanges?.[model.id]) {
-        Object.entries(armyUnit.modelInstanceWargearChanges[model.id]).forEach(([instanceIndex, changes]) => {
+        Object.entries(armyUnit.modelInstanceWargearChanges[model.id]).forEach(([, changes]) => {
           changes.added.forEach(wargearId => {
             const wargear = DataLoader.getSpecialRuleById(wargearId);
             if (wargear && wargear.type === 'special-rule') {
@@ -532,7 +532,7 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
       
       // Add wargear from upgrades
       if (armyUnit?.modelInstanceWargearChanges?.[model.id]) {
-        Object.entries(armyUnit.modelInstanceWargearChanges[model.id]).forEach(([instanceIndex, changes]) => {
+        Object.entries(armyUnit.modelInstanceWargearChanges[model.id]).forEach(([, changes]) => {
           changes.added.forEach(wargearId => {
             const wargear = DataLoader.getSpecialRuleById(wargearId);
             if (wargear && wargear.type === 'wargear') {

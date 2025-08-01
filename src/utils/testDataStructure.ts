@@ -1,6 +1,5 @@
 import { DataLoader } from './dataLoader';
 import { ArmyListStorage } from './armyListStorage';
-import type { ArmyList } from '../types/army';
 
 export function testPrimeSlotSystem() {
   console.log('Testing Prime Slot System...');

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import MainMenu from './components/MainMenu';
 import ArmyListBuilder from './components/ArmyListBuilder';

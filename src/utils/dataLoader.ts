@@ -8,7 +8,7 @@ import primeAdvantagesData from '../data/primeAdvantages.json';
 import specialRulesData from '../data/specialRules.json';
 import modelsData from '../data/models.json';
 import weaponsData from '../data/weapons.json';
-import type { Faction, Detachment, Unit, UnitUpgrade, UpgradeOption, ArmyUpgrade, ArmyUnit, BattlefieldRole, RiteOfWar, PrimeAdvantageDefinition, ArmyList, ArmyDetachment, Allegiance, SpecialRule, Model, Weapon, RangedWeapon, MeleeWeapon } from '../types/army';
+import type { Faction, Detachment, Unit, UnitUpgrade, UpgradeOption, ArmyUnit, BattlefieldRole, RiteOfWar, PrimeAdvantageDefinition, ArmyList, Allegiance, SpecialRule, Model, Weapon, RangedWeapon, MeleeWeapon } from '../types/army';
 
 export class DataLoader {
   // Special Rules methods
@@ -140,7 +140,7 @@ export class DataLoader {
     if (!unit || !unit.models) return [];
     
     const allWeapons: Weapon[] = [];
-    Object.entries(unit.models).forEach(([modelId, count]) => {
+    Object.entries(unit.models).forEach(([modelId]) => {
       const modelWeapons = this.getWeaponsForModel(modelId);
       allWeapons.push(...modelWeapons);
     });
