@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
+import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
 import type { Detachment, BattlefieldRole } from '../types/army';
 import './DetachmentBrowser.css';
@@ -19,56 +20,43 @@ interface DetachmentWithRoles extends Detachment {
 const DetachmentBrowser: React.FC<DetachmentBrowserProps> = ({
   onBackToBrowserMenu
 }) => {
-  const [detachments, setDetachments] = useState<DetachmentWithRoles[]>([]);
-  const [filteredDetachments, setFilteredDetachments] = useState<DetachmentWithRoles[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [selectedType, setSelectedType] = useState<string>('all');
 
-  // Load detachments on mount
-  useEffect(() => {
+  const detachments = useMemo(() => {
     const allDetachments = DataLoader.getDetachments();
-    const battlefieldRoles = DataLoader.getBattlefieldRoles();
-    
-    // Enhance detachments with role information
-    const enhancedDetachments: DetachmentWithRoles[] = allDetachments.map(detachment => ({
-      ...detachment,
-      slotsWithRoles: detachment.slots.map(slot => {
-        const role = battlefieldRoles.find(r => r.id === slot.roleId);
+    return allDetachments.map(detachment => {
+      const slotsWithRoles = detachment.slots.map(slot => {
+        const role = DataLoader.getBattlefieldRoleById(slot.roleId);
         return {
           role: role!,
           count: slot.count,
           isPrime: slot.isPrime,
           description: slot.description
         };
-      })
-    }));
-    
-    setDetachments(enhancedDetachments);
-    setFilteredDetachments(enhancedDetachments);
+      });
+      return { ...detachment, slotsWithRoles };
+    });
   }, []);
 
-  // Filter detachments based on search term and type
-  useEffect(() => {
+  const filteredDetachments = useMemo(() => {
     let filtered = detachments;
-
-    // Filter by type
+    
+    if (searchTerm) {
+      const searchLower = searchTerm.toLowerCase();
+      filtered = filtered.filter(detachment => 
+        detachment.name.toLowerCase().includes(searchLower) ||
+        detachment.description.toLowerCase().includes(searchLower) ||
+        detachment.type.toLowerCase().includes(searchLower)
+      );
+    }
+    
     if (selectedType !== 'all') {
       filtered = filtered.filter(detachment => detachment.type === selectedType);
     }
-
-    // Filter by search term
-    if (searchTerm.trim()) {
-      filtered = filtered.filter(detachment => 
-        detachment.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        detachment.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        detachment.slotsWithRoles.some(slot => 
-          slot.role.name.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      );
-    }
-
-    setFilteredDetachments(filtered);
-  }, [searchTerm, selectedType, detachments]);
+    
+    return filtered;
+  }, [detachments, searchTerm, selectedType]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -84,80 +72,82 @@ const DetachmentBrowser: React.FC<DetachmentBrowserProps> = ({
 
   const getDetachmentTypeColor = (type: string) => {
     switch (type) {
-      case 'Primary': return '#4caf50';
-      case 'Auxiliary': return '#ff9800';
-      case 'Apex': return '#9c27b0';
-      case 'Warlord': return '#f44336';
-      case 'Allied': return '#2196f3';
-      case 'Universal': return '#607d8b';
-      default: return '#666';
+      case 'Primary':
+        return '#4CAF50'; // Green
+      case 'Auxiliary':
+        return '#FF9800'; // Orange
+      case 'Apex':
+        return '#9C27B0'; // Purple
+      case 'Warlord':
+        return '#F44336'; // Red
+      case 'Allied':
+        return '#2196F3'; // Blue
+      case 'Universal':
+        return '#607D8B'; // Blue Grey
+      default:
+        return '#757575'; // Grey
     }
   };
 
   const getDetachmentTypeIcon = (type: string) => {
     switch (type) {
-      case 'Primary': return '⚔️';
-      case 'Auxiliary': return '🛡️';
-      case 'Apex': return '👑';
-      case 'Warlord': return '⚜️';
-      case 'Allied': return '🤝';
-      case 'Universal': return '🌐';
-      default: return '📋';
+      case 'Primary':
+        return '⚔️';
+      case 'Auxiliary':
+        return '🛡️';
+      case 'Apex':
+        return '👑';
+      case 'Warlord':
+        return '⚜️';
+      case 'Allied':
+        return '🤝';
+      case 'Universal':
+        return '🌐';
+      default:
+        return '📋';
     }
   };
 
   const renderDetachmentCard = (detachment: DetachmentWithRoles) => (
     <div key={detachment.id} className="detachment-card">
-      <div className="detachment-header">
+      <div className="detachment-card-header">
+        <h4>{detachment.name}</h4>
         <div className="detachment-type-badge" style={{ backgroundColor: getDetachmentTypeColor(detachment.type) }}>
-          {getDetachmentTypeIcon(detachment.type)} {detachment.type}
+          {detachment.type}
         </div>
-        <h3 className="detachment-name">{detachment.name}</h3>
       </div>
       
-      <div className="detachment-description">
-        {detachment.description}
-      </div>
-
-      {detachment.requirements.length > 0 && (
-        <div className="detachment-requirements">
-          <h4>Requirements:</h4>
-          <ul>
-            {detachment.requirements.map((req, index) => (
-              <li key={index}>{req.description}</li>
-            ))}
-          </ul>
+      <div className="detachment-card-content">
+        <div className="detachment-description">
+          <p>{detachment.description}</p>
         </div>
-      )}
-
-      <div className="detachment-slots">
-        <h4>Slots:</h4>
-        <div className="slots-grid">
-          {detachment.slotsWithRoles.map((slot, index) => (
-            <div key={index} className={`slot-item ${slot.isPrime ? 'prime-slot' : 'regular-slot'}`}>
-              <div className="slot-header">
+        
+        <div className="detachment-slots">
+          <h5>Slots:</h5>
+          <div className="slots-list">
+            {detachment.slotsWithRoles.map((slot, index) => (
+              <div key={index} className="slot-item">
                 <span className="slot-role">{slot.role.name}</span>
                 <span className="slot-count">{slot.count}</span>
-                {slot.isPrime && <span className="prime-badge">Prime</span>}
+                {slot.isPrime && <span className="prime-indicator">★</span>}
               </div>
-              {slot.description && (
-                <div className="slot-description">{slot.description}</div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {detachment.restrictions && detachment.restrictions.length > 0 && (
-        <div className="detachment-restrictions">
-          <h4>Restrictions:</h4>
-          <ul>
-            {detachment.restrictions.map((restriction, index) => (
-              <li key={index}>{restriction.description}</li>
             ))}
-          </ul>
+          </div>
         </div>
-      )}
+        
+        {detachment.requirements && detachment.requirements.length > 0 && (
+          <div className="detachment-requirements">
+            <h5>Requirements:</h5>
+            <ul className="requirements-list">
+              {detachment.requirements.map((req, index) => (
+                <li key={index} className="requirement-item">
+                  {req.description || `${req.type}: ${req.value}`}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
 
@@ -175,9 +165,9 @@ const DetachmentBrowser: React.FC<DetachmentBrowserProps> = ({
   return (
     <div className="detachment-browser">
       <div className="browser-header">
-        <button className="back-to-menu-button" onClick={onBackToBrowserMenu}>
+        <Button variant="secondary" onClick={onBackToBrowserMenu}>
           ← Back to Browser Menu
-        </button>
+        </Button>
         <h2>Detachment Browser</h2>
       </div>
 
@@ -192,9 +182,9 @@ const DetachmentBrowser: React.FC<DetachmentBrowserProps> = ({
               className="search-input"
             />
             {searchTerm && (
-              <button className="clear-search-button" onClick={clearSearch}>
+              <Button variant="secondary" size="sm" onClick={clearSearch}>
                 ×
-              </button>
+              </Button>
             )}
           </div>
           <div className="search-results">

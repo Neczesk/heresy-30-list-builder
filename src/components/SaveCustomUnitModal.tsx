@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Button } from './ui';
 import { CustomUnitStorage } from '../utils/customUnitStorage';
 import type { ArmyUnit } from '../types/army';
 import './SaveCustomUnitModal.css';
@@ -95,7 +96,7 @@ const SaveCustomUnitModal: React.FC<SaveCustomUnitModalProps> = ({
       <div className="save-custom-unit-content" onClick={(e) => e.stopPropagation()}>
         <div className="save-custom-unit-header">
           <h3>Save Custom Unit</h3>
-          <button className="close-button" onClick={handleCancel}>×</button>
+          <Button variant="secondary" size="sm" onClick={handleCancel}>×</Button>
         </div>
         
         <div className="save-custom-unit-body">
@@ -167,20 +168,20 @@ const SaveCustomUnitModal: React.FC<SaveCustomUnitModalProps> = ({
         </div>
 
         <div className="save-custom-unit-actions">
-          <button 
-            className="cancel-button" 
+          <Button 
+            variant="secondary"
             onClick={handleCancel}
             disabled={isSaving}
           >
             Cancel
-          </button>
-          <button 
-            className="save-button" 
+          </Button>
+          <Button 
+            variant="success"
             onClick={handleSave}
             disabled={isSaving || !name.trim() || isNameTaken}
           >
             {isSaving ? 'Saving...' : 'Save Custom Unit'}
-          </button>
+          </Button>
         </div>
       </div>
     </div>

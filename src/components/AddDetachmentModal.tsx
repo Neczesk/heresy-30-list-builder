@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button, Card } from './ui';
 import { DataLoader } from '../utils/dataLoader';
 import AlliedFactionSelector from './AlliedFactionSelector';
 import DetachmentSlots from './DetachmentSlots';
@@ -92,7 +93,7 @@ const AddDetachmentModal: React.FC<AddDetachmentModalProps> = ({
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <div className="modal-header">
           <h2>Add Detachment</h2>
-          <button className="close-button" onClick={onClose}>×</button>
+          <Button variant="secondary" size="sm" onClick={onClose}>×</Button>
         </div>
 
         <div className="modal-body">
@@ -100,27 +101,31 @@ const AddDetachmentModal: React.FC<AddDetachmentModalProps> = ({
             <label>Filter by type:</label>
             <div className="filter-buttons">
               {detachmentTypes.map(type => (
-                <button
+                <Button
                   key={type.id}
-                  className={`filter-button ${selectedType === type.id ? 'active' : ''}`}
+                  variant={selectedType === type.id ? 'warning' : 'secondary'}
+                  size="sm"
                   onClick={() => setSelectedType(type.id)}
                 >
                   {type.name}
-                </button>
+                </Button>
               ))}
             </div>
           </div>
 
           <div className="detachments-list">
             {filteredDetachments.length === 0 ? (
-              <div className="no-detachments">
+              <Card variant="transparent" padding="lg" className="no-detachments">
                 <p>No detachments available for the current army list.</p>
                 <p className="hint">Add units to Command or High Command slots to unlock more detachments.</p>
-              </div>
+              </Card>
             ) : (
               filteredDetachments.map(detachment => (
-                <div
+                <Card
                   key={detachment.id}
+                  variant="default"
+                  padding="lg"
+                  interactive
                   className="detachment-option"
                   onClick={() => handleDetachmentSelect(detachment)}
                 >
@@ -157,7 +162,7 @@ const AddDetachmentModal: React.FC<AddDetachmentModalProps> = ({
                     armyList={armyList}
                     onUnitSelected={() => {}} // No-op for display only
                   />
-                </div>
+                </Card>
               ))
             )}
           </div>

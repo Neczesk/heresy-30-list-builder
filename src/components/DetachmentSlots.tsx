@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
 import UnitSelectionModal from './UnitSelectionModal';
 import type { Detachment, ArmyDetachment, Army, ArmyUnit } from '../types/army';
@@ -340,8 +341,6 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
         />
       )}
 
-
-
       {/* Remove Confirmation Modal */}
       {showRemoveConfirm && unitToRemove && (
         <div className="confirm-modal-overlay" onClick={() => setShowRemoveConfirm(false)}>
@@ -349,18 +348,18 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
             <h3>Remove Unit</h3>
             <p>Are you sure you want to remove "{unitToRemove.unitName}"?</p>
             <div className="confirm-buttons">
-              <button 
-                className="confirm-button"
+              <Button 
+                variant="danger"
                 onClick={handleConfirmRemove}
               >
                 Yes, Remove
-              </button>
-              <button 
-                className="cancel-button"
+              </Button>
+              <Button 
+                variant="secondary"
                 onClick={handleCancelRemove}
               >
                 Cancel
-              </button>
+              </Button>
             </div>
           </div>
         </div>

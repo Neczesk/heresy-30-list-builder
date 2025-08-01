@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Button, Card } from './ui';
 import { CustomDetachmentStorage } from '../utils/customDetachmentStorage';
 import type { CustomDetachmentMetadata, ArmyDetachment } from '../types/army';
 import './LoadCustomDetachmentModal.css';
@@ -67,7 +68,7 @@ const LoadCustomDetachmentModal: React.FC<LoadCustomDetachmentModalProps> = ({
       <div className="modal-content load-custom-detachment-modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h2>Load Custom Detachment</h2>
-          <button className="close-button" onClick={onClose}>×</button>
+          <Button variant="secondary" size="sm" onClick={onClose}>×</Button>
         </div>
 
         <div className="modal-body">
@@ -91,17 +92,20 @@ const LoadCustomDetachmentModal: React.FC<LoadCustomDetachmentModalProps> = ({
           </div>
 
           {customDetachments.length === 0 ? (
-            <div className="no-custom-detachments">
+            <Card variant="transparent" padding="lg" className="no-custom-detachments">
               <p>No custom detachments found for this base detachment.</p>
               <p className="hint">Save a custom detachment first to load it here.</p>
-            </div>
+            </Card>
           ) : (
             <div className="custom-detachments-list">
               <h3>Available Custom Detachments ({customDetachments.length})</h3>
               <div className="detachments-grid">
                 {customDetachments.map((detachment) => (
-                  <div
+                  <Card
                     key={detachment.id}
+                    variant={selectedDetachment === detachment.id ? 'elevated' : 'default'}
+                    padding="lg"
+                    interactive
                     className={`detachment-option ${selectedDetachment === detachment.id ? 'selected' : ''}`}
                     onClick={() => handleDetachmentSelect(detachment.id)}
                   >
@@ -118,7 +122,7 @@ const LoadCustomDetachmentModal: React.FC<LoadCustomDetachmentModalProps> = ({
                         <span className="subfaction">{detachment.subfaction}</span>
                       )}
                     </div>
-                  </div>
+                  </Card>
                 ))}
               </div>
             </div>
@@ -132,17 +136,17 @@ const LoadCustomDetachmentModal: React.FC<LoadCustomDetachmentModalProps> = ({
         </div>
 
         <div className="modal-actions">
-          <button className="cancel-button" onClick={onClose}>
+          <Button variant="secondary" onClick={onClose}>
             Cancel
-          </button>
+          </Button>
           {customDetachments.length > 0 && (
-            <button 
-              className="load-button" 
+            <Button 
+              variant="info"
               onClick={handleLoad}
               disabled={!selectedDetachment}
             >
               Load Custom Detachment
-            </button>
+            </Button>
           )}
         </div>
       </div>

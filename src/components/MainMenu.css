@@ -1,3 +1,7 @@
+/* Import shared styles */
+@import './shared.css';
+
+/* Main Menu Specific Styles */
 .main-menu {
   display: flex;
   flex-direction: column;
@@ -6,24 +10,24 @@
   min-height: 100vh;
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   color: white;
-  padding: 2rem;
+  padding: var(--spacing-2xl);
 }
 
 .menu-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: var(--spacing-3xl);
 }
 
 .menu-header h1 {
-  font-size: 3rem;
+  font-size: var(--font-size-8xl);
   margin: 0;
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .menu-header h2 {
-  font-size: 1.5rem;
-  margin: 0.5rem 0 0 0;
+  font-size: var(--font-size-5xl);
+  margin: var(--spacing-sm) 0 0 0;
   font-weight: 300;
   opacity: 0.9;
 }
@@ -31,22 +35,23 @@
 .menu-options {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--spacing-2xl);
   width: 100%;
   max-width: 1200px;
 }
 
 .menu-section {
+  composes: card;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .menu-section h3 {
-  margin: 0 0 1rem 0;
-  font-size: 1.2rem;
+  margin: 0 0 var(--spacing-lg) 0;
+  font-size: var(--font-size-3xl);
   font-weight: 600;
   color: #ffd700;
   text-transform: uppercase;
@@ -54,16 +59,17 @@
 }
 
 .menu-button {
+  composes: btn;
   display: block;
   width: 100%;
-  padding: 1rem 1.5rem;
-  margin: 0.5rem 0;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  margin: var(--spacing-sm) 0;
   border: none;
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-lg);
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
   background: rgba(255, 255, 255, 0.1);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -72,7 +78,7 @@
 .menu-button:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-lg);
 }
 
 .menu-button.primary {
@@ -100,28 +106,28 @@
 }
 
 .menu-footer {
-  margin-top: 3rem;
+  margin-top: var(--spacing-3xl);
   text-align: center;
   opacity: 0.7;
-  font-size: 0.9rem;
+  font-size: var(--font-size-base);
 }
 
 .menu-footer p {
   margin: 0;
 }
 
-/* Responsive design */
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .main-menu {
-    padding: 1rem;
+    padding: var(--spacing-lg);
   }
   
   .menu-header h1 {
-    font-size: 2.5rem;
+    font-size: var(--font-size-7xl);
   }
   
   .menu-header h2 {
-    font-size: 1.2rem;
+    font-size: var(--font-size-3xl);
   }
   
   .menu-options {

@@ -1,3 +1,7 @@
+/* Import shared styles */
+@import './shared.css';
+
+/* Detachment Selector Specific Styles */
 .detachment-selector {
   min-height: 100vh;
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
@@ -9,22 +13,23 @@
 .selector-header {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  padding: 1rem 2rem;
+  gap: var(--spacing-2xl);
+  padding: var(--spacing-lg) var(--spacing-2xl);
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .back-button {
+  composes: btn btn-secondary;
   background: rgba(255, 255, 255, 0.1);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
+  font-size: var(--font-size-base);
+  transition: all var(--transition-normal);
 }
 
 .back-button:hover {
@@ -34,13 +39,13 @@
 
 .selector-header h2 {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: var(--font-size-6xl);
   color: #ffd700;
 }
 
 .selector-content {
   flex: 1;
-  padding: 2rem;
+  padding: var(--spacing-2xl);
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
@@ -49,42 +54,45 @@
 .detachment-step h3,
 .faction-step h3,
 .subfaction-step h3 {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 var(--spacing-sm) 0;
   color: #ffd700;
-  font-size: 1.5rem;
+  font-size: var(--font-size-5xl);
+  font-weight: 600;
 }
 
 .detachment-step p,
 .faction-step p,
 .subfaction-step p {
-  margin: 0 0 2rem 0;
+  margin: 0 0 var(--spacing-2xl) 0;
   opacity: 0.9;
-  font-size: 1.1rem;
+  font-size: var(--font-size-xl);
+  line-height: 1.5;
 }
 
 .detachments-grid,
 .factions-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 1.5rem;
+  gap: var(--spacing-xl);
 }
 
 .detachment-card,
 .faction-card {
+  composes: card;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
 }
 
 .detachment-card:hover,
 .faction-card:hover {
   background: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-xl);
 }
 
 .detachment-card.selected,
@@ -96,130 +104,149 @@
 
 .detachment-card h4,
 .faction-card h4 {
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 var(--spacing-md) 0;
   color: #ffd700;
-  font-size: 1.3rem;
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
 }
 
 .detachment-description,
 .faction-description {
-  margin: 0 0 1rem 0;
-  opacity: 0.9;
-  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-lg);
 }
 
 .detachment-slots {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
 }
 
 .slots-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--font-size-sm);
   font-weight: 600;
-  color: #4a90e2;
-  margin-right: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-sm);
+  width: 100%;
 }
 
 .slot {
-  background: rgba(74, 144, 226, 0.2);
-  color: #4a90e2;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
+  composes: badge;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-2xl);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .prime-indicator {
   color: #ffd700;
-  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .faction-type {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
 }
 
 .type-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--font-size-sm);
   font-weight: 600;
-  color: #4a90e2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .type-value {
-  background: rgba(74, 144, 226, 0.2);
-  color: #4a90e2;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 500;
+  composes: badge;
+  background: var(--primary-color);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-2xl);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .faction-rules {
-  margin-top: 1rem;
+  margin-top: var(--spacing-lg);
 }
 
 .rules-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--font-size-sm);
   font-weight: 600;
-  color: #4a90e2;
-  display: block;
-  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-sm);
 }
 
 .rules-list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: var(--spacing-sm);
 }
 
 .rule {
-  background: rgba(76, 175, 80, 0.2);
-  color: #4caf50;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
+  composes: badge;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
   font-weight: 500;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .faction-note {
-  margin-top: 1rem;
-  padding: 0.5rem;
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
   background: rgba(255, 193, 7, 0.1);
-  border-radius: 4px;
   border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: var(--radius-md);
 }
 
 .faction-note .note {
-  color: #ffc107;
-  font-size: 0.8rem;
+  color: var(--warning-color);
+  font-size: var(--font-size-sm);
   font-style: italic;
+  line-height: 1.4;
+  margin: 0;
 }
 
-/* Responsive design */
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .selector-header {
     flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
   }
-  
+
   .selector-content {
-    padding: 1rem;
+    padding: var(--spacing-lg);
   }
-  
+
   .detachments-grid,
   .factions-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--spacing-lg);
   }
-  
+
   .detachment-card,
   .faction-card {
-    padding: 1rem;
+    padding: var(--spacing-lg);
   }
 } 

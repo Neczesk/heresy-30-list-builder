@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Button, Card } from './ui';
 import { DataLoader } from '../utils/dataLoader';
 import { CustomUnitStorage } from '../utils/customUnitStorage';
 import type { Unit, CustomUnit, Army } from '../types/army';
@@ -206,22 +207,24 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
       <div className="unit-selection-content" onClick={(e) => e.stopPropagation()}>
         <div className="unit-selection-header">
           <h3>Select {roleName} Unit</h3>
-          <button className="close-button" onClick={onClose}>×</button>
+          <Button variant="secondary" size="sm" onClick={onClose}>×</Button>
         </div>
         
         <div className="unit-selection-tabs">
-          <button 
-            className={`tab-button ${activeTab === 'base' ? 'active' : ''}`}
+          <Button 
+            variant={activeTab === 'base' ? 'warning' : 'secondary'}
+            size="sm"
             onClick={() => setActiveTab('base')}
           >
             Base Units ({availableBaseUnits.length})
-          </button>
-          <button 
-            className={`tab-button ${activeTab === 'custom' ? 'active' : ''}`}
+          </Button>
+          <Button 
+            variant={activeTab === 'custom' ? 'warning' : 'secondary'}
+            size="sm"
             onClick={() => setActiveTab('custom')}
           >
             Custom Units ({availableCustomUnits.length})
-          </button>
+          </Button>
         </div>
 
         <div className="unit-selection-body">
@@ -230,8 +233,11 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
               {availableBaseUnits.length > 0 ? (
                 <div className="unit-list">
                   {availableBaseUnits.map((unit) => (
-                    <div
+                    <Card
                       key={unit.id}
+                      variant="default"
+                      padding="lg"
+                      interactive
                       className="unit-option"
                       onClick={() => handleBaseUnitSelect(unit.id)}
                     >
@@ -250,13 +256,13 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
                         </div>
                       </div>
                       <div className="unit-description">{unit.description}</div>
-                    </div>
+                    </Card>
                   ))}
                 </div>
               ) : (
-                <div className="no-units">
+                <Card variant="transparent" padding="lg" className="no-units">
                   <p>No {roleName} units available for your faction.</p>
-                </div>
+                </Card>
               )}
             </div>
           )}
@@ -268,8 +274,11 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
                   {availableCustomUnits.map((customUnit) => {
                     const baseUnit = DataLoader.getUnitById(customUnit.baseUnitId);
                     return (
-                      <div
+                      <Card
                         key={customUnit.id}
+                        variant="default"
+                        padding="lg"
+                        interactive
                         className="unit-option custom-unit"
                         onClick={() => handleCustomUnitSelect(customUnit)}
                       >
@@ -295,14 +304,14 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
                         {customUnit.description && (
                           <div className="custom-description">{customUnit.description}</div>
                         )}
-                      </div>
+                      </Card>
                     );
                   })}
                 </div>
               ) : (
-                <div className="no-units">
+                <Card variant="transparent" padding="lg" className="no-units">
                   <p>No custom {roleName} units available for your faction.</p>
-                </div>
+                </Card>
               )}
             </div>
           )}

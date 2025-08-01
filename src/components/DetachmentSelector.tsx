@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button, Card } from './ui';
 import { DataLoader } from '../utils/dataLoader';
 import type { Detachment, Faction, Allegiance } from '../types/army';
 import AllegianceSelector from './AllegianceSelector';
@@ -82,8 +83,11 @@ const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
       
       <div className="detachments-grid">
         {primaryDetachments.map((detachment) => (
-          <div
+          <Card
             key={detachment.id}
+            variant={selectedDetachment?.id === detachment.id ? 'elevated' : 'default'}
+            padding="lg"
+            interactive
             className={`detachment-card ${selectedDetachment?.id === detachment.id ? 'selected' : ''}`}
             onClick={() => handleDetachmentSelect(detachment)}
           >
@@ -98,7 +102,7 @@ const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
                 </span>
               ))}
             </div>
-          </div>
+          </Card>
         ))}
       </div>
     </div>
@@ -111,15 +115,18 @@ const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
       
       <div className="factions-grid">
         {mainFactions.map((faction) => (
-          <div
+          <Card
             key={faction.id}
+            variant={selectedFaction?.id === faction.id ? 'elevated' : 'default'}
+            padding="lg"
+            interactive
             className={`faction-card ${selectedFaction?.id === faction.id ? 'selected' : ''}`}
             onClick={() => handleFactionSelect(faction)}
           >
             <h4>{faction.name}</h4>
             <p className="faction-description">{faction.description}</p>
             <div className="faction-type">{faction.type}</div>
-          </div>
+          </Card>
         ))}
       </div>
     </div>
@@ -132,15 +139,18 @@ const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
       
       <div className="factions-grid">
         {legionSubFactions.map((subFaction) => (
-          <div
+          <Card
             key={subFaction.id}
+            variant={selectedFaction?.id === subFaction.id ? 'elevated' : 'default'}
+            padding="lg"
+            interactive
             className={`faction-card ${selectedFaction?.id === subFaction.id ? 'selected' : ''}`}
             onClick={() => handleSubFactionSelect(subFaction)}
           >
             <h4>{subFaction.name}</h4>
             <p className="faction-description">{subFaction.description}</p>
             <div className="faction-type">{subFaction.type}</div>
-          </div>
+          </Card>
         ))}
       </div>
     </div>
@@ -165,9 +175,9 @@ const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
     <div className="detachment-selector">
       <div className="detachment-selector-header">
         <h2>{getCurrentStepTitle()}</h2>
-        <button className="back-button" onClick={handleBack}>
+        <Button variant="secondary" size="sm" onClick={handleBack}>
           ← Back
-        </button>
+        </Button>
       </div>
 
       {step === 'allegiance' && renderAllegianceStep()}

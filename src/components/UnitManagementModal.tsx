@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
 import { CustomUnitStorage } from '../utils/customUnitStorage';
 import { UpgradeValidator } from '../utils/upgradeValidator';
@@ -980,7 +981,7 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
           <h3>
             {customUnitData ? `${customUnitData.name} (${baseUnitData.name})` : `${baseUnitData.name} Management`}
           </h3>
-          <button className="close-button" onClick={onClose}>×</button>
+          <Button variant="secondary" size="sm" onClick={onClose}>×</Button>
         </div>
         
         <div className="unit-management-body">
@@ -1045,43 +1046,48 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
 
           {/* Tabs */}
           <div className="tab-navigation">
-            <button 
-              className={`tab-button ${activeTab === 'unit' ? 'active' : ''}`}
+            <Button 
+              variant={activeTab === 'unit' ? 'primary' : 'secondary'}
+              size="sm"
               onClick={() => setActiveTab('unit')}
             >
               Unit Details
-            </button>
-            <button 
-              className={`tab-button ${activeTab === 'upgrades' ? 'active' : ''}`}
+            </Button>
+            <Button 
+              variant={activeTab === 'upgrades' ? 'primary' : 'secondary'}
+              size="sm"
               onClick={() => setActiveTab('upgrades')}
             >
               Upgrades
-            </button>
+            </Button>
             {(() => {
               const inPrimeSlot = isInPrimeSlot();
               return inPrimeSlot ? (
-                <button 
-                  className={`tab-button ${activeTab === 'prime' ? 'active' : ''}`}
+                <Button 
+                  variant={activeTab === 'prime' ? 'primary' : 'secondary'}
+                  size="sm"
                   onClick={() => setActiveTab('prime')}
                 >
                   Prime Advantages
-                </button>
+                </Button>
               ) : null;
             })()}
             {canTriggerDetachments && (
-              <button 
-                className={`tab-button ${activeTab === 'detachments' ? 'active' : ''}`}
+              <Button 
+                variant={activeTab === 'detachments' ? 'primary' : 'secondary'}
+                size="sm"
                 onClick={() => setActiveTab('detachments')}
               >
                 Detachments ({currentDetachmentCount}/{maxDetachments})
-              </button>
+              </Button>
             )}
-            <button 
-              className={`tab-button ${activeTab === 'custom' ? 'active' : ''}`}
+            <Button 
+              variant={activeTab === 'custom' ? 'primary' : 'secondary'}
+              size="sm"
               onClick={() => setActiveTab('custom')}
             >
               Custom Units
-            </button>
+            </Button>
           </div>
 
           {/* Tab Content */}
@@ -1151,21 +1157,23 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                                           <div className="option-description">{option.description}</div>
                                           
                                           <div className="upgrade-option-controls">
-                                            <button
-                                              className="count-button"
+                                            <Button
+                                              variant="secondary"
+                                              size="sm"
                                               onClick={() => handleUpgradeCountChange(upgrade.id, option.id, appliedCount + 1)}
                                               disabled={appliedCount >= maxInstances}
                                             >
                                               +
-                                            </button>
+                                            </Button>
                                             <span className="count-display">{appliedCount}</span>
-                                            <button
-                                              className="count-button"
+                                            <Button
+                                              variant="secondary"
+                                              size="sm"
                                               onClick={() => handleUpgradeCountChange(upgrade.id, option.id, Math.max(0, appliedCount - 1))}
                                               disabled={appliedCount <= 0}
                                             >
                                               -
-                                            </button>
+                                            </Button>
                                           </div>
                                         </div>
                                       );
@@ -1271,21 +1279,23 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                                                       <div className="option-description">{option.description}</div>
                                                       
                                                       <div className="upgrade-option-controls">
-                                                        <button
-                                                          className="count-button"
+                                                        <Button
+                                                          variant="secondary"
+                                                          size="sm"
                                                           onClick={() => handleUpgradeCountChange(upgrade.id, option.id, appliedCount + 1)}
                                                           disabled={appliedCount >= maxInstances}
                                                         >
                                                           +
-                                                        </button>
+                                                        </Button>
                                                         <span className="count-display">{appliedCount}</span>
-                                                        <button
-                                                          className="count-button"
+                                                        <Button
+                                                          variant="secondary"
+                                                          size="sm"
                                                           onClick={() => handleUpgradeCountChange(upgrade.id, option.id, Math.max(0, appliedCount - 1))}
                                                           disabled={appliedCount <= 0}
                                                         >
                                                           -
-                                                        </button>
+                                                        </Button>
                                                       </div>
                                                     </div>
                                                   );
@@ -1324,15 +1334,15 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                 </div>
                 
                 <div className="upgrades-actions">
-                  <button className="save-button" onClick={handleSaveUpgrades}>
+                  <Button variant="success" onClick={handleSaveUpgrades}>
                     Save Upgrades
-                  </button>
-                  <button className="save-close-button" onClick={() => {
+                  </Button>
+                  <Button variant="success" onClick={() => {
                     handleSaveUpgrades();
                     onClose();
                   }}>
                     Save & Close
-                  </button>
+                  </Button>
                 </div>
               </div>
             )}
@@ -1381,15 +1391,15 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                 </div>
                 
                 <div className="prime-actions">
-                  <button className="save-button" onClick={handleSavePrimeAdvantages}>
+                  <Button variant="success" onClick={handleSavePrimeAdvantages}>
                     Save Prime Advantages
-                  </button>
-                  <button className="save-close-button" onClick={() => {
+                  </Button>
+                  <Button variant="success" onClick={() => {
                     handleSavePrimeAdvantages();
                     onClose();
                   }}>
                     Save & Close
-                  </button>
+                  </Button>
                 </div>
               </div>
             )}
@@ -1420,12 +1430,12 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                           <div className="detachment-units">
                             <span className="units-count">{detachment.units.length} units</span>
                           </div>
-                          <button 
-                            className="remove-detachment-button"
+                          <Button 
+                            variant="danger"
                             onClick={() => handleRemoveDetachment(detachment.detachmentId)}
                           >
                             Remove Detachment
-                          </button>
+                          </Button>
                         </div>
                       );
                     })
@@ -1438,9 +1448,9 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
 
                 {currentDetachmentCount < maxDetachments && (
                   <div className="add-detachment-section">
-                    <button className="add-detachment-button" onClick={handleAddDetachment}>
+                    <Button variant="success" onClick={handleAddDetachment}>
                       Add Detachment
-                    </button>
+                    </Button>
                   </div>
                 )}
               </div>
@@ -1458,40 +1468,40 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                     // Editing a custom unit in CustomUnitsManager - auto-save
                     <div className="custom-unit-save-info">
                       <p>This custom unit is being automatically saved as you make changes.</p>
-                      <button 
-                        className="save-custom-unit-button disabled"
+                      <Button 
+                        variant="info"
                         disabled
                       >
                         Auto-Saving Enabled
-                      </button>
+                      </Button>
                     </div>
                   ) : unit.originalCustomUnitId ? (
                     // Editing a custom unit that was added to an army list - manual save
                     <div className="custom-unit-save-info">
                       <p>This unit was created from a custom unit. Changes will only affect this army list.</p>
                       <div className="save-options">
-                        <button 
-                          className="save-custom-unit-button"
+                        <Button 
+                          variant="success"
                           onClick={() => setShowSaveCustomUnitModal(true)}
                         >
                           Save as New Custom Unit
-                        </button>
-                        <button 
-                          className="save-custom-unit-button overwrite"
+                        </Button>
+                        <Button 
+                          variant="warning"
                           onClick={() => handleOverwriteCustomUnit()}
                         >
                           Overwrite Original Custom Unit
-                        </button>
+                        </Button>
                       </div>
                     </div>
                   ) : (
                     // Editing a regular unit - normal save
-                    <button 
-                      className="save-custom-unit-button"
+                    <Button 
+                      variant="success"
                       onClick={() => setShowSaveCustomUnitModal(true)}
                     >
                       Save as Custom Unit
-                    </button>
+                    </Button>
                   )}
                 </div>
 
@@ -1543,19 +1553,19 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
             
             <div className="role-selection-grid">
               {DataLoader.getBattlefieldRoles().map((role) => (
-                <button
+                <Button
                   key={role.id}
-                  className="role-selection-button"
+                  variant="primary"
                   onClick={() => handleSlotSelection(role.id)}
                 >
                   <div className="role-name">{role.name}</div>
                   <div className="role-description">{role.description}</div>
-                </button>
+                </Button>
               ))}
             </div>
             
             <div className="modal-actions">
-              <button onClick={handleCancelSlotSelection}>Cancel</button>
+              <Button variant="secondary" onClick={handleCancelSlotSelection}>Cancel</Button>
             </div>
           </div>
         </div>

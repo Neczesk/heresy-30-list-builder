@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button, Card } from './ui';
 import { DataLoader } from '../utils/dataLoader';
 import type { Faction, Detachment } from '../types/army';
 import './AlliedFactionSelector.css';
@@ -62,8 +63,11 @@ const AlliedFactionSelector: React.FC<AlliedFactionSelectorProps> = ({
       
       <div className="factions-grid">
         {mainFactions.map((faction) => (
-          <div
+          <Card
             key={faction.id}
+            variant="default"
+            padding="lg"
+            interactive
             className="faction-card"
             onClick={() => handleFactionSelect(faction)}
           >
@@ -88,7 +92,7 @@ const AlliedFactionSelector: React.FC<AlliedFactionSelectorProps> = ({
                 <span className="note">Note: You'll need to select a specific Legion</span>
               </div>
             )}
-          </div>
+          </Card>
         ))}
       </div>
     </div>
@@ -101,8 +105,11 @@ const AlliedFactionSelector: React.FC<AlliedFactionSelectorProps> = ({
       
       <div className="factions-grid">
         {legionSubFactions.map((legion) => (
-          <div
+          <Card
             key={legion.id}
+            variant="default"
+            padding="lg"
+            interactive
             className="faction-card"
             onClick={() => handleSubFactionSelect(legion)}
           >
@@ -122,7 +129,7 @@ const AlliedFactionSelector: React.FC<AlliedFactionSelectorProps> = ({
                 </div>
               </div>
             )}
-          </div>
+          </Card>
         ))}
       </div>
     </div>
@@ -142,9 +149,9 @@ const AlliedFactionSelector: React.FC<AlliedFactionSelectorProps> = ({
   return (
     <div className="allied-faction-selector">
       <div className="selector-header">
-        <button className="back-button" onClick={handleBack}>
+        <Button variant="secondary" size="sm" onClick={handleBack}>
           ← Back
-        </button>
+        </Button>
         <h2>{getCurrentStepTitle()}</h2>
       </div>
 

@@ -1,6 +1,7 @@
 import React from 'react';
+import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
-import type { Unit, Model, Weapon, RangedWeapon, MeleeWeapon, ArmyUnit } from '../types/army';
+import type { Unit, Model, RangedWeapon, MeleeWeapon, ArmyUnit } from '../types/army';
 import './UnitViewer.css';
 
 interface UnitViewerProps {
@@ -98,33 +99,15 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
             <tr>
               <th>Model</th>
               <th>M</th>
-              <th>S</th>
-              <th>T</th>
-              <th>I</th>
-              <th>A</th>
-              <th>W</th>
               <th>WS</th>
               <th>BS</th>
-              <th colSpan={4} className="group-header">Mental Stats</th>
-              <th>Sv</th>
-              <th>Inv</th>
-            </tr>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
+              <th>S</th>
+              <th>T</th>
+              <th>W</th>
+              <th>I</th>
+              <th>A</th>
               <th>Ld</th>
-              <th>Wp</th>
-              <th>Cl</th>
-              <th>Int</th>
-              <th></th>
-              <th></th>
+              <th>Sv</th>
             </tr>
           </thead>
           <tbody>
@@ -135,19 +118,15 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
                 <tr key={model.id}>
                   <td>{displayName}</td>
                   <td>{characteristics.movement}"</td>
-                  <td>{characteristics.strength}</td>
-                  <td>{characteristics.toughness}</td>
-                  <td>{characteristics.initiative}</td>
-                  <td>{characteristics.attacks}</td>
-                  <td>{characteristics.wounds}</td>
                   <td>{characteristics.weaponSkill}+</td>
                   <td>{characteristics.ballisticSkill}+</td>
+                  <td>{characteristics.strength}</td>
+                  <td>{characteristics.toughness}</td>
+                  <td>{characteristics.wounds}</td>
+                  <td>{characteristics.initiative}</td>
+                  <td>{characteristics.attacks}</td>
                   <td>{characteristics.leadership}</td>
-                  <td>{characteristics.willpower}</td>
-                  <td>{characteristics.cool}</td>
-                  <td>{characteristics.intelligence}</td>
                   <td>{characteristics.armourSave}+</td>
-                  <td>{characteristics.invulnerableSave ? `${characteristics.invulnerableSave}+` : '-'}</td>
                 </tr>
               );
             })}
@@ -158,168 +137,73 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
   };
 
   const renderRangedWeaponsTable = (modelCompositions: { model: Model; count: number }[]) => {
-    const weaponMap = new Map<string, { weapon: RangedWeapon; count: number; mount?: string }>();
-    const isVehicle = modelCompositions.some(({ model }) => model.type === 'Vehicle');
+    const weaponMap = new Map<string, { weaponId: string; models: string[]; weapon: RangedWeapon | undefined }>();
     
-    // Use the new weapon count calculation if armyUnit is provided
-    if (armyUnit) {
-      const weaponCounts = DataLoader.calculateWeaponCounts(unit.id, armyUnit);
-      
-      Object.entries(weaponCounts).forEach(([key, weaponData]) => {
-        const weapon = DataLoader.getWeaponById(weaponData.weaponId);
-        if (weapon && DataLoader.isRangedWeapon(weapon) && weaponData.count > 0) {
-          // Use mount information from the weapon data
-          const mount = weaponData.mount;
-          // For non-vehicle units, use weapon ID as key. For vehicle units, use the full key with mount
-          const mapKey = mount ? key : weaponData.weaponId;
-          weaponMap.set(mapKey, { weapon: weapon as RangedWeapon, count: weaponData.count, mount });
+    modelCompositions.forEach(({ model, count }) => {
+      model.weapons?.forEach(weaponEntry => {
+        const weapon = DataLoader.getWeaponById(weaponEntry.id);
+        const key = weaponEntry.id;
+        
+        // Only include ranged weapons
+        if (weapon && DataLoader.isRangedWeapon(weapon)) {
+          if (weaponMap.has(key)) {
+            const existing = weaponMap.get(key)!;
+            existing.models.push(`${model.name}${count > 1 ? ` x${count}` : ''}`);
+          } else {
+            weaponMap.set(key, {
+              weaponId: weaponEntry.id,
+              models: [`${model.name}${count > 1 ? ` x${count}` : ''}`],
+              weapon: weapon as RangedWeapon
+            });
+          }
         }
       });
-    } else {
-      // Fall back to the old method for backward compatibility
-      modelCompositions.forEach(({ model, count }) => {
-        // Handle new weapon structure with mount locations (RANGED)
-        if (Array.isArray(model.weapons) && model.weapons.length > 0 && typeof model.weapons[0] === 'object' && 'id' in model.weapons[0]) {
-          // New structure: Array of { id: string, mount?: string, count?: number }
-          (model.weapons as Array<{ id: string; mount?: string; count?: number }>).forEach(weaponEntry => {
-            const weapon = DataLoader.getWeaponById(weaponEntry.id);
-            if (weapon && DataLoader.isRangedWeapon(weapon)) {
-              const key = `${weapon.id}-${weaponEntry.mount || 'default'}`;
-              const mount = weaponEntry.mount;
-              const weaponCount = weaponEntry.count || 1;
-              if (weaponMap.has(key)) {
-                const existing = weaponMap.get(key)!;
-                existing.count += count * weaponCount;
-              } else {
-                weaponMap.set(key, { weapon: weapon as RangedWeapon, count: count * weaponCount, mount });
-              }
-            }
-          });
-        } else {
-          // Old structure: Array of strings (RANGED)
-          const weapons = (model.weapons as unknown as string[]).map(weaponId => DataLoader.getWeaponById(weaponId)).filter(weapon => weapon !== undefined) as Weapon[];
-          const rangedWeapons = weapons.filter(weapon => DataLoader.isRangedWeapon(weapon)) as RangedWeapon[];
-          rangedWeapons.forEach(weapon => {
-            const key = weapon.id;
-            const mount = undefined;
-            if (weaponMap.has(key)) {
-              const existing = weaponMap.get(key)!;
-              existing.count += count;
-              // Keep the first mount found for this weapon
-              if (!existing.mount && mount) {
-                existing.mount = mount;
-              }
-            } else {
-              weaponMap.set(key, { weapon, count, mount });
-            }
-          });
-        }
-      });
-    }
-
+    });
+    
     if (weaponMap.size === 0) {
-      return null;
+      return <p>No ranged weapons available.</p>;
     }
-
+    
     return (
-      <table className="weapons-table">
+      <table className="ranged-weapons-table">
         <thead>
           <tr>
             <th>Models</th>
             <th>Weapon</th>
-            {isVehicle && <th>Mount</th>}
-            <th>R</th>
-            <th>FP</th>
+            <th>Range</th>
+            <th>Firepower</th>
             <th>S</th>
             <th>AP</th>
             <th>D</th>
-            <th>Traits</th>
             <th>Special Rules</th>
+            <th>Traits</th>
           </tr>
         </thead>
         <tbody>
-          {Array.from(weaponMap.values()).map(({ weapon, count, mount }, index) => {
-            // Use the count that was already calculated for this weapon/mount combination
-            const displayName = count > 1 ? `${weapon.name} x${count}` : weapon.name;
-            // Check if weapon has multiple profiles
-            if (weapon.profiles && weapon.profiles.length > 0) {
-              // Create a group header row followed by profile rows
-              const rows = [];
-              
-              // Add header row for the weapon group
-              rows.push(
-                <tr key={`${weapon.id}-${index}-header`} className="weapon-group-header">
-                  <td>{count > 1 ? `${count} models` : '1 model'}</td>
-                  <td colSpan={isVehicle ? 8 : 7}><strong>{displayName}</strong></td>
-                </tr>
-              );
-              
-              // Add each profile as a separate row
-              weapon.profiles.forEach((profile, profileIndex) => {
-                rows.push(
-                  <tr key={`${weapon.id}-${index}-${profileIndex}`} className="weapon-profile-row">
-                    <td></td>
-                    <td>{profile.name}</td>
-                    {isVehicle && <td>{mount || '-'}</td>}
-                    <td>{profile.range}"</td>
-                    <td>{profile.firepower}</td>
-                    <td>{profile.rangedStrength}</td>
-                    <td>{profile.ap}</td>
-                    <td>{profile.damage}</td>
-                    <td>
-                      {profile.traits && profile.traits.length > 0 
-                        ? profile.traits.join(', ')
-                        : '-'
-                      }
-                    </td>
-                    <td>
-                      {profile.specialRules.length > 0 
-                        ? profile.specialRules.map(ruleId => {
-                            const rule = DataLoader.getSpecialRuleById(ruleId);
-                            const value = profile.specialRuleValues?.[ruleId];
-                            const ruleDisplayName = value ? `${rule?.name || ruleId} (${value})` : rule?.name || ruleId;
-                            return ruleDisplayName;
-                          }).join(', ')
-                        : '-'
-                      }
-                    </td>
-                  </tr>
-                );
-              });
-              
-              return rows;
-            } else {
-              // Single profile weapon (backward compatibility)
+          {Array.from(weaponMap.values()).map(({ weaponId, models, weapon }, index) => {
+            if (!weapon) {
               return (
-                <tr key={`${weapon.id}-${index}`}>
-                  <td>{count > 1 ? `${count} models` : '1 model'}</td>
-                  <td>{displayName}</td>
-                  {isVehicle && <td>{mount || '-'}</td>}
-                  <td>{weapon.range}"</td>
-                  <td>{weapon.firepower}</td>
-                  <td>{weapon.rangedStrength}</td>
-                  <td>{weapon.ap}</td>
-                  <td>{weapon.damage}</td>
-                  <td>
-                    {weapon.traits && weapon.traits.length > 0 
-                      ? weapon.traits.join(', ')
-                      : '-'
-                    }
-                  </td>
-                  <td>
-                    {weapon.specialRules && weapon.specialRules.length > 0 
-                      ? weapon.specialRules.map(ruleId => {
-                          const rule = DataLoader.getSpecialRuleById(ruleId);
-                          const value = weapon.specialRuleValues?.[ruleId];
-                          const ruleDisplayName = value ? `${rule?.name || ruleId} (${value})` : rule?.name || ruleId;
-                          return ruleDisplayName;
-                        }).join(', ')
-                      : '-'
-                    }
-                  </td>
+                <tr key={`${weaponId}-${index}`}>
+                  <td>{models.join(', ')}</td>
+                  <td>{weaponId}</td>
+                  <td colSpan={7}>Weapon not found</td>
                 </tr>
               );
             }
+            
+            return (
+              <tr key={`${weaponId}-${index}`}>
+                <td>{models.join(', ')}</td>
+                <td>{weapon.name}</td>
+                <td>{weapon.range}"</td>
+                <td>{weapon.firepower}</td>
+                <td>{weapon.rangedStrength}</td>
+                <td>{weapon.ap}</td>
+                <td>{weapon.damage}</td>
+                <td>{weapon.specialRules?.join(', ') || '-'}</td>
+                <td>{weapon.traits?.join(', ') || '-'}</td>
+              </tr>
+            );
           })}
         </tbody>
       </table>
@@ -327,119 +211,71 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
   };
 
   const renderMeleeWeaponsTable = (modelCompositions: { model: Model; count: number }[]) => {
-    const weaponMap = new Map<string, { weapon: MeleeWeapon; count: number; mount?: string }>();
-    const isVehicle = modelCompositions.some(({ model }) => model.type === 'Vehicle');
+    const weaponMap = new Map<string, { weaponId: string; models: string[]; weapon: MeleeWeapon | undefined }>();
     
-    // Use the new weapon count calculation if armyUnit is provided
-    if (armyUnit) {
-      const weaponCounts = DataLoader.calculateWeaponCounts(unit.id, armyUnit);
-      
-      Object.entries(weaponCounts).forEach(([key, weaponData]) => {
-        const weapon = DataLoader.getWeaponById(weaponData.weaponId);
-        if (weapon && !DataLoader.isRangedWeapon(weapon) && weaponData.count > 0) {
-          // Use mount information from the weapon data
-          const mount = weaponData.mount;
-          // For non-vehicle units, use weapon ID as key. For vehicle units, use the full key with mount
-          const mapKey = mount ? key : weaponData.weaponId;
-          weaponMap.set(mapKey, { weapon: weapon as MeleeWeapon, count: weaponData.count, mount });
+    modelCompositions.forEach(({ model, count }) => {
+      model.weapons?.forEach(weaponEntry => {
+        const weapon = DataLoader.getWeaponById(weaponEntry.id);
+        const key = weaponEntry.id;
+        
+        // Only include melee weapons
+        if (weapon && !DataLoader.isRangedWeapon(weapon)) {
+          if (weaponMap.has(key)) {
+            const existing = weaponMap.get(key)!;
+            existing.models.push(`${model.name}${count > 1 ? ` x${count}` : ''}`);
+          } else {
+            weaponMap.set(key, {
+              weaponId: weaponEntry.id,
+              models: [`${model.name}${count > 1 ? ` x${count}` : ''}`],
+              weapon: weapon as MeleeWeapon
+            });
+          }
         }
       });
-    } else {
-      // Fall back to the old method for backward compatibility
-      modelCompositions.forEach(({ model, count }) => {
-        // Handle new weapon structure with mount locations (MELEE)
-        if (Array.isArray(model.weapons) && model.weapons.length > 0 && typeof model.weapons[0] === 'object' && 'id' in model.weapons[0]) {
-          // New structure: Array of { id: string, mount?: string, count?: number }
-          (model.weapons as Array<{ id: string; mount?: string; count?: number }>).forEach(weaponEntry => {
-            const weapon = DataLoader.getWeaponById(weaponEntry.id);
-            if (weapon && !DataLoader.isRangedWeapon(weapon)) {
-              const key = `${weapon.id}-${weaponEntry.mount || 'default'}`;
-              const mount = weaponEntry.mount;
-              const weaponCount = weaponEntry.count || 1;
-              if (weaponMap.has(key)) {
-                const existing = weaponMap.get(key)!;
-                existing.count += count * weaponCount;
-              } else {
-                weaponMap.set(key, { weapon: weapon as MeleeWeapon, count: count * weaponCount, mount });
-              }
-            }
-          });
-        } else {
-          // Old structure: Array of strings (MELEE)
-          const weapons = (model.weapons as unknown as string[]).map(weaponId => DataLoader.getWeaponById(weaponId)).filter(weapon => weapon !== undefined) as Weapon[];
-          const meleeWeapons = weapons.filter(weapon => !DataLoader.isRangedWeapon(weapon)) as MeleeWeapon[];
-          meleeWeapons.forEach(weapon => {
-            const key = weapon.id;
-            const mount = undefined;
-            if (weaponMap.has(key)) {
-              const existing = weaponMap.get(key)!;
-              existing.count += count;
-              // Keep the first mount found for this weapon
-              if (!existing.mount && mount) {
-                existing.mount = mount;
-              }
-            } else {
-              weaponMap.set(key, { weapon, count, mount });
-            }
-          });
-        }
-      });
-    }
-
+    });
+    
     if (weaponMap.size === 0) {
-      return null;
+      return <p>No melee weapons available.</p>;
     }
-
+    
     return (
-      <table className="weapons-table">
+      <table className="melee-weapons-table">
         <thead>
           <tr>
             <th>Models</th>
             <th>Weapon</th>
-            {isVehicle && <th>Mount</th>}
-            <th>IM</th>
-            <th>AM</th>
-            <th>S</th>
+            <th>Attack Modifier</th>
+            <th>Strength Modifier</th>
             <th>AP</th>
             <th>D</th>
-            <th>Traits</th>
             <th>Special Rules</th>
+            <th>Traits</th>
           </tr>
         </thead>
         <tbody>
-          {Array.from(weaponMap.values()).map(({ weapon, count, mount }, index) => {
-            // Use the count that was already calculated for this weapon/mount combination
-            const displayName = count > 1 ? `${weapon.name} x${count}` : weapon.name;
+          {Array.from(weaponMap.values()).map(({ weaponId, models, weapon }, index) => {
+            if (!weapon) {
+              return (
+                <tr key={`${weaponId}-${index}`}>
+                  <td>{models.join(', ')}</td>
+                  <td>{weaponId}</td>
+                  <td colSpan={6}>Weapon not found</td>
+                </tr>
+              );
+            }
             
             return (
-            <tr key={`${weapon.id}-${index}`}>
-              <td>{count > 1 ? `${count} models` : '1 model'}</td>
-              <td>{displayName}</td>
-              {isVehicle && <td>{mount || '-'}</td>}
-              <td>{weapon.initiativeModifier === "I" ? "I" : (typeof weapon.initiativeModifier === 'number' && weapon.initiativeModifier > 0 ? `+${weapon.initiativeModifier}` : weapon.initiativeModifier)}</td>
-              <td>{weapon.attackModifier === "A" ? "A" : `${typeof weapon.attackModifier === 'number' && weapon.attackModifier > 0 ? '+' : ''}${weapon.attackModifier}`}</td>
-              <td>{weapon.strengthModifier === "S" ? "S" : `${typeof weapon.strengthModifier === 'number' && weapon.strengthModifier > 0 ? '+' : ''}${weapon.strengthModifier}`}</td>
-              <td>{weapon.ap}</td>
-              <td>{weapon.damage}</td>
-              <td>
-                {weapon.traits && weapon.traits.length > 0 
-                  ? weapon.traits.join(', ')
-                  : '-'
-                }
-              </td>
-              <td>
-                {weapon.specialRules.length > 0 
-                  ? weapon.specialRules.map(ruleId => {
-                      const rule = DataLoader.getSpecialRuleById(ruleId);
-                      const value = weapon.specialRuleValues?.[ruleId];
-                      const ruleDisplayName = value ? `${rule?.name || ruleId} (${value})` : rule?.name || ruleId;
-                      return ruleDisplayName;
-                    }).join(', ')
-                  : '-'
-                }
-              </td>
-            </tr>
-          );
+              <tr key={`${weaponId}-${index}`}>
+                <td>{models.join(', ')}</td>
+                <td>{weapon.name}</td>
+                <td>{weapon.attackModifier || '-'}</td>
+                <td>{weapon.strengthModifier || '-'}</td>
+                <td>{weapon.ap}</td>
+                <td>{weapon.damage}</td>
+                <td>{weapon.specialRules?.join(', ') || '-'}</td>
+                <td>{weapon.traits?.join(', ') || '-'}</td>
+              </tr>
+            );
           })}
         </tbody>
       </table>
@@ -447,64 +283,45 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
   };
 
   const renderSpecialRulesTable = (modelCompositions: { model: Model; count: number }[]) => {
-    const ruleMap = new Map<string, { ruleId: string; value?: number; models: string[]; rule: any }>();
+    const rulesMap = new Map<string, { ruleId: string; models: string[]; rule: any }>();
     
     modelCompositions.forEach(({ model, count }) => {
-      // Add base special rules
-      model.specialRules.forEach(ruleId => {
-        const value = model.specialRuleValues?.[ruleId];
-        const key = `${ruleId}-${value || 'no-value'}`;
-        const displayName = count > 1 ? `${model.name} x${count}` : model.name;
+      model.specialRules?.forEach(ruleId => {
+        const rule = DataLoader.getSpecialRuleById(ruleId);
+        const key = ruleId;
         
-        if (ruleMap.has(key)) {
-          ruleMap.get(key)!.models.push(displayName);
+        if (rulesMap.has(key)) {
+          const existing = rulesMap.get(key)!;
+          existing.models.push(`${model.name}${count > 1 ? ` x${count}` : ''}`);
         } else {
-          const rule = DataLoader.getSpecialRuleById(ruleId);
-          ruleMap.set(key, { ruleId, value, models: [displayName], rule });
+          rulesMap.set(key, {
+            ruleId: ruleId,
+            models: [`${model.name}${count > 1 ? ` x${count}` : ''}`],
+            rule
+          });
         }
       });
-      
-      // Add special rules from wargear upgrades (only if they're actual special rules, not wargear)
-      if (armyUnit?.modelInstanceWargearChanges?.[model.id]) {
-        Object.entries(armyUnit.modelInstanceWargearChanges[model.id]).forEach(([, changes]) => {
-          changes.added.forEach(wargearId => {
-            const wargear = DataLoader.getSpecialRuleById(wargearId);
-            if (wargear && wargear.type === 'special-rule') {
-              // Only add if it's actually a special rule, not wargear
-              const key = `${wargearId}-no-value`;
-              const displayName = `${model.name} (upgraded)`;
-              
-              if (ruleMap.has(key)) {
-                ruleMap.get(key)!.models.push(displayName);
-              } else {
-                ruleMap.set(key, { ruleId: wargearId, value: undefined, models: [displayName], rule: wargear });
-              }
-            }
-          });
-        });
-      }
     });
-
-    if (ruleMap.size === 0) {
-      return <p>No special rules</p>;
+    
+    if (rulesMap.size === 0) {
+      return <p>No special rules available.</p>;
     }
-
+    
     return (
       <table className="special-rules-table">
         <thead>
           <tr>
             <th>Models</th>
-            <th>Special Rule</th>
+            <th>Rule</th>
             <th>Description</th>
           </tr>
         </thead>
         <tbody>
-          {Array.from(ruleMap.values()).map(({ ruleId, value, models, rule }, index) => {
-            const ruleDisplayName = value ? `${rule?.name || ruleId} (${value})` : rule?.name || ruleId;
+          {Array.from(rulesMap.values()).map(({ ruleId, models, rule }, index) => {
             return (
-              <tr key={`${ruleId}-${value || 'no-value'}-${index}`}>
+              <tr key={`${ruleId}-${index}`}>
                 <td>{models.join(', ')}</td>
-                <td>{ruleDisplayName}</td>
+                <td>{rule?.name || ruleId}</td>
                 <td>{rule?.shortText || '-'}</td>
               </tr>
             );
@@ -518,41 +335,27 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
     const wargearMap = new Map<string, { wargearId: string; models: string[]; wargear: any }>();
     
     modelCompositions.forEach(({ model, count }) => {
-      // Add base wargear
-      model.wargear.forEach(wargearId => {
-        const displayName = count > 1 ? `${model.name} x${count}` : model.name;
+      model.wargear?.forEach(wargearId => {
+        const wargear = DataLoader.getSpecialRuleById(wargearId);
+        const key = wargearId;
         
-        if (wargearMap.has(wargearId)) {
-          wargearMap.get(wargearId)!.models.push(displayName);
+        if (wargearMap.has(key)) {
+          const existing = wargearMap.get(key)!;
+          existing.models.push(`${model.name}${count > 1 ? ` x${count}` : ''}`);
         } else {
-          const wargear = DataLoader.getSpecialRuleById(wargearId);
-          wargearMap.set(wargearId, { wargearId, models: [displayName], wargear });
+          wargearMap.set(key, {
+            wargearId: wargearId,
+            models: [`${model.name}${count > 1 ? ` x${count}` : ''}`],
+            wargear
+          });
         }
       });
-      
-      // Add wargear from upgrades
-      if (armyUnit?.modelInstanceWargearChanges?.[model.id]) {
-        Object.entries(armyUnit.modelInstanceWargearChanges[model.id]).forEach(([, changes]) => {
-          changes.added.forEach(wargearId => {
-            const wargear = DataLoader.getSpecialRuleById(wargearId);
-            if (wargear && wargear.type === 'wargear') {
-              const displayName = `${model.name} (upgraded)`;
-              
-              if (wargearMap.has(wargearId)) {
-                wargearMap.get(wargearId)!.models.push(displayName);
-              } else {
-                wargearMap.set(wargearId, { wargearId, models: [displayName], wargear });
-              }
-            }
-          });
-        });
-      }
     });
-
+    
     if (wargearMap.size === 0) {
-      return <p>No wargear</p>;
+      return <p>No wargear available.</p>;
     }
-
+    
     return (
       <table className="wargear-table">
         <thead>
@@ -582,9 +385,9 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
       <div className="unit-viewer-header">
         <h2>{unit.name}</h2>
         {onClose && (
-          <button className="close-button" onClick={onClose}>
+          <Button variant="secondary" size="sm" onClick={onClose}>
             ×
-          </button>
+          </Button>
         )}
       </div>
       

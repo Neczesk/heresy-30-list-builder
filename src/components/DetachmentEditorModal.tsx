@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
 import DetachmentSlots from './DetachmentSlots';
 import UnitManagementModal from './UnitManagementModal';
@@ -133,8 +134,6 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
     setDetachment(recalculatedDetachment);
   };
 
-
-
   const handleDetachmentPrompt = (roleId: string, slotIndex: number) => {
     setDetachmentPromptInfo({ roleId, slotIndex });
     setShowDetachmentPrompt(true);
@@ -203,7 +202,7 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
         <div className="modal-header">
           <div className="header-content">
             <h2>Edit Custom Detachment</h2>
-            <button className="close-button" onClick={onClose}>×</button>
+            <Button variant="secondary" size="sm" onClick={onClose}>×</Button>
           </div>
         </div>
 
@@ -265,12 +264,12 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
         </div>
 
         <div className="modal-actions">
-          <button className="cancel-button" onClick={onClose}>
+          <Button variant="secondary" onClick={onClose}>
             Cancel
-          </button>
-          <button className="save-button" onClick={handleSave}>
+          </Button>
+          <Button variant="success" onClick={handleSave}>
             Save Changes
-          </button>
+          </Button>
         </div>
 
         {/* Unit Management Modal */}
@@ -307,8 +306,8 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
               <h3>Select Detachment Type</h3>
               <p>Choose a detachment type for the {detachmentPromptInfo.roleId} slot:</p>
               <div className="detachment-options">
-                <button 
-                  className="detachment-option"
+                <Button 
+                  variant="primary"
                   onClick={() => handleDetachmentPromptSelected({ 
                     id: 'default', 
                     name: 'Default', 
@@ -320,7 +319,7 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
                   })}
                 >
                   Default Detachment
-                </button>
+                </Button>
               </div>
             </div>
           </div>

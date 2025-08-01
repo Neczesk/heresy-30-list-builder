@@ -1,43 +1,36 @@
+/* Import shared styles */
+@import './shared.css';
+
+/* Detachment Prompt Modal Specific Styles */
 .detachment-prompt-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  composes: modal-overlay;
+  padding: var(--spacing-lg);
   z-index: 1500;
-  padding: 1rem;
 }
 
 .detachment-prompt-content {
+  composes: modal;
   background: #1a1a1a;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
+  color: white;
   max-width: 700px;
   width: 100%;
   max-height: 80vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .detachment-prompt-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
+  padding: var(--spacing-xl);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.05);
 }
 
 .detachment-prompt-header h3 {
   margin: 0;
-  color: #4a90e2;
-  font-size: 1.4rem;
+  color: var(--primary-color);
+  font-size: var(--font-size-4xl);
   font-weight: 600;
 }
 
@@ -45,7 +38,7 @@
   background: none;
   border: none;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 1.5rem;
+  font-size: var(--font-size-5xl);
   cursor: pointer;
   padding: 0;
   width: 30px;
@@ -54,7 +47,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
 }
 
 .close-button:hover {
@@ -63,161 +56,166 @@
 }
 
 .detachment-prompt-body {
-  padding: 1.5rem;
+  padding: var(--spacing-xl);
   overflow-y: auto;
   flex: 1;
 }
 
 .prompt-message {
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 var(--spacing-xl) 0;
   color: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
+  font-size: var(--font-size-lg);
   line-height: 1.5;
   text-align: center;
-  padding: 1rem;
+  padding: var(--spacing-lg);
   background: rgba(74, 144, 226, 0.1);
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   border: 1px solid rgba(74, 144, 226, 0.3);
 }
 
 .detachment-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
 }
 
 .detachment-option {
-  padding: 1.5rem;
+  composes: card;
+  padding: var(--spacing-xl);
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
 }
 
 .detachment-option:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.detachment-option.selected {
+  background: rgba(74, 144, 226, 0.1);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
 }
 
 .detachment-info {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 0.75rem;
+  flex-direction: column;
+  gap: var(--spacing-sm);
 }
 
 .detachment-name {
+  color: #ffd700;
+  font-size: var(--font-size-2xl);
   font-weight: 600;
-  color: #4a90e2;
-  font-size: 1.2rem;
+  margin: 0;
 }
 
 .detachment-type {
-  background: #ff9800;
+  composes: badge;
+  background: rgba(255, 255, 255, 0.2);
   color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-2xl);
+  font-size: var(--font-size-sm);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  align-self: flex-start;
 }
 
 .detachment-description {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 0.95rem;
-  line-height: 1.4;
-  margin-bottom: 1rem;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  margin: var(--spacing-sm) 0;
 }
 
 .detachment-slots {
   display: flex;
-  gap: 0.5rem;
   flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
 }
 
 .slot-badge {
+  composes: badge;
   background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.9);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 500;
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-2xl);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
 }
 
 .prime-star {
   color: #ffd700;
-  font-size: 0.7rem;
+  font-weight: 600;
 }
 
 .no-detachments {
-  text-align: center;
-  padding: 2rem;
-  color: rgba(255, 255, 255, 0.6);
+  composes: empty-state;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .no-detachments p {
-  margin: 0;
-  font-size: 1rem;
+  composes: empty-state p;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .prompt-actions {
   display: flex;
-  justify-content: center;
-  padding-top: 1rem;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+  padding-top: var(--spacing-lg);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .skip-button {
+  composes: btn btn-secondary;
   background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 0.75rem 2rem;
-  border-radius: 6px;
-  font-size: 1rem;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--transition-fast);
 }
 
 .skip-button:hover {
   background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.5);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-1px);
 }
 
-/* Responsive design */
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .detachment-prompt-content {
-    max-width: 95vw;
+    width: 95%;
     max-height: 90vh;
   }
 
   .detachment-info {
-    flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--spacing-xs);
   }
 
   .detachment-type {
-    align-self: flex-start;
+    font-size: var(--font-size-xs);
   }
 
   .detachment-slots {
-    gap: 0.25rem;
+    gap: var(--spacing-xs);
   }
 
   .slot-badge {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.4rem;
+    font-size: var(--font-size-xs);
   }
 } 

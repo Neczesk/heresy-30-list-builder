@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card } from './ui';
 import type { Allegiance } from '../types/army';
 import './AllegianceSelector.css';
 
@@ -33,8 +34,11 @@ const AllegianceSelector: React.FC<AllegianceSelectorProps> = ({
       
       <div className="allegiance-options">
         {allegiances.map((allegiance) => (
-          <div
+          <Card
             key={allegiance.value}
+            variant={selectedAllegiance === allegiance.value ? 'elevated' : 'default'}
+            padding="lg"
+            interactive={!disabled}
             className={`allegiance-option ${selectedAllegiance === allegiance.value ? 'selected' : ''} ${disabled ? 'disabled' : ''}`}
             onClick={() => !disabled && onAllegianceChange(allegiance.value)}
           >
@@ -45,7 +49,7 @@ const AllegianceSelector: React.FC<AllegianceSelectorProps> = ({
               )}
             </div>
             <p className="allegiance-description">{allegiance.description}</p>
-          </div>
+          </Card>
         ))}
       </div>
     </div>

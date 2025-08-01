@@ -1,15 +1,10 @@
+/* Import shared styles */
+@import './shared.css';
+
+/* Detachment Editor Modal Specific Styles */
 .detachment-editor-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 20px;
+  composes: modal-overlay;
+  padding: var(--spacing-xl);
 }
 
 .detachment-editor-modal {
@@ -17,17 +12,17 @@
   width: 95%;
   max-height: 90vh;
   background: #1a1a1a;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-xl);
 }
 
 .detachment-editor-modal .modal-header {
   background: #2a2a2a;
   border-bottom: 1px solid #404040;
-  padding: 20px;
+  padding: var(--spacing-xl);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,7 +38,7 @@
 .detachment-editor-modal .modal-header h2 {
   margin: 0;
   color: #ffd700;
-  font-size: 1.5rem;
+  font-size: var(--font-size-5xl);
   font-weight: 600;
 }
 
@@ -51,7 +46,7 @@
   background: none;
   border: none;
   color: #ccc;
-  font-size: 1.5rem;
+  font-size: var(--font-size-5xl);
   cursor: pointer;
   padding: 0;
   width: 30px;
@@ -59,8 +54,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  transition: all 0.2s;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
 }
 
 .detachment-editor-modal .close-button:hover {
@@ -71,207 +66,204 @@
 .detachment-editor-modal .modal-body {
   flex: 1;
   overflow-y: auto;
-  padding: 20px;
+  padding: var(--spacing-xl);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--spacing-xl);
 }
 
 .detachment-info-section {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  padding: 20px;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl);
 }
 
 .detachment-header-info h3 {
-  margin: 0 0 12px 0;
+  margin: 0 0 var(--spacing-md) 0;
   color: #ffd700;
-  font-size: 1.3rem;
+  font-size: var(--font-size-3xl);
   font-weight: 600;
 }
 
 .detachment-meta {
   display: flex;
-  gap: 12px;
+  gap: var(--spacing-md);
   flex-wrap: wrap;
-  margin-bottom: 16px;
-}
-
-.detachment-meta span {
-  background: rgba(74, 144, 226, 0.2);
-  color: #4a90e2;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  margin-bottom: var(--spacing-lg);
 }
 
 .detachment-meta .base-detachment {
-  background: rgba(255, 193, 7, 0.2);
-  color: #ffc107;
+  composes: badge;
+  background: var(--primary-color);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-2xl);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .detachment-stats {
   display: flex;
-  gap: 20px;
-  margin-bottom: 16px;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
 }
 
 .stat-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-xs);
 }
 
 .stat-label {
+  font-size: var(--font-size-sm);
   color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
-  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .stat-value {
-  color: white;
-  font-size: 1rem;
+  font-size: var(--font-size-xl);
   font-weight: 600;
+  color: white;
 }
 
 .detachment-description {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  margin-top: var(--spacing-lg);
 }
 
 .description-label {
   color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
+  font-size: var(--font-size-sm);
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-sm);
 }
 
 .description-text {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 0.9rem;
-  line-height: 1.4;
-  font-style: italic;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  margin: 0;
 }
 
 .detachment-slots-section {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  padding: 20px;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl);
 }
 
 .detachment-slots-section h3 {
-  margin: 0 0 16px 0;
-  color: #4a90e2;
-  font-size: 1.2rem;
+  margin: 0 0 var(--spacing-lg) 0;
+  color: #ffd700;
+  font-size: var(--font-size-2xl);
   font-weight: 600;
 }
 
 .detachment-editor-modal .modal-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+  padding: var(--spacing-lg) var(--spacing-xl);
   background: #2a2a2a;
   border-top: 1px solid #404040;
-  padding: 20px;
-  display: flex;
-  gap: 12px;
-  justify-content: flex-end;
 }
 
 .detachment-editor-modal .cancel-button,
 .detachment-editor-modal .save-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
+  composes: btn;
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-base);
   font-weight: 600;
-  transition: all 0.2s;
-  min-width: 100px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
 .detachment-editor-modal .cancel-button {
   background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
+  color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .detachment-editor-modal .cancel-button:hover {
   background: rgba(255, 255, 255, 0.2);
-  color: white;
-}
-
-.detachment-editor-modal .save-button {
-  background: #28a745;
-  color: white;
-}
-
-.detachment-editor-modal .save-button:hover {
-  background: #218838;
   transform: translateY(-1px);
 }
 
+.detachment-editor-modal .save-button {
+  background: var(--success-color);
+  color: white;
+  border: none;
+}
+
+.detachment-editor-modal .save-button:hover {
+  background: #45a049;
+  transform: translateY(-1px);
+}
+
+/* Detachment Prompt Modal */
 .detachment-prompt-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1100;
+  composes: modal-overlay;
 }
 
 .detachment-prompt-content {
-  background: #2a2a2a;
-  border: 1px solid #404040;
-  border-radius: 6px;
-  padding: 24px;
-  max-width: 400px;
+  composes: modal;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  max-width: 600px;
   width: 90%;
-  text-align: center;
 }
 
 .detachment-prompt-content h3 {
-  margin: 0 0 12px 0;
+  margin: 0 0 var(--spacing-md) 0;
   color: #ffd700;
-  font-size: 1.2rem;
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
 }
 
 .detachment-prompt-content p {
-  margin: 0 0 20px 0;
+  margin: 0 0 var(--spacing-lg) 0;
   color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
 }
 
 .detachment-options {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
 }
 
 .detachment-option {
-  background: rgba(74, 144, 226, 0.2);
-  color: #4a90e2;
-  border: 1px solid rgba(74, 144, 226, 0.3);
-  padding: 12px 16px;
-  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all 0.2s;
+  transition: all var(--transition-fast);
 }
 
 .detachment-option:hover {
-  background: rgba(74, 144, 226, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary-color);
   transform: translateY(-1px);
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .detachment-editor-overlay {
-    padding: 10px;
+    padding: var(--spacing-sm);
   }
 
   .detachment-editor-modal {
@@ -280,36 +272,35 @@
   }
 
   .detachment-editor-modal .modal-header {
-    padding: 15px;
+    padding: var(--spacing-lg);
   }
 
   .detachment-editor-modal .modal-header h2 {
-    font-size: 1.2rem;
+    font-size: var(--font-size-3xl);
   }
 
   .detachment-editor-modal .modal-body {
-    padding: 15px;
-    gap: 15px;
+    padding: var(--spacing-lg);
+    gap: var(--spacing-lg);
   }
 
   .detachment-info-section,
   .detachment-slots-section {
-    padding: 15px;
+    padding: var(--spacing-lg);
   }
 
   .detachment-meta {
-    flex-direction: column;
-    gap: 8px;
+    gap: var(--spacing-sm);
   }
 
   .detachment-stats {
     flex-direction: column;
-    gap: 12px;
+    gap: var(--spacing-lg);
   }
 
   .detachment-editor-modal .modal-actions {
-    padding: 15px;
     flex-direction: column;
+    gap: var(--spacing-sm);
   }
 
   .detachment-editor-modal .cancel-button,

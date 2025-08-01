@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Button, Card } from './ui';
 import { CustomUnitStorage } from '../utils/customUnitStorage';
 import { DataLoader } from '../utils/dataLoader';
 import UnitManagementModal from './UnitManagementModal';
@@ -151,23 +152,23 @@ const CustomUnitsManager: React.FC<CustomUnitsManagerProps> = ({
       <div className="custom-units-manager-header">
         <div className="header-content">
           <h1>Custom Units Manager</h1>
-          <button className="back-button" onClick={onBackToMenu}>
+          <Button variant="secondary" onClick={onBackToMenu}>
             ← Back to Menu
-          </button>
+          </Button>
         </div>
       </div>
 
       <div className="custom-units-manager-content">
         <div className="custom-units-manager-body">
           {customUnits.length === 0 ? (
-            <div className="no-custom-units">
+            <Card variant="transparent" padding="lg" className="no-custom-units">
               <p>No custom units saved yet.</p>
               <p>Create custom units by configuring units in your army lists and saving them.</p>
-            </div>
+            </Card>
           ) : (
             <div className="custom-units-list">
               {customUnits.map((unit) => (
-                <div key={unit.id} className="custom-unit-item">
+                <Card key={unit.id} variant="default" padding="lg" className="custom-unit-item">
                   <div className="custom-unit-info">
                     <div className="custom-unit-header">
                       {renamingUnit?.id === unit.id ? (
@@ -181,18 +182,20 @@ const CustomUnitsManager: React.FC<CustomUnitsManagerProps> = ({
                             autoFocus
                           />
                           <div className="rename-actions">
-                            <button 
-                              className="save-rename-button"
+                            <Button 
+                              variant="success"
+                              size="sm"
                               onClick={handleSaveRename}
                             >
                               ✓
-                            </button>
-                            <button 
-                              className="cancel-rename-button"
+                            </Button>
+                            <Button 
+                              variant="danger"
+                              size="sm"
                               onClick={handleCancelRename}
                             >
                               ✕
-                            </button>
+                            </Button>
                           </div>
                         </div>
                       ) : (
@@ -236,29 +239,32 @@ const CustomUnitsManager: React.FC<CustomUnitsManagerProps> = ({
                   </div>
 
                   <div className="custom-unit-actions">
-                    <button 
-                      className="edit-button"
+                    <Button 
+                      variant="primary"
+                      size="sm"
                       onClick={() => handleEditUnit(unit.id)}
                       title="Edit unit configuration"
                     >
                       Edit
-                    </button>
-                    <button 
-                      className="rename-button"
+                    </Button>
+                    <Button 
+                      variant="info"
+                      size="sm"
                       onClick={() => handleStartRename(unit)}
                       title="Rename unit"
                     >
                       Rename
-                    </button>
-                    <button 
-                      className="delete-button"
+                    </Button>
+                    <Button 
+                      variant="danger"
+                      size="sm"
                       onClick={() => handleDeleteUnit(unit)}
                       title="Delete unit"
                     >
                       Delete
-                    </button>
+                    </Button>
                   </div>
-                </div>
+                </Card>
               ))}
             </div>
           )}
@@ -272,18 +278,18 @@ const CustomUnitsManager: React.FC<CustomUnitsManagerProps> = ({
               <p>Are you sure you want to delete "{deleteConfirmUnit.name}"?</p>
               <p className="warning">This action cannot be undone.</p>
               <div className="delete-confirm-actions">
-                <button 
-                  className="cancel-button"
+                <Button 
+                  variant="secondary"
                   onClick={handleCancelDelete}
                 >
                   Cancel
-                </button>
-                <button 
-                  className="delete-button"
+                </Button>
+                <Button 
+                  variant="danger"
                   onClick={handleConfirmDelete}
                 >
                   Delete
-                </button>
+                </Button>
               </div>
             </div>
           </div>

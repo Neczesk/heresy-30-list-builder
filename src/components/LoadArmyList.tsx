@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Button, Card } from './ui';
 import { ArmyListStorage } from '../utils/armyListStorage';
 import type { ArmyListMetadata, Army } from '../types/army';
 import './LoadArmyList.css';
@@ -76,8 +77,6 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({
         updatedAt: new Date().toISOString()
       };
 
-
-
       // Save the duplicated list
       ArmyListStorage.saveArmyList(duplicatedList);
 
@@ -131,44 +130,49 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({
   return (
     <div className="load-army-list">
       <div className="load-header">
-        <button className="back-button" onClick={onBackToMenu}>
+        <Button variant="secondary" onClick={onBackToMenu}>
           ← Back to Menu
-        </button>
+        </Button>
         <h2>Load Army List</h2>
       </div>
 
       <div className="load-content">
         {armyLists.length === 0 ? (
-          <div className="empty-state">
+          <Card variant="transparent" padding="lg" className="empty-state">
             <h3>No Army Lists Found</h3>
             <p>You haven't created any army lists yet.</p>
             <p>Create a new army list to get started!</p>
-          </div>
+          </Card>
         ) : (
           <div className="army-lists-grid">
             {armyLists.map((list) => (
-              <div 
+              <Card 
                 key={list.id} 
+                variant="default"
+                padding="lg"
+                interactive
                 className="army-list-card"
                 onClick={() => handleLoadList(list.id)}
               >
                 <div className="list-header">
                   <h3>{list.name}</h3>
                   <div className="list-actions">
-                    <button 
-                      className="duplicate-button"
-                      onClick={(e) => handleDuplicateList(list, e)}
+                    <Button 
+                      variant="info"
+                      size="sm"
+                      onClick={(e) => e && handleDuplicateList(list, e)}
                       title="Duplicate army list"
                     >
                       📋
-                    </button>
-                    <button 
-                      className="delete-button"
-                      onClick={(e) => handleDeleteList(list.id, e)}
+                    </Button>
+                    <Button 
+                      variant="danger"
+                      size="sm"
+                      onClick={(e) => e && handleDeleteList(list.id, e)}
                       title="Delete army list"
                     >
                       ×
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 
@@ -198,7 +202,7 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({
                     <span className="value">{formatDate(list.updatedAt)}</span>
                   </div>
                 </div>
-              </div>
+              </Card>
             ))}
           </div>
         )}
@@ -210,7 +214,7 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({
           <div className="duplicate-modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="duplicate-modal-header">
               <h3>Duplicate Army List</h3>
-              <button className="close-button" onClick={handleCancelDuplicate}>×</button>
+              <Button variant="secondary" size="sm" onClick={handleCancelDuplicate}>×</Button>
             </div>
             
             <div className="duplicate-modal-body">
@@ -249,19 +253,19 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({
             </div>
 
             <div className="duplicate-modal-actions">
-              <button 
-                className="cancel-button"
+              <Button 
+                variant="secondary"
                 onClick={handleCancelDuplicate}
               >
                 Cancel
-              </button>
-              <button 
-                className="duplicate-button"
+              </Button>
+              <Button 
+                variant="warning"
                 onClick={handleConfirmDuplicate}
                 disabled={!newListName.trim()}
               >
                 Duplicate
-              </button>
+              </Button>
             </div>
           </div>
         </div>

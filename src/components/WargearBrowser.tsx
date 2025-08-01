@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
+import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
-import type { SpecialRule } from '../types/army';
 import './WargearBrowser.css';
 
 interface WargearBrowserProps {
@@ -10,33 +10,26 @@ interface WargearBrowserProps {
 const WargearBrowser: React.FC<WargearBrowserProps> = ({
   onBackToBrowserMenu
 }) => {
-  const [wargearRules, setWargearRules] = useState<SpecialRule[]>([]);
-  const [filteredRules, setFilteredRules] = useState<SpecialRule[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [expandedRules, setExpandedRules] = useState<Set<string>>(new Set());
 
-  // Load wargear rules on mount
-  useEffect(() => {
-    const rules = DataLoader.getSpecialRules();
-    // Filter for wargear special rules only
-    const wargearOnlyRules = rules.filter(rule => rule.type === 'wargear');
-    setWargearRules(wargearOnlyRules);
-    setFilteredRules(wargearOnlyRules);
+  const wargearRules = useMemo(() => {
+    const allRules = DataLoader.getSpecialRules();
+    // Filter to only show wargear rules
+    return allRules.filter(rule => rule.type === 'wargear');
   }, []);
 
-  // Filter rules based on search term
-  useEffect(() => {
-    if (!searchTerm.trim()) {
-      setFilteredRules(wargearRules);
-    } else {
-      const filtered = wargearRules.filter(rule => 
-        rule.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        rule.shortText.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        rule.longText.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredRules(filtered);
-    }
-  }, [searchTerm, wargearRules]);
+  const filteredRules = useMemo(() => {
+    if (!searchTerm) return wargearRules;
+    
+    const searchLower = searchTerm.toLowerCase();
+    return wargearRules.filter(rule => 
+      rule.name.toLowerCase().includes(searchLower) ||
+      rule.shortText.toLowerCase().includes(searchLower) ||
+      rule.description.toLowerCase().includes(searchLower) ||
+      rule.longText.toLowerCase().includes(searchLower)
+    );
+  }, [wargearRules, searchTerm]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -59,9 +52,9 @@ const WargearBrowser: React.FC<WargearBrowserProps> = ({
   return (
     <div className="wargear-browser">
       <div className="browser-header">
-        <button className="back-to-menu-button" onClick={onBackToBrowserMenu}>
+        <Button variant="secondary" onClick={onBackToBrowserMenu}>
           ← Back to Browser Menu
-        </button>
+        </Button>
         <h2>Wargear Browser</h2>
       </div>
 
@@ -76,9 +69,9 @@ const WargearBrowser: React.FC<WargearBrowserProps> = ({
               className="search-input"
             />
             {searchTerm && (
-              <button className="clear-search-button" onClick={clearSearch}>
+              <Button variant="secondary" size="sm" onClick={clearSearch}>
                 ×
-              </button>
+              </Button>
             )}
           </div>
           <div className="search-results">
@@ -95,9 +88,9 @@ const WargearBrowser: React.FC<WargearBrowserProps> = ({
         {filteredRules.length === 0 ? (
           <div className="no-results">
             <p>No wargear found matching "{searchTerm}"</p>
-            <button className="clear-search-link" onClick={clearSearch}>
+            <Button variant="info" size="sm" onClick={clearSearch}>
               Clear search
-            </button>
+            </Button>
           </div>
         ) : (
           <div className="rules-list">

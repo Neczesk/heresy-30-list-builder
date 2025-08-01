@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Button, Card } from './ui';
 import { CustomDetachmentStorage } from '../utils/customDetachmentStorage';
 import { DataLoader } from '../utils/dataLoader';
 import DetachmentEditorModal from './DetachmentEditorModal';
@@ -145,19 +146,19 @@ const CustomDetachmentsManager: React.FC<CustomDetachmentsManagerProps> = ({
       <div className="custom-detachments-manager-header">
         <div className="header-content">
           <h1>Custom Detachments Manager</h1>
-          <button className="back-button" onClick={onBackToMenu}>
+          <Button variant="secondary" onClick={onBackToMenu}>
             ← Back to Menu
-          </button>
+          </Button>
         </div>
       </div>
 
       <div className="custom-detachments-manager-content">
         <div className="custom-detachments-manager-body">
           {customDetachments.length === 0 ? (
-            <div className="no-custom-detachments">
+            <Card variant="transparent" padding="lg" className="no-custom-detachments">
               <p>No custom detachments saved yet.</p>
               <p>Create custom detachments by configuring detachments in your army lists and saving them.</p>
-            </div>
+            </Card>
           ) : (
             <div className="custom-detachments-list">
               {customDetachments.map((detachment) => {
@@ -165,7 +166,7 @@ const CustomDetachmentsManager: React.FC<CustomDetachmentsManagerProps> = ({
                 const totalPoints = fullDetachment ? calculateDetachmentPoints(fullDetachment.units) : 0;
                 
                 return (
-                  <div key={detachment.id} className="custom-detachment-item">
+                  <Card key={detachment.id} variant="default" padding="lg" className="custom-detachment-item">
                     <div className="custom-detachment-info">
                       <div className="custom-detachment-header">
                         {renamingDetachment?.id === detachment.id ? (
@@ -179,18 +180,20 @@ const CustomDetachmentsManager: React.FC<CustomDetachmentsManagerProps> = ({
                               autoFocus
                             />
                             <div className="rename-actions">
-                              <button 
-                                className="save-rename-button"
+                              <Button 
+                                variant="success"
+                                size="sm"
                                 onClick={handleSaveRename}
                               >
                                 ✓
-                              </button>
-                              <button 
-                                className="cancel-rename-button"
+                              </Button>
+                              <Button 
+                                variant="danger"
+                                size="sm"
                                 onClick={handleCancelRename}
                               >
                                 ✕
-                              </button>
+                              </Button>
                             </div>
                           </div>
                         ) : (
@@ -242,29 +245,32 @@ const CustomDetachmentsManager: React.FC<CustomDetachmentsManagerProps> = ({
                     </div>
 
                     <div className="custom-detachment-actions">
-                      <button 
-                        className="edit-button"
+                      <Button 
+                        variant="primary"
+                        size="sm"
                         onClick={() => handleEditDetachment(detachment.id)}
                         title="Edit detachment configuration"
                       >
                         Edit
-                      </button>
-                      <button 
-                        className="rename-button"
+                      </Button>
+                      <Button 
+                        variant="info"
+                        size="sm"
                         onClick={() => handleStartRename(detachment)}
                         title="Rename detachment"
                       >
                         Rename
-                      </button>
-                      <button 
-                        className="delete-button"
+                      </Button>
+                      <Button 
+                        variant="danger"
+                        size="sm"
                         onClick={() => handleDeleteDetachment(detachment)}
                         title="Delete detachment"
                       >
                         Delete
-                      </button>
+                      </Button>
                     </div>
-                  </div>
+                  </Card>
                 );
               })}
             </div>
@@ -279,18 +285,18 @@ const CustomDetachmentsManager: React.FC<CustomDetachmentsManagerProps> = ({
               <p>Are you sure you want to delete "{deleteConfirmDetachment.name}"?</p>
               <p className="warning">This action cannot be undone.</p>
               <div className="delete-confirm-actions">
-                <button 
-                  className="cancel-button"
+                <Button 
+                  variant="secondary"
                   onClick={handleCancelDelete}
                 >
                   Cancel
-                </button>
-                <button 
-                  className="delete-button"
+                </Button>
+                <Button 
+                  variant="danger"
                   onClick={handleConfirmDelete}
                 >
                   Delete
-                </button>
+                </Button>
               </div>
             </div>
           </div>

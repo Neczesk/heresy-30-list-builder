@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from './ui';
 import { CustomDetachmentStorage } from '../utils/customDetachmentStorage';
 import type { ArmyDetachment } from '../types/army';
 import './SaveCustomDetachmentModal.css';
@@ -68,7 +69,7 @@ const SaveCustomDetachmentModal: React.FC<SaveCustomDetachmentModalProps> = ({
       <div className="modal-content save-custom-detachment-modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h2>Save Custom Detachment</h2>
-          <button className="close-button" onClick={onClose}>×</button>
+          <Button variant="secondary" size="sm" onClick={onClose}>×</Button>
         </div>
 
         <div className="modal-body">
@@ -133,12 +134,12 @@ const SaveCustomDetachmentModal: React.FC<SaveCustomDetachmentModalProps> = ({
         </div>
 
         <div className="modal-actions">
-          <button className="cancel-button" onClick={onClose}>
+          <Button variant="secondary" onClick={onClose}>
             Cancel
-          </button>
-          <button className="save-button" onClick={handleSave}>
+          </Button>
+          <Button variant="success" onClick={handleSave}>
             Save Custom Detachment
-          </button>
+          </Button>
         </div>
       </div>
     </div>

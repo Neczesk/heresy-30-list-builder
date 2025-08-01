@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, Card } from './ui';
 import { DataLoader } from '../utils/dataLoader';
 import type { Detachment, ArmyList } from '../types/army';
 import './DetachmentPromptModal.css';
@@ -102,7 +103,7 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
       <div className="detachment-prompt-content" onClick={(e) => e.stopPropagation()}>
         <div className="detachment-prompt-header">
           <h3>Add {triggerType} Detachment</h3>
-          <button className="close-button" onClick={onClose}>×</button>
+          <Button variant="secondary" size="sm" onClick={onClose}>×</Button>
         </div>
         <div className="detachment-prompt-body">
           <p className="prompt-message">
@@ -112,8 +113,11 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
           {availableDetachments.length > 0 ? (
             <div className="detachment-list">
               {availableDetachments.map((detachment) => (
-                <div
+                <Card
                   key={detachment.id}
+                  variant="default"
+                  padding="lg"
+                  interactive
                   className="detachment-option"
                   onClick={() => {
                     onDetachmentSelected(detachment);
@@ -133,19 +137,19 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
                       </span>
                     ))}
                   </div>
-                </div>
+                </Card>
               ))}
             </div>
           ) : (
-            <div className="no-detachments">
+            <Card variant="transparent" padding="lg" className="no-detachments">
               <p>No {triggerType.toLowerCase()} detachments available for your faction.</p>
-            </div>
+            </Card>
           )}
           
           <div className="prompt-actions">
-            <button className="skip-button" onClick={onClose}>
+            <Button variant="secondary" onClick={onClose}>
               Skip for now
-            </button>
+            </Button>
           </div>
         </div>
       </div>

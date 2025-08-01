@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
+import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
-import type { Unit, Model, Faction } from '../types/army';
 import UnitDetailModal from './UnitDetailModal';
+import type { Unit, Model } from '../types/army';
 import './UnitBrowser.css';
 
 interface UnitBrowserProps {
@@ -18,59 +19,41 @@ interface UnitWithModels extends Unit {
 const UnitBrowser: React.FC<UnitBrowserProps> = ({
   onBackToBrowserMenu
 }) => {
-  const [factions, setFactions] = useState<Faction[]>([]);
-  const [units, setUnits] = useState<UnitWithModels[]>([]);
-  const [filteredUnits, setFilteredUnits] = useState<UnitWithModels[]>([]);
   const [selectedFaction, setSelectedFaction] = useState<string>('');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedUnit, setSelectedUnit] = useState<UnitWithModels | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [showUnitModal, setShowUnitModal] = useState(false);
+  const [selectedUnit, setSelectedUnit] = useState<UnitWithModels | null>(null);
 
-  // Load data on mount
-  useEffect(() => {
-    const allFactions = DataLoader.getFactions();
+  const factions = useMemo(() => DataLoader.getFactions(), []);
+  const units = useMemo(() => {
     const allUnits = DataLoader.getUnits();
-    const allModels = DataLoader.getModels();
-    
-    // Filter to main factions only
-    const mainFactions = allFactions.filter(faction => faction.isMainFaction);
-    setFactions(mainFactions);
-    
-    // Enhance units with model data
-    const enhancedUnits: UnitWithModels[] = allUnits.map(unit => ({
-      ...unit,
-      modelsWithData: Object.entries(unit.models).map(([modelId, count]) => {
-        const model = allModels.find(m => m.id === modelId);
-        return {
-          model: model!,
-          count
-        };
-      })
-    }));
-    
-    setUnits(enhancedUnits);
+    return allUnits.map(unit => {
+      const modelsWithData = Object.entries(unit.models).map(([modelId, count]) => {
+        const model = DataLoader.getModelById(modelId);
+        return { model: model!, count };
+      });
+      return { ...unit, modelsWithData };
+    });
   }, []);
 
-  // Filter units based on faction and search term
-  useEffect(() => {
+  const filteredUnits = useMemo(() => {
     let filtered = units;
-
-    // Filter by faction
+    
     if (selectedFaction) {
       filtered = filtered.filter(unit => unit.faction === selectedFaction);
     }
-
-    // Filter by search term
-    if (searchTerm.trim()) {
+    
+    if (searchTerm) {
+      const searchLower = searchTerm.toLowerCase();
       filtered = filtered.filter(unit => 
-        unit.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        unit.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        unit.battlefieldRole.toLowerCase().includes(searchTerm.toLowerCase())
+        unit.name.toLowerCase().includes(searchLower) ||
+        unit.battlefieldRole.toLowerCase().includes(searchLower) ||
+        unit.description.toLowerCase().includes(searchLower)
       );
     }
-
-    setFilteredUnits(filtered);
-  }, [selectedFaction, searchTerm, units]);
+    
+    return filtered;
+  }, [units, selectedFaction, searchTerm]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -82,6 +65,7 @@ const UnitBrowser: React.FC<UnitBrowserProps> = ({
 
   const handleFactionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedFaction(e.target.value);
+    setSearchTerm(''); // Clear search when faction changes
   };
 
   const handleUnitClick = (unit: UnitWithModels) => {
@@ -98,55 +82,59 @@ const UnitBrowser: React.FC<UnitBrowserProps> = ({
     const roleGroups: { [role: string]: UnitWithModels[] } = {};
     
     filteredUnits.forEach(unit => {
-      if (!roleGroups[unit.battlefieldRole]) {
-        roleGroups[unit.battlefieldRole] = [];
+      const role = unit.battlefieldRole;
+      if (!roleGroups[role]) {
+        roleGroups[role] = [];
       }
-      roleGroups[unit.battlefieldRole].push(unit);
+      roleGroups[role].push(unit);
     });
-
+    
     return roleGroups;
   };
 
   const getFactionName = (factionId: string) => {
-    const faction = factions.find(f => f.id === factionId);
-    return faction ? faction.name : factionId;
+    const faction = DataLoader.getFactionById(factionId);
+    return faction?.name || factionId;
   };
 
   const renderUnitCard = (unit: UnitWithModels) => (
-    <div 
-      key={unit.id} 
+    <div
+      key={unit.id}
       className="unit-card"
       onClick={() => handleUnitClick(unit)}
     >
-      <div className="unit-header">
-        <h3 className="unit-name">{unit.name}</h3>
-        <div className="unit-role-badge">{unit.battlefieldRole}</div>
+      <div className="unit-card-header">
+        <h4>{unit.name}</h4>
+        <div className="unit-role-badge">
+          {unit.battlefieldRole}
+        </div>
       </div>
       
-      <div className="unit-info">
-        <div className="unit-description">{unit.description}</div>
-        
-        <div className="unit-details">
+      <div className="unit-card-content">
+        <div className="unit-info">
           <div className="unit-size">
-            <span className="detail-label">Size:</span>
-            <span className="detail-value">{unit.minSize}-{unit.maxSize} models</span>
+            <span className="info-label">Size:</span>
+            <span className="info-value">{unit.minSize}-{unit.maxSize} models</span>
           </div>
-          
           <div className="unit-points">
-            <span className="detail-label">Points:</span>
-            <span className="detail-value">{unit.points} pts</span>
+            <span className="info-label">Points:</span>
+            <span className="info-value">{unit.points} pts</span>
           </div>
-          
-          <div className="unit-models">
-            <span className="detail-label">Models:</span>
-            <span className="detail-value">
-              {unit.modelsWithData.map((modelData, index) => (
-                <span key={modelData.model.id} className="model-count">
-                  {modelData.count}x {modelData.model.name}
-                  {index < unit.modelsWithData.length - 1 ? ', ' : ''}
-                </span>
-              ))}
-            </span>
+        </div>
+        
+        <div className="unit-description">
+          <p>{unit.description}</p>
+        </div>
+        
+        <div className="unit-models">
+          <span className="info-label">Models:</span>
+          <div className="model-list">
+            {unit.modelsWithData.map(({ model, count }, index) => (
+              <span key={model.id} className="model-item">
+                {count}x {model.name}
+                {index < unit.modelsWithData.length - 1 ? ', ' : ''}
+              </span>
+            ))}
           </div>
         </div>
       </div>
@@ -158,9 +146,9 @@ const UnitBrowser: React.FC<UnitBrowserProps> = ({
   return (
     <div className="unit-browser">
       <div className="browser-header">
-        <button className="back-to-menu-button" onClick={onBackToBrowserMenu}>
+        <Button variant="secondary" onClick={onBackToBrowserMenu}>
           ← Back to Browser Menu
-        </button>
+        </Button>
         <h2>Unit Browser</h2>
       </div>
 
@@ -193,9 +181,9 @@ const UnitBrowser: React.FC<UnitBrowserProps> = ({
               disabled={!selectedFaction}
             />
             {searchTerm && (
-              <button className="clear-search-button" onClick={clearSearch}>
+              <Button variant="secondary" size="sm" onClick={clearSearch}>
                 ×
-              </button>
+              </Button>
             )}
           </div>
           <div className="search-results">

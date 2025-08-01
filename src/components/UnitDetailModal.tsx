@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
-import type { Unit, Model, Weapon, RangedWeapon, MeleeWeapon } from '../types/army';
+import type { Unit, Model, Weapon } from '../types/army';
 import './UnitDetailModal.css';
 
 interface UnitWithModels extends Unit {
@@ -21,109 +22,100 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
   isOpen,
   onClose
 }) => {
-  const [allWeapons, setAllWeapons] = useState<Weapon[]>([]);
-
-  useEffect(() => {
-    if (isOpen) {
-      const weapons = DataLoader.getWeapons();
-      setAllWeapons(weapons);
-    }
-  }, [isOpen]);
-
   if (!isOpen) return null;
 
   const getModelWeapons = (model: Model) => {
-    return model.weapons.map(weaponRef => {
-      const weapon = allWeapons.find(w => w.id === weaponRef.id);
-      return {
-        weapon,
-        mount: weaponRef.mount,
-        count: weaponRef.count || 1
-      };
-    }).filter(item => item.weapon).map(item => ({
-      weapon: item.weapon!,
-      mount: item.mount,
-      count: item.count
-    }));
+    const weapons: Array<{ weapon: Weapon; mount?: string; count?: number }> = [];
+    
+    model.weapons.forEach(weaponEntry => {
+      const weapon = DataLoader.getWeaponById(weaponEntry.id);
+      if (weapon) {
+        weapons.push({
+          weapon,
+          mount: weaponEntry.mount,
+          count: weaponEntry.count
+        });
+      }
+    });
+    
+    return weapons;
   };
 
   const getModelWargear = (model: Model) => {
     return model.wargear.map(wargearId => {
-      // For now, we'll just show the ID. In a full implementation,
-      // you'd load wargear data and show names
-      return wargearId;
+      const wargear = DataLoader.getSpecialRuleById(wargearId);
+      return wargear?.name || wargearId;
     });
   };
 
   const renderModelCharacteristics = (model: Model) => {
-    if ('movement' in model.characteristics && 'strength' in model.characteristics) {
-      // Infantry model
-      const chars = model.characteristics;
+    const characteristics = model.characteristics;
+    
+    if (model.type === 'Vehicle') {
+      const vehicleChars = characteristics as any;
       return (
         <table className="characteristics-table">
           <thead>
             <tr>
               <th>M</th>
-              <th>S</th>
-              <th>T</th>
-              <th>I</th>
-              <th>A</th>
-              <th>W</th>
-              <th>WS</th>
               <th>BS</th>
-              <th>Ld</th>
-              <th>Wp</th>
-              <th>Cl</th>
-              <th>Int</th>
-              <th>Sv</th>
-              <th>Inv</th>
+              <th colSpan={3}>Vehicle Armor</th>
+              <th>HP</th>
+              <th>TC</th>
+            </tr>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>FA</th>
+              <th>SA</th>
+              <th>RA</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{chars.movement}</td>
-              <td>{chars.strength}</td>
-              <td>{chars.toughness}</td>
-              <td>{chars.initiative}</td>
-              <td>{chars.attacks}</td>
-              <td>{chars.wounds}</td>
-              <td>{chars.weaponSkill}</td>
-              <td>{chars.ballisticSkill}</td>
-              <td>{chars.leadership}</td>
-              <td>{chars.willpower}</td>
-              <td>{chars.cool}</td>
-              <td>{chars.intelligence}</td>
-              <td>{chars.armourSave}</td>
-              <td>{chars.invulnerableSave || '-'}</td>
+              <td>{vehicleChars.movement}"</td>
+              <td>{vehicleChars.ballisticSkill}+</td>
+              <td>{vehicleChars.frontArmour}+</td>
+              <td>{vehicleChars.sideArmour}+</td>
+              <td>{vehicleChars.rearArmour}+</td>
+              <td>{vehicleChars.hullPoints}</td>
+              <td>{vehicleChars.transportCapacity || '-'}</td>
             </tr>
           </tbody>
         </table>
       );
     } else {
-      // Vehicle model
-      const chars = model.characteristics;
+      const infantryChars = characteristics as any;
       return (
         <table className="characteristics-table">
           <thead>
             <tr>
               <th>M</th>
+              <th>WS</th>
               <th>BS</th>
-              <th>Front</th>
-              <th>Side</th>
-              <th>Rear</th>
-              <th>HP</th>
-              <th>Capacity</th>
+              <th>S</th>
+              <th>T</th>
+              <th>W</th>
+              <th>I</th>
+              <th>A</th>
+              <th>Ld</th>
+              <th>Sv</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{chars.movement}</td>
-              <td>{chars.ballisticSkill}</td>
-              <td>{chars.frontArmour}</td>
-              <td>{chars.sideArmour}</td>
-              <td>{chars.rearArmour}</td>
-              <td>{chars.hullPoints}</td>
-              <td>{chars.transportCapacity || '-'}</td>
+              <td>{infantryChars.movement}"</td>
+              <td>{infantryChars.weaponSkill}+</td>
+              <td>{infantryChars.ballisticSkill}+</td>
+              <td>{infantryChars.strength}</td>
+              <td>{infantryChars.toughness}</td>
+              <td>{infantryChars.wounds}</td>
+              <td>{infantryChars.initiative}</td>
+              <td>{infantryChars.attacks}</td>
+              <td>{infantryChars.leadership}</td>
+              <td>{infantryChars.armourSave}+</td>
             </tr>
           </tbody>
         </table>
@@ -132,92 +124,68 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
   };
 
   const renderWeaponTable = (weapons: Array<{ weapon: Weapon; mount?: string; count?: number }>) => {
-    const validWeapons = weapons.filter(w => w.weapon);
-    const rangedWeapons = validWeapons.filter(w => w.weapon.type === 'ranged') as Array<{ weapon: RangedWeapon; mount?: string; count?: number }>;
-    const meleeWeapons = validWeapons.filter(w => w.weapon.type === 'melee') as Array<{ weapon: MeleeWeapon; mount?: string; count?: number }>;
+    if (weapons.length === 0) {
+      return <p>No weapons available.</p>;
+    }
+
+    const isVehicle = unit.modelsWithData.some(modelData => modelData.model.type === 'Vehicle');
 
     return (
-      <div className="weapons-section">
-        {rangedWeapons.length > 0 && (
-          <div className="weapon-type-section">
-            <h4>Ranged Weapons</h4>
-            <table className="weapon-table">
-              <thead>
-                <tr>
-                  <th>Weapon</th>
-                  <th>Range</th>
-                  <th>Firepower</th>
-                  <th>Strength</th>
-                  <th>AP</th>
-                  <th>Damage</th>
-                  <th>Special Rules</th>
-                  <th>Traits</th>
+      <table className="weapons-table">
+        <thead>
+          <tr>
+            <th>Weapon</th>
+            {isVehicle && <th>Mount</th>}
+            <th>Type</th>
+            <th>Range</th>
+            <th>Firepower</th>
+            <th>S</th>
+            <th>AP</th>
+            <th>D</th>
+            <th>Special Rules</th>
+            <th>Traits</th>
+          </tr>
+        </thead>
+        <tbody>
+          {weapons.map(({ weapon, mount, count }, index) => {
+            const displayName = count && count > 1 ? `${weapon.name} x${count}` : weapon.name;
+            
+            if (weapon.type === 'ranged') {
+              const rangedWeapon = weapon as any;
+              return (
+                <tr key={`${weapon.id}-${index}`}>
+                  <td>{displayName}</td>
+                  {isVehicle && <td>{mount || '-'}</td>}
+                  <td>Ranged</td>
+                  <td>{rangedWeapon.range}"</td>
+                  <td>{rangedWeapon.firepower}</td>
+                  <td>{rangedWeapon.rangedStrength}</td>
+                  <td>{rangedWeapon.ap}</td>
+                  <td>{rangedWeapon.damage}</td>
+                  <td>{rangedWeapon.specialRules?.join(', ') || '-'}</td>
+                  <td>{rangedWeapon.traits?.join(', ') || '-'}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {rangedWeapons.map((weaponData, index) => {
-                  const weapon = weaponData.weapon;
-                  return (
-                    <tr key={index}>
-                      <td className="weapon-name">
-                        {weapon.name}
-                        {weaponData.mount && <span className="weapon-mount"> ({weaponData.mount})</span>}
-                        {weaponData.count && weaponData.count > 1 && <span className="weapon-count"> x{weaponData.count}</span>}
-                      </td>
-                      <td>{weapon.range || '-'}</td>
-                      <td>{weapon.firepower || '-'}</td>
-                      <td>{weapon.rangedStrength || '-'}</td>
-                      <td>{weapon.ap || '-'}</td>
-                      <td>{weapon.damage || '-'}</td>
-                      <td>{weapon.specialRules?.join(', ') || '-'}</td>
-                      <td>{weapon.traits?.join(', ') || '-'}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        )}
-
-        {meleeWeapons.length > 0 && (
-          <div className="weapon-type-section">
-            <h4>Melee Weapons</h4>
-            <table className="weapon-table">
-              <thead>
-                <tr>
-                  <th>Weapon</th>
-                  <th>Attack Mod</th>
-                  <th>Strength Mod</th>
-                  <th>AP</th>
-                  <th>Damage</th>
-                  <th>Special Rules</th>
-                  <th>Traits</th>
+              );
+            } else {
+              const meleeWeapon = weapon as any;
+              return (
+                <tr key={`${weapon.id}-${index}`}>
+                  <td>{displayName}</td>
+                  {isVehicle && <td>{mount || '-'}</td>}
+                  <td>Melee</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>{meleeWeapon.strengthModifier || '-'}</td>
+                  <td>{meleeWeapon.ap}</td>
+                  <td>{meleeWeapon.damage}</td>
+                  <td>{meleeWeapon.specialRules?.join(', ') || '-'}</td>
+                  <td>{meleeWeapon.traits?.join(', ') || '-'}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {meleeWeapons.map((weaponData, index) => {
-                  const weapon = weaponData.weapon;
-                  return (
-                    <tr key={index}>
-                      <td className="weapon-name">
-                        {weapon.name}
-                        {weaponData.mount && <span className="weapon-mount"> ({weaponData.mount})</span>}
-                        {weaponData.count && weaponData.count > 1 && <span className="weapon-count"> x{weaponData.count}</span>}
-                      </td>
-                      <td>{weapon.attackModifier}</td>
-                      <td>{weapon.strengthModifier}</td>
-                      <td>{weapon.ap || '-'}</td>
-                      <td>{weapon.damage}</td>
-                      <td>{weapon.specialRules?.join(', ') || '-'}</td>
-                      <td>{weapon.traits?.join(', ') || '-'}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </div>
+              );
+            }
+          })}
+        </tbody>
+      </table>
     );
   };
 
@@ -226,7 +194,7 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
       <div className="unit-detail-modal" onClick={e => e.stopPropagation()}>
         <div className="modal-header">
           <h2>{unit.name}</h2>
-          <button className="close-button" onClick={onClose}>×</button>
+          <Button variant="secondary" size="sm" onClick={onClose}>×</Button>
         </div>
 
         <div className="modal-content">
@@ -329,9 +297,8 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
               <h3>Unit Traits</h3>
               <div className="traits-list">
                 {unit.traits.map((trait, index) => (
-                  <span key={index} className="trait-item">
+                  <span key={index} className="trait-tag">
                     {trait}
-                    {index < unit.traits.length - 1 ? ', ' : ''}
                   </span>
                 ))}
               </div>

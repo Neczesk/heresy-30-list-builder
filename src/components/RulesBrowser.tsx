@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from './ui';
 import SpecialRulesBrowser from './SpecialRulesBrowser';
 import WargearBrowser from './WargearBrowser';
 import WeaponBrowser from './WeaponBrowser';
@@ -19,31 +20,31 @@ const RulesBrowser: React.FC<RulesBrowserProps> = ({
     {
       id: 'unit-browser',
       name: 'Unit Browser',
-      description: 'Browse and search all available units',
+      description: 'Browse all available units by faction and battlefield role',
       icon: '👥'
     },
     {
       id: 'detachment-browser',
       name: 'Detachment Browser',
-      description: 'Browse and search all available detachments',
+      description: 'Browse all available detachments and their slot configurations',
       icon: '⚔️'
     },
     {
       id: 'special-rules-browser',
       name: 'Special Rules Browser',
-      description: 'Browse and search all special rules',
-      icon: '📜'
+      description: 'Browse all special rules and their descriptions',
+      icon: '📖'
     },
     {
       id: 'wargear-browser',
       name: 'Wargear Browser',
-      description: 'Browse and search all wargear options',
+      description: 'Browse all wargear options and their effects',
       icon: '🛡️'
     },
     {
       id: 'weapon-browser',
       name: 'Weapon Browser',
-      description: 'Browse and search all weapons',
+      description: 'Browse all weapons with their characteristics and special rules',
       icon: '🔫'
     }
   ];
@@ -59,8 +60,8 @@ const RulesBrowser: React.FC<RulesBrowserProps> = ({
   const renderBrowserMenu = () => (
     <div className="browser-menu">
       <div className="browser-menu-header">
-        <h2>Rules Browser</h2>
-        <p>Select a category to browse and search rules, units, and equipment</p>
+        <h2>Select a Browser</h2>
+        <p>Choose a category to browse the available rules and units</p>
       </div>
       
       <div className="browser-options">
@@ -120,9 +121,9 @@ const RulesBrowser: React.FC<RulesBrowserProps> = ({
     return (
       <div className="selected-browser">
         <div className="selected-browser-header">
-          <button className="back-to-menu-button" onClick={handleBackToBrowserMenu}>
+          <Button variant="secondary" onClick={handleBackToBrowserMenu}>
             ← Back to Browser Menu
-          </button>
+          </Button>
           <h2>{selectedOption.name}</h2>
         </div>
         
@@ -145,9 +146,9 @@ const RulesBrowser: React.FC<RulesBrowserProps> = ({
       <div className="rules-browser-header">
         <div className="header-content">
           <h1>Rules Browser</h1>
-          <button className="back-button" onClick={onBackToMenu}>
+          <Button variant="secondary" onClick={onBackToMenu}>
             ← Back to Menu
-          </button>
+          </Button>
         </div>
       </div>
 

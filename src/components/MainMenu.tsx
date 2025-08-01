@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, Card } from './ui';
 import './MainMenu.css';
 
 interface MainMenuProps {
@@ -24,47 +25,57 @@ const MainMenu: React.FC<MainMenuProps> = ({
       </div>
       
       <div className="menu-options">
-        <div className="menu-section">
+        <Card variant="transparent" padding="lg" className="menu-section">
           <h3>Army Lists</h3>
-          <button 
-            className="menu-button primary"
+          <Button 
+            variant="warning"
+            size="lg"
+            fullWidth
             onClick={onNewList}
           >
             Create New Army List
-          </button>
-          <button 
-            className="menu-button secondary"
+          </Button>
+          <Button 
+            variant="info"
+            size="lg"
+            fullWidth
             onClick={onLoadList}
           >
             Load Existing Army List
-          </button>
-        </div>
+          </Button>
+        </Card>
 
-        <div className="menu-section">
+        <Card variant="transparent" padding="lg" className="menu-section">
           <h3>Data Management</h3>
-          <button 
-            className="menu-button"
+          <Button 
+            variant="primary"
+            size="lg"
+            fullWidth
             onClick={onEditUnits}
           >
             Edit Units
-          </button>
-          <button 
-            className="menu-button"
+          </Button>
+          <Button 
+            variant="primary"
+            size="lg"
+            fullWidth
             onClick={onEditDetachments}
           >
             Edit Detachments
-          </button>
-        </div>
+          </Button>
+        </Card>
 
-        <div className="menu-section">
+        <Card variant="transparent" padding="lg" className="menu-section">
           <h3>Reference</h3>
-          <button 
-            className="menu-button"
+          <Button 
+            variant="secondary"
+            size="lg"
+            fullWidth
             onClick={onRulesBrowser}
           >
             Rules Browser
-          </button>
-        </div>
+          </Button>
+        </Card>
       </div>
 
       <div className="menu-footer">
