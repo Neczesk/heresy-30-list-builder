@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Card } from './ui';
 import { ArmyListStorage } from '../utils/armyListStorage';
 import type { ArmyListMetadata, Army } from '../types/army';
 import styles from './LoadArmyList.module.css';
 
 interface LoadArmyListProps {
-  onBackToMenu: () => void;
   onLoadList: (armyList: Army) => void;
 }
 
 const LoadArmyList: React.FC<LoadArmyListProps> = ({ 
-  onBackToMenu, 
   onLoadList 
 }) => {
+  const navigate = useNavigate();
   const [armyLists, setArmyLists] = useState<ArmyListMetadata[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [showDuplicateModal, setShowDuplicateModal] = useState(false);
@@ -130,7 +130,7 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({
   return (
     <div className={styles['load-army-list']}>
       <div className={styles['load-header']}>
-        <Button variant="secondary" onClick={onBackToMenu}>
+        <Button variant="secondary" onClick={() => navigate('/')}>
           ← Back to Menu
         </Button>
         <h2>Load Army List</h2>

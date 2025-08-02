@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
 import AddDetachmentModal from './AddDetachmentModal';
@@ -13,14 +14,13 @@ import type { Army, ArmyDetachment, ArmyUnit, Detachment, Faction, Allegiance } 
 import styles from './ArmyListBuilder.module.css';
 
 interface ArmyListBuilderProps {
-  onBackToMenu: () => void;
   initialArmyList?: Army | null;
 }
 
 const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
-  onBackToMenu,
   initialArmyList
 }) => {
+  const navigate = useNavigate();
   const [armyList, setArmyList] = useState<Army>(initialArmyList || {
     id: `army-${Date.now()}`,
     name: 'New Army List',
@@ -545,7 +545,7 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     <div className={styles['army-list-builder']}>
       {/* Header */}
       <div className={styles['builder-header']}>
-        <Button variant="secondary" onClick={onBackToMenu}>
+        <Button variant="secondary" onClick={() => navigate('/')}>
           ← Back to Menu
         </Button>
         <div className={styles['header-info']}>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Card } from './ui';
 import { CustomDetachmentStorage } from '../utils/customDetachmentStorage';
 import { DataLoader } from '../utils/dataLoader';
@@ -6,13 +7,8 @@ import DetachmentEditorModal from './DetachmentEditorModal';
 import type { CustomDetachment, CustomDetachmentMetadata } from '../types/army';
 import styles from './CustomDetachmentsManager.module.css';
 
-interface CustomDetachmentsManagerProps {
-  onBackToMenu: () => void;
-}
-
-const CustomDetachmentsManager: React.FC<CustomDetachmentsManagerProps> = ({
-  onBackToMenu
-}) => {
+const CustomDetachmentsManager: React.FC = () => {
+  const navigate = useNavigate();
   const [customDetachments, setCustomDetachments] = useState<CustomDetachmentMetadata[]>([]);
   const [renamingDetachment, setRenamingDetachment] = useState<{ id: string; name: string } | null>(null);
   const [deleteConfirmDetachment, setDeleteConfirmDetachment] = useState<CustomDetachmentMetadata | null>(null);
@@ -146,9 +142,9 @@ const CustomDetachmentsManager: React.FC<CustomDetachmentsManagerProps> = ({
       <div className={styles['custom-detachments-manager-header']}>
         <div className={styles['header-content']}>
           <h1>Custom Detachments Manager</h1>
-          <Button variant="secondary" onClick={onBackToMenu}>
-            ← Back to Menu
-          </Button>
+                  <Button variant="secondary" onClick={() => navigate('/')}>
+          ← Back to Menu
+        </Button>
         </div>
       </div>
 

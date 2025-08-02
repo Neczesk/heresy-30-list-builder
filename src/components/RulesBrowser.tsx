@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from './ui';
 import UnitBrowser from './UnitBrowser';
 import DetachmentBrowser from './DetachmentBrowser';
@@ -7,13 +8,8 @@ import WargearBrowser from './WargearBrowser';
 import WeaponBrowser from './WeaponBrowser';
 import styles from './RulesBrowser.module.css';
 
-interface RulesBrowserProps {
-  onBackToMenu: () => void;
-}
-
-const RulesBrowser: React.FC<RulesBrowserProps> = ({
-  onBackToMenu
-}) => {
+const RulesBrowser: React.FC = () => {
+  const navigate = useNavigate();
   const [selectedBrowser, setSelectedBrowser] = useState<string | null>(null);
 
   const browserOptions = [
@@ -146,9 +142,9 @@ const RulesBrowser: React.FC<RulesBrowserProps> = ({
       <div className={styles.rulesBrowserHeader}>
         <div className={styles.headerContent}>
           <h1>Rules Browser</h1>
-          <Button variant="secondary" onClick={onBackToMenu}>
-            ← Back to Menu
-          </Button>
+                  <Button variant="secondary" onClick={() => navigate('/')}>
+          ← Back to Menu
+        </Button>
         </div>
       </div>
 

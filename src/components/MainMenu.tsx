@@ -1,22 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Card } from './ui';
 import styles from './MainMenu.module.css';
 
-interface MainMenuProps {
-  onNewList: () => void;
-  onLoadList: () => void;
-  onEditUnits: () => void;
-  onEditDetachments: () => void;
-  onRulesBrowser: () => void;
-}
-
-const MainMenu: React.FC<MainMenuProps> = ({
-  onNewList,
-  onLoadList,
-  onEditUnits,
-  onEditDetachments,
-  onRulesBrowser
-}) => {
+const MainMenu: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles['main-menu']}>
       <div className={styles['menu-header']}>
@@ -31,7 +19,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
             variant="warning"
             size="lg"
             fullWidth
-            onClick={onNewList}
+            onClick={() => navigate('/army-builder')}
           >
             Create New Army List
           </Button>
@@ -39,7 +27,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
             variant="info"
             size="lg"
             fullWidth
-            onClick={onLoadList}
+            onClick={() => navigate('/load-list')}
           >
             Load Existing Army List
           </Button>
@@ -51,7 +39,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
             variant="primary"
             size="lg"
             fullWidth
-            onClick={onEditUnits}
+            onClick={() => navigate('/edit-units')}
           >
             Edit Units
           </Button>
@@ -59,7 +47,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
             variant="primary"
             size="lg"
             fullWidth
-            onClick={onEditDetachments}
+            onClick={() => navigate('/edit-detachments')}
           >
             Edit Detachments
           </Button>
@@ -71,7 +59,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
             variant="secondary"
             size="lg"
             fullWidth
-            onClick={onRulesBrowser}
+            onClick={() => navigate('/rules-browser')}
           >
             Rules Browser
           </Button>

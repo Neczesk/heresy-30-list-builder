@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Card } from './ui';
 import { CustomUnitStorage } from '../utils/customUnitStorage';
 import { DataLoader } from '../utils/dataLoader';
@@ -6,13 +7,8 @@ import UnitManagementModal from './UnitManagementModal';
 import type { CustomUnit, CustomUnitMetadata, ArmyUnit } from '../types/army';
 import styles from './CustomUnitsManager.module.css';
 
-interface CustomUnitsManagerProps {
-  onBackToMenu: () => void;
-}
-
-const CustomUnitsManager: React.FC<CustomUnitsManagerProps> = ({
-  onBackToMenu
-}) => {
+const CustomUnitsManager: React.FC = () => {
+  const navigate = useNavigate();
   const [customUnits, setCustomUnits] = useState<CustomUnitMetadata[]>([]);
   const [editingUnit, setEditingUnit] = useState<CustomUnit | null>(null);
   const [showUnitManagementModal, setShowUnitManagementModal] = useState(false);
@@ -152,9 +148,9 @@ const CustomUnitsManager: React.FC<CustomUnitsManagerProps> = ({
       <div className={styles['custom-units-manager-header']}>
         <div className={styles['header-content']}>
           <h1>Custom Units Manager</h1>
-          <Button variant="secondary" onClick={onBackToMenu}>
-            ← Back to Menu
-          </Button>
+                  <Button variant="secondary" onClick={() => navigate('/')}>
+          ← Back to Menu
+        </Button>
         </div>
       </div>
 
