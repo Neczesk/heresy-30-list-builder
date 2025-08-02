@@ -4,7 +4,7 @@ import { CustomDetachmentStorage } from '../utils/customDetachmentStorage';
 import { DataLoader } from '../utils/dataLoader';
 import DetachmentEditorModal from './DetachmentEditorModal';
 import type { CustomDetachment, CustomDetachmentMetadata } from '../types/army';
-import './CustomDetachmentsManager.css';
+import styles from './CustomDetachmentsManager.module.css';
 
 interface CustomDetachmentsManagerProps {
   onBackToMenu: () => void;
@@ -142,9 +142,9 @@ const CustomDetachmentsManager: React.FC<CustomDetachmentsManagerProps> = ({
   };
 
   return (
-    <div className="custom-detachments-manager-page">
-      <div className="custom-detachments-manager-header">
-        <div className="header-content">
+    <div className={styles['custom-detachments-manager-page']}>
+      <div className={styles['custom-detachments-manager-header']}>
+        <div className={styles['header-content']}>
           <h1>Custom Detachments Manager</h1>
           <Button variant="secondary" onClick={onBackToMenu}>
             ← Back to Menu
@@ -152,34 +152,34 @@ const CustomDetachmentsManager: React.FC<CustomDetachmentsManagerProps> = ({
         </div>
       </div>
 
-      <div className="custom-detachments-manager-content">
-        <div className="custom-detachments-manager-body">
+      <div className={styles['custom-detachments-manager-content']}>
+        <div className={styles['custom-detachments-manager-body']}>
           {customDetachments.length === 0 ? (
-            <Card variant="transparent" padding="lg" className="no-custom-detachments">
+            <Card variant="transparent" padding="lg" className={styles['no-custom-detachments']}>
               <p>No custom detachments saved yet.</p>
               <p>Create custom detachments by configuring detachments in your army lists and saving them.</p>
             </Card>
           ) : (
-            <div className="custom-detachments-list">
+            <div className={styles['custom-detachments-list']}>
               {customDetachments.map((detachment) => {
                 const fullDetachment = CustomDetachmentStorage.getCustomDetachment(detachment.id);
                 const totalPoints = fullDetachment ? calculateDetachmentPoints(fullDetachment.units) : 0;
                 
                 return (
-                  <Card key={detachment.id} variant="default" padding="lg" className="custom-detachment-item">
-                    <div className="custom-detachment-info">
-                      <div className="custom-detachment-header">
+                  <Card key={detachment.id} variant="default" padding="lg" className={styles['custom-detachment-item']}>
+                    <div className={styles['custom-detachment-info']}>
+                      <div className={styles['custom-detachment-header']}>
                         {renamingDetachment?.id === detachment.id ? (
-                          <div className="rename-input-container">
+                          <div className={styles['rename-input-container']}>
                             <input
                               type="text"
                               value={renamingDetachment.name}
                               onChange={handleRenameInputChange}
                               onKeyDown={handleRenameKeyPress}
-                              className="rename-input"
+                              className={styles['rename-input']}
                               autoFocus
                             />
-                            <div className="rename-actions">
+                            <div className={styles['rename-actions']}>
                               <Button 
                                 variant="success"
                                 size="sm"
@@ -197,54 +197,54 @@ const CustomDetachmentsManager: React.FC<CustomDetachmentsManagerProps> = ({
                             </div>
                           </div>
                         ) : (
-                          <div className="detachment-name-section">
-                            <h3 className="detachment-name">{detachment.name}</h3>
-                            <span className="custom-badge">Custom</span>
+                          <div className={styles['detachment-name-section']}>
+                            <h3 className={styles['detachment-name']}>{detachment.name}</h3>
+                            <span className={styles['custom-badge']}>Custom</span>
                           </div>
                         )}
                       </div>
 
-                      <div className="detachment-details">
-                        <div className="detail-row">
-                          <span className="detail-label">Base Detachment:</span>
-                          <span className="detail-value">{getBaseDetachmentName(detachment.baseDetachmentId)}</span>
+                      <div className={styles['detachment-details']}>
+                        <div className={styles['detail-row']}>
+                          <span className={styles['detail-label']}>Base Detachment:</span>
+                          <span className={styles['detail-value']}>{getBaseDetachmentName(detachment.baseDetachmentId)}</span>
                         </div>
-                        <div className="detail-row">
-                          <span className="detail-label">Faction:</span>
-                          <span className="detail-value">{getFactionName(detachment.faction)}</span>
+                        <div className={styles['detail-row']}>
+                          <span className={styles['detail-label']}>Faction:</span>
+                          <span className={styles['detail-value']}>{getFactionName(detachment.faction)}</span>
                         </div>
                         {detachment.subfaction && (
-                          <div className="detail-row">
-                            <span className="detail-label">Subfaction:</span>
-                            <span className="detail-value">{getSubfactionName(detachment.subfaction)}</span>
+                          <div className={styles['detail-row']}>
+                            <span className={styles['detail-label']}>Subfaction:</span>
+                            <span className={styles['detail-value']}>{getSubfactionName(detachment.subfaction)}</span>
                           </div>
                         )}
-                        <div className="detail-row">
-                          <span className="detail-label">Units:</span>
-                          <span className="detail-value">{fullDetachment?.units.length || 0} units</span>
+                        <div className={styles['detail-row']}>
+                          <span className={styles['detail-label']}>Units:</span>
+                          <span className={styles['detail-value']}>{fullDetachment?.units.length || 0} units</span>
                         </div>
-                        <div className="detail-row">
-                          <span className="detail-label">Total Points:</span>
-                          <span className="detail-value">{totalPoints} pts</span>
+                        <div className={styles['detail-row']}>
+                          <span className={styles['detail-label']}>Total Points:</span>
+                          <span className={styles['detail-value']}>{totalPoints} pts</span>
                         </div>
-                        <div className="detail-row">
-                          <span className="detail-label">Created:</span>
-                          <span className="detail-value">{formatDate(detachment.createdAt)}</span>
+                        <div className={styles['detail-row']}>
+                          <span className={styles['detail-label']}>Created:</span>
+                          <span className={styles['detail-value']}>{formatDate(detachment.createdAt)}</span>
                         </div>
-                        <div className="detail-row">
-                          <span className="detail-label">Updated:</span>
-                          <span className="detail-value">{formatDate(detachment.updatedAt)}</span>
+                        <div className={styles['detail-row']}>
+                          <span className={styles['detail-label']}>Updated:</span>
+                          <span className={styles['detail-value']}>{formatDate(detachment.updatedAt)}</span>
                         </div>
                         {detachment.description && (
-                          <div className="detail-row">
-                            <span className="detail-label">Description:</span>
-                            <span className="detail-value description">{detachment.description}</span>
+                          <div className={styles['detail-row']}>
+                            <span className={styles['detail-label']}>Description:</span>
+                            <span className={`${styles['detail-value']} ${styles.description}`}>{detachment.description}</span>
                           </div>
                         )}
                       </div>
                     </div>
 
-                    <div className="custom-detachment-actions">
+                    <div className={styles['custom-detachment-actions']}>
                       <Button 
                         variant="primary"
                         size="sm"
@@ -279,12 +279,12 @@ const CustomDetachmentsManager: React.FC<CustomDetachmentsManagerProps> = ({
 
         {/* Delete Confirmation Modal */}
         {deleteConfirmDetachment && (
-          <div className="delete-confirm-overlay" onClick={handleCancelDelete}>
-            <div className="delete-confirm-content" onClick={(e) => e.stopPropagation()}>
+          <div className={styles['delete-confirm-overlay']} onClick={handleCancelDelete}>
+            <div className={styles['delete-confirm-content']} onClick={(e) => e.stopPropagation()}>
               <h3>Delete Custom Detachment</h3>
               <p>Are you sure you want to delete "{deleteConfirmDetachment.name}"?</p>
-              <p className="warning">This action cannot be undone.</p>
-              <div className="delete-confirm-actions">
+              <p className={styles.warning}>This action cannot be undone.</p>
+              <div className={styles['delete-confirm-actions']}>
                 <Button 
                   variant="secondary"
                   onClick={handleCancelDelete}

@@ -1,5 +1,5 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Save Custom Detachment Modal Specific Styles */
 .save-custom-detachment-modal {
@@ -30,7 +30,6 @@
 
 .save-custom-detachment-modal .form-group input,
 .save-custom-detachment-modal .form-group textarea {
-  composes: search-input;
   width: 100%;
   padding: var(--spacing-md);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -111,7 +110,6 @@
 }
 
 .save-custom-detachment-modal .cancel-button {
-  composes: btn btn-secondary;
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -129,7 +127,6 @@
 }
 
 .save-custom-detachment-modal .save-button {
-  composes: btn;
   background: var(--success-color);
   color: white;
   border: none;

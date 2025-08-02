@@ -1,5 +1,5 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Army List Builder Specific Styles */
 .army-list-builder {
@@ -22,7 +22,6 @@
 }
 
 .back-button {
-  composes: btn btn-secondary;
   background: rgba(255, 255, 255, 0.1);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -70,7 +69,6 @@
 .name-button,
 .add-detachment-button,
 .points-limit-button {
-  composes: btn;
   background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
   color: #1e3c72;
   border: none;
@@ -111,7 +109,6 @@
 }
 
 .detachment-card {
-  composes: card;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-lg);
@@ -139,7 +136,6 @@
 
 .save-detachment-button,
 .load-detachment-button {
-  composes: btn;
   background: rgba(255, 255, 255, 0.1);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -164,7 +160,6 @@
 }
 
 .detachment-type {
-  composes: badge;
   background: rgba(255, 255, 255, 0.2);
   color: white;
   padding: var(--spacing-xs) var(--spacing-sm);
@@ -176,7 +171,6 @@
 }
 
 .remove-detachment-button {
-  composes: btn;
   background: var(--danger-color);
   color: white;
   border: none;
@@ -264,13 +258,43 @@
 }
 
 .empty-state {
-  composes: empty-state;
   color: rgba(255, 255, 255, 0.7);
 }
 
 .empty-state p {
-  composes: empty-state p;
   color: rgba(255, 255, 255, 0.7);
+}
+
+
+
+.faction-selection-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+}
+
+.faction-selection-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-3xl);
+  max-width: 500px;
+}
+
+.faction-selection-content h3 {
+  margin: 0 0 var(--spacing-lg) 0;
+  color: #ffd700;
+  font-size: var(--font-size-2xl);
+}
+
+.faction-selection-content p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--font-size-lg);
+  line-height: 1.5;
 }
 
 .available-detachments {
@@ -297,16 +321,30 @@
 
 /* Modal Styles */
 .modal-overlay {
-  composes: modal-overlay;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: var(--spacing-xl);
 }
 
 .modal-content {
-  composes: modal;
   background: #1a1a1a;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
-  max-width: 500px;
+  max-width: 900px;
   width: 90%;
+  max-height: 85vh;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-content h3 {
@@ -348,7 +386,6 @@
 }
 
 .modal-actions button {
-  composes: btn;
   padding: var(--spacing-md) var(--spacing-xl);
   font-size: var(--font-size-base);
   font-weight: 600;
@@ -394,6 +431,15 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .modal-overlay {
+    padding: var(--spacing-sm);
+  }
+  
+  .modal-content {
+    max-width: 95%;
+    max-height: 90vh;
+  }
+  
   .builder-header {
     flex-direction: column;
     align-items: flex-start;

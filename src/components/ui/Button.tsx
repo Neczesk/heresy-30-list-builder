@@ -1,5 +1,5 @@
 import React from 'react';
-import './Button.css';
+import styles from './Button.module.css';
 
 export interface ButtonProps {
   children: React.ReactNode;
@@ -24,11 +24,11 @@ const Button: React.FC<ButtonProps> = ({
   fullWidth = false,
   title,
 }) => {
-  const baseClass = 'ui-button';
-  const variantClass = `ui-button--${variant}`;
-  const sizeClass = `ui-button--${size}`;
-  const widthClass = fullWidth ? 'ui-button--full-width' : '';
-  const disabledClass = disabled ? 'ui-button--disabled' : '';
+  const baseClass = styles['ui-button'];
+  const variantClass = styles[`ui-button--${variant}`];
+  const sizeClass = styles[`ui-button--${size}`];
+  const widthClass = fullWidth ? styles['ui-button--full-width'] : '';
+  const disabledClass = disabled ? styles['ui-button--disabled'] : '';
 
   const buttonClass = [
     baseClass,

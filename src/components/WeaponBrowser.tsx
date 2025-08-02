@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
+import styles from './WeaponBrowser.module.css';
 import type { RangedWeapon, MeleeWeapon } from '../types/army';
-import './WeaponBrowser.css';
 
 interface WeaponBrowserProps {
   onBackToBrowserMenu: () => void;
@@ -61,12 +61,12 @@ const WeaponBrowser: React.FC<WeaponBrowserProps> = ({
     // Handle weapons with multiple profiles
     if (weapon.profiles && weapon.profiles.length > 0) {
       return weapon.profiles.map((profile, index) => (
-        <tr key={`${weapon.id}-${index}`} className={index === 0 ? 'weapon-group-header' : 'weapon-profile-row'}>
+        <tr key={`${weapon.id}-${index}`} className={index === 0 ? styles['weapon-group-header'] : styles['weapon-profile-row']}>
           <td>
             {index === 0 ? (
               <strong>{weapon.name}</strong>
             ) : (
-              <span className="profile-name">{profile.name}</span>
+              <span className={styles['profile-name']}>{profile.name}</span>
             )}
           </td>
           <td>{profile.range}"</td>
@@ -138,23 +138,23 @@ const WeaponBrowser: React.FC<WeaponBrowserProps> = ({
   );
 
   return (
-    <div className="weapon-browser">
-      <div className="browser-header">
+    <div className={styles['weapon-browser']}>
+      <div className={styles['browser-header']}>
         <Button variant="secondary" onClick={onBackToBrowserMenu}>
           ← Back to Browser Menu
         </Button>
         <h2>Weapon Browser</h2>
       </div>
 
-      <div className="search-section">
-        <div className="search-container">
-          <div className="search-input-wrapper">
+      <div className={styles['search-section']}>
+        <div className={styles['search-container']}>
+          <div className={styles['search-input-wrapper']}>
             <input
               type="text"
               placeholder="Search weapons..."
               value={searchTerm}
               onChange={handleSearchChange}
-              className="search-input"
+              className={styles['search-input']}
             />
             {searchTerm && (
               <Button variant="secondary" size="sm" onClick={clearSearch}>
@@ -162,9 +162,9 @@ const WeaponBrowser: React.FC<WeaponBrowserProps> = ({
               </Button>
             )}
           </div>
-          <div className="search-results">
+          <div className={styles['search-results']}>
             {searchTerm && (
-              <span className="results-count">
+              <span className={styles['results-count']}>
                 {filteredRangedWeapons.length + filteredMeleeWeapons.length} of {rangedWeapons.length + meleeWeapons.length} weapons found
               </span>
             )}
@@ -172,17 +172,17 @@ const WeaponBrowser: React.FC<WeaponBrowserProps> = ({
         </div>
       </div>
 
-      <div className="weapons-section">
+      <div className={styles['weapons-section']}>
         {/* Ranged Weapons Table */}
-        <div className="weapon-table-section">
+        <div className={styles['weapon-table-section']}>
           <h3>Ranged Weapons ({filteredRangedWeapons.length})</h3>
           {filteredRangedWeapons.length === 0 ? (
-            <div className="no-weapons">
+            <div className={styles['no-weapons']}>
               <p>No ranged weapons found matching "{searchTerm}"</p>
             </div>
           ) : (
-            <div className="table-container">
-              <table className="weapon-table">
+            <div className={styles['table-container']}>
+              <table className={styles['weapon-table']}>
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -204,15 +204,15 @@ const WeaponBrowser: React.FC<WeaponBrowserProps> = ({
         </div>
 
         {/* Melee Weapons Table */}
-        <div className="weapon-table-section">
+        <div className={styles['weapon-table-section']}>
           <h3>Melee Weapons ({filteredMeleeWeapons.length})</h3>
           {filteredMeleeWeapons.length === 0 ? (
-            <div className="no-weapons">
+            <div className={styles['no-weapons']}>
               <p>No melee weapons found matching "{searchTerm}"</p>
             </div>
           ) : (
-            <div className="table-container">
-              <table className="weapon-table">
+            <div className={styles['table-container']}>
+              <table className={styles['weapon-table']}>
                 <thead>
                   <tr>
                     <th>Name</th>

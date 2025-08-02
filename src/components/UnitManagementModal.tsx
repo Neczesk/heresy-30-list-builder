@@ -7,7 +7,7 @@ import type { UpgradeValidationContext } from '../utils/upgradeValidator';
 import { UnitViewer } from './UnitViewer';
 import SaveCustomUnitModal from './SaveCustomUnitModal';
 import type { Army, ArmyUnit, ArmyUpgrade } from '../types/army';
-import './UnitManagementModal.css';
+import styles from './UnitManagementModal.module.css';
 
 interface UnitManagementModalProps {
   isOpen: boolean;
@@ -975,69 +975,69 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
   };
 
   return (
-    <div className="unit-management-overlay" onClick={onClose}>
-      <div className="unit-management-content" onClick={(e) => e.stopPropagation()}>
-        <div className="unit-management-header">
+    <div className={styles['unit-management-overlay']} onClick={onClose}>
+      <div className={styles['unit-management-content']} onClick={(e) => e.stopPropagation()}>
+        <div className={styles['unit-management-header']}>
           <h3>
             {customUnitData ? `${customUnitData.name} (${baseUnitData.name})` : `${baseUnitData.name} Management`}
           </h3>
           <Button variant="secondary" size="sm" onClick={onClose}>×</Button>
         </div>
         
-        <div className="unit-management-body">
+        <div className={styles['unit-management-body']}>
           {/* Unit Info */}
-          <div className="unit-info-section">
-            <div className="unit-stats">
-              <div className="stat-item">
-                <span className="stat-label">Base Points:</span>
-                <span className="stat-value">{baseUnitData.points}</span>
+          <div className={styles['unit-info-section']}>
+            <div className={styles['unit-stats']}>
+              <div className={styles['stat-item']}>
+                <span className={styles['stat-label']}>Base Points:</span>
+                <span className={styles['stat-value']}>{baseUnitData.points}</span>
               </div>
-              <div className="stat-item">
-                <span className="stat-label">Upgrade Points:</span>
-                <span className="stat-value">{calculateUpgradePoints()}</span>
+              <div className={styles['stat-item']}>
+                <span className={styles['stat-label']}>Upgrade Points:</span>
+                <span className={styles['stat-value']}>{calculateUpgradePoints()}</span>
               </div>
-              <div className="stat-item total">
-                <span className="stat-label">Total Points:</span>
-                <span className="stat-value">{totalUnitPoints}</span>
+              <div className={`${styles['stat-item']} ${styles.total}`}>
+                <span className={styles['stat-label']}>Total Points:</span>
+                <span className={styles['stat-value']}>{totalUnitPoints}</span>
               </div>
             </div>
             
             {officerOfTheLineRule && (
-              <div className="special-rule">
-                <span className="rule-icon">⚡</span>
-                <span className="rule-text">Officer of the Line - Can trigger up to {maxDetachments} detachment{maxDetachments > 1 ? 's' : ''}.</span>
+              <div className={styles['special-rule']}>
+                <span className={styles['rule-icon']}>⚡</span>
+                <span className={styles['rule-text']}>Officer of the Line - Can trigger up to {maxDetachments} detachment{maxDetachments > 1 ? 's' : ''}.</span>
               </div>
             )}
             
             {/* Custom Unit Info */}
             {customUnitData && (
-              <div className="custom-unit-info">
-                <div className="custom-unit-header">
-                  <span className="custom-unit-icon">⚙️</span>
-                  <span className="custom-unit-label">Custom Unit Details</span>
+              <div className={styles['custom-unit-info']}>
+                <div className={styles['custom-unit-header']}>
+                  <span className={styles['custom-unit-icon']}>⚙️</span>
+                  <span className={styles['custom-unit-label']}>Custom Unit Details</span>
                 </div>
-                <div className="custom-unit-details">
-                  <div className="custom-unit-field">
-                    <span className="field-label">Name:</span>
-                    <span className="field-value">{customUnitData.name}</span>
+                <div className={styles['custom-unit-details']}>
+                  <div className={styles['custom-unit-field']}>
+                    <span className={styles['field-label']}>Name:</span>
+                    <span className={styles['field-value']}>{customUnitData.name}</span>
                   </div>
-                  <div className="custom-unit-field">
-                    <span className="field-label">Faction:</span>
-                    <span className="field-value">{DataLoader.getFactionById(customUnitData.faction)?.name || customUnitData.faction}</span>
+                  <div className={styles['custom-unit-field']}>
+                    <span className={styles['field-label']}>Faction:</span>
+                    <span className={styles['field-value']}>{DataLoader.getFactionById(customUnitData.faction)?.name || customUnitData.faction}</span>
                   </div>
                   {customUnitData.subfaction && (
-                    <div className="custom-unit-field">
-                      <span className="field-label">Subfaction:</span>
-                      <span className="field-value">{DataLoader.getFactionById(customUnitData.subfaction)?.name || customUnitData.subfaction}</span>
+                    <div className={styles['custom-unit-field']}>
+                      <span className={styles['field-label']}>Subfaction:</span>
+                      <span className={styles['field-value']}>{DataLoader.getFactionById(customUnitData.subfaction)?.name || customUnitData.subfaction}</span>
                     </div>
                   )}
-                  <div className="custom-unit-field">
-                    <span className="field-label">Created:</span>
-                    <span className="field-value">{new Date(customUnitData.createdAt).toLocaleDateString()}</span>
+                  <div className={styles['custom-unit-field']}>
+                    <span className={styles['field-label']}>Created:</span>
+                    <span className={styles['field-value']}>{new Date(customUnitData.createdAt).toLocaleDateString()}</span>
                   </div>
-                  <div className="custom-unit-field">
-                    <span className="field-label">Last Modified:</span>
-                    <span className="field-value">{new Date(customUnitData.updatedAt).toLocaleDateString()}</span>
+                  <div className={styles['custom-unit-field']}>
+                    <span className={styles['field-label']}>Last Modified:</span>
+                    <span className={styles['field-value']}>{new Date(customUnitData.updatedAt).toLocaleDateString()}</span>
                   </div>
                 </div>
               </div>
@@ -1045,7 +1045,7 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
           </div>
 
           {/* Tabs */}
-          <div className="tab-navigation">
+          <div className={styles['tab-navigation']}>
             <Button 
               variant={activeTab === 'unit' ? 'primary' : 'secondary'}
               size="sm"

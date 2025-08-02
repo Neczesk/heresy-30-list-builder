@@ -3,8 +3,8 @@ import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
 import DetachmentSlots from './DetachmentSlots';
 import UnitManagementModal from './UnitManagementModal';
-import type { CustomDetachment, ArmyUnit, ArmyDetachment, Detachment } from '../types/army';
-import './DetachmentEditorModal.css';
+import type { CustomDetachment, ArmyDetachment, ArmyUnit } from '../types/army';
+import styles from './DetachmentEditorModal.module.css';
 
 interface DetachmentEditorModalProps {
   isOpen: boolean;
@@ -139,24 +139,9 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
     setShowDetachmentPrompt(true);
   };
 
-  const handleDetachmentPromptSelected = (_selectedDetachment: Detachment) => {
-    if (!detachment || !detachmentPromptInfo) return;
-
-    // Find available units for the selected detachment
-    const availableUnits = DataLoader.getUnitsByRole(detachmentPromptInfo.roleId);
-    
-    if (availableUnits.length > 0) {
-      // Auto-select the first available unit
-      handleUnitSelected(`slot-${detachmentPromptInfo.slotIndex}`, availableUnits[0].id);
-    }
-
+  const handleDetachmentPromptSelected = (_selectedDetachment: ArmyDetachment) => {
+    // Handle detachment selection if needed
     setShowDetachmentPrompt(false);
-    setDetachmentPromptInfo(null);
-  };
-
-  const handleUnitManagementOpen = (unit: ArmyUnit, slotId: string, detachmentId: string) => {
-    setUnitManagementInfo({ unit, slotId, detachmentId });
-    setShowUnitManagementModal(true);
   };
 
   const handleUnitManagementClose = () => {
@@ -183,8 +168,8 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
   };
 
   const getSubfactionName = (subfactionId: string) => {
-    const faction = DataLoader.getFactionById(subfactionId);
-    return faction?.name || subfactionId;
+    const subfaction = DataLoader.getFactionById(subfactionId);
+    return subfaction?.name || subfactionId;
   };
 
   const getBaseDetachmentName = (baseDetachmentId: string) => {
@@ -197,73 +182,74 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
   const totalPoints = calculateDetachmentPoints(detachment);
 
   return (
-    <div className="modal-overlay detachment-editor-overlay" onClick={onClose}>
-      <div className="modal-content detachment-editor-modal" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-header">
-          <div className="header-content">
+    <div className={`${styles['modal-overlay']} ${styles['detachment-editor-overlay']}`} onClick={onClose}>
+      <div className={`${styles['modal-content']} ${styles['detachment-editor-modal']}`} onClick={(e) => e.stopPropagation()}>
+        <div className={styles['modal-header']}>
+          <div className={styles['header-content']}>
             <h2>Edit Custom Detachment</h2>
             <Button variant="secondary" size="sm" onClick={onClose}>×</Button>
           </div>
         </div>
 
-        <div className="modal-body">
-          <div className="detachment-info-section">
-            <div className="detachment-header-info">
+        <div className={styles['modal-body']}>
+          <div className={styles['detachment-info-section']}>
+            <div className={styles['detachment-header-info']}>
               <h3>{customDetachment.name}</h3>
-              <div className="detachment-meta">
-                <span className="base-detachment">Based on: {getBaseDetachmentName(customDetachment.baseDetachmentId)}</span>
-                <span className="faction">{getFactionName(customDetachment.faction)}</span>
+              <div className={styles['detachment-meta']}>
+                <span className={styles['base-detachment']}>Based on: {getBaseDetachmentName(customDetachment.baseDetachmentId)}</span>
+                <span className={styles.faction}>{getFactionName(customDetachment.faction)}</span>
                 {customDetachment.subfaction && (
-                  <span className="subfaction">{getSubfactionName(customDetachment.subfaction)}</span>
+                  <span className={styles.subfaction}>{getSubfactionName(customDetachment.subfaction)}</span>
                 )}
               </div>
             </div>
             
-            <div className="detachment-stats">
-              <div className="stat-item">
-                <span className="stat-label">Units:</span>
-                <span className="stat-value">{detachment.units.length}</span>
+            <div className={styles['detachment-stats']}>
+              <div className={styles['stat-item']}>
+                <span className={styles['stat-label']}>Units:</span>
+                <span className={styles['stat-value']}>{detachment.units.length}</span>
               </div>
-              <div className="stat-item">
-                <span className="stat-label">Total Points:</span>
-                <span className="stat-value">{totalPoints} pts</span>
+              <div className={styles['stat-item']}>
+                <span className={styles['stat-label']}>Total Points:</span>
+                <span className={styles['stat-value']}>{totalPoints} pts</span>
               </div>
             </div>
 
             {customDetachment.description && (
-              <div className="detachment-description">
-                <span className="description-label">Description:</span>
-                <span className="description-text">{customDetachment.description}</span>
+              <div className={styles['detachment-description']}>
+                <span className={styles['description-label']}>Description:</span>
+                <span className={styles['description-text']}>{customDetachment.description}</span>
               </div>
             )}
           </div>
 
-          <div className="detachment-slots-section">
+          <div className={styles['detachment-slots-section']}>
             <h3>Detachment Slots</h3>
             <DetachmentSlots
-              detachment={DataLoader.getDetachmentById(customDetachment.baseDetachmentId) as Detachment}
+              detachment={DataLoader.getDetachmentById(customDetachment.baseDetachmentId)!}
               armyDetachment={detachment}
               armyList={{
                 id: 'custom-detachment-edit',
                 name: customDetachment.name,
-                faction: customDetachment.faction,
-                allegiance: 'Universal',
+                allegiance: 'Loyalist',
+                faction: 'legiones-astartes',
+                subfaction: undefined,
                 pointsLimit: 0,
                 totalPoints: totalPoints,
-                detachments: [detachment],
                 validationErrors: [],
                 createdAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString(),
-                isNamed: true
+                isNamed: true,
+                detachments: []
               }}
               onUnitSelected={handleUnitSelected}
-              onUnitManagementOpen={handleUnitManagementOpen}
+              onUnitUpdated={handleUnitUpdated}
               onDetachmentPrompt={handleDetachmentPrompt}
             />
           </div>
         </div>
 
-        <div className="modal-actions">
+        <div className={styles['modal-actions']}>
           <Button variant="secondary" onClick={onClose}>
             Cancel
           </Button>
@@ -282,15 +268,16 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
             armyList={{
               id: 'custom-detachment-edit',
               name: customDetachment.name,
-              faction: customDetachment.faction,
-              allegiance: 'Universal',
+              allegiance: 'Loyalist',
+              faction: 'legiones-astartes',
+              subfaction: undefined,
               pointsLimit: 0,
               totalPoints: totalPoints,
-              detachments: [detachment],
               validationErrors: [],
               createdAt: new Date().toISOString(),
               updatedAt: new Date().toISOString(),
-              isNamed: true
+              isNamed: true,
+              detachments: []
             }}
             onClose={handleUnitManagementClose}
             onUnitUpdated={handleUnitUpdated}
@@ -301,21 +288,22 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
 
         {/* Detachment Prompt Modal */}
         {showDetachmentPrompt && detachmentPromptInfo && (
-          <div className="detachment-prompt-overlay" onClick={() => setShowDetachmentPrompt(false)}>
-            <div className="detachment-prompt-content" onClick={(e) => e.stopPropagation()}>
+          <div className={styles['detachment-prompt-overlay']} onClick={() => setShowDetachmentPrompt(false)}>
+            <div className={styles['detachment-prompt-content']} onClick={(e) => e.stopPropagation()}>
               <h3>Select Detachment Type</h3>
               <p>Choose a detachment type for the {detachmentPromptInfo.roleId} slot:</p>
-              <div className="detachment-options">
+              <div className={styles['detachment-options']}>
                 <Button 
                   variant="primary"
                   onClick={() => handleDetachmentPromptSelected({ 
-                    id: 'default', 
-                    name: 'Default', 
-                    type: 'Primary', 
-                    slots: [],
-                    faction: customDetachment.faction,
-                    description: 'Default detachment type',
-                    requirements: []
+                    id: 'default',
+                    detachmentId: 'default',
+                    customName: 'Default',
+                    points: 0,
+                    baseSlots: [],
+                    modifiedSlots: [],
+                    primeAdvantages: [],
+                    units: []
                   })}
                 >
                   Default Detachment

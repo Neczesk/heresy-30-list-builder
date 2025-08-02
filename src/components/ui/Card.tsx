@@ -1,9 +1,9 @@
 import React from 'react';
-import './Card.css';
+import styles from './Card.module.css';
 
 export interface CardProps {
   children: React.ReactNode;
-  variant?: 'default' | 'elevated' | 'outlined' | 'transparent';
+  variant?: 'default' | 'elevated' | 'outlined' | 'transparent' | 'dark';
   padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
   onClick?: () => void;
@@ -20,11 +20,11 @@ const Card: React.FC<CardProps> = ({
   interactive = false,
   fullWidth = false,
 }) => {
-  const baseClass = 'ui-card';
-  const variantClass = `ui-card--${variant}`;
-  const paddingClass = `ui-card--padding-${padding}`;
-  const interactiveClass = interactive ? 'ui-card--interactive' : '';
-  const widthClass = fullWidth ? 'ui-card--full-width' : '';
+  const baseClass = styles['ui-card'];
+  const variantClass = styles[`ui-card--${variant}`];
+  const paddingClass = styles[`ui-card--padding-${padding}`];
+  const interactiveClass = interactive ? styles['ui-card--interactive'] : '';
+  const widthClass = fullWidth ? styles['ui-card--full-width'] : '';
 
   const cardClass = [
     baseClass,

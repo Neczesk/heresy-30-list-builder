@@ -1,71 +1,55 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Weapon Browser Specific Styles */
 .weapon-browser {
-  composes: browser-container;
 }
 
 .weapon-browser .browser-header {
-  composes: browser-header;
 }
 
 .weapon-browser .back-to-menu-button {
-  composes: back-to-menu-button;
 }
 
 .weapon-browser .search-section {
-  composes: search-section;
 }
 
 .weapon-browser .search-container {
-  composes: search-container;
 }
 
 .weapon-browser .search-input {
-  composes: search-input;
 }
 
 .weapon-browser .clear-search-button {
-  composes: clear-search-button;
 }
 
 .weapon-browser .search-results {
-  composes: search-results;
 }
 
 .weapon-browser .results-count {
-  composes: results-count;
 }
 
 /* Weapon-specific styles */
 .weapons-section {
-  composes: content-section;
 }
 
 .weapon-table-section {
-  composes: group-container;
 }
 
 .weapon-table-section h3 {
-  composes: group-header h3;
 }
 
 .table-container {
-  composes: table-container;
 }
 
 .weapon-table {
-  composes: table;
 }
 
 /* Weapon-specific table styles */
 .weapon-table th {
-  composes: table th;
 }
 
 .weapon-table td {
-  composes: table td;
 }
 
 .weapon-name {
@@ -133,11 +117,9 @@
 
 /* Empty state */
 .no-weapons {
-  composes: empty-state;
 }
 
 .no-weapons p {
-  composes: empty-state p;
 }
 
 /* Scrollbar styling */

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
+import styles from './UnitViewer.module.css';
 import type { Unit, Model, RangedWeapon, MeleeWeapon, ArmyUnit } from '../types/army';
-import './UnitViewer.css';
 
 interface UnitViewerProps {
   unit: Unit;
@@ -51,13 +51,13 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
     
     if (isVehicle) {
       return (
-        <table className="characteristics-table">
+        <table className={styles.characteristicsTable}>
           <thead>
             <tr>
               <th>Model</th>
               <th>M</th>
               <th>BS</th>
-              <th colSpan={3} className="group-header">Vehicle Armor</th>
+              <th colSpan={3} className={styles.groupHeader}>Vehicle Armor</th>
               <th>HP</th>
               <th>TC</th>
             </tr>
@@ -94,7 +94,7 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
       );
     } else {
       return (
-        <table className="characteristics-table">
+        <table className={styles.characteristicsTable}>
           <thead>
             <tr>
               <th>Model</th>
@@ -165,7 +165,7 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
     }
     
     return (
-      <table className="ranged-weapons-table">
+      <table className={styles.rangedWeaponsTable}>
         <thead>
           <tr>
             <th>Models</th>
@@ -239,7 +239,7 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
     }
     
     return (
-      <table className="melee-weapons-table">
+      <table className={styles.meleeWeaponsTable}>
         <thead>
           <tr>
             <th>Models</th>
@@ -308,7 +308,7 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
     }
     
     return (
-      <table className="special-rules-table">
+      <table className={styles.specialRulesTable}>
         <thead>
           <tr>
             <th>Models</th>
@@ -357,7 +357,7 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
     }
     
     return (
-      <table className="wargear-table">
+      <table className={styles.wargearTable}>
         <thead>
           <tr>
             <th>Models</th>
@@ -381,8 +381,8 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
   };
 
   return (
-    <div className="unit-viewer">
-      <div className="unit-viewer-header">
+    <div className={styles.unitViewer}>
+      <div className={styles.unitViewerHeader}>
         <h2>{unit.name}</h2>
         {onClose && (
           <Button variant="secondary" size="sm" onClick={onClose}>
@@ -391,8 +391,8 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
         )}
       </div>
       
-      <div className="unit-viewer-content">
-        <div className="unit-info">
+      <div className={styles.unitViewerContent}>
+        <div className={styles.unitInfo}>
           <p><strong>Faction:</strong> {formatFactionName(unit.faction)}</p>
           <p><strong>Battlefield Role:</strong> {unit.battlefieldRole}</p>
           <p><strong>Size:</strong> {actualSize} models</p>
@@ -401,37 +401,37 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
           <p><strong>Description:</strong> {unit.description}</p>
         </div>
 
-        <div className="unit-section">
+        <div className={styles.unitSection}>
           <h3>Characteristics</h3>
           {renderCharacteristicsTable(modelCompositions)}
         </div>
 
-        <div className="unit-section">
+        <div className={styles.unitSection}>
           <h3>Ranged Weapons</h3>
           {renderRangedWeaponsTable(modelCompositions)}
         </div>
 
-        <div className="unit-section">
+        <div className={styles.unitSection}>
           <h3>Melee Weapons</h3>
           {renderMeleeWeaponsTable(modelCompositions)}
         </div>
 
-        <div className="unit-section">
+        <div className={styles.unitSection}>
           <h3>Special Rules</h3>
           {renderSpecialRulesTable(modelCompositions)}
         </div>
 
-        <div className="unit-section">
+        <div className={styles.unitSection}>
           <h3>Wargear</h3>
           {renderWargearTable(modelCompositions)}
         </div>
 
         {unit.traits && unit.traits.length > 0 && (
-          <div className="unit-section">
+          <div className={styles.unitSection}>
             <h3>Traits</h3>
-            <div className="traits-list">
+            <div className={styles.traitsList}>
               {unit.traits.map((trait, index) => (
-                <span key={index} className="trait-tag">
+                <span key={index} className={styles.traitTag}>
                   {trait}
                 </span>
               ))}
@@ -440,13 +440,13 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({ unit, armyUnit, onClose 
         )}
 
         {armyUnit?.primeAdvantages && armyUnit.primeAdvantages.length > 0 && (
-          <div className="unit-section">
+          <div className={styles.unitSection}>
             <h3>Prime Advantages</h3>
-            <div className="prime-advantages-list">
+            <div className={styles.primeAdvantagesList}>
               {armyUnit.primeAdvantages.map((advantage, index) => (
-                <div key={index} className="prime-advantage-item">
-                  <div className="advantage-name">{advantage.description}</div>
-                  <div className="advantage-effect">{advantage.effect}</div>
+                <div key={index} className={styles.primeAdvantageItem}>
+                  <div className={styles.advantageName}>{advantage.description}</div>
+                  <div className={styles.advantageEffect}>{advantage.effect}</div>
                 </div>
               ))}
             </div>

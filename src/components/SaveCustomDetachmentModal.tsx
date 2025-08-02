@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from './ui';
 import { CustomDetachmentStorage } from '../utils/customDetachmentStorage';
 import type { ArmyDetachment } from '../types/army';
-import './SaveCustomDetachmentModal.css';
+import styles from './SaveCustomDetachmentModal.module.css';
 
 interface SaveCustomDetachmentModalProps {
   isOpen: boolean;
@@ -65,15 +65,15 @@ const SaveCustomDetachmentModal: React.FC<SaveCustomDetachmentModalProps> = ({
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content save-custom-detachment-modal" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-header">
+    <div className={styles['modal-overlay']} onClick={onClose}>
+      <div className={`${styles['modal-content']} ${styles['save-custom-detachment-modal']}`} onClick={(e) => e.stopPropagation()}>
+        <div className={styles['modal-header']}>
           <h2>Save Custom Detachment</h2>
           <Button variant="secondary" size="sm" onClick={onClose}>×</Button>
         </div>
 
-        <div className="modal-body">
-          <div className="form-group">
+        <div className={styles['modal-body']}>
+          <div className={styles['form-group']}>
             <label htmlFor="detachment-name">Detachment Name:</label>
             <input
               id="detachment-name"
@@ -86,7 +86,7 @@ const SaveCustomDetachmentModal: React.FC<SaveCustomDetachmentModalProps> = ({
             />
           </div>
 
-          <div className="form-group">
+          <div className={styles['form-group']}>
             <label htmlFor="detachment-description">Description:</label>
             <textarea
               id="detachment-description"
@@ -99,41 +99,41 @@ const SaveCustomDetachmentModal: React.FC<SaveCustomDetachmentModalProps> = ({
           </div>
 
           {error && (
-            <div className="error-message">
+            <div className={styles['error-message']}>
               {error}
             </div>
           )}
 
-          <div className="detachment-preview">
+          <div className={styles['detachment-preview']}>
             <h3>Detachment Preview</h3>
-            <div className="preview-details">
-              <div className="preview-item">
-                <span className="label">Base Detachment:</span>
-                <span className="value">{detachment.detachmentId}</span>
+            <div className={styles['preview-details']}>
+              <div className={styles['preview-item']}>
+                <span className={styles.label}>Base Detachment:</span>
+                <span className={styles.value}>{detachment.detachmentId}</span>
               </div>
-              <div className="preview-item">
-                <span className="label">Faction:</span>
-                <span className="value">{faction}</span>
+              <div className={styles['preview-item']}>
+                <span className={styles.label}>Faction:</span>
+                <span className={styles.value}>{faction}</span>
               </div>
               {subfaction && (
-                <div className="preview-item">
-                  <span className="label">Subfaction:</span>
-                  <span className="value">{subfaction}</span>
+                <div className={styles['preview-item']}>
+                  <span className={styles.label}>Subfaction:</span>
+                  <span className={styles.value}>{subfaction}</span>
                 </div>
               )}
-              <div className="preview-item">
-                <span className="label">Units:</span>
-                <span className="value">{detachment.units.length}</span>
+              <div className={styles['preview-item']}>
+                <span className={styles.label}>Units:</span>
+                <span className={styles.value}>{detachment.units.length}</span>
               </div>
-              <div className="preview-item">
-                <span className="label">Prime Advantages:</span>
-                <span className="value">{detachment.primeAdvantages.length}</span>
+              <div className={styles['preview-item']}>
+                <span className={styles.label}>Prime Advantages:</span>
+                <span className={styles.value}>{detachment.primeAdvantages.length}</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="modal-actions">
+        <div className={styles['modal-actions']}>
           <Button variant="secondary" onClick={onClose}>
             Cancel
           </Button>

@@ -3,7 +3,7 @@ import { Button, Card } from './ui';
 import { DataLoader } from '../utils/dataLoader';
 import { CustomUnitStorage } from '../utils/customUnitStorage';
 import type { Unit, CustomUnit, Army } from '../types/army';
-import './UnitSelectionModal.css';
+import styles from './UnitSelectionModal.module.css';
 
 interface UnitSelectionModalProps {
   isOpen: boolean;
@@ -203,14 +203,14 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="unit-selection-overlay" onClick={onClose}>
-      <div className="unit-selection-content" onClick={(e) => e.stopPropagation()}>
-        <div className="unit-selection-header">
+    <div className={styles['unit-selection-overlay']} onClick={onClose}>
+      <div className={styles['unit-selection-content']} onClick={(e) => e.stopPropagation()}>
+        <div className={styles['unit-selection-header']}>
           <h3>Select {roleName} Unit</h3>
           <Button variant="secondary" size="sm" onClick={onClose}>×</Button>
         </div>
         
-        <div className="unit-selection-tabs">
+        <div className={styles['unit-selection-tabs']}>
           <Button 
             variant={activeTab === 'base' ? 'warning' : 'secondary'}
             size="sm"
@@ -227,40 +227,40 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
           </Button>
         </div>
 
-        <div className="unit-selection-body">
+        <div className={styles['unit-selection-body']}>
           {activeTab === 'base' && (
-            <div className="base-units-tab">
+            <div className={styles['base-units-tab']}>
               {availableBaseUnits.length > 0 ? (
-                <div className="unit-list">
+                <div className={styles['unit-list']}>
                   {availableBaseUnits.map((unit) => (
                     <Card
                       key={unit.id}
                       variant="default"
                       padding="lg"
                       interactive
-                      className="unit-option"
+                      className={styles['unit-option']}
                       onClick={() => handleBaseUnitSelect(unit.id)}
                     >
-                      <div className="unit-info">
-                        <div className="unit-name">{unit.name}</div>
-                        <div className="unit-details">
-                          <span className="unit-points">{getBaseUnitPoints(unit)} points</span>
+                      <div className={styles['unit-info']}>
+                        <div className={styles['unit-name']}>{unit.name}</div>
+                        <div className={styles['unit-details']}>
+                          <span className={styles['unit-points']}>{getBaseUnitPoints(unit)} points</span>
                           {unit.faction && unit.faction !== 'universal' && (
-                            <span className="unit-faction">
+                            <span className={styles['unit-faction']}>
                               {unit.faction === 'legiones-astartes' ? 'Legion' : unit.faction}
                             </span>
                           )}
                           {unit.legionSpecific && unit.legionSpecific.length > 0 && (
-                            <span className="unit-legion">Legion-specific</span>
+                            <span className={styles['unit-legion']}>Legion-specific</span>
                           )}
                         </div>
                       </div>
-                      <div className="unit-description">{unit.description}</div>
+                      <div className={styles['unit-description']}>{unit.description}</div>
                     </Card>
                   ))}
                 </div>
               ) : (
-                <Card variant="transparent" padding="lg" className="no-units">
+                <Card variant="transparent" padding="lg" className={styles['no-units']}>
                   <p>No {roleName} units available for your faction.</p>
                 </Card>
               )}
@@ -268,9 +268,9 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
           )}
 
           {activeTab === 'custom' && (
-            <div className="custom-units-tab">
+            <div className={styles['custom-units-tab']}>
               {availableCustomUnits.length > 0 ? (
-                <div className="unit-list">
+                <div className={styles['unit-list']}>
                   {availableCustomUnits.map((customUnit) => {
                     const baseUnit = DataLoader.getUnitById(customUnit.baseUnitId);
                     return (
@@ -279,37 +279,37 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
                         variant="default"
                         padding="lg"
                         interactive
-                        className="unit-option custom-unit"
+                        className={`${styles['unit-option']} ${styles['custom-unit']}`}
                         onClick={() => handleCustomUnitSelect(customUnit)}
                       >
-                        <div className="unit-info">
-                          <div className="unit-name">
+                        <div className={styles['unit-info']}>
+                          <div className={styles['unit-name']}>
                             {customUnit.name}
-                            <span className="custom-badge">Custom</span>
+                            <span className={styles['custom-badge']}>Custom</span>
                           </div>
-                          <div className="unit-details">
-                            <span className="unit-points">{getCustomUnitPoints(customUnit)} points</span>
-                            <span className="base-unit-name">Based on: {baseUnit?.name || customUnit.baseUnitId}</span>
+                          <div className={styles['unit-details']}>
+                            <span className={styles['unit-points']}>{getCustomUnitPoints(customUnit)} points</span>
+                            <span className={styles['base-unit-name']}>Based on: {baseUnit?.name || customUnit.baseUnitId}</span>
                             {customUnit.upgrades.length > 0 && (
-                              <span className="upgrades-count">{customUnit.upgrades.length} upgrade{customUnit.upgrades.length !== 1 ? 's' : ''}</span>
+                              <span className={styles['upgrades-count']}>{customUnit.upgrades.length} upgrade{customUnit.upgrades.length !== 1 ? 's' : ''}</span>
                             )}
                             {customUnit.primeAdvantages && customUnit.primeAdvantages.length > 0 && (
-                              <span className="prime-advantages-count">{customUnit.primeAdvantages.length} prime advantage{customUnit.primeAdvantages.length !== 1 ? 's' : ''}</span>
+                              <span className={styles['prime-advantages-count']}>{customUnit.primeAdvantages.length} prime advantage{customUnit.primeAdvantages.length !== 1 ? 's' : ''}</span>
                             )}
                           </div>
                         </div>
-                        <div className="unit-description">
+                        <div className={styles['unit-description']}>
                           {customUnit.description || baseUnit?.description || 'Custom unit configuration'}
                         </div>
                         {customUnit.description && (
-                          <div className="custom-description">{customUnit.description}</div>
+                          <div className={styles['custom-description']}>{customUnit.description}</div>
                         )}
                       </Card>
                     );
                   })}
                 </div>
               ) : (
-                <Card variant="transparent" padding="lg" className="no-units">
+                <Card variant="transparent" padding="lg" className={styles['no-units']}>
                   <p>No custom {roleName} units available for your faction.</p>
                 </Card>
               )}

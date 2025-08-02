@@ -2,8 +2,8 @@ import React, { useState, useMemo } from 'react';
 import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
 import UnitDetailModal from './UnitDetailModal';
+import styles from './UnitBrowser.module.css';
 import type { Unit, Model } from '../types/army';
-import './UnitBrowser.css';
 
 interface UnitBrowserProps {
   onBackToBrowserMenu: () => void;
@@ -100,37 +100,37 @@ const UnitBrowser: React.FC<UnitBrowserProps> = ({
   const renderUnitCard = (unit: UnitWithModels) => (
     <div
       key={unit.id}
-      className="unit-card"
+      className={styles.unitCard}
       onClick={() => handleUnitClick(unit)}
     >
-      <div className="unit-card-header">
+      <div className={styles.unitCardHeader}>
         <h4>{unit.name}</h4>
-        <div className="unit-role-badge">
+        <div className={styles.unitRoleBadge}>
           {unit.battlefieldRole}
         </div>
       </div>
       
-      <div className="unit-card-content">
-        <div className="unit-info">
-          <div className="unit-size">
-            <span className="info-label">Size:</span>
-            <span className="info-value">{unit.minSize}-{unit.maxSize} models</span>
+      <div className={styles.unitCardContent}>
+        <div className={styles.unitInfo}>
+          <div className={styles.unitSize}>
+            <span className={styles.infoLabel}>Size:</span>
+            <span className={styles.infoValue}>{unit.minSize}-{unit.maxSize} models</span>
           </div>
-          <div className="unit-points">
-            <span className="info-label">Points:</span>
-            <span className="info-value">{unit.points} pts</span>
+          <div className={styles.unitPoints}>
+            <span className={styles.infoLabel}>Points:</span>
+            <span className={styles.infoValue}>{unit.points} pts</span>
           </div>
         </div>
         
-        <div className="unit-description">
+        <div className={styles.unitDescription}>
           <p>{unit.description}</p>
         </div>
         
-        <div className="unit-models">
-          <span className="info-label">Models:</span>
-          <div className="model-list">
+        <div className={styles.unitModels}>
+          <span className={styles.infoLabel}>Models:</span>
+          <div className={styles.modelList}>
             {unit.modelsWithData.map(({ model, count }, index) => (
-              <span key={model.id} className="model-item">
+              <span key={model.id} className={styles.modelItem}>
                 {count}x {model.name}
                 {index < unit.modelsWithData.length - 1 ? ', ' : ''}
               </span>
@@ -144,22 +144,22 @@ const UnitBrowser: React.FC<UnitBrowserProps> = ({
   const roleGroups = getUnitsByRole();
 
   return (
-    <div className="unit-browser">
-      <div className="browser-header">
+    <div className={styles.unitBrowser}>
+      <div className={styles.browserHeader}>
         <Button variant="secondary" onClick={onBackToBrowserMenu}>
           ← Back to Browser Menu
         </Button>
         <h2>Unit Browser</h2>
       </div>
 
-      <div className="filter-section">
-        <div className="faction-filter">
+      <div className={styles.filterSection}>
+        <div className={styles.factionFilter}>
           <label htmlFor="faction-select">Select Faction:</label>
           <select
             id="faction-select"
             value={selectedFaction}
             onChange={handleFactionChange}
-            className="faction-select"
+            className={styles.factionSelect}
           >
             <option value="">Choose a faction...</option>
             {factions.map(faction => (
@@ -170,14 +170,14 @@ const UnitBrowser: React.FC<UnitBrowserProps> = ({
           </select>
         </div>
 
-        <div className="search-container">
-          <div className="search-input-wrapper">
+        <div className={styles.searchContainer}>
+          <div className={styles.searchInputWrapper}>
             <input
               type="text"
               placeholder="Search units..."
               value={searchTerm}
               onChange={handleSearchChange}
-              className="search-input"
+              className={styles.searchInput}
               disabled={!selectedFaction}
             />
             {searchTerm && (
@@ -186,9 +186,9 @@ const UnitBrowser: React.FC<UnitBrowserProps> = ({
               </Button>
             )}
           </div>
-          <div className="search-results">
+          <div className={styles.searchResults}>
             {searchTerm && (
-              <span className="results-count">
+              <span className={styles.resultsCount}>
                 {filteredUnits.length} of {units.filter(u => !selectedFaction || u.faction === selectedFaction).length} units found
               </span>
             )}
@@ -197,25 +197,25 @@ const UnitBrowser: React.FC<UnitBrowserProps> = ({
       </div>
 
       {!selectedFaction ? (
-        <div className="faction-selection">
-          <div className="faction-selection-content">
+        <div className={styles.factionSelection}>
+          <div className={styles.factionSelectionContent}>
             <h3>Select a Faction</h3>
             <p>Choose a faction to view its units organized by battlefield role.</p>
           </div>
         </div>
       ) : (
-        <div className="units-section">
+        <div className={styles.unitsSection}>
           {Object.keys(roleGroups).length === 0 ? (
-            <div className="no-units">
+            <div className={styles.noUnits}>
               <p>No units found for {getFactionName(selectedFaction)} matching your search criteria.</p>
             </div>
           ) : (
             Object.entries(roleGroups).map(([role, roleUnits]) => (
-              <div key={role} className="role-group">
-                <div className="role-header">
+              <div key={role} className={styles.roleGroup}>
+                <div className={styles.roleHeader}>
                   <h3>{role} Units ({roleUnits.length})</h3>
                 </div>
-                <div className="units-grid">
+                <div className={styles.unitsGrid}>
                   {roleUnits.map(renderUnitCard)}
                 </div>
               </div>

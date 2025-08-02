@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Card } from './ui';
-import './MainMenu.css';
+import styles from './MainMenu.module.css';
 
 interface MainMenuProps {
   onNewList: () => void;
@@ -18,14 +18,14 @@ const MainMenu: React.FC<MainMenuProps> = ({
   onRulesBrowser
 }) => {
   return (
-    <div className="main-menu">
-      <div className="menu-header">
+    <div className={styles['main-menu']}>
+      <div className={styles['menu-header']}>
         <h1>Horus Heresy 3.0</h1>
         <h2>Army List Builder</h2>
       </div>
       
-      <div className="menu-options">
-        <Card variant="transparent" padding="lg" className="menu-section">
+      <div className={styles['menu-options']}>
+        <Card variant="transparent" padding="lg" className={styles['menu-section']}>
           <h3>Army Lists</h3>
           <Button 
             variant="warning"
@@ -45,7 +45,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
           </Button>
         </Card>
 
-        <Card variant="transparent" padding="lg" className="menu-section">
+        <Card variant="transparent" padding="lg" className={styles['menu-section']}>
           <h3>Data Management</h3>
           <Button 
             variant="primary"
@@ -65,7 +65,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
           </Button>
         </Card>
 
-        <Card variant="transparent" padding="lg" className="menu-section">
+        <Card variant="transparent" padding="lg" className={styles['menu-section']}>
           <h3>Reference</h3>
           <Button 
             variant="secondary"
@@ -78,7 +78,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
         </Card>
       </div>
 
-      <div className="menu-footer">
+      <div className={styles['menu-footer']}>
         <p>Version 1.0.0</p>
       </div>
     </div>

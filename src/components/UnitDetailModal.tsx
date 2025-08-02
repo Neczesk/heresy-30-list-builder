@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
+import styles from './UnitDetailModal.module.css';
 import type { Unit, Model, Weapon } from '../types/army';
-import './UnitDetailModal.css';
 
 interface UnitWithModels extends Unit {
   modelsWithData: Array<{
@@ -54,7 +54,7 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
     if (model.type === 'Vehicle') {
       const vehicleChars = characteristics as any;
       return (
-        <table className="characteristics-table">
+        <table className={styles['characteristics-table']}>
           <thead>
             <tr>
               <th>M</th>
@@ -89,7 +89,7 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
     } else {
       const infantryChars = characteristics as any;
       return (
-        <table className="characteristics-table">
+        <table className={styles['characteristics-table']}>
           <thead>
             <tr>
               <th>M</th>
@@ -131,7 +131,7 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
     const isVehicle = unit.modelsWithData.some(modelData => modelData.model.type === 'Vehicle');
 
     return (
-      <table className="weapons-table">
+      <table className={styles['weapons-table']}>
         <thead>
           <tr>
             <th>Weapon</th>
@@ -190,68 +190,68 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
   };
 
   return (
-    <div className="unit-detail-modal-overlay" onClick={onClose}>
-      <div className="unit-detail-modal" onClick={e => e.stopPropagation()}>
-        <div className="modal-header">
+    <div className={styles['unit-detail-modal-overlay']} onClick={onClose}>
+      <div className={styles['unit-detail-modal']} onClick={e => e.stopPropagation()}>
+        <div className={styles['modal-header']}>
           <h2>{unit.name}</h2>
           <Button variant="secondary" size="sm" onClick={onClose}>×</Button>
         </div>
 
-        <div className="modal-content">
-          <div className="unit-overview">
-            <div className="unit-info-grid">
-              <div className="info-item">
-                <span className="info-label">Battlefield Role:</span>
-                <span className="info-value">{unit.battlefieldRole}</span>
+        <div className={styles['modal-content']}>
+          <div className={styles['unit-overview']}>
+            <div className={styles['unit-info-grid']}>
+              <div className={styles['info-item']}>
+                <span className={styles['info-label']}>Battlefield Role:</span>
+                <span className={styles['info-value']}>{unit.battlefieldRole}</span>
               </div>
-              <div className="info-item">
-                <span className="info-label">Unit Size:</span>
-                <span className="info-value">{unit.minSize}-{unit.maxSize} models</span>
+              <div className={styles['info-item']}>
+                <span className={styles['info-label']}>Unit Size:</span>
+                <span className={styles['info-value']}>{unit.minSize}-{unit.maxSize} models</span>
               </div>
-              <div className="info-item">
-                <span className="info-label">Base Points:</span>
-                <span className="info-value">{unit.points} pts</span>
+              <div className={styles['info-item']}>
+                <span className={styles['info-label']}>Base Points:</span>
+                <span className={styles['info-value']}>{unit.points} pts</span>
               </div>
-              <div className="info-item">
-                <span className="info-label">Base Size:</span>
-                <span className="info-value">{unit.baseSize} models</span>
+              <div className={styles['info-item']}>
+                <span className={styles['info-label']}>Base Size:</span>
+                <span className={styles['info-value']}>{unit.baseSize} models</span>
               </div>
             </div>
             
-            <div className="unit-description">
+            <div className={styles['unit-description']}>
               <h3>Description</h3>
               <p>{unit.description}</p>
             </div>
           </div>
 
-          <div className="models-section">
+          <div className={styles['models-section']}>
             <h3>Models</h3>
             {unit.modelsWithData.map((modelData) => (
-              <div key={modelData.model.id} className="model-section">
-                <div className="model-header">
+              <div key={modelData.model.id} className={styles['model-section']}>
+                <div className={styles['model-header']}>
                   <h4>{modelData.count}x {modelData.model.name}</h4>
-                  <div className="model-type-badge">
+                  <div className={styles['model-type-badge']}>
                     {modelData.model.type} - {modelData.model.subType}
                   </div>
                 </div>
 
-                <div className="model-content">
-                  <div className="characteristics-section">
+                <div className={styles['model-content']}>
+                  <div className={styles['characteristics-section']}>
                     <h5>Characteristics</h5>
                     {renderModelCharacteristics(modelData.model)}
                   </div>
 
-                  <div className="weapons-section">
+                  <div className={styles['weapons-section']}>
                     <h5>Available Weapons</h5>
                     {renderWeaponTable(getModelWeapons(modelData.model))}
                   </div>
 
                   {modelData.model.wargear.length > 0 && (
-                    <div className="wargear-section">
+                    <div className={styles['wargear-section']}>
                       <h5>Available Wargear</h5>
-                      <div className="wargear-list">
+                      <div className={styles['wargear-list']}>
                         {getModelWargear(modelData.model).map((wargearId, wIndex) => (
-                          <span key={wIndex} className="wargear-item">
+                          <span key={wIndex} className={styles['wargear-item']}>
                             {wargearId}
                             {wIndex < getModelWargear(modelData.model).length - 1 ? ', ' : ''}
                           </span>
@@ -261,11 +261,11 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
                   )}
 
                   {modelData.model.specialRules.length > 0 && (
-                    <div className="special-rules-section">
+                    <div className={styles['special-rules-section']}>
                       <h5>Special Rules</h5>
-                      <div className="special-rules-list">
+                      <div className={styles['special-rules-list']}>
                         {modelData.model.specialRules.map((ruleId, rIndex) => (
-                          <span key={rIndex} className="special-rule-item">
+                          <span key={rIndex} className={styles['special-rule-item']}>
                             {ruleId}
                             {rIndex < modelData.model.specialRules.length - 1 ? ', ' : ''}
                           </span>
@@ -279,11 +279,11 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
           </div>
 
           {unit.specialRules.length > 0 && (
-            <div className="unit-special-rules">
+            <div className={styles['unit-special-rules']}>
               <h3>Unit Special Rules</h3>
-              <div className="special-rules-list">
+              <div className={styles['special-rules-list']}>
                 {unit.specialRules.map((ruleId, index) => (
-                  <span key={index} className="special-rule-item">
+                  <span key={index} className={styles['special-rule-item']}>
                     {ruleId}
                     {index < unit.specialRules.length - 1 ? ', ' : ''}
                   </span>
@@ -293,11 +293,11 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
           )}
 
           {unit.traits.length > 0 && (
-            <div className="unit-traits">
+            <div className={styles['unit-traits']}>
               <h3>Unit Traits</h3>
-              <div className="traits-list">
+              <div className={styles['traits-list']}>
                 {unit.traits.map((trait, index) => (
-                  <span key={index} className="trait-tag">
+                  <span key={index} className={styles['trait-tag']}>
                     {trait}
                   </span>
                 ))}

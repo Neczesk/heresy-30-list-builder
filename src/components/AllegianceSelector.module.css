@@ -1,5 +1,5 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Allegiance Selector Specific Styles */
 .allegiance-selector {
@@ -10,14 +10,14 @@
 
 .allegiance-selector h3 {
   margin: 0 0 var(--spacing-sm) 0;
-  color: var(--dark-color);
+  color: #ffd700;
   font-size: var(--font-size-5xl);
   font-weight: 600;
 }
 
 .allegiance-selector > p {
   margin: 0 0 var(--spacing-xl) 0;
-  color: var(--muted-color);
+  color: rgba(255, 255, 255, 0.8);
   font-size: var(--font-size-base);
   line-height: 1.5;
 }
@@ -31,26 +31,22 @@
 }
 
 .allegiance-option {
-  composes: card;
-  background: white;
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-lg);
+  /* Background and border handled by Card component dark variant */
   cursor: pointer;
   transition: all var(--transition-fast);
   position: relative;
 }
 
 .allegiance-option:hover:not(.disabled) {
-  border-color: var(--primary-color);
-  box-shadow: var(--shadow-sm);
+  background: rgba(255, 255, 255, 0.15) !important;
   transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
 .allegiance-option.selected {
-  border-color: var(--primary-color);
-  background: linear-gradient(135deg, #f8f9ff 0%, #e3f2fd 100%);
-  box-shadow: var(--shadow-md);
+  background: rgba(255, 215, 0, 0.2) !important;
+  border-color: #ffd700 !important;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 .allegiance-option.disabled {
@@ -67,20 +63,20 @@
 
 .allegiance-header h4 {
   margin: 0;
-  color: var(--dark-color);
+  color: #ffd700;
   font-size: var(--font-size-xl);
   font-weight: 600;
 }
 
 .selected-indicator {
-  color: var(--primary-color);
+  color: #ffd700;
   font-weight: bold;
   font-size: var(--font-size-2xl);
 }
 
 .allegiance-description {
   margin: 0;
-  color: var(--muted-color);
+  color: rgba(255, 255, 255, 0.8);
   font-size: var(--font-size-base);
   line-height: 1.4;
 }

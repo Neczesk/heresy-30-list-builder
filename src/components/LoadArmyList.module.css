@@ -1,5 +1,5 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Load Army List Specific Styles */
 .load-army-list {
@@ -21,7 +21,6 @@
 }
 
 .back-button {
-  composes: btn btn-secondary;
   background: rgba(255, 255, 255, 0.1);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -49,7 +48,6 @@
 }
 
 .empty-state {
-  composes: empty-state;
   text-align: center;
   padding: var(--spacing-4xl) var(--spacing-2xl);
   background: rgba(255, 255, 255, 0.1);
@@ -66,7 +64,6 @@
 }
 
 .empty-state p {
-  composes: empty-state p;
   margin: var(--spacing-sm) 0;
   opacity: 0.8;
   font-size: var(--font-size-xl);
@@ -82,7 +79,6 @@
 }
 
 .army-list-card {
-  composes: card;
   background: rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-xl);
   padding: var(--spacing-xl);
@@ -120,7 +116,6 @@
 
 .duplicate-button,
 .delete-button {
-  composes: btn;
   padding: var(--spacing-xs) var(--spacing-sm);
   font-size: var(--font-size-sm);
   border-radius: var(--radius-sm);
@@ -175,7 +170,6 @@
 }
 
 .status {
-  composes: badge;
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-2xl);
   font-size: var(--font-size-sm);
@@ -195,7 +189,6 @@
 }
 
 .allegiance {
-  composes: badge;
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-2xl);
   font-size: var(--font-size-sm);
@@ -235,11 +228,9 @@
 
 /* Duplicate Modal */
 .duplicate-modal-overlay {
-  composes: modal-overlay;
 }
 
 .duplicate-modal-content {
-  composes: modal;
   background: #1a1a1a;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
@@ -363,7 +354,6 @@
 
 .cancel-button,
 .duplicate-modal-actions .duplicate-button {
-  composes: btn;
   padding: var(--spacing-md) var(--spacing-xl);
   font-size: var(--font-size-base);
   font-weight: 600;

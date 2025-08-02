@@ -4,7 +4,7 @@ import { CustomUnitStorage } from '../utils/customUnitStorage';
 import { DataLoader } from '../utils/dataLoader';
 import UnitManagementModal from './UnitManagementModal';
 import type { CustomUnit, CustomUnitMetadata, ArmyUnit } from '../types/army';
-import './CustomUnitsManager.css';
+import styles from './CustomUnitsManager.module.css';
 
 interface CustomUnitsManagerProps {
   onBackToMenu: () => void;
@@ -148,9 +148,9 @@ const CustomUnitsManager: React.FC<CustomUnitsManagerProps> = ({
   };
 
   return (
-    <div className="custom-units-manager-page">
-      <div className="custom-units-manager-header">
-        <div className="header-content">
+    <div className={styles['custom-units-manager-page']}>
+      <div className={styles['custom-units-manager-header']}>
+        <div className={styles['header-content']}>
           <h1>Custom Units Manager</h1>
           <Button variant="secondary" onClick={onBackToMenu}>
             ← Back to Menu
@@ -158,30 +158,30 @@ const CustomUnitsManager: React.FC<CustomUnitsManagerProps> = ({
         </div>
       </div>
 
-      <div className="custom-units-manager-content">
-        <div className="custom-units-manager-body">
+      <div className={styles['custom-units-manager-content']}>
+        <div className={styles['custom-units-manager-body']}>
           {customUnits.length === 0 ? (
-            <Card variant="transparent" padding="lg" className="no-custom-units">
+            <Card variant="transparent" padding="lg" className={styles['no-custom-units']}>
               <p>No custom units saved yet.</p>
               <p>Create custom units by configuring units in your army lists and saving them.</p>
             </Card>
           ) : (
-            <div className="custom-units-list">
+            <div className={styles['custom-units-list']}>
               {customUnits.map((unit) => (
-                <Card key={unit.id} variant="default" padding="lg" className="custom-unit-item">
-                  <div className="custom-unit-info">
-                    <div className="custom-unit-header">
+                <Card key={unit.id} variant="default" padding="lg" className={styles['custom-unit-item']}>
+                  <div className={styles['custom-unit-info']}>
+                    <div className={styles['custom-unit-header']}>
                       {renamingUnit?.id === unit.id ? (
-                        <div className="rename-input-container">
+                        <div className={styles['rename-input-container']}>
                           <input
                             type="text"
                             value={renamingUnit.name}
                             onChange={handleRenameInputChange}
                             onKeyDown={handleRenameKeyPress}
-                            className="rename-input"
+                            className={styles['rename-input']}
                             autoFocus
                           />
-                          <div className="rename-actions">
+                          <div className={styles['rename-actions']}>
                             <Button 
                               variant="success"
                               size="sm"
@@ -199,46 +199,46 @@ const CustomUnitsManager: React.FC<CustomUnitsManagerProps> = ({
                           </div>
                         </div>
                       ) : (
-                        <div className="unit-name-section">
-                          <h3 className="unit-name">{unit.name}</h3>
-                          <span className="custom-badge">Custom</span>
+                        <div className={styles['unit-name-section']}>
+                          <h3 className={styles['unit-name']}>{unit.name}</h3>
+                          <span className={styles['custom-badge']}>Custom</span>
                         </div>
                       )}
                     </div>
 
-                    <div className="unit-details">
-                      <div className="detail-row">
-                        <span className="detail-label">Base Unit:</span>
-                        <span className="detail-value">{getBaseUnitName(unit.baseUnitId)}</span>
+                    <div className={styles['unit-details']}>
+                      <div className={styles['detail-row']}>
+                        <span className={styles['detail-label']}>Base Unit:</span>
+                        <span className={styles['detail-value']}>{getBaseUnitName(unit.baseUnitId)}</span>
                       </div>
-                      <div className="detail-row">
-                        <span className="detail-label">Faction:</span>
-                        <span className="detail-value">{getFactionName(unit.faction)}</span>
+                      <div className={styles['detail-row']}>
+                        <span className={styles['detail-label']}>Faction:</span>
+                        <span className={styles['detail-value']}>{getFactionName(unit.faction)}</span>
                       </div>
                       {unit.subfaction && (
-                        <div className="detail-row">
-                          <span className="detail-label">Subfaction:</span>
-                          <span className="detail-value">{getSubfactionName(unit.subfaction)}</span>
+                        <div className={styles['detail-row']}>
+                          <span className={styles['detail-label']}>Subfaction:</span>
+                          <span className={styles['detail-value']}>{getSubfactionName(unit.subfaction)}</span>
                         </div>
                       )}
-                      <div className="detail-row">
-                        <span className="detail-label">Created:</span>
-                        <span className="detail-value">{formatDate(unit.createdAt)}</span>
+                      <div className={styles['detail-row']}>
+                        <span className={styles['detail-label']}>Created:</span>
+                        <span className={styles['detail-value']}>{formatDate(unit.createdAt)}</span>
                       </div>
-                      <div className="detail-row">
-                        <span className="detail-label">Updated:</span>
-                        <span className="detail-value">{formatDate(unit.updatedAt)}</span>
+                      <div className={styles['detail-row']}>
+                        <span className={styles['detail-label']}>Updated:</span>
+                        <span className={styles['detail-value']}>{formatDate(unit.updatedAt)}</span>
                       </div>
                       {unit.description && (
-                        <div className="detail-row">
-                          <span className="detail-label">Description:</span>
-                          <span className="detail-value description">{unit.description}</span>
+                        <div className={styles['detail-row']}>
+                          <span className={styles['detail-label']}>Description:</span>
+                          <span className={`${styles['detail-value']} ${styles.description}`}>{unit.description}</span>
                         </div>
                       )}
                     </div>
                   </div>
 
-                  <div className="custom-unit-actions">
+                  <div className={styles['custom-unit-actions']}>
                     <Button 
                       variant="primary"
                       size="sm"
@@ -272,12 +272,12 @@ const CustomUnitsManager: React.FC<CustomUnitsManagerProps> = ({
 
         {/* Delete Confirmation Modal */}
         {deleteConfirmUnit && (
-          <div className="delete-confirm-overlay" onClick={handleCancelDelete}>
-            <div className="delete-confirm-content" onClick={(e) => e.stopPropagation()}>
+          <div className={styles['delete-confirm-overlay']} onClick={handleCancelDelete}>
+            <div className={styles['delete-confirm-content']} onClick={(e) => e.stopPropagation()}>
               <h3>Delete Custom Unit</h3>
               <p>Are you sure you want to delete "{deleteConfirmUnit.name}"?</p>
-              <p className="warning">This action cannot be undone.</p>
-              <div className="delete-confirm-actions">
+              <p className={styles.warning}>This action cannot be undone.</p>
+              <div className={styles['delete-confirm-actions']}>
                 <Button 
                   variant="secondary"
                   onClick={handleCancelDelete}

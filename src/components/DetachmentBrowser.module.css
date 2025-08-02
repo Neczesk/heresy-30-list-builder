@@ -1,85 +1,66 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Detachment Browser Specific Styles */
 .detachment-browser {
-  composes: browser-container;
 }
 
 .detachment-browser .browser-header {
-  composes: browser-header;
 }
 
 .detachment-browser .back-to-menu-button {
-  composes: back-to-menu-button;
 }
 
 .detachment-browser .search-section {
-  composes: search-section;
 }
 
 .detachment-browser .search-container {
-  composes: search-container;
 }
 
 .detachment-browser .search-input {
-  composes: search-input;
 }
 
 .detachment-browser .clear-search-button {
-  composes: clear-search-button;
 }
 
 .detachment-browser .search-results {
-  composes: search-results;
 }
 
 .detachment-browser .results-count {
-  composes: results-count;
 }
 
 /* Filter section specific styles */
 .filter-section {
-  composes: filter-section;
 }
 
 .type-filter {
-  composes: filter-container;
 }
 
 .type-filter label {
-  composes: filter-label;
 }
 
 .type-select {
-  composes: filter-select;
 }
 
 /* Detachments section specific styles */
 .detachments-section {
-  composes: content-section;
 }
 
 .detachment-type-group {
-  composes: group-container;
 }
 
 .type-header {
-  composes: group-header;
   border-left: 4px solid var(--primary-color);
 }
 
 .type-header h3 {
-  composes: group-header h3;
 }
 
 .detachments-grid {
-  composes: grid-container;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }
 
 .detachment-card {
-  composes: card;
 }
 
 .detachment-header {
@@ -90,7 +71,6 @@
 }
 
 .detachment-type-badge {
-  composes: badge;
   padding: var(--spacing-xs) var(--spacing-md);
   border-radius: var(--radius-2xl);
   color: white;
@@ -242,11 +222,9 @@
 }
 
 .no-detachments {
-  composes: empty-state;
 }
 
 .no-detachments p {
-  composes: empty-state p;
 }
 
 /* Responsive adjustments */

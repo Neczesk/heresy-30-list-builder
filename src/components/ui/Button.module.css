@@ -1,9 +1,8 @@
 /* Import shared styles */
-@import '../shared.css';
+@import '../shared.module.css';
 
 /* Button Base Styles */
 .ui-button {
-  composes: btn;
   display: inline-flex;
   align-items: center;
   justify-content: center;

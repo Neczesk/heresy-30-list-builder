@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from './ui';
 import type { Allegiance } from '../types/army';
-import './AllegianceSelector.css';
+import styles from './AllegianceSelector.module.css';
 
 interface AllegianceSelectorProps {
   selectedAllegiance: Allegiance;
@@ -28,27 +28,27 @@ const AllegianceSelector: React.FC<AllegianceSelectorProps> = ({
   ];
 
   return (
-    <div className="allegiance-selector">
+    <div className={styles['allegiance-selector']}>
       <h3>Select Allegiance</h3>
       <p>Choose your army's allegiance in the Horus Heresy.</p>
       
-      <div className="allegiance-options">
+      <div className={styles['allegiance-options']}>
         {allegiances.map((allegiance) => (
           <Card
             key={allegiance.value}
-            variant={selectedAllegiance === allegiance.value ? 'elevated' : 'default'}
+            variant="dark"
             padding="lg"
             interactive={!disabled}
-            className={`allegiance-option ${selectedAllegiance === allegiance.value ? 'selected' : ''} ${disabled ? 'disabled' : ''}`}
+            className={`${styles['allegiance-option']} ${selectedAllegiance === allegiance.value ? styles.selected : ''} ${disabled ? styles.disabled : ''}`}
             onClick={() => !disabled && onAllegianceChange(allegiance.value)}
           >
-            <div className="allegiance-header">
+            <div className={styles['allegiance-header']}>
               <h4>{allegiance.label}</h4>
               {selectedAllegiance === allegiance.value && (
-                <span className="selected-indicator">✓</span>
+                <span className={styles['selected-indicator']}>✓</span>
               )}
             </div>
-            <p className="allegiance-description">{allegiance.description}</p>
+            <p className={styles['allegiance-description']}>{allegiance.description}</p>
           </Card>
         ))}
       </div>

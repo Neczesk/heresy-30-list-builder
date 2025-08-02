@@ -1,5 +1,5 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Rules Browser Specific Styles */
 .rules-browser-page {
@@ -42,7 +42,6 @@
 }
 
 .back-button {
-  composes: back-to-menu-button;
   padding: var(--spacing-lg) var(--spacing-xl);
   font-size: var(--font-size-lg);
 }
@@ -85,7 +84,6 @@
 }
 
 .browser-option {
-  composes: card;
   padding: var(--spacing-2xl);
   cursor: pointer;
   display: flex;
@@ -144,19 +142,15 @@
 }
 
 .selected-browser-header {
-  composes: browser-header;
 }
 
 .selected-browser-header .back-to-menu-button {
-  composes: back-to-menu-button;
 }
 
 .selected-browser-header h2 {
-  composes: browser-header h2;
 }
 
 .browser-placeholder {
-  composes: card;
   padding: var(--spacing-4xl) var(--spacing-4xl);
   text-align: center;
 }

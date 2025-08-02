@@ -1,13 +1,17 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
-/* Allied Faction Selector Specific Styles */
-.allied-faction-selector {
-  min-height: 100vh;
+/* Detachment Selector Specific Styles */
+.detachment-selector {
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   color: white;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 
 .selector-header {
@@ -21,7 +25,6 @@
 }
 
 .back-button {
-  composes: btn btn-secondary;
   background: rgba(255, 255, 255, 0.1);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -46,11 +49,12 @@
 .selector-content {
   flex: 1;
   padding: var(--spacing-2xl);
-  max-width: 1200px;
-  margin: 0 auto;
+  overflow-y: auto;
   width: 100%;
+  min-height: 0;
 }
 
+.detachment-step h3,
 .faction-step h3,
 .subfaction-step h3 {
   margin: 0 0 var(--spacing-sm) 0;
@@ -59,6 +63,7 @@
   font-weight: 600;
 }
 
+.detachment-step p,
 .faction-step p,
 .subfaction-step p {
   margin: 0 0 var(--spacing-2xl) 0;
@@ -67,14 +72,14 @@
   line-height: 1.5;
 }
 
+.detachments-grid,
 .factions-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: var(--spacing-xl);
 }
 
-.faction-card {
-  composes: card;
+.detachment-card {
   background: rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-xl);
   padding: var(--spacing-xl);
@@ -84,49 +89,105 @@
   transition: all var(--transition-normal);
 }
 
-.faction-card:hover {
+.detachment-card:hover {
   background: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
   box-shadow: var(--shadow-xl);
 }
 
+.detachment-card.selected {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #ffd700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.faction-card {
+  /* Styling handled by Card component dark variant */
+}
+
+.faction-card:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.faction-card.selected {
+  background: rgba(255, 215, 0, 0.2) !important;
+  border-color: #ffd700 !important;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.detachment-card h4,
 .faction-card h4 {
   margin: 0 0 var(--spacing-md) 0;
   color: #ffd700;
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-2xl);
   font-weight: 600;
 }
 
+.detachment-description,
 .faction-description {
-  margin: 0 0 var(--spacing-lg) 0;
-  opacity: 0.9;
-  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
   font-size: var(--font-size-base);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-lg);
+}
+
+.detachment-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.slots-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-sm);
+  width: 100%;
+}
+
+.slot {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-2xl);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.prime-indicator {
+  color: #ffd700;
+  font-weight: 600;
 }
 
 .faction-type {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
   margin-bottom: var(--spacing-lg);
 }
 
 .type-label {
-  font-weight: 600;
-  color: var(--primary-color);
+  color: rgba(255, 255, 255, 0.7);
   font-size: var(--font-size-sm);
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .type-value {
-  composes: badge;
-  background: rgba(74, 144, 226, 0.2);
-  color: var(--primary-color);
+  background: var(--primary-color);
+  color: white;
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-2xl);
   font-size: var(--font-size-sm);
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -136,37 +197,37 @@
 }
 
 .rules-label {
-  font-weight: 600;
-  color: var(--primary-color);
-  display: block;
-  margin-bottom: var(--spacing-sm);
+  color: rgba(255, 255, 255, 0.7);
   font-size: var(--font-size-sm);
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-sm);
 }
 
 .rules-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: var(--spacing-sm);
 }
 
 .rule {
-  composes: badge;
-  background: rgba(76, 175, 80, 0.2);
-  color: var(--success-color);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
   padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--radius-2xl);
+  border-radius: var(--radius-sm);
   font-size: var(--font-size-sm);
   font-weight: 500;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .faction-note {
   margin-top: var(--spacing-lg);
-  padding: var(--spacing-sm);
+  padding: var(--spacing-md);
   background: rgba(255, 193, 7, 0.1);
-  border-radius: var(--radius-sm);
   border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: var(--radius-md);
 }
 
 .faction-note .note {
@@ -179,22 +240,29 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .detachment-selector {
+    max-width: 95%;
+    max-height: 90vh;
+  }
+  
   .selector-header {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--spacing-lg);
     padding: var(--spacing-lg);
   }
-  
+
   .selector-content {
     padding: var(--spacing-lg);
   }
-  
+
+  .detachments-grid,
   .factions-grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
   }
-  
+
+  .detachment-card,
   .faction-card {
     padding: var(--spacing-lg);
   }

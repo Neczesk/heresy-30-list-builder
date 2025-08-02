@@ -1,41 +1,32 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Unit Browser Specific Styles */
 .unit-browser {
-  composes: browser-container;
 }
 
 .unit-browser .browser-header {
-  composes: browser-header;
 }
 
 .unit-browser .back-to-menu-button {
-  composes: back-to-menu-button;
 }
 
 .unit-browser .search-section {
-  composes: search-section;
 }
 
 .unit-browser .search-container {
-  composes: search-container;
 }
 
 .unit-browser .search-input {
-  composes: search-input;
 }
 
 .unit-browser .clear-search-button {
-  composes: clear-search-button;
 }
 
 .unit-browser .search-results {
-  composes: search-results;
 }
 
 .unit-browser .results-count {
-  composes: results-count;
 }
 
 /* Filter section specific styles */
@@ -47,15 +38,12 @@
 }
 
 .faction-filter {
-  composes: filter-container;
 }
 
 .faction-filter label {
-  composes: filter-label;
 }
 
 .faction-select {
-  composes: filter-select;
   min-width: 200px;
 }
 
@@ -93,28 +81,22 @@
 
 /* Units section specific styles */
 .units-section {
-  composes: content-section;
 }
 
 .role-group {
-  composes: group-container;
 }
 
 .role-header {
-  composes: group-header;
 }
 
 .role-header h3 {
-  composes: group-header h3;
 }
 
 .units-grid {
-  composes: grid-container;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 }
 
 .unit-card {
-  composes: card;
   cursor: pointer;
 }
 
@@ -135,7 +117,6 @@
 }
 
 .unit-role-badge {
-  composes: badge;
   background: var(--primary-color);
   color: white;
   padding: var(--spacing-xs) var(--spacing-sm);
@@ -190,11 +171,9 @@
 }
 
 .no-units {
-  composes: empty-state;
 }
 
 .no-units p {
-  composes: empty-state p;
 }
 
 /* Responsive adjustments */

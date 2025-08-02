@@ -1,13 +1,11 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Save Custom Unit Modal Specific Styles */
 .save-custom-unit-overlay {
-  composes: modal-overlay;
 }
 
 .save-custom-unit-content {
-  composes: modal;
   background: white;
   color: var(--dark-color);
   width: 90%;
@@ -72,7 +70,6 @@
 
 .form-group input,
 .form-group textarea {
-  composes: search-input;
   width: 100%;
   padding: var(--spacing-md);
   border: 1px solid var(--border-color);
@@ -160,7 +157,6 @@
 
 .cancel-button,
 .save-button {
-  composes: btn;
   padding: var(--spacing-md) var(--spacing-xl);
   border: none;
   border-radius: var(--radius-md);

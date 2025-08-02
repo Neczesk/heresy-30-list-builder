@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
-import './WargearBrowser.css';
+import styles from './WargearBrowser.module.css';
 
 interface WargearBrowserProps {
   onBackToBrowserMenu: () => void;
@@ -50,23 +50,23 @@ const WargearBrowser: React.FC<WargearBrowserProps> = ({
   };
 
   return (
-    <div className="wargear-browser">
-      <div className="browser-header">
+    <div className={styles['wargear-browser']}>
+      <div className={styles['browser-header']}>
         <Button variant="secondary" onClick={onBackToBrowserMenu}>
           ← Back to Browser Menu
         </Button>
         <h2>Wargear Browser</h2>
       </div>
 
-      <div className="search-section">
-        <div className="search-container">
-          <div className="search-input-wrapper">
+      <div className={styles['search-section']}>
+        <div className={styles['search-container']}>
+          <div className={styles['search-input-wrapper']}>
             <input
               type="text"
               placeholder="Search wargear..."
               value={searchTerm}
               onChange={handleSearchChange}
-              className="search-input"
+              className={styles['search-input']}
             />
             {searchTerm && (
               <Button variant="secondary" size="sm" onClick={clearSearch}>
@@ -74,9 +74,9 @@ const WargearBrowser: React.FC<WargearBrowserProps> = ({
               </Button>
             )}
           </div>
-          <div className="search-results">
+          <div className={styles['search-results']}>
             {searchTerm && (
-              <span className="results-count">
+              <span className={styles['results-count']}>
                 {filteredRules.length} of {wargearRules.length} wargear found
               </span>
             )}
@@ -84,39 +84,39 @@ const WargearBrowser: React.FC<WargearBrowserProps> = ({
         </div>
       </div>
 
-      <div className="rules-section">
+      <div className={styles['rules-section']}>
         {filteredRules.length === 0 ? (
-          <div className="no-results">
+          <div className={styles['no-results']}>
             <p>No wargear found matching "{searchTerm}"</p>
             <Button variant="info" size="sm" onClick={clearSearch}>
               Clear search
             </Button>
           </div>
         ) : (
-          <div className="rules-list">
+          <div className={styles['rules-list']}>
             {filteredRules.map((rule) => (
-              <div key={rule.id} className="rule-item">
+              <div key={rule.id} className={styles['rule-item']}>
                 <div 
-                  className="rule-header"
+                  className={styles['rule-header']}
                   onClick={() => handleRuleToggle(rule.id)}
                 >
-                  <div className="rule-title">
+                  <div className={styles['rule-title']}>
                     <h3>{rule.name}</h3>
-                    <div className="rule-short-text">
+                    <div className={styles['rule-short-text']}>
                       <strong>{rule.shortText}</strong>
                     </div>
                   </div>
-                  <div className="rule-toggle">
+                  <div className={styles['rule-toggle']}>
                     {expandedRules.has(rule.id) ? '−' : '+'}
                   </div>
                 </div>
                 
                 {expandedRules.has(rule.id) && (
-                  <div className="rule-details">
-                    <div className="rule-description">
+                  <div className={styles['rule-details']}>
+                    <div className={styles['rule-description']}>
                       <em>{rule.description}</em>
                     </div>
-                    <div className="rule-long-text">
+                    <div className={styles['rule-long-text']}>
                       {rule.longText}
                     </div>
                   </div>

@@ -1,36 +1,48 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Detachment Prompt Modal Specific Styles */
-.detachment-prompt-overlay {
-  composes: modal-overlay;
-  padding: var(--spacing-lg);
-  z-index: 1500;
+.detachmentPromptOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: var(--spacing-xl);
 }
 
-.detachment-prompt-content {
-  composes: modal;
-  background: #1a1a1a;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.detachmentPromptContent {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   color: white;
-  max-width: 700px;
-  width: 100%;
-  max-height: 80vh;
+  max-width: 900px;
+  width: 90%;
+  max-height: 85vh;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.detachment-prompt-header {
+.detachmentPromptHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-xl);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
+  padding: var(--spacing-xl) var(--spacing-2xl);
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.detachment-prompt-header h3 {
+.detachmentPromptHeader h3 {
   margin: 0;
-  color: var(--primary-color);
-  font-size: var(--font-size-4xl);
+  color: #ffd700;
+  font-size: var(--font-size-5xl);
   font-weight: 600;
 }
 
@@ -55,13 +67,13 @@
   color: white;
 }
 
-.detachment-prompt-body {
-  padding: var(--spacing-xl);
+.detachmentPromptBody {
+  padding: var(--spacing-2xl);
   overflow-y: auto;
-  flex: 1;
+  max-height: calc(80vh - 80px);
 }
 
-.prompt-message {
+.promptMessage {
   margin: 0 0 var(--spacing-xl) 0;
   color: rgba(255, 255, 255, 0.9);
   font-size: var(--font-size-lg);
@@ -73,7 +85,7 @@
   border: 1px solid rgba(74, 144, 226, 0.3);
 }
 
-.detachment-list {
+.detachmentList {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
@@ -81,19 +93,19 @@
 }
 
 .detachment-option {
-  composes: card;
-  padding: var(--spacing-xl);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
   cursor: pointer;
   transition: all var(--transition-normal);
 }
 
 .detachment-option:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--primary-color);
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .detachment-option.selected {
@@ -104,8 +116,9 @@
 
 .detachment-info {
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-md);
 }
 
 .detachment-name {
@@ -113,10 +126,12 @@
   font-size: var(--font-size-2xl);
   font-weight: 600;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
 .detachment-type {
-  composes: badge;
   background: rgba(255, 255, 255, 0.2);
   color: white;
   padding: var(--spacing-xs) var(--spacing-sm);
@@ -125,7 +140,6 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  align-self: flex-start;
 }
 
 .detachment-description {
@@ -135,15 +149,14 @@
   margin: var(--spacing-sm) 0;
 }
 
-.detachment-slots {
+.detachmentSlots {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-sm);
   margin-top: var(--spacing-sm);
 }
 
-.slot-badge {
-  composes: badge;
+.slotBadge {
   background: rgba(255, 255, 255, 0.1);
   color: white;
   padding: var(--spacing-xs) var(--spacing-sm);
@@ -155,22 +168,20 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.prime-star {
+.primeStar {
   color: #ffd700;
   font-weight: 600;
 }
 
-.no-detachments {
-  composes: empty-state;
+.noDetachments {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.no-detachments p {
-  composes: empty-state p;
+.noDetachments p {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.prompt-actions {
+.promptActions {
   display: flex;
   gap: var(--spacing-md);
   justify-content: flex-end;
@@ -179,7 +190,6 @@
 }
 
 .skip-button {
-  composes: btn btn-secondary;
   background: rgba(255, 255, 255, 0.1);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -198,24 +208,38 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .detachment-prompt-content {
+  .detachmentPromptOverlay {
+    padding: var(--spacing-sm);
+  }
+  
+  .detachmentPromptContent {
     width: 95%;
     max-height: 90vh;
   }
 
-  .detachment-info {
-    gap: var(--spacing-xs);
+  .detachmentPromptHeader {
+    padding: var(--spacing-lg);
   }
 
-  .detachment-type {
+  .detachmentPromptBody {
+    padding: var(--spacing-lg);
+  }
+
+  .detachmentInfo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .detachmentType {
     font-size: var(--font-size-xs);
   }
 
-  .detachment-slots {
+  .detachmentSlots {
     gap: var(--spacing-xs);
   }
 
-  .slot-badge {
+  .slotBadge {
     font-size: var(--font-size-xs);
   }
 } 

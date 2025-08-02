@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './App.css';
+import './App.module.css';
 import MainMenu from './components/MainMenu';
 import ArmyListBuilder from './components/ArmyListBuilder';
 import LoadArmyList from './components/LoadArmyList';

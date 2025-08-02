@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
-import UnitSelectionModal from './UnitSelectionModal';
-import type { Detachment, ArmyDetachment, Army, ArmyUnit } from '../types/army';
-
-import './DetachmentSlots.css';
+import type { Detachment, ArmyDetachment, ArmyUnit, Army } from '../types/army';
+import styles from './DetachmentSlots.module.css';
 
 interface DetachmentSlotsProps {
   detachment: Detachment;
@@ -15,6 +13,7 @@ interface DetachmentSlotsProps {
   onUnitUpdated?: (slotId: string, updatedUnit: ArmyUnit) => void;
   onDetachmentRemoved?: (detachmentId: string) => void;
   onUnitManagementOpen?: (unit: ArmyUnit, slotId: string, detachmentId: string) => void;
+  onUnitSelectionOpen?: (roleId: string, roleName: string, detachmentId: string, slotId: string, detachment: any) => void;
 }
 
 interface SlotGroup {
@@ -36,14 +35,9 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
   armyDetachment, 
   armyList,
   onUnitSelected,
-  onDetachmentPrompt,
-  onUnitManagementOpen
+  onUnitManagementOpen,
+  onUnitSelectionOpen
 }) => {
-  const [selectedSlot, setSelectedSlot] = useState<{
-    roleId: string;
-    slotIndex: number;
-  } | null>(null);
-  const [showUnitModal, setShowUnitModal] = useState(false);
   const [showRemoveConfirm, setShowRemoveConfirm] = useState(false);
   const [unitToRemove, setUnitToRemove] = useState<{
     slotId: string;
@@ -89,13 +83,13 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
   };
 
   const getUnitInSlot = (roleId: string, slotIndex: number) => {
-    const slotId = `${detachment.id}-${roleId}-${slotIndex}`;
+    const slotId = `${armyDetachment.id}-${roleId}-${slotIndex}`;
     return armyDetachment.units.find(unit => unit.slotId === slotId);
   };
 
   const hasTriggeredDetachment = (roleId: string, slotIndex: number) => {
     // Construct the slot ID using the current detachment's ID
-    const slotId = `${detachment.id}-${roleId}-${slotIndex}`;
+    const slotId = `${armyDetachment.id}-${roleId}-${slotIndex}`;
     
     // Check if any detachment in the army list was triggered by this slot
     return armyList.detachments.some(detachment => 
@@ -104,24 +98,26 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
   };
 
   const handleSlotClick = (roleId: string, slotIndex: number) => {
-    const slotId = `${detachment.id}-${roleId}-${slotIndex}`;
+    const slotId = `${armyDetachment.id}-${roleId}-${slotIndex}`;
     const unitInSlot = getUnitInSlot(roleId, slotIndex);
     const isFilled = !!unitInSlot;
     
     if (isFilled) {
       // If filled, open unit management modal via callback
       if (onUnitManagementOpen && unitInSlot) {
-        onUnitManagementOpen(unitInSlot, slotId, detachment.id);
+        onUnitManagementOpen(unitInSlot, slotId, armyDetachment.id);
       }
     } else {
-      // If empty, show unit selection modal
-      setSelectedSlot({ roleId, slotIndex });
-      setShowUnitModal(true);
+      // If empty, show unit selection modal via callback
+      if (onUnitSelectionOpen) {
+        const roleName = DataLoader.getBattlefieldRoleById(roleId)?.name || 'Unknown';
+        onUnitSelectionOpen(roleId, roleName, armyDetachment.id, slotId, detachment);
+      }
     }
   };
 
   const handleRemoveUnit = (roleId: string, slotIndex: number) => {
-    const slotId = `${detachment.id}-${roleId}-${slotIndex}`;
+    const slotId = `${armyDetachment.id}-${roleId}-${slotIndex}`;
     const unitInSlot = getUnitInSlot(roleId, slotIndex);
     
     if (unitInSlot) {
@@ -135,7 +131,7 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
 
   const handleConfirmRemove = () => {
     if (unitToRemove) {
-      onUnitSelected(detachment.id, unitToRemove.slotId, ''); // Empty string indicates removal
+      onUnitSelected(armyDetachment.id, unitToRemove.slotId, ''); // Empty string indicates removal
       setShowRemoveConfirm(false);
       setUnitToRemove(null);
     }
@@ -146,27 +142,7 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
     setUnitToRemove(null);
   };
 
-  const handleUnitSelect = (unitId: string) => {
-    if (selectedSlot) {
-      const slotId = `${detachment.id}-${selectedSlot.roleId}-${selectedSlot.slotIndex}`;
-      onUnitSelected(detachment.id, slotId, unitId);
-      setShowUnitModal(false);
-      setSelectedSlot(null);
-      
-      // Check if this is a command or high command slot that was just filled
-      if ((selectedSlot.roleId === 'command' || selectedSlot.roleId === 'high-command') && onDetachmentPrompt) {
-        // Small delay to ensure the unit is added first
-        setTimeout(() => {
-          onDetachmentPrompt(selectedSlot.roleId, selectedSlot.slotIndex);
-        }, 100);
-      }
-    }
-  };
 
-  const handleCloseModal = () => {
-    setShowUnitModal(false);
-    setSelectedSlot(null);
-  };
 
   // Removed getAvailableUnits function since filtering is now handled in UnitSelectionModal
 
@@ -193,7 +169,7 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
     return (
       <div
         key={`${slot.roleId}-${slot.slotIndex}`}
-        className={`slot-circle ${slot.isPrime ? 'prime' : ''} ${isFilled ? 'filled' : 'empty'} ${hasTriggered ? 'has-triggered' : ''} ${isCustomSlot ? 'custom' : ''}`}
+        className={`${styles['slot-circle']} ${slot.isPrime ? styles.prime : ''} ${isFilled ? styles.filled : styles.empty} ${hasTriggered ? styles['has-triggered'] : ''} ${isCustomSlot ? styles.custom : ''}`}
         title={isFilled 
           ? `${unitName}${slot.isPrime ? ' (Prime)' : ''}${hasTriggered ? ' - Has triggered detachment' : ''}${customSlotInfo} - Click to remove`
           : `${role?.name}${slot.isPrime ? ' (Prime)' : ''}${isCustomSlot ? ' - Custom slot' : ''} - Click to add unit`
@@ -202,22 +178,22 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
         onMouseEnter={() => setHoveredSlot(`${slot.roleId}-${slot.slotIndex}`)}
         onMouseLeave={() => setHoveredSlot(null)}
       >
-        <span className="slot-icon">{getRoleIcon(slot.roleId)}</span>
-        {slot.isPrime && <span className="prime-indicator">★</span>}
-        {isCustomSlot && <span className="custom-indicator">⚙️</span>}
+        <span className={styles['slot-icon']}>{getRoleIcon(slot.roleId)}</span>
+        {slot.isPrime && <span className={styles['prime-indicator']}>★</span>}
+        {isCustomSlot && <span className={styles['custom-indicator']}>⚙️</span>}
         {isFilled && (
-          <div className="filled-indicator">
-            <span className="unit-name-short">{unitName.split(' ')[0]}</span>
+          <div className={styles['filled-indicator']}>
+            <span className={styles['unit-name-short']}>{unitName.split(' ')[0]}</span>
           </div>
         )}
         {hasTriggered && (
-          <div className="triggered-indicator">
-            <span className="triggered-icon">⚡</span>
+          <div className={styles['triggered-indicator']}>
+            <span className={styles['triggered-icon']}>⚡</span>
           </div>
         )}
         {hoveredSlot === `${slot.roleId}-${slot.slotIndex}` && isFilled && (
           <span 
-            className="remove-icon" 
+            className={styles['remove-icon']} 
             onClick={(e) => {
               e.stopPropagation();
               handleRemoveUnit(slot.roleId, slot.slotIndex);
@@ -276,78 +252,66 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
     }
   });
 
-  // Removed getAvailableUnits() call since we're now using UnitSelectionModal
-  const roleName = selectedSlot ? DataLoader.getBattlefieldRoleById(selectedSlot.roleId)?.name || 'Unknown' : 'Unknown';
+
 
   return (
-    <div className="detachment-slots">
-      <div className="slots-rows">
+    <div className={styles['detachment-slots']}>
+      <div className={styles['slots-rows']}>
         {groupedSlots.map((group, groupIndex) => (
-          <div key={groupIndex} className="slot-row">
-            <div className="row-label">{group.roleName}</div>
-            <div className="row-slots">
+          <div key={groupIndex} className={styles['slot-row']}>
+            <div className={styles['row-label']}>{group.roleName}</div>
+            <div className={styles['row-slots']}>
               {group.slots.map((slot) => renderSlot(slot))}
             </div>
           </div>
         ))}
       </div>
-      <div className="slots-legend">
-        <div className="legend-item">
-          <div className="slot-circle empty">
-            <span className="slot-icon">⚔️</span>
+      <div className={styles['slots-legend']}>
+        <div className={styles['legend-item']}>
+          <div className={`${styles['slot-circle']} ${styles.empty}`}>
+            <span className={styles['slot-icon']}>⚔️</span>
           </div>
           <span>Empty Slot</span>
         </div>
-        <div className="legend-item">
-          <div className="slot-circle filled">
-            <span className="slot-icon">⚔️</span>
-            <div className="filled-indicator">
-              <span className="unit-name-short">UNIT</span>
+        <div className={styles['legend-item']}>
+          <div className={`${styles['slot-circle']} ${styles.filled}`}>
+            <span className={styles['slot-icon']}>⚔️</span>
+            <div className={styles['filled-indicator']}>
+              <span className={styles['unit-name-short']}>UNIT</span>
             </div>
           </div>
           <span>Filled Slot</span>
         </div>
-        <div className="legend-item">
-          <div className="slot-circle prime empty">
-            <span className="slot-icon">⚔️</span>
-            <span className="prime-indicator">★</span>
+        <div className={styles['legend-item']}>
+          <div className={`${styles['slot-circle']} ${styles.prime} ${styles.empty}`}>
+            <span className={styles['slot-icon']}>⚔️</span>
+            <span className={styles['prime-indicator']}>★</span>
           </div>
           <span>Prime Slot</span>
         </div>
-        <div className="legend-item">
-          <div className="slot-circle has-triggered filled">
-            <span className="slot-icon">⚔️</span>
-            <div className="filled-indicator">
-              <span className="unit-name-short">UNIT</span>
+        <div className={styles['legend-item']}>
+          <div className={`${styles['slot-circle']} ${styles['has-triggered']} ${styles.filled}`}>
+            <span className={styles['slot-icon']}>⚔️</span>
+            <div className={styles['filled-indicator']}>
+              <span className={styles['unit-name-short']}>UNIT</span>
             </div>
-            <div className="triggered-indicator">
-              <span className="triggered-icon">⚡</span>
+            <div className={styles['triggered-indicator']}>
+              <span className={styles['triggered-icon']}>⚡</span>
             </div>
           </div>
           <span>Triggered Detachment</span>
         </div>
       </div>
 
-      {/* Unit Selection Modal */}
-      {showUnitModal && selectedSlot && (
-        <UnitSelectionModal
-          isOpen={showUnitModal}
-          roleId={selectedSlot.roleId}
-          roleName={roleName}
-          armyList={armyList}
-          detachment={detachment}
-          onUnitSelected={handleUnitSelect}
-          onClose={handleCloseModal}
-        />
-      )}
+
 
       {/* Remove Confirmation Modal */}
       {showRemoveConfirm && unitToRemove && (
-        <div className="confirm-modal-overlay" onClick={() => setShowRemoveConfirm(false)}>
-          <div className="confirm-modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className={styles['confirm-modal-overlay']} onClick={() => setShowRemoveConfirm(false)}>
+          <div className={styles['confirm-modal-content']} onClick={(e) => e.stopPropagation()}>
             <h3>Remove Unit</h3>
             <p>Are you sure you want to remove "{unitToRemove.unitName}"?</p>
-            <div className="confirm-buttons">
+            <div className={styles['confirm-buttons']}>
               <Button 
                 variant="danger"
                 onClick={handleConfirmRemove}

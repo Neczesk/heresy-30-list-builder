@@ -1,13 +1,11 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Unit Detail Modal Specific Styles */
 .unit-detail-modal-overlay {
-  composes: modal-overlay;
 }
 
 .unit-detail-modal {
-  composes: modal;
   width: 1200px;
 }
 
@@ -131,7 +129,6 @@
 }
 
 .model-type-badge {
-  composes: badge;
   background: var(--primary-color);
   color: white;
   padding: var(--spacing-xs) var(--spacing-sm);
@@ -162,17 +159,14 @@
 }
 
 .characteristics-table {
-  composes: table;
 }
 
 .characteristics-table th {
-  composes: table th;
   text-align: center;
   font-size: var(--font-size-sm);
 }
 
 .characteristics-table td {
-  composes: table td;
   text-align: center;
 }
 
@@ -188,17 +182,14 @@
 }
 
 .weapon-table {
-  composes: table;
   font-size: var(--font-size-sm);
 }
 
 .weapon-table th {
-  composes: table th;
   font-size: var(--font-size-sm);
 }
 
 .weapon-table td {
-  composes: table td;
 }
 
 .weapon-name {

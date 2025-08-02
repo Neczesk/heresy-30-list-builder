@@ -1,9 +1,8 @@
 /* Import shared styles */
-@import '../shared.css';
+@import '../shared.module.css';
 
 /* Card Base Styles */
 .ui-card {
-  composes: card;
   background: white;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
@@ -34,6 +33,13 @@
   background: transparent;
   border: none;
   box-shadow: none;
+}
+
+.ui-card--dark {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  backdrop-filter: blur(10px);
 }
 
 /* Card Padding Variants */

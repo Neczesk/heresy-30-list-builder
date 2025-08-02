@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Card } from './ui';
 import { ArmyListStorage } from '../utils/armyListStorage';
 import type { ArmyListMetadata, Army } from '../types/army';
-import './LoadArmyList.css';
+import styles from './LoadArmyList.module.css';
 
 interface LoadArmyListProps {
   onBackToMenu: () => void;
@@ -121,42 +121,42 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({
 
   if (isLoading) {
     return (
-      <div className="load-army-list">
-        <div className="loading">Loading army lists...</div>
+      <div className={styles['load-army-list']}>
+        <div className={styles.loading}>Loading army lists...</div>
       </div>
     );
   }
 
   return (
-    <div className="load-army-list">
-      <div className="load-header">
+    <div className={styles['load-army-list']}>
+      <div className={styles['load-header']}>
         <Button variant="secondary" onClick={onBackToMenu}>
           ← Back to Menu
         </Button>
         <h2>Load Army List</h2>
       </div>
 
-      <div className="load-content">
+      <div className={styles['load-content']}>
         {armyLists.length === 0 ? (
-          <Card variant="transparent" padding="lg" className="empty-state">
+          <Card variant="transparent" padding="lg" className={styles['empty-state']}>
             <h3>No Army Lists Found</h3>
             <p>You haven't created any army lists yet.</p>
             <p>Create a new army list to get started!</p>
           </Card>
         ) : (
-          <div className="army-lists-grid">
+          <div className={styles['army-lists-grid']}>
             {armyLists.map((list) => (
               <Card 
                 key={list.id} 
                 variant="default"
                 padding="lg"
                 interactive
-                className="army-list-card"
+                className={styles['army-list-card']}
                 onClick={() => handleLoadList(list.id)}
               >
-                <div className="list-header">
+                <div className={styles['list-header']}>
                   <h3>{list.name}</h3>
-                  <div className="list-actions">
+                  <div className={styles['list-actions']}>
                     <Button 
                       variant="info"
                       size="sm"
@@ -176,30 +176,30 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({
                   </div>
                 </div>
                 
-                <div className="list-details">
-                  <div className="detail">
-                    <span className="label">Faction:</span>
-                    <span className="value">{list.faction}</span>
+                <div className={styles['list-details']}>
+                  <div className={styles.detail}>
+                    <span className={styles.label}>Faction:</span>
+                    <span className={styles.value}>{list.faction}</span>
                   </div>
-                  <div className="detail">
-                    <span className="label">Allegiance:</span>
-                    <span className={`value allegiance ${(list.allegiance || 'Universal').toLowerCase()}`}>
+                  <div className={styles.detail}>
+                    <span className={styles.label}>Allegiance:</span>
+                    <span className={`${styles.value} ${styles.allegiance} ${styles[(list.allegiance || 'Universal').toLowerCase()]}`}>
                       {getAllegianceDisplay(list.allegiance)}
                     </span>
                   </div>
-                  <div className="detail">
-                    <span className="label">Points:</span>
-                    <span className="value">{list.totalPoints} / {list.pointsLimit}</span>
+                  <div className={styles.detail}>
+                    <span className={styles.label}>Points:</span>
+                    <span className={styles.value}>{list.totalPoints} / {list.pointsLimit}</span>
                   </div>
-                  <div className="detail">
-                    <span className="label">Status:</span>
-                    <span className={`value status ${list.isNamed ? 'named' : 'unnamed'}`}>
+                  <div className={styles.detail}>
+                    <span className={styles.label}>Status:</span>
+                    <span className={`${styles.value} ${styles.status} ${styles[list.isNamed ? 'named' : 'unnamed']}`}>
                       {list.isNamed ? 'Named' : 'Unnamed'}
                     </span>
                   </div>
-                  <div className="detail">
-                    <span className="label">Updated:</span>
-                    <span className="value">{formatDate(list.updatedAt)}</span>
+                  <div className={styles.detail}>
+                    <span className={styles.label}>Updated:</span>
+                    <span className={styles.value}>{formatDate(list.updatedAt)}</span>
                   </div>
                 </div>
               </Card>
@@ -210,14 +210,14 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({
 
       {/* Duplicate Modal */}
       {showDuplicateModal && duplicatingList && (
-        <div className="duplicate-modal-overlay" onClick={handleCancelDuplicate}>
-          <div className="duplicate-modal-content" onClick={(e) => e.stopPropagation()}>
-            <div className="duplicate-modal-header">
+        <div className={styles['duplicate-modal-overlay']} onClick={handleCancelDuplicate}>
+          <div className={styles['duplicate-modal-content']} onClick={(e) => e.stopPropagation()}>
+            <div className={styles['duplicate-modal-header']}>
               <h3>Duplicate Army List</h3>
               <Button variant="secondary" size="sm" onClick={handleCancelDuplicate}>×</Button>
             </div>
             
-            <div className="duplicate-modal-body">
+            <div className={styles['duplicate-modal-body']}>
               <p>Enter a name for the duplicated army list:</p>
               <input
                 type="text"
@@ -229,30 +229,30 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({
                   }
                 }}
                 placeholder="Enter army list name..."
-                className="name-input"
+                className={styles['name-input']}
                 autoFocus
               />
               
-              <div className="duplicate-preview">
+              <div className={styles['duplicate-preview']}>
                 <h4>Original List Details:</h4>
-                <div className="preview-details">
-                  <div className="preview-item">
-                    <span className="label">Name:</span>
-                    <span className="value">{duplicatingList.name}</span>
+                <div className={styles['preview-details']}>
+                  <div className={styles['preview-item']}>
+                    <span className={styles.label}>Name:</span>
+                    <span className={styles.value}>{duplicatingList.name}</span>
                   </div>
-                  <div className="preview-item">
-                    <span className="label">Faction:</span>
-                    <span className="value">{duplicatingList.faction}</span>
+                  <div className={styles['preview-item']}>
+                    <span className={styles.label}>Faction:</span>
+                    <span className={styles.value}>{duplicatingList.faction}</span>
                   </div>
-                  <div className="preview-item">
-                    <span className="label">Points:</span>
-                    <span className="value">{duplicatingList.totalPoints} / {duplicatingList.pointsLimit}</span>
+                  <div className={styles['preview-item']}>
+                    <span className={styles.label}>Points:</span>
+                    <span className={styles.value}>{duplicatingList.totalPoints} / {duplicatingList.pointsLimit}</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="duplicate-modal-actions">
+            <div className={styles['duplicate-modal-actions']}>
               <Button 
                 variant="secondary"
                 onClick={handleCancelDuplicate}

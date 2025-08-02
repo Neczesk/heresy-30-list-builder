@@ -1,18 +1,32 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Unit Selection Modal Specific Styles */
 .unit-selection-overlay {
-  composes: modal-overlay;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: var(--z-modal);
+  padding: var(--spacing-xl);
 }
 
 .unit-selection-content {
-  composes: modal;
   background: white;
   color: var(--dark-color);
   width: 90%;
-  max-width: 600px;
-  max-height: 80vh;
+  max-width: 700px;
+  max-height: 85vh;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .unit-selection-header {
@@ -86,6 +100,7 @@
   flex: 1;
   overflow-y: auto;
   padding: var(--spacing-xl);
+  min-height: 0;
 }
 
 .unit-list {
@@ -130,7 +145,6 @@
 }
 
 .custom-badge {
-  composes: badge;
   background: var(--warning-color);
   color: var(--dark-color);
   padding: var(--spacing-xs) var(--spacing-sm);
@@ -208,17 +222,19 @@
 }
 
 .no-units {
-  composes: empty-state;
   color: var(--muted-color);
 }
 
 .no-units p {
-  composes: empty-state p;
   color: var(--muted-color);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .unit-selection-overlay {
+    padding: var(--spacing-sm);
+  }
+  
   .unit-selection-content {
     width: 95%;
     max-height: 90vh;

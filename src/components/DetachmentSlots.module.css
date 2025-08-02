@@ -1,5 +1,5 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Detachment Slots Specific Styles */
 .detachment-slots {
@@ -195,11 +195,9 @@
 
 /* Confirm Modal */
 .confirm-modal-overlay {
-  composes: modal-overlay;
 }
 
 .confirm-modal-content {
-  composes: modal;
   background: #1a1a1a;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
@@ -228,7 +226,6 @@
 }
 
 .confirm-button {
-  composes: btn;
   background: var(--danger-color);
   color: white;
   border: none;
@@ -246,7 +243,6 @@
 }
 
 .cancel-button {
-  composes: btn btn-secondary;
   background: rgba(255, 255, 255, 0.1);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -298,11 +294,9 @@
 
 /* Unit Modal */
 .unit-modal-overlay {
-  composes: modal-overlay;
 }
 
 .unit-modal-content {
-  composes: modal;
   background: #1a1a1a;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
@@ -429,12 +423,10 @@
 }
 
 .no-units {
-  composes: empty-state;
   color: rgba(255, 255, 255, 0.5);
 }
 
 .no-units p {
-  composes: empty-state p;
   color: rgba(255, 255, 255, 0.5);
 }
 

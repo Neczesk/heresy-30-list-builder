@@ -3,8 +3,8 @@ import { Button, Card } from './ui';
 import { DataLoader } from '../utils/dataLoader';
 import AlliedFactionSelector from './AlliedFactionSelector';
 import DetachmentSlots from './DetachmentSlots';
-import type { Detachment, Army, Faction } from '../types/army';
-import './AddDetachmentModal.css';
+import type { Army, Detachment, Faction } from '../types/army';
+import styles from './AddDetachmentModal.module.css';
 
 interface AddDetachmentModalProps {
   armyList: Army;
@@ -20,7 +20,7 @@ const AddDetachmentModal: React.FC<AddDetachmentModalProps> = ({
   const [selectedType, setSelectedType] = useState<string>('all');
   const [showAlliedSelector, setShowAlliedSelector] = useState(false);
   
-  const availableDetachments = DataLoader.getAvailableDetachments(armyList);
+  const availableDetachments = DataLoader.getAvailableDetachments(armyList).filter(d => d.id !== 'crusade-primary');
   
   const detachmentTypes = [
     { id: 'all', name: 'All Available' },
@@ -89,17 +89,17 @@ const AddDetachmentModal: React.FC<AddDetachmentModalProps> = ({
   }
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <div className="modal-header">
+    <div className={styles['modal-overlay']} onClick={onClose}>
+      <div className={styles['modal-content']} onClick={e => e.stopPropagation()}>
+        <div className={styles['modal-header']}>
           <h2>Add Detachment</h2>
           <Button variant="secondary" size="sm" onClick={onClose}>×</Button>
         </div>
 
-        <div className="modal-body">
-          <div className="filter-section">
+        <div className={styles['modal-body']}>
+          <div className={styles['filter-section']}>
             <label>Filter by type:</label>
-            <div className="filter-buttons">
+            <div className={styles['filter-buttons']}>
               {detachmentTypes.map(type => (
                 <Button
                   key={type.id}
@@ -113,11 +113,11 @@ const AddDetachmentModal: React.FC<AddDetachmentModalProps> = ({
             </div>
           </div>
 
-          <div className="detachments-list">
+          <div className={styles['detachments-list']}>
             {filteredDetachments.length === 0 ? (
-              <Card variant="transparent" padding="lg" className="no-detachments">
+              <Card variant="transparent" padding="lg" className={styles['no-detachments']}>
                 <p>No detachments available for the current army list.</p>
-                <p className="hint">Add units to Command or High Command slots to unlock more detachments.</p>
+                <p className={styles.hint}>Add units to Command or High Command slots to unlock more detachments.</p>
               </Card>
             ) : (
               filteredDetachments.map(detachment => (
@@ -126,24 +126,24 @@ const AddDetachmentModal: React.FC<AddDetachmentModalProps> = ({
                   variant="default"
                   padding="lg"
                   interactive
-                  className="detachment-option"
+                  className={styles['detachment-option']}
                   onClick={() => handleDetachmentSelect(detachment)}
                 >
-                  <div className="detachment-header">
+                  <div className={styles['detachment-header']}>
                     <h3>{detachment.name}</h3>
                     <span 
-                      className="detachment-type"
+                      className={styles['detachment-type']}
                       style={{ backgroundColor: getDetachmentTypeColor(detachment.type) }}
                     >
                       {detachment.type}
                     </span>
                   </div>
                   
-                  <p className="detachment-description">{detachment.description}</p>
+                  <p className={styles['detachment-description']}>{detachment.description}</p>
                   
-                  <div className="detachment-trigger">
-                    <span className="trigger-label">Trigger:</span>
-                    <span className="trigger-value">{getTriggerDescription(detachment)}</span>
+                  <div className={styles['detachment-trigger']}>
+                    <span className={styles['trigger-label']}>Trigger:</span>
+                    <span className={styles['trigger-value']}>{getTriggerDescription(detachment)}</span>
                   </div>
                   
                   {/* Visual Slot Display */}

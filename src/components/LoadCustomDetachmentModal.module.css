@@ -1,5 +1,5 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Load Custom Detachment Modal Specific Styles */
 .load-custom-detachment-modal {
@@ -66,7 +66,6 @@
 }
 
 .load-custom-detachment-modal .no-custom-detachments {
-  composes: empty-state;
   text-align: center;
   padding: var(--spacing-2xl);
   background: rgba(255, 255, 255, 0.05);
@@ -76,7 +75,6 @@
 }
 
 .load-custom-detachment-modal .no-custom-detachments p {
-  composes: empty-state p;
   margin: 0 0 var(--spacing-sm) 0;
   color: rgba(255, 255, 255, 0.8);
   font-size: var(--font-size-lg);
@@ -103,7 +101,6 @@
 }
 
 .load-custom-detachment-modal .detachment-option {
-  composes: card;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-md);
@@ -159,7 +156,6 @@
 
 .load-custom-detachment-modal .detachment-option .faction,
 .load-custom-detachment-modal .detachment-option .subfaction {
-  composes: badge;
   background: rgba(74, 144, 226, 0.2);
   color: var(--primary-color);
   padding: var(--spacing-xs) var(--spacing-sm);
@@ -188,7 +184,6 @@
 }
 
 .load-custom-detachment-modal .cancel-button {
-  composes: btn btn-secondary;
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -206,7 +201,6 @@
 }
 
 .load-custom-detachment-modal .load-button {
-  composes: btn;
   background: var(--primary-color);
   color: white;
   border: none;

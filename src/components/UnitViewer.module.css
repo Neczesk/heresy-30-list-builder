@@ -1,9 +1,8 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Unit Viewer Specific Styles */
 .unit-viewer {
-  composes: card;
   max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
@@ -84,14 +83,12 @@
 .weapons-table,
 .special-rules-table,
 .wargear-table {
-  composes: table;
 }
 
 .characteristics-table th,
 .weapons-table th,
 .special-rules-table th,
 .wargear-table th {
-  composes: table th;
   text-align: center;
   font-weight: 600;
 }
@@ -109,7 +106,6 @@
 .weapons-table td,
 .special-rules-table td,
 .wargear-table td {
-  composes: table td;
   text-align: center;
   vertical-align: middle;
 }
@@ -198,7 +194,6 @@
 }
 
 .trait-tag {
-  composes: badge;
   background: var(--info-color);
   color: white;
   padding: var(--spacing-xs) var(--spacing-sm);

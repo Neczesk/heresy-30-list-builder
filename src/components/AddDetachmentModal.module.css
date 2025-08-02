@@ -1,20 +1,33 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Add Detachment Modal Specific Styles */
 .modal-overlay {
-  composes: modal-overlay;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: var(--spacing-xl);
 }
 
 .modal-content {
-  composes: modal;
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   color: white;
-  max-width: 800px;
+  max-width: 900px;
   width: 90%;
-  max-height: 80vh;
+  max-height: 85vh;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-header {
@@ -73,7 +86,6 @@
 }
 
 .filter-button {
-  composes: btn;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
@@ -101,7 +113,6 @@
 }
 
 .detachment-option {
-  composes: card;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-lg);
@@ -129,10 +140,27 @@
   color: #ffd700;
   font-size: var(--font-size-2xl);
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.recommended-badge {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  color: #1e3c72;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.recommended {
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 .detachment-type {
-  composes: badge;
   background: rgba(255, 255, 255, 0.2);
   color: white;
   padding: var(--spacing-xs) var(--spacing-sm);
@@ -175,12 +203,10 @@
 }
 
 .no-detachments {
-  composes: empty-state;
   color: rgba(255, 255, 255, 0.7);
 }
 
 .no-detachments p {
-  composes: empty-state p;
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -193,6 +219,10 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .modal-overlay {
+    padding: var(--spacing-sm);
+  }
+  
   .modal-content {
     width: 95%;
     max-height: 90vh;

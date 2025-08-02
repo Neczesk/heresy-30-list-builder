@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from './ui';
 import { CustomUnitStorage } from '../utils/customUnitStorage';
 import type { ArmyUnit } from '../types/army';
-import './SaveCustomUnitModal.css';
+import styles from './SaveCustomUnitModal.module.css';
 
 interface SaveCustomUnitModalProps {
   isOpen: boolean;
@@ -92,15 +92,15 @@ const SaveCustomUnitModal: React.FC<SaveCustomUnitModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="save-custom-unit-overlay" onClick={handleCancel}>
-      <div className="save-custom-unit-content" onClick={(e) => e.stopPropagation()}>
-        <div className="save-custom-unit-header">
+    <div className={styles.saveCustomUnitOverlay} onClick={handleCancel}>
+      <div className={styles.saveCustomUnitContent} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.saveCustomUnitHeader}>
           <h3>Save Custom Unit</h3>
           <Button variant="secondary" size="sm" onClick={handleCancel}>×</Button>
         </div>
         
-        <div className="save-custom-unit-body">
-          <div className="form-group">
+        <div className={styles.saveCustomUnitBody}>
+          <div className={styles.formGroup}>
             <label htmlFor="unit-name">Unit Name *</label>
             <input
               id="unit-name"
@@ -108,17 +108,17 @@ const SaveCustomUnitModal: React.FC<SaveCustomUnitModalProps> = ({
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter a name for your custom unit"
-              className={isNameTaken ? 'error' : ''}
+              className={isNameTaken ? styles.error : ''}
               disabled={isSaving}
             />
             {isNameTaken && (
-              <div className="error-message">
+              <div className={styles.errorMessage}>
                 A custom unit with this name already exists
               </div>
             )}
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="unit-description">Description (Optional)</label>
             <textarea
               id="unit-description"
@@ -130,44 +130,44 @@ const SaveCustomUnitModal: React.FC<SaveCustomUnitModalProps> = ({
             />
           </div>
 
-          <div className="unit-preview">
+          <div className={styles.unitPreview}>
             <h4>Unit Preview</h4>
-            <div className="preview-info">
-              <div className="preview-item">
-                <span className="label">Base Unit:</span>
-                <span className="value">{unit.unitId}</span>
+            <div className={styles.previewInfo}>
+              <div className={styles.previewItem}>
+                <span className={styles.label}>Base Unit:</span>
+                <span className={styles.value}>{unit.unitId}</span>
               </div>
-              <div className="preview-item">
-                <span className="label">Faction:</span>
-                <span className="value">{faction}</span>
+              <div className={styles.previewItem}>
+                <span className={styles.label}>Faction:</span>
+                <span className={styles.value}>{faction}</span>
               </div>
               {subfaction && (
-                <div className="preview-item">
-                  <span className="label">Subfaction:</span>
-                  <span className="value">{subfaction}</span>
+                <div className={styles.previewItem}>
+                  <span className={styles.label}>Subfaction:</span>
+                  <span className={styles.value}>{subfaction}</span>
                 </div>
               )}
-              <div className="preview-item">
-                <span className="label">Upgrades:</span>
-                <span className="value">{unit.upgrades?.length || 0} applied</span>
+              <div className={styles.previewItem}>
+                <span className={styles.label}>Upgrades:</span>
+                <span className={styles.value}>{unit.upgrades?.length || 0} applied</span>
               </div>
               {unit.primeAdvantages && unit.primeAdvantages.length > 0 && (
-                <div className="preview-item">
-                  <span className="label">Prime Advantages:</span>
-                  <span className="value">{unit.primeAdvantages.length} applied</span>
+                <div className={styles.previewItem}>
+                  <span className={styles.label}>Prime Advantages:</span>
+                  <span className={styles.value}>{unit.primeAdvantages.length} applied</span>
                 </div>
               )}
             </div>
           </div>
 
           {error && (
-            <div className="error-message">
+            <div className={styles.errorMessage}>
               {error}
             </div>
           )}
         </div>
 
-        <div className="save-custom-unit-actions">
+        <div className={styles.saveCustomUnitActions}>
           <Button 
             variant="secondary"
             onClick={handleCancel}

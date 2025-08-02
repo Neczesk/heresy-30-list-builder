@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { Button } from './ui';
 import { DataLoader } from '../utils/dataLoader';
+import styles from './DetachmentBrowser.module.css';
 import type { Detachment, BattlefieldRole } from '../types/army';
-import './DetachmentBrowser.css';
 
 interface DetachmentBrowserProps {
   onBackToBrowserMenu: () => void;
@@ -109,38 +109,38 @@ const DetachmentBrowser: React.FC<DetachmentBrowserProps> = ({
   };
 
   const renderDetachmentCard = (detachment: DetachmentWithRoles) => (
-    <div key={detachment.id} className="detachment-card">
-      <div className="detachment-card-header">
+    <div key={detachment.id} className={styles['detachment-card']}>
+      <div className={styles['detachment-card-header']}>
         <h4>{detachment.name}</h4>
-        <div className="detachment-type-badge" style={{ backgroundColor: getDetachmentTypeColor(detachment.type) }}>
+        <div className={styles['detachment-type-badge']} style={{ backgroundColor: getDetachmentTypeColor(detachment.type) }}>
           {detachment.type}
         </div>
       </div>
       
-      <div className="detachment-card-content">
-        <div className="detachment-description">
+      <div className={styles['detachment-card-content']}>
+        <div className={styles['detachment-description']}>
           <p>{detachment.description}</p>
         </div>
         
-        <div className="detachment-slots">
+        <div className={styles['detachment-slots']}>
           <h5>Slots:</h5>
-          <div className="slots-list">
+          <div className={styles['slots-list']}>
             {detachment.slotsWithRoles.map((slot, index) => (
-              <div key={index} className="slot-item">
-                <span className="slot-role">{slot.role.name}</span>
-                <span className="slot-count">{slot.count}</span>
-                {slot.isPrime && <span className="prime-indicator">★</span>}
+              <div key={index} className={styles['slot-item']}>
+                <span className={styles['slot-role']}>{slot.role.name}</span>
+                <span className={styles['slot-count']}>{slot.count}</span>
+                {slot.isPrime && <span className={styles['prime-indicator']}>★</span>}
               </div>
             ))}
           </div>
         </div>
         
         {detachment.requirements && detachment.requirements.length > 0 && (
-          <div className="detachment-requirements">
+          <div className={styles['detachment-requirements']}>
             <h5>Requirements:</h5>
-            <ul className="requirements-list">
+            <ul className={styles['requirements-list']}>
               {detachment.requirements.map((req, index) => (
-                <li key={index} className="requirement-item">
+                <li key={index} className={styles['requirement-item']}>
                   {req.description || `${req.type}: ${req.value}`}
                 </li>
               ))}
@@ -163,23 +163,23 @@ const DetachmentBrowser: React.FC<DetachmentBrowserProps> = ({
   };
 
   return (
-    <div className="detachment-browser">
-      <div className="browser-header">
+    <div className={styles['detachment-browser']}>
+      <div className={styles['browser-header']}>
         <Button variant="secondary" onClick={onBackToBrowserMenu}>
           ← Back to Browser Menu
         </Button>
         <h2>Detachment Browser</h2>
       </div>
 
-      <div className="search-section">
-        <div className="search-container">
-          <div className="search-input-wrapper">
+      <div className={styles['search-section']}>
+        <div className={styles['search-container']}>
+          <div className={styles['search-input-wrapper']}>
             <input
               type="text"
               placeholder="Search detachments..."
               value={searchTerm}
               onChange={handleSearchChange}
-              className="search-input"
+              className={styles['search-input']}
             />
             {searchTerm && (
               <Button variant="secondary" size="sm" onClick={clearSearch}>
@@ -187,9 +187,9 @@ const DetachmentBrowser: React.FC<DetachmentBrowserProps> = ({
               </Button>
             )}
           </div>
-          <div className="search-results">
+          <div className={styles['search-results']}>
             {searchTerm && (
-              <span className="results-count">
+              <span className={styles['results-count']}>
                 {filteredDetachments.length} of {detachments.length} detachments found
               </span>
             )}
@@ -197,14 +197,14 @@ const DetachmentBrowser: React.FC<DetachmentBrowserProps> = ({
         </div>
       </div>
 
-      <div className="filter-section">
-        <div className="type-filter">
+      <div className={styles['filter-section']}>
+        <div className={styles['type-filter']}>
           <label htmlFor="type-select">Filter by Type:</label>
           <select
             id="type-select"
             value={selectedType}
             onChange={handleTypeChange}
-            className="type-select"
+            className={styles['type-select']}
           >
             <option value="all">All Types</option>
             {getDetachmentTypes().map(type => (
@@ -214,19 +214,19 @@ const DetachmentBrowser: React.FC<DetachmentBrowserProps> = ({
         </div>
       </div>
 
-      <div className="detachments-section">
+      <div className={styles['detachments-section']}>
         {getDetachmentTypes().map(type => {
           const typeDetachments = getDetachmentsByType(type);
           if (typeDetachments.length === 0) return null;
 
           return (
-            <div key={type} className="detachment-type-group">
-              <div className="type-header" style={{ borderLeftColor: getDetachmentTypeColor(type) }}>
+            <div key={type} className={styles['detachment-type-group']}>
+              <div className={styles['type-header']} style={{ borderLeftColor: getDetachmentTypeColor(type) }}>
                 <h3>
                   {getDetachmentTypeIcon(type)} {type} Detachments ({typeDetachments.length})
                 </h3>
               </div>
-              <div className="detachments-grid">
+              <div className={styles['detachments-grid']}>
                 {typeDetachments.map(renderDetachmentCard)}
               </div>
             </div>
@@ -234,7 +234,7 @@ const DetachmentBrowser: React.FC<DetachmentBrowserProps> = ({
         })}
 
         {filteredDetachments.length === 0 && (
-          <div className="no-detachments">
+          <div className={styles['no-detachments']}>
             <p>No detachments found matching your search criteria.</p>
           </div>
         )}

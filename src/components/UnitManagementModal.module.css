@@ -1,5 +1,5 @@
 /* Import shared styles */
-@import './shared.css';
+@import './shared.module.css';
 
 /* Unit Management Modal Specific Styles */
 .unit-management-overlay {
@@ -385,7 +385,6 @@
 }
 
 .save-button {
-  composes: btn btn-primary;
   flex: 1;
   padding: var(--spacing-md) var(--spacing-xl);
   font-size: var(--font-size-base);
@@ -404,7 +403,6 @@
 }
 
 .save-close-button {
-  composes: btn btn-secondary;
   flex: 1;
   padding: var(--spacing-md) var(--spacing-xl);
   font-size: var(--font-size-base);
@@ -548,7 +546,6 @@
 }
 
 .add-detachment-button {
-  composes: btn btn-primary;
   padding: var(--spacing-md) var(--spacing-xl);
   font-size: var(--font-size-base);
   font-weight: 600;
@@ -962,7 +959,6 @@
 }
 
 .save-custom-unit-button {
-  composes: btn btn-primary;
   width: 100%;
   padding: var(--spacing-md) var(--spacing-xl);
   font-size: var(--font-size-base);
