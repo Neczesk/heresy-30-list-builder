@@ -83,6 +83,15 @@ const MainMenu: React.FC = () => {
                 >
                   Edit Detachments
                 </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  size="large"
+                  fullWidth
+                  onClick={() => navigate('/csv-creator')}
+                >
+                  CSV Creator
+                </Button>
               </Box>
             </CardContent>
           </Card>

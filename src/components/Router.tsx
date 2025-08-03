@@ -6,6 +6,7 @@ import LoadArmyList from '../pages/listBuilder/LoadArmyList';
 import CustomUnitsManager from '../pages/managers/CustomUnitsManager';
 import CustomDetachmentsManager from '../pages/managers/CustomDetachmentsManager';
 import RulesBrowser from '../pages/browser/RulesBrowser';
+import CSVCreator from '../pages/csvCreator/CSVCreator';
 import type { Army } from '../types/army';
 
 interface RouterProps {
@@ -67,6 +68,9 @@ const AppRouter: React.FC<RouterProps> = ({
           path="/rules-browser/weapon-browser"
           element={<RulesBrowser />}
         />
+
+        {/* CSV Creator route */}
+        <Route path="/csv-creator" element={<CSVCreator />} />
 
         {/* Catch all route - redirect to main menu */}
         <Route path="*" element={<Navigate to="/" replace />} />
