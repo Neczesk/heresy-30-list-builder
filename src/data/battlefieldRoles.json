@@ -1,98 +1,109 @@
 {
   "battlefieldRoles": [
     {
-      "id": "high-command",
-      "name": "High Command",
-      "type": "High Command",
       "description": "Senior officers and commanders",
-      "maxCount": 1
+      "id": "high-command",
+      "maxCount": null,
+      "name": "High Command",
+      "type": "High Command"
     },
     {
-      "id": "command",
-      "name": "Command",
-      "type": "Command",
       "description": "Junior officers and specialists",
-      "maxCount": 3
+      "id": "command",
+      "maxCount": null,
+      "name": "Command",
+      "type": "Command"
     },
     {
-      "id": "troops",
-      "name": "Troops",
-      "type": "Troops",
       "description": "Basic infantry units",
-      "minCount": 1
+      "id": "troops",
+      "maxCount": null,
+      "name": "Troops",
+      "type": "Troops"
     },
     {
+      "description": "Light transport vehicles",
       "id": "transport",
+      "maxCount": null,
       "name": "Transport",
-      "type": "Transport",
-      "description": "Light transport vehicles"
+      "type": "Transport"
     },
     {
+      "description": "Heavy transport vehicles like Land Raiders",
       "id": "heavy-transport",
+      "maxCount": null,
       "name": "Heavy Transport",
-      "type": "Heavy Transport",
-      "description": "Heavy transport vehicles like Land Raiders"
+      "type": "Heavy Transport"
     },
     {
+      "description": "Special and heavy weapon squads",
       "id": "support",
+      "maxCount": null,
       "name": "Support",
-      "type": "Support",
-      "description": "Special and heavy weapon squads"
+      "type": "Support"
     },
     {
+      "description": "Tanks and armoured vehicles",
       "id": "armour",
+      "maxCount": null,
       "name": "Armour",
-      "type": "Armour",
-      "description": "Tanks and armoured vehicles"
+      "type": "Armour"
     },
     {
+      "description": "Dreadnoughts and war machines",
       "id": "war-engine",
+      "maxCount": null,
       "name": "War Engine",
-      "type": "War Engine",
-      "description": "Dreadnoughts and war machines"
+      "type": "War Engine"
     },
     {
+      "description": "Light infantry and bikes",
       "id": "reconnaissance",
+      "maxCount": null,
       "name": "Reconnaissance",
-      "type": "Reconnaissance",
-      "description": "Light infantry and bikes"
+      "type": "Reconnaissance"
     },
     {
+      "description": "Elite infantry and vehicles",
       "id": "elite",
+      "maxCount": null,
       "name": "Elite",
-      "type": "Elite",
-      "description": "Elite infantry and vehicles"
+      "type": "Elite"
     },
     {
+      "description": "Terminators and heavy assault units",
       "id": "heavy-assault",
+      "maxCount": null,
       "name": "Heavy Assault",
-      "type": "Heavy Assault",
-      "description": "Terminators and heavy assault units"
+      "type": "Heavy Assault"
     },
     {
+      "description": "Aircraft, jetbikes and speeders",
       "id": "fast-attack",
+      "maxCount": null,
       "name": "Fast Attack",
-      "type": "Fast Attack",
-      "description": "Aircraft, jetbikes and speeders"
+      "type": "Fast Attack"
     },
     {
+      "description": "Command squads and bodyguards",
       "id": "retinue",
+      "maxCount": null,
       "name": "Retinue",
-      "type": "Retinue",
-      "description": "Command squads and bodyguards"
+      "type": "Retinue"
     },
     {
-      "id": "warlord",
-      "name": "Warlord",
-      "type": "Warlord",
       "description": "Army commanders and Primarchs",
-      "maxCount": 1
+      "id": "warlord",
+      "maxCount": 1,
+      "name": "Warlord",
+      "type": "Warlord"
     },
     {
+      "description": "Lord of War units",
       "id": "lord-of-war",
+      "maxCount": null,
       "name": "Lord of War",
-      "type": "Lord of War",
-      "description": "Lord of War units"
+      "type": "Lord of War"
     }
   ]
 }

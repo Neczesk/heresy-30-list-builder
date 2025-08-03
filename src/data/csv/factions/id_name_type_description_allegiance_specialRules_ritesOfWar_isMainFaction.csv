@@ -1,0 +1,23 @@
+allegiance,description,id,isMainFaction,name,parentFaction,ritesOfWar,specialRules,type
+Universal,The Space Marine Legions of the Great Crusade and Horus Heresy,legiones-astartes,true,Legiones Astartes,,"[]","[]",Legion
+Universal,The Adeptus Mechanicus and their war machines,mechanicum,true,Adeptus Mechanicum,,"[]","[]",Mechanicum
+Universal,The noble houses of Imperial Knights,questoris-familia,true,Questoris Familia,,"[]","[]",Knight
+Universal,"The elite regiments of the Imperial Army, representing the finest human soldiers in the galaxy",solar-auxilia,true,Solar Auxilia,,"[]","[]",Auxilia
+Universal,"The I Legion, the First and the most secretive of all Legions",dark-angels,false,Dark Angels (I Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The III Legion, perfectionists and masters of close combat",emperor-children,false,Emperor's Children (III Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The IV Legion, masters of siege warfare and artillery",iron-warriors,false,Iron Warriors (IV Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The V Legion, masters of lightning warfare and mounted combat",white-scars,false,White Scars (V Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The VI Legion, the Wolves of Fenris and savage warriors",space-wolves,false,Space Wolves (VI Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The VII Legion, masters of siege warfare and fortification",imperial-fists,false,Imperial Fists (VII Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The VIII Legion, terror incarnate and masters of psychological warfare",night-lords,false,Night Lords (VIII Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The IX Legion, noble warriors with a dark secret in their blood",blood-angels,false,Blood Angels (IX Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The X Legion, masters of technology and cybernetic enhancement",iron-hands,false,Iron Hands (X Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The XII Legion, berserkers who seek close combat above all else",world-eaters,false,World Eaters (XII Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The XIII Legion, masters of tactical warfare and the Codex Astartes",ultramarines,false,Ultramarines (XIII Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The XIV Legion, masters of biological warfare and endurance",death-guard,false,Death Guard (XIV Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The XV Legion, masters of psychic powers and sorcery",thousand-sons,false,Thousand Sons (XV Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The XVI Legion, the Warmaster's own and masters of precision strikes",luna-wolves,false,Luna Wolves (XVI Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The XVII Legion, the first to fall to Chaos and masters of faith",word-bearers,false,Word Bearers (XVII Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The XVIII Legion, masters of fire and the forge",salamanders,false,Salamanders (XVIII Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The XIX Legion, masters of stealth and guerrilla warfare",raven-guard,false,Raven Guard (XIX Legion),legiones-astartes,"[]","[]",Legion
+Universal,"The XX Legion, masters of deception and infiltration",alpha-legion,false,Alpha Legion (XX Legion),legiones-astartes,"[]","[]",Legion

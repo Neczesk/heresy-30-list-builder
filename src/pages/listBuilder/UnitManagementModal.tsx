@@ -433,58 +433,40 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                 </Typography>
 
                 {/* Unit Summary Card */}
-                <Card sx={{ mb: 3 }}>
-                  <CardContent>
-                    <Typography variant="h5" gutterBottom>
-                      {baseUnitData.name}
-                    </Typography>
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
-                      <Box sx={{ flex: '1 1 200px', minWidth: 200 }}>
-                        <Typography variant="body2" color="text.secondary">
-                          Battlefield Role
-                        </Typography>
-                        <Chip
-                          label={baseUnitData.battlefieldRole}
-                          color="primary"
-                          size="small"
-                          variant="outlined"
-                        />
-                      </Box>
-                      <Box sx={{ flex: '1 1 200px', minWidth: 200 }}>
-                        <Typography variant="body2" color="text.secondary">
-                          Unit Size
-                        </Typography>
-                        <Typography variant="body1">
-                          {Object.values(baseUnitData.models).reduce((a, b) => a + b, 0)} models
+                <Card sx={{ mb: 2 }}>
+                  <CardContent sx={{ py: 2 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
+                      <Typography variant="h6" sx={{ flex: 1 }}>
+                        {baseUnitData.name}
+                      </Typography>
+                      <Chip
+                        label={baseUnitData.battlefieldRole}
+                        color="primary"
+                        size="small"
+                        variant="outlined"
+                      />
+                    </Box>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, mb: 1 }}>
+                      <Box>
+                        <Typography variant="body2" color="text.secondary" component="span">
+                          Size: {Object.values(baseUnitData.models).reduce((a, b) => a + b, 0)} models
                         </Typography>
                       </Box>
-                      <Box sx={{ flex: '1 1 200px', minWidth: 200 }}>
-                        <Typography variant="body2" color="text.secondary">
-                          Base Points
-                        </Typography>
-                        <Typography variant="body1">
-                          {baseUnitData.points}
+                      <Box>
+                        <Typography variant="body2" color="text.secondary" component="span">
+                          Base: {baseUnitData.points} pts
                         </Typography>
                       </Box>
-                      <Box sx={{ flex: '1 1 200px', minWidth: 200 }}>
-                        <Typography variant="body2" color="text.secondary">
-                          Total Points
-                        </Typography>
-                        <Typography variant="body1" color="primary">
-                          {totalUnitPoints}
+                      <Box>
+                        <Typography variant="body2" color="primary" component="span" sx={{ fontWeight: 'medium' }}>
+                          Total: {totalUnitPoints} pts
                         </Typography>
                       </Box>
                     </Box>
-
                     {baseUnitData.description && (
-                      <Box sx={{ mt: 2 }}>
-                        <Typography variant="body2" color="text.secondary">
-                          Description
-                        </Typography>
-                        <Typography variant="body1">
-                          {baseUnitData.description}
-                        </Typography>
-                      </Box>
+                      <Typography variant="body2" color="text.secondary">
+                        {baseUnitData.description}
+                      </Typography>
                     )}
                   </CardContent>
                 </Card>
@@ -498,6 +480,8 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                   }}
                   selectedUpgrades={selectedUpgrades}
                 />
+
+
               </Box>
             )}
 

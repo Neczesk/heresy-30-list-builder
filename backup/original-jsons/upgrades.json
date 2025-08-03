@@ -1,10 +1,12 @@
 {
   "upgrades": [
     {
-      "description": "The Legatine Marshall can replace their Charnabal Sabre with a different weapon.",
       "id": "legatine-marshall-weapon-upgrade",
-      "maxCount": 1,
       "name": "Legatine Marshall Weapon Upgrade",
+      "description": "The Legatine Marshall can replace their Charnabal Sabre with a different weapon.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "legatine-marshall-model",
       "options": [
         {
           "id": "power-sword-option",
@@ -38,19 +40,15 @@
           "replaceWeapon": "charnabal-sabre",
           "addWeapon": "thunder-hammer"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "legatine-marshall-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Add up to 5 additional Lifeward models to the unit.",
       "id": "additional-lifewards-upgrade",
-      "maxCount": 5,
       "name": "Additional Lifewards",
+      "description": "Add up to 5 additional Lifeward models to the unit.",
+      "type": "model-count",
+      "maxCount": 5,
+      "targetModel": "lifeward-model",
       "options": [
         {
           "id": "additional-lifeward-option",
@@ -58,19 +56,15 @@
           "description": "Add one Lifeward model to the unit",
           "points": 14
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "lifeward-model",
-      "targetModelType": "",
-      "targetModels": "",
-      "type": "model-count"
+      ]
     },
     {
-      "description": "Any Lifeward can replace their Lasrifle with a Charnabal Sabre and Laspistol.",
       "id": "lifeward-weapon-upgrade",
-      "maxCount": "dependent",
       "name": "Lifeward Weapon Upgrade",
+      "description": "Any Lifeward can replace their Lasrifle with a Charnabal Sabre and Laspistol.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "lifeward-model",
       "options": [
         {
           "id": "charnabal-laspistol-option",
@@ -88,19 +82,16 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "lifeward-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Any Lifeward with a Charnabal Sabre can replace it with a different weapon.",
       "id": "lifeward-sabre-upgrade",
-      "maxCount": "dependent",
       "name": "Lifeward Sabre Upgrade",
+      "description": "Any Lifeward with a Charnabal Sabre can replace it with a different weapon.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "requiresUpgrade": "lifeward-weapon-upgrade",
+      "targetModelType": "lifeward-model",
       "options": [
         {
           "id": "lifeward-power-sword-option",
@@ -118,19 +109,15 @@
           "replaceWeapon": "charnabal-sabre",
           "addWeapon": "power-fist"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "lifeward-weapon-upgrade",
-      "targetModel": "",
-      "targetModelType": "lifeward-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Legatine Marshall can replace their Las Pistol with a different pistol weapon.",
       "id": "legatine-marshall-pistol-upgrade",
-      "maxCount": 1,
       "name": "Legatine Marshall Pistol Upgrade",
+      "description": "The Legatine Marshall can replace their Las Pistol with a different pistol weapon.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "legatine-marshall-model",
       "options": [
         {
           "id": "plasma-pistol-option",
@@ -188,19 +175,15 @@
           "replaceWeapon": "laspistol",
           "addWeapon": "hand-flamer"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "legatine-marshall-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Lifewards can replace their Lasrifle with a different pistol weapon.",
       "id": "lifeward-pistol-upgrade",
-      "maxCount": "dependent",
       "name": "Lifeward Pistol Upgrade",
+      "description": "Lifewards can replace their Lasrifle with a different pistol weapon.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "lifeward-model",
       "options": [
         {
           "id": "lifeward-plasma-pistol-option",
@@ -242,19 +225,15 @@
           "replaceWeapon": "lasrifle",
           "addWeapon": "hand-flamer"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "lifeward-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Lifewards with Lasrifles can add bayonets for close combat.",
       "id": "lifeward-bayonet-upgrade",
-      "maxCount": "dependent",
       "name": "Lifeward Bayonet Upgrade",
+      "description": "Lifewards with Lasrifles can add bayonets for close combat.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "lifeward-model",
       "options": [
         {
           "id": "bayonet-option",
@@ -263,19 +242,15 @@
           "points": 1,
           "addWeapon": "bayonet"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "lifeward-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Lifewards with Lasrifles can add blast chargers for enhanced firepower.",
       "id": "lifeward-blast-charger-upgrade",
-      "maxCount": "dependent",
       "name": "Lifeward Blast Charger Upgrade",
+      "description": "Lifewards with Lasrifles can add blast chargers for enhanced firepower.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "lifeward-model",
       "options": [
         {
           "id": "blast-charger-option",
@@ -284,19 +259,15 @@
           "points": 1,
           "addWeapon": "blast-charger"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "lifeward-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "One Lifeward in the unit may have a Command Vox for enhanced communications.",
       "id": "lifeward-command-vox-upgrade",
-      "maxCount": 1,
       "name": "Lifeward Command Vox Upgrade",
+      "description": "One Lifeward in the unit may have a Command Vox for enhanced communications.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "lifeward-model",
       "options": [
         {
           "id": "command-vox-option",
@@ -305,19 +276,15 @@
           "points": 10,
           "addWargear": "command-vox"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "lifeward-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Lifeward in the unit may have an Augury Scanner for enhanced detection.",
       "id": "lifeward-augury-scanner-upgrade",
-      "maxCount": 1,
       "name": "Lifeward Augury Scanner Upgrade",
+      "description": "One Lifeward in the unit may have an Augury Scanner for enhanced detection.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "lifeward-model",
       "options": [
         {
           "id": "augury-scanner-option",
@@ -326,19 +293,15 @@
           "points": 10,
           "addWargear": "augury-scanner"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "lifeward-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Lifeward in the unit may carry a vexilla banner. Only one vexilla type may be selected.",
       "id": "lifeward-vexilla-upgrade",
-      "maxCount": 1,
       "name": "Lifeward Vexilla Upgrade",
+      "description": "One Lifeward in the unit may carry a vexilla banner. Only one vexilla type may be selected.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "lifeward-model",
       "options": [
         {
           "id": "auxilia-vexilla-option",
@@ -354,19 +317,15 @@
           "points": 15,
           "addWargear": "cohorts-vexilla"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "lifeward-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Lifeward in the unit may have a Melta Bomb for anti-armor combat.",
       "id": "lifeward-melta-bomb-upgrade",
-      "maxCount": 1,
       "name": "Lifeward Melta Bomb Upgrade",
+      "description": "One Lifeward in the unit may have a Melta Bomb for anti-armor combat.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "lifeward-model",
       "options": [
         {
           "id": "melta-bomb-option",
@@ -375,19 +334,15 @@
           "points": 10,
           "addWeapon": "melta-bomb"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "lifeward-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Auxilia Captain can replace their Charnabal Sabre with a different weapon.",
       "id": "auxilia-captain-weapon-upgrade",
-      "maxCount": 1,
       "name": "Auxilia Captain Weapon Upgrade",
+      "description": "The Auxilia Captain can replace their Charnabal Sabre with a different weapon.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "auxilia-captain-model",
       "options": [
         {
           "id": "auxilia-captain-thunder-hammer-option",
@@ -413,19 +368,15 @@
           "replaceWeapon": "charnabal-sabre",
           "addWeapon": "power-sword"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "auxilia-captain-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Auxilia Captain can replace their Las Pistol with a different pistol weapon.",
       "id": "auxilia-captain-pistol-upgrade",
-      "maxCount": 1,
       "name": "Auxilia Captain Pistol Upgrade",
+      "description": "The Auxilia Captain can replace their Las Pistol with a different pistol weapon.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "auxilia-captain-model",
       "options": [
         {
           "id": "auxilia-captain-blast-pistol-option",
@@ -467,19 +418,15 @@
           "replaceWeapon": "laspistol",
           "addWeapon": "plasma-pistol"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "auxilia-captain-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Companions can replace their Lasrifle with a Laspistol and Charnabal Sabre.",
       "id": "companion-weapon-upgrade",
-      "maxCount": "dependent",
       "name": "Companion Weapon Upgrade",
+      "description": "Companions can replace their Lasrifle with a Laspistol and Charnabal Sabre.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "companion-model",
       "options": [
         {
           "id": "companion-weapon-option",
@@ -497,19 +444,15 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "companion-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Companions with Charnabal Sabres can replace them with different melee weapons.",
       "id": "companion-sabre-upgrade",
-      "maxCount": "dependent",
       "name": "Companion Sabre Upgrade",
+      "description": "Companions with Charnabal Sabres can replace them with different melee weapons.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "companion-model",
       "options": [
         {
           "id": "companion-power-sword-option",
@@ -527,19 +470,15 @@
           "replaceWeapon": "charnabal-sabre",
           "addWeapon": "power-fist"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "companion-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Companions can replace their Lasrifle with a different pistol weapon.",
       "id": "companion-pistol-upgrade",
-      "maxCount": "dependent",
       "name": "Companion Pistol Upgrade",
+      "description": "Companions can replace their Lasrifle with a different pistol weapon.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "companion-model",
       "options": [
         {
           "id": "companion-blast-pistol-option",
@@ -581,19 +520,15 @@
           "replaceWeapon": "lasrifle",
           "addWeapon": "plasma-pistol"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "companion-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The unit can include up to 5 more Companions.",
       "id": "additional-companions-upgrade",
-      "maxCount": 5,
       "name": "Additional Companions",
+      "description": "The unit can include up to 5 more Companions.",
+      "type": "model-count",
+      "maxCount": 5,
+      "targetModel": "companion-model",
       "options": [
         {
           "id": "additional-companion-option",
@@ -601,19 +536,15 @@
           "description": "Add one Companion to the unit",
           "points": 12
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "companion-model",
-      "targetModelType": "",
-      "targetModels": "",
-      "type": "model-count"
+      ]
     },
     {
-      "description": "Companions with Lasrifles can add bayonets for close combat.",
       "id": "companion-bayonet-upgrade",
-      "maxCount": "dependent",
       "name": "Companion Bayonet Upgrade",
+      "description": "Companions with Lasrifles can add bayonets for close combat.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "companion-model",
       "options": [
         {
           "id": "companion-bayonet-option",
@@ -622,19 +553,15 @@
           "points": 1,
           "addWeapon": "bayonet"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "companion-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Companions with Lasrifles can add blast chargers for enhanced firepower.",
       "id": "companion-blast-charger-upgrade",
-      "maxCount": "dependent",
       "name": "Companion Blast Charger Upgrade",
+      "description": "Companions with Lasrifles can add blast chargers for enhanced firepower.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "companion-model",
       "options": [
         {
           "id": "companion-blast-charger-option",
@@ -643,19 +570,15 @@
           "points": 1,
           "addWeapon": "blast-charger"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "companion-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "One Companion in the unit may have a Command Vox for enhanced communications.",
       "id": "companion-command-vox-upgrade",
-      "maxCount": 1,
       "name": "Companion Command Vox Upgrade",
+      "description": "One Companion in the unit may have a Command Vox for enhanced communications.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "companion-model",
       "options": [
         {
           "id": "companion-command-vox-option",
@@ -664,19 +587,15 @@
           "points": 10,
           "addWargear": "command-vox"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "companion-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Companion in the unit may have an Augury Scanner for enhanced detection.",
       "id": "companion-augury-scanner-upgrade",
-      "maxCount": 1,
       "name": "Companion Augury Scanner Upgrade",
+      "description": "One Companion in the unit may have an Augury Scanner for enhanced detection.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "companion-model",
       "options": [
         {
           "id": "companion-augury-scanner-option",
@@ -685,19 +604,15 @@
           "points": 10,
           "addWargear": "augury-scanner"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "companion-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Companion in the unit may carry a vexilla banner. Only one vexilla type may be selected.",
       "id": "companion-vexilla-upgrade",
-      "maxCount": 1,
       "name": "Companion Vexilla Upgrade",
+      "description": "One Companion in the unit may carry a vexilla banner. Only one vexilla type may be selected.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "companion-model",
       "options": [
         {
           "id": "companion-auxilia-vexilla-option",
@@ -713,19 +628,15 @@
           "points": 15,
           "addWargear": "cohorts-vexilla"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "companion-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Companion in the unit may have a Melta Bomb for anti-armor combat.",
       "id": "companion-melta-bomb-upgrade",
-      "maxCount": 1,
       "name": "Companion Melta Bomb Upgrade",
+      "description": "One Companion in the unit may have a Melta Bomb for anti-armor combat.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "companion-model",
       "options": [
         {
           "id": "companion-melta-bomb-option",
@@ -734,19 +645,15 @@
           "points": 10,
           "addWeapon": "melta-bomb"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "companion-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The unit can include up to 5 more Veterans.",
       "id": "additional-veterans-upgrade",
-      "maxCount": 5,
       "name": "Additional Veterans",
+      "description": "The unit can include up to 5 more Veterans.",
+      "type": "model-count",
+      "maxCount": 5,
+      "targetModel": "veteran-model",
       "options": [
         {
           "id": "additional-veteran-option",
@@ -754,19 +661,15 @@
           "description": "Add one Veteran to the unit",
           "points": 7
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "veteran-model",
-      "targetModelType": "",
-      "targetModels": "",
-      "type": "model-count"
+      ]
     },
     {
-      "description": "The Troop Master can replace their Lasrifle with a Laspistol and Charnabal Sabre.",
       "id": "troop-master-weapon-upgrade",
-      "maxCount": 1,
       "name": "Troop Master Weapon Upgrade",
+      "description": "The Troop Master can replace their Lasrifle with a Laspistol and Charnabal Sabre.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "troop-master-model",
       "options": [
         {
           "id": "troop-master-charnabal-laspistol-option",
@@ -784,19 +687,15 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "troop-master-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Troop Master can replace their Lasrifle with a different pistol weapon.",
       "id": "troop-master-pistol-upgrade",
-      "maxCount": 1,
       "name": "Troop Master Pistol Upgrade",
+      "description": "The Troop Master can replace their Lasrifle with a different pistol weapon.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "troop-master-model",
       "options": [
         {
           "id": "troop-master-blast-pistol-option",
@@ -838,19 +737,15 @@
           "replaceWeapon": "lasrifle",
           "addWeapon": "plasma-pistol"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "troop-master-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Troop Master can add a bayonet for close combat.",
       "id": "troop-master-bayonet-upgrade",
-      "maxCount": 1,
       "name": "Troop Master Bayonet Upgrade",
+      "description": "The Troop Master can add a bayonet for close combat.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "troop-master-model",
       "options": [
         {
           "id": "troop-master-bayonet-option",
@@ -859,19 +754,15 @@
           "points": 1,
           "addWeapon": "bayonet"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "troop-master-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Troop Master can add a blast charger for enhanced firepower.",
       "id": "troop-master-blast-charger-upgrade",
-      "maxCount": 1,
       "name": "Troop Master Blast Charger Upgrade",
+      "description": "The Troop Master can add a blast charger for enhanced firepower.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "troop-master-model",
       "options": [
         {
           "id": "troop-master-blast-charger-option",
@@ -880,19 +771,15 @@
           "points": 1,
           "addWeapon": "blast-charger"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "troop-master-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Troop Master may have a Command Vox for enhanced communications.",
       "id": "troop-master-command-vox-upgrade",
-      "maxCount": 1,
       "name": "Troop Master Command Vox Upgrade",
+      "description": "The Troop Master may have a Command Vox for enhanced communications.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "troop-master-model",
       "options": [
         {
           "id": "troop-master-command-vox-option",
@@ -901,19 +788,15 @@
           "points": 10,
           "addWargear": "command-vox"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "troop-master-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Troop Master may have an Augury Scanner for enhanced detection.",
       "id": "troop-master-augury-scanner-upgrade",
-      "maxCount": 1,
       "name": "Troop Master Augury Scanner Upgrade",
+      "description": "The Troop Master may have an Augury Scanner for enhanced detection.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "troop-master-model",
       "options": [
         {
           "id": "troop-master-augury-scanner-option",
@@ -922,19 +805,15 @@
           "points": 10,
           "addWargear": "augury-scanner"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "troop-master-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Troop Master may carry a vexilla banner. Only one vexilla type may be selected.",
       "id": "troop-master-vexilla-upgrade",
-      "maxCount": 1,
       "name": "Troop Master Vexilla Upgrade",
+      "description": "The Troop Master may carry a vexilla banner. Only one vexilla type may be selected.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "troop-master-model",
       "options": [
         {
           "id": "troop-master-auxilia-vexilla-option",
@@ -943,19 +822,15 @@
           "points": 5,
           "addWargear": "auxilia-vexilla"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "troop-master-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Troop Master may have a Melta Bomb for anti-armor combat.",
       "id": "troop-master-melta-bomb-upgrade",
-      "maxCount": 1,
       "name": "Troop Master Melta Bomb Upgrade",
+      "description": "The Troop Master may have a Melta Bomb for anti-armor combat.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "troop-master-model",
       "options": [
         {
           "id": "troop-master-melta-bomb-option",
@@ -964,19 +839,15 @@
           "points": 10,
           "addWeapon": "melta-bomb"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "troop-master-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Veterans can replace their Lasrifle with a Laspistol and Charnabal Sabre.",
       "id": "veteran-weapon-upgrade",
-      "maxCount": "dependent",
       "name": "Veteran Weapon Upgrade",
+      "description": "Veterans can replace their Lasrifle with a Laspistol and Charnabal Sabre.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "veteran-charnabal-laspistol-option",
@@ -994,19 +865,16 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Veterans with Charnabal Sabres can replace them with different melee weapons.",
       "id": "veteran-sabre-upgrade",
-      "maxCount": "dependent",
       "name": "Veteran Sabre Upgrade",
+      "description": "Veterans with Charnabal Sabres can replace them with different melee weapons.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "requiresUpgrade": "veteran-weapon-upgrade",
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "veteran-power-sword-option",
@@ -1024,19 +892,15 @@
           "replaceWeapon": "charnabal-sabre",
           "addWeapon": "power-fist"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "veteran-weapon-upgrade",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Veterans can replace their Lasrifle with a different pistol weapon.",
       "id": "veteran-pistol-upgrade",
-      "maxCount": "dependent",
       "name": "Veteran Pistol Upgrade",
+      "description": "Veterans can replace their Lasrifle with a different pistol weapon.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "veteran-blast-pistol-option",
@@ -1078,19 +942,15 @@
           "replaceWeapon": "lasrifle",
           "addWeapon": "plasma-pistol"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Veterans with Lasrifles can add bayonets for close combat.",
       "id": "veteran-bayonet-upgrade",
-      "maxCount": "dependent",
       "name": "Veteran Bayonet Upgrade",
+      "description": "Veterans with Lasrifles can add bayonets for close combat.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "veteran-bayonet-option",
@@ -1099,19 +959,15 @@
           "points": 1,
           "addWeapon": "bayonet"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Veterans with Lasrifles can add blast chargers for enhanced firepower.",
       "id": "veteran-blast-charger-upgrade",
-      "maxCount": "dependent",
       "name": "Veteran Blast Charger Upgrade",
+      "description": "Veterans with Lasrifles can add blast chargers for enhanced firepower.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "veteran-blast-charger-option",
@@ -1120,19 +976,15 @@
           "points": 1,
           "addWeapon": "blast-charger"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "One Veteran in the unit may have a Command Vox for enhanced communications.",
       "id": "veteran-command-vox-upgrade",
-      "maxCount": 1,
       "name": "Veteran Command Vox Upgrade",
+      "description": "One Veteran in the unit may have a Command Vox for enhanced communications.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "veteran-command-vox-option",
@@ -1141,19 +993,15 @@
           "points": 10,
           "addWargear": "command-vox"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Veteran in the unit may have an Augury Scanner for enhanced detection.",
       "id": "veteran-augury-scanner-upgrade",
-      "maxCount": 1,
       "name": "Veteran Augury Scanner Upgrade",
+      "description": "One Veteran in the unit may have an Augury Scanner for enhanced detection.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "veteran-augury-scanner-option",
@@ -1162,19 +1010,15 @@
           "points": 10,
           "addWargear": "augury-scanner"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Veteran in the unit may carry a vexilla banner. Only one vexilla type may be selected.",
       "id": "veteran-vexilla-upgrade",
-      "maxCount": 1,
       "name": "Veteran Vexilla Upgrade",
+      "description": "One Veteran in the unit may carry a vexilla banner. Only one vexilla type may be selected.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "veteran-auxilia-vexilla-option",
@@ -1183,19 +1027,15 @@
           "points": 5,
           "addWargear": "auxilia-vexilla"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Veteran in the unit may have a Melta Bomb for anti-armor combat.",
       "id": "veteran-melta-bomb-upgrade",
-      "maxCount": 1,
       "name": "Veteran Melta Bomb Upgrade",
+      "description": "One Veteran in the unit may have a Melta Bomb for anti-armor combat.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "veteran-melta-bomb-option",
@@ -1204,19 +1044,15 @@
           "points": 10,
           "addWeapon": "melta-bomb"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The unit can include up to 5 more Veletarii.",
       "id": "additional-veletarii-upgrade",
-      "maxCount": 5,
       "name": "Additional Veletarii",
+      "description": "The unit can include up to 5 more Veletarii.",
+      "type": "model-count",
+      "maxCount": 5,
+      "targetModel": "veletarii-model",
       "options": [
         {
           "id": "additional-veletarii-option",
@@ -1224,19 +1060,15 @@
           "description": "Add one Veletarii to the unit",
           "points": 8
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "veletarii-model",
-      "targetModelType": "",
-      "targetModels": "",
-      "type": "model-count"
+      ]
     },
     {
-      "description": "The First Prime can replace their Volkite Charger with a Laspistol and Charnabal Tabar.",
       "id": "first-prime-weapon-upgrade",
-      "maxCount": 1,
       "name": "First Prime Weapon Upgrade",
+      "description": "The First Prime can replace their Volkite Charger with a Laspistol and Charnabal Tabar.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "first-prime-model",
       "options": [
         {
           "id": "first-prime-charnabal-laspistol-option",
@@ -1254,19 +1086,16 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "first-prime-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The First Prime can replace their Charnabal Tabar with different melee weapons.",
       "id": "first-prime-tabar-upgrade",
-      "maxCount": 1,
       "name": "First Prime Tabar Upgrade",
+      "description": "The First Prime can replace their Charnabal Tabar with different melee weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "requiresUpgrade": "first-prime-weapon-upgrade",
+      "targetModelType": "first-prime-model",
       "options": [
         {
           "id": "first-prime-thunder-hammer-option",
@@ -1304,19 +1133,16 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "first-prime-weapon-upgrade",
-      "targetModel": "",
-      "targetModelType": "first-prime-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The First Prime can replace their Laspistol with different pistol weapons.",
       "id": "first-prime-pistol-upgrade",
-      "maxCount": 1,
       "name": "First Prime Pistol Upgrade",
+      "description": "The First Prime can replace their Laspistol with different pistol weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "requiresUpgrade": "first-prime-weapon-upgrade",
+      "targetModelType": "first-prime-model",
       "options": [
         {
           "id": "first-prime-blast-pistol-option",
@@ -1358,19 +1184,15 @@
           "replaceWeapon": "laspistol",
           "addWeapon": "plasma-pistol"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "first-prime-weapon-upgrade",
-      "targetModel": "",
-      "targetModelType": "first-prime-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Veletarii can replace their Volkite Charger with a Storm Axe.",
       "id": "veletarii-weapon-upgrade",
-      "maxCount": "dependent",
       "name": "Veletarii Weapon Upgrade",
+      "description": "Veletarii can replace their Volkite Charger with a Storm Axe.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "veletarii-model",
       "options": [
         {
           "id": "veletarii-storm-axe-option",
@@ -1380,19 +1202,15 @@
           "replaceWeapon": "volkite-charger",
           "addWeapon": "storm-axe"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veletarii-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "One Veletarii in the unit may have a Command Vox for enhanced communications.",
       "id": "veletarii-command-vox-upgrade",
-      "maxCount": 1,
       "name": "Veletarii Command Vox Upgrade",
+      "description": "One Veletarii in the unit may have a Command Vox for enhanced communications.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "veletarii-model",
       "options": [
         {
           "id": "veletarii-command-vox-option",
@@ -1401,19 +1219,15 @@
           "points": 10,
           "addWargear": "command-vox"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veletarii-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Veletarii in the unit may have an Augury Scanner for enhanced detection.",
       "id": "veletarii-augury-scanner-upgrade",
-      "maxCount": 1,
       "name": "Veletarii Augury Scanner Upgrade",
+      "description": "One Veletarii in the unit may have an Augury Scanner for enhanced detection.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "veletarii-model",
       "options": [
         {
           "id": "veletarii-augury-scanner-option",
@@ -1422,19 +1236,15 @@
           "points": 10,
           "addWargear": "augury-scanner"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veletarii-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Veletarii in the unit may carry an Auxilia Vexilla banner.",
       "id": "veletarii-vexilla-upgrade",
-      "maxCount": 1,
       "name": "Veletarii Vexilla Upgrade",
+      "description": "One Veletarii in the unit may carry an Auxilia Vexilla banner.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "veletarii-model",
       "options": [
         {
           "id": "veletarii-auxilia-vexilla-option",
@@ -1443,19 +1253,16 @@
           "points": 5,
           "addWargear": "auxilia-vexilla"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veletarii-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The unit can include up to 4 additional Hermes Pathfinders.",
       "id": "additional-hermes-pathfinders-upgrade",
-      "maxCount": 4,
       "name": "Additional Hermes Pathfinders",
+      "description": "The unit can include up to 4 additional Hermes Pathfinders.",
+      "type": "model-count",
+      "maxCount": 4,
+      "targetModel": "hermes-pathfinder-model",
+      "points": 18,
       "options": [
         {
           "id": "additional-hermes-pathfinders-option",
@@ -1463,19 +1270,15 @@
           "description": "Add one Hermes Pathfinder to the unit",
           "points": 18
         }
-      ],
-      "points": 18,
-      "requiresUpgrade": "",
-      "targetModel": "hermes-pathfinder-model",
-      "targetModelType": "",
-      "targetModels": "",
-      "type": "model-count"
+      ]
     },
     {
-      "description": "Any model in the unit can replace their Multi-laser with different weapon options.",
       "id": "hermes-weapon-upgrade",
-      "maxCount": "dependent",
       "name": "Hermes Weapon Upgrade",
+      "description": "Any model in the unit can replace their Multi-laser with different weapon options.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "hermes-lead-model",
       "options": [
         {
           "id": "hermes-volkite-caliver-option",
@@ -1501,19 +1304,15 @@
           "replaceWeapon": "multi-laser",
           "addWeapon": "hermes-grenade-launcher"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "hermes-lead-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Any Hermes Pathfinder in the unit can replace their Multi-laser with different weapon options.",
       "id": "hermes-pathfinder-weapon-upgrade",
-      "maxCount": "dependent",
       "name": "Hermes Pathfinder Weapon Upgrade",
+      "description": "Any Hermes Pathfinder in the unit can replace their Multi-laser with different weapon options.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "hermes-pathfinder-model",
       "options": [
         {
           "id": "hermes-pathfinder-volkite-caliver-option",
@@ -1539,19 +1338,15 @@
           "replaceWeapon": "multi-laser",
           "addWeapon": "hermes-grenade-launcher"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "hermes-pathfinder-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Ordnance Master can replace their Lasrifle with a Laspistol and Charnabal Sabre.",
       "id": "ordnance-master-weapon-upgrade",
-      "maxCount": 1,
       "name": "Ordnance Master Weapon Upgrade",
+      "description": "The Ordnance Master can replace their Lasrifle with a Laspistol and Charnabal Sabre.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "ordnance-master-model",
       "options": [
         {
           "id": "ordnance-master-charnabal-laspistol-option",
@@ -1569,19 +1364,16 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "ordnance-master-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Ordnance Master can replace their Laspistol with different pistol weapons.",
       "id": "ordnance-master-pistol-upgrade",
-      "maxCount": 1,
       "name": "Ordnance Master Pistol Upgrade",
+      "description": "The Ordnance Master can replace their Laspistol with different pistol weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "requiresUpgrade": "ordnance-master-weapon-upgrade",
+      "targetModelType": "ordnance-master-model",
       "options": [
         {
           "id": "ordnance-master-blast-pistol-option",
@@ -1623,19 +1415,15 @@
           "replaceWeapon": "laspistol",
           "addWeapon": "plasma-pistol"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "ordnance-master-weapon-upgrade",
-      "targetModel": "",
-      "targetModelType": "ordnance-master-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Ordnance Master can add a Bayonet to their Lasrifle.",
       "id": "ordnance-master-bayonet-upgrade",
-      "maxCount": 1,
       "name": "Ordnance Master Bayonet Upgrade",
+      "description": "The Ordnance Master can add a Bayonet to their Lasrifle.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "ordnance-master-model",
       "options": [
         {
           "id": "ordnance-master-bayonet-option",
@@ -1644,19 +1432,15 @@
           "points": 1,
           "addWeapon": "bayonet"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "ordnance-master-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Ordnance Master can add a Blast Charger to their Lasrifle.",
       "id": "ordnance-master-blast-charger-upgrade",
-      "maxCount": 1,
       "name": "Ordnance Master Blast Charger Upgrade",
+      "description": "The Ordnance Master can add a Blast Charger to their Lasrifle.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "ordnance-master-model",
       "options": [
         {
           "id": "ordnance-master-blast-charger-option",
@@ -1665,19 +1449,15 @@
           "points": 1,
           "addWeapon": "blast-charger"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "ordnance-master-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Veterans can have various wargear options.",
       "id": "veteran-wargear-options",
-      "maxCount": 1,
       "name": "Veteran Wargear Options",
+      "description": "Veterans can have various wargear options.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "veteran-command-vox-option",
@@ -1707,19 +1487,15 @@
           "points": 10,
           "addWargear": "melta-bomb"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "Veterans with Lasrifles can add bayonet and blast charger options.",
       "id": "veteran-weapon-additions",
-      "maxCount": 1,
       "name": "Veteran Weapon Additions",
+      "description": "Veterans with Lasrifles can add bayonet and blast charger options.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "veteran-bayonet-option",
@@ -1735,19 +1511,15 @@
           "points": 1,
           "addWeapon": "blast-charger"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "One Veteran in the unit may have a Command Vox for enhanced communications.",
       "id": "artillery-veteran-command-vox-upgrade",
-      "maxCount": 1,
       "name": "Artillery Veteran Command Vox Upgrade",
+      "description": "One Veteran in the unit may have a Command Vox for enhanced communications.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "artillery-veteran-command-vox-option",
@@ -1756,19 +1528,15 @@
           "points": 10,
           "addWargear": "command-vox"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Veteran in the unit may have an Augury Scanner for enhanced detection.",
       "id": "artillery-veteran-augury-scanner-upgrade",
-      "maxCount": 1,
       "name": "Artillery Veteran Augury Scanner Upgrade",
+      "description": "One Veteran in the unit may have an Augury Scanner for enhanced detection.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "artillery-veteran-augury-scanner-option",
@@ -1777,19 +1545,15 @@
           "points": 10,
           "addWargear": "augury-scanner"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Veteran in the unit may carry an Auxilia Vexilla banner.",
       "id": "artillery-veteran-auxilia-vexilla-upgrade",
-      "maxCount": 1,
       "name": "Artillery Veteran Auxilia Vexilla Upgrade",
+      "description": "One Veteran in the unit may carry an Auxilia Vexilla banner.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "artillery-veteran-auxilia-vexilla-option",
@@ -1798,19 +1562,15 @@
           "points": 5,
           "addWargear": "auxilia-vexilla"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Veteran in the unit may have a Melta Bomb.",
       "id": "artillery-veteran-melta-bomb-upgrade",
-      "maxCount": 1,
       "name": "Artillery Veteran Melta Bomb Upgrade",
+      "description": "One Veteran in the unit may have a Melta Bomb.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "artillery-veteran-melta-bomb-option",
@@ -1819,19 +1579,15 @@
           "points": 10,
           "addWargear": "melta-bomb"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "Any Veteran with a Lasrifle can add a Bayonet.",
       "id": "artillery-veteran-bayonet-upgrade",
-      "maxCount": "dependent",
       "name": "Artillery Veteran Bayonet Upgrade",
+      "description": "Any Veteran with a Lasrifle can add a Bayonet.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "artillery-veteran-bayonet-option",
@@ -1840,19 +1596,15 @@
           "points": 1,
           "addWeapon": "bayonet"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Any Veteran with a Lasrifle can add a Blast Charger.",
       "id": "artillery-veteran-blast-charger-upgrade",
-      "maxCount": "dependent",
       "name": "Artillery Veteran Blast Charger Upgrade",
+      "description": "Any Veteran with a Lasrifle can add a Blast Charger.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "veteran-model",
       "options": [
         {
           "id": "artillery-veteran-blast-charger-option",
@@ -1861,19 +1613,16 @@
           "points": 1,
           "addWeapon": "blast-charger"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veteran-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The unit can include up to 5 additional Veterans.",
       "id": "additional-artillery-veterans-upgrade",
-      "maxCount": 5,
       "name": "Additional Artillery Veterans",
+      "description": "The unit can include up to 5 additional Veterans.",
+      "type": "model-count",
+      "maxCount": 5,
+      "targetModel": "veteran-model",
+      "points": 7,
       "options": [
         {
           "id": "additional-artillery-veterans-option",
@@ -1881,19 +1630,15 @@
           "description": "Add one Veteran to the unit",
           "points": 7
         }
-      ],
-      "points": 7,
-      "requiresUpgrade": "",
-      "targetModel": "veteran-model",
-      "targetModelType": "",
-      "targetModels": "",
-      "type": "model-count"
+      ]
     },
     {
-      "description": "Replace the Battlecannon with different turret-mounted weapon options",
       "id": "command-tank-turret-weapon-upgrade",
-      "maxCount": "dependent",
       "name": "Command Tank Turret Weapon Upgrade",
+      "description": "Replace the Battlecannon with different turret-mounted weapon options",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "command-tank-model",
       "options": [
         {
           "id": "gravis-autocannon-option",
@@ -1977,19 +1722,15 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "command-tank-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Replace the Heavy Bolter with different hull-mounted weapon options",
       "id": "command-tank-hull-weapon-upgrade",
-      "maxCount": "dependent",
       "name": "Command Tank Hull Weapon Upgrade",
+      "description": "Replace the Heavy Bolter with different hull-mounted weapon options",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "command-tank-model",
       "options": [
         {
           "id": "heavy-flamer-hull-option",
@@ -2042,19 +1783,15 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "command-tank-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Add pintle-mounted weapons to the vehicle",
       "id": "command-tank-pintle-weapon-upgrade",
-      "maxCount": 1,
       "name": "Command Tank Pintle Weapon Upgrade",
+      "description": "Add pintle-mounted weapons to the vehicle",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "command-tank-model",
       "options": [
         {
           "id": "pintle-heavy-stubber-option",
@@ -2077,19 +1814,15 @@
           "points": 10,
           "addWeapon": "multi-laser"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "command-tank-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Add a Hunter-Killer Missile to the vehicle",
       "id": "command-tank-hunter-killer-missile-upgrade",
-      "maxCount": 1,
       "name": "Command Tank Hunter-Killer Missile Upgrade",
+      "description": "Add a Hunter-Killer Missile to the vehicle",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "command-tank-model",
       "options": [
         {
           "id": "hunter-killer-missile-option",
@@ -2098,19 +1831,15 @@
           "points": 5,
           "addWeapon": "hunter-killer-missile"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "command-tank-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Add various wargear options to the vehicle",
       "id": "command-tank-wargear-upgrade",
-      "maxCount": 1,
       "name": "Command Tank Wargear Upgrade",
+      "description": "Add various wargear options to the vehicle",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "command-tank-model",
       "options": [
         {
           "id": "searchlight-option",
@@ -2133,19 +1862,16 @@
           "points": 5,
           "addWargear": "flare-shield"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "command-tank-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The unit can include up to 10 more Veletarii.",
       "id": "additional-veletaris-storm-veletarii-upgrade",
-      "maxCount": 10,
       "name": "Additional Veletaris Storm Veletarii",
+      "description": "The unit can include up to 10 more Veletarii.",
+      "type": "model-count",
+      "maxCount": 10,
+      "targetModel": "veletarii-model",
+      "points": 8,
       "options": [
         {
           "id": "additional-veletaris-storm-veletarii-option",
@@ -2153,19 +1879,15 @@
           "description": "Add one Veletarii to the unit",
           "points": 8
         }
-      ],
-      "points": 8,
-      "requiresUpgrade": "",
-      "targetModel": "veletarii-model",
-      "targetModelType": "",
-      "targetModels": "",
-      "type": "model-count"
+      ]
     },
     {
-      "description": "The Veletarii Prime can replace their Volkite Charger with a Laspistol and Charnabal Tabar.",
       "id": "veletarii-prime-weapon-upgrade",
-      "maxCount": 1,
       "name": "Veletarii Prime Weapon Upgrade",
+      "description": "The Veletarii Prime can replace their Volkite Charger with a Laspistol and Charnabal Tabar.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "veletarii-prime-model",
       "options": [
         {
           "id": "veletarii-prime-charnabal-laspistol-option",
@@ -2183,19 +1905,16 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veletarii-prime-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Veletarii Prime can replace their Charnabal Tabar with different melee weapons.",
       "id": "veletarii-prime-tabar-upgrade",
-      "maxCount": 1,
       "name": "Veletarii Prime Tabar Upgrade",
+      "description": "The Veletarii Prime can replace their Charnabal Tabar with different melee weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "requiresUpgrade": "veletarii-prime-weapon-upgrade",
+      "targetModelType": "veletarii-prime-model",
       "options": [
         {
           "id": "veletarii-prime-power-sword-option",
@@ -2221,19 +1940,16 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "veletarii-prime-weapon-upgrade",
-      "targetModel": "",
-      "targetModelType": "veletarii-prime-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Veletarii Prime can replace their Laspistol with different pistol weapons.",
       "id": "veletarii-prime-pistol-upgrade",
-      "maxCount": 1,
       "name": "Veletarii Prime Pistol Upgrade",
+      "description": "The Veletarii Prime can replace their Laspistol with different pistol weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "requiresUpgrade": "veletarii-prime-weapon-upgrade",
+      "targetModelType": "veletarii-prime-model",
       "options": [
         {
           "id": "veletarii-prime-blast-pistol-option",
@@ -2275,19 +1991,15 @@
           "replaceWeapon": "laspistol",
           "addWeapon": "plasma-pistol"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "veletarii-prime-weapon-upgrade",
-      "targetModel": "",
-      "targetModelType": "veletarii-prime-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "One Veletarii in the unit may have a Vox Interlock for enhanced communications.",
       "id": "veletaris-storm-vox-upgrade",
-      "maxCount": 1,
       "name": "Veletaris Storm Vox Upgrade",
+      "description": "One Veletarii in the unit may have a Vox Interlock for enhanced communications.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "veletarii-model",
       "options": [
         {
           "id": "veletaris-storm-vox-option",
@@ -2296,19 +2008,15 @@
           "points": 5,
           "addWargear": "vox-interlock"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veletarii-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Veletarii in the unit may carry an Auxilia Vexilla banner.",
       "id": "veletaris-storm-vexilla-upgrade",
-      "maxCount": 1,
       "name": "Veletaris Storm Vexilla Upgrade",
+      "description": "One Veletarii in the unit may carry an Auxilia Vexilla banner.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "veletarii-model",
       "options": [
         {
           "id": "veletaris-storm-auxilia-vexilla-option",
@@ -2317,19 +2025,16 @@
           "points": 5,
           "addWargear": "auxilia-vexilla"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veletarii-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The unit can include up to 10 more Veletarii.",
       "id": "additional-veletaris-vanguard-veletarii-upgrade",
-      "maxCount": 10,
       "name": "Additional Veletaris Vanguard Veletarii",
+      "description": "The unit can include up to 10 more Veletarii.",
+      "type": "model-count",
+      "maxCount": 10,
+      "targetModel": "veletarii-vanguard-model",
+      "points": 9,
       "options": [
         {
           "id": "additional-veletaris-vanguard-veletarii-option",
@@ -2337,19 +2042,15 @@
           "description": "Add one Veletarii to the unit",
           "points": 9
         }
-      ],
-      "points": 9,
-      "requiresUpgrade": "",
-      "targetModel": "veletarii-vanguard-model",
-      "targetModelType": "",
-      "targetModels": "",
-      "type": "model-count"
+      ]
     },
     {
-      "description": "The Veletarii Vanguard Prime can replace their Heavy Flamer with a Laspistol and Charnabal Tabar.",
       "id": "veletarii-vanguard-prime-weapon-upgrade",
-      "maxCount": 1,
       "name": "Veletarii Vanguard Prime Weapon Upgrade",
+      "description": "The Veletarii Vanguard Prime can replace their Heavy Flamer with a Laspistol and Charnabal Tabar.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "veletarii-vanguard-prime-model",
       "options": [
         {
           "id": "veletarii-vanguard-prime-charnabal-laspistol-option",
@@ -2367,19 +2068,16 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veletarii-vanguard-prime-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Veletarii Vanguard Prime can replace their Charnabal Tabar with different melee weapons.",
       "id": "veletarii-vanguard-prime-tabar-upgrade",
-      "maxCount": 1,
       "name": "Veletarii Vanguard Prime Tabar Upgrade",
+      "description": "The Veletarii Vanguard Prime can replace their Charnabal Tabar with different melee weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "requiresUpgrade": "veletarii-vanguard-prime-weapon-upgrade",
+      "targetModelType": "veletarii-vanguard-prime-model",
       "options": [
         {
           "id": "veletarii-vanguard-prime-power-sword-option",
@@ -2405,19 +2103,16 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "veletarii-vanguard-prime-weapon-upgrade",
-      "targetModel": "",
-      "targetModelType": "veletarii-vanguard-prime-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Veletarii Vanguard Prime can replace their Laspistol with different pistol weapons.",
       "id": "veletarii-vanguard-prime-pistol-upgrade",
-      "maxCount": 1,
       "name": "Veletarii Vanguard Prime Pistol Upgrade",
+      "description": "The Veletarii Vanguard Prime can replace their Laspistol with different pistol weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "requiresUpgrade": "veletarii-vanguard-prime-weapon-upgrade",
+      "targetModelType": "veletarii-vanguard-prime-model",
       "options": [
         {
           "id": "veletarii-vanguard-prime-blast-pistol-option",
@@ -2459,19 +2154,15 @@
           "replaceWeapon": "laspistol",
           "addWeapon": "plasma-pistol"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "veletarii-vanguard-prime-weapon-upgrade",
-      "targetModel": "",
-      "targetModelType": "veletarii-vanguard-prime-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "One Veletarii in the unit may have a Vox Interlock for enhanced communications.",
       "id": "veletaris-vanguard-vox-upgrade",
-      "maxCount": 1,
       "name": "Veletaris Vanguard Vox Upgrade",
+      "description": "One Veletarii in the unit may have a Vox Interlock for enhanced communications.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "veletarii-vanguard-model",
       "options": [
         {
           "id": "veletaris-vanguard-vox-option",
@@ -2480,19 +2171,15 @@
           "points": 5,
           "addWargear": "vox-interlock"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veletarii-vanguard-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Veletarii in the unit may carry an Auxilia Vexilla banner.",
       "id": "veletaris-vanguard-vexilla-upgrade",
-      "maxCount": 1,
       "name": "Veletaris Vanguard Vexilla Upgrade",
+      "description": "One Veletarii in the unit may carry an Auxilia Vexilla banner.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "veletarii-vanguard-model",
       "options": [
         {
           "id": "veletaris-vanguard-auxilia-vexilla-option",
@@ -2501,19 +2188,16 @@
           "points": 5,
           "addWargear": "auxilia-vexilla"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "veletarii-vanguard-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The unit can include up to 6 more Charonite Ogryns.",
       "id": "additional-charonite-ogryn-upgrade",
-      "maxCount": 6,
       "name": "Additional Charonite Ogryn",
+      "description": "The unit can include up to 6 more Charonite Ogryns.",
+      "type": "model-count",
+      "maxCount": 6,
+      "targetModel": "charonite-ogryn-model",
+      "points": 40,
       "options": [
         {
           "id": "additional-charonite-ogryn-option",
@@ -2521,19 +2205,16 @@
           "description": "Add one Charonite Ogryn to the unit",
           "points": 40
         }
-      ],
-      "points": 40,
-      "requiresUpgrade": "",
-      "targetModel": "charonite-ogryn-model",
-      "targetModelType": "",
-      "targetModels": "",
-      "type": "model-count"
+      ]
     },
     {
-      "description": "The unit can include up to 10 more Auxiliaries.",
       "id": "additional-auxiliaries-upgrade",
-      "maxCount": 10,
       "name": "Additional Auxiliaries",
+      "description": "The unit can include up to 10 more Auxiliaries.",
+      "type": "model-count",
+      "maxCount": 10,
+      "targetModel": "auxiliary-model",
+      "points": 4,
       "options": [
         {
           "id": "additional-auxiliaries-option",
@@ -2541,19 +2222,15 @@
           "description": "Add one Auxiliary to the unit",
           "points": 4
         }
-      ],
-      "points": 4,
-      "requiresUpgrade": "",
-      "targetModel": "auxiliary-model",
-      "targetModelType": "",
-      "targetModels": "",
-      "type": "model-count"
+      ]
     },
     {
-      "description": "The Auxilia Sergeant can replace their Lasrifle with a Laspistol and Charnabal Sabre.",
       "id": "auxilia-sergeant-weapon-upgrade",
-      "maxCount": 1,
       "name": "Auxilia Sergeant Weapon Upgrade",
+      "description": "The Auxilia Sergeant can replace their Lasrifle with a Laspistol and Charnabal Sabre.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "auxilia-sergeant-model",
       "options": [
         {
           "id": "auxilia-sergeant-charnabal-laspistol-option",
@@ -2571,19 +2248,15 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "auxilia-sergeant-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Auxilia Sergeant can replace their Lasrifle with a different pistol weapon.",
       "id": "auxilia-sergeant-pistol-upgrade",
-      "maxCount": 1,
       "name": "Auxilia Sergeant Pistol Upgrade",
+      "description": "The Auxilia Sergeant can replace their Lasrifle with a different pistol weapon.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "auxilia-sergeant-model",
       "options": [
         {
           "id": "auxilia-sergeant-blast-pistol-option",
@@ -2625,19 +2298,15 @@
           "replaceWeapon": "lasrifle",
           "addWeapon": "plasma-pistol"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "auxilia-sergeant-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Auxilia Sergeant can add a bayonet for close combat.",
       "id": "auxilia-sergeant-bayonet-upgrade",
-      "maxCount": 1,
       "name": "Auxilia Sergeant Bayonet Upgrade",
+      "description": "The Auxilia Sergeant can add a bayonet for close combat.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "auxilia-sergeant-model",
       "options": [
         {
           "id": "auxilia-sergeant-bayonet-option",
@@ -2646,19 +2315,15 @@
           "points": 1,
           "addWeapon": "bayonet"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "auxilia-sergeant-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Auxilia Sergeant can add a blast charger for enhanced firepower.",
       "id": "auxilia-sergeant-blast-charger-upgrade",
-      "maxCount": 1,
       "name": "Auxilia Sergeant Blast Charger Upgrade",
+      "description": "The Auxilia Sergeant can add a blast charger for enhanced firepower.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "auxilia-sergeant-model",
       "options": [
         {
           "id": "auxilia-sergeant-blast-charger-option",
@@ -2667,19 +2332,15 @@
           "points": 1,
           "addWeapon": "blast-charger"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "auxilia-sergeant-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Auxilia Sergeant can carry a melta bomb for anti-armor capability.",
       "id": "auxilia-sergeant-melta-bomb-upgrade",
-      "maxCount": 1,
       "name": "Auxilia Sergeant Melta Bomb Upgrade",
+      "description": "The Auxilia Sergeant can carry a melta bomb for anti-armor capability.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "auxilia-sergeant-model",
       "options": [
         {
           "id": "auxilia-sergeant-melta-bomb-option",
@@ -2688,19 +2349,15 @@
           "points": 10,
           "addWeapon": "melta-bomb"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "auxilia-sergeant-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Any Auxiliary with a Lasrifle can add a bayonet for close combat.",
       "id": "auxiliary-bayonet-upgrade",
-      "maxCount": "dependent",
       "name": "Auxiliary Bayonet Upgrade",
+      "description": "Any Auxiliary with a Lasrifle can add a bayonet for close combat.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "auxiliary-model",
       "options": [
         {
           "id": "auxiliary-bayonet-option",
@@ -2709,19 +2366,15 @@
           "points": 1,
           "addWeapon": "bayonet"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "auxiliary-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Any Auxiliary with a Lasrifle can add a blast charger for enhanced firepower.",
       "id": "auxiliary-blast-charger-upgrade",
-      "maxCount": "dependent",
       "name": "Auxiliary Blast Charger Upgrade",
+      "description": "Any Auxiliary with a Lasrifle can add a blast charger for enhanced firepower.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "auxiliary-model",
       "options": [
         {
           "id": "auxiliary-blast-charger-option",
@@ -2730,19 +2383,15 @@
           "points": 1,
           "addWeapon": "blast-charger"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "auxiliary-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "One Auxiliary in the unit may have a Vox Interlock for enhanced communications.",
       "id": "auxiliary-vox-upgrade",
-      "maxCount": 1,
       "name": "Auxiliary Vox Upgrade",
+      "description": "One Auxiliary in the unit may have a Vox Interlock for enhanced communications.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "auxiliary-model",
       "options": [
         {
           "id": "auxiliary-vox-option",
@@ -2751,19 +2400,15 @@
           "points": 5,
           "addWargear": "vox-interlock"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "auxiliary-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "One Auxiliary in the unit may carry an Auxilia Vexilla banner.",
       "id": "auxiliary-vexilla-upgrade",
-      "maxCount": 1,
       "name": "Auxiliary Vexilla Upgrade",
+      "description": "One Auxiliary in the unit may carry an Auxilia Vexilla banner.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "auxiliary-model",
       "options": [
         {
           "id": "auxiliary-vexilla-option",
@@ -2772,19 +2417,16 @@
           "points": 5,
           "addWargear": "auxilia-vexilla"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "auxiliary-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The unit can include up to 4 additional Hermes Veletaris Sentinels.",
       "id": "additional-hermes-veletaris-sentinels-upgrade",
-      "maxCount": 4,
       "name": "Additional Hermes Veletaris Sentinels",
+      "description": "The unit can include up to 4 additional Hermes Veletaris Sentinels.",
+      "type": "model-count",
+      "maxCount": 4,
+      "targetModel": "hermes-veletaris-sentinel-model",
+      "points": 20,
       "options": [
         {
           "id": "additional-hermes-veletaris-sentinel-option",
@@ -2792,19 +2434,15 @@
           "description": "Add one Hermes Veletaris Sentinel to the unit",
           "points": 20
         }
-      ],
-      "points": 20,
-      "requiresUpgrade": "",
-      "targetModel": "hermes-veletaris-sentinel-model",
-      "targetModelType": "",
-      "targetModels": "",
-      "type": "model-count"
+      ]
     },
     {
-      "description": "Any Hermes Veletaris Sentinel can replace their Volkite Caliver with a Heavy Flamer.",
       "id": "hermes-veletaris-sentinel-weapon-upgrade",
-      "maxCount": "dependent",
       "name": "Hermes Veletaris Sentinel Weapon Upgrade",
+      "description": "Any Hermes Veletaris Sentinel can replace their Volkite Caliver with a Heavy Flamer.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "hermes-veletaris-sentinel-model",
       "options": [
         {
           "id": "hermes-veletaris-sentinel-heavy-flamer-option",
@@ -2814,19 +2452,15 @@
           "replaceWeapon": "volkite-caliver",
           "addWeapon": "heavy-flamer"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "hermes-veletaris-sentinel-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Add pintle-mounted weapons to the vehicle",
       "id": "basilisk-pintle-weapon-upgrade",
-      "maxCount": 1,
       "name": "Basilisk Pintle Weapon Upgrade",
+      "description": "Add pintle-mounted weapons to the vehicle",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "basilisk-model",
       "options": [
         {
           "id": "basilisk-pintle-heavy-stubber-option",
@@ -2849,19 +2483,15 @@
           "points": 10,
           "addWeapon": "multi-laser"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "basilisk-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Add a Hunter-Killer Missile to the vehicle",
       "id": "basilisk-hunter-killer-missile-upgrade",
-      "maxCount": 1,
       "name": "Basilisk Hunter-Killer Missile Upgrade",
+      "description": "Add a Hunter-Killer Missile to the vehicle",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "basilisk-model",
       "options": [
         {
           "id": "basilisk-hunter-killer-missile-option",
@@ -2870,19 +2500,15 @@
           "points": 5,
           "addWeapon": "hunter-killer-missile"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "basilisk-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Add a Dozer Blade to the vehicle",
       "id": "basilisk-dozer-blade-upgrade",
-      "maxCount": 1,
       "name": "Basilisk Dozer Blade Upgrade",
+      "description": "Add a Dozer Blade to the vehicle",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "basilisk-model",
       "options": [
         {
           "id": "basilisk-dozer-blade-option",
@@ -2891,19 +2517,15 @@
           "points": 5,
           "addWargear": "dozer-blade"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "basilisk-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "Add a Searchlight to the vehicle",
       "id": "basilisk-searchlight-upgrade",
-      "maxCount": 1,
       "name": "Basilisk Searchlight Upgrade",
+      "description": "Add a Searchlight to the vehicle",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "basilisk-model",
       "options": [
         {
           "id": "basilisk-searchlight-option",
@@ -2912,19 +2534,15 @@
           "points": 5,
           "addWargear": "searchlight"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "basilisk-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "Add pintle-mounted weapons to the vehicle",
       "id": "medusa-pintle-weapon-upgrade",
-      "maxCount": 1,
       "name": "Medusa Pintle Weapon Upgrade",
+      "description": "Add pintle-mounted weapons to the vehicle",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "medusa-model",
       "options": [
         {
           "id": "medusa-pintle-heavy-stubber-option",
@@ -2947,19 +2565,15 @@
           "points": 10,
           "addWeapon": "multi-laser"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "medusa-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Add a Hunter-Killer Missile to the vehicle",
       "id": "medusa-hunter-killer-missile-upgrade",
-      "maxCount": 1,
       "name": "Medusa Hunter-Killer Missile Upgrade",
+      "description": "Add a Hunter-Killer Missile to the vehicle",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "medusa-model",
       "options": [
         {
           "id": "medusa-hunter-killer-missile-option",
@@ -2968,19 +2582,15 @@
           "points": 5,
           "addWeapon": "hunter-killer-missile"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "medusa-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Add a Dozer Blade to the vehicle",
       "id": "medusa-dozer-blade-upgrade",
-      "maxCount": 1,
       "name": "Medusa Dozer Blade Upgrade",
+      "description": "Add a Dozer Blade to the vehicle",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "medusa-model",
       "options": [
         {
           "id": "medusa-dozer-blade-option",
@@ -2989,19 +2599,15 @@
           "points": 5,
           "addWargear": "dozer-blade"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "medusa-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "Add a Searchlight to the vehicle",
       "id": "medusa-searchlight-upgrade",
-      "maxCount": 1,
       "name": "Medusa Searchlight Upgrade",
+      "description": "Add a Searchlight to the vehicle",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "medusa-model",
       "options": [
         {
           "id": "medusa-searchlight-option",
@@ -3010,19 +2616,19 @@
           "points": 5,
           "addWargear": "searchlight"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "medusa-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The unit can include up to 2 additional rapier crews (each crew consists of 1 Rapier Gunner and 1 Rapier Carrier).",
       "id": "additional-rapier-crews-upgrade",
-      "maxCount": 2,
       "name": "Additional Rapier Crews",
+      "description": "The unit can include up to 2 additional rapier crews (each crew consists of 1 Rapier Gunner and 1 Rapier Carrier).",
+      "type": "model-group-count",
+      "maxCount": 2,
+      "targetModels": {
+        "rapier-gunner-model": 1,
+        "rapier-carrier-model": 1
+      },
+      "points": 30,
       "options": [
         {
           "id": "additional-rapier-crew-option",
@@ -3030,22 +2636,15 @@
           "description": "Add one Rapier Gunner and one Rapier Carrier to the unit",
           "points": 30
         }
-      ],
-      "points": 30,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "",
-      "targetModels": {
-        "rapier-gunner-model": 1,
-        "rapier-carrier-model": 1
-      },
-      "type": "model-group-count"
+      ]
     },
     {
-      "description": "Any Rapier Carrier can replace their Gravis Multi-Laser Battery with different weapon options.",
       "id": "rapier-carrier-weapon-upgrade",
-      "maxCount": "dependent",
       "name": "Rapier Carrier Weapon Upgrade",
+      "description": "Any Rapier Carrier can replace their Gravis Multi-Laser Battery with different weapon options.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "rapier-carrier-model",
       "options": [
         {
           "id": "rapier-carrier-gravis-heavy-bolter-battery-option",
@@ -3071,19 +2670,15 @@
           "replaceWeapon": "gravis-multi-laser-battery",
           "addWeapon": "quad-launcher"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "rapier-carrier-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The unit can include up to 2 additional Aethon Heavy Sentinel models.",
       "id": "additional-aethon-heavy-sentinels-upgrade",
-      "maxCount": 2,
       "name": "Additional Aethon Heavy Sentinels",
+      "description": "The unit can include up to 2 additional Aethon Heavy Sentinel models.",
+      "type": "model-count",
+      "maxCount": 2,
+      "targetModel": "aethon-heavy-sentinel-model",
       "options": [
         {
           "id": "additional-aethon-heavy-sentinel-option",
@@ -3091,19 +2686,15 @@
           "description": "Add one Aethon Heavy Sentinel to the unit",
           "points": 60
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "aethon-heavy-sentinel-model",
-      "targetModelType": "",
-      "targetModels": "",
-      "type": "model-count"
+      ]
     },
     {
-      "description": "Any Aethon Heavy Sentinel can replace their Multi-Laser with different weapon options.",
       "id": "aethon-heavy-sentinel-multi-laser-upgrade",
-      "maxCount": "dependent",
       "name": "Aethon Heavy Sentinel Multi-Laser Upgrade",
+      "description": "Any Aethon Heavy Sentinel can replace their Multi-Laser with different weapon options.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "aethon-heavy-sentinel-model",
       "options": [
         {
           "id": "aethon-heavy-sentinel-autocannon-option",
@@ -3145,19 +2736,15 @@
           "replaceWeapon": "multi-laser",
           "addWeapon": "melta-lance"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "aethon-heavy-sentinel-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "Any Aethon Heavy Sentinel can replace their Aethon Missile Battery with different weapon options.",
       "id": "aethon-heavy-sentinel-missile-battery-upgrade",
-      "maxCount": "dependent",
       "name": "Aethon Heavy Sentinel Missile Battery Upgrade",
+      "description": "Any Aethon Heavy Sentinel can replace their Aethon Missile Battery with different weapon options.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "aethon-heavy-sentinel-model",
       "options": [
         {
           "id": "aethon-heavy-sentinel-hunter-killer-missile-battery-option",
@@ -3167,19 +2754,15 @@
           "replaceWeapon": "aethon-missile-battery",
           "addWeapon": "hunter-killer-missile-battery"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "aethon-heavy-sentinel-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Arvus Lighter can be equipped with a Hull (Rear) mounted weapon.",
       "id": "arvus-lighter-hull-weapon-upgrade",
-      "maxCount": 1,
       "name": "Arvus Lighter Hull Weapon Upgrade",
+      "description": "The Arvus Lighter can be equipped with a Hull (Rear) mounted weapon.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "arvus-lighter-model",
       "options": [
         {
           "id": "arvus-lighter-multi-laser-option",
@@ -3188,19 +2771,15 @@
           "points": 10,
           "addWeapon": "multi-laser"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "arvus-lighter-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Arvus Lighter can be equipped with additional wargear options.",
       "id": "arvus-lighter-wargear-upgrade",
-      "maxCount": 1,
       "name": "Arvus Lighter Wargear Upgrade",
+      "description": "The Arvus Lighter can be equipped with additional wargear options.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "arvus-lighter-model",
       "options": [
         {
           "id": "arvus-lighter-flare-launchers-option",
@@ -3209,19 +2788,15 @@
           "points": 5,
           "addWargear": "flare-launchers"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "arvus-lighter-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Dracosan can replace its Twin Lascannon with different hull-mounted weapons.",
       "id": "dracosan-hull-weapon-upgrade",
-      "maxCount": 1,
       "name": "Dracosan Hull Weapon Upgrade",
+      "description": "The Dracosan can replace its Twin Lascannon with different hull-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "dracosan-model",
       "options": [
         {
           "id": "dracosan-demolisher-cannon-option",
@@ -3231,19 +2806,15 @@
           "replaceWeapon": "twin-lascannon",
           "addWeapon": "demolisher-cannon"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "dracosan-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Dracosan can be equipped with pintle-mounted weapons.",
       "id": "dracosan-pintle-weapon-upgrade",
-      "maxCount": 1,
       "name": "Dracosan Pintle Weapon Upgrade",
+      "description": "The Dracosan can be equipped with pintle-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "dracosan-model",
       "options": [
         {
           "id": "dracosan-heavy-stubber-option",
@@ -3266,19 +2837,15 @@
           "points": 10,
           "addWeapon": "multi-laser"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "dracosan-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Dracosan can be equipped with up to 2 Hull (Front) mounted Hunter-Killer Missiles.",
       "id": "dracosan-hunter-killer-missile-upgrade",
-      "maxCount": 2,
       "name": "Dracosan Hunter-Killer Missile Upgrade",
+      "description": "The Dracosan can be equipped with up to 2 Hull (Front) mounted Hunter-Killer Missiles.",
+      "type": "weapon",
+      "maxCount": 2,
+      "targetModelType": "dracosan-model",
       "options": [
         {
           "id": "dracosan-hunter-killer-missile-option",
@@ -3287,19 +2854,15 @@
           "points": 5,
           "addWeapon": "hunter-killer-missile"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "dracosan-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Dracosan can be equipped with various wargear options.",
       "id": "dracosan-wargear-upgrade",
-      "maxCount": 1,
       "name": "Dracosan Wargear Upgrade",
+      "description": "The Dracosan can be equipped with various wargear options.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "dracosan-model",
       "options": [
         {
           "id": "dracosan-searchlight-option",
@@ -3322,19 +2885,15 @@
           "points": 20,
           "addWargear": "flare-shield"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "dracosan-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The unit can include up to 4 additional Hermes Light Sentinel models.",
       "id": "additional-hermes-light-sentinels-upgrade",
-      "maxCount": 4,
       "name": "Additional Hermes Light Sentinels",
+      "description": "The unit can include up to 4 additional Hermes Light Sentinel models.",
+      "type": "model-count",
+      "maxCount": 4,
+      "targetModel": "hermes-light-sentinel-model",
       "options": [
         {
           "id": "additional-hermes-light-sentinel-option",
@@ -3342,19 +2901,15 @@
           "description": "Add one Hermes Light Sentinel to the unit",
           "points": 16
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "hermes-light-sentinel-model",
-      "targetModelType": "",
-      "targetModels": "",
-      "type": "model-count"
+      ]
     },
     {
-      "description": "Any Hermes Light Sentinel can replace their Multi-Laser with different weapon options.",
       "id": "hermes-light-sentinel-weapon-upgrade",
-      "maxCount": "dependent",
       "name": "Hermes Light Sentinel Weapon Upgrade",
+      "description": "Any Hermes Light Sentinel can replace their Multi-Laser with different weapon options.",
+      "type": "weapon",
+      "maxCount": "dependent",
+      "targetModelType": "hermes-light-sentinel-model",
       "options": [
         {
           "id": "hermes-light-sentinel-grenade-launcher-option",
@@ -3364,19 +2919,15 @@
           "replaceWeapon": "multi-laser",
           "addWeapon": "hermes-grenade-launcher"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "hermes-light-sentinel-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Malcador can replace its Battlecannon with different turret-mounted weapons.",
       "id": "malcador-turret-weapon-upgrade",
-      "maxCount": 1,
       "name": "Malcador Turret Weapon Upgrade",
+      "description": "The Malcador can replace its Battlecannon with different turret-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "malcador-model",
       "options": [
         {
           "id": "malcador-twin-lascannon-option",
@@ -3400,19 +2951,15 @@
             "mount": "Hull (Front) Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "malcador-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Malcador can replace its Heavy Bolter with different hull-mounted weapons.",
       "id": "malcador-hull-weapon-upgrade",
-      "maxCount": 1,
       "name": "Malcador Hull Weapon Upgrade",
+      "description": "The Malcador can replace its Heavy Bolter with different hull-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "malcador-model",
       "options": [
         {
           "id": "malcador-demolisher-cannon-option",
@@ -3469,19 +3016,15 @@
             "mount": "Hull (Front) Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "malcador-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Malcador can be equipped with pintle-mounted weapons.",
       "id": "malcador-pintle-weapon-upgrade",
-      "maxCount": 1,
       "name": "Malcador Pintle Weapon Upgrade",
+      "description": "The Malcador can be equipped with pintle-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "malcador-model",
       "options": [
         {
           "id": "malcador-heavy-stubber-option",
@@ -3513,19 +3056,15 @@
             "mount": "Pintle Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "malcador-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Malcador can be equipped with various wargear options.",
       "id": "malcador-wargear-upgrade",
-      "maxCount": 1,
       "name": "Malcador Wargear Upgrade",
+      "description": "The Malcador can be equipped with various wargear options.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "malcador-model",
       "options": [
         {
           "id": "malcador-hunter-killer-missile-option",
@@ -3558,19 +3097,15 @@
           "points": 20,
           "addWargear": "flare-shield"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "malcador-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Malcador can replace its Sponson Multi-lasers with different sponson-mounted weapons.",
       "id": "malcador-sponson-weapon-upgrade",
-      "maxCount": 1,
       "name": "Malcador Sponson Weapon Upgrade",
+      "description": "The Malcador can replace its Sponson Multi-lasers with different sponson-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "malcador-model",
       "options": [
         {
           "id": "malcador-sponson-heavy-bolter-option",
@@ -3620,19 +3155,15 @@
             "count": 2
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "malcador-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Leman Russ Assault Tank can replace its Volkite Macro-saker with different turret-mounted weapons.",
       "id": "leman-russ-assault-turret-weapon-upgrade",
-      "maxCount": 1,
       "name": "Leman Russ Assault Turret Weapon Upgrade",
+      "description": "The Leman Russ Assault Tank can replace its Volkite Macro-saker with different turret-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "leman-russ-assault-model",
       "options": [
         {
           "id": "leman-russ-assault-executioner-plasma-destroyer-option",
@@ -3656,19 +3187,15 @@
             "mount": "Turret Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "leman-russ-assault-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Leman Russ Assault Tank can replace its Hull Heavy Bolter with different hull-mounted weapons.",
       "id": "leman-russ-assault-hull-weapon-upgrade",
-      "maxCount": 1,
       "name": "Leman Russ Assault Hull Weapon Upgrade",
+      "description": "The Leman Russ Assault Tank can replace its Hull Heavy Bolter with different hull-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "leman-russ-assault-model",
       "options": [
         {
           "id": "leman-russ-assault-hull-heavy-flamer-option",
@@ -3714,19 +3241,15 @@
             "mount": "Hull (Front) Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "leman-russ-assault-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Leman Russ Assault Tank can be equipped with pintle-mounted weapons.",
       "id": "leman-russ-assault-pintle-weapon-upgrade",
-      "maxCount": 1,
       "name": "Leman Russ Assault Pintle Weapon Upgrade",
+      "description": "The Leman Russ Assault Tank can be equipped with pintle-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "leman-russ-assault-model",
       "options": [
         {
           "id": "leman-russ-assault-pintle-heavy-stubber-option",
@@ -3758,19 +3281,15 @@
             "mount": "Pintle Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "leman-russ-assault-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Leman Russ Assault Tank can be equipped with a Hunter-Killer Missile.",
       "id": "leman-russ-assault-hunter-killer-missile-upgrade",
-      "maxCount": 1,
       "name": "Leman Russ Assault Hunter-Killer Missile Upgrade",
+      "description": "The Leman Russ Assault Tank can be equipped with a Hunter-Killer Missile.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "leman-russ-assault-model",
       "options": [
         {
           "id": "leman-russ-assault-hunter-killer-missile-option",
@@ -3782,19 +3301,15 @@
             "mount": "Turret Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "leman-russ-assault-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Leman Russ Assault Tank can be equipped with a Searchlight.",
       "id": "leman-russ-assault-searchlight-upgrade",
-      "maxCount": 1,
       "name": "Leman Russ Assault Searchlight Upgrade",
+      "description": "The Leman Russ Assault Tank can be equipped with a Searchlight.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "leman-russ-assault-model",
       "options": [
         {
           "id": "leman-russ-assault-searchlight-option",
@@ -3803,19 +3318,15 @@
           "points": 5,
           "addWargear": "searchlight"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "leman-russ-assault-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Leman Russ Assault Tank can be equipped with a Dozer Blade.",
       "id": "leman-russ-assault-dozer-blade-upgrade",
-      "maxCount": 1,
       "name": "Leman Russ Assault Dozer Blade Upgrade",
+      "description": "The Leman Russ Assault Tank can be equipped with a Dozer Blade.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "leman-russ-assault-model",
       "options": [
         {
           "id": "leman-russ-assault-dozer-blade-option",
@@ -3824,19 +3335,15 @@
           "points": 5,
           "addWargear": "dozer-blade"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "leman-russ-assault-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Leman Russ Strike Tank can replace its Battle Cannon with different turret-mounted weapons.",
       "id": "leman-russ-strike-turret-weapon-upgrade",
-      "maxCount": 1,
       "name": "Leman Russ Strike Turret Weapon Upgrade",
+      "description": "The Leman Russ Strike Tank can replace its Battle Cannon with different turret-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "leman-russ-strike-model",
       "options": [
         {
           "id": "leman-russ-strike-gravis-autocannon-option",
@@ -3872,19 +3379,15 @@
           },
           "addWargear": "coaxial-heavy-stubber"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "leman-russ-strike-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Leman Russ Strike Tank can replace its Hull Heavy Bolter with different hull-mounted weapons.",
       "id": "leman-russ-strike-hull-weapon-upgrade",
-      "maxCount": 1,
       "name": "Leman Russ Strike Hull Weapon Upgrade",
+      "description": "The Leman Russ Strike Tank can replace its Hull Heavy Bolter with different hull-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "leman-russ-strike-model",
       "options": [
         {
           "id": "leman-russ-strike-hull-heavy-flamer-option",
@@ -3930,19 +3433,15 @@
             "mount": "Hull (Front) Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "leman-russ-strike-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Leman Russ Strike Tank can be equipped with pintle-mounted weapons.",
       "id": "leman-russ-strike-pintle-weapon-upgrade",
-      "maxCount": 1,
       "name": "Leman Russ Strike Pintle Weapon Upgrade",
+      "description": "The Leman Russ Strike Tank can be equipped with pintle-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "leman-russ-strike-model",
       "options": [
         {
           "id": "leman-russ-strike-pintle-heavy-stubber-option",
@@ -3974,19 +3473,15 @@
             "mount": "Pintle Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "leman-russ-strike-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Leman Russ Strike Tank can be equipped with a Hunter-Killer Missile.",
       "id": "leman-russ-strike-hunter-killer-missile-upgrade",
-      "maxCount": 1,
       "name": "Leman Russ Strike Hunter-Killer Missile Upgrade",
+      "description": "The Leman Russ Strike Tank can be equipped with a Hunter-Killer Missile.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "leman-russ-strike-model",
       "options": [
         {
           "id": "leman-russ-strike-hunter-killer-missile-option",
@@ -3998,19 +3493,15 @@
             "mount": "Turret Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "leman-russ-strike-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Leman Russ Strike Tank can be equipped with a Searchlight.",
       "id": "leman-russ-strike-searchlight-upgrade",
-      "maxCount": 1,
       "name": "Leman Russ Strike Searchlight Upgrade",
+      "description": "The Leman Russ Strike Tank can be equipped with a Searchlight.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "leman-russ-strike-model",
       "options": [
         {
           "id": "leman-russ-strike-searchlight-option",
@@ -4019,19 +3510,15 @@
           "points": 5,
           "addWargear": "searchlight"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "leman-russ-strike-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Leman Russ Strike Tank can be equipped with a Dozer Blade.",
       "id": "leman-russ-strike-dozer-blade-upgrade",
-      "maxCount": 1,
       "name": "Leman Russ Strike Dozer Blade Upgrade",
+      "description": "The Leman Russ Strike Tank can be equipped with a Dozer Blade.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "leman-russ-strike-model",
       "options": [
         {
           "id": "leman-russ-strike-dozer-blade-option",
@@ -4040,19 +3527,15 @@
           "points": 5,
           "addWargear": "dozer-blade"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "leman-russ-strike-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Malcador Infernus can replace its Sponson Multi-lasers with different sponson-mounted weapons.",
       "id": "malcador-infernus-sponson-weapon-upgrade",
-      "maxCount": 1,
       "name": "Malcador Infernus Sponson Weapon Upgrade",
+      "description": "The Malcador Infernus can replace its Sponson Multi-lasers with different sponson-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "malcador-infernus-model",
       "options": [
         {
           "id": "malcador-infernus-sponson-heavy-bolter-option",
@@ -4102,19 +3585,15 @@
             "count": 2
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "malcador-infernus-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Malcador Infernus can be equipped with pintle-mounted weapons.",
       "id": "malcador-infernus-pintle-weapon-upgrade",
-      "maxCount": 1,
       "name": "Malcador Infernus Pintle Weapon Upgrade",
+      "description": "The Malcador Infernus can be equipped with pintle-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "malcador-infernus-model",
       "options": [
         {
           "id": "malcador-infernus-heavy-stubber-option",
@@ -4146,19 +3625,15 @@
             "mount": "Pintle Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "malcador-infernus-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Malcador Infernus can be equipped with a Hunter-Killer Missile.",
       "id": "malcador-infernus-hunter-killer-missile-upgrade",
-      "maxCount": 1,
       "name": "Malcador Infernus Hunter-Killer Missile Upgrade",
+      "description": "The Malcador Infernus can be equipped with a Hunter-Killer Missile.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "malcador-infernus-model",
       "options": [
         {
           "id": "malcador-infernus-hunter-killer-missile-option",
@@ -4170,19 +3645,15 @@
             "mount": "Hull (Front) Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "malcador-infernus-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Malcador Infernus can be equipped with a Searchlight.",
       "id": "malcador-infernus-searchlight-upgrade",
-      "maxCount": 1,
       "name": "Malcador Infernus Searchlight Upgrade",
+      "description": "The Malcador Infernus can be equipped with a Searchlight.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "malcador-infernus-model",
       "options": [
         {
           "id": "malcador-infernus-searchlight-option",
@@ -4191,19 +3662,15 @@
           "points": 5,
           "addWargear": "searchlight"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "malcador-infernus-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Malcador Infernus can be equipped with a Dozer Blade.",
       "id": "malcador-infernus-dozer-blade-upgrade",
-      "maxCount": 1,
       "name": "Malcador Infernus Dozer Blade Upgrade",
+      "description": "The Malcador Infernus can be equipped with a Dozer Blade.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "malcador-infernus-model",
       "options": [
         {
           "id": "malcador-infernus-dozer-blade-option",
@@ -4212,19 +3679,15 @@
           "points": 5,
           "addWargear": "dozer-blade"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "malcador-infernus-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Malcador Infernus can be equipped with a Flare Shield.",
       "id": "malcador-infernus-flare-shield-upgrade",
-      "maxCount": 1,
       "name": "Malcador Infernus Flare Shield Upgrade",
+      "description": "The Malcador Infernus can be equipped with a Flare Shield.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "malcador-infernus-model",
       "options": [
         {
           "id": "malcador-infernus-flare-shield-option",
@@ -4233,19 +3696,15 @@
           "points": 20,
           "addWargear": "flare-shield"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "malcador-infernus-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Valdor Tank Destroyer can replace its Sponson (Right) Multi-laser with different sponson-mounted weapons.",
       "id": "valdor-sponson-weapon-upgrade",
-      "maxCount": 1,
       "name": "Valdor Sponson Weapon Upgrade",
+      "description": "The Valdor Tank Destroyer can replace its Sponson (Right) Multi-laser with different sponson-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "valdor-tank-destroyer-model",
       "options": [
         {
           "id": "valdor-sponson-heavy-bolter-option",
@@ -4291,19 +3750,15 @@
             "mount": "Sponson (Right) Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "valdor-tank-destroyer-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Valdor Tank Destroyer can be equipped with pintle-mounted weapons.",
       "id": "valdor-pintle-weapon-upgrade",
-      "maxCount": 1,
       "name": "Valdor Pintle Weapon Upgrade",
+      "description": "The Valdor Tank Destroyer can be equipped with pintle-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "valdor-tank-destroyer-model",
       "options": [
         {
           "id": "valdor-heavy-stubber-option",
@@ -4335,19 +3790,15 @@
             "mount": "Pintle Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "valdor-tank-destroyer-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Valdor Tank Destroyer can be equipped with a Hunter-Killer Missile.",
       "id": "valdor-hunter-killer-missile-upgrade",
-      "maxCount": 1,
       "name": "Valdor Hunter-Killer Missile Upgrade",
+      "description": "The Valdor Tank Destroyer can be equipped with a Hunter-Killer Missile.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "valdor-tank-destroyer-model",
       "options": [
         {
           "id": "valdor-hunter-killer-missile-option",
@@ -4359,19 +3810,15 @@
             "mount": "Hull (Front) Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "valdor-tank-destroyer-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Valdor Tank Destroyer can be equipped with a Searchlight.",
       "id": "valdor-searchlight-upgrade",
-      "maxCount": 1,
       "name": "Valdor Searchlight Upgrade",
+      "description": "The Valdor Tank Destroyer can be equipped with a Searchlight.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "valdor-tank-destroyer-model",
       "options": [
         {
           "id": "valdor-searchlight-option",
@@ -4380,19 +3827,15 @@
           "points": 5,
           "addWargear": "searchlight"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "valdor-tank-destroyer-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Valdor Tank Destroyer can be equipped with a Dozer Blade.",
       "id": "valdor-dozer-blade-upgrade",
-      "maxCount": 1,
       "name": "Valdor Dozer Blade Upgrade",
+      "description": "The Valdor Tank Destroyer can be equipped with a Dozer Blade.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "valdor-tank-destroyer-model",
       "options": [
         {
           "id": "valdor-dozer-blade-option",
@@ -4401,19 +3844,15 @@
           "points": 5,
           "addWargear": "dozer-blade"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "valdor-tank-destroyer-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Valdor Tank Destroyer can be equipped with a Flare Shield.",
       "id": "valdor-flare-shield-upgrade",
-      "maxCount": 1,
       "name": "Valdor Flare Shield Upgrade",
+      "description": "The Valdor Tank Destroyer can be equipped with a Flare Shield.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "valdor-tank-destroyer-model",
       "options": [
         {
           "id": "valdor-flare-shield-option",
@@ -4422,19 +3861,15 @@
           "points": 20,
           "addWargear": "flare-shield"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "valdor-tank-destroyer-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Stormhammer can replace its Hull (Front) Multi-laser with different weapons.",
       "id": "stormhammer-hull-front-weapon-upgrade",
-      "maxCount": 1,
       "name": "Stormhammer Hull (Front) Weapon Upgrade",
+      "description": "The Stormhammer can replace its Hull (Front) Multi-laser with different weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "stormhammer-model",
       "options": [
         {
           "id": "stormhammer-hull-front-lascannon-option",
@@ -4452,19 +3887,15 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "stormhammer-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Stormhammer can replace its Hull (Left) and Hull (Right) Multi-lasers with different weapons.",
       "id": "stormhammer-hull-side-weapon-upgrade",
-      "maxCount": 1,
       "name": "Stormhammer Hull (Side) Weapon Upgrade",
+      "description": "The Stormhammer can replace its Hull (Left) and Hull (Right) Multi-lasers with different weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "stormhammer-model",
       "options": [
         {
           "id": "stormhammer-hull-side-heavy-bolter-option",
@@ -4544,19 +3975,15 @@
             }
           ]
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "stormhammer-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Stormhammer can be equipped with pintle-mounted weapons.",
       "id": "stormhammer-pintle-weapon-upgrade",
-      "maxCount": 1,
       "name": "Stormhammer Pintle Weapon Upgrade",
+      "description": "The Stormhammer can be equipped with pintle-mounted weapons.",
+      "type": "weapon",
+      "maxCount": 1,
+      "targetModelType": "stormhammer-model",
       "options": [
         {
           "id": "stormhammer-heavy-stubber-option",
@@ -4588,19 +4015,15 @@
             "mount": "Pintle Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "stormhammer-model",
-      "targetModels": "",
-      "type": "weapon"
+      ]
     },
     {
-      "description": "The Stormhammer can be equipped with a Hunter-Killer Missile.",
       "id": "stormhammer-hunter-killer-missile-upgrade",
-      "maxCount": 1,
       "name": "Stormhammer Hunter-Killer Missile Upgrade",
+      "description": "The Stormhammer can be equipped with a Hunter-Killer Missile.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "stormhammer-model",
       "options": [
         {
           "id": "stormhammer-hunter-killer-missile-option",
@@ -4612,19 +4035,15 @@
             "mount": "Turret Mounted"
           }
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "stormhammer-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Stormhammer can be equipped with a Searchlight.",
       "id": "stormhammer-searchlight-upgrade",
-      "maxCount": 1,
       "name": "Stormhammer Searchlight Upgrade",
+      "description": "The Stormhammer can be equipped with a Searchlight.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "stormhammer-model",
       "options": [
         {
           "id": "stormhammer-searchlight-option",
@@ -4633,19 +4052,15 @@
           "points": 5,
           "addWargear": "searchlight"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "stormhammer-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     },
     {
-      "description": "The Stormhammer can be equipped with a Flare Shield.",
       "id": "stormhammer-flare-shield-upgrade",
-      "maxCount": 1,
       "name": "Stormhammer Flare Shield Upgrade",
+      "description": "The Stormhammer can be equipped with a Flare Shield.",
+      "type": "wargear",
+      "maxCount": 1,
+      "targetModelType": "stormhammer-model",
       "options": [
         {
           "id": "stormhammer-flare-shield-option",
@@ -4654,13 +4069,7 @@
           "points": 20,
           "addWargear": "flare-shield"
         }
-      ],
-      "points": null,
-      "requiresUpgrade": "",
-      "targetModel": "",
-      "targetModelType": "stormhammer-model",
-      "targetModels": "",
-      "type": "wargear"
+      ]
     }
   ]
 }

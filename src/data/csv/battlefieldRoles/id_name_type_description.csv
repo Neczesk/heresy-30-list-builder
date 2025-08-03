@@ -1,0 +1,16 @@
+description,id,maxCount,name,type
+Senior officers and commanders,high-command,,High Command,High Command
+Junior officers and specialists,command,,Command,Command
+Basic infantry units,troops,,Troops,Troops
+Light transport vehicles,transport,,Transport,Transport
+Heavy transport vehicles like Land Raiders,heavy-transport,,Heavy Transport,Heavy Transport
+Special and heavy weapon squads,support,,Support,Support
+Tanks and armoured vehicles,armour,,Armour,Armour
+Dreadnoughts and war machines,war-engine,,War Engine,War Engine
+Light infantry and bikes,reconnaissance,,Reconnaissance,Reconnaissance
+Elite infantry and vehicles,elite,,Elite,Elite
+Terminators and heavy assault units,heavy-assault,,Heavy Assault,Heavy Assault
+"Aircraft, jetbikes and speeders",fast-attack,,Fast Attack,Fast Attack
+Command squads and bodyguards,retinue,,Retinue,Retinue
+Army commanders and Primarchs,warlord,1,Warlord,Warlord
+Lord of War units,lord-of-war,,Lord of War,Lord of War

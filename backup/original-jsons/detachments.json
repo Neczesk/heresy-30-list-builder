@@ -1,11 +1,11 @@
 {
   "detachments": [
     {
-      "description": "The standard Primary Detachment for all factions",
-      "faction": "universal",
       "id": "crusade-primary",
-      "maxCount": null,
       "name": "Crusade Primary Detachment",
+      "type": "Primary",
+      "faction": "universal",
+      "description": "The standard Primary Detachment for all factions",
       "requirements": [
         {
           "type": "faction",
@@ -13,7 +13,6 @@
           "description": "Available to any faction"
         }
       ],
-      "restrictions": "",
       "slots": [
         {
           "roleId": "high-command",
@@ -51,20 +50,14 @@
           "isPrime": false,
           "description": "Six Transport slots"
         }
-      ],
-      "triggers": "",
-      "type": "Primary",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      ]
     },
     {
-      "description": "Special detachment for Primarchs and Warlords",
-      "faction": "legiones-astartes",
       "id": "warlord-detachment",
-      "maxCount": null,
       "name": "Warlord Detachment",
+      "type": "Universal",
+      "faction": "legiones-astartes",
+      "description": "Special detachment for Primarchs and Warlords",
       "requirements": [
         {
           "type": "unit",
@@ -82,6 +75,12 @@
           "type": "max-count",
           "value": 1,
           "description": "Only one Warlord detachment allowed"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "always-available",
+          "description": "Available when requirements are met"
         }
       ],
       "slots": [
@@ -103,25 +102,14 @@
           "isPrime": false,
           "description": "One Heavy Transport slot"
         }
-      ],
-      "triggers": [
-        {
-          "type": "always-available",
-          "description": "Available when requirements are met"
-        }
-      ],
-      "type": "Universal",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      ]
     },
     {
-      "description": "For Titan Legions and super-heavy units",
-      "faction": "universal",
       "id": "lord-of-war-detachment",
-      "maxCount": null,
       "name": "Lord of War Detachment",
+      "type": "Universal",
+      "faction": "universal",
+      "description": "For Titan Legions and super-heavy units",
       "requirements": [
         {
           "type": "unit",
@@ -141,6 +129,12 @@
           "description": "Only one Lord of War detachment allowed"
         }
       ],
+      "triggers": [
+        {
+          "type": "always-available",
+          "description": "Available when requirements are met"
+        }
+      ],
       "slots": [
         {
           "roleId": "lord-of-war",
@@ -148,25 +142,14 @@
           "isPrime": false,
           "description": "Two Lord of War slots"
         }
-      ],
-      "triggers": [
-        {
-          "type": "always-available",
-          "description": "Available when requirements are met"
-        }
-      ],
-      "type": "Universal",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      ]
     },
     {
-      "description": "Allied forces from a different faction",
-      "faction": "universal",
       "id": "allied-detachment",
-      "maxCount": null,
       "name": "Allied Detachment",
+      "type": "Allied",
+      "faction": "universal",
+      "description": "Allied forces from a different faction",
       "requirements": [
         {
           "type": "faction",
@@ -184,6 +167,12 @@
           "type": "max-count",
           "value": 1,
           "description": "Only one Allied detachment allowed"
+        }
+      ],
+      "triggers": [
+        {
+          "type": "always-available",
+          "description": "Available when requirements are met"
         }
       ],
       "slots": [
@@ -205,25 +194,14 @@
           "isPrime": false,
           "description": "Two Transport slots"
         }
-      ],
-      "triggers": [
-        {
-          "type": "always-available",
-          "description": "Available when requirements are met"
-        }
-      ],
-      "type": "Allied",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      ]
     },
     {
-      "description": "A detachment focused on elite transport capabilities",
-      "faction": "universal",
       "id": "elite-transport",
-      "maxCount": null,
       "name": "Elite Transport Detachment",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "A detachment focused on elite transport capabilities",
       "requirements": [
         {
           "type": "detachment",
@@ -231,7 +209,12 @@
           "description": "Requires Primary Detachment"
         }
       ],
-      "restrictions": "",
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
       "slots": [
         {
           "roleId": "transport",
@@ -252,24 +235,14 @@
           "description": "Two Heavy Transport slots"
         }
       ],
-      "triggers": [
-        {
-          "type": "command-filled",
-          "description": "Available when any Command slot is filled"
-        }
-      ],
-      "type": "Auxiliary",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "maxCount": null
     },
     {
-      "description": "Heavy transports like the Land Raider, plus additional light transports",
-      "faction": "universal",
       "id": "armoured-fist",
-      "maxCount": null,
       "name": "Armoured Fist",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "Heavy transports like the Land Raider, plus additional light transports",
       "requirements": [
         {
           "type": "detachment",
@@ -277,7 +250,12 @@
           "description": "Requires Primary Detachment"
         }
       ],
-      "restrictions": "",
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
       "slots": [
         {
           "roleId": "heavy-transport",
@@ -292,24 +270,14 @@
           "description": "Up to three additional Transport slots"
         }
       ],
-      "triggers": [
-        {
-          "type": "command-filled",
-          "description": "Available when any Command slot is filled"
-        }
-      ],
-      "type": "Auxiliary",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "maxCount": null
     },
     {
-      "description": "Additional Troops and Support slots",
-      "faction": "universal",
       "id": "tactical-support",
-      "maxCount": null,
       "name": "Tactical Support",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "Additional Troops and Support slots",
       "requirements": [
         {
           "type": "detachment",
@@ -317,7 +285,12 @@
           "description": "Requires Primary Detachment"
         }
       ],
-      "restrictions": "",
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
       "slots": [
         {
           "roleId": "troops",
@@ -332,24 +305,14 @@
           "description": "Up to two Support slots"
         }
       ],
-      "triggers": [
-        {
-          "type": "command-filled",
-          "description": "Available when any Command slot is filled"
-        }
-      ],
-      "type": "Auxiliary",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "maxCount": null
     },
     {
-      "description": "Armour slots which you can fill with tanks and other armoured vehicles",
-      "faction": "universal",
       "id": "armoured-support",
-      "maxCount": null,
       "name": "Armoured Support",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "Armour slots which you can fill with tanks and other armoured vehicles",
       "requirements": [
         {
           "type": "detachment",
@@ -357,7 +320,12 @@
           "description": "Requires Primary Detachment"
         }
       ],
-      "restrictions": "",
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
       "slots": [
         {
           "roleId": "armour",
@@ -366,24 +334,14 @@
           "description": "Up to three Armour slots"
         }
       ],
-      "triggers": [
-        {
-          "type": "command-filled",
-          "description": "Available when any Command slot is filled"
-        }
-      ],
-      "type": "Auxiliary",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "maxCount": null
     },
     {
-      "description": "War-engine slots for Dreadnoughts and other war machines",
-      "faction": "universal",
       "id": "heavy-support",
-      "maxCount": null,
       "name": "Heavy Support",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "War-engine slots for Dreadnoughts and other war machines",
       "requirements": [
         {
           "type": "detachment",
@@ -391,7 +349,12 @@
           "description": "Requires Primary Detachment"
         }
       ],
-      "restrictions": "",
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
       "slots": [
         {
           "roleId": "war-engine",
@@ -400,24 +363,14 @@
           "description": "One War Engine slot"
         }
       ],
-      "triggers": [
-        {
-          "type": "command-filled",
-          "description": "Available when any Command slot is filled"
-        }
-      ],
-      "type": "Auxiliary",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "maxCount": null
     },
     {
-      "description": "Reconnaissance slots for light infantry and bikes",
-      "faction": "universal",
       "id": "combat-pioneer",
-      "maxCount": null,
       "name": "Combat Pioneer",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "Reconnaissance slots for light infantry and bikes",
       "requirements": [
         {
           "type": "detachment",
@@ -425,7 +378,12 @@
           "description": "Requires Primary Detachment"
         }
       ],
-      "restrictions": "",
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
       "slots": [
         {
           "roleId": "reconnaissance",
@@ -434,24 +392,14 @@
           "description": "Up to two Reconnaissance slots"
         }
       ],
-      "triggers": [
-        {
-          "type": "command-filled",
-          "description": "Available when any Command slot is filled"
-        }
-      ],
-      "type": "Auxiliary",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "maxCount": null
     },
     {
-      "description": "Heavy Assault slots for Terminators",
-      "faction": "universal",
       "id": "shock-assault",
-      "maxCount": null,
       "name": "Shock Assault",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "Heavy Assault slots for Terminators",
       "requirements": [
         {
           "type": "detachment",
@@ -459,7 +407,12 @@
           "description": "Requires Primary Detachment"
         }
       ],
-      "restrictions": "",
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
       "slots": [
         {
           "roleId": "heavy-assault",
@@ -468,24 +421,14 @@
           "description": "Up to two Heavy Assault slots"
         }
       ],
-      "triggers": [
-        {
-          "type": "command-filled",
-          "description": "Available when any Command slot is filled"
-        }
-      ],
-      "type": "Auxiliary",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "maxCount": null
     },
     {
-      "description": "Fast Attack slots for aircraft, jetbikes and speeders",
-      "faction": "universal",
       "id": "first-strike",
-      "maxCount": null,
       "name": "First Strike",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "Fast Attack slots for aircraft, jetbikes and speeders",
       "requirements": [
         {
           "type": "detachment",
@@ -493,7 +436,12 @@
           "description": "Requires Primary Detachment"
         }
       ],
-      "restrictions": "",
+      "triggers": [
+        {
+          "type": "command-filled",
+          "description": "Available when any Command slot is filled"
+        }
+      ],
       "slots": [
         {
           "roleId": "fast-attack",
@@ -502,38 +450,19 @@
           "description": "Up to two Fast Attack slots"
         }
       ],
-      "triggers": [
-        {
-          "type": "command-filled",
-          "description": "Available when any Command slot is filled"
-        }
-      ],
-      "type": "Auxiliary",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "maxCount": null
     },
     {
-      "description": "Command squads for officers",
-      "faction": "universal",
       "id": "combat-retinue",
-      "maxCount": 1,
       "name": "Combat Retinue",
+      "type": "Apex",
+      "faction": "universal",
+      "description": "Command squads for officers",
       "requirements": [
         {
           "type": "detachment",
           "value": "primary",
           "description": "Requires Primary Detachment with High Command"
-        }
-      ],
-      "restrictions": "",
-      "slots": [
-        {
-          "roleId": "retinue",
-          "count": 3,
-          "isPrime": false,
-          "description": "Up to three Retinue slots"
         }
       ],
       "triggers": [
@@ -542,18 +471,22 @@
           "description": "Available when any High Command slot is filled"
         }
       ],
-      "type": "Apex",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "slots": [
+        {
+          "roleId": "retinue",
+          "count": 3,
+          "isPrime": false,
+          "description": "Up to three Retinue slots"
+        }
+      ],
+      "maxCount": 1
     },
     {
-      "description": "Additional Command slots",
-      "faction": "universal",
       "id": "officer-cadre",
-      "maxCount": 1,
       "name": "Officer Cadre",
+      "type": "Apex",
+      "faction": "universal",
+      "description": "Additional Command slots",
       "requirements": [
         {
           "type": "detachment",
@@ -561,7 +494,12 @@
           "description": "Requires Primary Detachment with High Command"
         }
       ],
-      "restrictions": "",
+      "triggers": [
+        {
+          "type": "high-command-filled",
+          "description": "Available when any High Command slot is filled"
+        }
+      ],
       "slots": [
         {
           "roleId": "command",
@@ -576,24 +514,14 @@
           "description": "Two additional Command slots"
         }
       ],
-      "triggers": [
-        {
-          "type": "high-command-filled",
-          "description": "Available when any High Command slot is filled"
-        }
-      ],
-      "type": "Apex",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "maxCount": 1
     },
     {
-      "description": "Elite units and specialists",
-      "faction": "universal",
       "id": "army-vanguard",
-      "maxCount": 1,
       "name": "Army Vanguard",
+      "type": "Apex",
+      "faction": "universal",
+      "description": "Elite units and specialists",
       "requirements": [
         {
           "type": "detachment",
@@ -601,7 +529,12 @@
           "description": "Requires Primary Detachment with High Command"
         }
       ],
-      "restrictions": "",
+      "triggers": [
+        {
+          "type": "high-command-filled",
+          "description": "Available when any High Command slot is filled"
+        }
+      ],
       "slots": [
         {
           "roleId": "elite",
@@ -616,50 +549,19 @@
           "description": "Up to two Elite slots"
         }
       ],
-      "triggers": [
-        {
-          "type": "high-command-filled",
-          "description": "Available when any High Command slot is filled"
-        }
-      ],
-      "type": "Apex",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "maxCount": 1
     },
     {
-      "description": "A specialized reconnaissance detachment that can only be commanded by a Hermes Command Section.",
-      "faction": "solar-auxilia",
       "id": "scout-tercio",
-      "maxCount": 1,
       "name": "Scout Tercio",
+      "type": "Auxiliary",
+      "faction": "solar-auxilia",
+      "description": "A specialized reconnaissance detachment that can only be commanded by a Hermes Command Section.",
       "requirements": [
         {
           "type": "detachment",
           "value": "primary",
           "description": "Requires Primary Detachment"
-        }
-      ],
-      "restrictions": "",
-      "slots": [
-        {
-          "roleId": "reconnaissance",
-          "count": 2,
-          "isPrime": false,
-          "description": "Two Combat Pioneer slots (Hermes Light Sentinels only)",
-          "allowedUnits": [
-            "hermes-light-sentinel-squadron"
-          ]
-        },
-        {
-          "roleId": "war-engine",
-          "count": 1,
-          "isPrime": false,
-          "description": "One War Engine slot (Aethon Heavy Sentinel only)",
-          "allowedUnits": [
-            "aethon-heavy-sentinel"
-          ]
         }
       ],
       "triggers": [
@@ -670,18 +572,30 @@
           "requiredSlotType": "Command"
         }
       ],
-      "type": "Auxiliary",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "slots": [
+        {
+          "roleId": "reconnaissance",
+          "count": 2,
+          "isPrime": false,
+          "description": "Two Combat Pioneer slots (Hermes Light Sentinels only)",
+          "allowedUnits": ["hermes-light-sentinel-squadron"]
+        },
+        {
+          "roleId": "war-engine",
+          "count": 1,
+          "isPrime": false,
+          "description": "One War Engine slot (Aethon Heavy Sentinel only)",
+          "allowedUnits": ["aethon-heavy-sentinel"]
+        }
+      ],
+      "maxCount": 1
     },
     {
-      "description": "An elite infantry detachment that can only be commanded by a Veletaris Command Section.",
-      "faction": "solar-auxilia",
       "id": "veletaris-tercio",
-      "maxCount": 1,
       "name": "Veletaris Tercio",
+      "type": "Auxiliary",
+      "faction": "solar-auxilia",
+      "description": "An elite infantry detachment that can only be commanded by a Veletaris Command Section.",
       "requirements": [
         {
           "type": "detachment",
@@ -689,7 +603,14 @@
           "description": "Requires Primary Detachment"
         }
       ],
-      "restrictions": "",
+      "triggers": [
+        {
+          "type": "specific-unit",
+          "description": "Can only be triggered by a Veletaris Command Section in a Command slot",
+          "requiredUnitId": "veletaris-command-section",
+          "requiredSlotType": "Command"
+        }
+      ],
       "slots": [
         {
           "roleId": "elite",
@@ -716,9 +637,7 @@
           "count": 1,
           "isPrime": false,
           "description": "One Support slot (Hermes Veletaris Squadron only)",
-          "allowedUnits": [
-            "hermes-veletaris-squadron"
-          ]
+          "allowedUnits": ["hermes-veletaris-squadron"]
         },
         {
           "roleId": "transport",
@@ -727,67 +646,19 @@
           "description": "Two Transport slots"
         }
       ],
-      "triggers": [
-        {
-          "type": "specific-unit",
-          "description": "Can only be triggered by a Veletaris Command Section in a Command slot",
-          "requiredUnitId": "veletaris-command-section",
-          "requiredSlotType": "Command"
-        }
-      ],
-      "type": "Auxiliary",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "maxCount": 1
     },
     {
-      "description": "A standard infantry detachment that can only be commanded by a Line Command Section.",
-      "faction": "solar-auxilia",
       "id": "infantry-tercio",
-      "maxCount": 1,
       "name": "Infantry Tercio",
+      "type": "Auxiliary",
+      "faction": "solar-auxilia",
+      "description": "A standard infantry detachment that can only be commanded by a Line Command Section.",
       "requirements": [
         {
           "type": "detachment",
           "value": "primary",
           "description": "Requires Primary Detachment"
-        }
-      ],
-      "restrictions": "",
-      "slots": [
-        {
-          "roleId": "troops",
-          "count": 1,
-          "isPrime": true,
-          "description": "One prime Troops slot (Lasrifle Section only)",
-          "allowedUnits": [
-            "lasrifle-section"
-          ]
-        },
-        {
-          "roleId": "troops",
-          "count": 1,
-          "isPrime": false,
-          "description": "One additional Troops slot (Lasrifle Section only)",
-          "allowedUnits": [
-            "lasrifle-section"
-          ]
-        },
-        {
-          "roleId": "reconnaissance",
-          "count": 1,
-          "isPrime": false,
-          "description": "One Reconnaissance slot (Hermes Light Sentinel Squadron only)",
-          "allowedUnits": [
-            "hermes-light-sentinel-squadron"
-          ]
-        },
-        {
-          "roleId": "transport",
-          "count": 2,
-          "isPrime": false,
-          "description": "Two Transport slots"
         }
       ],
       "triggers": [
@@ -798,18 +669,43 @@
           "requiredSlotType": "Command"
         }
       ],
-      "type": "Auxiliary",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "slots": [
+        {
+          "roleId": "troops",
+          "count": 1,
+          "isPrime": true,
+          "description": "One prime Troops slot (Lasrifle Section only)",
+          "allowedUnits": ["lasrifle-section"]
+        },
+        {
+          "roleId": "troops",
+          "count": 1,
+          "isPrime": false,
+          "description": "One additional Troops slot (Lasrifle Section only)",
+          "allowedUnits": ["lasrifle-section"]
+        },
+        {
+          "roleId": "reconnaissance",
+          "count": 1,
+          "isPrime": false,
+          "description": "One Reconnaissance slot (Hermes Light Sentinel Squadron only)",
+          "allowedUnits": ["hermes-light-sentinel-squadron"]
+        },
+        {
+          "roleId": "transport",
+          "count": 2,
+          "isPrime": false,
+          "description": "Two Transport slots"
+        }
+      ],
+      "maxCount": 1
     },
     {
-      "description": "A specialized artillery detachment providing heavy fire support.",
-      "faction": "universal",
       "id": "artillery-tercio",
-      "maxCount": 1,
       "name": "Artillery Tercio",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "A specialized artillery detachment providing heavy fire support.",
       "requirements": [
         {
           "type": "detachment",
@@ -817,7 +713,14 @@
           "description": "Requires Primary Detachment"
         }
       ],
-      "restrictions": "",
+      "triggers": [
+        {
+          "type": "specific-unit",
+          "description": "Can only be triggered by an Artillery Command Section in a Command slot",
+          "requiredUnitId": "artillery-command-section",
+          "requiredSlotType": "Command"
+        }
+      ],
       "slots": [
         {
           "roleId": "support",
@@ -831,26 +734,14 @@
           ]
         }
       ],
-      "triggers": [
-        {
-          "type": "specific-unit",
-          "description": "Can only be triggered by an Artillery Command Section in a Command slot",
-          "requiredUnitId": "artillery-command-section",
-          "requiredSlotType": "Command"
-        }
-      ],
-      "type": "Auxiliary",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "maxCount": 1
     },
     {
-      "description": "A specialized armored detachment providing heavy tank support.",
-      "faction": "universal",
       "id": "armour-tercio",
-      "maxCount": 1,
       "name": "Armour Tercio",
+      "type": "Auxiliary",
+      "faction": "universal",
+      "description": "A specialized armored detachment providing heavy tank support.",
       "requirements": [
         {
           "type": "detachment",
@@ -858,7 +749,14 @@
           "description": "Requires Primary Detachment"
         }
       ],
-      "restrictions": "",
+      "triggers": [
+        {
+          "type": "specific-unit",
+          "description": "Can only be triggered by an Armoured Command Section in a Command slot",
+          "requiredUnitId": "armoured-command-section",
+          "requiredSlotType": "Command"
+        }
+      ],
       "slots": [
         {
           "roleId": "armour",
@@ -872,19 +770,7 @@
           ]
         }
       ],
-      "triggers": [
-        {
-          "type": "specific-unit",
-          "description": "Can only be triggered by an Armoured Command Section in a Command slot",
-          "requiredUnitId": "armoured-command-section",
-          "requiredSlotType": "Command"
-        }
-      ],
-      "type": "Auxiliary",
-      "minSize": 0,
-      "maxSize": 0,
-      "baseSize": 0,
-      "upgrades": []
+      "maxCount": 1
     }
   ]
 }

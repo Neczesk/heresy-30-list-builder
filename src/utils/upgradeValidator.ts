@@ -318,7 +318,7 @@ export class UpgradeValidator {
     // Start with base weapons
     const weaponCounts = new Map<string, { count: number; mount?: string }>();
 
-        // Initialize with base weapons
+    // Initialize with base weapons
     baseWeapons.forEach(weaponEntry => {
       const weaponId = typeof weaponEntry === 'string' ? weaponEntry : weaponEntry.id;
       const mount = typeof weaponEntry === 'string' ? undefined : weaponEntry.mount;
@@ -398,6 +398,16 @@ export class UpgradeValidator {
         const current = weaponCounts.get(replaceKey) || { count: 0 };
         weaponCounts.set(replaceKey, { ...current, count: Math.max(0, current.count - upgradeCount) });
 
+        // Check for addWeapon (correct field name)
+        if (replacement.addWeapon) {
+          const weaponId = typeof replacement.addWeapon === 'string' ? replacement.addWeapon : replacement.addWeapon.id;
+          const mount = typeof replacement.addWeapon === 'string' ? undefined : replacement.addWeapon.mount;
+          const key = weaponId;
+          const currentAdd = weaponCounts.get(key) || { count: 0, mount };
+          weaponCounts.set(key, { ...currentAdd, count: currentAdd.count + upgradeCount });
+        }
+
+        // Also check for withWeapon (old field name) for backward compatibility
         if (replacement.withWeapon) {
           const weaponId = typeof replacement.withWeapon === 'string' ? replacement.withWeapon : replacement.withWeapon.id;
           const mount = typeof replacement.withWeapon === 'string' ? undefined : replacement.withWeapon.mount;

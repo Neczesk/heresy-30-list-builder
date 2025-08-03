@@ -45,7 +45,7 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
   // Calculate effective model compositions with upgrades applied
   const getEffectiveModelCompositions = () => {
     return modelCompositions.map(({ model, count }) => {
-            // Calculate effective weapons for this model
+      // Calculate effective weapons for this model
       const effectiveWeapons = UpgradeValidator.calculateEffectiveWeapons(
         model.id,
         model.weapons || [],
@@ -60,7 +60,7 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
         selectedUpgrades
       );
 
-            // Create effective model with updated weapons and wargear
+      // Create effective model with updated weapons and wargear
       const effectiveModel: Model = {
         ...model,
         weapons: effectiveWeapons.length > 0
@@ -75,36 +75,21 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
 
       const effectiveModelCompositions = getEffectiveModelCompositions();
 
-  const actualSize = effectiveModelCompositions.reduce(
-    (total, { count }) => total + count,
-    0
-  );
+    // Helper function to format special rules with names and values
+  const formatSpecialRules = (ruleIds: string[], specialRuleValues?: { [key: string]: any }): string => {
+    if (!ruleIds || ruleIds.length === 0) return '-';
 
-  // Format faction name from kebab-case to Title Case
-  const formatFactionName = (factionId: string): string => {
-    return factionId
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-  };
+    return ruleIds.map(ruleId => {
+      const rule = DataLoader.getSpecialRuleById(ruleId);
+      const ruleName = rule?.name || ruleId;
 
-  const formatTypeSubtypes = (
-    modelCompositions: { model: Model; count: number }[]
-  ): string => {
-    const typeGroups: { [key: string]: string[] } = {};
-
-    modelCompositions.forEach(({ model }) => {
-      if (!typeGroups[model.type]) {
-        typeGroups[model.type] = [];
+      // Check if there's a value for this rule
+      if (specialRuleValues && specialRuleValues[ruleId] !== undefined) {
+        return `${ruleName} (${specialRuleValues[ruleId]})`;
       }
-      if (!typeGroups[model.type].includes(model.subType)) {
-        typeGroups[model.type].push(model.subType);
-      }
-    });
 
-    return Object.entries(typeGroups)
-      .map(([type, subtypes]) => `${type}(${subtypes.join(', ')})`)
-      .join(', ');
+      return ruleName;
+    }).join(', ');
   };
 
   const renderCharacteristicsTable = (
@@ -301,23 +286,75 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
                   );
                 }
 
-                return (
-                  <TableRow key={`${weaponId}-${index}`} hover>
-                    {!isVehicle && <TableCell>{models.join(', ')}</TableCell>}
-                    {isVehicle && <TableCell>{mount || '-'}</TableCell>}
-                    <TableCell>
-                      {weapon.name}
-                      {weaponCount && weaponCount > 1 ? ` x${weaponCount}` : ''}
-                    </TableCell>
-                    <TableCell align="center">{weapon.range}"</TableCell>
-                    <TableCell align="center">{weapon.firepower}</TableCell>
-                    <TableCell align="center">{weapon.rangedStrength}</TableCell>
-                    <TableCell align="center">{weapon.ap}</TableCell>
-                    <TableCell align="center">{weapon.damage}</TableCell>
-                    <TableCell>{weapon.specialRules?.join(', ') || '-'}</TableCell>
-                    <TableCell>{weapon.traits?.join(', ') || '-'}</TableCell>
-                  </TableRow>
-                );
+                // Handle weapons with profiles
+                if (weapon.profiles && weapon.profiles.length > 0) {
+                  const rows = [];
+
+                  // Add header row for the weapon name
+                  rows.push(
+                    <TableRow
+                      key={`${weaponId}-header`}
+                      sx={{ backgroundColor: 'action.hover' }}
+                    >
+                      {!isVehicle && <TableCell rowSpan={weapon.profiles.length + 1}>{models.join(', ')}</TableCell>}
+                      {isVehicle && <TableCell rowSpan={weapon.profiles.length + 1}>{mount || '-'}</TableCell>}
+                      <TableCell rowSpan={weapon.profiles.length + 1}>
+                        {weapon.name}
+                        {weaponCount && weaponCount > 1 ? ` x${weaponCount}` : ''}
+                      </TableCell>
+                      <TableCell colSpan={7} align="center">
+                        <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
+                          Multiple Profiles
+                        </Typography>
+                      </TableCell>
+                    </TableRow>
+                  );
+
+                  // Add rows for each profile
+                  const profileWeapons = DataLoader.getProfileWeapons(weapon);
+                  profileWeapons.forEach((profileWeapon, profileIndex) => {
+                    if (DataLoader.isRangedWeapon(profileWeapon)) {
+                      const rangedProfile = profileWeapon as RangedWeapon;
+                      rows.push(
+                        <TableRow key={`${weaponId}-${profileIndex}`}>
+                          <TableCell sx={{ pl: 4 }}>
+                            <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
+                              {rangedProfile.name}
+                            </Typography>
+                          </TableCell>
+                          <TableCell align="center">{rangedProfile.range}"</TableCell>
+                          <TableCell align="center">{rangedProfile.firepower}</TableCell>
+                          <TableCell align="center">{rangedProfile.rangedStrength}</TableCell>
+                          <TableCell align="center">{rangedProfile.ap}</TableCell>
+                          <TableCell align="center">{rangedProfile.damage}</TableCell>
+                          <TableCell>{formatSpecialRules(rangedProfile.specialRules || [], rangedProfile.specialRuleValues)}</TableCell>
+                          <TableCell>{rangedProfile.traits?.join(', ') || '-'}</TableCell>
+                        </TableRow>
+                      );
+                    }
+                  });
+
+                  return rows;
+                } else {
+                  // Single profile weapon (backward compatibility)
+                  return (
+                    <TableRow key={`${weaponId}-${index}`} hover>
+                      {!isVehicle && <TableCell>{models.join(', ')}</TableCell>}
+                      {isVehicle && <TableCell>{mount || '-'}</TableCell>}
+                      <TableCell>
+                        {weapon.name}
+                        {weaponCount && weaponCount > 1 ? ` x${weaponCount}` : ''}
+                      </TableCell>
+                      <TableCell align="center">{weapon.range}"</TableCell>
+                      <TableCell align="center">{weapon.firepower}</TableCell>
+                      <TableCell align="center">{weapon.rangedStrength}</TableCell>
+                      <TableCell align="center">{weapon.ap}</TableCell>
+                      <TableCell align="center">{weapon.damage}</TableCell>
+                      <TableCell>{formatSpecialRules(weapon.specialRules || [], weapon.specialRuleValues)}</TableCell>
+                      <TableCell>{weapon.traits?.join(', ') || '-'}</TableCell>
+                    </TableRow>
+                  );
+                }
               }
             )}
           </TableBody>
@@ -414,22 +451,87 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
                   );
                 }
 
-                return (
-                  <TableRow key={`${weaponId}-${index}`} hover>
-                    <TableCell>{models.join(', ')}</TableCell>
-                    <TableCell>
-                      {weapon.name}
-                      {weaponCount && weaponCount > 1 ? ` x${weaponCount}` : ''}
-                    </TableCell>
-                    <TableCell align="center">{weapon.attackModifier || '-'}</TableCell>
-                    <TableCell align="center">{weapon.strengthModifier || '-'}</TableCell>
-                    <TableCell align="center">{weapon.initiativeModifier || '-'}</TableCell>
-                    <TableCell align="center">{weapon.ap}</TableCell>
-                    <TableCell align="center">{weapon.damage}</TableCell>
-                    <TableCell>{weapon.specialRules?.join(', ') || '-'}</TableCell>
-                    <TableCell>{weapon.traits?.join(', ') || '-'}</TableCell>
-                  </TableRow>
-                );
+                // Handle weapons with profiles
+                if (weapon.profiles && weapon.profiles.length > 0) {
+                  const rows = [];
+
+                  // Add header row for the weapon name
+                  rows.push(
+                    <TableRow
+                      key={`${weaponId}-header`}
+                      sx={{ backgroundColor: 'action.hover' }}
+                    >
+                      {!isVehicle && <TableCell rowSpan={weapon.profiles.length + 1}>{models.join(', ')}</TableCell>}
+                      {isVehicle && <TableCell rowSpan={weapon.profiles.length + 1}>{mount || '-'}</TableCell>}
+                      <TableCell rowSpan={weapon.profiles.length + 1}>
+                        {weapon.name}
+                        {weaponCount && weaponCount > 1 ? ` x${weaponCount}` : ''}
+                      </TableCell>
+                      <TableCell colSpan={7} align="center">
+                        <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
+                          Multiple Profiles
+                        </Typography>
+                      </TableCell>
+                    </TableRow>
+                  );
+
+                  // Add rows for each profile
+                  const profileWeapons = DataLoader.getProfileWeapons(weapon);
+                  profileWeapons.forEach((profileWeapon, profileIndex) => {
+                    if (DataLoader.isMeleeWeapon(profileWeapon)) {
+                      const meleeProfile = profileWeapon as MeleeWeapon;
+                      rows.push(
+                        <TableRow key={`${weaponId}-${profileIndex}`}>
+                          <TableCell sx={{ pl: 4 }}>
+                            <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
+                              {meleeProfile.name}
+                            </Typography>
+                          </TableCell>
+                          <TableCell align="center">
+                            {meleeProfile.attackModifier === 'A'
+                              ? 'A'
+                              : `${typeof meleeProfile.attackModifier === 'number' && meleeProfile.attackModifier > 0 ? '+' : ''}${meleeProfile.attackModifier}`}
+                          </TableCell>
+                          <TableCell align="center">
+                            {meleeProfile.strengthModifier === 'S'
+                              ? 'S'
+                              : `${typeof meleeProfile.strengthModifier === 'number' && meleeProfile.strengthModifier > 0 ? '+' : ''}${meleeProfile.strengthModifier}`}
+                          </TableCell>
+                          <TableCell align="center">
+                            {meleeProfile.initiativeModifier === 'I'
+                              ? 'I'
+                              : `${typeof meleeProfile.initiativeModifier === 'number' && meleeProfile.initiativeModifier > 0 ? '+' : ''}${meleeProfile.initiativeModifier}`}
+                          </TableCell>
+                          <TableCell align="center">{meleeProfile.ap}</TableCell>
+                          <TableCell align="center">{meleeProfile.damage}</TableCell>
+                          <TableCell>{formatSpecialRules(meleeProfile.specialRules || [], meleeProfile.specialRuleValues)}</TableCell>
+                          <TableCell>{meleeProfile.traits?.join(', ') || '-'}</TableCell>
+                        </TableRow>
+                      );
+                    }
+                  });
+
+                  return rows;
+                } else {
+                  // Single profile weapon (backward compatibility)
+                  return (
+                    <TableRow key={`${weaponId}-${index}`} hover>
+                      {!isVehicle && <TableCell>{models.join(', ')}</TableCell>}
+                      {isVehicle && <TableCell>{mount || '-'}</TableCell>}
+                      <TableCell>
+                        {weapon.name}
+                        {weaponCount && weaponCount > 1 ? ` x${weaponCount}` : ''}
+                      </TableCell>
+                      <TableCell align="center">{weapon.attackModifier || '-'}</TableCell>
+                      <TableCell align="center">{weapon.strengthModifier || '-'}</TableCell>
+                      <TableCell align="center">{weapon.initiativeModifier || '-'}</TableCell>
+                      <TableCell align="center">{weapon.ap}</TableCell>
+                      <TableCell align="center">{weapon.damage}</TableCell>
+                      <TableCell>{formatSpecialRules(weapon.specialRules || [], weapon.specialRuleValues)}</TableCell>
+                      <TableCell>{weapon.traits?.join(', ') || '-'}</TableCell>
+                    </TableRow>
+                  );
+                }
               }
             )}
           </TableBody>
@@ -443,28 +545,110 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
   ) => {
     const rulesMap = new Map<
       string,
-      { ruleId: string; models: string[]; rule: any }
+      { ruleId: string; sources: string[]; rule: any; specialRuleValues?: { [key: string]: any } }
     >();
 
+    // Add unit-level special rules
+    if (unit.specialRules && unit.specialRules.length > 0) {
+      unit.specialRules.forEach(ruleId => {
+        const rule = DataLoader.getSpecialRuleById(ruleId);
+        const key = ruleId;
+
+        if (!rule || rule.type === 'special-rule') {
+          const unitValue = unit.specialRuleValues?.[ruleId];
+          const sourceDisplay = unitValue ? `Unit (${unitValue})` : 'Unit';
+
+          rulesMap.set(key, {
+            ruleId: ruleId,
+            sources: [sourceDisplay],
+            rule,
+            specialRuleValues: unit.specialRuleValues,
+          });
+        }
+      });
+    }
+
+    // Add model-level special rules
     modelCompositions.forEach(({ model, count }) => {
       model.specialRules?.forEach(ruleId => {
         const rule = DataLoader.getSpecialRuleById(ruleId);
         const key = ruleId;
 
-        // Include all special rules, even if they don't exist in the data
-        // If the rule exists and has a type, only include if it's a special rule
-        // If the rule doesn't exist in the data, include it anyway (it might be missing from the data file)
         if (!rule || rule.type === 'special-rule') {
+          const modelValue = model.specialRuleValues?.[ruleId];
+          const sourceDisplay = `${model.name}${count > 1 ? ` x${count}` : ''}${modelValue ? ` (${modelValue})` : ''}`;
+
           if (rulesMap.has(key)) {
             const existing = rulesMap.get(key)!;
-            existing.models.push(`${model.name}${count > 1 ? ` x${count}` : ''}`);
+            existing.sources.push(sourceDisplay);
           } else {
             rulesMap.set(key, {
               ruleId: ruleId,
-              models: [`${model.name}${count > 1 ? ` x${count}` : ''}`],
+              sources: [sourceDisplay],
               rule,
+              specialRuleValues: model.specialRuleValues,
             });
           }
+        }
+      });
+    });
+
+    // Add weapon-level special rules
+    modelCompositions.forEach(({ model }) => {
+      model.weapons?.forEach(weaponEntry => {
+        const weaponId = typeof weaponEntry === 'string' ? weaponEntry : weaponEntry.id;
+        const weapon = DataLoader.getWeaponById(weaponId);
+
+        if (weapon && weapon.specialRules && weapon.specialRules.length > 0) {
+          weapon.specialRules.forEach(ruleId => {
+            const rule = DataLoader.getSpecialRuleById(ruleId);
+            const key = ruleId;
+
+            if (!rule || rule.type === 'special-rule') {
+              const weaponValue = weapon.specialRuleValues?.[ruleId];
+              const weaponDisplay = `${weapon.name} (${model.name})${weaponValue ? ` (${weaponValue})` : ''}`;
+              if (rulesMap.has(key)) {
+                const existing = rulesMap.get(key)!;
+                existing.sources.push(weaponDisplay);
+              } else {
+                rulesMap.set(key, {
+                  ruleId: ruleId,
+                  sources: [weaponDisplay],
+                  rule,
+                  specialRuleValues: weapon.specialRuleValues,
+                });
+              }
+            }
+          });
+        }
+
+        // Add profile-level special rules (for weapons with profiles)
+        if (weapon && weapon.profiles && weapon.profiles.length > 0) {
+          const profileWeapons = DataLoader.getProfileWeapons(weapon);
+          profileWeapons.forEach(profileWeapon => {
+            if (profileWeapon.specialRules && profileWeapon.specialRules.length > 0) {
+              profileWeapon.specialRules.forEach(ruleId => {
+                const rule = DataLoader.getSpecialRuleById(ruleId);
+                const key = ruleId;
+
+                if (!rule || rule.type === 'special-rule') {
+                  const profileValue = profileWeapon.specialRuleValues?.[ruleId];
+                  const profileDisplay = `${weapon.name} - ${profileWeapon.name} (${model.name})${profileValue ? ` (${profileValue})` : ''}`;
+                  if (rulesMap.has(key)) {
+                    const existing = rulesMap.get(key)!;
+                    existing.sources.push(profileDisplay);
+                  } else {
+                    rulesMap.set(key, {
+                      ruleId: ruleId,
+                      sources: [profileDisplay],
+                      rule,
+                      specialRuleValues: profileWeapon.specialRuleValues,
+                    });
+                  }
+                }
+              });
+            }
+          });
         }
       });
     });
@@ -478,17 +662,15 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
         <Table size="small">
           <TableHead>
             <TableRow>
-              <TableCell>Models</TableCell>
               <TableCell>Rule</TableCell>
               <TableCell>Description</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {Array.from(rulesMap.values()).map(
-              ({ ruleId, models, rule }, index) => {
+              ({ ruleId, rule }, index) => {
                 return (
                   <TableRow key={`${ruleId}-${index}`} hover>
-                    <TableCell>{models.join(', ')}</TableCell>
                     <TableCell>{rule?.name || ruleId}</TableCell>
                     <TableCell>{rule?.shortText || '-'}</TableCell>
                   </TableRow>
@@ -566,65 +748,6 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
 
   return (
     <Box sx={{ maxWidth: 1200, mx: 'auto' }}>
-      {/* Unit Info Card */}
-      <Card sx={{ mb: 3 }}>
-        <CardContent>
-          <Typography variant="h4" component="h2" gutterBottom>
-            {unit.name}
-          </Typography>
-
-                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
-              <Box sx={{ flex: '1 1 200px', minWidth: 200 }}>
-                <Typography variant="body2" color="text.secondary">
-                  Faction
-                </Typography>
-                <Typography variant="body1">
-                  {formatFactionName(unit.faction)}
-                </Typography>
-              </Box>
-              <Box sx={{ flex: '1 1 200px', minWidth: 200 }}>
-                <Typography variant="body2" color="text.secondary">
-                  Battlefield Role
-                </Typography>
-                <Typography variant="body1">
-                  {unit.battlefieldRole}
-                </Typography>
-              </Box>
-              <Box sx={{ flex: '1 1 200px', minWidth: 200 }}>
-                <Typography variant="body2" color="text.secondary">
-                  Size
-                </Typography>
-                <Typography variant="body1">
-                  {actualSize} models
-                </Typography>
-              </Box>
-              <Box sx={{ flex: '1 1 200px', minWidth: 200 }}>
-                <Typography variant="body2" color="text.secondary">
-                  Base Points
-                </Typography>
-                <Typography variant="body1">
-                  {unit.points}
-                </Typography>
-              </Box>
-              <Box sx={{ flex: '1 1 100%' }}>
-                <Typography variant="body2" color="text.secondary">
-                  Types
-                </Typography>
-                <Typography variant="body1">
-                  {formatTypeSubtypes(effectiveModelCompositions)}
-                </Typography>
-              </Box>
-              <Box sx={{ flex: '1 1 100%' }}>
-                <Typography variant="body2" color="text.secondary">
-                  Description
-                </Typography>
-                <Typography variant="body1">
-                  {unit.description}
-                </Typography>
-              </Box>
-            </Box>
-        </CardContent>
-      </Card>
 
       {/* Characteristics Section */}
       <Card sx={{ mb: 3 }}>

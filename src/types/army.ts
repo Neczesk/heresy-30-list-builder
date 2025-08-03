@@ -21,7 +21,9 @@ export type ModelSubType =
   | 'Skirmish'
   | 'Transport'
   | 'Anti-grav'
-  | 'Stable';
+  | 'Stable'
+  | 'Flyer'
+  | 'Super-Heavy';
 
 // Model characteristics for non-vehicle units
 export interface InfantryModelCharacteristics {
@@ -65,12 +67,12 @@ export interface Model {
   id: string;
   name: string;
   type: ModelType;
-  subType: ModelSubType;
+  subType: ModelSubType[]; // Array of sub-types
   characteristics: InfantryModelCharacteristics | VehicleModelCharacteristics;
   specialRules: string[]; // IDs of special rules
   specialRuleValues?: { [ruleId: string]: number }; // Values for special rules that require them
   wargear: string[]; // IDs of wargear options
-  weapons: Array<{ id: string; mount?: string; count?: number }>; // Weapon ID, optional mount location, and optional count
+  weapons: string[] | Array<{ id: string; mount?: string; count?: number }>; // Weapon IDs (for infantry) or weapon objects (for vehicles)
   description?: string;
   restrictions?: string[];
   upgradeGroups?: UpgradeGroup[]; // Groups of upgrades available for this model
@@ -89,7 +91,7 @@ export interface SpecialRule {
 export interface Faction {
   id: string;
   name: string;
-  type: 'Legion' | 'Auxilia' | 'Mechanicum' | 'Knight' | 'Titan';
+  type: string;
   description: string;
   allegiance: Allegiance; // New field for traitor/loyalist/universal
   specialRules: string[]; // IDs of special rules
@@ -133,15 +135,15 @@ export type BattlefieldRoleType =
   | 'Heavy Assault'
   | 'Fast Attack'
   | 'Retinue'
-  | 'Warlord';
+  | 'Warlord'
+  | 'Elite'
+  | 'Lord of War';
 
 export interface BattlefieldRole {
   id: string;
   name: string;
   type: BattlefieldRoleType;
   description: string;
-  maxCount?: number;
-  minCount?: number;
 }
 
 export interface Detachment {
@@ -240,7 +242,7 @@ export interface WeaponProfile {
 export interface RangedWeapon {
   id: string;
   name: string;
-  type: 'ranged';
+  type: 'ranged' | 'ranged-profile';
   // Single profile (for backward compatibility)
   range?: number;
   firepower?: number;
@@ -251,7 +253,7 @@ export interface RangedWeapon {
   specialRuleValues?: { [ruleId: string]: number }; // Values for special rules that require them
   traits?: string[]; // Weapon-level traits
   // Multiple profiles (new)
-  profiles?: WeaponProfile[];
+  profiles?: string[]; // Array of weapon IDs for profile weapons
   description?: string;
   restrictions?: string[];
 }
@@ -259,7 +261,7 @@ export interface RangedWeapon {
 export interface MeleeWeapon {
   id: string;
   name: string;
-  type: 'melee';
+  type: 'melee' | 'melee-profile';
   initiativeModifier: number | string;
   attackModifier: number | string;
   strengthModifier: number | string;
@@ -270,6 +272,7 @@ export interface MeleeWeapon {
   traits: string[]; // Weapon-level traits
   description?: string;
   restrictions?: string[];
+  profiles?: string[]; // Array of weapon IDs for profile weapons
 }
 
 export type Weapon = RangedWeapon | MeleeWeapon;

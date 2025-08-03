@@ -1,662 +1,976 @@
 {
   "weapons": [
     {
-      "id": "multi-laser",
-      "name": "Multi-laser",
-      "type": "ranged",
-      "range": 36,
-      "firepower": 3,
-      "rangedStrength": 6,
       "ap": 6,
       "damage": 1,
-      "specialRules": ["suppressive"],
+      "description": "Rapid-firing laser weapon system.",
+      "firepower": 3,
+      "id": "multi-laser",
+      "name": "Multi-laser",
+      "profiles": [],
+      "range": 36,
+      "rangedStrength": 6,
       "specialRuleValues": {
         "suppressive": 1
       },
-      "traits": ["Las"],
-      "description": "Rapid-firing laser weapon system."
+      "specialRules": [
+        "suppressive"
+      ],
+      "traits": [
+        "Las"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "power-sword",
-      "name": "Power Sword",
-      "type": "melee",
-      "initiativeModifier": "I",
-      "attackModifier": "A",
-      "strengthModifier": "S",
       "ap": 3,
+      "attackModifier": "A",
       "damage": 1,
-      "specialRules": ["breaching"],
+      "description": "Elegant energy sword.",
+      "id": "power-sword",
+      "initiativeModifier": "I",
+      "name": "Power Sword",
+      "profiles": [],
       "specialRuleValues": {
         "breaching": 6
       },
-      "traits": ["Power"],
-      "description": "Elegant energy sword."
+      "specialRules": [
+        "breaching"
+      ],
+      "strengthModifier": "S",
+      "traits": [
+        "Power"
+      ],
+      "type": "melee"
     },
     {
-      "id": "power-fist",
-      "name": "Power Fist",
-      "type": "melee",
-      "initiativeModifier": -3,
-      "attackModifier": 0,
-      "strengthModifier": 4,
       "ap": 2,
+      "attackModifier": "A",
       "damage": 2,
+      "description": "Heavy powered gauntlet.",
+      "id": "power-fist",
+      "initiativeModifier": -3,
+      "name": "Power Fist",
+      "profiles": [],
+      "specialRuleValues": "",
       "specialRules": [],
-      "traits": ["Power"],
-      "description": "Heavy powered gauntlet."
+      "strengthModifier": 4,
+      "traits": [
+        "Power"
+      ],
+      "type": "melee"
     },
-
     {
-      "id": "frag-grenades",
-      "name": "Frag Grenades",
-      "type": "ranged",
-      "range": 8,
-      "firepower": 1,
-      "rangedStrength": 3,
       "ap": 0,
       "damage": 1,
-      "specialRules": ["indirect-fire"],
-      "description": "Anti-personnel grenades."
+      "description": "Anti-personnel grenades.",
+      "firepower": 1,
+      "id": "frag-grenades",
+      "name": "Frag Grenades",
+      "profiles": [],
+      "range": 8,
+      "rangedStrength": 3,
+      "specialRuleValues": "",
+      "specialRules": [
+        "indirect-fire"
+      ],
+      "traits": [],
+      "type": "ranged"
     },
     {
-      "id": "krak-grenades",
-      "name": "Krak Grenades",
-      "type": "ranged",
-      "range": 8,
-      "firepower": 1,
-      "rangedStrength": 6,
       "ap": 2,
       "damage": 2,
+      "description": "Anti-armor grenades.",
+      "firepower": 1,
+      "id": "krak-grenades",
+      "name": "Krak Grenades",
+      "profiles": [],
+      "range": 8,
+      "rangedStrength": 6,
+      "specialRuleValues": "",
       "specialRules": [],
-      "description": "Anti-armor grenades."
+      "traits": [],
+      "type": "ranged"
     },
     {
-      "id": "charnabal-sabre",
-      "name": "Charnabal Sabre",
-      "type": "melee",
-      "initiativeModifier": 1,
-      "attackModifier": "A",
-      "strengthModifier": "S",
       "ap": null,
+      "attackModifier": "A",
       "damage": 1,
-      "specialRules": ["breaching", "duellists-edge"],
+      "description": "Elegant duelling weapon of the Solar Auxilia.",
+      "id": "charnabal-sabre",
+      "initiativeModifier": 1,
+      "name": "Charnabal Sabre",
+      "profiles": [],
       "specialRuleValues": {
         "breaching": 6,
         "duellists-edge": 1
       },
-      "traits": ["Charnabal"],
-      "description": "Elegant duelling weapon of the Solar Auxilia."
+      "specialRules": [
+        "breaching",
+        "duellists-edge"
+      ],
+      "strengthModifier": "S",
+      "traits": [
+        "Charnabal"
+      ],
+      "type": "melee"
     },
     {
-      "id": "paragon-blade",
-      "name": "Paragon Blade",
-      "type": "melee",
-      "initiativeModifier": "I",
-      "attackModifier": "A",
-      "strengthModifier": 1,
       "ap": 2,
+      "attackModifier": "A",
       "damage": 1,
-      "specialRules": ["critical-hit"],
+      "description": "A master-crafted blade of exceptional quality.",
+      "id": "paragon-blade",
+      "initiativeModifier": "I",
+      "name": "Paragon Blade",
+      "profiles": [],
       "specialRuleValues": {
         "critical-hit": 6
       },
+      "specialRules": [
+        "critical-hit"
+      ],
+      "strengthModifier": "S",
       "traits": [],
-      "description": "A master-crafted blade of exceptional quality."
+      "type": "melee"
     },
     {
-      "id": "thunder-hammer",
-      "name": "Thunder Hammer",
-      "type": "melee",
-      "initiativeModifier": -2,
-      "attackModifier": "A",
-      "strengthModifier": 3,
       "ap": 2,
+      "attackModifier": "A",
       "damage": 2,
+      "description": "A massive powered hammer.",
+      "id": "thunder-hammer",
+      "initiativeModifier": -2,
+      "name": "Thunder Hammer",
+      "profiles": [],
+      "specialRuleValues": "",
       "specialRules": [],
-      "traits": ["Power"],
-      "description": "A massive powered hammer."
+      "strengthModifier": 3,
+      "traits": [
+        "Power"
+      ],
+      "type": "melee"
     },
     {
-      "id": "volkite-serpenta",
-      "name": "Volkite Serpenta",
-      "type": "ranged",
-      "range": 10,
-      "firepower": 2,
-      "rangedStrength": 5,
       "ap": 5,
       "damage": 1,
-      "specialRules": ["pistol", "deflagrate"],
+      "description": "Compact volkite weapon for close combat.",
+      "firepower": 2,
+      "id": "volkite-serpenta",
+      "name": "Volkite Serpenta",
+      "profiles": [],
+      "range": 10,
+      "rangedStrength": 5,
       "specialRuleValues": {
         "deflagrate": 5
       },
-      "traits": ["Assault", "Volkite"],
-      "description": "Compact volkite weapon for close combat."
+      "specialRules": [
+        "pistol",
+        "deflagrate"
+      ],
+      "traits": [
+        "Assault",
+        "Volkite"
+      ],
+      "type": "ranged"
     },
     {
+      "ap": null,
+      "damage": null,
+      "description": "Compact plasma weapon with multiple firing modes.",
+      "firepower": null,
       "id": "plasma-pistol",
       "name": "Plasma Pistol",
-      "type": "ranged",
       "profiles": [
-        {
-          "name": "Sustained Fire",
-          "range": 12,
-          "firepower": 1,
-          "rangedStrength": 6,
-          "ap": 4,
-          "damage": 1,
-          "specialRules": ["pistol", "breaching"],
-          "specialRuleValues": {
-            "breaching": 6
-          },
-          "traits": ["Assault", "Plasma"]
-        },
-        {
-          "name": "Maximal Fire",
-          "range": 12,
-          "firepower": 1,
-          "rangedStrength": 7,
-          "ap": 4,
-          "damage": 1,
-          "specialRules": ["pistol", "breaching", "overload"],
-          "specialRuleValues": {
-            "breaching": 5,
-            "overload": 1
-          },
-          "traits": ["Assault", "Plasma"]
-        }
+        "plasma-pistol-sustained",
+        "plasma-pistol-maximal"
       ],
-      "description": "Compact plasma weapon with multiple firing modes."
+      "range": null,
+      "rangedStrength": null,
+      "specialRuleValues": "",
+      "specialRules": [],
+      "traits": [],
+      "type": "ranged"
     },
     {
-      "id": "inferno-pistol",
-      "name": "Inferno Pistol",
-      "type": "ranged",
-      "range": 6,
+      "ap": 4,
+      "damage": 1,
+      "description": "Sustained Fire mode for Plasma Pistol.",
       "firepower": 1,
-      "rangedStrength": 8,
+      "id": "plasma-pistol-sustained",
+      "name": "Plasma Pistol - Sustained Fire",
+      "profiles": [],
+      "range": 12,
+      "rangedStrength": 6,
+      "specialRuleValues": {
+        "breaching": 6
+      },
+      "specialRules": [
+        "pistol",
+        "breaching"
+      ],
+      "traits": [
+        "Assault",
+        "Plasma"
+      ],
+      "type": "ranged-profile"
+    },
+    {
+      "ap": 4,
+      "damage": 1,
+      "description": "Maximal Fire mode for Plasma Pistol.",
+      "firepower": 1,
+      "id": "plasma-pistol-maximal",
+      "name": "Plasma Pistol - Maximal Fire",
+      "profiles": [],
+      "range": 12,
+      "rangedStrength": 7,
+      "specialRuleValues": {
+        "breaching": 5,
+        "overload": 1
+      },
+      "specialRules": [
+        "pistol",
+        "breaching",
+        "overload"
+      ],
+      "traits": [
+        "Assault",
+        "Plasma"
+      ],
+      "type": "ranged-profile"
+    },
+    {
       "ap": 2,
       "damage": 1,
-      "specialRules": ["pistol", "melta"],
+      "description": "Compact melta weapon for close combat.",
+      "firepower": 1,
+      "id": "inferno-pistol",
+      "name": "Inferno Pistol",
+      "profiles": [],
+      "range": 6,
+      "rangedStrength": 8,
       "specialRuleValues": {
         "melta": 6
       },
-      "traits": ["Assault", "Melta"],
-      "description": "Compact melta weapon for close combat."
+      "specialRules": [
+        "pistol",
+        "melta"
+      ],
+      "traits": [
+        "Assault",
+        "Melta"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "archaeotech-pistol",
-      "name": "Archaeotech Pistol",
-      "type": "ranged",
-      "range": 12,
-      "firepower": 1,
-      "rangedStrength": 6,
       "ap": 4,
       "damage": 2,
-      "specialRules": ["pistol", "breaching"],
+      "description": "Ancient and powerful pistol weapon.",
+      "firepower": 1,
+      "id": "archaeotech-pistol",
+      "name": "Archaeotech Pistol",
+      "profiles": [],
+      "range": 12,
+      "rangedStrength": 6,
       "specialRuleValues": {
         "breaching": 3
       },
-      "traits": ["Assault"],
-      "description": "Ancient and powerful pistol weapon."
+      "specialRules": [
+        "pistol",
+        "breaching"
+      ],
+      "traits": [
+        "Assault"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "needle-pistol",
-      "name": "Needle Pistol",
-      "type": "ranged",
-      "range": 12,
-      "firepower": 2,
-      "rangedStrength": 2,
       "ap": null,
       "damage": 1,
-      "specialRules": ["poisoned", "pistol", "pinning"],
+      "description": "Compact needle weapon for close combat.",
+      "firepower": 2,
+      "id": "needle-pistol",
+      "name": "Needle Pistol",
+      "profiles": [],
+      "range": 12,
+      "rangedStrength": 2,
       "specialRuleValues": {
         "poisoned": 3,
         "pinning": 1
       },
-      "traits": ["Assault", "Needle"],
-      "description": "Compact needle weapon for close combat."
+      "specialRules": [
+        "poisoned",
+        "pistol",
+        "pinning"
+      ],
+      "traits": [
+        "Assault",
+        "Needle"
+      ],
+      "type": "ranged"
     },
     {
+      "ap": 4,
+      "damage": 1,
+      "description": "High-powered laser pistol with enhanced penetration.",
+      "firepower": 2,
       "id": "blast-pistol",
       "name": "Blast Pistol",
-      "type": "ranged",
+      "profiles": [],
       "range": 9,
-      "firepower": 2,
       "rangedStrength": 4,
-      "ap": 4,
-      "damage": 1,
-      "specialRules": ["pistol", "rending", "shred"],
       "specialRuleValues": {
         "rending": 6,
         "shred": 6
       },
-      "traits": ["Assault", "Las"],
-      "description": "High-powered laser pistol with enhanced penetration."
+      "specialRules": [
+        "pistol",
+        "rending",
+        "shred"
+      ],
+      "traits": [
+        "Assault",
+        "Las"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "hand-flamer",
-      "name": "Hand Flamer",
-      "type": "ranged",
-      "range": "Template",
-      "firepower": 1,
-      "rangedStrength": 3,
       "ap": null,
       "damage": 1,
-      "specialRules": ["template", "pistol"],
-      "traits": ["Assault", "Flame"],
-      "description": "Compact flamer weapon for close combat."
-    },
-    {
-      "id": "bayonet",
-      "name": "Bayonet",
-      "type": "melee",
-      "initiativeModifier": 1,
-      "attackModifier": "A",
-      "strengthModifier": "S",
-      "ap": 5,
-      "damage": 1,
-      "specialRules": [],
-      "traits": ["Bayonet"],
-      "description": "Close combat weapon attached to ranged weapon."
-    },
-    {
-      "id": "blast-charger",
-      "name": "Blast Charger",
-      "type": "ranged",
-      "range": 18,
+      "description": "Compact flamer weapon for close combat.",
       "firepower": 1,
-      "rangedStrength": 4,
+      "id": "hand-flamer",
+      "name": "Hand Flamer",
+      "profiles": [],
+      "range": "Template",
+      "rangedStrength": 3,
+      "specialRuleValues": "",
+      "specialRules": [
+        "template",
+        "pistol"
+      ],
+      "traits": [
+        "Assault",
+        "Flame"
+      ],
+      "type": "ranged"
+    },
+    {
+      "ap": 5,
+      "attackModifier": "A",
+      "damage": 1,
+      "description": "Close combat weapon attached to ranged weapon.",
+      "id": "bayonet",
+      "initiativeModifier": "I",
+      "name": "Bayonet",
+      "profiles": [],
+      "specialRuleValues": "",
+      "specialRules": [],
+      "strengthModifier": "S",
+      "traits": [
+        "Bayonet"
+      ],
+      "type": "melee"
+    },
+    {
       "ap": 4,
       "damage": 1,
-      "specialRules": ["rending", "shred"],
+      "description": "Enhanced laser weapon attachment.",
+      "firepower": 1,
+      "id": "blast-charger",
+      "name": "Blast Charger",
+      "profiles": [],
+      "range": 18,
+      "rangedStrength": 4,
       "specialRuleValues": {
         "rending": 6,
         "shred": 6
       },
-      "traits": ["Las"],
-      "description": "Enhanced laser weapon attachment."
+      "specialRules": [
+        "rending",
+        "shred"
+      ],
+      "traits": [
+        "Las"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "melta-bomb",
-      "name": "Melta Bomb",
-      "type": "melee",
-      "initiativeModifier": -3,
-      "attackModifier": 1,
-      "strengthModifier": 9,
       "ap": 2,
+      "attackModifier": 1,
       "damage": 4,
-      "specialRules": ["armourbane", "detonation"],
+      "description": "Explosive anti-armor weapon for close combat.",
+      "id": "melta-bomb",
+      "initiativeModifier": -3,
+      "name": "Melta Bomb",
+      "profiles": [],
+      "specialRuleValues": "",
+      "specialRules": [
+        "armourbane",
+        "detonation"
+      ],
+      "strengthModifier": 9,
       "traits": [],
-      "description": "Explosive anti-armor weapon for close combat."
+      "type": "melee"
     },
     {
-      "id": "volkite-charger",
-      "name": "Volkite Charger",
-      "type": "ranged",
-      "range": 15,
-      "firepower": 2,
-      "rangedStrength": 5,
       "ap": 5,
       "damage": 1,
-      "specialRules": ["deflagrate"],
+      "description": "Advanced volkite weapon with deflagration capabilities.",
+      "firepower": 2,
+      "id": "volkite-charger",
+      "name": "Volkite Charger",
+      "profiles": [],
+      "range": 15,
+      "rangedStrength": 5,
       "specialRuleValues": {
         "deflagrate": 5
       },
-      "traits": ["Volkite"],
-      "description": "Advanced volkite weapon with deflagration capabilities."
+      "specialRules": [
+        "deflagrate"
+      ],
+      "traits": [
+        "Volkite"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "charnabal-tabar",
-      "name": "Charnabal Tabar",
-      "type": "melee",
-      "initiativeModifier": 1,
-      "attackModifier": "A",
-      "strengthModifier": "+1",
       "ap": null,
+      "attackModifier": "A",
       "damage": 1,
-      "specialRules": ["breaching", "duellists-edge"],
+      "description": "Elite melee weapon with enhanced dueling capabilities.",
+      "id": "charnabal-tabar",
+      "initiativeModifier": "I",
+      "name": "Charnabal Tabar",
+      "profiles": [],
       "specialRuleValues": {
         "breaching": 6,
         "duellists-edge": 1
       },
-      "traits": ["Charnabal"],
-      "description": "Elite melee weapon with enhanced dueling capabilities."
+      "specialRules": [
+        "breaching",
+        "duellists-edge"
+      ],
+      "strengthModifier": 1,
+      "traits": [
+        "Charnabal"
+      ],
+      "type": "melee"
     },
     {
-      "id": "storm-axe",
-      "name": "Storm Axe",
-      "type": "melee",
-      "initiativeModifier": -1,
-      "attackModifier": "A",
-      "strengthModifier": "+2",
       "ap": 3,
+      "attackModifier": "A",
       "damage": 1,
-      "specialRules": ["breaching", "shred"],
+      "description": "Powerful melee weapon with enhanced armor penetration.",
+      "id": "storm-axe",
+      "initiativeModifier": -1,
+      "name": "Storm Axe",
+      "profiles": [],
       "specialRuleValues": {
         "breaching": 5,
         "shred": 5
       },
-      "traits": ["Power"],
-      "description": "Powerful melee weapon with enhanced armor penetration."
+      "specialRules": [
+        "breaching",
+        "shred"
+      ],
+      "strengthModifier": 2,
+      "traits": [
+        "Power"
+      ],
+      "type": "melee"
     },
     {
-      "id": "volkite-caliver",
-      "name": "Volkite Caliver",
-      "type": "ranged",
-      "range": 30,
-      "firepower": 2,
-      "rangedStrength": 6,
       "ap": 5,
       "damage": 1,
-      "specialRules": ["deflagrate"],
+      "description": "Advanced volkite weapon with enhanced deflagration capabilities.",
+      "firepower": 2,
+      "id": "volkite-caliver",
+      "name": "Volkite Caliver",
+      "profiles": [],
+      "range": 30,
+      "rangedStrength": 6,
       "specialRuleValues": {
         "deflagrate": 6
       },
-      "traits": ["Volkite"],
-      "description": "Advanced volkite weapon with enhanced deflagration capabilities."
+      "specialRules": [
+        "deflagrate"
+      ],
+      "traits": [
+        "Volkite"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "heavy-flamer",
-      "name": "Heavy Flamer",
-      "type": "ranged",
-      "range": "Template",
-      "firepower": 1,
-      "rangedStrength": 5,
       "ap": 4,
       "damage": 1,
-      "specialRules": ["template", "panic"],
+      "description": "Heavy flamer weapon with template and panic effects.",
+      "firepower": 1,
+      "id": "heavy-flamer",
+      "name": "Heavy Flamer",
+      "profiles": [],
+      "range": "Template",
+      "rangedStrength": 5,
       "specialRuleValues": {
         "panic": 1
       },
-      "traits": ["Flame"],
-      "description": "Heavy flamer weapon with template and panic effects."
+      "specialRules": [
+        "template",
+        "panic"
+      ],
+      "traits": [
+        "Flame"
+      ],
+      "type": "ranged"
     },
     {
+      "ap": null,
+      "damage": null,
+      "description": "Dual-mode grenade launcher with frag and krak ammunition.",
+      "firepower": null,
       "id": "hermes-grenade-launcher",
       "name": "Hermes Grenade Launcher",
-      "type": "ranged",
       "profiles": [
-        {
-          "name": "Frag",
-          "range": 18,
-          "firepower": 1,
-          "rangedStrength": 3,
-          "ap": 6,
-          "damage": 1,
-          "specialRules": ["blast", "stun"],
-          "specialRuleValues": {
-            "blast": 3,
-            "stun": 1
-          },
-          "traits": []
-        },
-        {
-          "name": "Krak",
-          "range": 18,
-          "firepower": 2,
-          "rangedStrength": 7,
-          "ap": 4,
-          "damage": 2,
-          "specialRules": [],
-          "traits": []
-        }
+        "hermes-grenade-launcher-frag",
+        "hermes-grenade-launcher-krak"
       ],
-      "description": "Dual-mode grenade launcher with frag and krak ammunition."
+      "range": null,
+      "rangedStrength": null,
+      "specialRuleValues": "",
+      "specialRules": [],
+      "traits": [],
+      "type": "ranged"
     },
     {
-      "id": "battlecannon",
-      "name": "Battlecannon",
-      "type": "ranged",
-      "range": 48,
+      "ap": 6,
+      "damage": 1,
+      "description": "Frag ammunition for Hermes Grenade Launcher.",
       "firepower": 1,
-      "rangedStrength": 8,
+      "id": "hermes-grenade-launcher-frag",
+      "name": "Hermes Grenade Launcher - Frag",
+      "profiles": [],
+      "range": 18,
+      "rangedStrength": 3,
+      "specialRuleValues": {
+        "blast": 3,
+        "stun": 1
+      },
+      "specialRules": [
+        "blast",
+        "stun"
+      ],
+      "traits": [],
+      "type": "ranged-profile"
+    },
+    {
       "ap": 4,
       "damage": 2,
-      "specialRules": ["heavy", "blast", "pinning"],
+      "description": "Krak ammunition for Hermes Grenade Launcher.",
+      "firepower": 2,
+      "id": "hermes-grenade-launcher-krak",
+      "name": "Hermes Grenade Launcher - Krak",
+      "profiles": [],
+      "range": 18,
+      "rangedStrength": 7,
+      "specialRuleValues": "",
+      "specialRules": [],
+      "traits": [],
+      "type": "ranged-profile"
+    },
+    {
+      "ap": 4,
+      "damage": 2,
+      "description": "Powerful tank-mounted cannon with blast and pinning capabilities.",
+      "firepower": 1,
+      "id": "battlecannon",
+      "name": "Battlecannon",
+      "profiles": [],
+      "range": 48,
+      "rangedStrength": 8,
       "specialRuleValues": {
         "heavy": "AP",
         "blast": 3,
         "pinning": 1
       },
-      "traits": ["Auto"],
-      "description": "Powerful tank-mounted cannon with blast and pinning capabilities."
+      "specialRules": [
+        "heavy",
+        "blast",
+        "pinning"
+      ],
+      "traits": [
+        "Auto"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "gravis-autocannon",
-      "name": "Gravis Autocannon",
-      "type": "ranged",
-      "range": 36,
-      "firepower": 3,
-      "rangedStrength": 8,
       "ap": 4,
       "damage": 2,
-      "specialRules": ["heavy", "breaching"],
+      "description": "Powerful tank-mounted cannon with blast and pinning capabilities.",
+      "firepower": 2,
+      "id": "twin-battlecannon",
+      "name": "Twin Battlecannon",
+      "profiles": [],
+      "range": 48,
+      "rangedStrength": 8,
+      "specialRuleValues": {
+        "heavy": "AP",
+        "blast": 3,
+        "pinning": 1
+      },
+      "specialRules": [
+        "heavy",
+        "blast",
+        "pinning"
+      ],
+      "traits": [
+        "Auto"
+      ],
+      "type": "ranged"
+    },
+    {
+      "ap": 4,
+      "damage": 2,
+      "description": "Heavy autocannon with high rate of fire.",
+      "firepower": 3,
+      "id": "gravis-autocannon",
+      "name": "Gravis Autocannon",
+      "profiles": [],
+      "range": 36,
+      "rangedStrength": 8,
       "specialRuleValues": {
         "heavy": "D",
         "breaching": 6
       },
-      "traits": ["Auto"],
-      "description": "Heavy autocannon with high rate of fire."
+      "specialRules": [
+        "heavy",
+        "breaching"
+      ],
+      "traits": [
+        "Auto"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "twin-lascannon",
-      "name": "Twin Lascannon",
-      "type": "ranged",
-      "range": 48,
-      "firepower": 2,
-      "rangedStrength": 9,
       "ap": 2,
       "damage": 1,
-      "specialRules": ["heavy", "armourbane"],
+      "description": "Twin-linked lascannon with devastating anti-armor capability.",
+      "firepower": 2,
+      "id": "twin-lascannon",
+      "name": "Twin Lascannon",
+      "profiles": [],
+      "range": 48,
+      "rangedStrength": 9,
       "specialRuleValues": {
         "heavy": "D"
       },
-      "traits": ["Las"],
-      "description": "Twin-linked lascannon with devastating anti-armor capability."
+      "specialRules": [
+        "heavy",
+        "armourbane"
+      ],
+      "traits": [
+        "Las"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "vanquisher-cannon",
-      "name": "Vanquisher Cannon",
-      "type": "ranged",
-      "range": 72,
-      "firepower": 1,
-      "rangedStrength": 10,
       "ap": 2,
       "damage": 3,
-      "specialRules": ["heavy", "critical-hit"],
+      "description": "Long-range tank-hunting cannon with exceptional accuracy.",
+      "firepower": 1,
+      "id": "vanquisher-cannon",
+      "name": "Vanquisher Cannon",
+      "profiles": [],
+      "range": 72,
+      "rangedStrength": 10,
       "specialRuleValues": {
         "heavy": "D",
         "critical-hit": 6
       },
-      "traits": ["Auto"],
-      "description": "Long-range tank-hunting cannon with exceptional accuracy."
+      "specialRules": [
+        "heavy",
+        "critical-hit"
+      ],
+      "traits": [
+        "Auto"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "heavy-stubber",
-      "name": "Heavy Stubber",
-      "type": "ranged",
-      "range": 24,
-      "firepower": 3,
-      "rangedStrength": 4,
       "ap": 6,
       "damage": 1,
-      "specialRules": [],
+      "description": "Heavy stubber for close-range support.",
+      "firepower": 3,
+      "id": "heavy-stubber",
+      "name": "Heavy Stubber",
+      "profiles": [],
+      "range": 24,
+      "rangedStrength": 4,
       "specialRuleValues": {},
-      "traits": ["Auto"],
-      "description": "Heavy stubber for close-range support."
+      "specialRules": [],
+      "traits": [
+        "Auto"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "demolisher-cannon",
-      "name": "Demolisher Cannon",
-      "type": "ranged",
-      "range": 24,
-      "firepower": 1,
-      "rangedStrength": 12,
       "ap": 3,
       "damage": 3,
-      "specialRules": ["ordnance", "blast", "stun", "breaching"],
+      "description": "Short-range demolisher cannon with devastating blast radius.",
+      "firepower": 1,
+      "id": "demolisher-cannon",
+      "name": "Demolisher Cannon",
+      "profiles": [],
+      "range": 24,
+      "rangedStrength": 12,
       "specialRuleValues": {
         "ordnance": "D",
         "blast": 3,
         "stun": 1,
         "breaching": 5
       },
-      "traits": ["Auto"],
-      "description": "Short-range demolisher cannon with devastating blast radius."
+      "specialRules": [
+        "ordnance",
+        "blast",
+        "stun",
+        "breaching"
+      ],
+      "traits": [
+        "Auto"
+      ],
+      "type": "ranged"
     },
     {
+      "ap": null,
+      "damage": null,
+      "description": "Plasma destroyer with two firing modes: sustained fire for area control and maximal fire for maximum damage.",
+      "firepower": null,
       "id": "executioner-plasma-destroyer",
       "name": "Executioner Plasma Destroyer",
-      "type": "ranged",
       "profiles": [
-        {
-          "name": "Sustained Fire",
-          "range": 36,
-          "firepower": 1,
-          "rangedStrength": 8,
-          "ap": 4,
-          "damage": 1,
-          "specialRules": ["blast", "breaching"],
-          "specialRuleValues": {
-            "blast": 5,
-            "breaching": 5
-          },
-          "traits": ["Plasma"]
-        },
-        {
-          "name": "Maximal Fire",
-          "range": 36,
-          "firepower": 1,
-          "rangedStrength": 8,
-          "ap": 4,
-          "damage": 2,
-          "specialRules": ["blast", "breaching", "overload"],
-          "specialRuleValues": {
-            "blast": 5,
-            "breaching": 4,
-            "overload": 1
-          },
-          "traits": ["Plasma"]
-        }
+        "executioner-plasma-destroyer-sustained",
+        "executioner-plasma-destroyer-maximal"
       ],
-      "specialRules": ["heavy"],
+      "range": null,
+      "rangedStrength": null,
       "specialRuleValues": {
         "heavy": "AP"
       },
-      "traits": ["Plasma"],
-      "description": "Plasma destroyer with two firing modes: sustained fire for area control and maximal fire for maximum damage."
+      "specialRules": [
+        "heavy"
+      ],
+      "traits": [
+        "Plasma"
+      ],
+      "type": "ranged"
     },
     {
+      "ap": 4,
+      "damage": 1,
+      "description": "Sustained Fire mode for Executioner Plasma Destroyer.",
+      "firepower": 1,
+      "id": "executioner-plasma-destroyer-sustained",
+      "name": "Executioner Plasma Destroyer - Sustained Fire",
+      "profiles": [],
+      "range": 36,
+      "rangedStrength": 8,
+      "specialRuleValues": {
+        "blast": 5,
+        "breaching": 5
+      },
+      "specialRules": [
+        "blast",
+        "breaching"
+      ],
+      "traits": [
+        "Plasma"
+      ],
+      "type": "ranged-profile"
+    },
+    {
+      "ap": 4,
+      "damage": 2,
+      "description": "Maximal Fire mode for Executioner Plasma Destroyer.",
+      "firepower": 1,
+      "id": "executioner-plasma-destroyer-maximal",
+      "name": "Executioner Plasma Destroyer - Maximal Fire",
+      "profiles": [],
+      "range": 36,
+      "rangedStrength": 8,
+      "specialRuleValues": {
+        "blast": 5,
+        "breaching": 4,
+        "overload": 1
+      },
+      "specialRules": [
+        "blast",
+        "breaching",
+        "overload"
+      ],
+      "traits": [
+        "Plasma"
+      ],
+      "type": "ranged-profile"
+    },
+    {
+      "ap": null,
+      "damage": null,
+      "description": "Quad-linked autocannon with high rate of fire.",
+      "firepower": null,
       "id": "quad-launcher",
       "name": "Quad Launcher",
       "profiles": [
-        {
-          "name": "Frag",
-          "range": 60,
-          "firepower": 1,
-          "rangedStrength": 5,
-          "ap": 5,
-          "damage": 1,
-          "specialRules": ["blast", "barrage", "heavy"],
-          "specialRuleValues": {
-            "blast": 5,
-            "barrage": 2,
-            "heavy": "FP"
-          },
-          "traits": []
-        },
-        {
-          "name": "Krak",
-          "range": 36,
-          "firepower": 4,
-          "rangedStrength": 7,
-          "ap": 4,
-          "damage": 1,
-          "specialRules": ["heavy", "armourbane"],
-          "specialRuleValues": {
-            "heavy": "D"
-          },
-          "traits": []
-        }
+        "quad-launcher-frag",
+        "quad-launcher-krak"
       ],
-      "description": "Quad-linked autocannon with high rate of fire."
+      "range": null,
+      "rangedStrength": null,
+      "specialRuleValues": "",
+      "specialRules": [],
+      "traits": [],
+      "type": "ranged"
     },
     {
-      "id": "autocannon",
-      "name": "Autocannon",
-      "type": "ranged",
-      "range": 48,
-      "firepower": 2,
+      "ap": 5,
+      "damage": 1,
+      "description": "Frag ammunition for Quad Launcher.",
+      "firepower": 1,
+      "id": "quad-launcher-frag",
+      "name": "Quad Launcher - Frag",
+      "profiles": [],
+      "range": 60,
+      "rangedStrength": 5,
+      "specialRuleValues": {
+        "blast": 5,
+        "barrage": 2,
+        "heavy": "FP"
+      },
+      "specialRules": [
+        "blast",
+        "barrage",
+        "heavy"
+      ],
+      "traits": [],
+      "type": "ranged-profile"
+    },
+    {
+      "ap": 4,
+      "damage": 1,
+      "description": "Krak ammunition for Quad Launcher.",
+      "firepower": 4,
+      "id": "quad-launcher-krak",
+      "name": "Quad Launcher - Krak",
+      "profiles": [],
+      "range": 36,
       "rangedStrength": 7,
+      "specialRuleValues": {
+        "heavy": "D"
+      },
+      "specialRules": [
+        "heavy",
+        "armourbane"
+      ],
+      "traits": [],
+      "type": "ranged-profile"
+    },
+    {
       "ap": 4,
       "damage": 2,
-      "specialRules": ["heavy", "breaching"],
+      "description": "Autocannon with high rate of fire.",
+      "firepower": 2,
+      "id": "autocannon",
+      "name": "Autocannon",
+      "profiles": [],
+      "range": 48,
+      "rangedStrength": 7,
       "specialRuleValues": {
         "heavy": "FP",
         "breaching": 6
       },
-      "traits": ["Auto"],
-      "description": "Autocannon with high rate of fire."
+      "specialRules": [
+        "heavy",
+        "breaching"
+      ],
+      "traits": [
+        "Auto"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "volkite-macro-saker",
-      "name": "Volkite Macro-Saker",
-      "type": "ranged",
-      "range": 45,
-      "firepower": 8,
-      "rangedStrength": 6,
       "ap": 5,
       "damage": 2,
-      "specialRules": ["heavy", "deflagrate"],
+      "description": "Volkite macro-saker with deflagrate capability.",
+      "firepower": 8,
+      "id": "volkite-macro-saker",
+      "name": "Volkite Macro-Saker",
+      "profiles": [],
+      "range": 45,
+      "rangedStrength": 6,
       "specialRuleValues": {
         "heavy": "AP",
         "deflagrate": 6
       },
-      "traits": ["Volkite"],
-      "description": "Volkite macro-saker with deflagrate capability."
+      "specialRules": [
+        "heavy",
+        "deflagrate"
+      ],
+      "traits": [
+        "Volkite"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "hunter-killer-missile",
-      "name": "Hunter-Killer Missile",
-      "type": "ranged",
-      "range": 48,
-      "firepower": 1,
-      "rangedStrength": 9,
       "ap": 3,
       "damage": 3,
-      "specialRules": ["limited", "armourbane"],
+      "description": "Single-use anti-tank missile with high accuracy.",
+      "firepower": 1,
+      "id": "hunter-killer-missile",
+      "name": "Hunter-Killer Missile",
+      "profiles": [],
+      "range": 48,
+      "rangedStrength": 9,
       "specialRuleValues": {
         "limited": 1
       },
-      "traits": ["Missile"],
-      "description": "Single-use anti-tank missile with high accuracy."
+      "specialRules": [
+        "limited",
+        "armourbane"
+      ],
+      "traits": [
+        "Missile"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "charonite-claws",
-      "name": "Charonite Claws",
-      "type": "melee",
-      "initiativeModifier": "I",
-      "attackModifier": "A",
-      "strengthModifier": 2,
       "ap": 3,
+      "attackModifier": "A",
       "damage": 2,
-      "specialRules": ["breaching"],
+      "description": "Powerful close combat weapon with breaching capability.",
+      "id": "charonite-claws",
+      "initiativeModifier": "I",
+      "name": "Charonite Claws",
+      "profiles": [],
       "specialRuleValues": {
         "breaching": 5
       },
-      "traits": ["Power"],
-      "description": "Powerful close combat weapon with breaching capability."
+      "specialRules": [
+        "breaching"
+      ],
+      "strengthModifier": 2,
+      "traits": [
+        "Power"
+      ],
+      "type": "melee"
     },
     {
-      "id": "earthshaker-cannon",
-      "name": "Earthshaker Cannon",
-      "type": "ranged",
-      "range": 240,
-      "firepower": 1,
-      "rangedStrength": 5,
       "ap": 4,
       "damage": 2,
-      "specialRules": ["ordnance", "blast", "barrage", "breaching", "pinning"],
+      "description": "Heavy artillery cannon with long range and devastating blast radius.",
+      "firepower": 1,
+      "id": "earthshaker-cannon",
+      "name": "Earthshaker Cannon",
+      "profiles": [],
+      "range": 240,
+      "rangedStrength": 5,
       "specialRuleValues": {
         "blast": 5,
         "barrage": 2,
@@ -664,19 +978,26 @@
         "pinning": 1,
         "ordnance": "RS"
       },
+      "specialRules": [
+        "ordnance",
+        "blast",
+        "barrage",
+        "breaching",
+        "pinning"
+      ],
       "traits": [],
-      "description": "Heavy artillery cannon with long range and devastating blast radius."
+      "type": "ranged"
     },
     {
-      "id": "medusa-mortar",
-      "name": "Medusa Mortar",
-      "type": "ranged",
-      "range": 36,
-      "firepower": 1,
-      "rangedStrength": 5,
       "ap": 4,
       "damage": 2,
-      "specialRules": ["ordnance", "blast", "barrage", "breaching", "pinning"],
+      "description": "Heavy mortar with devastating close-range bombardment capability.",
+      "firepower": 1,
+      "id": "medusa-mortar",
+      "name": "Medusa Mortar",
+      "profiles": [],
+      "range": 36,
+      "rangedStrength": 5,
       "specialRuleValues": {
         "blast": 5,
         "barrage": 2,
@@ -684,265 +1005,365 @@
         "pinning": 2,
         "ordnance": "RS"
       },
+      "specialRules": [
+        "ordnance",
+        "blast",
+        "barrage",
+        "breaching",
+        "pinning"
+      ],
       "traits": [],
-      "description": "Heavy mortar with devastating close-range bombardment capability."
+      "type": "ranged"
     },
     {
-      "id": "gravis-multi-laser-battery",
-      "name": "Gravis Multi-Laser Battery",
-      "type": "ranged",
-      "range": 36,
-      "firepower": 6,
-      "rangedStrength": 6,
       "ap": 6,
       "damage": 2,
-      "specialRules": ["suppressive"],
+      "description": "Heavy multi-laser battery with suppressive fire capability.",
+      "firepower": 6,
+      "id": "gravis-multi-laser-battery",
+      "name": "Gravis Multi-Laser Battery",
+      "profiles": [],
+      "range": 36,
+      "rangedStrength": 6,
       "specialRuleValues": {
         "suppressive": 1
       },
-      "traits": ["Las"],
-      "description": "Heavy multi-laser battery with suppressive fire capability."
+      "specialRules": [
+        "suppressive"
+      ],
+      "traits": [
+        "Las"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "laser-destroyer",
-      "name": "Laser Destroyer",
-      "type": "ranged",
-      "range": 36,
-      "firepower": 2,
-      "rangedStrength": 10,
       "ap": 2,
       "damage": 2,
-      "specialRules": ["heavy", "armourbane"],
+      "description": "Heavy laser weapon with armourbane capability.",
+      "firepower": 2,
+      "id": "laser-destroyer",
+      "name": "Laser Destroyer",
+      "profiles": [],
+      "range": 36,
+      "rangedStrength": 10,
       "specialRuleValues": {
         "heavy": "D"
       },
-      "traits": ["Las"],
-      "description": "Heavy laser weapon with armourbane capability."
+      "specialRules": [
+        "heavy",
+        "armourbane"
+      ],
+      "traits": [
+        "Las"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "gravis-heavy-bolter-battery",
-      "name": "Gravis Heavy Bolter Battery",
-      "type": "ranged",
-      "range": 36,
-      "firepower": 8,
-      "rangedStrength": 5,
       "ap": 4,
       "damage": 1,
-      "specialRules": ["suppressive"],
+      "description": "Heavy bolter battery with breaching capability.",
+      "firepower": 8,
+      "id": "gravis-heavy-bolter-battery",
+      "name": "Gravis Heavy Bolter Battery",
+      "profiles": [],
+      "range": 36,
+      "rangedStrength": 5,
       "specialRuleValues": {
         "suppressive": 2
       },
-      "traits": ["Bolt"],
-      "description": "Heavy bolter battery with breaching capability."
+      "specialRules": [
+        "suppressive"
+      ],
+      "traits": [
+        "Bolt"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "aethon-missile-battery",
-      "name": "Aethon Missile Battery",
-      "type": "ranged",
-      "range": 30,
-      "firepower": 1,
-      "rangedStrength": 4,
       "ap": 5,
       "damage": 2,
-      "specialRules": ["blast", "barrage", "stun"],
+      "description": "Heavy missile battery with blast and stun capabilities.",
+      "firepower": 1,
+      "id": "aethon-missile-battery",
+      "name": "Aethon Missile Battery",
+      "profiles": [],
+      "range": 30,
+      "rangedStrength": 4,
       "specialRuleValues": {
         "blast": 5,
         "barrage": 1,
         "stun": 1
       },
-      "traits": ["Missile"],
-      "description": "Heavy missile battery with blast and stun capabilities."
+      "specialRules": [
+        "blast",
+        "barrage",
+        "stun"
+      ],
+      "traits": [
+        "Missile"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "melta-lance",
-      "name": "Melta Lance",
-      "type": "ranged",
-      "range": 18,
-      "firepower": 1,
-      "rangedStrength": 9,
       "ap": 2,
       "damage": 4,
-      "specialRules": ["heavy", "armourbane"],
+      "description": "Heavy melta lance with armourbane capability.",
+      "firepower": 1,
+      "id": "melta-lance",
+      "name": "Melta Lance",
+      "profiles": [],
+      "range": 18,
+      "rangedStrength": 9,
       "specialRuleValues": {
         "heavy": "RS"
       },
-      "traits": ["Melta"],
-      "description": "Heavy melta lance with armourbane capability."
+      "specialRules": [
+        "heavy",
+        "armourbane"
+      ],
+      "traits": [
+        "Melta"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "hunter-killer-missile-battery",
-      "name": "Hunter-Killer Missile Battery",
-      "type": "ranged",
-      "range": 48,
-      "firepower": 2,
-      "rangedStrength": 9,
       "ap": 3,
       "damage": 3,
-      "specialRules": ["limited", "armourbane"],
+      "description": "Heavy missile battery with blast and stun capabilities.",
+      "firepower": 2,
+      "id": "hunter-killer-missile-battery",
+      "name": "Hunter-Killer Missile Battery",
+      "profiles": [],
+      "range": 48,
+      "rangedStrength": 9,
       "specialRuleValues": {
         "limited": 2
       },
-      "traits": ["Missile"],
-      "description": "Heavy missile battery with blast and stun capabilities."
+      "specialRules": [
+        "limited",
+        "armourbane"
+      ],
+      "traits": [
+        "Missile"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "lascannon",
-      "name": "Lascannon",
-      "type": "ranged",
-      "range": 48,
-      "firepower": 1,
-      "rangedStrength": 9,
       "ap": 2,
       "damage": 1,
-      "specialRules": ["heavy", "armourbane"],
+      "description": "Powerful anti-armor laser weapon.",
+      "firepower": 1,
+      "id": "lascannon",
+      "name": "Lascannon",
+      "profiles": [],
+      "range": 48,
+      "rangedStrength": 9,
       "specialRuleValues": {
         "heavy": "D"
       },
-      "traits": ["Las"],
-      "description": "Powerful anti-armor laser weapon."
+      "specialRules": [
+        "heavy",
+        "armourbane"
+      ],
+      "traits": [
+        "Las"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "volkite-culverin",
-      "name": "Volkite Culverin",
-      "type": "ranged",
-      "range": 45,
-      "firepower": 3,
-      "rangedStrength": 6,
       "ap": 5,
       "damage": 1,
-      "specialRules": ["heavy", "deflagrate"],
+      "description": "Volkite culverin with deflagrate capability.",
+      "firepower": 3,
+      "id": "volkite-culverin",
+      "name": "Volkite Culverin",
+      "profiles": [],
+      "range": 45,
+      "rangedStrength": 6,
       "specialRuleValues": {
         "heavy": "FP",
         "deflagrate": 6
       },
-      "traits": ["Volkite"],
-      "description": "Volkite culverin with deflagrate capability."
+      "specialRules": [
+        "heavy",
+        "deflagrate"
+      ],
+      "traits": [
+        "Volkite"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "heavy-incinerator",
-      "name": "Heavy Incinerator",
-      "type": "ranged",
-      "range": "Template",
-      "firepower": 1,
-      "rangedStrength": 6,
       "ap": 4,
       "damage": 1,
-      "specialRules": ["template", "panic", "shred"],
+      "description": "Heavy flame weapon unique to Aethon Sentinels",
+      "firepower": 1,
+      "id": "heavy-incinerator",
+      "name": "Heavy Incinerator",
+      "profiles": [],
+      "range": "Template",
+      "rangedStrength": 6,
       "specialRuleValues": {
         "panic": 1,
         "shred": 4
       },
-      "traits": ["Flame"],
-      "description": "Heavy flame weapon unique to Aethon Sentinels"
+      "specialRules": [
+        "template",
+        "panic",
+        "shred"
+      ],
+      "traits": [
+        "Flame"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "hellstrike-missiles",
-      "name": "Hellstrike Missiles",
-      "type": "ranged",
-      "range": 48,
-      "firepower": 1,
-      "rangedStrength": 9,
       "ap": 3,
       "damage": 3,
-      "specialRules": ["armourbane", "limited"],
+      "description": "Heavy guided missiles with armourbane capability.",
+      "firepower": 1,
+      "id": "hellstrike-missiles",
+      "name": "Hellstrike Missiles",
+      "profiles": [],
+      "range": 48,
+      "rangedStrength": 9,
       "specialRuleValues": {
         "limited": 1
       },
-      "traits": ["Guided Missile"],
-      "description": "Heavy guided missiles with armourbane capability."
+      "specialRules": [
+        "armourbane",
+        "limited"
+      ],
+      "traits": [
+        "Guided Missile"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "heavy-bolter",
-      "name": "Heavy Bolter",
-      "type": "ranged",
-      "range": 36,
-      "firepower": 3,
-      "rangedStrength": 5,
       "ap": 4,
       "damage": 1,
-      "specialRules": ["heavy"],
+      "description": "Heavy bolter with sustained fire capability.",
+      "firepower": 3,
+      "id": "heavy-bolter",
+      "name": "Heavy Bolter",
+      "profiles": [],
+      "range": 36,
+      "rangedStrength": 5,
       "specialRuleValues": {
         "heavy": "FP"
       },
-      "traits": ["Bolt"],
-      "description": "Heavy bolter with sustained fire capability."
+      "specialRules": [
+        "heavy"
+      ],
+      "traits": [
+        "Bolt"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "lasrifle",
-      "name": "Lasrifle",
-      "type": "ranged",
-      "range": 30,
-      "firepower": 1,
-      "rangedStrength": 3,
       "ap": 0,
       "damage": 1,
+      "description": "Standard lasrifle issued to Solar Auxilia troops.",
+      "firepower": 1,
+      "id": "lasrifle",
+      "name": "Lasrifle",
+      "profiles": [],
+      "range": 30,
+      "rangedStrength": 3,
+      "specialRuleValues": "",
       "specialRules": [],
-      "traits": ["Las"],
-      "description": "Standard lasrifle issued to Solar Auxilia troops."
+      "traits": [
+        "Las"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "laspistol",
-      "name": "Laspistol",
-      "type": "ranged",
-      "range": 12,
-      "firepower": 1,
-      "rangedStrength": 3,
       "ap": null,
       "damage": 1,
+      "description": "Standard laspistol issued to Solar Auxilia troops.",
+      "firepower": 1,
+      "id": "laspistol",
+      "name": "Laspistol",
+      "profiles": [],
+      "range": 12,
+      "rangedStrength": 3,
+      "specialRuleValues": "",
       "specialRules": [],
-      "traits": ["Las"],
-      "description": "Standard laspistol issued to Solar Auxilia troops."
+      "traits": [
+        "Las"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "infernus-cannon",
-      "name": "Infernus Cannon",
-      "type": "ranged",
-      "range": "Template (Hellstorm)",
-      "firepower": 1,
-      "rangedStrength": 6,
       "ap": 3,
       "damage": 2,
-      "specialRules": ["template-hellstorm", "panic", "heavy"],
+      "description": "Powerful flame weapon mounted on the Malcador Infernus.",
+      "firepower": 1,
+      "id": "infernus-cannon",
+      "name": "Infernus Cannon",
+      "profiles": [],
+      "range": "Template (Hellstorm)",
+      "rangedStrength": 6,
       "specialRuleValues": {
         "panic": 2,
         "heavy": "AP"
       },
-      "traits": ["Flame"],
-      "description": "Powerful flame weapon mounted on the Malcador Infernus."
+      "specialRules": [
+        "template-hellstorm",
+        "panic",
+        "heavy"
+      ],
+      "traits": [
+        "Flame"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "neutron-beam-laser",
-      "name": "Neutron Beam Laser",
-      "type": "ranged",
-      "range": 36,
-      "firepower": 2,
-      "rangedStrength": 10,
       "ap": 2,
       "damage": 2,
-      "specialRules": ["armourbane", "ordnance", "shock"],
+      "description": "Standard lasrifle issued to Solar Auxilia troops.",
+      "firepower": 2,
+      "id": "neutron-beam-laser",
+      "name": "Neutron Beam Laser",
+      "profiles": [],
+      "range": 36,
+      "rangedStrength": 10,
       "specialRuleValues": {
         "ordnance": "D",
         "shock": "Suppressed"
       },
-      "traits": ["Las"],
-      "description": "Standard lasrifle issued to Solar Auxilia troops."
+      "specialRules": [
+        "armourbane",
+        "ordnance",
+        "shock"
+      ],
+      "traits": [
+        "Las"
+      ],
+      "type": "ranged"
     },
     {
-      "id": "stormhammer-cannon",
-      "name": "Stormhammer Cannon",
-      "type": "ranged",
-      "range": 72,
-      "firepower": 1,
-      "rangedStrength": 9,
       "ap": 3,
       "damage": 3,
-      "specialRules": ["blast", "stun"],
+      "description": "Powerful main cannon mounted on the Stormhammer Super-Heavy Tank.",
+      "firepower": 1,
+      "id": "stormhammer-cannon",
+      "name": "Stormhammer Cannon",
+      "profiles": [],
+      "range": 72,
+      "rangedStrength": 9,
       "specialRuleValues": {
         "blast": 5,
         "stun": 2
       },
-      "traits": ["Auto"],
-      "description": "Powerful main cannon mounted on the Stormhammer Super-Heavy Tank."
+      "specialRules": [
+        "blast",
+        "stun"
+      ],
+      "traits": [
+        "Auto"
+      ],
+      "type": "ranged"
     }
   ]
 }

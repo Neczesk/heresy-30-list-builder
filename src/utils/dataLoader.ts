@@ -65,13 +65,13 @@ export class DataLoader {
 
   static getModelsBySubType(subType: string): Model[] {
     return ((modelsData as any).models as Model[]).filter(
-      model => model.subType === subType
+      model => model.subType.includes(subType as any)
     );
   }
 
   static getModelsByTypeAndSubType(type: string, subType: string): Model[] {
     return ((modelsData as any).models as Model[]).filter(
-      model => model.type === type && model.subType === subType
+      model => model.type === type && model.subType.includes(subType as any)
     );
   }
 
@@ -121,7 +121,7 @@ export class DataLoader {
     ) as MeleeWeapon[];
   }
 
-  static getWeaponsByType(type: 'ranged' | 'melee'): Weapon[] {
+  static getWeaponsByType(type: 'ranged' | 'melee' | 'ranged-profile' | 'melee-profile'): Weapon[] {
     return ((weaponsData as any).weapons as Weapon[]).filter(
       weapon => weapon.type === type
     );
@@ -133,12 +133,19 @@ export class DataLoader {
     );
   }
 
+  static getProfileWeapons(weapon: Weapon): Weapon[] {
+    if (weapon.profiles && Array.isArray(weapon.profiles)) {
+      return this.getWeaponsByIds(weapon.profiles);
+    }
+    return [];
+  }
+
   static isRangedWeapon(weapon: Weapon): weapon is RangedWeapon {
-    return weapon.type === 'ranged';
+    return weapon.type === 'ranged' || weapon.type === 'ranged-profile';
   }
 
   static isMeleeWeapon(weapon: Weapon): weapon is MeleeWeapon {
-    return weapon.type === 'melee';
+    return weapon.type === 'melee' || weapon.type === 'melee-profile';
   }
 
   static getWeaponsForModel(modelId: string): Weapon[] {

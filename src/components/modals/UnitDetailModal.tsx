@@ -23,7 +23,7 @@ import {
 } from '@mui/material';
 import { ExpandMore, ExpandLess } from '@mui/icons-material';
 import { DataLoader } from '../../utils/dataLoader';
-import type { Unit, Model, Weapon, SpecialRule } from '../../types/army';
+import type { Unit, Model, Weapon, SpecialRule, RangedWeapon } from '../../types/army';
 
 interface UnitWithModels extends Unit {
   modelsWithData: Array<{
@@ -143,22 +143,22 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
   const allSpecialRules = useMemo(() => {
     if (!unit) return [];
 
-    const rules: Array<{ rule: SpecialRule; source: string }> = [];
+    const rules: Array<{ rule: SpecialRule }> = [];
 
     // Unit-level special rules
     unit.specialRules.forEach(ruleId => {
       const rule = DataLoader.getSpecialRuleById(ruleId);
       if (rule && rule.type === 'special-rule') {
-        rules.push({ rule, source: 'Unit' });
+        rules.push({ rule });
       }
     });
 
     // Model-level special rules
-    unit.modelsWithData.forEach(({ model, count }) => {
+    unit.modelsWithData.forEach(({ model }) => {
       model.specialRules.forEach(ruleId => {
         const rule = DataLoader.getSpecialRuleById(ruleId);
         if (rule && rule.type === 'special-rule') {
-          rules.push({ rule, source: `${count}x ${model.name}` });
+          rules.push({ rule });
         }
       });
     });
@@ -197,36 +197,39 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
   const allWeaponSpecialRules = useMemo(() => {
     if (!unit) return [];
 
-    const ruleSet = new Set<string>();
+    const rules: Array<{ rule: SpecialRule }> = [];
 
-    // Collect unique rule IDs from all weapons
+    // Collect weapon special rules
     allWeapons.forEach(weaponData => {
       const { weapon } = weaponData;
 
       // Weapon-level special rules
       if (weapon.specialRules && weapon.specialRules.length > 0) {
         weapon.specialRules.forEach(ruleId => {
-          ruleSet.add(ruleId);
+          const rule = DataLoader.getSpecialRuleById(ruleId);
+          if (rule && rule.type === 'special-rule') {
+            rules.push({ rule });
+          }
         });
       }
 
       // Profile-level special rules (for ranged weapons with profiles)
       if (DataLoader.isRangedWeapon(weapon) && weapon.profiles) {
-        weapon.profiles.forEach(profile => {
-          if (profile.specialRules && profile.specialRules.length > 0) {
-            profile.specialRules.forEach(ruleId => {
-              ruleSet.add(ruleId);
+        const profileWeapons = DataLoader.getProfileWeapons(weapon);
+        profileWeapons.forEach(profileWeapon => {
+          if (profileWeapon.specialRules && profileWeapon.specialRules.length > 0) {
+            profileWeapon.specialRules.forEach(ruleId => {
+              const rule = DataLoader.getSpecialRuleById(ruleId);
+              if (rule && rule.type === 'special-rule') {
+                rules.push({ rule });
+              }
             });
           }
         });
       }
     });
 
-    // Convert set to array of rules
-    return Array.from(ruleSet).map(ruleId => {
-      const rule = DataLoader.getSpecialRuleById(ruleId);
-      return rule;
-    }).filter(Boolean) as SpecialRule[];
+    return rules;
   }, [allWeapons]);
 
   if (!unit) return null;
@@ -259,6 +262,23 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
       newExpanded.add(ruleId);
     }
     setExpandedWeaponRules(newExpanded);
+  };
+
+  // Helper function to format special rules with names and values
+  const formatSpecialRules = (ruleIds: string[], specialRuleValues?: { [key: string]: any }): string => {
+    if (!ruleIds || ruleIds.length === 0) return '-';
+
+    return ruleIds.map(ruleId => {
+      const rule = DataLoader.getSpecialRuleById(ruleId);
+      const ruleName = rule?.name || ruleId;
+
+      // Check if there's a value for this rule
+      if (specialRuleValues && specialRuleValues[ruleId] !== undefined) {
+        return `${ruleName} (${specialRuleValues[ruleId]})`;
+      }
+
+      return ruleName;
+    }).join(', ');
   };
 
   const renderModelCharacteristics = (model: Model) => {
@@ -350,32 +370,29 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
         );
 
         // Add rows for each profile
-        weapon.profiles.forEach((profile, index) => {
-          rows.push(
-            <TableRow key={`${weapon.id}-${index}`}>
-              <TableCell sx={{ pl: 4 }}>
-                <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
-                  {profile.name}
-                </Typography>
-              </TableCell>
-              <TableCell>{profile.range}"</TableCell>
-              <TableCell>{profile.firepower}</TableCell>
-              <TableCell>{profile.rangedStrength}</TableCell>
-              <TableCell>{profile.ap}</TableCell>
-              <TableCell>{profile.damage}</TableCell>
-              <TableCell>
-                {profile.specialRules && profile.specialRules.length > 0
-                  ? profile.specialRules
-                      .map(ruleId => {
-                        const rule = DataLoader.getSpecialRuleById(ruleId);
-                        return rule?.name || ruleId;
-                      })
-                      .join(', ')
-                  : '-'}
-              </TableCell>
-              <TableCell>{profile.traits?.join(', ') || '-'}</TableCell>
-            </TableRow>
-          );
+        const profileWeapons = DataLoader.getProfileWeapons(weapon);
+        profileWeapons.forEach((profileWeapon, index) => {
+          if (DataLoader.isRangedWeapon(profileWeapon)) {
+            const rangedProfile = profileWeapon as RangedWeapon;
+            rows.push(
+              <TableRow key={`${weapon.id}-${index}`}>
+                <TableCell sx={{ pl: 4 }}>
+                  <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
+                    {rangedProfile.name}
+                  </Typography>
+                </TableCell>
+                <TableCell>{rangedProfile.range}"</TableCell>
+                <TableCell>{rangedProfile.firepower}</TableCell>
+                <TableCell>{rangedProfile.rangedStrength}</TableCell>
+                <TableCell>{rangedProfile.ap}</TableCell>
+                <TableCell>{rangedProfile.damage}</TableCell>
+                <TableCell>
+                  {formatSpecialRules(rangedProfile.specialRules || [], rangedProfile.specialRuleValues)}
+                </TableCell>
+                <TableCell>{rangedProfile.traits?.join(', ') || '-'}</TableCell>
+              </TableRow>
+            );
+          }
         });
 
         return rows;
@@ -399,14 +416,7 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
             <TableCell>{weapon.ap}</TableCell>
             <TableCell>{weapon.damage}</TableCell>
             <TableCell>
-              {weapon.specialRules && weapon.specialRules.length > 0
-                ? weapon.specialRules
-                    .map(ruleId => {
-                      const rule = DataLoader.getSpecialRuleById(ruleId);
-                      return rule?.name || ruleId;
-                    })
-                    .join(', ')
-                : '-'}
+              {formatSpecialRules(weapon.specialRules || [], weapon.specialRuleValues)}
             </TableCell>
             <TableCell>{weapon.traits?.join(', ') || '-'}</TableCell>
           </TableRow>
@@ -455,14 +465,7 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
             <TableCell>{weapon.ap}</TableCell>
             <TableCell>{weapon.damage}</TableCell>
             <TableCell>
-              {weapon.specialRules && weapon.specialRules.length > 0
-                ? weapon.specialRules
-                    .map(ruleId => {
-                      const rule = DataLoader.getSpecialRuleById(ruleId);
-                      return rule?.name || ruleId;
-                    })
-                    .join(', ')
-                : '-'}
+              {formatSpecialRules(weapon.specialRules || [], weapon.specialRuleValues)}
             </TableCell>
             <TableCell>{weapon.traits?.join(', ') || '-'}</TableCell>
           </TableRow>
@@ -655,7 +658,7 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
             </AccordionSummary>
             <AccordionDetails>
               <Box>
-                {allWeaponSpecialRules.map(rule => (
+                {allWeaponSpecialRules.map(({ rule }) => (
                   <Accordion key={rule.id} expanded={expandedWeaponRules.has(rule.id)}>
                     <AccordionSummary
                       expandIcon={
@@ -704,7 +707,7 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
             <Typography variant="h6" gutterBottom>
               Special Rules
             </Typography>
-            {allSpecialRules.map(({ rule, source }) => (
+            {allSpecialRules.map(({ rule }) => (
               <Accordion key={rule.id} expanded={expandedRules.has(rule.id)}>
                 <AccordionSummary
                   expandIcon={
@@ -723,19 +726,9 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
                     </IconButton>
                   }
                 >
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      width: '100%',
-                    }}
-                  >
-                    <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
-                      {rule.description}
-                    </Typography>
-                    <Chip label={source} size="small" variant="outlined" />
-                  </Box>
+                  <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
+                    {rule.description}
+                  </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Box>

@@ -1,0 +1,2 @@
+description,effect,id,name,restrictions
+The unit has excellent logistical support,Add one Battlefield Role slot of your choice to the detachment,logistical-benefit,Logistical Benefit,"[""Cannot add Titan slots"",""Cannot add slots that would exceed detachment limits""]"

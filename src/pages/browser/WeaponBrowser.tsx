@@ -99,36 +99,40 @@ const WeaponBrowser: React.FC = () => {
       );
 
       // Add rows for each profile
-      weapon.profiles.forEach((profile, index) => {
-        rows.push(
-          <TableRow key={`${weapon.id}-${index}`}>
-            <TableCell sx={{ pl: 4 }}>
-              <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
-                {profile.name}
-              </Typography>
-            </TableCell>
-            <TableCell>{profile.range}"</TableCell>
-            <TableCell>{profile.firepower}</TableCell>
-            <TableCell>{profile.rangedStrength}</TableCell>
-            <TableCell>{profile.ap}</TableCell>
-            <TableCell>{profile.damage}</TableCell>
-            <TableCell>
-              {profile.specialRules && profile.specialRules.length > 0
-                ? profile.specialRules
-                    .map(ruleId => {
-                      const rule = DataLoader.getSpecialRuleById(ruleId);
-                      const value = profile.specialRuleValues?.[ruleId];
-                      const ruleDisplayName = value
-                        ? `${rule?.name || ruleId} (${value})`
-                        : rule?.name || ruleId;
-                      return ruleDisplayName;
-                    })
-                    .join(', ')
-                : '-'}
-            </TableCell>
-            <TableCell>{profile.traits?.join(', ') || '-'}</TableCell>
-          </TableRow>
-        );
+      const profileWeapons = DataLoader.getProfileWeapons(weapon);
+      profileWeapons.forEach((profileWeapon, index) => {
+        if (DataLoader.isRangedWeapon(profileWeapon)) {
+          const rangedProfile = profileWeapon as RangedWeapon;
+          rows.push(
+            <TableRow key={`${weapon.id}-${index}`}>
+              <TableCell sx={{ pl: 4 }}>
+                <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
+                  {rangedProfile.name}
+                </Typography>
+              </TableCell>
+              <TableCell>{rangedProfile.range}"</TableCell>
+              <TableCell>{rangedProfile.firepower}</TableCell>
+              <TableCell>{rangedProfile.rangedStrength}</TableCell>
+              <TableCell>{rangedProfile.ap}</TableCell>
+              <TableCell>{rangedProfile.damage}</TableCell>
+              <TableCell>
+                {rangedProfile.specialRules && rangedProfile.specialRules.length > 0
+                  ? rangedProfile.specialRules
+                      .map(ruleId => {
+                        const rule = DataLoader.getSpecialRuleById(ruleId);
+                        const value = rangedProfile.specialRuleValues?.[ruleId];
+                        const ruleDisplayName = value
+                          ? `${rule?.name || ruleId} (${value})`
+                          : rule?.name || ruleId;
+                        return ruleDisplayName;
+                      })
+                      .join(', ')
+                  : '-'}
+              </TableCell>
+              <TableCell>{rangedProfile.traits?.join(', ') || '-'}</TableCell>
+            </TableRow>
+          );
+        }
       });
 
       return rows;
