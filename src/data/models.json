@@ -1,6 +1,8 @@
 {
   "models": [
     {
+      "id": "lasrifle-trooper-model",
+      "name": "Lasrifle Trooper",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -17,13 +19,11 @@
         "armourSave": 5
       },
       "description": "Standard infantry troops equipped with lasrifles and basic combat gear.",
-      "id": "lasrifle-trooper-model",
-      "name": "Lasrifle Trooper",
-      "specialRuleValues": "",
       "specialRules": [
         "rapid-fire",
         "first-rank-fire-second-rank-fire"
       ],
+      "specialRuleValues": "",
       "subType": [
         "Light"
       ],
@@ -39,6 +39,8 @@
       ]
     },
     {
+      "id": "leman-russ-strike-model",
+      "name": "Leman Russ Strike Tank",
       "characteristics": {
         "movement": 10,
         "ballisticSkill": 3,
@@ -49,10 +51,8 @@
         "transportCapacity": null
       },
       "description": "A versatile main battle tank armed with a battle cannon for general combat.",
-      "id": "leman-russ-strike-model",
-      "name": "Leman Russ Strike Tank",
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "subType": [
         "Heavy"
       ],
@@ -114,6 +114,8 @@
       ]
     },
     {
+      "id": "leman-russ-assault-model",
+      "name": "Leman Russ Assault Tank",
       "characteristics": {
         "movement": 10,
         "ballisticSkill": 3,
@@ -124,10 +126,8 @@
         "transportCapacity": null
       },
       "description": "A heavily armored assault tank armed with volkite macro-saker for close-range combat.",
-      "id": "leman-russ-assault-model",
-      "name": "Leman Russ Assault Tank",
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "subType": [
         "Heavy"
       ],
@@ -189,6 +189,8 @@
       ]
     },
     {
+      "id": "legatine-marshall-model",
+      "name": "Legatine Marshall",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -206,14 +208,12 @@
         "invulnerableSave": 5
       },
       "description": "A Legatine Marshall commanding the Legatine Command Section.",
-      "id": "legatine-marshall-model",
-      "name": "Legatine Marshall",
-      "specialRuleValues": {
-        "line": 2
-      },
       "specialRules": [
         "line"
       ],
+      "specialRuleValues": {
+        "line": 2
+      },
       "subType": [
         "Command"
       ],
@@ -249,6 +249,8 @@
       ]
     },
     {
+      "id": "lifeward-model",
+      "name": "Lifeward",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -266,14 +268,12 @@
         "invulnerableSave": 5
       },
       "description": "A Lifeward bodyguard in the Legatine Command Section.",
-      "id": "lifeward-model",
-      "name": "Lifeward",
-      "specialRuleValues": {
-        "line": 2
-      },
       "specialRules": [
         "line"
       ],
+      "specialRuleValues": {
+        "line": 2
+      },
       "subType": [
         "Heavy"
       ],
@@ -333,6 +333,8 @@
       ]
     },
     {
+      "id": "auxilia-captain-model",
+      "name": "Auxilia Captain",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -350,16 +352,14 @@
         "invulnerableSave": 5
       },
       "description": "An Auxilia Captain leading a Tactical Command Section.",
-      "id": "auxilia-captain-model",
-      "name": "Auxilia Captain",
-      "specialRuleValues": {
-        "line": 1,
-        "officer-of-the-line": 2
-      },
       "specialRules": [
         "line",
         "officer-of-the-line"
       ],
+      "specialRuleValues": {
+        "line": 1,
+        "officer-of-the-line": 2
+      },
       "subType": [
         "Command"
       ],
@@ -395,6 +395,8 @@
       ]
     },
     {
+      "id": "companion-model",
+      "name": "Companion",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -412,14 +414,12 @@
         "invulnerableSave": 5
       },
       "description": "A Companion in the Tactical Command Section.",
-      "id": "companion-model",
-      "name": "Companion",
-      "specialRuleValues": {
-        "line": 1
-      },
       "specialRules": [
         "line"
       ],
+      "specialRuleValues": {
+        "line": 1
+      },
       "subType": [
         "Heavy"
       ],
@@ -488,6 +488,8 @@
       ]
     },
     {
+      "id": "troop-master-model",
+      "name": "Troop Master",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -505,14 +507,12 @@
         "invulnerableSave": null
       },
       "description": "A Troop Master leading a Line Command Section.",
-      "id": "troop-master-model",
-      "name": "Troop Master",
-      "specialRuleValues": {
-        "close-order": 1
-      },
       "specialRules": [
         "close-order"
       ],
+      "specialRuleValues": {
+        "close-order": 1
+      },
       "subType": [
         "Sergeant"
       ],
@@ -571,6 +571,8 @@
       ]
     },
     {
+      "id": "veteran-model",
+      "name": "Veteran",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -588,10 +590,8 @@
         "invulnerableSave": null
       },
       "description": "A Veteran in the Line Command Section.",
-      "id": "veteran-model",
-      "name": "Veteran",
-      "specialRuleValues": {},
       "specialRules": [],
+      "specialRuleValues": {},
       "subType": [],
       "type": "Infantry",
       "upgradeGroups": [
@@ -682,6 +682,8 @@
       ]
     },
     {
+      "id": "first-prime-model",
+      "name": "First Prime",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -699,14 +701,12 @@
         "invulnerableSave": null
       },
       "description": "A First Prime leading a Veletaris Command Section.",
-      "id": "first-prime-model",
-      "name": "First Prime",
-      "specialRuleValues": {
-        "hold-the-line": 1
-      },
       "specialRules": [
         "hold-the-line"
       ],
+      "specialRuleValues": {
+        "hold-the-line": 1
+      },
       "subType": [
         "Champion",
         "Sergeant"
@@ -752,6 +752,8 @@
       ]
     },
     {
+      "id": "veletarii-model",
+      "name": "Veletarii",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -769,10 +771,8 @@
         "invulnerableSave": null
       },
       "description": "A Veletarii in the Veletaris Command Section.",
-      "id": "veletarii-model",
-      "name": "Veletarii",
-      "specialRuleValues": {},
       "specialRules": [],
+      "specialRuleValues": {},
       "subType": [],
       "type": "Infantry",
       "upgradeGroups": [
@@ -807,6 +807,8 @@
       ]
     },
     {
+      "id": "veletarii-vanguard-model",
+      "name": "Veletarii Vanguard",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -824,10 +826,8 @@
         "invulnerableSave": null
       },
       "description": "A Veletarii in the Veletaris Vanguard Section.",
-      "id": "veletarii-vanguard-model",
-      "name": "Veletarii Vanguard",
-      "specialRuleValues": {},
       "specialRules": [],
+      "specialRuleValues": {},
       "subType": [],
       "type": "Infantry",
       "upgradeGroups": [
@@ -860,6 +860,8 @@
       ]
     },
     {
+      "id": "veletarii-prime-model",
+      "name": "Veletarii Prime",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -877,10 +879,8 @@
         "invulnerableSave": null
       },
       "description": "A Veletarii Prime leading a Veletaris Storm Section.",
-      "id": "veletarii-prime-model",
-      "name": "Veletarii Prime",
-      "specialRuleValues": {},
       "specialRules": [],
+      "specialRuleValues": {},
       "subType": [
         "Sergeant"
       ],
@@ -925,6 +925,8 @@
       ]
     },
     {
+      "id": "veletarii-vanguard-prime-model",
+      "name": "Veletarii Vanguard Prime",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -942,10 +944,8 @@
         "invulnerableSave": null
       },
       "description": "A Veletarii Prime leading a Veletaris Vanguard Section.",
-      "id": "veletarii-vanguard-prime-model",
-      "name": "Veletarii Vanguard Prime",
-      "specialRuleValues": {},
       "specialRules": [],
+      "specialRuleValues": {},
       "subType": [
         "Sergeant"
       ],
@@ -990,6 +990,8 @@
       ]
     },
     {
+      "id": "auxilia-sergeant-model",
+      "name": "Auxilia Sergeant",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -1007,10 +1009,8 @@
         "invulnerableSave": null
       },
       "description": "An Auxilia Sergeant leading a Lasrifle Section.",
-      "id": "auxilia-sergeant-model",
-      "name": "Auxilia Sergeant",
-      "specialRuleValues": {},
       "specialRules": [],
+      "specialRuleValues": {},
       "subType": [
         "Sergeant"
       ],
@@ -1057,6 +1057,8 @@
       ]
     },
     {
+      "id": "auxiliary-model",
+      "name": "Auxiliary",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -1074,10 +1076,8 @@
         "invulnerableSave": null
       },
       "description": "An Auxiliary in the Lasrifle Section.",
-      "id": "auxiliary-model",
-      "name": "Auxiliary",
-      "specialRuleValues": {},
       "specialRules": [],
+      "specialRuleValues": {},
       "subType": [],
       "type": "Infantry",
       "upgradeGroups": [
@@ -1112,6 +1112,8 @@
       ]
     },
     {
+      "id": "hermes-veletaris-sentinel-model",
+      "name": "Hermes Veletaris Sentinel",
       "characteristics": {
         "movement": 8,
         "strength": 5,
@@ -1129,18 +1131,16 @@
         "invulnerableSave": null
       },
       "description": "A Hermes Veletaris Sentinel in the Hermes Veletaris Squadron.",
-      "id": "hermes-veletaris-sentinel-model",
-      "name": "Hermes Veletaris Sentinel",
-      "specialRuleValues": {
-        "bulky": 2,
-        "vanguard": 2
-      },
       "specialRules": [
         "bulky",
         "implacable-advance",
         "move-through-cover",
         "vanguard"
       ],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 2
+      },
       "subType": [],
       "type": "Cavalry",
       "upgradeGroups": [
@@ -1163,6 +1163,8 @@
       ]
     },
     {
+      "id": "basilisk-model",
+      "name": "Basilisk",
       "characteristics": {
         "movement": 10,
         "ballisticSkill": 3,
@@ -1173,10 +1175,8 @@
         "transportCapacity": null
       },
       "description": "A Basilisk Artillery Tank.",
-      "id": "basilisk-model",
-      "name": "Basilisk",
-      "specialRuleValues": {},
       "specialRules": [],
+      "specialRuleValues": {},
       "subType": [],
       "type": "Vehicle",
       "upgradeGroups": [
@@ -1212,6 +1212,8 @@
       ]
     },
     {
+      "id": "medusa-model",
+      "name": "Medusa",
       "characteristics": {
         "movement": 10,
         "ballisticSkill": 3,
@@ -1222,10 +1224,8 @@
         "transportCapacity": null
       },
       "description": "A Medusa Artillery Tank.",
-      "id": "medusa-model",
-      "name": "Medusa",
-      "specialRuleValues": {},
       "specialRules": [],
+      "specialRuleValues": {},
       "subType": [],
       "type": "Vehicle",
       "upgradeGroups": [
@@ -1261,6 +1261,8 @@
       ]
     },
     {
+      "id": "rapier-gunner-model",
+      "name": "Rapier Gunner",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -1278,16 +1280,14 @@
         "invulnerableSave": null
       },
       "description": "A Rapier Gunner in the Rapier Section.",
-      "id": "rapier-gunner-model",
-      "name": "Rapier Gunner",
-      "specialRuleValues": {
-        "support-unit": 1
-      },
       "specialRules": [
         "slow-and-purposeful",
         "support-unit",
         "rapier-section"
       ],
+      "specialRuleValues": {
+        "support-unit": 1
+      },
       "subType": [
         "Sergeant"
       ],
@@ -1301,6 +1301,8 @@
       ]
     },
     {
+      "id": "rapier-carrier-model",
+      "name": "Rapier Carrier",
       "characteristics": {
         "movement": 6,
         "strength": 4,
@@ -1318,18 +1320,16 @@
         "invulnerableSave": null
       },
       "description": "A Rapier Carrier in the Rapier Section.",
-      "id": "rapier-carrier-model",
-      "name": "Rapier Carrier",
-      "specialRuleValues": {
-        "support-unit": 1,
-        "bulky": 4
-      },
       "specialRules": [
         "slow-and-purposeful",
         "support-unit",
         "rapier-section",
         "bulky"
       ],
+      "specialRuleValues": {
+        "support-unit": 1,
+        "bulky": 4
+      },
       "subType": [],
       "type": "Infantry",
       "upgradeGroups": [
@@ -1350,6 +1350,8 @@
       ]
     },
     {
+      "id": "charonite-ogryn-model",
+      "name": "Charonite Ogryn",
       "characteristics": {
         "movement": 7,
         "strength": 5,
@@ -1367,14 +1369,6 @@
         "invulnerableSave": null
       },
       "description": "A Charonite Ogryn in the Charonite Ogryn Section.",
-      "id": "charonite-ogryn-model",
-      "name": "Charonite Ogryn",
-      "specialRuleValues": {
-        "bulky": 4,
-        "expendable": 2,
-        "feel-no-pain": 5,
-        "impact": "A"
-      },
       "specialRules": [
         "heedless",
         "bitter-duty",
@@ -1383,6 +1377,12 @@
         "feel-no-pain",
         "impact"
       ],
+      "specialRuleValues": {
+        "bulky": 4,
+        "expendable": 2,
+        "feel-no-pain": 5,
+        "impact": "A"
+      },
       "subType": [
         "Skirmish"
       ],
@@ -1394,6 +1394,8 @@
       ]
     },
     {
+      "id": "hermes-lead-model",
+      "name": "Hermes Lead",
       "characteristics": {
         "movement": 10,
         "strength": 5,
@@ -1411,11 +1413,6 @@
         "invulnerableSave": null
       },
       "description": "A Hermes Lead in the Hermes Command Section.",
-      "id": "hermes-lead-model",
-      "name": "Hermes Lead",
-      "specialRuleValues": {
-        "bulky": 2
-      },
       "specialRules": [
         "bulky",
         "implacable-advance",
@@ -1423,6 +1420,9 @@
         "outflank",
         "pre-emptive-strike"
       ],
+      "specialRuleValues": {
+        "bulky": 2
+      },
       "subType": [
         "Sergeant",
         "Light"
@@ -1448,6 +1448,8 @@
       ]
     },
     {
+      "id": "hermes-pathfinder-model",
+      "name": "Hermes Pathfinder",
       "characteristics": {
         "movement": 10,
         "strength": 5,
@@ -1465,17 +1467,15 @@
         "invulnerableSave": null
       },
       "description": "A Hermes Pathfinder in the Hermes Command Section.",
-      "id": "hermes-pathfinder-model",
-      "name": "Hermes Pathfinder",
-      "specialRuleValues": {
-        "bulky": 2
-      },
       "specialRules": [
         "bulky",
         "implacable-advance",
         "move-through-cover",
         "outflank"
       ],
+      "specialRuleValues": {
+        "bulky": 2
+      },
       "subType": [
         "Light"
       ],
@@ -1500,6 +1500,8 @@
       ]
     },
     {
+      "id": "ordnance-master-model",
+      "name": "Ordnance Master",
       "characteristics": {
         "movement": 6,
         "strength": 3,
@@ -1517,12 +1519,10 @@
         "invulnerableSave": null
       },
       "description": "An Ordnance Master in the Artillery Command Section.",
-      "id": "ordnance-master-model",
-      "name": "Ordnance Master",
-      "specialRuleValues": "",
       "specialRules": [
         "precision-bombardment"
       ],
+      "specialRuleValues": "",
       "subType": [
         "Sergeant"
       ],
@@ -1568,6 +1568,8 @@
       ]
     },
     {
+      "id": "command-tank-model",
+      "name": "Command Tank",
       "characteristics": {
         "movement": 10,
         "ballisticSkill": 4,
@@ -1578,15 +1580,13 @@
         "transportCapacity": null
       },
       "description": "A Command Tank in the Armoured Command Section.",
-      "id": "command-tank-model",
-      "name": "Command Tank",
-      "specialRuleValues": {
-        "auto-repair": 4
-      },
       "specialRules": [
         "armoured-warfare",
         "auto-repair"
       ],
+      "specialRuleValues": {
+        "auto-repair": 4
+      },
       "subType": [],
       "type": "Vehicle",
       "upgradeGroups": [
@@ -1654,6 +1654,8 @@
       ]
     },
     {
+      "id": "aethon-heavy-sentinel-model",
+      "name": "Aethon Heavy Sentinel",
       "characteristics": {
         "movement": 7,
         "strength": 6,
@@ -1671,15 +1673,13 @@
         "invulnerableSave": null
       },
       "description": "A heavily armed and armored walker designed for heavy support and anti-armor operations.",
-      "id": "aethon-heavy-sentinel-model",
-      "name": "Aethon Heavy Sentinel",
-      "specialRuleValues": {
-        "bulky": 6
-      },
       "specialRules": [
         "bulky",
         "slow-and-purposeful"
       ],
+      "specialRuleValues": {
+        "bulky": 6
+      },
       "subType": [
         "Skirmish"
       ],
@@ -1713,6 +1713,8 @@
       ]
     },
     {
+      "id": "arvus-lighter-model",
+      "name": "Arvus Lighter",
       "characteristics": {
         "movement": 18,
         "ballisticSkill": 3,
@@ -1723,12 +1725,10 @@
         "transportCapacity": 12
       },
       "description": "A light transport aircraft designed for rapid deployment and extraction.",
-      "id": "arvus-lighter-model",
-      "name": "Arvus Lighter",
-      "specialRuleValues": "",
       "specialRules": [
         "light-transport"
       ],
+      "specialRuleValues": "",
       "subType": [
         "Transport",
         "Flyer"
@@ -1762,6 +1762,8 @@
       "weapons": []
     },
     {
+      "id": "dracosan-model",
+      "name": "Dracosan",
       "characteristics": {
         "movement": 12,
         "ballisticSkill": 3,
@@ -1772,12 +1774,10 @@
         "transportCapacity": 22
       },
       "description": "A heavily armored transport vehicle designed for troop deployment and battlefield support.",
-      "id": "dracosan-model",
-      "name": "Dracosan",
-      "specialRuleValues": "",
       "specialRules": [
         "light-transport"
       ],
+      "specialRuleValues": "",
       "subType": [
         "Transport"
       ],
@@ -1833,6 +1833,8 @@
       ]
     },
     {
+      "id": "hermes-light-sentinel-model",
+      "name": "Hermes Light Sentinel",
       "characteristics": {
         "movement": 10,
         "strength": 5,
@@ -1850,17 +1852,15 @@
         "invulnerableSave": null
       },
       "description": "A fast, lightly armored walker used for reconnaissance and forward observation.",
-      "id": "hermes-light-sentinel-model",
-      "name": "Hermes Light Sentinel",
-      "specialRuleValues": {
-        "bulky": 2
-      },
       "specialRules": [
         "bulky",
         "implacable-advance",
         "move-through-cover",
         "outflank"
       ],
+      "specialRuleValues": {
+        "bulky": 2
+      },
       "subType": [
         "Light"
       ],
@@ -1885,6 +1885,8 @@
       ]
     },
     {
+      "id": "primaris-lightning-model",
+      "name": "Primaris-Lightning",
       "characteristics": {
         "movement": 26,
         "ballisticSkill": 3,
@@ -1895,10 +1897,8 @@
         "transportCapacity": null
       },
       "description": "A fast strike fighter designed for aerial combat and ground attack missions.",
-      "id": "primaris-lightning-model",
-      "name": "Primaris-Lightning",
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "subType": [
         "Flyer"
       ],
@@ -1918,6 +1918,8 @@
       ]
     },
     {
+      "id": "thunderbolt-model",
+      "name": "Thunderbolt",
       "characteristics": {
         "movement": 22,
         "ballisticSkill": 3,
@@ -1928,10 +1930,8 @@
         "transportCapacity": null
       },
       "description": "A heavy fighter aircraft designed for aerial combat and ground attack missions.",
-      "id": "thunderbolt-model",
-      "name": "Thunderbolt",
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "subType": [
         "Flyer"
       ],
@@ -1951,6 +1951,8 @@
       ]
     },
     {
+      "id": "malcador-model",
+      "name": "Malcador",
       "characteristics": {
         "movement": 12,
         "ballisticSkill": 3,
@@ -1961,12 +1963,10 @@
         "transportCapacity": null
       },
       "description": "A heavy tank designed for battlefield dominance and firepower projection.",
-      "id": "malcador-model",
-      "name": "Malcador",
-      "specialRuleValues": "",
       "specialRules": [
         "independent-fire"
       ],
+      "specialRuleValues": "",
       "subType": [],
       "type": "Vehicle",
       "upgradeGroups": [
@@ -2039,6 +2039,8 @@
       ]
     },
     {
+      "id": "malcador-infernus-model",
+      "name": "Malcador Infernus",
       "characteristics": {
         "movement": 12,
         "ballisticSkill": 3,
@@ -2049,14 +2051,12 @@
         "transportCapacity": null
       },
       "description": "A special weapons tank armed with an infernus cannon and sponson weapons.",
-      "id": "malcador-infernus-model",
-      "name": "Malcador Infernus",
-      "specialRuleValues": {
-        "explodes": 3
-      },
       "specialRules": [
         "explodes"
       ],
+      "specialRuleValues": {
+        "explodes": 3
+      },
       "subType": [
         "Heavy"
       ],
@@ -2110,6 +2110,8 @@
       ]
     },
     {
+      "id": "valdor-tank-destroyer-model",
+      "name": "Valdor Tank Destroyer",
       "characteristics": {
         "movement": 12,
         "ballisticSkill": 3,
@@ -2120,14 +2122,12 @@
         "transportCapacity": null
       },
       "description": "A specialized tank destroyer armed with a neutron beam laser for anti-armour operations.",
-      "id": "valdor-tank-destroyer-model",
-      "name": "Valdor Tank Destroyer",
-      "specialRuleValues": {
-        "explodes": 5
-      },
       "specialRules": [
         "explodes"
       ],
+      "specialRuleValues": {
+        "explodes": 5
+      },
       "subType": [
         "Heavy"
       ],
@@ -2180,6 +2180,8 @@
       ]
     },
     {
+      "id": "stormhammer-model",
+      "name": "Stormhammer",
       "characteristics": {
         "movement": 10,
         "ballisticSkill": 3,
@@ -2190,10 +2192,8 @@
         "transportCapacity": null
       },
       "description": "A super-heavy assault tank armed with multiple weapons for devastating firepower.",
-      "id": "stormhammer-model",
-      "name": "Stormhammer",
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "subType": [
         "Super-Heavy"
       ],

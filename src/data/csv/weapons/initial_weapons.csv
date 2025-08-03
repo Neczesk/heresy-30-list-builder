@@ -1,0 +1,64 @@
+id,name,ap,attackModifier,damage,description,firepower,initiativeModifier,profiles,range,rangedStrength,specialRules,specialRuleValues,strengthModifier,traits,type
+multi-laser,Multi-laser,6,,1,Rapid-firing laser weapon system.,3,,,36,6,"[""suppressive""]","{""suppressive"":1}",,"[""Las""]",ranged
+power-sword,Power Sword,3,A,1,Elegant energy sword.,,I,,,,"[""breaching""]","{""breaching"":6}",S,"[""Power""]",melee
+power-fist,Power Fist,2,A,2,Heavy powered gauntlet.,,-3,,,,"[]",,+4,"[""Power""]",melee
+frag-grenades,Frag Grenades,0,,1,Anti-personnel grenades.,1,,,8,3,"[""indirect-fire""]",,,,ranged
+krak-grenades,Krak Grenades,2,,2,Anti-armor grenades.,1,,,8,6,"[]",,,,ranged
+charnabal-sabre,Charnabal Sabre,null,A,1,Elegant duelling weapon of the Solar Auxilia.,,+1,,,,"[""breaching"",""duellists-edge""]","{""breaching"":6,""duellists-edge"":1}",S,"[""Charnabal""]",melee
+paragon-blade,Paragon Blade,2,A,1,A master-crafted blade of exceptional quality.,,I,,,,"[""critical-hit""]","{""critical-hit"":6}",S,"[]",melee
+thunder-hammer,Thunder Hammer,2,A,2,A massive powered hammer.,,-2,,,,"[]",,+3,"[""Power""]",melee
+volkite-serpenta,Volkite Serpenta,5,,1,Compact volkite weapon for close combat.,2,,,10,5,"[""pistol"",""deflagrate""]","{""deflagrate"":5}",,"[""Assault"",""Volkite""]",ranged
+plasma-pistol,Plasma Pistol,,,,Compact plasma weapon with multiple firing modes.,,,"[""plasma-pistol-sustained"",""plasma-pistol-maximal""]",,,,,,,ranged
+plasma-pistol-sustained,Plasma Pistol - Sustained Fire,4,,1,Sustained Fire mode for Plasma Pistol.,1,,,12,6,"[""pistol"",""breaching""]","{""breaching"":6}",,"[""Assault"",""Plasma""]",ranged-profile
+plasma-pistol-maximal,Plasma Pistol - Maximal Fire,4,,1,Maximal Fire mode for Plasma Pistol.,1,,,12,7,"[""pistol"",""breaching"",""overload""]","{""breaching"":5,""overload"":1}",,"[""Assault"",""Plasma""]",ranged-profile
+inferno-pistol,Inferno Pistol,2,,1,Compact melta weapon for close combat.,1,,,6,8,"[""pistol"",""melta""]","{""melta"":6}",,"[""Assault"",""Melta""]",ranged
+archaeotech-pistol,Archaeotech Pistol,4,,2,Ancient and powerful pistol weapon.,1,,,12,6,"[""pistol"",""breaching""]","{""breaching"":3}",,"[""Assault""]",ranged
+needle-pistol,Needle Pistol,null,,1,Compact needle weapon for close combat.,2,,,12,2,"[""poisoned"",""pistol"",""pinning""]","{""poisoned"":3,""pinning"":1}",,"[""Assault"",""Needle""]",ranged
+blast-pistol,Blast Pistol,4,,1,High-powered laser pistol with enhanced penetration.,2,,,9,4,"[""pistol"",""rending"",""shred""]","{""rending"":6,""shred"":6}",,"[""Assault"",""Las""]",ranged
+hand-flamer,Hand Flamer,null,,1,Compact flamer weapon for close combat.,1,,,Template,3,"[""template"",""pistol""]",,,"[""Assault"",""Flame""]",ranged
+bayonet,Bayonet,5,A,1,Close combat weapon attached to ranged weapon.,,I,,,,"[]",,S,"[""Bayonet""]",melee
+blast-charger,Blast Charger,4,,1,Enhanced laser weapon attachment.,1,,,18,4,"[""rending"",""shred""]","{""rending"":6,""shred"":6}",,"[""Las""]",ranged
+melta-bomb,Melta Bomb,2,1,4,Explosive anti-armor weapon for close combat.,,-3,,,,"[""armourbane"",""detonation""]",,9,"[]",melee
+volkite-charger,Volkite Charger,5,,1,Advanced volkite weapon with deflagration capabilities.,2,,,15,5,"[""deflagrate""]","{""deflagrate"":5}",,"[""Volkite""]",ranged
+charnabal-tabar,Charnabal Tabar,null,A,1,Elite melee weapon with enhanced dueling capabilities.,,I,,,,"[""breaching"",""duellists-edge""]","{""breaching"":6,""duellists-edge"":1}",+1,"[""Charnabal""]",melee
+storm-axe,Storm Axe,3,A,1,Powerful melee weapon with enhanced armor penetration.,,-1,,,,"[""breaching"",""shred""]","{""breaching"":5,""shred"":5}",+2,"[""Power""]",melee
+volkite-caliver,Volkite Caliver,5,,1,Advanced volkite weapon with enhanced deflagration capabilities.,2,,,30,6,"[""deflagrate""]","{""deflagrate"":6}",,"[""Volkite""]",ranged
+heavy-flamer,Heavy Flamer,4,,1,Heavy flamer weapon with template and panic effects.,1,,,Template,5,"[""template"",""panic""]","{""panic"":1}",,"[""Flame""]",ranged
+hermes-grenade-launcher,Hermes Grenade Launcher,,,,Dual-mode grenade launcher with frag and krak ammunition.,,,"[""hermes-grenade-launcher-frag"",""hermes-grenade-launcher-krak""]",,,,,,,ranged
+hermes-grenade-launcher-frag,Hermes Grenade Launcher - Frag,6,,1,Frag ammunition for Hermes Grenade Launcher.,1,,,18,3,"[""blast"",""stun""]","{""blast"":3,""stun"":1}",,"[]",ranged-profile
+hermes-grenade-launcher-krak,Hermes Grenade Launcher - Krak,4,,2,Krak ammunition for Hermes Grenade Launcher.,2,,,18,7,"[]",,,"[]",ranged-profile
+battlecannon,Battlecannon,4,,2,Powerful tank-mounted cannon with blast and pinning capabilities.,1,,,48,8,"[""heavy"",""blast"",""pinning""]","{""heavy"":""AP"",""blast"":3,""pinning"":1}",,"[""Auto""]",ranged
+twin-battlecannon,Twin Battlecannon,4,,2,Powerful tank-mounted cannon with blast and pinning capabilities.,2,,,48,8,"[""heavy"",""blast"",""pinning""]","{""heavy"":""AP"",""blast"":3,""pinning"":1}",,"[""Auto""]",ranged
+gravis-autocannon,Gravis Autocannon,4,,2,Heavy autocannon with high rate of fire.,3,,,36,8,"[""heavy"",""breaching""]","{""heavy"":""D"",""breaching"":6}",,"[""Auto""]",ranged
+twin-lascannon,Twin Lascannon,2,,1,Twin-linked lascannon with devastating anti-armor capability.,2,,,48,9,"[""heavy"",""armourbane""]","{""heavy"":""D""}",,"[""Las""]",ranged
+vanquisher-cannon,Vanquisher Cannon,2,,3,Long-range tank-hunting cannon with exceptional accuracy.,1,,,72,10,"[""heavy"",""critical-hit""]","{""heavy"":""D"",""critical-hit"":6}",,"[""Auto""]",ranged
+heavy-stubber,Heavy Stubber,6,,1,Heavy stubber for close-range support.,3,,,24,4,"[]","{}",,"[""Auto""]",ranged
+demolisher-cannon,Demolisher Cannon,3,,3,Short-range demolisher cannon with devastating blast radius.,1,,,24,12,"[""ordnance"",""blast"",""stun"",""breaching""]","{""ordnance"":""D"",""blast"":3,""stun"":1,""breaching"":5}",,"[""Auto""]",ranged
+executioner-plasma-destroyer,Executioner Plasma Destroyer,,,,Plasma destroyer with two firing modes: sustained fire for area control and maximal fire for maximum damage.,,,"[""executioner-plasma-destroyer-sustained"",""executioner-plasma-destroyer-maximal""]",,,"[""heavy""]","{""heavy"":""AP""}",,"[""Plasma""]",ranged
+executioner-plasma-destroyer-sustained,Executioner Plasma Destroyer - Sustained Fire,4,,1,Sustained Fire mode for Executioner Plasma Destroyer.,1,,,36,8,"[""blast"",""breaching""]","{""blast"":5,""breaching"":5}",,"[""Plasma""]",ranged-profile
+executioner-plasma-destroyer-maximal,Executioner Plasma Destroyer - Maximal Fire,4,,2,Maximal Fire mode for Executioner Plasma Destroyer.,1,,,36,8,"[""blast"",""breaching"",""overload""]","{""blast"":5,""breaching"":4,""overload"":1}",,"[""Plasma""]",ranged-profile
+quad-launcher,Quad Launcher,,,,Quad-linked autocannon with high rate of fire.,,,"[""quad-launcher-frag"",""quad-launcher-krak""]",,,,,,,ranged
+quad-launcher-frag,Quad Launcher - Frag,5,,1,Frag ammunition for Quad Launcher.,1,,,60,5,"[""blast"",""barrage"",""heavy""]","{""blast"":5,""barrage"":2,""heavy"":""FP""}",,"[]",ranged-profile
+quad-launcher-krak,Quad Launcher - Krak,4,,1,Krak ammunition for Quad Launcher.,4,,,36,7,"[""heavy"",""armourbane""]","{""heavy"":""D""}",,"[]",ranged-profile
+autocannon,Autocannon,4,,2,Autocannon with high rate of fire.,2,,,48,7,"[""heavy"",""breaching""]","{""heavy"":""FP"",""breaching"":6}",,"[""Auto""]",ranged
+volkite-macro-saker,Volkite Macro-Saker,5,,2,Volkite macro-saker with deflagrate capability.,8,,,45,6,"[""heavy"",""deflagrate""]","{""heavy"":""AP"",""deflagrate"":6}",,"[""Volkite""]",ranged
+hunter-killer-missile,Hunter-Killer Missile,3,,3,Single-use anti-tank missile with high accuracy.,1,,,48,9,"[""limited"",""armourbane""]","{""limited"":1}",,"[""Missile""]",ranged
+charonite-claws,Charonite Claws,3,A,2,Powerful close combat weapon with breaching capability.,,I,,,,"[""breaching""]","{""breaching"":5}",2,"[""Power""]",melee
+earthshaker-cannon,Earthshaker Cannon,4,,2,Heavy artillery cannon with long range and devastating blast radius.,1,,,240,5,"[""ordnance"",""blast"",""barrage"",""breaching"",""pinning""]","{""blast"":5,""barrage"":2,""breaching"":6,""pinning"":1,""ordnance"":""RS""}",,"[]",ranged
+medusa-mortar,Medusa Mortar,4,,2,Heavy mortar with devastating close-range bombardment capability.,1,,,36,5,"[""ordnance"",""blast"",""barrage"",""breaching"",""pinning""]","{""blast"":5,""barrage"":2,""breaching"":5,""pinning"":2,""ordnance"":""RS""}",,"[]",ranged
+gravis-multi-laser-battery,Gravis Multi-Laser Battery,6,,2,Heavy multi-laser battery with suppressive fire capability.,6,,,36,6,"[""suppressive""]","{""suppressive"":1}",,"[""Las""]",ranged
+laser-destroyer,Laser Destroyer,2,,2,Heavy laser weapon with armourbane capability.,2,,,36,10,"[""heavy"",""armourbane""]","{""heavy"":""D""}",,"[""Las""]",ranged
+gravis-heavy-bolter-battery,Gravis Heavy Bolter Battery,4,,1,Heavy bolter battery with breaching capability.,8,,,36,5,"[""suppressive""]","{""suppressive"":2}",,"[""Bolt""]",ranged
+aethon-missile-battery,Aethon Missile Battery,5,,2,Heavy missile battery with blast and stun capabilities.,1,,,30,4,"[""blast"",""barrage"",""stun""]","{""blast"":5,""barrage"":1,""stun"":1}",,"[""Missile""]",ranged
+melta-lance,Melta Lance,2,,4,Heavy melta lance with armourbane capability.,1,,,18,9,"[""heavy"",""armourbane""]","{""heavy"":""RS""}",,"[""Melta""]",ranged
+hunter-killer-missile-battery,Hunter-Killer Missile Battery,3,,3,Heavy missile battery with blast and stun capabilities.,2,,,48,9,"[""limited"",""armourbane""]","{""limited"":2}",,"[""Missile""]",ranged
+lascannon,Lascannon,2,,1,Powerful anti-armor laser weapon.,1,,,48,9,"[""heavy"",""armourbane""]","{""heavy"":""D""}",,"[""Las""]",ranged
+volkite-culverin,Volkite Culverin,5,,1,Volkite culverin with deflagrate capability.,3,,,45,6,"[""heavy"",""deflagrate""]","{""heavy"":""FP"",""deflagrate"":6}",,"[""Volkite""]",ranged
+heavy-incinerator,Heavy Incinerator,4,,1,Heavy flame weapon unique to Aethon Sentinels,1,,,Template,6,"[""template"",""panic"",""shred""]","{""panic"":1,""shred"":4}",,"[""Flame""]",ranged
+hellstrike-missiles,Hellstrike Missiles,3,,3,Heavy guided missiles with armourbane capability.,1,,,48,9,"[""armourbane"",""limited""]","{""limited"":1}",,"[""Guided Missile""]",ranged
+heavy-bolter,Heavy Bolter,4,,1,Heavy bolter with sustained fire capability.,3,,,36,5,"[""heavy""]","{""heavy"":""FP""}",,"[""Bolt""]",ranged
+lasrifle,Lasrifle,0,,1,Standard lasrifle issued to Solar Auxilia troops.,1,,,30,3,"[]",,,"[""Las""]",ranged
+laspistol,Laspistol,null,,1,Standard laspistol issued to Solar Auxilia troops.,1,,,12,3,"[]",,,"[""Las""]",ranged
+infernus-cannon,Infernus Cannon,3,,2,Powerful flame weapon mounted on the Malcador Infernus.,1,,,Template (Hellstorm),6,"[""template-hellstorm"",""panic"",""heavy""]","{""panic"":2,""heavy"":""AP""}",,"[""Flame""]",ranged
+neutron-beam-laser,Neutron Beam Laser,2,,2,Standard lasrifle issued to Solar Auxilia troops.,2,,,36,10,"[""armourbane"",""ordnance"",""shock""]","{""ordnance"":""D"",""shock"":""Suppressed""}",,"[""Las""]",ranged
+stormhammer-cannon,Stormhammer Cannon,3,,3,Powerful main cannon mounted on the Stormhammer Super-Heavy Tank.,1,,,72,9,"[""blast"",""stun""]","{""blast"":5,""stun"":2}",,"[""Auto""]",ranged

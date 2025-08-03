@@ -1,12 +1,17 @@
 {
   "units": [
     {
+      "id": "hermes-command-section",
+      "name": "Hermes Command Section",
       "allegiance": "Universal",
       "baseSize": 2,
       "battlefieldRole": "Command",
       "description": "A Hermes Lead leading a command section with Hermes Pathfinders.",
       "faction": "solar-auxilia",
-      "id": "hermes-command-section",
+      "models": {
+        "hermes-lead-model": 1,
+        "hermes-pathfinder-model": 1
+      },
       "modelUpgrades": {
         "hermes-lead-model": [
           "hermes-lead-weapon-upgrade-group"
@@ -15,14 +20,9 @@
           "hermes-pathfinder-weapon-upgrade-group"
         ]
       },
-      "models": {
-        "hermes-lead-model": 1,
-        "hermes-pathfinder-model": 1
-      },
-      "name": "Hermes Command Section",
       "points": 75,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -36,25 +36,25 @@
       "maxSize": 0
     },
     {
+      "id": "aethon-heavy-sentinel",
+      "name": "Aethon Heavy Sentinel Squadron",
       "allegiance": "Universal",
       "baseSize": 1,
       "battlefieldRole": "War Engine",
       "description": "A squadron of heavily armed and armored walkers designed for heavy support and anti-armor operations.",
       "faction": "solar-auxilia",
-      "id": "aethon-heavy-sentinel",
+      "models": {
+        "aethon-heavy-sentinel-model": 1
+      },
       "modelUpgrades": {
         "aethon-heavy-sentinel-model": [
           "aethon-heavy-sentinel-multi-laser-upgrade-group",
           "aethon-heavy-sentinel-missile-battery-upgrade-group"
         ]
       },
-      "models": {
-        "aethon-heavy-sentinel-model": 1
-      },
-      "name": "Aethon Heavy Sentinel Squadron",
       "points": 60,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia"
@@ -67,25 +67,25 @@
       "maxSize": 0
     },
     {
+      "id": "arvus-lighter",
+      "name": "Arvus Lighter",
       "allegiance": "Universal",
       "baseSize": 1,
       "battlefieldRole": "Transport",
       "description": "A light transport aircraft designed for rapid deployment and extraction of troops.",
       "faction": "solar-auxilia",
-      "id": "arvus-lighter",
+      "models": {
+        "arvus-lighter-model": 1
+      },
       "modelUpgrades": {
         "arvus-lighter-model": [
           "arvus-lighter-hull-weapon-upgrade-group",
           "arvus-lighter-wargear-upgrade-group"
         ]
       },
-      "models": {
-        "arvus-lighter-model": 1
-      },
-      "name": "Arvus Lighter",
       "points": 75,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia"
@@ -96,12 +96,16 @@
       "maxSize": 0
     },
     {
+      "id": "dracosan-armoured-transport",
+      "name": "Dracosan Armoured Transport",
       "allegiance": "Universal",
       "baseSize": 1,
       "battlefieldRole": "Transport",
       "description": "A heavily armored transport vehicle designed for troop deployment and battlefield support.",
       "faction": "solar-auxilia",
-      "id": "dracosan-armoured-transport",
+      "models": {
+        "dracosan-model": 1
+      },
       "modelUpgrades": {
         "dracosan-model": [
           "dracosan-hull-weapon-upgrade-group",
@@ -110,13 +114,9 @@
           "dracosan-wargear-upgrade-group"
         ]
       },
-      "models": {
-        "dracosan-model": 1
-      },
-      "name": "Dracosan Armoured Transport",
       "points": 140,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -128,12 +128,17 @@
       "maxSize": 0
     },
     {
+      "id": "veletaris-command-section",
+      "name": "Veletaris Command Section",
       "allegiance": "Universal",
       "baseSize": 5,
       "battlefieldRole": "Command",
       "description": "A First Prime leading a veletaris command section with Veletarii.",
       "faction": "solar-auxilia",
-      "id": "veletaris-command-section",
+      "models": {
+        "first-prime-model": 1,
+        "veletarii-model": 4
+      },
       "modelUpgrades": {
         "first-prime-model": [
           "first-prime-weapon-upgrade-group",
@@ -148,18 +153,13 @@
           "veletarii-wargear-options"
         ]
       },
-      "models": {
-        "first-prime-model": 1,
-        "veletarii-model": 4
-      },
-      "name": "Veletaris Command Section",
       "points": 75,
-      "specialRuleValues": {
-        "vanguard": 3
-      },
       "specialRules": [
         "vanguard"
       ],
+      "specialRuleValues": {
+        "vanguard": 3
+      },
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -173,12 +173,17 @@
       "maxSize": 0
     },
     {
+      "id": "veletaris-storm-section",
+      "name": "Veletaris Storm Section",
       "allegiance": "Universal",
       "baseSize": 10,
       "battlefieldRole": "Elite",
       "description": "A Veletarii Prime leading a veletaris storm section with Veletarii.",
       "faction": "solar-auxilia",
-      "id": "veletaris-storm-section",
+      "models": {
+        "veletarii-prime-model": 1,
+        "veletarii-model": 9
+      },
       "modelUpgrades": {
         "veletarii-prime-model": [
           "veletarii-prime-weapon-upgrade-group",
@@ -191,18 +196,13 @@
           "veletaris-storm-vexilla-upgrade-group"
         ]
       },
-      "models": {
-        "veletarii-prime-model": 1,
-        "veletarii-model": 9
-      },
-      "name": "Veletaris Storm Section",
       "points": 90,
-      "specialRuleValues": {
-        "vanguard": 3
-      },
       "specialRules": [
         "vanguard"
       ],
+      "specialRuleValues": {
+        "vanguard": 3
+      },
       "traits": [
         "[Allegiance]",
         "Solar Auxilia"
@@ -215,12 +215,17 @@
       "maxSize": 0
     },
     {
+      "id": "veletaris-vanguard-section",
+      "name": "Veletaris Vanguard Section",
       "allegiance": "Universal",
       "baseSize": 10,
       "battlefieldRole": "Elite",
       "description": "A Veletarii Prime leading a veletaris vanguard section with Veletarii.",
       "faction": "solar-auxilia",
-      "id": "veletaris-vanguard-section",
+      "models": {
+        "veletarii-vanguard-prime-model": 1,
+        "veletarii-vanguard-model": 9
+      },
       "modelUpgrades": {
         "veletarii-vanguard-prime-model": [
           "veletarii-vanguard-prime-weapon-upgrade-group",
@@ -232,19 +237,14 @@
           "veletaris-vanguard-vexilla-upgrade-group"
         ]
       },
-      "models": {
-        "veletarii-vanguard-prime-model": 1,
-        "veletarii-vanguard-model": 9
-      },
-      "name": "Veletaris Vanguard Section",
       "points": 100,
-      "specialRuleValues": {
-        "vanguard": 3
-      },
       "specialRules": [
         "vanguard",
         "implacable-advance"
       ],
+      "specialRuleValues": {
+        "vanguard": 3
+      },
       "traits": [
         "[Allegiance]",
         "Solar Auxilia"
@@ -257,22 +257,22 @@
       "maxSize": 0
     },
     {
+      "id": "charonite-ogryn-section",
+      "name": "Charonite Ogryn Section",
       "allegiance": "Universal",
       "baseSize": 3,
       "battlefieldRole": "Elite",
       "description": "A unit of Charonite Ogryns equipped with charonite claws for close combat.",
       "faction": "solar-auxilia",
-      "id": "charonite-ogryn-section",
-      "modelUpgrades": {
-        "charonite-ogryn-model": []
-      },
       "models": {
         "charonite-ogryn-model": 3
       },
-      "name": "Charonite Ogryn Section",
+      "modelUpgrades": {
+        "charonite-ogryn-model": []
+      },
       "points": 120,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia"
@@ -285,24 +285,24 @@
       "maxSize": 0
     },
     {
+      "id": "hermes-veletaris-squadron",
+      "name": "Hermes Veletaris Squadron",
       "allegiance": "Universal",
       "baseSize": 2,
       "battlefieldRole": "Support",
       "description": "A squadron of Hermes Veletaris Sentinels equipped with volkite calivers.",
       "faction": "solar-auxilia",
-      "id": "hermes-veletaris-squadron",
+      "models": {
+        "hermes-veletaris-sentinel-model": 2
+      },
       "modelUpgrades": {
         "hermes-veletaris-sentinel-model": [
           "hermes-veletaris-sentinel-weapon-upgrade-group"
         ]
       },
-      "models": {
-        "hermes-veletaris-sentinel-model": 2
-      },
-      "name": "Hermes Veletaris Squadron",
       "points": 40,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia"
@@ -315,25 +315,25 @@
       "maxSize": 0
     },
     {
+      "id": "basilisk-artillery-tank",
+      "name": "Basilisk Artillery Tank",
       "allegiance": "Universal",
       "baseSize": 1,
       "battlefieldRole": "Support",
       "description": "A heavy artillery tank equipped with an earthshaker cannon for long-range bombardment.",
       "faction": "solar-auxilia",
-      "id": "basilisk-artillery-tank",
+      "models": {
+        "basilisk-model": 1
+      },
       "modelUpgrades": {
         "basilisk-model": [
           "basilisk-pintle-weapon-upgrade-group",
           "basilisk-wargear-upgrade-group"
         ]
       },
-      "models": {
-        "basilisk-model": 1
-      },
-      "name": "Basilisk Artillery Tank",
       "points": 120,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -345,12 +345,17 @@
       "maxSize": 0
     },
     {
+      "id": "line-command-section",
+      "name": "Line Command Section",
       "allegiance": "Universal",
       "baseSize": 5,
       "battlefieldRole": "Command",
       "description": "A Troop Master leading a line command section with Veterans.",
       "faction": "solar-auxilia",
-      "id": "line-command-section",
+      "models": {
+        "troop-master-model": 1,
+        "veteran-model": 4
+      },
       "modelUpgrades": {
         "troop-master-model": [
           "troop-master-weapon-upgrade-group",
@@ -366,14 +371,9 @@
           "veteran-wargear-options"
         ]
       },
-      "models": {
-        "troop-master-model": 1,
-        "veteran-model": 4
-      },
-      "name": "Line Command Section",
       "points": 65,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia"
@@ -386,12 +386,17 @@
       "maxSize": 0
     },
     {
+      "id": "lasrifle-section",
+      "name": "Lasrifle Section",
       "allegiance": "Universal",
       "baseSize": 10,
       "battlefieldRole": "Troops",
       "description": "An Auxilia Sergeant leading a lasrifle section with Auxiliaries.",
       "faction": "solar-auxilia",
-      "id": "lasrifle-section",
+      "models": {
+        "auxilia-sergeant-model": 1,
+        "auxiliary-model": 9
+      },
       "modelUpgrades": {
         "auxilia-sergeant-model": [
           "auxilia-sergeant-weapon-upgrade-group",
@@ -403,18 +408,13 @@
           "auxiliary-wargear-options"
         ]
       },
-      "models": {
-        "auxilia-sergeant-model": 1,
-        "auxiliary-model": 9
-      },
-      "name": "Lasrifle Section",
       "points": 50,
-      "specialRuleValues": {
-        "line": 1
-      },
       "specialRules": [
         "line"
       ],
+      "specialRuleValues": {
+        "line": 1
+      },
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -428,24 +428,24 @@
       "maxSize": 0
     },
     {
+      "id": "hermes-light-sentinel-squadron",
+      "name": "Hermes Light Sentinel Squadron",
       "allegiance": "Universal",
       "baseSize": 2,
       "battlefieldRole": "Reconnaissance",
       "description": "A squadron of fast, lightly armored walkers used for reconnaissance and forward observation.",
       "faction": "solar-auxilia",
-      "id": "hermes-light-sentinel-squadron",
+      "models": {
+        "hermes-light-sentinel-model": 2
+      },
       "modelUpgrades": {
         "hermes-light-sentinel-model": [
           "hermes-light-sentinel-weapon-upgrade-group"
         ]
       },
-      "models": {
-        "hermes-light-sentinel-model": 2
-      },
-      "name": "Hermes Light Sentinel Squadron",
       "points": 32,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia"
@@ -458,22 +458,22 @@
       "maxSize": 0
     },
     {
+      "id": "primaris-lightning-strike-fighter",
+      "name": "Primaris-Lightning Strike Fighter",
       "allegiance": "Universal",
       "baseSize": 1,
       "battlefieldRole": "Fast Attack",
       "description": "A fast strike fighter designed for aerial combat and ground attack missions.",
       "faction": "solar-auxilia",
-      "id": "primaris-lightning-strike-fighter",
-      "modelUpgrades": {
-        "primaris-lightning-model": []
-      },
       "models": {
         "primaris-lightning-model": 1
       },
-      "name": "Primaris-Lightning Strike Fighter",
+      "modelUpgrades": {
+        "primaris-lightning-model": []
+      },
       "points": 160,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -485,22 +485,22 @@
       "maxSize": 0
     },
     {
+      "id": "thunderbolt-heavy-fighter",
+      "name": "Thunderbolt Heavy Fighter",
       "allegiance": "Universal",
       "baseSize": 1,
       "battlefieldRole": "Fast Attack",
       "description": "A heavy fighter aircraft designed for aerial combat and ground attack missions.",
       "faction": "solar-auxilia",
-      "id": "thunderbolt-heavy-fighter",
-      "modelUpgrades": {
-        "thunderbolt-model": []
-      },
       "models": {
         "thunderbolt-model": 1
       },
-      "name": "Thunderbolt Heavy Fighter",
+      "modelUpgrades": {
+        "thunderbolt-model": []
+      },
       "points": 120,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia"
@@ -511,12 +511,16 @@
       "maxSize": 0
     },
     {
+      "id": "malcador-heavy-tank",
+      "name": "Malcador Heavy Tank",
       "allegiance": "Universal",
       "baseSize": 1,
       "battlefieldRole": "Armour",
       "description": "A heavy tank designed for battlefield dominance and firepower projection.",
       "faction": "solar-auxilia",
-      "id": "malcador-heavy-tank",
+      "models": {
+        "malcador-model": 1
+      },
       "modelUpgrades": {
         "malcador-model": [
           "malcador-turret-weapon-upgrade-group",
@@ -526,13 +530,9 @@
           "malcador-sponson-weapon-upgrade-group"
         ]
       },
-      "models": {
-        "malcador-model": 1
-      },
-      "name": "Malcador Heavy Tank",
       "points": 180,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -544,12 +544,16 @@
       "maxSize": 0
     },
     {
+      "id": "malcador-infernus-special-weapons-tank",
+      "name": "Malcador Infernus Special Weapons Tank",
       "allegiance": "Universal",
       "baseSize": 1,
       "battlefieldRole": "Armour",
       "description": "A special weapons tank armed with an infernus cannon for devastating flame attacks.",
       "faction": "solar-auxilia",
-      "id": "malcador-infernus-special-weapons-tank",
+      "models": {
+        "malcador-infernus-model": 1
+      },
       "modelUpgrades": {
         "malcador-infernus-model": [
           "malcador-infernus-sponson-weapon-upgrade-group",
@@ -557,13 +561,9 @@
           "malcador-infernus-wargear-upgrade-group"
         ]
       },
-      "models": {
-        "malcador-infernus-model": 1
-      },
-      "name": "Malcador Infernus Special Weapons Tank",
       "points": 215,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -575,12 +575,16 @@
       "maxSize": 0
     },
     {
+      "id": "valdor-tank-destroyer",
+      "name": "Valdor Tank Destroyer",
       "allegiance": "Universal",
       "baseSize": 1,
       "battlefieldRole": "Armour",
       "description": "A specialized tank destroyer armed with a neutron beam laser for anti-armour operations.",
       "faction": "solar-auxilia",
-      "id": "valdor-tank-destroyer",
+      "models": {
+        "valdor-tank-destroyer-model": 1
+      },
       "modelUpgrades": {
         "valdor-tank-destroyer-model": [
           "valdor-sponson-weapon-upgrade-group",
@@ -588,13 +592,9 @@
           "valdor-wargear-upgrade-group"
         ]
       },
-      "models": {
-        "valdor-tank-destroyer-model": 1
-      },
-      "name": "Valdor Tank Destroyer",
       "points": 190,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -606,12 +606,16 @@
       "maxSize": 0
     },
     {
+      "id": "stormhammer-super-heavy-assault-tank",
+      "name": "Stormhammer Super-Heavy Assault Tank",
       "allegiance": "Universal",
       "baseSize": 1,
       "battlefieldRole": "Lord of War",
       "description": "A super-heavy assault tank armed with multiple weapons for devastating firepower.",
       "faction": "solar-auxilia",
-      "id": "stormhammer-super-heavy-assault-tank",
+      "models": {
+        "stormhammer-model": 1
+      },
       "modelUpgrades": {
         "stormhammer-model": [
           "stormhammer-hull-front-weapon-upgrade-group",
@@ -620,13 +624,9 @@
           "stormhammer-wargear-upgrade-group"
         ]
       },
-      "models": {
-        "stormhammer-model": 1
-      },
-      "name": "Stormhammer Super-Heavy Assault Tank",
       "points": 500,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -638,26 +638,26 @@
       "maxSize": 0
     },
     {
+      "id": "rapier-section",
+      "name": "Rapier Section",
       "allegiance": "Universal",
       "baseSize": 2,
       "battlefieldRole": "Support",
       "description": "A rapier gunner operating a rapier carrier with a gravis multi-laser battery.",
       "faction": "solar-auxilia",
-      "id": "rapier-section",
+      "models": {
+        "rapier-gunner-model": 1,
+        "rapier-carrier-model": 1
+      },
       "modelUpgrades": {
         "rapier-gunner-model": [],
         "rapier-carrier-model": [
           "rapier-carrier-weapon-upgrade-group"
         ]
       },
-      "models": {
-        "rapier-gunner-model": 1,
-        "rapier-carrier-model": 1
-      },
-      "name": "Rapier Section",
       "points": 30,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia"
@@ -670,25 +670,25 @@
       "maxSize": 0
     },
     {
+      "id": "medusa-artillery-tank",
+      "name": "Medusa Artillery Tank",
       "allegiance": "Universal",
       "baseSize": 1,
       "battlefieldRole": "Support",
       "description": "A heavy artillery tank equipped with a medusa mortar for close-range bombardment.",
       "faction": "solar-auxilia",
-      "id": "medusa-artillery-tank",
+      "models": {
+        "medusa-model": 1
+      },
       "modelUpgrades": {
         "medusa-model": [
           "medusa-pintle-weapon-upgrade-group",
           "medusa-wargear-upgrade-group"
         ]
       },
-      "models": {
-        "medusa-model": 1
-      },
-      "name": "Medusa Artillery Tank",
       "points": 140,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -700,12 +700,16 @@
       "maxSize": 0
     },
     {
+      "id": "leman-russ-strike-tank",
+      "name": "Leman Russ Strike Tank",
       "allegiance": "Universal",
       "baseSize": 1,
       "battlefieldRole": "Armour",
       "description": "A versatile main battle tank armed with a battle cannon for general combat.",
       "faction": "solar-auxilia",
-      "id": "leman-russ-strike-tank",
+      "models": {
+        "leman-russ-strike-model": 1
+      },
       "modelUpgrades": {
         "leman-russ-strike-model": [
           "leman-russ-strike-turret-weapon-upgrade-group",
@@ -714,13 +718,9 @@
           "leman-russ-strike-wargear-upgrade-group"
         ]
       },
-      "models": {
-        "leman-russ-strike-model": 1
-      },
-      "name": "Leman Russ Strike Tank",
       "points": 140,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -732,12 +732,16 @@
       "maxSize": 0
     },
     {
+      "id": "leman-russ-assault-tank",
+      "name": "Leman Russ Assault Tank",
       "allegiance": "Universal",
       "baseSize": 1,
       "battlefieldRole": "Armour",
       "description": "A heavily armored assault tank armed with volkite macro-saker for close-range combat.",
       "faction": "solar-auxilia",
-      "id": "leman-russ-assault-tank",
+      "models": {
+        "leman-russ-assault-model": 1
+      },
       "modelUpgrades": {
         "leman-russ-assault-model": [
           "leman-russ-assault-turret-weapon-upgrade-group",
@@ -746,13 +750,9 @@
           "leman-russ-assault-wargear-upgrade-group"
         ]
       },
-      "models": {
-        "leman-russ-assault-model": 1
-      },
-      "name": "Leman Russ Assault Tank",
       "points": 140,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -764,12 +764,17 @@
       "maxSize": 0
     },
     {
+      "id": "artillery-command-section",
+      "name": "Artillery Command Section",
       "allegiance": "Universal",
       "baseSize": 5,
       "battlefieldRole": "Command",
       "description": "An Ordnance Master leading a command section with Veterans.",
       "faction": "solar-auxilia",
-      "id": "artillery-command-section",
+      "models": {
+        "ordnance-master-model": 1,
+        "veteran-model": 4
+      },
       "modelUpgrades": {
         "ordnance-master-model": [
           "ordnance-master-weapon-upgrade-group",
@@ -781,14 +786,9 @@
           "artillery-veteran-weapon-additions"
         ]
       },
-      "models": {
-        "ordnance-master-model": 1,
-        "veteran-model": 4
-      },
-      "name": "Artillery Command Section",
       "points": 65,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -802,12 +802,16 @@
       "maxSize": 0
     },
     {
+      "id": "armoured-command-section",
+      "name": "Armoured Command Section",
       "allegiance": "Universal",
       "baseSize": 1,
       "battlefieldRole": "Command",
       "description": "A Command Tank leading armored warfare operations.",
       "faction": "solar-auxilia",
-      "id": "armoured-command-section",
+      "models": {
+        "command-tank-model": 1
+      },
       "modelUpgrades": {
         "command-tank-model": [
           "command-tank-turret-weapon-upgrade-group",
@@ -817,13 +821,9 @@
           "command-tank-wargear-upgrade-group"
         ]
       },
-      "models": {
-        "command-tank-model": 1
-      },
-      "name": "Armoured Command Section",
       "points": 150,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -836,12 +836,17 @@
       "maxSize": 0
     },
     {
+      "id": "legatine-command-section",
+      "name": "Legatine Command Section",
       "allegiance": "Universal",
       "baseSize": 5,
       "battlefieldRole": "High Command",
       "description": "A Legatine Marshall leading a command section with Lifeward bodyguards.",
       "faction": "solar-auxilia",
-      "id": "legatine-command-section",
+      "models": {
+        "legatine-marshall-model": 1,
+        "lifeward-model": 4
+      },
       "modelUpgrades": {
         "legatine-marshall-model": [
           "legatine-marshall-melee-weapons",
@@ -854,14 +859,9 @@
           "lifeward-wargear-options"
         ]
       },
-      "models": {
-        "legatine-marshall-model": 1,
-        "lifeward-model": 4
-      },
-      "name": "Legatine Command Section",
       "points": 125,
-      "specialRuleValues": "",
       "specialRules": [],
+      "specialRuleValues": "",
       "traits": [
         "[Allegiance]",
         "Solar Auxilia",
@@ -875,12 +875,17 @@
       "maxSize": 0
     },
     {
+      "id": "tactical-command-section",
+      "name": "Tactical Command Section",
       "allegiance": "Universal",
       "baseSize": 5,
       "battlefieldRole": "Command",
       "description": "An Auxilia Captain leading a tactical command section with Companions.",
       "faction": "solar-auxilia",
-      "id": "tactical-command-section",
+      "models": {
+        "auxilia-captain-model": 1,
+        "companion-model": 4
+      },
       "modelUpgrades": {
         "auxilia-captain-model": [
           "auxilia-captain-melee-weapons",
@@ -894,18 +899,13 @@
           "companion-wargear-options"
         ]
       },
-      "models": {
-        "auxilia-captain-model": 1,
-        "companion-model": 4
-      },
-      "name": "Tactical Command Section",
       "points": 100,
-      "specialRuleValues": {
-        "officer-of-the-line": 2
-      },
       "specialRules": [
         "officer-of-the-line"
       ],
+      "specialRuleValues": {
+        "officer-of-the-line": 2
+      },
       "traits": [
         "[Allegiance]",
         "Solar Auxilia"

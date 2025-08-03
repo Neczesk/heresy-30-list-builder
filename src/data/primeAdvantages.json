@@ -1,10 +1,10 @@
 {
   "primeAdvantages": [
     {
-      "description": "The unit has excellent logistical support",
-      "effect": "Add one Battlefield Role slot of your choice to the detachment",
       "id": "logistical-benefit",
       "name": "Logistical Benefit",
+      "description": "The unit has excellent logistical support",
+      "effect": "Add one Battlefield Role slot of your choice to the detachment",
       "restrictions": [
         "Cannot add Titan slots",
         "Cannot add slots that would exceed detachment limits"

@@ -43,11 +43,7 @@ function convertValueToCSV(value: any): string {
 }
 
 function getCSVFilename(type: string, data: any[]): string {
-  if (data.length === 0) return `${type}.csv`;
-
-  const firstItem = data[0];
-  const fields = Object.keys(firstItem);
-  return `${fields.join('_')}.csv`;
+  return `initial_${type}.csv`;
 }
 
 async function convertJSONToCSV(type: string) {
@@ -86,7 +82,14 @@ async function convertJSONToCSV(type: string) {
     Object.keys(item).forEach(key => allFields.add(key));
   });
 
-  const fields = Array.from(allFields).sort();
+  // Order fields with 'id' first, 'name' second, then alphabetically
+  const fields = Array.from(allFields).sort((a, b) => {
+    if (a === 'id') return -1;
+    if (b === 'id') return 1;
+    if (a === 'name') return -1;
+    if (b === 'name') return 1;
+    return a.localeCompare(b);
+  });
 
   // Create CSV content
   const csvHeader = fields.join(',');

@@ -1,11 +1,11 @@
 {
   "detachments": [
     {
+      "id": "crusade-primary",
+      "name": "Crusade Primary Detachment",
       "description": "The standard Primary Detachment for all factions",
       "faction": "universal",
-      "id": "crusade-primary",
       "maxCount": null,
-      "name": "Crusade Primary Detachment",
       "requirements": [
         {
           "type": "faction",
@@ -60,11 +60,11 @@
       "upgrades": []
     },
     {
+      "id": "warlord-detachment",
+      "name": "Warlord Detachment",
       "description": "Special detachment for Primarchs and Warlords",
       "faction": "legiones-astartes",
-      "id": "warlord-detachment",
       "maxCount": null,
-      "name": "Warlord Detachment",
       "requirements": [
         {
           "type": "unit",
@@ -117,11 +117,11 @@
       "upgrades": []
     },
     {
+      "id": "lord-of-war-detachment",
+      "name": "Lord of War Detachment",
       "description": "For Titan Legions and super-heavy units",
       "faction": "universal",
-      "id": "lord-of-war-detachment",
       "maxCount": null,
-      "name": "Lord of War Detachment",
       "requirements": [
         {
           "type": "unit",
@@ -162,11 +162,11 @@
       "upgrades": []
     },
     {
+      "id": "allied-detachment",
+      "name": "Allied Detachment",
       "description": "Allied forces from a different faction",
       "faction": "universal",
-      "id": "allied-detachment",
       "maxCount": null,
-      "name": "Allied Detachment",
       "requirements": [
         {
           "type": "faction",
@@ -219,11 +219,11 @@
       "upgrades": []
     },
     {
+      "id": "elite-transport",
+      "name": "Elite Transport Detachment",
       "description": "A detachment focused on elite transport capabilities",
       "faction": "universal",
-      "id": "elite-transport",
       "maxCount": null,
-      "name": "Elite Transport Detachment",
       "requirements": [
         {
           "type": "detachment",
@@ -265,11 +265,11 @@
       "upgrades": []
     },
     {
+      "id": "armoured-fist",
+      "name": "Armoured Fist",
       "description": "Heavy transports like the Land Raider, plus additional light transports",
       "faction": "universal",
-      "id": "armoured-fist",
       "maxCount": null,
-      "name": "Armoured Fist",
       "requirements": [
         {
           "type": "detachment",
@@ -305,11 +305,11 @@
       "upgrades": []
     },
     {
+      "id": "tactical-support",
+      "name": "Tactical Support",
       "description": "Additional Troops and Support slots",
       "faction": "universal",
-      "id": "tactical-support",
       "maxCount": null,
-      "name": "Tactical Support",
       "requirements": [
         {
           "type": "detachment",
@@ -345,11 +345,11 @@
       "upgrades": []
     },
     {
+      "id": "armoured-support",
+      "name": "Armoured Support",
       "description": "Armour slots which you can fill with tanks and other armoured vehicles",
       "faction": "universal",
-      "id": "armoured-support",
       "maxCount": null,
-      "name": "Armoured Support",
       "requirements": [
         {
           "type": "detachment",
@@ -379,11 +379,11 @@
       "upgrades": []
     },
     {
+      "id": "heavy-support",
+      "name": "Heavy Support",
       "description": "War-engine slots for Dreadnoughts and other war machines",
       "faction": "universal",
-      "id": "heavy-support",
       "maxCount": null,
-      "name": "Heavy Support",
       "requirements": [
         {
           "type": "detachment",
@@ -413,11 +413,11 @@
       "upgrades": []
     },
     {
+      "id": "combat-pioneer",
+      "name": "Combat Pioneer",
       "description": "Reconnaissance slots for light infantry and bikes",
       "faction": "universal",
-      "id": "combat-pioneer",
       "maxCount": null,
-      "name": "Combat Pioneer",
       "requirements": [
         {
           "type": "detachment",
@@ -447,11 +447,11 @@
       "upgrades": []
     },
     {
+      "id": "shock-assault",
+      "name": "Shock Assault",
       "description": "Heavy Assault slots for Terminators",
       "faction": "universal",
-      "id": "shock-assault",
       "maxCount": null,
-      "name": "Shock Assault",
       "requirements": [
         {
           "type": "detachment",
@@ -481,11 +481,11 @@
       "upgrades": []
     },
     {
+      "id": "first-strike",
+      "name": "First Strike",
       "description": "Fast Attack slots for aircraft, jetbikes and speeders",
       "faction": "universal",
-      "id": "first-strike",
       "maxCount": null,
-      "name": "First Strike",
       "requirements": [
         {
           "type": "detachment",
@@ -515,11 +515,11 @@
       "upgrades": []
     },
     {
+      "id": "combat-retinue",
+      "name": "Combat Retinue",
       "description": "Command squads for officers",
       "faction": "universal",
-      "id": "combat-retinue",
       "maxCount": 1,
-      "name": "Combat Retinue",
       "requirements": [
         {
           "type": "detachment",
@@ -549,11 +549,11 @@
       "upgrades": []
     },
     {
+      "id": "officer-cadre",
+      "name": "Officer Cadre",
       "description": "Additional Command slots",
       "faction": "universal",
-      "id": "officer-cadre",
       "maxCount": 1,
-      "name": "Officer Cadre",
       "requirements": [
         {
           "type": "detachment",
@@ -589,11 +589,11 @@
       "upgrades": []
     },
     {
+      "id": "army-vanguard",
+      "name": "Army Vanguard",
       "description": "Elite units and specialists",
       "faction": "universal",
-      "id": "army-vanguard",
       "maxCount": 1,
-      "name": "Army Vanguard",
       "requirements": [
         {
           "type": "detachment",
@@ -629,11 +629,11 @@
       "upgrades": []
     },
     {
+      "id": "scout-tercio",
+      "name": "Scout Tercio",
       "description": "A specialized reconnaissance detachment that can only be commanded by a Hermes Command Section.",
       "faction": "solar-auxilia",
-      "id": "scout-tercio",
       "maxCount": 1,
-      "name": "Scout Tercio",
       "requirements": [
         {
           "type": "detachment",
@@ -677,11 +677,11 @@
       "upgrades": []
     },
     {
+      "id": "veletaris-tercio",
+      "name": "Veletaris Tercio",
       "description": "An elite infantry detachment that can only be commanded by a Veletaris Command Section.",
       "faction": "solar-auxilia",
-      "id": "veletaris-tercio",
       "maxCount": 1,
-      "name": "Veletaris Tercio",
       "requirements": [
         {
           "type": "detachment",
@@ -742,11 +742,11 @@
       "upgrades": []
     },
     {
+      "id": "infantry-tercio",
+      "name": "Infantry Tercio",
       "description": "A standard infantry detachment that can only be commanded by a Line Command Section.",
       "faction": "solar-auxilia",
-      "id": "infantry-tercio",
       "maxCount": 1,
-      "name": "Infantry Tercio",
       "requirements": [
         {
           "type": "detachment",
@@ -805,11 +805,11 @@
       "upgrades": []
     },
     {
+      "id": "artillery-tercio",
+      "name": "Artillery Tercio",
       "description": "A specialized artillery detachment providing heavy fire support.",
       "faction": "universal",
-      "id": "artillery-tercio",
       "maxCount": 1,
-      "name": "Artillery Tercio",
       "requirements": [
         {
           "type": "detachment",
@@ -846,11 +846,11 @@
       "upgrades": []
     },
     {
+      "id": "armour-tercio",
+      "name": "Armour Tercio",
       "description": "A specialized armored detachment providing heavy tank support.",
       "faction": "universal",
-      "id": "armour-tercio",
       "maxCount": 1,
-      "name": "Armour Tercio",
       "requirements": [
         {
           "type": "detachment",
