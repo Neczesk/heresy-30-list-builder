@@ -303,7 +303,7 @@ export class UpgradeValidator {
     modelId: string,
     baseWeapons: (string | { id: string; mount?: string; count?: number })[],
     selectedUpgrades: ArmyUpgrade[],
-    modelCount: number
+    _modelCount: number
   ): { weaponId: string; count: number; mount?: string }[] {
     // If no upgrades, just return base weapons in the expected format
     if (selectedUpgrades.length === 0) {

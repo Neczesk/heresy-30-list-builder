@@ -36,7 +36,6 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
   unit,
   armyUnit,
   selectedUpgrades = [],
-  onClose,
 }) => {
     const modelCompositions = armyUnit
     ? DataLoader.getModelsForUnitInstance(unit.id, armyUnit)

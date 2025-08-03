@@ -25,6 +25,7 @@ import type {
   Weapon,
   RangedWeapon,
   MeleeWeapon,
+  UpgradeGroup,
 } from '../types/army';
 
 export class DataLoader {

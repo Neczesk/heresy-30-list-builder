@@ -63,7 +63,7 @@ export function getTriggeringUnit(
 export function canTriggerMoreDetachments(
   armyList: Army,
   unit: ArmyUnit,
-  slotId: string,
+  _slotId: string,
   maxDetachments: number = 1
 ): boolean {
   const currentDetachments = getDetachmentsTriggeredByUnit(armyList, unit.id);

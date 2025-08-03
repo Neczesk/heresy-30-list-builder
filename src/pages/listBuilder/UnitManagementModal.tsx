@@ -138,10 +138,7 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
     }
   }, [activeTab, unit.slotId]);
 
-  // Track current model counts (can be modified by upgrades)
-  const [currentModelCounts, setCurrentModelCounts] = useState<{ [modelId: string]: number }>(
-    { ...unit.models }
-  );
+
 
   // Track accordion expansion states
   const [expandedModelSections, setExpandedModelSections] = useState<{ [modelId: string]: boolean }>({});
@@ -726,7 +723,7 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                         Model-Level Upgrades
                       </Typography>
                       <Stack spacing={1}>
-                        {Object.entries(baseUnitData.modelUpgrades).map(([modelId, upgradeGroupIds]) => {
+                        {Object.entries(baseUnitData.modelUpgrades).map(([modelId, _upgradeGroupIds]) => {
                           const model = DataLoader.getModelById(modelId);
                           const modelCount = effectiveModelCounts[modelId] || 0;
 
