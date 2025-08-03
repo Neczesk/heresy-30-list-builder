@@ -219,7 +219,11 @@
           "description": "Additional wargear options",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["leman-russ-strike-hunter-killer-missile-upgrade", "leman-russ-strike-searchlight-upgrade", "leman-russ-strike-dozer-blade-upgrade"]
+          "upgrades": [
+            "leman-russ-strike-hunter-killer-missile-upgrade",
+            "leman-russ-strike-searchlight-upgrade",
+            "leman-russ-strike-dozer-blade-upgrade"
+          ]
         }
       ]
     },
@@ -275,7 +279,11 @@
           "description": "Additional wargear options",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["leman-russ-assault-hunter-killer-missile-upgrade", "leman-russ-assault-searchlight-upgrade", "leman-russ-assault-dozer-blade-upgrade"]
+          "upgrades": [
+            "leman-russ-assault-hunter-killer-missile-upgrade",
+            "leman-russ-assault-searchlight-upgrade",
+            "leman-russ-assault-dozer-blade-upgrade"
+          ]
         }
       ]
     },
@@ -305,7 +313,12 @@
         "line": 2
       },
       "wargear": [],
-      "weapons": ["las-pistol", "charnabal-sabre", "frag-grenades", "krak-grenades"],
+      "weapons": [
+        "las-pistol",
+        "charnabal-sabre",
+        "frag-grenades",
+        "krak-grenades"
+      ],
       "description": "A Legatine Marshall commanding the Legatine Command Section.",
       "upgradeGroups": [
         {
@@ -361,7 +374,12 @@
           "description": "Replace the Lasrifle with different weapon combinations",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["lifeward-weapon-upgrade", "lifeward-bayonet-upgrade", "lifeward-blast-charger-upgrade", "lifeward-melta-bomb-upgrade"]
+          "upgrades": [
+            "lifeward-weapon-upgrade",
+            "lifeward-bayonet-upgrade",
+            "lifeward-blast-charger-upgrade",
+            "lifeward-melta-bomb-upgrade"
+          ]
         },
         {
           "id": "lifeward-sabre-upgrade-group",
@@ -385,7 +403,11 @@
           "description": "Add special wargear to Lifewards",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["lifeward-command-vox-upgrade", "lifeward-augury-scanner-upgrade", "lifeward-vexilla-upgrade"]
+          "upgrades": [
+            "lifeward-command-vox-upgrade",
+            "lifeward-augury-scanner-upgrade",
+            "lifeward-vexilla-upgrade"
+          ]
         }
       ]
     },
@@ -416,7 +438,12 @@
         "officer-of-the-line": 2
       },
       "wargear": [],
-      "weapons": ["las-pistol", "charnabal-sabre", "frag-grenades", "krak-grenades"],
+      "weapons": [
+        "las-pistol",
+        "charnabal-sabre",
+        "frag-grenades",
+        "krak-grenades"
+      ],
       "description": "An Auxilia Captain leading a Tactical Command Section.",
       "upgradeGroups": [
         {
@@ -496,7 +523,11 @@
           "description": "Additional weapons for Companions with Lasrifles",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["companion-bayonet-upgrade", "companion-blast-charger-upgrade", "companion-melta-bomb-upgrade"]
+          "upgrades": [
+            "companion-bayonet-upgrade",
+            "companion-blast-charger-upgrade",
+            "companion-melta-bomb-upgrade"
+          ]
         },
         {
           "id": "companion-wargear-options",
@@ -504,7 +535,11 @@
           "description": "Wargear options for Companions",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["companion-command-vox-upgrade", "companion-augury-scanner-upgrade", "companion-vexilla-upgrade"]
+          "upgrades": [
+            "companion-command-vox-upgrade",
+            "companion-augury-scanner-upgrade",
+            "companion-vexilla-upgrade"
+          ]
         }
       ]
     },
@@ -559,7 +594,11 @@
           "description": "Additional weapons for Troop Masters with Lasrifles",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["troop-master-bayonet-upgrade", "troop-master-blast-charger-upgrade", "troop-master-melta-bomb-upgrade"]
+          "upgrades": [
+            "troop-master-bayonet-upgrade",
+            "troop-master-blast-charger-upgrade",
+            "troop-master-melta-bomb-upgrade"
+          ]
         },
         {
           "id": "troop-master-wargear-options",
@@ -567,7 +606,11 @@
           "description": "Wargear options for Troop Masters",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["troop-master-command-vox-upgrade", "troop-master-augury-scanner-upgrade", "troop-master-vexilla-upgrade"]
+          "upgrades": [
+            "troop-master-command-vox-upgrade",
+            "troop-master-augury-scanner-upgrade",
+            "troop-master-vexilla-upgrade"
+          ]
         }
       ]
     },
@@ -628,7 +671,11 @@
           "description": "Additional weapons for Veterans with Lasrifles",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["veteran-bayonet-upgrade", "veteran-blast-charger-upgrade", "veteran-melta-bomb-upgrade"]
+          "upgrades": [
+            "veteran-bayonet-upgrade",
+            "veteran-blast-charger-upgrade",
+            "veteran-melta-bomb-upgrade"
+          ]
         },
         {
           "id": "veteran-wargear-options",
@@ -636,7 +683,11 @@
           "description": "Wargear options for Veterans",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["veteran-command-vox-upgrade", "veteran-augury-scanner-upgrade", "veteran-vexilla-upgrade"]
+          "upgrades": [
+            "veteran-command-vox-upgrade",
+            "veteran-augury-scanner-upgrade",
+            "veteran-vexilla-upgrade"
+          ]
         },
         {
           "id": "artillery-veteran-wargear-options",
@@ -644,7 +695,12 @@
           "description": "Wargear options for Artillery Veterans",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["artillery-veteran-command-vox-upgrade", "artillery-veteran-augury-scanner-upgrade", "artillery-veteran-auxilia-vexilla-upgrade", "artillery-veteran-melta-bomb-upgrade"]
+          "upgrades": [
+            "artillery-veteran-command-vox-upgrade",
+            "artillery-veteran-augury-scanner-upgrade",
+            "artillery-veteran-auxilia-vexilla-upgrade",
+            "artillery-veteran-melta-bomb-upgrade"
+          ]
         },
         {
           "id": "artillery-veteran-weapon-additions",
@@ -652,7 +708,10 @@
           "description": "Additional weapons for Artillery Veterans with Lasrifles",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["artillery-veteran-bayonet-upgrade", "artillery-veteran-blast-charger-upgrade"]
+          "upgrades": [
+            "artillery-veteran-bayonet-upgrade",
+            "artillery-veteran-blast-charger-upgrade"
+          ]
         }
       ]
     },
@@ -752,23 +811,11 @@
           "description": "Wargear options for Veletarii",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["veletarii-command-vox-upgrade", "veletarii-augury-scanner-upgrade", "veletarii-vexilla-upgrade"]
-        },
-        {
-          "id": "veletaris-storm-vox-upgrade-group",
-          "name": "Vox Options",
-          "description": "Vox options for Veletaris Storm Section",
-          "collapsible": true,
-          "defaultCollapsed": true,
-          "upgrades": ["veletaris-storm-vox-upgrade"]
-        },
-        {
-          "id": "veletaris-storm-vexilla-upgrade-group",
-          "name": "Vexilla Options",
-          "description": "Vexilla options for Veletaris Storm Section",
-          "collapsible": true,
-          "defaultCollapsed": true,
-          "upgrades": ["veletaris-storm-vexilla-upgrade"]
+          "upgrades": [
+            "veletarii-command-vox-upgrade",
+            "veletarii-augury-scanner-upgrade",
+            "veletarii-vexilla-upgrade"
+          ]
         }
       ]
     },
@@ -972,7 +1019,11 @@
           "description": "Additional weapons for Auxilia Sergeants with Lasrifles",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["auxilia-sergeant-bayonet-upgrade", "auxilia-sergeant-blast-charger-upgrade", "auxilia-sergeant-melta-bomb-upgrade"]
+          "upgrades": [
+            "auxilia-sergeant-bayonet-upgrade",
+            "auxilia-sergeant-blast-charger-upgrade",
+            "auxilia-sergeant-melta-bomb-upgrade"
+          ]
         }
       ]
     },
@@ -1009,7 +1060,10 @@
           "description": "Additional weapons for Auxiliaries with Lasrifles",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["auxiliary-bayonet-upgrade", "auxiliary-blast-charger-upgrade"]
+          "upgrades": [
+            "auxiliary-bayonet-upgrade",
+            "auxiliary-blast-charger-upgrade"
+          ]
         },
         {
           "id": "auxiliary-wargear-options",
@@ -1042,7 +1096,12 @@
         "armourSave": 3,
         "invulnerableSave": null
       },
-      "specialRules": ["bulky", "implacable-advance", "move-through-cover", "vanguard"],
+      "specialRules": [
+        "bulky",
+        "implacable-advance",
+        "move-through-cover",
+        "vanguard"
+      ],
       "specialRuleValues": {
         "bulky": 2,
         "vanguard": 2
@@ -1097,7 +1156,11 @@
           "description": "Add various wargear options to the vehicle",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["basilisk-hunter-killer-missile-upgrade", "basilisk-dozer-blade-upgrade", "basilisk-searchlight-upgrade"]
+          "upgrades": [
+            "basilisk-hunter-killer-missile-upgrade",
+            "basilisk-dozer-blade-upgrade",
+            "basilisk-searchlight-upgrade"
+          ]
         }
       ]
     },
@@ -1118,9 +1181,7 @@
       "specialRules": [],
       "specialRuleValues": {},
       "wargear": [],
-      "weapons": [
-        { "id": "medusa-mortar", "mount": "Centreline Mounted" }
-      ],
+      "weapons": [{ "id": "medusa-mortar", "mount": "Centreline Mounted" }],
       "description": "A Medusa Artillery Tank.",
       "upgradeGroups": [
         {
@@ -1137,7 +1198,11 @@
           "description": "Add various wargear options to the vehicle",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["medusa-hunter-killer-missile-upgrade", "medusa-dozer-blade-upgrade", "medusa-searchlight-upgrade"]
+          "upgrades": [
+            "medusa-hunter-killer-missile-upgrade",
+            "medusa-dozer-blade-upgrade",
+            "medusa-searchlight-upgrade"
+          ]
         }
       ]
     },
@@ -1192,7 +1257,12 @@
         "armourSave": 3,
         "invulnerableSave": null
       },
-      "specialRules": ["slow-and-purposeful", "support-unit", "rapier-section", "bulky"],
+      "specialRules": [
+        "slow-and-purposeful",
+        "support-unit",
+        "rapier-section",
+        "bulky"
+      ],
       "specialRuleValues": {
         "support-unit": 1,
         "bulky": 4
@@ -1232,7 +1302,14 @@
         "armourSave": 4,
         "invulnerableSave": null
       },
-      "specialRules": ["heedless", "bitter-duty", "bulky", "expendable", "feel-no-pain", "impact"],
+      "specialRules": [
+        "heedless",
+        "bitter-duty",
+        "bulky",
+        "expendable",
+        "feel-no-pain",
+        "impact"
+      ],
       "specialRuleValues": {
         "bulky": 4,
         "expendable": 2,
@@ -1265,7 +1342,13 @@
         "armourSave": 4,
         "invulnerableSave": null
       },
-      "specialRules": ["bulky", "implacable-advance", "move-through-cover", "outflank", "pre-emptive-strike"],
+      "specialRules": [
+        "bulky",
+        "implacable-advance",
+        "move-through-cover",
+        "outflank",
+        "pre-emptive-strike"
+      ],
       "specialRuleValues": {
         "bulky": 2
       },
@@ -1304,7 +1387,12 @@
         "armourSave": 4,
         "invulnerableSave": null
       },
-      "specialRules": ["bulky", "implacable-advance", "move-through-cover", "outflank"],
+      "specialRules": [
+        "bulky",
+        "implacable-advance",
+        "move-through-cover",
+        "outflank"
+      ],
       "specialRuleValues": {
         "bulky": 2
       },
@@ -1370,7 +1458,10 @@
           "description": "Add bayonet and blast charger options",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["ordnance-master-bayonet-upgrade", "ordnance-master-blast-charger-upgrade"]
+          "upgrades": [
+            "ordnance-master-bayonet-upgrade",
+            "ordnance-master-blast-charger-upgrade"
+          ]
         }
       ]
     },
@@ -1541,9 +1632,7 @@
       },
       "specialRules": ["light-transport"],
       "wargear": [],
-      "weapons": [
-        { "id": "twin-lascannon", "mount": "Hull (Front) Mounted" }
-      ],
+      "weapons": [{ "id": "twin-lascannon", "mount": "Hull (Front) Mounted" }],
       "description": "A heavily armored transport vehicle designed for troop deployment and battlefield support.",
       "upgradeGroups": [
         {
@@ -1601,7 +1690,12 @@
         "armourSave": 4,
         "invulnerableSave": null
       },
-      "specialRules": ["bulky", "implacable-advance", "move-through-cover", "outflank"],
+      "specialRules": [
+        "bulky",
+        "implacable-advance",
+        "move-through-cover",
+        "outflank"
+      ],
       "specialRuleValues": {
         "bulky": 2
       },
@@ -1637,7 +1731,11 @@
       "wargear": [],
       "weapons": [
         { "id": "twin-lascannon", "mount": "Centreline Mounted" },
-        { "id": "hellstrike-missiles", "mount": "Centreline Mounted", "count": 6 }
+        {
+          "id": "hellstrike-missiles",
+          "mount": "Centreline Mounted",
+          "count": 6
+        }
       ],
 
       "description": "A fast strike fighter designed for aerial combat and ground attack missions.",
@@ -1665,8 +1763,7 @@
       ],
 
       "description": "A heavy fighter aircraft designed for aerial combat and ground attack missions.",
-      "upgradeGroups": [
-      ]
+      "upgradeGroups": []
     },
     {
       "id": "malcador-model",
@@ -1781,7 +1878,12 @@
           "description": "Additional wargear options",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["malcador-infernus-hunter-killer-missile-upgrade", "malcador-infernus-searchlight-upgrade", "malcador-infernus-dozer-blade-upgrade", "malcador-infernus-flare-shield-upgrade"]
+          "upgrades": [
+            "malcador-infernus-hunter-killer-missile-upgrade",
+            "malcador-infernus-searchlight-upgrade",
+            "malcador-infernus-dozer-blade-upgrade",
+            "malcador-infernus-flare-shield-upgrade"
+          ]
         }
       ]
     },
@@ -1832,7 +1934,12 @@
           "description": "Additional wargear options",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["valdor-hunter-killer-missile-upgrade", "valdor-searchlight-upgrade", "valdor-dozer-blade-upgrade", "valdor-flare-shield-upgrade"]
+          "upgrades": [
+            "valdor-hunter-killer-missile-upgrade",
+            "valdor-searchlight-upgrade",
+            "valdor-dozer-blade-upgrade",
+            "valdor-flare-shield-upgrade"
+          ]
         }
       ]
     },
@@ -1892,9 +1999,13 @@
           "description": "Additional wargear options",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": ["stormhammer-hunter-killer-missile-upgrade", "stormhammer-searchlight-upgrade", "stormhammer-flare-shield-upgrade"]
+          "upgrades": [
+            "stormhammer-hunter-killer-missile-upgrade",
+            "stormhammer-searchlight-upgrade",
+            "stormhammer-flare-shield-upgrade"
+          ]
         }
       ]
     }
   ]
-} 
+}

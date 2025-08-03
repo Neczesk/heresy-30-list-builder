@@ -68,10 +68,7 @@
           "isDefault": true
         }
       ],
-      "specialRules": [
-        "Independent Character",
-        "Stubborn"
-      ]
+      "specialRules": ["Independent Character", "Stubborn"]
     },
     {
       "id": "tactical-marine",
@@ -112,10 +109,7 @@
           "isDefault": true
         }
       ],
-      "specialRules": [
-        "And They Shall Know No Fear",
-        "Bolter Drill"
-      ],
+      "specialRules": ["And They Shall Know No Fear", "Bolter Drill"],
       "traits": ["[Allegiance]", "Legiones Astartes", "Tactical"]
     },
     {
@@ -134,16 +128,10 @@
       "wargear": [],
       "specialRules": [],
       "traits": ["[Allegiance]", "Solar Auxilia", "Scout Tercio"],
-      "upgrades": [
-        "additional-hermes-pathfinders-upgrade"
-      ],
+      "upgrades": ["additional-hermes-pathfinders-upgrade"],
       "modelUpgrades": {
-        "hermes-lead-model": [
-          "hermes-lead-weapon-upgrade-group"
-        ],
-        "hermes-pathfinder-model": [
-          "hermes-pathfinder-weapon-upgrade-group"
-        ]
+        "hermes-lead-model": ["hermes-lead-weapon-upgrade-group"],
+        "hermes-pathfinder-model": ["hermes-pathfinder-weapon-upgrade-group"]
       }
     },
 
@@ -162,9 +150,7 @@
       "wargear": [],
       "specialRules": [],
       "traits": ["[Allegiance]", "Solar Auxilia"],
-      "upgrades": [
-        "additional-aethon-heavy-sentinels-upgrade"
-      ],
+      "upgrades": ["additional-aethon-heavy-sentinels-upgrade"],
       "modelUpgrades": {
         "aethon-heavy-sentinel-model": [
           "aethon-heavy-sentinel-multi-laser-upgrade-group",
@@ -239,9 +225,7 @@
         "vanguard": 3
       },
       "traits": ["[Allegiance]", "Solar Auxilia", "Veletaris Tercio"],
-      "upgrades": [
-        "additional-veletarii-upgrade"
-      ],
+      "upgrades": ["additional-veletarii-upgrade"],
       "modelUpgrades": {
         "first-prime-model": [
           "first-prime-weapon-upgrade-group",
@@ -276,9 +260,7 @@
         "vanguard": 3
       },
       "traits": ["[Allegiance]", "Solar Auxilia"],
-      "upgrades": [
-        "additional-veletaris-storm-veletarii-upgrade"
-      ],
+      "upgrades": ["additional-veletaris-storm-veletarii-upgrade"],
       "modelUpgrades": {
         "veletarii-prime-model": [
           "veletarii-prime-weapon-upgrade-group",
@@ -311,9 +293,7 @@
         "vanguard": 3
       },
       "traits": ["[Allegiance]", "Solar Auxilia"],
-      "upgrades": [
-        "additional-veletaris-vanguard-veletarii-upgrade"
-      ],
+      "upgrades": ["additional-veletaris-vanguard-veletarii-upgrade"],
       "modelUpgrades": {
         "veletarii-vanguard-prime-model": [
           "veletarii-vanguard-prime-weapon-upgrade-group",
@@ -341,9 +321,7 @@
       "wargear": [],
       "specialRules": [],
       "traits": ["[Allegiance]", "Solar Auxilia"],
-      "upgrades": [
-        "additional-charonite-ogryn-upgrade"
-      ],
+      "upgrades": ["additional-charonite-ogryn-upgrade"],
       "modelUpgrades": {
         "charonite-ogryn-model": []
       }
@@ -363,9 +341,7 @@
       "wargear": [],
       "specialRules": [],
       "traits": ["[Allegiance]", "Solar Auxilia"],
-      "upgrades": [
-        "additional-hermes-veletaris-sentinels-upgrade"
-      ],
+      "upgrades": ["additional-hermes-veletaris-sentinels-upgrade"],
       "modelUpgrades": {
         "hermes-veletaris-sentinel-model": [
           "hermes-veletaris-sentinel-weapon-upgrade-group"
@@ -411,9 +387,7 @@
       "wargear": [],
       "specialRules": [],
       "traits": ["[Allegiance]", "Solar Auxilia"],
-      "upgrades": [
-        "additional-veterans-upgrade"
-      ],
+      "upgrades": ["additional-veterans-upgrade"],
       "modelUpgrades": {
         "troop-master-model": [
           "troop-master-weapon-upgrade-group",
@@ -449,9 +423,7 @@
         "line": 1
       },
       "traits": ["[Allegiance]", "Solar Auxilia", "Infantry Tercio"],
-      "upgrades": [
-        "additional-auxiliaries-upgrade"
-      ],
+      "upgrades": ["additional-auxiliaries-upgrade"],
       "modelUpgrades": {
         "auxilia-sergeant-model": [
           "auxilia-sergeant-weapon-upgrade-group",
@@ -479,9 +451,7 @@
       "wargear": [],
       "specialRules": [],
       "traits": ["[Allegiance]", "Solar Auxilia"],
-      "upgrades": [
-        "additional-hermes-light-sentinels-upgrade"
-      ],
+      "upgrades": ["additional-hermes-light-sentinels-upgrade"],
       "modelUpgrades": {
         "hermes-light-sentinel-model": [
           "hermes-light-sentinel-weapon-upgrade-group"
@@ -643,14 +613,10 @@
       "wargear": [],
       "specialRules": [],
       "traits": ["[Allegiance]", "Solar Auxilia"],
-      "upgrades": [
-        "additional-rapier-crews-upgrade"
-      ],
+      "upgrades": ["additional-rapier-crews-upgrade"],
       "modelUpgrades": {
         "rapier-gunner-model": [],
-        "rapier-carrier-model": [
-          "rapier-carrier-weapon-upgrade-group"
-        ]
+        "rapier-carrier-model": ["rapier-carrier-weapon-upgrade-group"]
       }
     },
 
@@ -744,9 +710,7 @@
       "wargear": [],
       "specialRules": [],
       "traits": ["[Allegiance]", "Solar Auxilia", "Artillery Tercio"],
-      "upgrades": [
-        "additional-artillery-veterans-upgrade"
-      ],
+      "upgrades": ["additional-artillery-veterans-upgrade"],
       "modelUpgrades": {
         "ordnance-master-model": [
           "ordnance-master-weapon-upgrade-group",
@@ -773,7 +737,12 @@
       },
       "wargear": [],
       "specialRules": [],
-      "traits": ["[Allegiance]", "Solar Auxilia", "Armoured Tercio", "Smokescreen"],
+      "traits": [
+        "[Allegiance]",
+        "Solar Auxilia",
+        "Armoured Tercio",
+        "Smokescreen"
+      ],
       "modelUpgrades": {
         "command-tank-model": [
           "command-tank-turret-weapon-upgrade-group",
@@ -801,9 +770,7 @@
       "wargear": [],
       "specialRules": [],
       "traits": ["[Allegiance]", "Solar Auxilia", "Cohort Supreme Command"],
-      "upgrades": [
-        "additional-lifewards-upgrade"
-      ],
+      "upgrades": ["additional-lifewards-upgrade"],
       "modelUpgrades": {
         "legatine-marshall-model": [
           "legatine-marshall-melee-weapons",
@@ -836,9 +803,7 @@
         "officer-of-the-line": 2
       },
       "traits": ["[Allegiance]", "Solar Auxilia"],
-      "upgrades": [
-        "additional-companions-upgrade"
-      ],
+      "upgrades": ["additional-companions-upgrade"],
       "modelUpgrades": {
         "auxilia-captain-model": [
           "auxilia-captain-melee-weapons",
@@ -854,4 +819,4 @@
       }
     }
   ]
-} 
+}

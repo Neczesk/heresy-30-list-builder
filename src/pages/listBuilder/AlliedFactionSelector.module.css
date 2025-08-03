@@ -1,0 +1,197 @@
+/* Import shared styles */
+@import './shared.module.css';
+
+/* Allied Faction Selector Specific Styles */
+.allied-faction-selector {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.selector-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2xl);
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.back-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  transition: all var(--transition-normal);
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.selector-header h2 {
+  margin: 0;
+  font-size: var(--font-size-6xl);
+  color: #ffd700;
+}
+
+.selector-content {
+  flex: 1;
+  padding: var(--spacing-2xl);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.faction-step h3,
+.subfaction-step h3 {
+  margin: 0 0 var(--spacing-sm) 0;
+  color: #ffd700;
+  font-size: var(--font-size-5xl);
+  font-weight: 600;
+}
+
+.faction-step p,
+.subfaction-step p {
+  margin: 0 0 var(--spacing-2xl) 0;
+  opacity: 0.9;
+  font-size: var(--font-size-xl);
+  line-height: 1.5;
+}
+
+.factions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+.faction-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.faction-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.faction-card h4 {
+  margin: 0 0 var(--spacing-md) 0;
+  color: #ffd700;
+  font-size: var(--font-size-3xl);
+  font-weight: 600;
+}
+
+.faction-description {
+  margin: 0 0 var(--spacing-lg) 0;
+  opacity: 0.9;
+  line-height: 1.4;
+  font-size: var(--font-size-base);
+}
+
+.faction-type {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.type-label {
+  font-weight: 600;
+  color: var(--primary-color);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.type-value {
+  background: rgba(74, 144, 226, 0.2);
+  color: var(--primary-color);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-2xl);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.faction-rules {
+  margin-top: var(--spacing-lg);
+}
+
+.rules-label {
+  font-weight: 600;
+  color: var(--primary-color);
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rules-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.rule {
+  background: rgba(76, 175, 80, 0.2);
+  color: var(--success-color);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-2xl);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.faction-note {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-sm);
+  background: rgba(255, 193, 7, 0.1);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.faction-note .note {
+  color: var(--warning-color);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .selector-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+  }
+
+  .selector-content {
+    padding: var(--spacing-lg);
+  }
+
+  .factions-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .faction-card {
+    padding: var(--spacing-lg);
+  }
+}

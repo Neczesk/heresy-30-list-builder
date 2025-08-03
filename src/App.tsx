@@ -1,18 +1,18 @@
 import { useState } from 'react';
-import './App.module.css';
 import AppRouter from './components/Router';
 import type { Army } from './types/army';
+import { CssBaseline } from '@mui/material';
 
 function App() {
   const [currentArmyList, setCurrentArmyList] = useState<Army | null>(null);
 
   return (
-    <div className="App">
-      <AppRouter 
+    <CssBaseline>
+      <AppRouter
         currentArmyList={currentArmyList}
         setCurrentArmyList={setCurrentArmyList}
       />
-    </div>
+    </CssBaseline>
   );
 }
 

@@ -1,6 +1,5 @@
 {
   "weapons": [
-
     {
       "id": "multi-laser",
       "name": "Multi-laser",
@@ -16,18 +15,6 @@
       },
       "traits": ["Las"],
       "description": "Rapid-firing laser weapon system."
-    },
-    {
-      "id": "demolisher-cannon",
-      "name": "Demolisher Cannon",
-      "type": "ranged",
-      "range": 24,
-      "firepower": 1,
-      "rangedStrength": 10,
-      "ap": 4,
-      "damage": 4,
-      "specialRules": ["heavy-support", "siege-weapon"],
-      "description": "Short-range high-explosive cannon."
     },
     {
       "id": "power-sword",
@@ -636,7 +623,7 @@
       "firepower": 1,
       "rangedStrength": 9,
       "ap": 3,
-      "damage":3,
+      "damage": 3,
       "specialRules": ["limited", "armourbane"],
       "specialRuleValues": {
         "limited": 1
@@ -774,7 +761,7 @@
       "firepower": 1,
       "rangedStrength": 9,
       "ap": 2,
-      "damage": 4,  
+      "damage": 4,
       "specialRules": ["heavy", "armourbane"],
       "specialRuleValues": {
         "heavy": "RS"
@@ -863,7 +850,8 @@
       },
       "traits": ["Guided Missile"],
       "description": "Heavy guided missiles with armourbane capability."
-    }, {
+    },
+    {
       "id": "heavy-bolter",
       "name": "Heavy Bolter",
       "type": "ranged",
@@ -879,7 +867,7 @@
       "traits": ["Bolt"],
       "description": "Heavy bolter with sustained fire capability."
     },
-        {
+    {
       "id": "lasrifle",
       "name": "Lasrifle",
       "type": "ranged",
@@ -957,4 +945,4 @@
       "description": "Powerful main cannon mounted on the Stormhammer Super-Heavy Tank."
     }
   ]
-} 
+}

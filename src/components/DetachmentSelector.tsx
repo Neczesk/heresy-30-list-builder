@@ -1,28 +1,45 @@
 import React, { useState } from 'react';
-import { Button, Card } from './ui';
+import {
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  Button,
+  Chip,
+} from '@mui/material';
+import { ArrowBack } from '@mui/icons-material';
 import { DataLoader } from '../utils/dataLoader';
 import type { Detachment, Faction, Allegiance } from '../types/army';
-import AllegianceSelector from './AllegianceSelector';
-import styles from './DetachmentSelector.module.css';
+import AllegianceSelector from '../pages/listBuilder/AllegianceSelector';
 
 interface DetachmentSelectorProps {
-  onDetachmentSelected: (detachment: Detachment, faction: Faction, allegiance: Allegiance, subFaction?: Faction) => void;
+  onDetachmentSelected: (
+    detachment: Detachment,
+    faction: Faction,
+    allegiance: Allegiance,
+    subFaction?: Faction
+  ) => void;
   onCancel: () => void;
 }
 
 const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
   onDetachmentSelected,
-  onCancel
+  onCancel,
 }) => {
   const [selectedFaction, setSelectedFaction] = useState<Faction | null>(null);
-  const [selectedAllegiance, setSelectedAllegiance] = useState<Allegiance>('Loyalist');
-  const [step, setStep] = useState<'allegiance' | 'faction' | 'subFaction'>('allegiance');
+  const [selectedAllegiance, setSelectedAllegiance] =
+    useState<Allegiance>('Loyalist');
+  const [step, setStep] = useState<'allegiance' | 'faction' | 'subFaction'>(
+    'allegiance'
+  );
 
   // Get main factions filtered by allegiance (including Universal)
-  const mainFactions = DataLoader.getMainFactionsByAllegiance(selectedAllegiance);
-  
+  const mainFactions =
+    DataLoader.getMainFactionsByAllegiance(selectedAllegiance);
+
   // Get legion sub-factions filtered by allegiance (including Universal)
-  const legionSubFactions = DataLoader.getLegionSubFactionsByAllegiance(selectedAllegiance);
+  const legionSubFactions =
+    DataLoader.getLegionSubFactionsByAllegiance(selectedAllegiance);
 
   const handleAllegianceSelect = (allegiance: Allegiance) => {
     setSelectedAllegiance(allegiance);
@@ -31,7 +48,7 @@ const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
 
   const handleFactionSelect = (faction: Faction) => {
     setSelectedFaction(faction);
-    
+
     // If Legiones Astartes is selected, go to sub-faction selection
     if (faction.id === 'legiones-astartes') {
       setStep('subFaction');
@@ -48,7 +65,12 @@ const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
     // Immediately create the army list with the selected sub-faction and Crusade Primary Detachment
     const crusadeDetachment = DataLoader.getDetachmentById('crusade-primary');
     if (crusadeDetachment) {
-      onDetachmentSelected(crusadeDetachment, selectedFaction!, selectedAllegiance, subFaction);
+      onDetachmentSelected(
+        crusadeDetachment,
+        selectedFaction!,
+        selectedAllegiance,
+        subFaction
+      );
     }
   };
 
@@ -71,45 +93,93 @@ const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
   );
 
   const renderFactionStep = () => (
-    <div className={styles['faction-step']}>
-      <div className={styles['factions-grid']}>
-        {mainFactions.map((faction) => (
-          <Card
-            key={faction.id}
-            variant="dark"
-            padding="lg"
-            interactive
-            className={`${styles['faction-card']} ${selectedFaction?.id === faction.id ? styles.selected : ''}`}
-            onClick={() => handleFactionSelect(faction)}
-          >
-            <h4>{faction.name}</h4>
-            <p className={styles['faction-description']}>{faction.description}</p>
-            <div className={styles['faction-type']}>{faction.type}</div>
-          </Card>
+    <Box>
+      <Typography variant="h4" component="h3" gutterBottom>
+        Select Faction
+      </Typography>
+      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+        Choose your army's faction.
+      </Typography>
+
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: 3 }}>
+        {mainFactions.map(faction => (
+          <Box key={faction.id}>
+            <Card
+              variant={selectedFaction?.id === faction.id ? 'elevation' : 'outlined'}
+              elevation={selectedFaction?.id === faction.id ? 4 : 1}
+              sx={{
+                cursor: 'pointer',
+                height: '100%',
+                ...(selectedFaction?.id === faction.id && {
+                  borderColor: 'primary.main',
+                }),
+              }}
+              onClick={() => handleFactionSelect(faction)}
+            >
+              <CardContent>
+                <Typography variant="h6" component="h4" gutterBottom>
+                  {faction.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                  {faction.description}
+                </Typography>
+                <Chip
+                  label={faction.type}
+                  color="primary"
+                  size="small"
+                  variant="outlined"
+                />
+              </CardContent>
+            </Card>
+          </Box>
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 
   const renderSubFactionStep = () => (
-    <div className={styles['subfaction-step']}>
-      <div className={styles['factions-grid']}>
-        {legionSubFactions.map((subFaction) => (
-          <Card
-            key={subFaction.id}
-            variant="dark"
-            padding="lg"
-            interactive
-            className={`${styles['faction-card']} ${selectedFaction?.id === subFaction.id ? styles.selected : ''}`}
-            onClick={() => handleSubFactionSelect(subFaction)}
-          >
-            <h4>{subFaction.name}</h4>
-            <p className={styles['faction-description']}>{subFaction.description}</p>
-            <div className={styles['faction-type']}>{subFaction.type}</div>
-          </Card>
+    <Box>
+      <Typography variant="h4" component="h3" gutterBottom>
+        Select Legion
+      </Typography>
+      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+        Choose your Space Marine Legion.
+      </Typography>
+
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: 3 }}>
+        {legionSubFactions.map(subFaction => (
+          <Box key={subFaction.id}>
+            <Card
+              variant={selectedFaction?.id === subFaction.id ? 'elevation' : 'outlined'}
+              elevation={selectedFaction?.id === subFaction.id ? 4 : 1}
+              sx={{
+                cursor: 'pointer',
+                height: '100%',
+                ...(selectedFaction?.id === subFaction.id && {
+                  borderColor: 'primary.main',
+                }),
+              }}
+              onClick={() => handleSubFactionSelect(subFaction)}
+            >
+              <CardContent>
+                <Typography variant="h6" component="h4" gutterBottom>
+                  {subFaction.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                  {subFaction.description}
+                </Typography>
+                <Chip
+                  label={subFaction.type}
+                  color="primary"
+                  size="small"
+                  variant="outlined"
+                />
+              </CardContent>
+            </Card>
+          </Box>
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 
   const getCurrentStepTitle = () => {
@@ -126,21 +196,34 @@ const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
   };
 
   return (
-    <div className={styles['detachment-selector']}>
-      <div className={styles['selector-header']}>
-        <h2>{getCurrentStepTitle()}</h2>
-        <Button variant="secondary" size="sm" onClick={handleBack}>
-          ← Back
+    <Box sx={{ maxWidth: 1200, mx: 'auto', p: 4 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          mb: 4,
+        }}
+      >
+        <Typography variant="h3" component="h2">
+          {getCurrentStepTitle()}
+        </Typography>
+        <Button
+          variant="outlined"
+          startIcon={<ArrowBack />}
+          onClick={handleBack}
+        >
+          Back
         </Button>
-      </div>
+      </Box>
 
-      <div className={styles['selector-content']}>
+      <Box>
         {step === 'allegiance' && renderAllegianceStep()}
         {step === 'faction' && renderFactionStep()}
         {step === 'subFaction' && renderSubFactionStep()}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
-export default DetachmentSelector; 
+export default DetachmentSelector;

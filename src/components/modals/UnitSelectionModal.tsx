@@ -1,0 +1,387 @@
+import React, { useState, useEffect } from 'react';
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  IconButton,
+  Card,
+  CardContent,
+  Typography,
+  Box,
+  Chip,
+  Tabs,
+  Tab,
+} from '@mui/material';
+import { Close } from '@mui/icons-material';
+import { DataLoader } from '../../utils/dataLoader';
+import { CustomUnitStorage } from '../../utils/customUnitStorage';
+import type { Unit, CustomUnit, Army } from '../../types/army';
+
+interface UnitSelectionModalProps {
+  isOpen: boolean;
+  roleId: string;
+  roleName: string;
+  armyList: Army;
+  detachment: any;
+  onUnitSelected: (unitId: string) => void;
+  onClose: () => void;
+}
+
+const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
+  isOpen,
+  roleId,
+  roleName,
+  armyList,
+  detachment,
+  onUnitSelected,
+  onClose
+}) => {
+  const [activeTab, setActiveTab] = useState<'base' | 'custom'>('base');
+  const [availableBaseUnits, setAvailableBaseUnits] = useState<Unit[]>([]);
+  const [availableCustomUnits, setAvailableCustomUnits] = useState<CustomUnit[]>([]);
+
+  // Get available base units
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const allUnits = DataLoader.getUnits();
+    const primaryFaction = armyList.faction;
+    const armyAllegiance = armyList.allegiance;
+
+    // Get the battlefield role data to convert between ID and type
+    const selectedRole = DataLoader.getBattlefieldRoleById(roleId);
+    if (!selectedRole) {
+      setAvailableBaseUnits([]);
+      return;
+    }
+
+    // Get the specific slot data to check for unit restrictions
+    const slotData = detachment.slots.find((slot: any) => slot.roleId === roleId);
+    const allowedUnitIds = slotData?.allowedUnits;
+
+    const filteredUnits = allUnits.filter((unit: Unit) => {
+      // If this slot has specific unit restrictions, only allow those units
+      if (allowedUnitIds && allowedUnitIds.length > 0) {
+        if (!allowedUnitIds.includes(unit.id)) {
+          return false;
+        }
+      } else {
+        // Otherwise, use the standard role-based filtering
+        if (unit.battlefieldRole !== selectedRole.type) {
+          return false;
+        }
+      }
+
+      // Check allegiance compatibility
+      if (unit.allegiance !== 'Universal' && unit.allegiance !== armyAllegiance) {
+        return false;
+      }
+
+      // Check faction compatibility
+      if (unit.faction && unit.faction !== 'universal') {
+        // Direct faction match
+        if (unit.faction === primaryFaction) {
+          return true;
+        }
+
+        // Check if current faction is a subfaction of the unit's faction
+        const currentFactionData = DataLoader.getFactionById(primaryFaction);
+        if (currentFactionData?.parentFaction === unit.faction) {
+          return true;
+        }
+
+        // Check if unit's faction is a parent of current faction
+        const unitFactionData = DataLoader.getFactionById(unit.faction);
+        if (unitFactionData?.isMainFaction && currentFactionData?.parentFaction === unit.faction) {
+          return true;
+        }
+
+        return false;
+      }
+
+      // Check legion-specific restrictions
+      if (unit.legionSpecific && unit.legionSpecific.length > 0) {
+        // For now, allow all legion-specific units
+        // In a full implementation, you'd check if the current faction is in the allowed list
+        return true;
+      }
+
+      return true;
+    });
+
+    setAvailableBaseUnits(filteredUnits);
+  }, [isOpen, roleId, armyList, detachment]);
+
+  // Get available custom units
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const allCustomUnits = CustomUnitStorage.getAllCustomUnits();
+    const primaryFaction = armyList.faction;
+    const armyAllegiance = armyList.allegiance;
+
+    // Get the battlefield role data to convert between ID and type
+    const selectedRole = DataLoader.getBattlefieldRoleById(roleId);
+    if (!selectedRole) {
+      setAvailableCustomUnits([]);
+      return;
+    }
+
+    // Get the specific slot data to check for unit restrictions
+    const slotData = detachment.slots.find((slot: any) => slot.roleId === roleId);
+    const allowedUnitIds = slotData?.allowedUnits;
+
+    const filteredCustomUnits = Object.values(allCustomUnits).filter((customUnit: CustomUnit) => {
+      // Get the base unit data for this custom unit
+      const baseUnit = DataLoader.getUnitById(customUnit.baseUnitId);
+      if (!baseUnit) return false;
+
+      // If this slot has specific unit restrictions, only allow those units
+      if (allowedUnitIds && allowedUnitIds.length > 0) {
+        if (!allowedUnitIds.includes(customUnit.baseUnitId)) {
+          return false;
+        }
+      } else {
+        // Otherwise, use the standard role-based filtering
+        if (baseUnit.battlefieldRole !== selectedRole.type) {
+          return false;
+        }
+      }
+
+      // Check allegiance compatibility
+      if (baseUnit.allegiance !== 'Universal' && baseUnit.allegiance !== armyAllegiance) {
+        return false;
+      }
+
+      // Check faction compatibility
+      if (baseUnit.faction && baseUnit.faction !== 'universal') {
+        // Direct faction match
+        if (baseUnit.faction === primaryFaction) {
+          return true;
+        }
+
+        // Check if current faction is a subfaction of the unit's faction
+        const currentFactionData = DataLoader.getFactionById(primaryFaction);
+        if (currentFactionData?.parentFaction === baseUnit.faction) {
+          return true;
+        }
+
+        // Check if unit's faction is a parent of current faction
+        const unitFactionData = DataLoader.getFactionById(baseUnit.faction);
+        if (unitFactionData?.isMainFaction && currentFactionData?.parentFaction === baseUnit.faction) {
+          return true;
+        }
+
+        return false;
+      }
+
+      // Check legion-specific restrictions
+      if (baseUnit.legionSpecific && baseUnit.legionSpecific.length > 0) {
+        // For now, allow all legion-specific units
+        return true;
+      }
+
+      return true;
+    });
+
+    setAvailableCustomUnits(filteredCustomUnits);
+  }, [isOpen, roleId, armyList, detachment]);
+
+  const handleBaseUnitSelect = (unitId: string) => {
+    onUnitSelected(unitId);
+  };
+
+  const handleCustomUnitSelect = (customUnit: CustomUnit) => {
+    // For custom units, we need to create an ArmyUnit from the custom unit
+    // This will be handled in the parent component
+    onUnitSelected(`custom:${customUnit.id}`);
+  };
+
+  const getBaseUnitPoints = (unit: Unit) => {
+    return unit.points;
+  };
+
+  const getCustomUnitPoints = (customUnit: CustomUnit) => {
+    const baseUnit = DataLoader.getUnitById(customUnit.baseUnitId);
+    if (!baseUnit) return 0;
+
+    const upgradePoints = customUnit.upgrades.reduce((total, upgrade) => {
+      return total + (upgrade.points * upgrade.count);
+    }, 0);
+
+    return baseUnit.points + upgradePoints;
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <Dialog
+      open={isOpen}
+      onClose={onClose}
+      maxWidth="md"
+      fullWidth
+      PaperProps={{
+        sx: { maxHeight: '80vh' }
+      }}
+    >
+      <DialogTitle>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Typography variant="h6">
+            Select {roleName} Unit
+          </Typography>
+          <IconButton onClick={onClose} size="small">
+            <Close />
+          </IconButton>
+        </Box>
+      </DialogTitle>
+
+      <DialogContent>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}>
+          <Tabs
+            value={activeTab}
+            onChange={(_, newValue) => setActiveTab(newValue)}
+            variant="fullWidth"
+          >
+            <Tab
+              label={`Base Units (${availableBaseUnits.length})`}
+              value="base"
+            />
+            <Tab
+              label={`Custom Units (${availableCustomUnits.length})`}
+              value="custom"
+            />
+          </Tabs>
+        </Box>
+
+        <Box sx={{ mt: 2 }}>
+          {activeTab === 'base' && (
+            <Box>
+              {availableBaseUnits.length > 0 ? (
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  {availableBaseUnits.map((unit) => (
+                    <Box key={unit.id}>
+                      <Card
+                        sx={{ cursor: 'pointer', '&:hover': { boxShadow: 4 } }}
+                        onClick={() => handleBaseUnitSelect(unit.id)}
+                      >
+                        <CardContent>
+                          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1 }}>
+                            <Typography variant="h6" component="h3">
+                              {unit.name}
+                            </Typography>
+                            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                              <Chip
+                                label={`${getBaseUnitPoints(unit)} pts`}
+                                color="primary"
+                                size="small"
+                              />
+                              {unit.faction && unit.faction !== 'universal' && (
+                                <Chip
+                                  label={unit.faction === 'legiones-astartes' ? 'Legion' : unit.faction}
+                                  color="secondary"
+                                  size="small"
+                                />
+                              )}
+                              {unit.legionSpecific && unit.legionSpecific.length > 0 && (
+                                <Chip
+                                  label="Legion-specific"
+                                  color="warning"
+                                  size="small"
+                                />
+                              )}
+                            </Box>
+                          </Box>
+                          <Typography variant="body2" color="text.secondary">
+                            {unit.description}
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </Box>
+                  ))}
+                </Box>
+              ) : (
+                <Card>
+                  <CardContent>
+                    <Typography variant="body1" color="text.secondary" align="center">
+                      No {roleName} units available for your faction.
+                    </Typography>
+                  </CardContent>
+                </Card>
+              )}
+            </Box>
+          )}
+
+          {activeTab === 'custom' && (
+            <Box>
+              {availableCustomUnits.length > 0 ? (
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  {availableCustomUnits.map((customUnit) => {
+                    const baseUnit = DataLoader.getUnitById(customUnit.baseUnitId);
+                    return (
+                      <Box key={customUnit.id}>
+                        <Card
+                          sx={{ cursor: 'pointer', '&:hover': { boxShadow: 4 } }}
+                          onClick={() => handleCustomUnitSelect(customUnit)}
+                        >
+                          <CardContent>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1 }}>
+                              <Box>
+                                <Typography variant="h6" component="h3">
+                                  {customUnit.name}
+                                </Typography>
+                                <Chip label="Custom" color="info" size="small" sx={{ mt: 0.5 }} />
+                              </Box>
+                              <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                                <Chip
+                                  label={`${getCustomUnitPoints(customUnit)} pts`}
+                                  color="primary"
+                                  size="small"
+                                />
+                                <Chip
+                                  label={`Based on: ${baseUnit?.name || customUnit.baseUnitId}`}
+                                  color="secondary"
+                                  size="small"
+                                />
+                                {customUnit.upgrades.length > 0 && (
+                                  <Chip
+                                    label={`${customUnit.upgrades.length} upgrade${customUnit.upgrades.length !== 1 ? 's' : ''}`}
+                                    color="success"
+                                    size="small"
+                                  />
+                                )}
+                                {customUnit.primeAdvantages && customUnit.primeAdvantages.length > 0 && (
+                                  <Chip
+                                    label={`${customUnit.primeAdvantages.length} prime advantage${customUnit.primeAdvantages.length !== 1 ? 's' : ''}`}
+                                    color="warning"
+                                    size="small"
+                                  />
+                                )}
+                              </Box>
+                            </Box>
+                            <Typography variant="body2" color="text.secondary">
+                              {customUnit.description || baseUnit?.description || 'Custom unit configuration'}
+                            </Typography>
+                          </CardContent>
+                        </Card>
+                      </Box>
+                    );
+                  })}
+                </Box>
+              ) : (
+                <Card>
+                  <CardContent>
+                    <Typography variant="body1" color="text.secondary" align="center">
+                      No custom {roleName} units available for your faction.
+                    </Typography>
+                  </CardContent>
+                </Card>
+              )}
+            </Box>
+          )}
+        </Box>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+export default UnitSelectionModal;

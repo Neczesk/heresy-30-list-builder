@@ -617,14 +617,20 @@
           "count": 1,
           "isPrime": true,
           "description": "One prime Elite slot (Veletaris Storm Section or Veletaris Vanguard Section only)",
-          "allowedUnits": ["veletaris-storm-section", "veletaris-vanguard-section"]
+          "allowedUnits": [
+            "veletaris-storm-section",
+            "veletaris-vanguard-section"
+          ]
         },
         {
           "roleId": "elite",
           "count": 1,
           "isPrime": false,
           "description": "One additional Elite slot (Veletaris Storm Section or Veletaris Vanguard Section only)",
-          "allowedUnits": ["veletaris-storm-section", "veletaris-vanguard-section"]
+          "allowedUnits": [
+            "veletaris-storm-section",
+            "veletaris-vanguard-section"
+          ]
         },
         {
           "roleId": "support",
@@ -721,7 +727,11 @@
           "count": 3,
           "isPrime": false,
           "description": "Three Support slots (Rapier Section, Basilisk Artillery Tank, or Medusa Artillery Tank only)",
-          "allowedUnits": ["rapier-section", "basilisk-artillery-tank", "medusa-artillery-tank"]
+          "allowedUnits": [
+            "rapier-section",
+            "basilisk-artillery-tank",
+            "medusa-artillery-tank"
+          ]
         }
       ],
       "maxCount": 1
@@ -753,10 +763,14 @@
           "count": 3,
           "isPrime": false,
           "description": "Three Armour slots (Leman Russ Strike Tank, Leman Russ Assault Tank, or Malcador Heavy Tank only)",
-          "allowedUnits": ["leman-russ-strike-tank", "leman-russ-assault-tank", "malcador-heavy-tank"]
+          "allowedUnits": [
+            "leman-russ-strike-tank",
+            "leman-russ-assault-tank",
+            "malcador-heavy-tank"
+          ]
         }
       ],
       "maxCount": 1
     }
   ]
-} 
+}

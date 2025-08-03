@@ -24,11 +24,7 @@
       "description": "The vast armies of the Imperium",
       "allegiance": "Universal",
       "specialRules": ["loyalty-to-the-throne"],
-      "ritesOfWar": [
-        "combined-arms",
-        "armoured-regiment",
-        "airborne-assault"
-      ],
+      "ritesOfWar": ["combined-arms", "armoured-regiment", "airborne-assault"],
       "isMainFaction": true
     },
     {
@@ -52,10 +48,7 @@
       "description": "The noble houses of Imperial Knights",
       "allegiance": "Universal",
       "specialRules": ["noble-household", "chivalric-code"],
-      "ritesOfWar": [
-        "noble-heritage",
-        "household-alliance"
-      ],
+      "ritesOfWar": ["noble-heritage", "household-alliance"],
       "isMainFaction": true
     },
     {
@@ -65,10 +58,7 @@
       "description": "The god-machines of the Adeptus Titanicus",
       "allegiance": "Universal",
       "specialRules": ["machine-spirit", "princeps"],
-      "ritesOfWar": [
-        "legio-titanicus",
-        "maniple-formation"
-      ],
+      "ritesOfWar": ["legio-titanicus", "maniple-formation"],
       "isMainFaction": true
     },
     {
@@ -78,11 +68,7 @@
       "description": "The elite regiments of the Imperial Army, representing the finest human soldiers in the galaxy",
       "allegiance": "Universal",
       "specialRules": ["cohort-doctrines"],
-      "ritesOfWar": [
-        "combined-arms",
-        "armoured-regiment",
-        "airborne-assault"
-      ],
+      "ritesOfWar": ["combined-arms", "armoured-regiment", "airborne-assault"],
       "isMainFaction": true
     },
     {
@@ -92,11 +78,7 @@
       "description": "The I Legion, the First and the most secretive of all Legions",
       "allegiance": "Universal",
       "specialRules": ["inner-circle", "dark-angels-tactics"],
-      "ritesOfWar": [
-        "pride-of-the-legion",
-        "sky-hunters",
-        "the-lords-of-war"
-      ],
+      "ritesOfWar": ["pride-of-the-legion", "sky-hunters", "the-lords-of-war"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -107,10 +89,7 @@
       "description": "The III Legion, perfectionists and masters of close combat",
       "allegiance": "Universal",
       "specialRules": ["perfection", "emperors-children-tactics"],
-      "ritesOfWar": [
-        "pride-of-the-legion",
-        "sky-hunters"
-      ],
+      "ritesOfWar": ["pride-of-the-legion", "sky-hunters"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -121,10 +100,7 @@
       "description": "The IV Legion, masters of siege warfare and artillery",
       "allegiance": "Universal",
       "specialRules": ["iron-within", "iron-warriors-tactics"],
-      "ritesOfWar": [
-        "armoured-spearhead",
-        "the-lords-of-war"
-      ],
+      "ritesOfWar": ["armoured-spearhead", "the-lords-of-war"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -135,10 +111,7 @@
       "description": "The V Legion, masters of lightning warfare and mounted combat",
       "allegiance": "Universal",
       "specialRules": ["lightning-strike", "white-scars-tactics"],
-      "ritesOfWar": [
-        "sky-hunters",
-        "massive-onslaught"
-      ],
+      "ritesOfWar": ["sky-hunters", "massive-onslaught"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -149,10 +122,7 @@
       "description": "The VI Legion, the Wolves of Fenris and savage warriors",
       "allegiance": "Universal",
       "specialRules": ["savage-fury", "space-wolves-tactics"],
-      "ritesOfWar": [
-        "pride-of-the-legion",
-        "massive-onslaught"
-      ],
+      "ritesOfWar": ["pride-of-the-legion", "massive-onslaught"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -163,10 +133,7 @@
       "description": "The VII Legion, masters of siege warfare and fortification",
       "allegiance": "Universal",
       "specialRules": ["siege-masters", "imperial-fists-tactics"],
-      "ritesOfWar": [
-        "pride-of-the-legion",
-        "armoured-spearhead"
-      ],
+      "ritesOfWar": ["pride-of-the-legion", "armoured-spearhead"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -177,10 +144,7 @@
       "description": "The VIII Legion, terror incarnate and masters of psychological warfare",
       "allegiance": "Universal",
       "specialRules": ["terror-tactics", "night-lords-tactics"],
-      "ritesOfWar": [
-        "sky-hunters",
-        "massive-onslaught"
-      ],
+      "ritesOfWar": ["sky-hunters", "massive-onslaught"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -191,10 +155,7 @@
       "description": "The IX Legion, noble warriors with a dark secret in their blood",
       "allegiance": "Universal",
       "specialRules": ["red-thirst", "blood-angels-tactics"],
-      "ritesOfWar": [
-        "pride-of-the-legion",
-        "sky-hunters"
-      ],
+      "ritesOfWar": ["pride-of-the-legion", "sky-hunters"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -205,10 +166,7 @@
       "description": "The X Legion, masters of technology and cybernetic enhancement",
       "allegiance": "Universal",
       "specialRules": ["machine-strength", "iron-hands-tactics"],
-      "ritesOfWar": [
-        "armoured-spearhead",
-        "the-lords-of-war"
-      ],
+      "ritesOfWar": ["armoured-spearhead", "the-lords-of-war"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -219,9 +177,7 @@
       "description": "The XII Legion, berserkers who seek close combat above all else",
       "allegiance": "Universal",
       "specialRules": ["blood-madness", "world-eaters-tactics"],
-      "ritesOfWar": [
-        "massive-onslaught"
-      ],
+      "ritesOfWar": ["massive-onslaught"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -247,10 +203,7 @@
       "description": "The XIV Legion, masters of biological warfare and endurance",
       "allegiance": "Universal",
       "specialRules": ["endurance", "death-guard-tactics"],
-      "ritesOfWar": [
-        "pride-of-the-legion",
-        "armoured-spearhead"
-      ],
+      "ritesOfWar": ["pride-of-the-legion", "armoured-spearhead"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -261,9 +214,7 @@
       "description": "The XV Legion, masters of psychic powers and sorcery",
       "allegiance": "Universal",
       "specialRules": ["psychic-powers", "thousand-sons-tactics"],
-      "ritesOfWar": [
-        "the-lords-of-war"
-      ],
+      "ritesOfWar": ["the-lords-of-war"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -274,10 +225,7 @@
       "description": "The XVI Legion, the Warmaster's own and masters of precision strikes",
       "allegiance": "Universal",
       "specialRules": ["mournival", "luna-wolves-tactics"],
-      "ritesOfWar": [
-        "pride-of-the-legion",
-        "sky-hunters"
-      ],
+      "ritesOfWar": ["pride-of-the-legion", "sky-hunters"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -288,10 +236,7 @@
       "description": "The XVII Legion, the first to fall to Chaos and masters of faith",
       "allegiance": "Universal",
       "specialRules": ["dark-faith", "word-bearers-tactics"],
-      "ritesOfWar": [
-        "pride-of-the-legion",
-        "the-lords-of-war"
-      ],
+      "ritesOfWar": ["pride-of-the-legion", "the-lords-of-war"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -302,10 +247,7 @@
       "description": "The XVIII Legion, masters of fire and the forge",
       "allegiance": "Universal",
       "specialRules": ["master-crafters", "salamanders-tactics"],
-      "ritesOfWar": [
-        "pride-of-the-legion",
-        "armoured-spearhead"
-      ],
+      "ritesOfWar": ["pride-of-the-legion", "armoured-spearhead"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -316,10 +258,7 @@
       "description": "The XIX Legion, masters of stealth and guerrilla warfare",
       "allegiance": "Universal",
       "specialRules": ["shadow-walk", "raven-guard-tactics"],
-      "ritesOfWar": [
-        "sky-hunters",
-        "massive-onslaught"
-      ],
+      "ritesOfWar": ["sky-hunters", "massive-onslaught"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     },
@@ -330,12 +269,9 @@
       "description": "The XX Legion, masters of deception and infiltration",
       "allegiance": "Universal",
       "specialRules": ["hydra-dominatus", "alpha-legion-tactics"],
-      "ritesOfWar": [
-        "sky-hunters",
-        "massive-onslaught"
-      ],
+      "ritesOfWar": ["sky-hunters", "massive-onslaught"],
       "parentFaction": "legiones-astartes",
       "isMainFaction": false
     }
   ]
-} 
+}

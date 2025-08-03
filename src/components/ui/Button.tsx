@@ -36,8 +36,10 @@ const Button: React.FC<ButtonProps> = ({
     sizeClass,
     widthClass,
     disabledClass,
-    className
-  ].filter(Boolean).join(' ');
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <button
@@ -52,4 +54,4 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default Button; 
+export default Button;

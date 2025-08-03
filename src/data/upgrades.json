@@ -1181,7 +1181,7 @@
           "name": "Plasma Pistol",
           "description": "Replace Laspistol with a Plasma Pistol",
           "points": 5,
-            "replaceWeapon": "laspistol",
+          "replaceWeapon": "laspistol",
           "addWeapon": "plasma-pistol"
         }
       ]
@@ -1360,7 +1360,7 @@
             },
             {
               "replaceWeapon": "lasrifle",
-                "addWeapon": "laspistol"
+              "addWeapon": "laspistol"
             }
           ]
         }
@@ -2151,7 +2151,7 @@
           "name": "Plasma Pistol",
           "description": "Replace Laspistol with a Plasma Pistol",
           "points": 5,
-            "replaceWeapon": "laspistol",
+          "replaceWeapon": "laspistol",
           "addWeapon": "plasma-pistol"
         }
       ]
@@ -4072,4 +4072,4 @@
       ]
     }
   ]
-} 
+}

@@ -76,7 +76,9 @@
 
 .ui-card--interactive:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1), var(--shadow-md);
+  box-shadow:
+    0 0 0 3px rgba(74, 144, 226, 0.1),
+    var(--shadow-md);
 }
 
 .ui-card--interactive:active {
@@ -146,13 +148,13 @@
   .ui-card--padding-xl {
     padding: var(--spacing-lg);
   }
-  
+
   .ui-card--padding-lg {
     padding: var(--spacing-md);
   }
-  
+
   .ui-card-grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
   }
-} 
+}

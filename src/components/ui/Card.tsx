@@ -32,8 +32,10 @@ const Card: React.FC<CardProps> = ({
     paddingClass,
     interactiveClass,
     widthClass,
-    className
-  ].filter(Boolean).join(' ');
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <div
@@ -47,4 +49,4 @@ const Card: React.FC<CardProps> = ({
   );
 };
 
-export default Card; 
+export default Card;

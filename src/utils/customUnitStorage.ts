@@ -10,8 +10,11 @@ export class CustomUnitStorage {
     try {
       const existingUnits = this.getAllCustomUnits();
       existingUnits[customUnit.id] = customUnit;
-      
-      localStorage.setItem(CUSTOM_UNITS_STORAGE_KEY, JSON.stringify(existingUnits));
+
+      localStorage.setItem(
+        CUSTOM_UNITS_STORAGE_KEY,
+        JSON.stringify(existingUnits)
+      );
     } catch (error) {
       console.error('Failed to save custom unit:', error);
       throw new Error('Failed to save custom unit');
@@ -58,7 +61,7 @@ export class CustomUnitStorage {
         subfaction: unit.subfaction,
         createdAt: unit.createdAt,
         updatedAt: unit.updatedAt,
-        description: unit.description
+        description: unit.description,
       }));
     } catch (error) {
       console.error('Failed to get custom unit metadata:', error);
@@ -90,8 +93,10 @@ export class CustomUnitStorage {
   static isNameTaken(name: string, excludeId?: string): boolean {
     try {
       const units = this.getAllCustomUnits();
-      return Object.values(units).some(unit => 
-        unit.name.toLowerCase() === name.toLowerCase() && unit.id !== excludeId
+      return Object.values(units).some(
+        unit =>
+          unit.name.toLowerCase() === name.toLowerCase() &&
+          unit.id !== excludeId
       );
     } catch (error) {
       console.error('Failed to check if name is taken:', error);
@@ -103,7 +108,11 @@ export class CustomUnitStorage {
    * Generate a unique ID from a name
    */
   static generateId(name: string): string {
-    return name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+    return name
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
   }
 
   /**
@@ -131,7 +140,7 @@ export class CustomUnitStorage {
       modelInstanceWargearChanges: armyUnit.modelInstanceWargearChanges,
       createdAt: now,
       updatedAt: now,
-      description
+      description,
     };
   }
-} 
+}
