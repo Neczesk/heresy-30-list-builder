@@ -12,12 +12,18 @@ import {
   Stack,
   Card,
   CardContent,
+  useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import { DataLoader } from '../../utils/dataLoader';
 import DetachmentSlots from '../../pages/listBuilder/DetachmentSlots';
 import UnitManagementModal from '../../pages/listBuilder/UnitManagementModal';
-import type { CustomDetachment, ArmyDetachment, ArmyUnit } from '../../types/army';
+import type {
+  CustomDetachment,
+  ArmyDetachment,
+  ArmyUnit,
+} from '../../types/army';
 
 interface DetachmentEditorModalProps {
   isOpen: boolean;
@@ -32,6 +38,8 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
   onClose,
   onSave,
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [detachment, setDetachment] = useState<ArmyDetachment | null>(null);
   const [showUnitManagementModal, setShowUnitManagementModal] = useState(false);
   const [unitManagementInfo, setUnitManagementInfo] = useState<{
@@ -212,69 +220,148 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
       onClose={onClose}
       maxWidth="lg"
       fullWidth
+      fullScreen={isMobile}
       PaperProps={{
         sx: {
-          maxHeight: '90vh',
+          maxHeight: isMobile ? '100vh' : '90vh',
+          height: isMobile ? '100vh' : 'auto',
         },
       }}
     >
-      <DialogTitle>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="h5" component="h3">
+      <DialogTitle
+        sx={{
+          p: { xs: 2, sm: 3 },
+          pb: { xs: 1, sm: 2 },
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <Typography
+            variant="h5"
+            component="h3"
+            sx={{
+              fontSize: { xs: '1.25rem', sm: '1.5rem' },
+            }}
+          >
             Edit Custom Detachment
           </Typography>
-          <IconButton onClick={onClose} size="small">
+          <IconButton
+            onClick={onClose}
+            size={isMobile ? 'medium' : 'small'}
+            sx={{
+              p: { xs: 1, sm: 0.5 },
+            }}
+          >
             <Close />
           </IconButton>
         </Box>
       </DialogTitle>
 
-      <DialogContent>
+      <DialogContent
+        sx={{
+          p: { xs: 2, sm: 3 },
+        }}
+      >
         {/* Detachment Info Section */}
-        <Card sx={{ mb: 3 }}>
-          <CardContent>
-            <Box sx={{ mb: 2 }}>
-              <Typography variant="h6" gutterBottom>
+        <Card sx={{ mb: { xs: 2, sm: 3 } }}>
+          <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+            <Box sx={{ mb: { xs: 1.5, sm: 2 } }}>
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{
+                  fontSize: { xs: '1.125rem', sm: '1.25rem' },
+                }}
+              >
                 {customDetachment.name}
               </Typography>
-              <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 2 }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  gap: { xs: 0.5, sm: 1 },
+                  flexWrap: 'wrap',
+                  mb: { xs: 1.5, sm: 2 },
+                }}
+              >
                 <Chip
                   label={`Based on: ${getBaseDetachmentName(customDetachment.baseDetachmentId)}`}
-                  size="small"
+                  size={isMobile ? 'small' : 'small'}
                   variant="outlined"
                   color="primary"
+                  sx={{
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
                 />
                 <Chip
                   label={getFactionName(customDetachment.faction)}
-                  size="small"
+                  size={isMobile ? 'small' : 'small'}
                   variant="outlined"
                   color="secondary"
+                  sx={{
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
                 />
                 {customDetachment.subfaction && (
                   <Chip
                     label={getSubfactionName(customDetachment.subfaction)}
-                    size="small"
+                    size={isMobile ? 'small' : 'small'}
                     variant="outlined"
                     color="info"
+                    sx={{
+                      fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                    }}
                   />
                 )}
               </Box>
             </Box>
 
-            <Stack direction="row" spacing={3} sx={{ mb: 2 }}>
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={{ xs: 1, sm: 3 }}
+              sx={{ mb: { xs: 1.5, sm: 2 } }}
+            >
               <Box>
-                <Typography variant="body2" color="text.secondary">
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{
+                    fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                  }}
+                >
                   Units:
                 </Typography>
-                <Typography variant="body1" fontWeight="medium">
+                <Typography
+                  variant="body1"
+                  fontWeight="medium"
+                  sx={{
+                    fontSize: { xs: '1rem', sm: '1rem' },
+                  }}
+                >
                   {detachment.units.length}
                 </Typography>
               </Box>
               <Box>
-                <Typography variant="body2" color="text.secondary">
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{
+                    fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                  }}
+                >
                   Total Points:
                 </Typography>
-                <Typography variant="body1" fontWeight="medium">
+                <Typography
+                  variant="body1"
+                  fontWeight="medium"
+                  sx={{
+                    fontSize: { xs: '1rem', sm: '1rem' },
+                  }}
+                >
                   {totalPoints} pts
                 </Typography>
               </Box>
@@ -282,10 +369,22 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
 
             {customDetachment.description && (
               <Box>
-                <Typography variant="body2" color="text.secondary" gutterBottom>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  gutterBottom
+                  sx={{
+                    fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                  }}
+                >
                   Description:
                 </Typography>
-                <Typography variant="body2">
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                  }}
+                >
                   {customDetachment.description}
                 </Typography>
               </Box>
@@ -295,7 +394,13 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
 
         {/* Detachment Slots Section */}
         <Box>
-          <Typography variant="h6" gutterBottom>
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{
+              fontSize: { xs: '1.125rem', sm: '1.25rem' },
+            }}
+          >
             Detachment Slots
           </Typography>
           <DetachmentSlots
@@ -324,14 +429,29 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
         </Box>
       </DialogContent>
 
-      <DialogActions>
-        <Button onClick={onClose}>
+      <DialogActions
+        sx={{
+          p: { xs: 2, sm: 3 },
+          pt: { xs: 1, sm: 2 },
+        }}
+      >
+        <Button
+          onClick={onClose}
+          fullWidth={isMobile}
+          sx={{
+            fontSize: { xs: '0.875rem', sm: '0.875rem' },
+          }}
+        >
           Cancel
         </Button>
         <Button
           variant="contained"
           color="success"
           onClick={handleSave}
+          fullWidth={isMobile}
+          sx={{
+            fontSize: { xs: '0.875rem', sm: '0.875rem' },
+          }}
         >
           Save Changes
         </Button>
@@ -371,15 +491,50 @@ const DetachmentEditorModal: React.FC<DetachmentEditorModalProps> = ({
         onClose={() => setShowDetachmentPrompt(false)}
         maxWidth="sm"
         fullWidth
+        fullScreen={isMobile}
+        PaperProps={{
+          sx: {
+            maxHeight: isMobile ? '100vh' : 'auto',
+            height: isMobile ? '100vh' : 'auto',
+          },
+        }}
       >
-        <DialogTitle>Select Detachment Type</DialogTitle>
-        <DialogContent>
-          <Typography variant="body1" sx={{ mb: 2 }}>
-            Choose a detachment type for the {detachmentPromptInfo?.roleId} slot:
+        <DialogTitle
+          sx={{
+            p: { xs: 2, sm: 3 },
+            pb: { xs: 1, sm: 2 },
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: { xs: '1.25rem', sm: '1.5rem' },
+            }}
+          >
+            Select Detachment Type
+          </Typography>
+        </DialogTitle>
+        <DialogContent
+          sx={{
+            p: { xs: 2, sm: 3 },
+          }}
+        >
+          <Typography
+            variant="body1"
+            sx={{
+              mb: { xs: 1.5, sm: 2 },
+              fontSize: { xs: '0.875rem', sm: '1rem' },
+            }}
+          >
+            Choose a detachment type for the {detachmentPromptInfo?.roleId}{' '}
+            slot:
           </Typography>
           <Box sx={{ display: 'flex', gap: 1 }}>
             <Button
               variant="contained"
+              fullWidth={isMobile}
+              sx={{
+                fontSize: { xs: '0.875rem', sm: '0.875rem' },
+              }}
               onClick={() =>
                 handleDetachmentPromptSelected({
                   id: 'default',

@@ -12,6 +12,8 @@ import {
   CardContent,
   Chip,
   Stack,
+  useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import { DataLoader } from '../../utils/dataLoader';
@@ -36,6 +38,9 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
   onClose,
   onDetachmentSelected,
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
   const getAvailableDetachments = () => {
     const allDetachments = DataLoader.getDetachments();
     const primaryFaction = armyList.faction;
@@ -77,10 +82,16 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
         let hasMatchingTrigger = false;
 
         for (const trigger of detachment.triggers) {
-          if (trigger.type === 'command-filled' && (roleId === 'command' || roleId === 'high-command')) {
+          if (
+            trigger.type === 'command-filled' &&
+            (roleId === 'command' || roleId === 'high-command')
+          ) {
             hasMatchingTrigger = true;
             break;
-          } else if (trigger.type === 'high-command-filled' && roleId === 'high-command') {
+          } else if (
+            trigger.type === 'high-command-filled' &&
+            roleId === 'high-command'
+          ) {
             hasMatchingTrigger = true;
             break;
           } else if (trigger.type === 'specific-unit') {
@@ -100,8 +111,9 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
                   ? 'command'
                   : 'high-command';
               // High command units can trigger both high command and command detachments
-              slotMatches = expectedRoleId === roleId ||
-                           (roleId === 'high-command' && expectedRoleId === 'command');
+              slotMatches =
+                expectedRoleId === roleId ||
+                (roleId === 'high-command' && expectedRoleId === 'command');
             }
 
             // Both unit and slot must match for specific-unit triggers
@@ -123,8 +135,13 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
 
       // Special handling for detachments with specific unit triggers
       // These must have their specific unit requirements met, regardless of faction
-      if (detachment.triggers && detachment.triggers.some(t => t.type === 'specific-unit')) {
-        const specificUnitTrigger = detachment.triggers.find(t => t.type === 'specific-unit');
+      if (
+        detachment.triggers &&
+        detachment.triggers.some(t => t.type === 'specific-unit')
+      ) {
+        const specificUnitTrigger = detachment.triggers.find(
+          t => t.type === 'specific-unit'
+        );
         if (specificUnitTrigger) {
           // If we have a specific unit requirement but no triggering unit data, exclude the detachment
           if (specificUnitTrigger.requiredUnitId && !triggeringUnitData) {
@@ -145,8 +162,9 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
                 ? 'command'
                 : 'high-command';
             // High command units can trigger both high command and command detachments
-            const slotMatches = expectedRoleId === roleId ||
-                               (roleId === 'high-command' && expectedRoleId === 'command');
+            const slotMatches =
+              expectedRoleId === roleId ||
+              (roleId === 'high-command' && expectedRoleId === 'command');
             if (!slotMatches) {
               return false;
             }
@@ -172,7 +190,10 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
         }
 
         // Check if the detachment faction matches the triggering unit's faction
-        if (triggeringUnitData && triggeringUnitData.faction === detachment.faction) {
+        if (
+          triggeringUnitData &&
+          triggeringUnitData.faction === detachment.faction
+        ) {
           return true;
         }
 
@@ -186,7 +207,9 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
             if (requirement.value === 'primary') {
               // Check if we have a primary detachment
               const hasPrimaryDetachment = armyList.detachments.some(d => {
-                const detachmentData = DataLoader.getDetachmentById(d.detachmentId);
+                const detachmentData = DataLoader.getDetachmentById(
+                  d.detachmentId
+                );
                 return detachmentData?.type === 'Primary';
               });
               if (!hasPrimaryDetachment) {
@@ -206,17 +229,28 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
       if (detachment.restrictions && detachment.restrictions.length > 0) {
         for (const restriction of detachment.restrictions) {
           if (restriction.type === 'faction-must-match') {
-            if (restriction.value === 'primary-faction' && detachment.faction !== primaryFaction) {
+            if (
+              restriction.value === 'primary-faction' &&
+              detachment.faction !== primaryFaction
+            ) {
               return false;
             }
           } else if (restriction.type === 'faction-must-differ') {
-            if (restriction.value === 'primary-faction' && detachment.faction === primaryFaction) {
+            if (
+              restriction.value === 'primary-faction' &&
+              detachment.faction === primaryFaction
+            ) {
               return false;
             }
           } else if (restriction.type === 'max-count') {
             // Check if we already have the maximum number of this detachment type
-            const currentCount = armyList.detachments.filter(d => d.detachmentId === detachment.id).length;
-            const maxCount = typeof restriction.value === 'number' ? restriction.value : parseInt(restriction.value as string, 10);
+            const currentCount = armyList.detachments.filter(
+              d => d.detachmentId === detachment.id
+            ).length;
+            const maxCount =
+              typeof restriction.value === 'number'
+                ? restriction.value
+                : parseInt(restriction.value as string, 10);
             if (currentCount >= maxCount) {
               return false;
             }
@@ -239,30 +273,69 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
       onClose={onClose}
       maxWidth="md"
       fullWidth
+      fullScreen={isMobile}
       PaperProps={{
-        sx: { maxHeight: '90vh' }
+        sx: {
+          maxHeight: isMobile ? '100vh' : '90vh',
+          height: isMobile ? '100vh' : 'auto',
+        },
       }}
     >
-      <DialogTitle>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="h5" component="h3">
+      <DialogTitle
+        sx={{
+          p: { xs: 2, sm: 3 },
+          pb: { xs: 1, sm: 2 },
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <Typography
+            variant={isMobile ? 'h6' : 'h5'}
+            component="h3"
+            sx={{
+              fontSize: { xs: '1.125rem', sm: '1.5rem' },
+            }}
+          >
             Add {triggerType} Detachment
           </Typography>
-          <IconButton onClick={onClose} size="small">
+          <IconButton
+            onClick={onClose}
+            size={isMobile ? 'medium' : 'small'}
+            sx={{
+              p: { xs: 1, sm: 0.5 },
+            }}
+          >
             <Close />
           </IconButton>
         </Box>
       </DialogTitle>
 
-      <DialogContent>
-        <Stack spacing={3}>
-          <Typography variant="body1" color="text.secondary">
+      <DialogContent
+        sx={{
+          p: { xs: 2, sm: 3 },
+          pt: { xs: 0, sm: 1 },
+        }}
+      >
+        <Stack spacing={{ xs: 2, sm: 3 }}>
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            sx={{
+              fontSize: { xs: '0.875rem', sm: '1rem' },
+              textAlign: { xs: 'center', sm: 'left' },
+            }}
+          >
             You've filled a {roleName} slot! You can now add a{' '}
             {triggerType.toLowerCase()} detachment to your force.
           </Typography>
 
           {availableDetachments.length > 0 ? (
-            <Stack spacing={2}>
+            <Stack spacing={{ xs: 1.5, sm: 2 }}>
               {availableDetachments.map(detachment => (
                 <Card
                   key={detachment.id}
@@ -277,31 +350,70 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
                     onClose();
                   }}
                 >
-                  <CardContent>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
-                      <Typography variant="h6" component="h3">
+                  <CardContent
+                    sx={{
+                      p: { xs: 2, sm: 3 },
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'flex-start',
+                        mb: 2,
+                        flexDirection: { xs: 'column', sm: 'row' },
+                        gap: { xs: 1, sm: 0 },
+                      }}
+                    >
+                      <Typography
+                        variant={isMobile ? 'h6' : 'h6'}
+                        component="h3"
+                        sx={{
+                          fontSize: { xs: '1.125rem', sm: '1.25rem' },
+                        }}
+                      >
                         {detachment.name}
                       </Typography>
                       <Chip
                         label={detachment.type}
-                        size="small"
+                        size={isMobile ? 'small' : 'small'}
                         color="primary"
                         variant="outlined"
+                        sx={{
+                          alignSelf: { xs: 'flex-start', sm: 'flex-end' },
+                        }}
                       />
                     </Box>
 
-                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      sx={{
+                        mb: 2,
+                        fontSize: { xs: '0.875rem', sm: '1rem' },
+                      }}
+                    >
                       {detachment.description}
                     </Typography>
 
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: 1,
+                        justifyContent: { xs: 'flex-start', sm: 'flex-start' },
+                      }}
+                    >
                       {detachment.slots.map((slot, index) => (
                         <Chip
                           key={index}
                           label={`${slot.count}x ${DataLoader.getBattlefieldRoleById(slot.roleId)?.name}${slot.isPrime ? ' ★' : ''}`}
-                          size="small"
+                          size={isMobile ? 'small' : 'small'}
                           variant="outlined"
-                          color={slot.isPrime ? "warning" : "default"}
+                          color={slot.isPrime ? 'warning' : 'default'}
+                          sx={{
+                            fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                          }}
                         />
                       ))}
                     </Box>
@@ -311,9 +423,21 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
             </Stack>
           ) : (
             <Card variant="outlined">
-              <CardContent>
-                <Typography variant="body1" color="text.secondary" align="center">
-                  No {triggerType.toLowerCase()} detachments available for your faction.
+              <CardContent
+                sx={{
+                  p: { xs: 2, sm: 3 },
+                  textAlign: 'center',
+                }}
+              >
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{
+                    fontSize: { xs: '0.875rem', sm: '1rem' },
+                  }}
+                >
+                  No {triggerType.toLowerCase()} detachments available for your
+                  faction.
                 </Typography>
               </CardContent>
             </Card>
@@ -321,8 +445,19 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
         </Stack>
       </DialogContent>
 
-      <DialogActions>
-        <Button onClick={onClose}>
+      <DialogActions
+        sx={{
+          p: { xs: 2, sm: 3 },
+          pt: { xs: 0, sm: 1 },
+        }}
+      >
+        <Button
+          onClick={onClose}
+          size={isMobile ? 'large' : 'medium'}
+          sx={{
+            width: { xs: '100%', sm: 'auto' },
+          }}
+        >
           Skip for now
         </Button>
       </DialogActions>

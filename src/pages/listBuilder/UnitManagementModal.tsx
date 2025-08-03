@@ -21,6 +21,8 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import {
   Close,
@@ -34,7 +36,10 @@ import { DataLoader } from '../../utils/dataLoader';
 import { CustomUnitStorage } from '../../utils/customUnitStorage';
 import { UpgradeValidator } from '../../utils/upgradeValidator';
 import type { UpgradeValidationContext } from '../../utils/upgradeValidator';
-import { getDetachmentsTriggeredByUnit, canTriggerMoreDetachments } from '../../utils/detachmentUtils';
+import {
+  getDetachmentsTriggeredByUnit,
+  canTriggerMoreDetachments,
+} from '../../utils/detachmentUtils';
 import { UnitViewer } from '../../components/UnitViewer';
 import SaveCustomUnitModal from '../../components/modals/SaveCustomUnitModal';
 import type { Army, ArmyUnit, PrimeAdvantage } from '../../types/army';
@@ -47,7 +52,11 @@ interface UnitManagementModalProps {
   armyList: Army;
   onClose: () => void;
   onUnitUpdated: (slotId: string, updatedUnit: ArmyUnit) => void;
-  onDetachmentPrompt?: (roleId: string, slotIndex: number, detachmentId?: string) => void;
+  onDetachmentPrompt?: (
+    roleId: string,
+    slotIndex: number,
+    detachmentId?: string
+  ) => void;
   onDetachmentRemoved?: (detachmentId: string) => void;
   faction: string;
   subfaction?: string;
@@ -77,6 +86,9 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
   subfaction,
   customUnitData,
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
   const [activeTab, setActiveTab] = useState<
     'unit' | 'upgrades' | 'detachments' | 'prime' | 'custom'
   >('unit');
@@ -110,7 +122,14 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
   >(initializeSelectedUpgrades());
 
   // Function to automatically save upgrades when they change
-  const saveUpgrades = (newUpgrades: { upgradeId: string; optionId?: string; count: number; points: number }[]) => {
+  const saveUpgrades = (
+    newUpgrades: {
+      upgradeId: string;
+      optionId?: string;
+      count: number;
+      points: number;
+    }[]
+  ) => {
     const updatedUnit = {
       ...unit,
       upgrades: newUpgrades,
@@ -128,7 +147,9 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
 
   // Update selectedPrimeAdvantages when unit changes
   useEffect(() => {
-    setSelectedPrimeAdvantages(unit.primeAdvantages?.map(pa => pa.advantageId) || []);
+    setSelectedPrimeAdvantages(
+      unit.primeAdvantages?.map(pa => pa.advantageId) || []
+    );
   }, [unit.primeAdvantages]);
 
   // Switch away from prime tab if unit is no longer in a prime slot
@@ -138,11 +159,13 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
     }
   }, [activeTab, unit.slotId]);
 
-
-
   // Track accordion expansion states
-  const [expandedModelSections, setExpandedModelSections] = useState<{ [modelId: string]: boolean }>({});
-  const [expandedUpgradeGroups, setExpandedUpgradeGroups] = useState<{ [upgradeGroupId: string]: boolean }>({});
+  const [expandedModelSections, setExpandedModelSections] = useState<{
+    [modelId: string]: boolean;
+  }>({});
+  const [expandedUpgradeGroups, setExpandedUpgradeGroups] = useState<{
+    [upgradeGroupId: string]: boolean;
+  }>({});
 
   // Get base unit data for reference
   const baseUnitData = DataLoader.getUnitById(unit.unitId);
@@ -194,10 +217,13 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
       }
 
       // Handle model-group-count upgrades
-      if (upgradeData.type === 'model-group-count' && upgradeData.targetModels) {
+      if (
+        upgradeData.type === 'model-group-count' &&
+        upgradeData.targetModels
+      ) {
         Object.entries(upgradeData.targetModels).forEach(([modelId, count]) => {
           const currentCount = effectiveCounts[modelId] || 0;
-          effectiveCounts[modelId] = currentCount + (count * upgrade.count);
+          effectiveCounts[modelId] = currentCount + count * upgrade.count;
         });
       }
     });
@@ -216,15 +242,14 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
   // Check if this unit is in a prime slot
   const isInPrimeSlot = () => {
     // Find detachment by instance ID
-    const detachment = armyList.detachments.find(
-      d => d.id === detachmentId
-    );
+    const detachment = armyList.detachments.find(d => d.id === detachmentId);
     if (!detachment) return false;
 
     // Use modifiedSlots if available, otherwise fall back to base slots
-    const slotsToCheck = detachment.modifiedSlots.length > 0
-      ? detachment.modifiedSlots
-      : detachment.baseSlots;
+    const slotsToCheck =
+      detachment.modifiedSlots.length > 0
+        ? detachment.modifiedSlots
+        : detachment.baseSlots;
 
     // Try different slot ID formats
     let roleId: string;
@@ -285,7 +310,10 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
   };
 
   const handleAddDetachment = () => {
-    if (onDetachmentPrompt && canTriggerMoreDetachments(armyList, unit, slotId, maxDetachments)) {
+    if (
+      onDetachmentPrompt &&
+      canTriggerMoreDetachments(armyList, unit, slotId, maxDetachments)
+    ) {
       onDetachmentPrompt(roleId, slotIndex, detachmentId);
       onClose();
     }
@@ -304,52 +332,127 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
         onClose={onClose}
         maxWidth="lg"
         fullWidth
+        fullScreen={isMobile}
         PaperProps={{
           sx: {
-            maxHeight: '90vh',
-            minHeight: '60vh',
+            maxHeight: isMobile ? '100vh' : '90vh',
+            height: isMobile ? '100vh' : 'auto',
+            minHeight: isMobile ? '100vh' : '60vh',
           },
         }}
       >
-        <DialogTitle>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography variant="h5" component="h3">
+        <DialogTitle
+          sx={{
+            p: { xs: 2, sm: 3 },
+            pb: { xs: 1, sm: 2 },
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <Typography
+              variant={isMobile ? 'h6' : 'h5'}
+              component="h3"
+              sx={{
+                fontSize: { xs: '1.125rem', sm: '1.5rem' },
+              }}
+            >
               {customUnitData
                 ? `${customUnitData.name} (${baseUnitData.name})`
                 : `${baseUnitData.name} Management`}
             </Typography>
-            <IconButton onClick={onClose} size="small">
+            <IconButton
+              onClick={onClose}
+              size={isMobile ? 'medium' : 'small'}
+              sx={{
+                p: { xs: 1, sm: 0.5 },
+              }}
+            >
               <Close />
             </IconButton>
           </Box>
         </DialogTitle>
 
-        <DialogContent>
+        <DialogContent
+          sx={{
+            p: { xs: 2, sm: 3 },
+            pt: { xs: 0, sm: 1 },
+          }}
+        >
           {/* Unit Info */}
-          <Card sx={{ mb: 3 }}>
-            <CardContent>
-              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                <Box sx={{ flex: 1, minWidth: 120 }}>
-                  <Typography variant="body2" color="text.secondary">
+          <Card sx={{ mb: { xs: 2, sm: 3 } }}>
+            <CardContent
+              sx={{
+                p: { xs: 2, sm: 3 },
+              }}
+            >
+              <Box
+                sx={{
+                  display: 'flex',
+                  gap: { xs: 1, sm: 2 },
+                  flexWrap: 'wrap',
+                  flexDirection: { xs: 'column', sm: 'row' },
+                }}
+              >
+                <Box sx={{ flex: 1, minWidth: { xs: 'auto', sm: 120 } }}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      fontSize: { xs: '0.875rem', sm: '1rem' },
+                    }}
+                  >
                     Base Points
                   </Typography>
-                  <Typography variant="h6">
+                  <Typography
+                    variant={isMobile ? 'h6' : 'h6'}
+                    sx={{
+                      fontSize: { xs: '1.125rem', sm: '1.25rem' },
+                    }}
+                  >
                     {baseUnitData.points}
                   </Typography>
                 </Box>
-                <Box sx={{ flex: 1, minWidth: 120 }}>
-                  <Typography variant="body2" color="text.secondary">
+                <Box sx={{ flex: 1, minWidth: { xs: 'auto', sm: 120 } }}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      fontSize: { xs: '0.875rem', sm: '1rem' },
+                    }}
+                  >
                     Upgrade Points
                   </Typography>
-                  <Typography variant="h6">
+                  <Typography
+                    variant={isMobile ? 'h6' : 'h6'}
+                    sx={{
+                      fontSize: { xs: '1.125rem', sm: '1.25rem' },
+                    }}
+                  >
                     {calculateUpgradePoints()}
                   </Typography>
                 </Box>
-                <Box sx={{ flex: 1, minWidth: 120 }}>
-                  <Typography variant="body2" color="text.secondary">
+                <Box sx={{ flex: 1, minWidth: { xs: 'auto', sm: 120 } }}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      fontSize: { xs: '0.875rem', sm: '1rem' },
+                    }}
+                  >
                     Total Points
                   </Typography>
-                  <Typography variant="h6" color="primary">
+                  <Typography
+                    variant={isMobile ? 'h6' : 'h6'}
+                    color="primary"
+                    sx={{
+                      fontSize: { xs: '1.125rem', sm: '1.25rem' },
+                    }}
+                  >
                     {totalUnitPoints}
                   </Typography>
                 </Box>
@@ -364,37 +467,99 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
 
               {/* Custom Unit Info */}
               {customUnitData && (
-                <Box sx={{ mt: 2, p: 2, bgcolor: 'grey.50', borderRadius: 1 }}>
-                  <Typography variant="subtitle2" sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                <Box
+                  sx={{
+                    mt: 2,
+                    p: { xs: 1.5, sm: 2 },
+                    bgcolor: 'grey.50',
+                    borderRadius: 1,
+                  }}
+                >
+                  <Typography
+                    variant="subtitle2"
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      mb: 1,
+                      fontSize: { xs: '0.875rem', sm: '1rem' },
+                    }}
+                  >
                     <Settings sx={{ mr: 1 }} />
                     Custom Unit Details
                   </Typography>
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: { xs: 1, sm: 2 },
+                      flexDirection: { xs: 'column', sm: 'row' },
+                    }}
+                  >
                     <Box sx={{ flex: '1 1 200px' }}>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          fontSize: { xs: '0.875rem', sm: '1rem' },
+                        }}
+                      >
                         Name: {customUnitData.name}
                       </Typography>
                     </Box>
                     <Box sx={{ flex: '1 1 200px' }}>
-                      <Typography variant="body2" color="text.secondary">
-                        Faction: {DataLoader.getFactionById(customUnitData.faction)?.name || customUnitData.faction}
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          fontSize: { xs: '0.875rem', sm: '1rem' },
+                        }}
+                      >
+                        Faction:{' '}
+                        {DataLoader.getFactionById(customUnitData.faction)
+                          ?.name || customUnitData.faction}
                       </Typography>
                     </Box>
                     {customUnitData.subfaction && (
                       <Box sx={{ flex: '1 1 200px' }}>
-                        <Typography variant="body2" color="text.secondary">
-                          Subfaction: {DataLoader.getFactionById(customUnitData.subfaction)?.name || customUnitData.subfaction}
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{
+                            fontSize: { xs: '0.875rem', sm: '1rem' },
+                          }}
+                        >
+                          Subfaction:{' '}
+                          {DataLoader.getFactionById(customUnitData.subfaction)
+                            ?.name || customUnitData.subfaction}
                         </Typography>
                       </Box>
                     )}
                     <Box sx={{ flex: '1 1 200px' }}>
-                      <Typography variant="body2" color="text.secondary">
-                        Created: {new Date(customUnitData.createdAt).toLocaleDateString()}
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          fontSize: { xs: '0.875rem', sm: '1rem' },
+                        }}
+                      >
+                        Created:{' '}
+                        {new Date(
+                          customUnitData.createdAt
+                        ).toLocaleDateString()}
                       </Typography>
                     </Box>
                     <Box sx={{ flex: '1 1 200px' }}>
-                      <Typography variant="body2" color="text.secondary">
-                        Modified: {new Date(customUnitData.updatedAt).toLocaleDateString()}
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          fontSize: { xs: '0.875rem', sm: '1rem' },
+                        }}
+                      >
+                        Modified:{' '}
+                        {new Date(
+                          customUnitData.updatedAt
+                        ).toLocaleDateString()}
                       </Typography>
                     </Box>
                   </Box>
@@ -404,8 +569,26 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
           </Card>
 
           {/* Tabs */}
-          <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}>
-            <Tabs value={activeTab} onChange={(_, newValue) => setActiveTab(newValue)}>
+          <Box
+            sx={{
+              borderBottom: 1,
+              borderColor: 'divider',
+              mb: { xs: 1.5, sm: 2 },
+            }}
+          >
+            <Tabs
+              value={activeTab}
+              onChange={(_, newValue) => setActiveTab(newValue)}
+              variant={isMobile ? 'scrollable' : 'standard'}
+              scrollButtons={isMobile ? 'auto' : false}
+              sx={{
+                '& .MuiTab-root': {
+                  fontSize: { xs: '0.875rem', sm: '1rem' },
+                  minHeight: { xs: '48px', sm: '56px' },
+                  minWidth: { xs: 'auto', sm: 'auto' },
+                },
+              }}
+            >
               <Tab label="Unit Details" value="unit" />
               <Tab label="Upgrades" value="upgrades" />
               {isInPrimeSlot() && (
@@ -422,20 +605,32 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
           </Box>
 
           {/* Tab Content */}
-          <Box sx={{ mt: 2 }}>
+          <Box sx={{ mt: { xs: 1.5, sm: 2 } }}>
             {activeTab === 'unit' && (
               <Box>
                 <Typography variant="h6" gutterBottom>
                   Unit Details
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-                  View detailed information about this unit including characteristics, weapons, and special rules.
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mb: 3 }}
+                >
+                  View detailed information about this unit including
+                  characteristics, weapons, and special rules.
                 </Typography>
 
                 {/* Unit Summary Card */}
                 <Card sx={{ mb: 2 }}>
                   <CardContent sx={{ py: 2 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 2,
+                        mb: 1,
+                      }}
+                    >
                       <Typography variant="h6" sx={{ flex: 1 }}>
                         {baseUnitData.name}
                       </Typography>
@@ -446,19 +641,39 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                         variant="outlined"
                       />
                     </Box>
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, mb: 1 }}>
+                    <Box
+                      sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, mb: 1 }}
+                    >
                       <Box>
-                        <Typography variant="body2" color="text.secondary" component="span">
-                          Size: {Object.values(baseUnitData.models).reduce((a, b) => a + b, 0)} models
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          component="span"
+                        >
+                          Size:{' '}
+                          {Object.values(baseUnitData.models).reduce(
+                            (a, b) => a + b,
+                            0
+                          )}{' '}
+                          models
                         </Typography>
                       </Box>
                       <Box>
-                        <Typography variant="body2" color="text.secondary" component="span">
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          component="span"
+                        >
                           Base: {baseUnitData.points} pts
                         </Typography>
                       </Box>
                       <Box>
-                        <Typography variant="body2" color="primary" component="span" sx={{ fontWeight: 'medium' }}>
+                        <Typography
+                          variant="body2"
+                          color="primary"
+                          component="span"
+                          sx={{ fontWeight: 'medium' }}
+                        >
                           Total: {totalUnitPoints} pts
                         </Typography>
                       </Box>
@@ -476,22 +691,25 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                   unit={baseUnitData}
                   armyUnit={{
                     ...unit,
-                    models: effectiveModelCounts
+                    models: effectiveModelCounts,
                   }}
                   selectedUpgrades={selectedUpgrades}
                 />
-
-
               </Box>
             )}
 
-                        {activeTab === 'upgrades' && (
+            {activeTab === 'upgrades' && (
               <Box>
                 <Typography variant="h6" gutterBottom>
                   Unit Upgrades
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-                  Configure upgrades for this unit. Available upgrades depend on the unit's models and current configuration.
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mb: 3 }}
+                >
+                  Configure upgrades for this unit. Available upgrades depend on
+                  the unit's models and current configuration.
                 </Typography>
 
                 {/* Unit-Level Upgrades */}
@@ -513,8 +731,15 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                             baseUnitData,
                           };
 
-                          const maxCount = UpgradeValidator.getMaxCount(upgrade, validationContext);
-                          const isAvailable = UpgradeValidator.isUpgradeAvailable(upgrade, validationContext);
+                          const maxCount = UpgradeValidator.getMaxCount(
+                            upgrade,
+                            validationContext
+                          );
+                          const isAvailable =
+                            UpgradeValidator.isUpgradeAvailable(
+                              upgrade,
+                              validationContext
+                            );
                           const currentCount = selectedUpgrades
                             .filter(u => u.upgradeId === upgrade.id)
                             .reduce((sum, u) => sum + u.count, 0);
@@ -530,21 +755,36 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                                 bgcolor: 'grey.50',
                               }}
                             >
-                              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                              <Box
+                                sx={{
+                                  display: 'flex',
+                                  justifyContent: 'space-between',
+                                  alignItems: 'flex-start',
+                                }}
+                              >
                                 <Box sx={{ flex: 1 }}>
                                   <Typography variant="subtitle1" gutterBottom>
                                     {upgrade.name}
                                   </Typography>
-                                  <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                                  <Typography
+                                    variant="body2"
+                                    color="text.secondary"
+                                    sx={{ mb: 1 }}
+                                  >
                                     {upgrade.description}
                                   </Typography>
 
                                   {/* Upgrade Options */}
-                                  {upgrade.options && upgrade.options.length > 0 ? (
+                                  {upgrade.options &&
+                                  upgrade.options.length > 0 ? (
                                     <Stack spacing={1}>
                                       {upgrade.options.map(option => {
                                         const optionCount = selectedUpgrades
-                                          .filter(u => u.upgradeId === upgrade.id && u.optionId === option.id)
+                                          .filter(
+                                            u =>
+                                              u.upgradeId === upgrade.id &&
+                                              u.optionId === option.id
+                                          )
                                           .reduce((sum, u) => sum + u.count, 0);
 
                                         return (
@@ -558,53 +798,112 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                                               bgcolor: 'primary.50',
                                             }}
                                           >
-                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                            <Box
+                                              sx={{
+                                                display: 'flex',
+                                                justifyContent: 'space-between',
+                                                alignItems: 'center',
+                                              }}
+                                            >
                                               <Box>
-                                                <Typography variant="body2" fontWeight="medium">
+                                                <Typography
+                                                  variant="body2"
+                                                  fontWeight="medium"
+                                                >
                                                   {option.name}
                                                 </Typography>
-                                                <Typography variant="body2" color="text.secondary">
+                                                <Typography
+                                                  variant="body2"
+                                                  color="text.secondary"
+                                                >
                                                   {option.description}
                                                 </Typography>
-                                                <Typography variant="body2" color="primary">
+                                                <Typography
+                                                  variant="body2"
+                                                  color="primary"
+                                                >
                                                   {option.points} points each
                                                 </Typography>
                                               </Box>
-                                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                              <Box
+                                                sx={{
+                                                  display: 'flex',
+                                                  alignItems: 'center',
+                                                  gap: 1,
+                                                }}
+                                              >
                                                 <IconButton
                                                   size="small"
-                                                  disabled={!isAvailable || optionCount <= 0}
+                                                  disabled={
+                                                    !isAvailable ||
+                                                    optionCount <= 0
+                                                  }
                                                   onClick={() => {
-                                                    const newUpgrades = [...selectedUpgrades];
-                                                    const existingIndex = newUpgrades.findIndex(
-                                                      u => u.upgradeId === upgrade.id && u.optionId === option.id
-                                                    );
+                                                    const newUpgrades = [
+                                                      ...selectedUpgrades,
+                                                    ];
+                                                    const existingIndex =
+                                                      newUpgrades.findIndex(
+                                                        u =>
+                                                          u.upgradeId ===
+                                                            upgrade.id &&
+                                                          u.optionId ===
+                                                            option.id
+                                                      );
                                                     if (existingIndex >= 0) {
-                                                      if (newUpgrades[existingIndex].count > 1) {
-                                                        newUpgrades[existingIndex].count--;
+                                                      if (
+                                                        newUpgrades[
+                                                          existingIndex
+                                                        ].count > 1
+                                                      ) {
+                                                        newUpgrades[
+                                                          existingIndex
+                                                        ].count--;
                                                       } else {
-                                                        newUpgrades.splice(existingIndex, 1);
+                                                        newUpgrades.splice(
+                                                          existingIndex,
+                                                          1
+                                                        );
                                                       }
                                                     }
-                                                    setSelectedUpgrades(newUpgrades);
+                                                    setSelectedUpgrades(
+                                                      newUpgrades
+                                                    );
                                                     saveUpgrades(newUpgrades);
                                                   }}
                                                 >
                                                   <Remove />
                                                 </IconButton>
-                                                <Typography variant="body2" sx={{ minWidth: 30, textAlign: 'center' }}>
+                                                <Typography
+                                                  variant="body2"
+                                                  sx={{
+                                                    minWidth: 30,
+                                                    textAlign: 'center',
+                                                  }}
+                                                >
                                                   {optionCount}
                                                 </Typography>
                                                 <IconButton
                                                   size="small"
-                                                  disabled={!isAvailable || optionCount >= maxCount}
+                                                  disabled={
+                                                    !isAvailable ||
+                                                    optionCount >= maxCount
+                                                  }
                                                   onClick={() => {
-                                                    const newUpgrades = [...selectedUpgrades];
-                                                    const existingIndex = newUpgrades.findIndex(
-                                                      u => u.upgradeId === upgrade.id && u.optionId === option.id
-                                                    );
+                                                    const newUpgrades = [
+                                                      ...selectedUpgrades,
+                                                    ];
+                                                    const existingIndex =
+                                                      newUpgrades.findIndex(
+                                                        u =>
+                                                          u.upgradeId ===
+                                                            upgrade.id &&
+                                                          u.optionId ===
+                                                            option.id
+                                                      );
                                                     if (existingIndex >= 0) {
-                                                      newUpgrades[existingIndex].count++;
+                                                      newUpgrades[existingIndex]
+                                                        .count++;
                                                     } else {
                                                       newUpgrades.push({
                                                         upgradeId: upgrade.id,
@@ -613,7 +912,9 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                                                         points: option.points,
                                                       });
                                                     }
-                                                    setSelectedUpgrades(newUpgrades);
+                                                    setSelectedUpgrades(
+                                                      newUpgrades
+                                                    );
                                                     saveUpgrades(newUpgrades);
                                                   }}
                                                 >
@@ -627,24 +928,54 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                                     </Stack>
                                   ) : (
                                     /* Simple upgrade without options */
-                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                      <Typography variant="body2" color="primary">
-                                        {upgrade.maxCount === 'dependent' ? 'Variable' : upgrade.maxCount || 1} available
+                                    <Box
+                                      sx={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center',
+                                      }}
+                                    >
+                                      <Typography
+                                        variant="body2"
+                                        color="primary"
+                                      >
+                                        {upgrade.maxCount === 'dependent'
+                                          ? 'Variable'
+                                          : upgrade.maxCount || 1}{' '}
+                                        available
                                       </Typography>
-                                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                      <Box
+                                        sx={{
+                                          display: 'flex',
+                                          alignItems: 'center',
+                                          gap: 1,
+                                        }}
+                                      >
                                         <IconButton
                                           size="small"
-                                          disabled={!isAvailable || currentCount <= 0}
+                                          disabled={
+                                            !isAvailable || currentCount <= 0
+                                          }
                                           onClick={() => {
-                                            const newUpgrades = [...selectedUpgrades];
-                                            const existingIndex = newUpgrades.findIndex(
-                                              u => u.upgradeId === upgrade.id
-                                            );
+                                            const newUpgrades = [
+                                              ...selectedUpgrades,
+                                            ];
+                                            const existingIndex =
+                                              newUpgrades.findIndex(
+                                                u => u.upgradeId === upgrade.id
+                                              );
                                             if (existingIndex >= 0) {
-                                              if (newUpgrades[existingIndex].count > 1) {
-                                                newUpgrades[existingIndex].count--;
+                                              if (
+                                                newUpgrades[existingIndex]
+                                                  .count > 1
+                                              ) {
+                                                newUpgrades[existingIndex]
+                                                  .count--;
                                               } else {
-                                                newUpgrades.splice(existingIndex, 1);
+                                                newUpgrades.splice(
+                                                  existingIndex,
+                                                  1
+                                                );
                                               }
                                             }
                                             setSelectedUpgrades(newUpgrades);
@@ -653,19 +984,32 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                                         >
                                           <Remove />
                                         </IconButton>
-                                        <Typography variant="body2" sx={{ minWidth: 30, textAlign: 'center' }}>
+                                        <Typography
+                                          variant="body2"
+                                          sx={{
+                                            minWidth: 30,
+                                            textAlign: 'center',
+                                          }}
+                                        >
                                           {currentCount}
                                         </Typography>
                                         <IconButton
                                           size="small"
-                                          disabled={!isAvailable || currentCount >= maxCount}
+                                          disabled={
+                                            !isAvailable ||
+                                            currentCount >= maxCount
+                                          }
                                           onClick={() => {
-                                            const newUpgrades = [...selectedUpgrades];
-                                            const existingIndex = newUpgrades.findIndex(
-                                              u => u.upgradeId === upgrade.id
-                                            );
+                                            const newUpgrades = [
+                                              ...selectedUpgrades,
+                                            ];
+                                            const existingIndex =
+                                              newUpgrades.findIndex(
+                                                u => u.upgradeId === upgrade.id
+                                              );
                                             if (existingIndex >= 0) {
-                                              newUpgrades[existingIndex].count++;
+                                              newUpgrades[existingIndex]
+                                                .count++;
                                             } else {
                                               newUpgrades.push({
                                                 upgradeId: upgrade.id,
@@ -699,288 +1043,573 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                   </Card>
                 )}
 
-                                {/* Model-Level Upgrades */}
-                {baseUnitData.modelUpgrades && Object.keys(baseUnitData.modelUpgrades).length > 0 && (
-                  <Card>
-                    <CardContent>
-                      <Typography variant="h6" gutterBottom>
-                        Model-Level Upgrades
-                      </Typography>
-                      <Stack spacing={1}>
-                        {Object.entries(baseUnitData.modelUpgrades).map(([modelId, _upgradeGroupIds]) => {
-                          const model = DataLoader.getModelById(modelId);
-                          const modelCount = effectiveModelCounts[modelId] || 0;
+                {/* Model-Level Upgrades */}
+                {baseUnitData.modelUpgrades &&
+                  Object.keys(baseUnitData.modelUpgrades).length > 0 && (
+                    <Card>
+                      <CardContent>
+                        <Typography variant="h6" gutterBottom>
+                          Model-Level Upgrades
+                        </Typography>
+                        <Stack spacing={1}>
+                          {Object.entries(baseUnitData.modelUpgrades).map(
+                            ([modelId, _upgradeGroupIds]) => {
+                              const model = DataLoader.getModelById(modelId);
+                              const modelCount =
+                                effectiveModelCounts[modelId] || 0;
 
-                          if (!model || modelCount === 0) return null;
+                              if (!model || modelCount === 0) return null;
 
-                          const isModelExpanded = expandedModelSections[modelId] || false;
+                              const isModelExpanded =
+                                expandedModelSections[modelId] || false;
 
-                          return (
-                            <Accordion
-                              key={modelId}
-                              expanded={isModelExpanded}
-                              onChange={() => setExpandedModelSections(prev => ({
-                                ...prev,
-                                [modelId]: !isModelExpanded
-                              }))}
-                              sx={{
-                                '&:before': { display: 'none' },
-                                border: 1,
-                                borderColor: 'secondary.main',
-                                bgcolor: 'secondary.50',
-                              }}
-                            >
-                              <AccordionSummary expandIcon={<ExpandMore />}>
-                                <Typography variant="subtitle1">
-                                  {model.name} ({modelCount} models)
-                                </Typography>
-                              </AccordionSummary>
-                              <AccordionDetails>
-                                                                <Stack spacing={1}>
-                                  {getUpgradeGroupsForModel(modelId).map(upgradeGroup => {
-                                    if (!upgradeGroup) return null;
+                              return (
+                                <Accordion
+                                  key={modelId}
+                                  expanded={isModelExpanded}
+                                  onChange={() =>
+                                    setExpandedModelSections(prev => ({
+                                      ...prev,
+                                      [modelId]: !isModelExpanded,
+                                    }))
+                                  }
+                                  sx={{
+                                    '&:before': { display: 'none' },
+                                    border: 1,
+                                    borderColor: 'secondary.main',
+                                    bgcolor: 'secondary.50',
+                                  }}
+                                >
+                                  <AccordionSummary expandIcon={<ExpandMore />}>
+                                    <Typography variant="subtitle1">
+                                      {model.name} ({modelCount} models)
+                                    </Typography>
+                                  </AccordionSummary>
+                                  <AccordionDetails>
+                                    <Stack spacing={1}>
+                                      {getUpgradeGroupsForModel(modelId).map(
+                                        upgradeGroup => {
+                                          if (!upgradeGroup) return null;
 
-                                    const isUpgradeGroupExpanded = expandedUpgradeGroups[upgradeGroup.id] || false;
+                                          const isUpgradeGroupExpanded =
+                                            expandedUpgradeGroups[
+                                              upgradeGroup.id
+                                            ] || false;
 
-                                    return (
-                                      <Accordion
-                                        key={upgradeGroup.id}
-                                        expanded={isUpgradeGroupExpanded}
-                                        onChange={() => setExpandedUpgradeGroups(prev => ({
-                                          ...prev,
-                                          [upgradeGroup.id]: !isUpgradeGroupExpanded
-                                        }))}
-                                        sx={{
-                                          '&:before': { display: 'none' },
-                                          border: 1,
-                                          borderColor: 'grey.300',
-                                          bgcolor: 'white',
-                                        }}
-                                      >
-                                        <AccordionSummary expandIcon={<ExpandMore />}>
-                                          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                                            <Typography variant="body2" fontWeight="medium">
-                                              {upgradeGroup.name}
-                                            </Typography>
-                                          </Box>
-                                        </AccordionSummary>
-                                        <AccordionDetails>
-                                          <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                                            {upgradeGroup.description}
-                                          </Typography>
-
-                                          {/* Upgrades in this group */}
-                                          <Stack spacing={1}>
-                                            {upgradeGroup.upgrades.map((upgradeId: string) => {
-                                              const upgrade = DataLoader.getUpgradeById(upgradeId);
-                                              if (!upgrade) return null;
-
-                                              // Create validation context for this model
-                                              const validationContext: UpgradeValidationContext = {
-                                                selectedUpgrades,
-                                                previewModels: { [modelId]: modelCount },
-                                                baseUnitData,
-                                              };
-
-                                              const maxCount = UpgradeValidator.getMaxCount(upgrade, validationContext);
-                                              const isAvailable = UpgradeValidator.isUpgradeAvailable(upgrade, validationContext);
-                                              const currentCount = selectedUpgrades
-                                                .filter(u => u.upgradeId === upgrade.id)
-                                                .reduce((sum, u) => sum + u.count, 0);
-
-                                              return (
+                                          return (
+                                            <Accordion
+                                              key={upgradeGroup.id}
+                                              expanded={isUpgradeGroupExpanded}
+                                              onChange={() =>
+                                                setExpandedUpgradeGroups(
+                                                  prev => ({
+                                                    ...prev,
+                                                    [upgradeGroup.id]:
+                                                      !isUpgradeGroupExpanded,
+                                                  })
+                                                )
+                                              }
+                                              sx={{
+                                                '&:before': { display: 'none' },
+                                                border: 1,
+                                                borderColor: 'grey.300',
+                                                bgcolor: 'white',
+                                              }}
+                                            >
+                                              <AccordionSummary
+                                                expandIcon={<ExpandMore />}
+                                              >
                                                 <Box
-                                                  key={upgrade.id}
                                                   sx={{
-                                                    p: 2,
-                                                    border: 1,
-                                                    borderColor: 'primary.main',
-                                                    borderRadius: 1,
-                                                    bgcolor: 'primary.50',
+                                                    display: 'flex',
+                                                    justifyContent:
+                                                      'space-between',
+                                                    alignItems: 'center',
+                                                    width: '100%',
                                                   }}
                                                 >
-                                                  <Typography variant="body2" fontWeight="medium" gutterBottom>
-                                                    {upgrade.name}
+                                                  <Typography
+                                                    variant="body2"
+                                                    fontWeight="medium"
+                                                  >
+                                                    {upgradeGroup.name}
                                                   </Typography>
-                                                  <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                                                    {upgrade.description}
-                                                  </Typography>
+                                                </Box>
+                                              </AccordionSummary>
+                                              <AccordionDetails>
+                                                <Typography
+                                                  variant="body2"
+                                                  color="text.secondary"
+                                                  sx={{ mb: 2 }}
+                                                >
+                                                  {upgradeGroup.description}
+                                                </Typography>
 
-                                                  {/* Upgrade Options */}
-                                                  {upgrade.options && upgrade.options.length > 0 ? (
-                                                    <Stack spacing={1}>
-                                                      {upgrade.options.map(option => {
-                                                        const optionCount = selectedUpgrades
-                                                          .filter(u => u.upgradeId === upgrade.id && u.optionId === option.id)
-                                                          .reduce((sum, u) => sum + u.count, 0);
+                                                {/* Upgrades in this group */}
+                                                <Stack spacing={1}>
+                                                  {upgradeGroup.upgrades.map(
+                                                    (upgradeId: string) => {
+                                                      const upgrade =
+                                                        DataLoader.getUpgradeById(
+                                                          upgradeId
+                                                        );
+                                                      if (!upgrade) return null;
 
-                                                        return (
-                                                          <Box
-                                                            key={option.id}
-                                                            sx={{
-                                                              p: 1,
-                                                              border: 1,
-                                                              borderColor: 'secondary.main',
-                                                              borderRadius: 1,
-                                                              bgcolor: 'secondary.50',
-                                                            }}
+                                                      // Create validation context for this model
+                                                      const validationContext: UpgradeValidationContext =
+                                                        {
+                                                          selectedUpgrades,
+                                                          previewModels: {
+                                                            [modelId]:
+                                                              modelCount,
+                                                          },
+                                                          baseUnitData,
+                                                        };
+
+                                                      const maxCount =
+                                                        UpgradeValidator.getMaxCount(
+                                                          upgrade,
+                                                          validationContext
+                                                        );
+                                                      const isAvailable =
+                                                        UpgradeValidator.isUpgradeAvailable(
+                                                          upgrade,
+                                                          validationContext
+                                                        );
+                                                      const currentCount =
+                                                        selectedUpgrades
+                                                          .filter(
+                                                            u =>
+                                                              u.upgradeId ===
+                                                              upgrade.id
+                                                          )
+                                                          .reduce(
+                                                            (sum, u) =>
+                                                              sum + u.count,
+                                                            0
+                                                          );
+
+                                                      return (
+                                                        <Box
+                                                          key={upgrade.id}
+                                                          sx={{
+                                                            p: 2,
+                                                            border: 1,
+                                                            borderColor:
+                                                              'primary.main',
+                                                            borderRadius: 1,
+                                                            bgcolor:
+                                                              'primary.50',
+                                                          }}
+                                                        >
+                                                          <Typography
+                                                            variant="body2"
+                                                            fontWeight="medium"
+                                                            gutterBottom
                                                           >
-                                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                              <Box>
-                                                                <Typography variant="body2" fontWeight="medium">
-                                                                  {option.name}
-                                                                </Typography>
-                                                                <Typography variant="body2" color="text.secondary">
-                                                                  {option.description}
-                                                                </Typography>
-                                                                <Typography variant="body2" color="primary">
-                                                                  {option.points} points each
-                                                                </Typography>
-                                                              </Box>
-                                                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                                            {upgrade.name}
+                                                          </Typography>
+                                                          <Typography
+                                                            variant="body2"
+                                                            color="text.secondary"
+                                                            sx={{ mb: 1 }}
+                                                          >
+                                                            {
+                                                              upgrade.description
+                                                            }
+                                                          </Typography>
+
+                                                          {/* Upgrade Options */}
+                                                          {upgrade.options &&
+                                                          upgrade.options
+                                                            .length > 0 ? (
+                                                            <Stack spacing={1}>
+                                                              {upgrade.options.map(
+                                                                option => {
+                                                                  const optionCount =
+                                                                    selectedUpgrades
+                                                                      .filter(
+                                                                        u =>
+                                                                          u.upgradeId ===
+                                                                            upgrade.id &&
+                                                                          u.optionId ===
+                                                                            option.id
+                                                                      )
+                                                                      .reduce(
+                                                                        (
+                                                                          sum,
+                                                                          u
+                                                                        ) =>
+                                                                          sum +
+                                                                          u.count,
+                                                                        0
+                                                                      );
+
+                                                                  return (
+                                                                    <Box
+                                                                      key={
+                                                                        option.id
+                                                                      }
+                                                                      sx={{
+                                                                        p: 1,
+                                                                        border: 1,
+                                                                        borderColor:
+                                                                          'secondary.main',
+                                                                        borderRadius: 1,
+                                                                        bgcolor:
+                                                                          'secondary.50',
+                                                                      }}
+                                                                    >
+                                                                      <Box
+                                                                        sx={{
+                                                                          display:
+                                                                            'flex',
+                                                                          justifyContent:
+                                                                            'space-between',
+                                                                          alignItems:
+                                                                            'center',
+                                                                        }}
+                                                                      >
+                                                                        <Box>
+                                                                          <Typography
+                                                                            variant="body2"
+                                                                            fontWeight="medium"
+                                                                          >
+                                                                            {
+                                                                              option.name
+                                                                            }
+                                                                          </Typography>
+                                                                          <Typography
+                                                                            variant="body2"
+                                                                            color="text.secondary"
+                                                                          >
+                                                                            {
+                                                                              option.description
+                                                                            }
+                                                                          </Typography>
+                                                                          <Typography
+                                                                            variant="body2"
+                                                                            color="primary"
+                                                                          >
+                                                                            {
+                                                                              option.points
+                                                                            }{' '}
+                                                                            points
+                                                                            each
+                                                                          </Typography>
+                                                                        </Box>
+                                                                        <Box
+                                                                          sx={{
+                                                                            display:
+                                                                              'flex',
+                                                                            alignItems:
+                                                                              'center',
+                                                                            gap: 1,
+                                                                          }}
+                                                                        >
+                                                                          <IconButton
+                                                                            size="small"
+                                                                            disabled={
+                                                                              !isAvailable ||
+                                                                              optionCount <=
+                                                                                0
+                                                                            }
+                                                                            onClick={() => {
+                                                                              const newUpgrades =
+                                                                                [
+                                                                                  ...selectedUpgrades,
+                                                                                ];
+                                                                              const existingIndex =
+                                                                                newUpgrades.findIndex(
+                                                                                  u =>
+                                                                                    u.upgradeId ===
+                                                                                      upgrade.id &&
+                                                                                    u.optionId ===
+                                                                                      option.id
+                                                                                );
+                                                                              if (
+                                                                                existingIndex >=
+                                                                                0
+                                                                              ) {
+                                                                                if (
+                                                                                  newUpgrades[
+                                                                                    existingIndex
+                                                                                  ]
+                                                                                    .count >
+                                                                                  1
+                                                                                ) {
+                                                                                  newUpgrades[
+                                                                                    existingIndex
+                                                                                  ]
+                                                                                    .count--;
+                                                                                } else {
+                                                                                  newUpgrades.splice(
+                                                                                    existingIndex,
+                                                                                    1
+                                                                                  );
+                                                                                }
+                                                                              }
+                                                                              setSelectedUpgrades(
+                                                                                newUpgrades
+                                                                              );
+                                                                              saveUpgrades(
+                                                                                newUpgrades
+                                                                              );
+                                                                            }}
+                                                                          >
+                                                                            <Remove />
+                                                                          </IconButton>
+                                                                          <Typography
+                                                                            variant="body2"
+                                                                            sx={{
+                                                                              minWidth: 30,
+                                                                              textAlign:
+                                                                                'center',
+                                                                            }}
+                                                                          >
+                                                                            {
+                                                                              optionCount
+                                                                            }
+                                                                          </Typography>
+                                                                          <IconButton
+                                                                            size="small"
+                                                                            disabled={
+                                                                              !isAvailable ||
+                                                                              optionCount >=
+                                                                                maxCount
+                                                                            }
+                                                                            onClick={() => {
+                                                                              const newUpgrades =
+                                                                                [
+                                                                                  ...selectedUpgrades,
+                                                                                ];
+                                                                              const existingIndex =
+                                                                                newUpgrades.findIndex(
+                                                                                  u =>
+                                                                                    u.upgradeId ===
+                                                                                      upgrade.id &&
+                                                                                    u.optionId ===
+                                                                                      option.id
+                                                                                );
+                                                                              if (
+                                                                                existingIndex >=
+                                                                                0
+                                                                              ) {
+                                                                                newUpgrades[
+                                                                                  existingIndex
+                                                                                ]
+                                                                                  .count++;
+                                                                              } else {
+                                                                                newUpgrades.push(
+                                                                                  {
+                                                                                    upgradeId:
+                                                                                      upgrade.id,
+                                                                                    optionId:
+                                                                                      option.id,
+                                                                                    count: 1,
+                                                                                    points:
+                                                                                      option.points,
+                                                                                  }
+                                                                                );
+                                                                              }
+                                                                              setSelectedUpgrades(
+                                                                                newUpgrades
+                                                                              );
+                                                                              saveUpgrades(
+                                                                                newUpgrades
+                                                                              );
+                                                                            }}
+                                                                          >
+                                                                            <Add />
+                                                                          </IconButton>
+                                                                        </Box>
+                                                                      </Box>
+                                                                    </Box>
+                                                                  );
+                                                                }
+                                                              )}
+                                                            </Stack>
+                                                          ) : (
+                                                            /* Simple upgrade without options */
+                                                            <Box
+                                                              sx={{
+                                                                display: 'flex',
+                                                                justifyContent:
+                                                                  'space-between',
+                                                                alignItems:
+                                                                  'center',
+                                                              }}
+                                                            >
+                                                              <Typography
+                                                                variant="body2"
+                                                                color="primary"
+                                                              >
+                                                                {upgrade.maxCount ===
+                                                                'dependent'
+                                                                  ? 'Variable'
+                                                                  : upgrade.maxCount ||
+                                                                    1}{' '}
+                                                                available
+                                                              </Typography>
+                                                              <Box
+                                                                sx={{
+                                                                  display:
+                                                                    'flex',
+                                                                  alignItems:
+                                                                    'center',
+                                                                  gap: 1,
+                                                                }}
+                                                              >
                                                                 <IconButton
                                                                   size="small"
-                                                                  disabled={!isAvailable || optionCount <= 0}
+                                                                  disabled={
+                                                                    !isAvailable ||
+                                                                    currentCount <=
+                                                                      0
+                                                                  }
                                                                   onClick={() => {
-                                                                    const newUpgrades = [...selectedUpgrades];
-                                                                    const existingIndex = newUpgrades.findIndex(
-                                                                      u => u.upgradeId === upgrade.id && u.optionId === option.id
-                                                                    );
-                                                                    if (existingIndex >= 0) {
-                                                                      if (newUpgrades[existingIndex].count > 1) {
-                                                                        newUpgrades[existingIndex].count--;
+                                                                    const newUpgrades =
+                                                                      [
+                                                                        ...selectedUpgrades,
+                                                                      ];
+                                                                    const existingIndex =
+                                                                      newUpgrades.findIndex(
+                                                                        u =>
+                                                                          u.upgradeId ===
+                                                                          upgrade.id
+                                                                      );
+                                                                    if (
+                                                                      existingIndex >=
+                                                                      0
+                                                                    ) {
+                                                                      if (
+                                                                        newUpgrades[
+                                                                          existingIndex
+                                                                        ]
+                                                                          .count >
+                                                                        1
+                                                                      ) {
+                                                                        newUpgrades[
+                                                                          existingIndex
+                                                                        ]
+                                                                          .count--;
                                                                       } else {
-                                                                        newUpgrades.splice(existingIndex, 1);
+                                                                        newUpgrades.splice(
+                                                                          existingIndex,
+                                                                          1
+                                                                        );
                                                                       }
                                                                     }
-                                                                    setSelectedUpgrades(newUpgrades);
-                                                                    saveUpgrades(newUpgrades);
+                                                                    setSelectedUpgrades(
+                                                                      newUpgrades
+                                                                    );
+                                                                    saveUpgrades(
+                                                                      newUpgrades
+                                                                    );
                                                                   }}
                                                                 >
                                                                   <Remove />
                                                                 </IconButton>
-                                                                <Typography variant="body2" sx={{ minWidth: 30, textAlign: 'center' }}>
-                                                                  {optionCount}
+                                                                <Typography
+                                                                  variant="body2"
+                                                                  sx={{
+                                                                    minWidth: 30,
+                                                                    textAlign:
+                                                                      'center',
+                                                                  }}
+                                                                >
+                                                                  {currentCount}
                                                                 </Typography>
                                                                 <IconButton
                                                                   size="small"
-                                                                  disabled={!isAvailable || optionCount >= maxCount}
+                                                                  disabled={
+                                                                    !isAvailable ||
+                                                                    currentCount >=
+                                                                      maxCount
+                                                                  }
                                                                   onClick={() => {
-                                                                    const newUpgrades = [...selectedUpgrades];
-                                                                    const existingIndex = newUpgrades.findIndex(
-                                                                      u => u.upgradeId === upgrade.id && u.optionId === option.id
-                                                                    );
-                                                                    if (existingIndex >= 0) {
-                                                                      newUpgrades[existingIndex].count++;
+                                                                    const newUpgrades =
+                                                                      [
+                                                                        ...selectedUpgrades,
+                                                                      ];
+                                                                    const existingIndex =
+                                                                      newUpgrades.findIndex(
+                                                                        u =>
+                                                                          u.upgradeId ===
+                                                                          upgrade.id
+                                                                      );
+                                                                    if (
+                                                                      existingIndex >=
+                                                                      0
+                                                                    ) {
+                                                                      newUpgrades[
+                                                                        existingIndex
+                                                                      ].count++;
                                                                     } else {
-                                                                      newUpgrades.push({
-                                                                        upgradeId: upgrade.id,
-                                                                        optionId: option.id,
-                                                                        count: 1,
-                                                                        points: option.points,
-                                                                      });
+                                                                      newUpgrades.push(
+                                                                        {
+                                                                          upgradeId:
+                                                                            upgrade.id,
+                                                                          count: 1,
+                                                                          points: 0,
+                                                                        }
+                                                                      );
                                                                     }
-                                                                    setSelectedUpgrades(newUpgrades);
-                                                                    saveUpgrades(newUpgrades);
+                                                                    setSelectedUpgrades(
+                                                                      newUpgrades
+                                                                    );
+                                                                    saveUpgrades(
+                                                                      newUpgrades
+                                                                    );
                                                                   }}
                                                                 >
                                                                   <Add />
                                                                 </IconButton>
                                                               </Box>
                                                             </Box>
-                                                          </Box>
-                                                        );
-                                                      })}
-                                                    </Stack>
-                                                  ) : (
-                                                    /* Simple upgrade without options */
-                                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                      <Typography variant="body2" color="primary">
-                                                        {upgrade.maxCount === 'dependent' ? 'Variable' : upgrade.maxCount || 1} available
-                                                      </Typography>
-                                                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                                        <IconButton
-                                                          size="small"
-                                                          disabled={!isAvailable || currentCount <= 0}
-                                                          onClick={() => {
-                                                            const newUpgrades = [...selectedUpgrades];
-                                                            const existingIndex = newUpgrades.findIndex(
-                                                              u => u.upgradeId === upgrade.id
-                                                            );
-                                                            if (existingIndex >= 0) {
-                                                              if (newUpgrades[existingIndex].count > 1) {
-                                                                newUpgrades[existingIndex].count--;
-                                                              } else {
-                                                                newUpgrades.splice(existingIndex, 1);
-                                                              }
-                                                            }
-                                                            setSelectedUpgrades(newUpgrades);
-                                                            saveUpgrades(newUpgrades);
-                                                          }}
-                                                        >
-                                                          <Remove />
-                                                        </IconButton>
-                                                        <Typography variant="body2" sx={{ minWidth: 30, textAlign: 'center' }}>
-                                                          {currentCount}
-                                                        </Typography>
-                                                        <IconButton
-                                                          size="small"
-                                                          disabled={!isAvailable || currentCount >= maxCount}
-                                                          onClick={() => {
-                                                            const newUpgrades = [...selectedUpgrades];
-                                                            const existingIndex = newUpgrades.findIndex(
-                                                              u => u.upgradeId === upgrade.id
-                                                            );
-                                                            if (existingIndex >= 0) {
-                                                              newUpgrades[existingIndex].count++;
-                                                            } else {
-                                                              newUpgrades.push({
-                                                                upgradeId: upgrade.id,
-                                                                count: 1,
-                                                                points: 0,
-                                                              });
-                                                            }
-                                                            setSelectedUpgrades(newUpgrades);
-                                                            saveUpgrades(newUpgrades);
-                                                          }}
-                                                        >
-                                                          <Add />
-                                                        </IconButton>
-                                                      </Box>
-                                                    </Box>
-                                                  )}
+                                                          )}
 
-                                                  {/* Availability Status */}
-                                                  {!isAvailable && (
-                                                    <Alert severity="warning" sx={{ mt: 1 }}>
-                                                      This upgrade is not currently available.
-                                                    </Alert>
+                                                          {/* Availability Status */}
+                                                          {!isAvailable && (
+                                                            <Alert
+                                                              severity="warning"
+                                                              sx={{ mt: 1 }}
+                                                            >
+                                                              This upgrade is
+                                                              not currently
+                                                              available.
+                                                            </Alert>
+                                                          )}
+                                                        </Box>
+                                                      );
+                                                    }
                                                   )}
-                                                </Box>
-                                              );
-                                            })}
-                                          </Stack>
-                                        </AccordionDetails>
-                                      </Accordion>
-                                    );
-                                  })}
-                                </Stack>
-                              </AccordionDetails>
-                            </Accordion>
-                          );
-                        })}
-                      </Stack>
-                    </CardContent>
-                  </Card>
-                )}
+                                                </Stack>
+                                              </AccordionDetails>
+                                            </Accordion>
+                                          );
+                                        }
+                                      )}
+                                    </Stack>
+                                  </AccordionDetails>
+                                </Accordion>
+                              );
+                            }
+                          )}
+                        </Stack>
+                      </CardContent>
+                    </Card>
+                  )}
 
                 {/* No Upgrades Available */}
-                {(!baseUnitData.upgrades || baseUnitData.upgrades.length === 0) &&
-                 (!baseUnitData.modelUpgrades || Object.keys(baseUnitData.modelUpgrades).length === 0) && (
-                  <Alert severity="info">
-                    No upgrades available for this unit.
-                  </Alert>
-                )}
+                {(!baseUnitData.upgrades ||
+                  baseUnitData.upgrades.length === 0) &&
+                  (!baseUnitData.modelUpgrades ||
+                    Object.keys(baseUnitData.modelUpgrades).length === 0) && (
+                    <Alert severity="info">
+                      No upgrades available for this unit.
+                    </Alert>
+                  )}
               </Box>
             )}
 
@@ -989,44 +1618,61 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                 <Typography variant="h6" gutterBottom>
                   Prime Advantages
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mb: 2 }}
+                >
                   {isInPrimeSlot()
-                    ? "This unit is in a prime slot and can be assigned prime advantages."
-                    : "This unit is not in a prime slot, but you can still view available prime advantages."
-                  }
+                    ? 'This unit is in a prime slot and can be assigned prime advantages.'
+                    : 'This unit is not in a prime slot, but you can still view available prime advantages.'}
                 </Typography>
-
 
                 {(() => {
                   const primeAdvantages = DataLoader.getPrimeAdvantages();
-                  const availableAdvantages = primeAdvantages.filter(advantage => {
-                    // Check restrictions based on unit's battlefield role
-                    const baseUnit = DataLoader.getUnitById(unit.unitId);
-                    if (!baseUnit) return false;
+                  const availableAdvantages = primeAdvantages.filter(
+                    advantage => {
+                      // Check restrictions based on unit's battlefield role
+                      const baseUnit = DataLoader.getUnitById(unit.unitId);
+                      if (!baseUnit) return false;
 
-                    // Check role-based restrictions
-                    if (advantage.restrictions) {
-                      for (const restriction of advantage.restrictions) {
-                        if (restriction.includes('Troops') && baseUnit.battlefieldRole !== 'Troops') {
-                          return false;
-                        }
-                        if (restriction.includes('Command') && baseUnit.battlefieldRole !== 'Command') {
-                          return false;
-                        }
-                        if (restriction.includes('High Command') && baseUnit.battlefieldRole !== 'High Command') {
-                          return false;
+                      // Check role-based restrictions
+                      if (advantage.restrictions) {
+                        for (const restriction of advantage.restrictions) {
+                          if (
+                            restriction.includes('Troops') &&
+                            baseUnit.battlefieldRole !== 'Troops'
+                          ) {
+                            return false;
+                          }
+                          if (
+                            restriction.includes('Command') &&
+                            baseUnit.battlefieldRole !== 'Command'
+                          ) {
+                            return false;
+                          }
+                          if (
+                            restriction.includes('High Command') &&
+                            baseUnit.battlefieldRole !== 'High Command'
+                          ) {
+                            return false;
+                          }
                         }
                       }
-                    }
 
-                    return true;
-                  });
+                      return true;
+                    }
+                  );
 
                   return (
                     <Stack spacing={2}>
                       {availableAdvantages.map(advantage => {
-                        const isSelected = unit.primeAdvantages?.some(pa => pa.advantageId === advantage.id) || false;
-                        const isLogisticalBenefit = advantage.id === 'logistical-benefit';
+                        const isSelected =
+                          unit.primeAdvantages?.some(
+                            pa => pa.advantageId === advantage.id
+                          ) || false;
+                        const isLogisticalBenefit =
+                          advantage.id === 'logistical-benefit';
 
                         return (
                           <Card
@@ -1035,7 +1681,9 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                             elevation={isSelected ? 4 : 1}
                             sx={{
                               cursor: 'pointer',
-                              borderColor: isSelected ? 'primary.main' : undefined,
+                              borderColor: isSelected
+                                ? 'primary.main'
+                                : undefined,
                               '&:hover': {
                                 borderColor: 'primary.main',
                                 boxShadow: 2,
@@ -1044,18 +1692,26 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                             onClick={() => {
                               if (isSelected) {
                                 // Remove the advantage
-                                const newAdvantages = selectedPrimeAdvantages.filter(id => id !== advantage.id);
+                                const newAdvantages =
+                                  selectedPrimeAdvantages.filter(
+                                    id => id !== advantage.id
+                                  );
                                 setSelectedPrimeAdvantages(newAdvantages);
 
                                 // Update the unit
                                 const updatedUnit = {
                                   ...unit,
-                                  primeAdvantages: unit.primeAdvantages.filter(pa => pa.advantageId !== advantage.id),
+                                  primeAdvantages: unit.primeAdvantages.filter(
+                                    pa => pa.advantageId !== advantage.id
+                                  ),
                                 };
                                 onUnitUpdated(slotId, updatedUnit);
                               } else {
                                 // Add the advantage
-                                const newAdvantages = [...selectedPrimeAdvantages, advantage.id];
+                                const newAdvantages = [
+                                  ...selectedPrimeAdvantages,
+                                  advantage.id,
+                                ];
                                 setSelectedPrimeAdvantages(newAdvantages);
 
                                 // Create the prime advantage object
@@ -1075,14 +1731,24 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                                 // Update the unit
                                 const updatedUnit = {
                                   ...unit,
-                                  primeAdvantages: [...(unit.primeAdvantages || []), primeAdvantage],
+                                  primeAdvantages: [
+                                    ...(unit.primeAdvantages || []),
+                                    primeAdvantage,
+                                  ],
                                 };
                                 onUnitUpdated(slotId, updatedUnit);
                               }
                             }}
                           >
                             <CardContent>
-                              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
+                              <Box
+                                sx={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'space-between',
+                                  mb: 1,
+                                }}
+                              >
                                 <Typography variant="h6" component="h4">
                                   {advantage.name}
                                 </Typography>
@@ -1095,45 +1761,86 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                                   />
                                 )}
                               </Box>
-                              <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                              <Typography
+                                variant="body2"
+                                color="text.secondary"
+                                sx={{ mb: 1 }}
+                              >
                                 {advantage.description}
                               </Typography>
                               <Typography variant="body2" sx={{ mb: 1 }}>
                                 <strong>Effect:</strong> {advantage.effect}
                               </Typography>
-                              {advantage.restrictions && advantage.restrictions.length > 0 && (
-                                <Typography variant="body2" color="warning.main" sx={{ fontSize: '0.875rem' }}>
-                                  <strong>Restrictions:</strong> {advantage.restrictions.join(', ')}
-                                </Typography>
-                              )}
+                              {advantage.restrictions &&
+                                advantage.restrictions.length > 0 && (
+                                  <Typography
+                                    variant="body2"
+                                    color="warning.main"
+                                    sx={{ fontSize: '0.875rem' }}
+                                  >
+                                    <strong>Restrictions:</strong>{' '}
+                                    {advantage.restrictions.join(', ')}
+                                  </Typography>
+                                )}
 
                               {/* Special UI for logistical benefit */}
                               {isLogisticalBenefit && isSelected && (
-                                <Box sx={{ mt: 2, p: 2, bgcolor: 'background.paper', borderRadius: 1 }}>
+                                <Box
+                                  sx={{
+                                    mt: 2,
+                                    p: 2,
+                                    bgcolor: 'background.paper',
+                                    borderRadius: 1,
+                                  }}
+                                >
                                   <Typography variant="subtitle2" gutterBottom>
                                     Slot Configuration
                                   </Typography>
-                                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                  <Box
+                                    sx={{
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      gap: 2,
+                                    }}
+                                  >
                                     <Typography variant="body2">
                                       Add slot for:
                                     </Typography>
-                                    <FormControl size="small" sx={{ minWidth: 120 }}>
+                                    <FormControl
+                                      size="small"
+                                      sx={{ minWidth: 120 }}
+                                    >
                                       <Select
                                         value={(() => {
-                                          const pa = unit.primeAdvantages?.find(p => p.advantageId === 'logistical-benefit');
-                                          return pa?.slotModification?.roleId || 'troops';
+                                          const pa = unit.primeAdvantages?.find(
+                                            p =>
+                                              p.advantageId ===
+                                              'logistical-benefit'
+                                          );
+                                          return (
+                                            pa?.slotModification?.roleId ||
+                                            'troops'
+                                          );
                                         })()}
-                                        onClick={(e) => {
+                                        onClick={e => {
                                           e.stopPropagation();
                                         }}
-                                                                                onChange={(e: any) => {
+                                        onChange={(e: any) => {
                                           const newRoleId = e.target.value;
 
-                                          const updatedAdvantages = unit.primeAdvantages?.map(pa =>
-                                            pa.advantageId === 'logistical-benefit'
-                                              ? { ...pa, slotModification: { ...pa.slotModification!, roleId: newRoleId } }
-                                              : pa
-                                          ) || [];
+                                          const updatedAdvantages =
+                                            unit.primeAdvantages?.map(pa =>
+                                              pa.advantageId ===
+                                              'logistical-benefit'
+                                                ? {
+                                                    ...pa,
+                                                    slotModification: {
+                                                      ...pa.slotModification!,
+                                                      roleId: newRoleId,
+                                                    },
+                                                  }
+                                                : pa
+                                            ) || [];
 
                                           const updatedUnit = {
                                             ...unit,
@@ -1142,11 +1849,16 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                                           onUnitUpdated(slotId, updatedUnit);
                                         }}
                                       >
-                                        {DataLoader.getBattlefieldRoles().map(role => (
-                                          <MenuItem key={role.id} value={role.id}>
-                                            {role.name}
-                                          </MenuItem>
-                                        ))}
+                                        {DataLoader.getBattlefieldRoles().map(
+                                          role => (
+                                            <MenuItem
+                                              key={role.id}
+                                              value={role.id}
+                                            >
+                                              {role.name}
+                                            </MenuItem>
+                                          )
+                                        )}
                                       </Select>
                                     </FormControl>
                                   </Box>
@@ -1173,8 +1885,13 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                 <Typography variant="h6" gutterBottom>
                   Triggered Detachments
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                  This unit can trigger {maxDetachments} detachment{maxDetachments > 1 ? 's' : ''}.
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mb: 2 }}
+                >
+                  This unit can trigger {maxDetachments} detachment
+                  {maxDetachments > 1 ? 's' : ''}.
                 </Typography>
 
                 {triggeredDetachments.length > 0 ? (
@@ -1203,7 +1920,9 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                               variant="outlined"
                               color="error"
                               size="small"
-                              onClick={() => handleRemoveDetachment(detachment.detachmentId)}
+                              onClick={() =>
+                                handleRemoveDetachment(detachment.detachmentId)
+                              }
                               sx={{ mt: 1 }}
                             >
                               Remove Detachment
@@ -1238,8 +1957,13 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                 <Typography variant="h6" gutterBottom>
                   Custom Units
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-                  Save this unit configuration as a custom unit for future use, or manage your existing custom units.
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mb: 3 }}
+                >
+                  Save this unit configuration as a custom unit for future use,
+                  or manage your existing custom units.
                 </Typography>
 
                 {/* Current Unit Status */}
@@ -1249,7 +1973,13 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                       Current Unit Configuration
                     </Typography>
                     <Stack spacing={2}>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
+                      >
                         <Typography variant="body2" color="text.secondary">
                           Base Unit:
                         </Typography>
@@ -1257,7 +1987,13 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                           {baseUnitData.name}
                         </Typography>
                       </Box>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
+                      >
                         <Typography variant="body2" color="text.secondary">
                           Faction:
                         </Typography>
@@ -1266,16 +2002,29 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                         </Typography>
                       </Box>
                       {subfaction && (
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                          }}
+                        >
                           <Typography variant="body2" color="text.secondary">
                             Subfaction:
                           </Typography>
                           <Typography variant="body2">
-                            {DataLoader.getFactionById(subfaction)?.name || subfaction}
+                            {DataLoader.getFactionById(subfaction)?.name ||
+                              subfaction}
                           </Typography>
                         </Box>
                       )}
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
+                      >
                         <Typography variant="body2" color="text.secondary">
                           Upgrades Applied:
                         </Typography>
@@ -1283,10 +2032,18 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                           label={`${unit.upgrades.length} upgrades`}
                           size="small"
                           variant="outlined"
-                          color={unit.upgrades.length > 0 ? "primary" : "default"}
+                          color={
+                            unit.upgrades.length > 0 ? 'primary' : 'default'
+                          }
                         />
                       </Box>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
+                      >
                         <Typography variant="body2" color="text.secondary">
                           Total Points:
                         </Typography>
@@ -1300,10 +2057,14 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                       <Box sx={{ mt: 2 }}>
                         <Alert severity="info" sx={{ mb: 2 }}>
                           <Typography variant="body2">
-                            This is a custom unit: <strong>{customUnitData.name}</strong>
+                            This is a custom unit:{' '}
+                            <strong>{customUnitData.name}</strong>
                           </Typography>
                           <Typography variant="body2" sx={{ mt: 1 }}>
-                            Last modified: {new Date(customUnitData.updatedAt).toLocaleDateString()}
+                            Last modified:{' '}
+                            {new Date(
+                              customUnitData.updatedAt
+                            ).toLocaleDateString()}
                           </Typography>
                         </Alert>
                         <Stack spacing={2}>
@@ -1318,21 +2079,31 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                                 upgrades: selectedUpgrades,
                                 models: effectiveModelCounts,
                               };
-                              const customUnit = CustomUnitStorage.getCustomUnit(customUnitData.id);
+                              const customUnit =
+                                CustomUnitStorage.getCustomUnit(
+                                  customUnitData.id
+                                );
                               if (customUnit) {
                                 const updatedCustomUnit = {
                                   ...customUnit,
                                   upgrades: selectedUpgrades,
-                                  modelInstanceWeaponChanges: updatedUnit.modelInstanceWeaponChanges,
-                                  modelInstanceWargearChanges: updatedUnit.modelInstanceWargearChanges,
+                                  modelInstanceWeaponChanges:
+                                    updatedUnit.modelInstanceWeaponChanges,
+                                  modelInstanceWargearChanges:
+                                    updatedUnit.modelInstanceWargearChanges,
                                   updatedAt: new Date().toISOString(),
                                 };
-                                CustomUnitStorage.saveCustomUnit(updatedCustomUnit);
+                                CustomUnitStorage.saveCustomUnit(
+                                  updatedCustomUnit
+                                );
                                 // Update the army unit to reflect the changes
                                 onUnitUpdated(slotId, updatedUnit);
                                 // Show success message
                                 setShowOverwriteSuccess(true);
-                                setTimeout(() => setShowOverwriteSuccess(false), 3000);
+                                setTimeout(
+                                  () => setShowOverwriteSuccess(false),
+                                  3000
+                                );
                               }
                             }}
                             fullWidth
@@ -1351,7 +2122,8 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                         </Stack>
                         {showOverwriteSuccess && (
                           <Alert severity="success" sx={{ mt: 2 }}>
-                            Custom unit "{customUnitData.name}" has been updated successfully!
+                            Custom unit "{customUnitData.name}" has been updated
+                            successfully!
                           </Alert>
                         )}
                       </Box>
@@ -1370,15 +2142,26 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                     )}
                   </CardContent>
                 </Card>
-
-
               </Box>
             )}
           </Box>
         </DialogContent>
 
-        <DialogActions>
-          <Button onClick={onClose}>Close</Button>
+        <DialogActions
+          sx={{
+            p: { xs: 2, sm: 3 },
+            pt: { xs: 0, sm: 1 },
+          }}
+        >
+          <Button
+            onClick={onClose}
+            size={isMobile ? 'large' : 'medium'}
+            sx={{
+              width: { xs: '100%', sm: 'auto' },
+            }}
+          >
+            Close
+          </Button>
         </DialogActions>
       </Dialog>
 

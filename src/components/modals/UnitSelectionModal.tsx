@@ -11,6 +11,8 @@ import {
   Chip,
   Tabs,
   Tab,
+  useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import { DataLoader } from '../../utils/dataLoader';
@@ -34,11 +36,16 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
   armyList,
   detachment,
   onUnitSelected,
-  onClose
+  onClose,
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
   const [activeTab, setActiveTab] = useState<'base' | 'custom'>('base');
   const [availableBaseUnits, setAvailableBaseUnits] = useState<Unit[]>([]);
-  const [availableCustomUnits, setAvailableCustomUnits] = useState<CustomUnit[]>([]);
+  const [availableCustomUnits, setAvailableCustomUnits] = useState<
+    CustomUnit[]
+  >([]);
 
   // Get available base units
   useEffect(() => {
@@ -56,7 +63,9 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
     }
 
     // Get the specific slot data to check for unit restrictions
-    const slotData = detachment.slots.find((slot: any) => slot.roleId === roleId);
+    const slotData = detachment.slots.find(
+      (slot: any) => slot.roleId === roleId
+    );
     const allowedUnitIds = slotData?.allowedUnits;
 
     const filteredUnits = allUnits.filter((unit: Unit) => {
@@ -73,7 +82,10 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
       }
 
       // Check allegiance compatibility
-      if (unit.allegiance !== 'Universal' && unit.allegiance !== armyAllegiance) {
+      if (
+        unit.allegiance !== 'Universal' &&
+        unit.allegiance !== armyAllegiance
+      ) {
         return false;
       }
 
@@ -92,25 +104,21 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
 
         // Check if unit's faction is a parent of current faction
         const unitFactionData = DataLoader.getFactionById(unit.faction);
-        if (unitFactionData?.isMainFaction && currentFactionData?.parentFaction === unit.faction) {
+        if (
+          unitFactionData?.isMainFaction &&
+          currentFactionData?.parentFaction === unit.faction
+        ) {
           return true;
         }
 
         return false;
       }
 
-      // Check legion-specific restrictions
-      if (unit.legionSpecific && unit.legionSpecific.length > 0) {
-        // For now, allow all legion-specific units
-        // In a full implementation, you'd check if the current faction is in the allowed list
-        return true;
-      }
-
       return true;
     });
 
     setAvailableBaseUnits(filteredUnits);
-  }, [isOpen, roleId, armyList, detachment]);
+  }, [isOpen, roleId, armyList.faction, armyList.allegiance, detachment.slots]);
 
   // Get available custom units
   useEffect(() => {
@@ -128,72 +136,75 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
     }
 
     // Get the specific slot data to check for unit restrictions
-    const slotData = detachment.slots.find((slot: any) => slot.roleId === roleId);
+    const slotData = detachment.slots.find(
+      (slot: any) => slot.roleId === roleId
+    );
     const allowedUnitIds = slotData?.allowedUnits;
 
-    const filteredCustomUnits = Object.values(allCustomUnits).filter((customUnit: CustomUnit) => {
-      // Get the base unit data for this custom unit
-      const baseUnit = DataLoader.getUnitById(customUnit.baseUnitId);
-      if (!baseUnit) return false;
+    const filteredCustomUnits = Object.values(allCustomUnits).filter(
+      (customUnit: CustomUnit) => {
+        const baseUnit = DataLoader.getUnitById(customUnit.baseUnitId);
+        if (!baseUnit) return false;
 
-      // If this slot has specific unit restrictions, only allow those units
-      if (allowedUnitIds && allowedUnitIds.length > 0) {
-        if (!allowedUnitIds.includes(customUnit.baseUnitId)) {
+        // If this slot has specific unit restrictions, check if the base unit is allowed
+        if (allowedUnitIds && allowedUnitIds.length > 0) {
+          if (!allowedUnitIds.includes(baseUnit.id)) {
+            return false;
+          }
+        } else {
+          // Otherwise, use the standard role-based filtering
+          if (baseUnit.battlefieldRole !== selectedRole.type) {
+            return false;
+          }
+        }
+
+        // Check allegiance compatibility
+        if (
+          baseUnit.allegiance !== 'Universal' &&
+          baseUnit.allegiance !== armyAllegiance
+        ) {
           return false;
         }
-      } else {
-        // Otherwise, use the standard role-based filtering
-        if (baseUnit.battlefieldRole !== selectedRole.type) {
+
+        // Check faction compatibility
+        if (customUnit.faction && customUnit.faction !== 'universal') {
+          // Direct faction match
+          if (customUnit.faction === primaryFaction) {
+            return true;
+          }
+
+          // Check if current faction is a subfaction of the custom unit's faction
+          const currentFactionData = DataLoader.getFactionById(primaryFaction);
+          if (currentFactionData?.parentFaction === customUnit.faction) {
+            return true;
+          }
+
+          // Check if custom unit's faction is a parent of current faction
+          const customUnitFactionData = DataLoader.getFactionById(
+            customUnit.faction
+          );
+          if (
+            customUnitFactionData?.isMainFaction &&
+            currentFactionData?.parentFaction === customUnit.faction
+          ) {
+            return true;
+          }
+
           return false;
         }
-      }
 
-      // Check allegiance compatibility
-      if (baseUnit.allegiance !== 'Universal' && baseUnit.allegiance !== armyAllegiance) {
-        return false;
-      }
-
-      // Check faction compatibility
-      if (baseUnit.faction && baseUnit.faction !== 'universal') {
-        // Direct faction match
-        if (baseUnit.faction === primaryFaction) {
-          return true;
-        }
-
-        // Check if current faction is a subfaction of the unit's faction
-        const currentFactionData = DataLoader.getFactionById(primaryFaction);
-        if (currentFactionData?.parentFaction === baseUnit.faction) {
-          return true;
-        }
-
-        // Check if unit's faction is a parent of current faction
-        const unitFactionData = DataLoader.getFactionById(baseUnit.faction);
-        if (unitFactionData?.isMainFaction && currentFactionData?.parentFaction === baseUnit.faction) {
-          return true;
-        }
-
-        return false;
-      }
-
-      // Check legion-specific restrictions
-      if (baseUnit.legionSpecific && baseUnit.legionSpecific.length > 0) {
-        // For now, allow all legion-specific units
         return true;
       }
-
-      return true;
-    });
+    );
 
     setAvailableCustomUnits(filteredCustomUnits);
-  }, [isOpen, roleId, armyList, detachment]);
+  }, [isOpen, roleId, armyList.faction, armyList.allegiance, detachment.slots]);
 
   const handleBaseUnitSelect = (unitId: string) => {
     onUnitSelected(unitId);
   };
 
   const handleCustomUnitSelect = (customUnit: CustomUnit) => {
-    // For custom units, we need to create an ArmyUnit from the custom unit
-    // This will be handled in the parent component
     onUnitSelected(`custom:${customUnit.id}`);
   };
 
@@ -206,7 +217,7 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
     if (!baseUnit) return 0;
 
     const upgradePoints = customUnit.upgrades.reduce((total, upgrade) => {
-      return total + (upgrade.points * upgrade.count);
+      return total + upgrade.points * upgrade.count;
     }, 0);
 
     return baseUnit.points + upgradePoints;
@@ -220,27 +231,70 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
       onClose={onClose}
       maxWidth="md"
       fullWidth
+      fullScreen={isMobile}
       PaperProps={{
-        sx: { maxHeight: '80vh' }
+        sx: {
+          maxHeight: isMobile ? '100vh' : '80vh',
+          height: isMobile ? '100vh' : 'auto',
+        },
       }}
     >
-      <DialogTitle>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="h6">
+      <DialogTitle
+        sx={{
+          p: { xs: 2, sm: 3 },
+          pb: { xs: 1, sm: 2 },
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <Typography
+            variant={isMobile ? 'h6' : 'h6'}
+            sx={{
+              fontSize: { xs: '1.125rem', sm: '1.25rem' },
+            }}
+          >
             Select {roleName} Unit
           </Typography>
-          <IconButton onClick={onClose} size="small">
+          <IconButton
+            onClick={onClose}
+            size={isMobile ? 'medium' : 'small'}
+            sx={{
+              p: { xs: 1, sm: 0.5 },
+            }}
+          >
             <Close />
           </IconButton>
         </Box>
       </DialogTitle>
 
-      <DialogContent>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}>
+      <DialogContent
+        sx={{
+          p: { xs: 2, sm: 3 },
+          pt: { xs: 0, sm: 1 },
+        }}
+      >
+        <Box
+          sx={{
+            borderBottom: 1,
+            borderColor: 'divider',
+            mb: { xs: 1.5, sm: 2 },
+          }}
+        >
           <Tabs
             value={activeTab}
             onChange={(_, newValue) => setActiveTab(newValue)}
             variant="fullWidth"
+            sx={{
+              '& .MuiTab-root': {
+                fontSize: { xs: '0.875rem', sm: '1rem' },
+                minHeight: { xs: '48px', sm: '56px' },
+              },
+            }}
           >
             <Tab
               label={`Base Units (${availableBaseUnits.length})`}
@@ -253,45 +307,95 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
           </Tabs>
         </Box>
 
-        <Box sx={{ mt: 2 }}>
+        <Box sx={{ mt: { xs: 1.5, sm: 2 } }}>
           {activeTab === 'base' && (
             <Box>
               {availableBaseUnits.length > 0 ? (
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  {availableBaseUnits.map((unit) => (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: { xs: 1.5, sm: 2 },
+                  }}
+                >
+                  {availableBaseUnits.map(unit => (
                     <Box key={unit.id}>
                       <Card
-                        sx={{ cursor: 'pointer', '&:hover': { boxShadow: 4 } }}
+                        sx={{
+                          cursor: 'pointer',
+                          '&:hover': { boxShadow: 4 },
+                          transition: 'box-shadow 0.2s ease-in-out',
+                        }}
                         onClick={() => handleBaseUnitSelect(unit.id)}
                       >
-                        <CardContent>
-                          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1 }}>
-                            <Typography variant="h6" component="h3">
+                        <CardContent
+                          sx={{
+                            p: { xs: 2, sm: 3 },
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              alignItems: 'flex-start',
+                              mb: 1,
+                              flexDirection: { xs: 'column', sm: 'row' },
+                              gap: { xs: 1, sm: 0 },
+                            }}
+                          >
+                            <Typography
+                              variant={isMobile ? 'h6' : 'h6'}
+                              component="h3"
+                              sx={{
+                                fontSize: { xs: '1.125rem', sm: '1.25rem' },
+                              }}
+                            >
                               {unit.name}
                             </Typography>
-                            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                gap: 1,
+                                flexWrap: 'wrap',
+                                justifyContent: {
+                                  xs: 'flex-start',
+                                  sm: 'flex-end',
+                                },
+                              }}
+                            >
                               <Chip
                                 label={`${getBaseUnitPoints(unit)} pts`}
                                 color="primary"
-                                size="small"
+                                size={isMobile ? 'small' : 'small'}
                               />
                               {unit.faction && unit.faction !== 'universal' && (
                                 <Chip
-                                  label={unit.faction === 'legiones-astartes' ? 'Legion' : unit.faction}
+                                  label={
+                                    unit.faction === 'legiones-astartes'
+                                      ? 'Legion'
+                                      : unit.faction
+                                  }
                                   color="secondary"
-                                  size="small"
+                                  size={isMobile ? 'small' : 'small'}
                                 />
                               )}
-                              {unit.legionSpecific && unit.legionSpecific.length > 0 && (
-                                <Chip
-                                  label="Legion-specific"
-                                  color="warning"
-                                  size="small"
-                                />
-                              )}
+                              {unit.legionSpecific &&
+                                unit.legionSpecific.length > 0 && (
+                                  <Chip
+                                    label="Legion-specific"
+                                    color="warning"
+                                    size={isMobile ? 'small' : 'small'}
+                                  />
+                                )}
                             </Box>
                           </Box>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            sx={{
+                              fontSize: { xs: '0.875rem', sm: '1rem' },
+                            }}
+                          >
                             {unit.description}
                           </Typography>
                         </CardContent>
@@ -301,8 +405,19 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
                 </Box>
               ) : (
                 <Card>
-                  <CardContent>
-                    <Typography variant="body1" color="text.secondary" align="center">
+                  <CardContent
+                    sx={{
+                      p: { xs: 2, sm: 3 },
+                      textAlign: 'center',
+                    }}
+                  >
+                    <Typography
+                      variant="body1"
+                      color="text.secondary"
+                      sx={{
+                        fontSize: { xs: '0.875rem', sm: '1rem' },
+                      }}
+                    >
                       No {roleName} units available for your faction.
                     </Typography>
                   </CardContent>
@@ -314,52 +429,107 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
           {activeTab === 'custom' && (
             <Box>
               {availableCustomUnits.length > 0 ? (
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  {availableCustomUnits.map((customUnit) => {
-                    const baseUnit = DataLoader.getUnitById(customUnit.baseUnitId);
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: { xs: 1.5, sm: 2 },
+                  }}
+                >
+                  {availableCustomUnits.map(customUnit => {
+                    const baseUnit = DataLoader.getUnitById(
+                      customUnit.baseUnitId
+                    );
                     return (
                       <Box key={customUnit.id}>
                         <Card
-                          sx={{ cursor: 'pointer', '&:hover': { boxShadow: 4 } }}
+                          sx={{
+                            cursor: 'pointer',
+                            '&:hover': { boxShadow: 4 },
+                            transition: 'box-shadow 0.2s ease-in-out',
+                          }}
                           onClick={() => handleCustomUnitSelect(customUnit)}
                         >
-                          <CardContent>
-                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1 }}>
+                          <CardContent
+                            sx={{
+                              p: { xs: 2, sm: 3 },
+                            }}
+                          >
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'flex-start',
+                                mb: 1,
+                                flexDirection: { xs: 'column', sm: 'row' },
+                                gap: { xs: 1, sm: 0 },
+                              }}
+                            >
                               <Box>
-                                <Typography variant="h6" component="h3">
+                                <Typography
+                                  variant={isMobile ? 'h6' : 'h6'}
+                                  component="h3"
+                                  sx={{
+                                    fontSize: { xs: '1.125rem', sm: '1.25rem' },
+                                  }}
+                                >
                                   {customUnit.name}
                                 </Typography>
-                                <Chip label="Custom" color="info" size="small" sx={{ mt: 0.5 }} />
+                                <Chip
+                                  label="Custom"
+                                  color="info"
+                                  size={isMobile ? 'small' : 'small'}
+                                  sx={{ mt: 0.5 }}
+                                />
                               </Box>
-                              <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                              <Box
+                                sx={{
+                                  display: 'flex',
+                                  gap: 1,
+                                  flexWrap: 'wrap',
+                                  justifyContent: {
+                                    xs: 'flex-start',
+                                    sm: 'flex-end',
+                                  },
+                                }}
+                              >
                                 <Chip
                                   label={`${getCustomUnitPoints(customUnit)} pts`}
                                   color="primary"
-                                  size="small"
+                                  size={isMobile ? 'small' : 'small'}
                                 />
                                 <Chip
                                   label={`Based on: ${baseUnit?.name || customUnit.baseUnitId}`}
                                   color="secondary"
-                                  size="small"
+                                  size={isMobile ? 'small' : 'small'}
                                 />
                                 {customUnit.upgrades.length > 0 && (
                                   <Chip
                                     label={`${customUnit.upgrades.length} upgrade${customUnit.upgrades.length !== 1 ? 's' : ''}`}
                                     color="success"
-                                    size="small"
+                                    size={isMobile ? 'small' : 'small'}
                                   />
                                 )}
-                                {customUnit.primeAdvantages && customUnit.primeAdvantages.length > 0 && (
-                                  <Chip
-                                    label={`${customUnit.primeAdvantages.length} prime advantage${customUnit.primeAdvantages.length !== 1 ? 's' : ''}`}
-                                    color="warning"
-                                    size="small"
-                                  />
-                                )}
+                                {customUnit.primeAdvantages &&
+                                  customUnit.primeAdvantages.length > 0 && (
+                                    <Chip
+                                      label={`${customUnit.primeAdvantages.length} prime advantage${customUnit.primeAdvantages.length !== 1 ? 's' : ''}`}
+                                      color="warning"
+                                      size={isMobile ? 'small' : 'small'}
+                                    />
+                                  )}
                               </Box>
                             </Box>
-                            <Typography variant="body2" color="text.secondary">
-                              {customUnit.description || baseUnit?.description || 'Custom unit configuration'}
+                            <Typography
+                              variant="body2"
+                              color="text.secondary"
+                              sx={{
+                                fontSize: { xs: '0.875rem', sm: '1rem' },
+                              }}
+                            >
+                              {customUnit.description ||
+                                baseUnit?.description ||
+                                'Custom unit configuration'}
                             </Typography>
                           </CardContent>
                         </Card>
@@ -369,8 +539,19 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
                 </Box>
               ) : (
                 <Card>
-                  <CardContent>
-                    <Typography variant="body1" color="text.secondary" align="center">
+                  <CardContent
+                    sx={{
+                      p: { xs: 2, sm: 3 },
+                      textAlign: 'center',
+                    }}
+                  >
+                    <Typography
+                      variant="body1"
+                      color="text.secondary"
+                      sx={{
+                        fontSize: { xs: '0.875rem', sm: '1rem' },
+                      }}
+                    >
                       No custom {roleName} units available for your faction.
                     </Typography>
                   </CardContent>

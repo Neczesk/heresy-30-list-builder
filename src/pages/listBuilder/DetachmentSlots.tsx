@@ -3,13 +3,19 @@ import {
   Box,
   Typography,
   IconButton,
-  Paper,
   Tooltip,
+  useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import { Star, FlashOn, Settings, Close } from '@mui/icons-material';
 import { DataLoader } from '../../utils/dataLoader';
 import UnitRemoveConfirmationModal from '../../components/modals/UnitRemoveConfirmationModal';
-import type { Detachment, ArmyDetachment, ArmyUnit, Army } from '../../types/army';
+import type {
+  Detachment,
+  ArmyDetachment,
+  ArmyUnit,
+  Army,
+} from '../../types/army';
 
 interface DetachmentSlotsProps {
   detachment: Detachment;
@@ -20,7 +26,11 @@ interface DetachmentSlotsProps {
     slotId: string,
     unitId: string
   ) => void;
-  onDetachmentPrompt?: (roleId: string, slotIndex: number, detachmentId?: string) => void;
+  onDetachmentPrompt?: (
+    roleId: string,
+    slotIndex: number,
+    detachmentId?: string
+  ) => void;
   onUnitUpdated?: (slotId: string, updatedUnit: ArmyUnit) => void;
   onDetachmentRemoved?: (detachmentId: string) => void;
   onUnitManagementOpen?: (
@@ -59,6 +69,10 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
   onUnitManagementOpen,
   onUnitSelectionOpen,
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isSmallMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   const [showRemoveConfirm, setShowRemoveConfirm] = useState(false);
   const [unitToRemove, setUnitToRemove] = useState<{
     slotId: string;
@@ -193,7 +207,10 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
     const unitInSlot = getUnitInSlot(slot.roleId, slot.slotIndex);
     const isFilled = !!unitInSlot;
     const hasTriggered = hasTriggeredDetachment(slot.roleId, slot.slotIndex);
-    const triggeredDetachments = getTriggeredDetachments(slot.roleId, slot.slotIndex);
+    const triggeredDetachments = getTriggeredDetachments(
+      slot.roleId,
+      slot.slotIndex
+    );
     const isCustomSlot = slot.isCustomSlot;
 
     // Get unit name for tooltip if filled
@@ -217,13 +234,21 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
       ? `${unitName}${slot.isPrime ? ' (Prime)' : ''}${hasTriggered ? ` - Has triggered ${triggeredDetachments.length} detachment${triggeredDetachments.length > 1 ? 's' : ''}` : ''}${customSlotInfo} - Click to remove`
       : `${role?.name}${slot.isPrime ? ' (Prime)' : ''}${isCustomSlot ? ' - Custom slot' : ''} - Click to add unit`;
 
+    const slotSize = isSmallMobile ? 32 : isMobile ? 36 : 40;
+    const iconSize = isSmallMobile ? '1.25rem' : isMobile ? '1.4rem' : '1.5rem';
+    const indicatorSize = isSmallMobile ? 12 : isMobile ? 14 : 16;
+
     return (
-      <Tooltip key={`${slot.roleId}-${slot.slotIndex}`} title={tooltipText} arrow>
+      <Tooltip
+        key={`${slot.roleId}-${slot.slotIndex}`}
+        title={tooltipText}
+        arrow
+      >
         <Box
           sx={{
             position: 'relative',
-            width: 40,
-            height: 40,
+            width: slotSize,
+            height: slotSize,
             borderRadius: '50%',
             display: 'flex',
             alignItems: 'center',
@@ -234,22 +259,22 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
                 ? 'warning.main'
                 : 'success.main'
               : slot.isPrime
-              ? '#ffd700'
-              : 'rgba(255, 255, 255, 0.3)',
+                ? '#ffd700'
+                : 'rgba(255, 255, 255, 0.3)',
             backgroundColor: isFilled
               ? hasTriggered
                 ? 'rgba(255, 152, 0, 0.3)'
                 : 'rgba(76, 175, 80, 0.3)'
               : slot.isPrime
-              ? 'rgba(255, 215, 0, 0.1)'
-              : 'rgba(255, 255, 255, 0.05)',
+                ? 'rgba(255, 215, 0, 0.1)'
+                : 'rgba(255, 255, 255, 0.05)',
             boxShadow: isFilled
               ? hasTriggered
                 ? '0 0 12px rgba(255, 152, 0, 0.4)'
                 : '0 0 12px rgba(76, 175, 80, 0.4)'
               : slot.isPrime
-              ? '0 0 8px rgba(255, 215, 0, 0.3)'
-              : 'none',
+                ? '0 0 8px rgba(255, 215, 0, 0.3)'
+                : 'none',
             transform: isFilled ? 'scale(1.05)' : 'scale(1)',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
@@ -259,10 +284,12 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
             },
           }}
           onClick={() => handleSlotClick(slot.roleId, slot.slotIndex)}
-          onMouseEnter={() => setHoveredSlot(`${slot.roleId}-${slot.slotIndex}`)}
+          onMouseEnter={() =>
+            setHoveredSlot(`${slot.roleId}-${slot.slotIndex}`)
+          }
           onMouseLeave={() => setHoveredSlot(null)}
         >
-          <Typography sx={{ fontSize: '1.5rem', lineHeight: 1 }}>
+          <Typography sx={{ fontSize: iconSize, lineHeight: 1 }}>
             {getRoleIcon(slot.roleId)}
           </Typography>
 
@@ -277,8 +304,8 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
                 fontSize: '0.75rem',
                 backgroundColor: 'rgba(0, 0, 0, 0.8)',
                 borderRadius: '50%',
-                width: 16,
-                height: 16,
+                width: indicatorSize,
+                height: indicatorSize,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -300,8 +327,8 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
                 fontSize: '0.75rem',
                 backgroundColor: 'rgba(0, 0, 0, 0.8)',
                 borderRadius: '50%',
-                width: 16,
-                height: 16,
+                width: indicatorSize,
+                height: indicatorSize,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -323,15 +350,17 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
                 fontSize: '0.75rem',
                 backgroundColor: 'rgba(0, 0, 0, 0.8)',
                 borderRadius: '50%',
-                width: 16,
-                height: 16,
+                width: indicatorSize,
+                height: indicatorSize,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontWeight: 600,
               }}
             >
-              <Typography sx={{ fontSize: '0.5rem', color: 'white', fontWeight: 600 }}>
+              <Typography
+                sx={{ fontSize: '0.5rem', color: 'white', fontWeight: 600 }}
+              >
                 {unitName.split(' ')[0]}
               </Typography>
             </Box>
@@ -348,8 +377,8 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
                 fontSize: '0.75rem',
                 backgroundColor: 'rgba(0, 0, 0, 0.8)',
                 borderRadius: '50%',
-                width: 16,
-                height: 16,
+                width: indicatorSize,
+                height: indicatorSize,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -357,7 +386,9 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
               }}
             >
               {triggeredDetachments.length > 1 ? (
-                <Typography sx={{ fontSize: '0.5rem', color: 'white', fontWeight: 600 }}>
+                <Typography
+                  sx={{ fontSize: '0.5rem', color: 'white', fontWeight: 600 }}
+                >
                   {triggeredDetachments.length}
                 </Typography>
               ) : (
@@ -448,223 +479,61 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
   });
 
   return (
-    <Box sx={{ mt: 3 }}>
+    <Box sx={{ mt: { xs: 2, sm: 3 } }}>
       {/* Slots Rows */}
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 3 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: { xs: 2, sm: 3 },
+          mb: { xs: 2, sm: 3 },
+        }}
+      >
         {groupedSlots.map((group, groupIndex) => (
-          <Paper
+          <Box
             key={groupIndex}
             sx={{
               display: 'flex',
-              alignItems: 'center',
-              gap: 3,
-              p: 1,
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              borderRadius: 2,
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              gap: { xs: 2, sm: 3 },
+              py: { xs: 1.5, sm: 2 },
+              px: { xs: 2, sm: 3 },
+              borderBottom: { xs: '1px solid', sm: 'none' },
+              borderColor: {
+                xs: 'rgba(255, 255, 255, 0.1)',
+                sm: 'transparent',
+              },
+              flexDirection: { xs: 'column', sm: 'row' },
+              alignItems: { xs: 'flex-start', sm: 'center' },
+              '&:last-child': {
+                borderBottom: 'none',
+              },
             }}
           >
             <Typography
               sx={{
-                minWidth: 120,
+                minWidth: { xs: 'auto', sm: 120 },
                 fontWeight: 600,
                 color: 'primary.main',
-                fontSize: '1rem',
+                fontSize: { xs: '0.875rem', sm: '1rem' },
                 textTransform: 'capitalize',
+                mb: { xs: 1, sm: 0 },
               }}
             >
               {group.roleName}
             </Typography>
-            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+            <Box
+              sx={{
+                display: 'flex',
+                gap: { xs: 0.5, sm: 1 },
+                flexWrap: 'wrap',
+                justifyContent: { xs: 'center', sm: 'flex-start' },
+              }}
+            >
               {group.slots.map(slot => renderSlot(slot))}
             </Box>
-          </Paper>
+          </Box>
         ))}
       </Box>
-
-      {/* Slots Legend */}
-      <Paper
-        sx={{
-          display: 'flex',
-          gap: 3,
-          mt: 3,
-          p: 2,
-          backgroundColor: 'rgba(255, 255, 255, 0.05)',
-          borderRadius: 2,
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-        }}
-      >
-        {/* Empty Slot */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Box
-            sx={{
-              width: 24,
-              height: 24,
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '2px solid rgba(255, 255, 255, 0.3)',
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-            }}
-          >
-            <Typography sx={{ fontSize: '1rem' }}>⚔️</Typography>
-          </Box>
-          <Typography sx={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.8)' }}>
-            Empty Slot
-          </Typography>
-        </Box>
-
-        {/* Filled Slot */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Box
-            sx={{
-              position: 'relative',
-              width: 24,
-              height: 24,
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '2px solid',
-              borderColor: 'success.main',
-              backgroundColor: 'rgba(76, 175, 80, 0.3)',
-              transform: 'scale(1.05)',
-            }}
-          >
-            <Typography sx={{ fontSize: '1rem' }}>⚔️</Typography>
-            <Box
-              sx={{
-                position: 'absolute',
-                top: -2,
-                right: -2,
-                color: 'success.main',
-                fontSize: '0.75rem',
-                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                borderRadius: '50%',
-                width: 16,
-                height: 16,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: 600,
-              }}
-            >
-              <Typography sx={{ fontSize: '0.5rem', color: 'white', fontWeight: 600 }}>
-                UNIT
-              </Typography>
-            </Box>
-          </Box>
-          <Typography sx={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.8)' }}>
-            Filled Slot
-          </Typography>
-        </Box>
-
-        {/* Prime Slot */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Box
-            sx={{
-              position: 'relative',
-              width: 24,
-              height: 24,
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '3px solid #ffd700',
-              backgroundColor: 'rgba(255, 215, 0, 0.1)',
-            }}
-          >
-            <Typography sx={{ fontSize: '1rem' }}>⚔️</Typography>
-            <Box
-              sx={{
-                position: 'absolute',
-                bottom: -2,
-                right: -2,
-                color: '#ffd700',
-                fontSize: '0.75rem',
-                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                borderRadius: '50%',
-                width: 16,
-                height: 16,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: 600,
-              }}
-            >
-              <Star sx={{ fontSize: '0.75rem' }} />
-            </Box>
-          </Box>
-          <Typography sx={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.8)' }}>
-            Prime Slot
-          </Typography>
-        </Box>
-
-        {/* Triggered Detachment */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Box
-            sx={{
-              position: 'relative',
-              width: 24,
-              height: 24,
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '2px solid',
-              borderColor: 'warning.main',
-              backgroundColor: 'rgba(255, 152, 0, 0.3)',
-              transform: 'scale(1.05)',
-            }}
-          >
-            <Typography sx={{ fontSize: '1rem' }}>⚔️</Typography>
-            <Box
-              sx={{
-                position: 'absolute',
-                top: -2,
-                right: -2,
-                color: 'success.main',
-                fontSize: '0.75rem',
-                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                borderRadius: '50%',
-                width: 16,
-                height: 16,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: 600,
-              }}
-            >
-              <Typography sx={{ fontSize: '0.5rem', color: 'white', fontWeight: 600 }}>
-                UNIT
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                position: 'absolute',
-                top: -2,
-                left: -2,
-                color: 'warning.main',
-                fontSize: '0.75rem',
-                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                borderRadius: '50%',
-                width: 16,
-                height: 16,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: 600,
-              }}
-            >
-              <FlashOn sx={{ fontSize: '0.75rem' }} />
-            </Box>
-          </Box>
-          <Typography sx={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.8)' }}>
-            Triggered Detachment
-          </Typography>
-        </Box>
-      </Paper>
 
       {/* Remove Confirmation Modal */}
       <UnitRemoveConfirmationModal

@@ -12,6 +12,8 @@ import {
   Stack,
   ToggleButtonGroup,
   ToggleButton,
+  useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import { DataLoader } from '../../utils/dataLoader';
@@ -32,6 +34,9 @@ const AddDetachmentModal: React.FC<AddDetachmentModalProps> = ({
   onAddDetachment,
   onClose,
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
   const [selectedType, setSelectedType] = useState<string>('all');
   const [showAlliedSelector, setShowAlliedSelector] = useState(false);
 
@@ -125,36 +130,79 @@ const AddDetachmentModal: React.FC<AddDetachmentModalProps> = ({
       onClose={onClose}
       maxWidth="lg"
       fullWidth
+      fullScreen={isMobile}
       PaperProps={{
-        sx: { maxHeight: '90vh' }
+        sx: {
+          maxHeight: isMobile ? '100vh' : '90vh',
+          height: isMobile ? '100vh' : 'auto',
+        },
       }}
     >
-      <DialogTitle>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="h5" component="h2">
+      <DialogTitle
+        sx={{
+          p: { xs: 2, sm: 3 },
+          pb: { xs: 1, sm: 2 },
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant={isMobile ? 'h5' : 'h5'} component="h2">
             Add Detachment
           </Typography>
-          <IconButton onClick={onClose} size="small">
+          <IconButton
+            onClick={onClose}
+            size={isMobile ? 'medium' : 'small'}
+            sx={{
+              p: { xs: 1, sm: 0.5 },
+            }}
+          >
             <Close />
           </IconButton>
         </Box>
       </DialogTitle>
 
-      <DialogContent>
-        <Stack spacing={3}>
+      <DialogContent
+        sx={{
+          p: { xs: 2, sm: 3 },
+          pt: { xs: 0, sm: 1 },
+        }}
+      >
+        <Stack spacing={{ xs: 2, sm: 3 }}>
           {/* Filter Section */}
           <Box>
-            <Typography variant="subtitle1" gutterBottom>
+            <Typography
+              variant="subtitle1"
+              gutterBottom
+              sx={{
+                fontSize: { xs: '1rem', sm: '1.125rem' },
+              }}
+            >
               Filter by type:
             </Typography>
             <ToggleButtonGroup
               value={selectedType}
               exclusive
               onChange={(_, newValue) => newValue && setSelectedType(newValue)}
-              size="small"
+              size={isMobile ? 'small' : 'small'}
+              sx={{
+                flexWrap: 'wrap',
+                gap: { xs: 0.5, sm: 0 },
+              }}
             >
               {detachmentTypes.map(type => (
-                <ToggleButton key={type.id} value={type.id}>
+                <ToggleButton
+                  key={type.id}
+                  value={type.id}
+                  sx={{
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                    px: { xs: 1, sm: 2 },
+                  }}
+                >
                   {type.name}
                 </ToggleButton>
               ))}
@@ -165,17 +213,36 @@ const AddDetachmentModal: React.FC<AddDetachmentModalProps> = ({
           <Box>
             {filteredDetachments.length === 0 ? (
               <Card variant="outlined">
-                <CardContent>
-                  <Typography variant="body1" color="text.secondary" align="center" gutterBottom>
+                <CardContent
+                  sx={{
+                    p: { xs: 2, sm: 3 },
+                    textAlign: 'center',
+                  }}
+                >
+                  <Typography
+                    variant="body1"
+                    color="text.secondary"
+                    gutterBottom
+                    sx={{
+                      fontSize: { xs: '0.875rem', sm: '1rem' },
+                    }}
+                  >
                     No detachments available for the current army list.
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" align="center">
-                    Add units to Command or High Command slots to unlock more detachments.
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                    }}
+                  >
+                    Add units to Command or High Command slots to unlock more
+                    detachments.
                   </Typography>
                 </CardContent>
               </Card>
             ) : (
-              <Stack spacing={2}>
+              <Stack spacing={{ xs: 1.5, sm: 2 }}>
                 {filteredDetachments.map(detachment => (
                   <Card
                     key={detachment.id}
@@ -187,31 +254,81 @@ const AddDetachmentModal: React.FC<AddDetachmentModalProps> = ({
                     }}
                     onClick={() => handleDetachmentSelect(detachment)}
                   >
-                    <CardContent>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
-                        <Typography variant="h6" component="h3">
+                    <CardContent
+                      sx={{
+                        p: { xs: 2, sm: 3 },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'flex-start',
+                          mb: 2,
+                          flexDirection: { xs: 'column', sm: 'row' },
+                          gap: { xs: 1, sm: 0 },
+                        }}
+                      >
+                        <Typography
+                          variant={isMobile ? 'h6' : 'h6'}
+                          component="h3"
+                          sx={{
+                            fontSize: { xs: '1.125rem', sm: '1.25rem' },
+                          }}
+                        >
                           {detachment.name}
                         </Typography>
                         <Chip
                           label={detachment.type}
-                          size="small"
+                          size={isMobile ? 'small' : 'small'}
                           sx={{
-                            backgroundColor: getDetachmentTypeColor(detachment.type),
+                            backgroundColor: getDetachmentTypeColor(
+                              detachment.type
+                            ),
                             color: 'white',
                             fontWeight: 'bold',
+                            alignSelf: { xs: 'flex-start', sm: 'flex-end' },
                           }}
                         />
                       </Box>
 
-                      <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          mb: 2,
+                          fontSize: { xs: '0.875rem', sm: '1rem' },
+                        }}
+                      >
                         {detachment.description}
                       </Typography>
 
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                        <Typography variant="body2" color="text.secondary">
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          mb: 2,
+                          flexDirection: { xs: 'column', sm: 'row' },
+                          gap: { xs: 0.5, sm: 0 },
+                        }}
+                      >
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{
+                            fontSize: { xs: '0.875rem', sm: '1rem' },
+                          }}
+                        >
                           Trigger:
                         </Typography>
-                        <Typography variant="body2">
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            fontSize: { xs: '0.875rem', sm: '1rem' },
+                            textAlign: { xs: 'center', sm: 'left' },
+                          }}
+                        >
                           {getTriggerDescription(detachment)}
                         </Typography>
                       </Box>

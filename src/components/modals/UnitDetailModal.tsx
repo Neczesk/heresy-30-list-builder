@@ -20,10 +20,18 @@ import {
   AccordionSummary,
   AccordionDetails,
   IconButton,
+  useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import { ExpandMore, ExpandLess } from '@mui/icons-material';
 import { DataLoader } from '../../utils/dataLoader';
-import type { Unit, Model, Weapon, SpecialRule, RangedWeapon } from '../../types/army';
+import type {
+  Unit,
+  Model,
+  Weapon,
+  SpecialRule,
+  RangedWeapon,
+} from '../../types/army';
 
 interface UnitWithModels extends Unit {
   modelsWithData: Array<{
@@ -43,6 +51,8 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
   isOpen,
   onClose,
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [expandedRules, setExpandedRules] = useState<Set<string>>(new Set());
   const [expandedWargear, setExpandedWargear] = useState<Set<string>>(
     new Set()
@@ -55,15 +65,23 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
   const allWeapons = useMemo(() => {
     if (!unit) return [];
 
-    const weaponMap = new Map<string, {
-      weapon: Weapon;
-      sources: string[];
-      isOptional: boolean;
-      mount?: string;
-    }>();
+    const weaponMap = new Map<
+      string,
+      {
+        weapon: Weapon;
+        sources: string[];
+        isOptional: boolean;
+        mount?: string;
+      }
+    >();
 
     // Helper function to add weapon to map
-    const addWeaponToMap = (weapon: Weapon, source: string, isOptional: boolean, mount?: string) => {
+    const addWeaponToMap = (
+      weapon: Weapon,
+      source: string,
+      isOptional: boolean,
+      mount?: string
+    ) => {
       const key = mount ? `${weapon.name} (${mount})` : weapon.name;
       const existing = weaponMap.get(key);
 
@@ -90,8 +108,10 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
     // Base weapons from models
     unit.modelsWithData.forEach(({ model, count }) => {
       model.weapons.forEach(weaponEntry => {
-        const weaponId = typeof weaponEntry === 'string' ? weaponEntry : weaponEntry.id;
-        const mount = typeof weaponEntry === 'string' ? undefined : weaponEntry.mount;
+        const weaponId =
+          typeof weaponEntry === 'string' ? weaponEntry : weaponEntry.id;
+        const mount =
+          typeof weaponEntry === 'string' ? undefined : weaponEntry.mount;
         const weapon = DataLoader.getWeaponById(weaponId);
         if (weapon) {
           addWeaponToMap(weapon, `${count}x ${model.name}`, false, mount);
@@ -104,24 +124,49 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
     unit.modelsWithData.forEach(({ model }) => {
       // Find upgrades that target this model type
       allUpgrades.forEach(upgrade => {
-        if (upgrade.targetModelType === model.id || upgrade.targetModel === model.id) {
+        if (
+          upgrade.targetModelType === model.id ||
+          upgrade.targetModel === model.id
+        ) {
           upgrade.options?.forEach(option => {
             if (option.addWeapon) {
-              const weaponId = typeof option.addWeapon === 'string' ? option.addWeapon : option.addWeapon.id;
-              const mount = typeof option.addWeapon === 'string' ? undefined : option.addWeapon.mount;
+              const weaponId =
+                typeof option.addWeapon === 'string'
+                  ? option.addWeapon
+                  : option.addWeapon.id;
+              const mount =
+                typeof option.addWeapon === 'string'
+                  ? undefined
+                  : option.addWeapon.mount;
               const weapon = DataLoader.getWeaponById(weaponId);
               if (weapon) {
-                addWeaponToMap(weapon, `Upgrade: ${upgrade.name} - ${option.name}`, true, mount);
+                addWeaponToMap(
+                  weapon,
+                  `Upgrade: ${upgrade.name} - ${option.name}`,
+                  true,
+                  mount
+                );
               }
             }
             // Also check weaponReplacements
             if (option.weaponReplacements) {
               option.weaponReplacements.forEach(replacement => {
-                const weaponId = typeof replacement.addWeapon === 'string' ? replacement.addWeapon : replacement.addWeapon.id;
-                const mount = typeof replacement.addWeapon === 'string' ? undefined : replacement.addWeapon.mount;
+                const weaponId =
+                  typeof replacement.addWeapon === 'string'
+                    ? replacement.addWeapon
+                    : replacement.addWeapon.id;
+                const mount =
+                  typeof replacement.addWeapon === 'string'
+                    ? undefined
+                    : replacement.addWeapon.mount;
                 const weapon = DataLoader.getWeaponById(weaponId);
                 if (weapon) {
-                  addWeaponToMap(weapon, `Upgrade: ${upgrade.name} - ${option.name}`, true, mount);
+                  addWeaponToMap(
+                    weapon,
+                    `Upgrade: ${upgrade.name} - ${option.name}`,
+                    true,
+                    mount
+                  );
                 }
               });
             }
@@ -131,12 +176,14 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
     });
 
     // Convert map to array
-    return Array.from(weaponMap.values()).map(({ weapon, sources, isOptional, mount }) => ({
-      weapon,
-      source: sources.join(', '),
-      isOptional,
-      mount,
-    }));
+    return Array.from(weaponMap.values()).map(
+      ({ weapon, sources, isOptional, mount }) => ({
+        weapon,
+        source: sources.join(', '),
+        isOptional,
+        mount,
+      })
+    );
   }, [unit]);
 
   // Get all special rules
@@ -193,7 +240,7 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
     return wargear;
   }, [unit]);
 
-    // Get all weapon special rules
+  // Get all weapon special rules
   const allWeaponSpecialRules = useMemo(() => {
     if (!unit) return [];
 
@@ -217,7 +264,10 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
       if (DataLoader.isRangedWeapon(weapon) && weapon.profiles) {
         const profileWeapons = DataLoader.getProfileWeapons(weapon);
         profileWeapons.forEach(profileWeapon => {
-          if (profileWeapon.specialRules && profileWeapon.specialRules.length > 0) {
+          if (
+            profileWeapon.specialRules &&
+            profileWeapon.specialRules.length > 0
+          ) {
             profileWeapon.specialRules.forEach(ruleId => {
               const rule = DataLoader.getSpecialRuleById(ruleId);
               if (rule && rule.type === 'special-rule') {
@@ -265,37 +315,47 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
   };
 
   // Helper function to format special rules with names and values
-  const formatSpecialRules = (ruleIds: string[], specialRuleValues?: { [key: string]: any }): string => {
+  const formatSpecialRules = (
+    ruleIds: string[],
+    specialRuleValues?: { [key: string]: any }
+  ): string => {
     if (!ruleIds || ruleIds.length === 0) return '-';
 
-    return ruleIds.map(ruleId => {
-      const rule = DataLoader.getSpecialRuleById(ruleId);
-      const ruleName = rule?.name || ruleId;
+    return ruleIds
+      .map(ruleId => {
+        const rule = DataLoader.getSpecialRuleById(ruleId);
+        const ruleName = rule?.name || ruleId;
 
-      // Check if there's a value for this rule
-      if (specialRuleValues && specialRuleValues[ruleId] !== undefined) {
-        return `${ruleName} (${specialRuleValues[ruleId]})`;
-      }
+        // Check if there's a value for this rule
+        if (specialRuleValues && specialRuleValues[ruleId] !== undefined) {
+          return `${ruleName} (${specialRuleValues[ruleId]})`;
+        }
 
-      return ruleName;
-    }).join(', ');
+        return ruleName;
+      })
+      .join(', ');
   };
 
   const renderModelCharacteristics = (model: Model) => {
+    const cellStyle = {
+      p: { xs: 0.5, sm: 1 },
+      fontSize: { xs: '0.75rem', sm: '0.875rem' },
+    };
+
     if (DataLoader.isVehicleModel(model)) {
       const chars = model.characteristics as any;
       return (
         <TableRow key={model.id}>
-          <TableCell>{model.name}</TableCell>
-          <TableCell>{chars.movement}"</TableCell>
-          <TableCell>{chars.ballisticSkill}+</TableCell>
-          <TableCell>{chars.frontArmour}+</TableCell>
-          <TableCell>{chars.sideArmour}+</TableCell>
-          <TableCell>{chars.rearArmour}+</TableCell>
-          <TableCell>{chars.hullPoints}</TableCell>
-          <TableCell>{chars.transportCapacity || '-'}</TableCell>
-          <TableCell>-</TableCell>
-          <TableCell>
+          <TableCell sx={cellStyle}>{model.name}</TableCell>
+          <TableCell sx={cellStyle}>{chars.movement}"</TableCell>
+          <TableCell sx={cellStyle}>{chars.ballisticSkill}+</TableCell>
+          <TableCell sx={cellStyle}>{chars.frontArmour}+</TableCell>
+          <TableCell sx={cellStyle}>{chars.sideArmour}+</TableCell>
+          <TableCell sx={cellStyle}>{chars.rearArmour}+</TableCell>
+          <TableCell sx={cellStyle}>{chars.hullPoints}</TableCell>
+          <TableCell sx={cellStyle}>{chars.transportCapacity || '-'}</TableCell>
+          <TableCell sx={cellStyle}>-</TableCell>
+          <TableCell sx={cellStyle}>
             {model.specialRules && model.specialRules.length > 0
               ? model.specialRules
                   .map(ruleId => {
@@ -311,19 +371,21 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
       const chars = model.characteristics as any;
       return (
         <TableRow key={model.id}>
-          <TableCell>{model.name}</TableCell>
-          <TableCell>{chars.movement}"</TableCell>
-          <TableCell>{chars.weaponSkill}+</TableCell>
-          <TableCell>{chars.ballisticSkill}+</TableCell>
-          <TableCell>{chars.strength}</TableCell>
-          <TableCell>{chars.toughness}</TableCell>
-          <TableCell>{chars.wounds}</TableCell>
-          <TableCell>{chars.initiative}</TableCell>
-          <TableCell>{chars.attacks}</TableCell>
-          <TableCell>{chars.leadership}</TableCell>
-          <TableCell>{chars.armourSave}+</TableCell>
-          <TableCell>{chars.invulnerableSave ? `${chars.invulnerableSave}+` : '-'}</TableCell>
-          <TableCell>
+          <TableCell sx={cellStyle}>{model.name}</TableCell>
+          <TableCell sx={cellStyle}>{chars.movement}"</TableCell>
+          <TableCell sx={cellStyle}>{chars.weaponSkill}+</TableCell>
+          <TableCell sx={cellStyle}>{chars.ballisticSkill}+</TableCell>
+          <TableCell sx={cellStyle}>{chars.strength}</TableCell>
+          <TableCell sx={cellStyle}>{chars.toughness}</TableCell>
+          <TableCell sx={cellStyle}>{chars.wounds}</TableCell>
+          <TableCell sx={cellStyle}>{chars.initiative}</TableCell>
+          <TableCell sx={cellStyle}>{chars.attacks}</TableCell>
+          <TableCell sx={cellStyle}>{chars.leadership}</TableCell>
+          <TableCell sx={cellStyle}>{chars.armourSave}+</TableCell>
+          <TableCell sx={cellStyle}>
+            {chars.invulnerableSave ? `${chars.invulnerableSave}+` : '-'}
+          </TableCell>
+          <TableCell sx={cellStyle}>
             {model.specialRules && model.specialRules.length > 0
               ? model.specialRules
                   .map(ruleId => {
@@ -345,6 +407,10 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
     mount?: string;
   }) => {
     const { weapon, source, isOptional, mount } = weaponData;
+    const cellStyle = {
+      p: { xs: 0.5, sm: 1 },
+      fontSize: { xs: '0.75rem', sm: '0.875rem' },
+    };
 
     if (DataLoader.isRangedWeapon(weapon)) {
       if (weapon.profiles && weapon.profiles.length > 0) {
@@ -356,12 +422,25 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
             key={`${weapon.id}-header`}
             sx={{ backgroundColor: 'action.hover' }}
           >
-            <TableCell colSpan={8}>
+            <TableCell colSpan={8} sx={cellStyle}>
               <Box>
-                <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                  {weapon.name}{mount && ` (${mount})`}
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    fontWeight: 'bold',
+                    fontSize: { xs: '0.875rem', sm: '1rem' },
+                  }}
+                >
+                  {weapon.name}
+                  {mount && ` (${mount})`}
                 </Typography>
-                <Typography variant="caption" color="text.secondary">
+                <Typography
+                  variant="caption"
+                  color="text.secondary"
+                  sx={{
+                    fontSize: { xs: '0.75rem', sm: '0.75rem' },
+                  }}
+                >
                   {source} {isOptional && '(Optional)'}
                 </Typography>
               </Box>
@@ -376,20 +455,33 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
             const rangedProfile = profileWeapon as RangedWeapon;
             rows.push(
               <TableRow key={`${weapon.id}-${index}`}>
-                <TableCell sx={{ pl: 4 }}>
-                  <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
+                <TableCell sx={{ ...cellStyle, pl: { xs: 2, sm: 4 } }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontStyle: 'italic',
+                      fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                    }}
+                  >
                     {rangedProfile.name}
                   </Typography>
                 </TableCell>
-                <TableCell>{rangedProfile.range}"</TableCell>
-                <TableCell>{rangedProfile.firepower}</TableCell>
-                <TableCell>{rangedProfile.rangedStrength}</TableCell>
-                <TableCell>{rangedProfile.ap}</TableCell>
-                <TableCell>{rangedProfile.damage}</TableCell>
-                <TableCell>
-                  {formatSpecialRules(rangedProfile.specialRules || [], rangedProfile.specialRuleValues)}
+                <TableCell sx={cellStyle}>{rangedProfile.range}"</TableCell>
+                <TableCell sx={cellStyle}>{rangedProfile.firepower}</TableCell>
+                <TableCell sx={cellStyle}>
+                  {rangedProfile.rangedStrength}
                 </TableCell>
-                <TableCell>{rangedProfile.traits?.join(', ') || '-'}</TableCell>
+                <TableCell sx={cellStyle}>{rangedProfile.ap}</TableCell>
+                <TableCell sx={cellStyle}>{rangedProfile.damage}</TableCell>
+                <TableCell sx={cellStyle}>
+                  {formatSpecialRules(
+                    rangedProfile.specialRules || [],
+                    rangedProfile.specialRuleValues
+                  )}
+                </TableCell>
+                <TableCell sx={cellStyle}>
+                  {rangedProfile.traits?.join(', ') || '-'}
+                </TableCell>
               </TableRow>
             );
           }
@@ -400,25 +492,43 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
         // Single profile weapon (backward compatibility)
         return (
           <TableRow key={weapon.id}>
-            <TableCell>
+            <TableCell sx={cellStyle}>
               <Box>
-                <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-                  {weapon.name}{mount && ` (${mount})`}
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontWeight: 'bold',
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  {weapon.name}
+                  {mount && ` (${mount})`}
                 </Typography>
-                <Typography variant="caption" color="text.secondary">
+                <Typography
+                  variant="caption"
+                  color="text.secondary"
+                  sx={{
+                    fontSize: { xs: '0.75rem', sm: '0.75rem' },
+                  }}
+                >
                   {source} {isOptional && '(Optional)'}
                 </Typography>
               </Box>
             </TableCell>
-            <TableCell>{weapon.range}"</TableCell>
-            <TableCell>{weapon.firepower}</TableCell>
-            <TableCell>{weapon.rangedStrength}</TableCell>
-            <TableCell>{weapon.ap}</TableCell>
-            <TableCell>{weapon.damage}</TableCell>
-            <TableCell>
-              {formatSpecialRules(weapon.specialRules || [], weapon.specialRuleValues)}
+            <TableCell sx={cellStyle}>{weapon.range}"</TableCell>
+            <TableCell sx={cellStyle}>{weapon.firepower}</TableCell>
+            <TableCell sx={cellStyle}>{weapon.rangedStrength}</TableCell>
+            <TableCell sx={cellStyle}>{weapon.ap}</TableCell>
+            <TableCell sx={cellStyle}>{weapon.damage}</TableCell>
+            <TableCell sx={cellStyle}>
+              {formatSpecialRules(
+                weapon.specialRules || [],
+                weapon.specialRuleValues
+              )}
             </TableCell>
-            <TableCell>{weapon.traits?.join(', ') || '-'}</TableCell>
+            <TableCell sx={cellStyle}>
+              {weapon.traits?.join(', ') || '-'}
+            </TableCell>
           </TableRow>
         );
       }
@@ -433,43 +543,65 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
     mount?: string;
   }) => {
     const { weapon, source, isOptional, mount } = weaponData;
+    const cellStyle = {
+      p: { xs: 0.5, sm: 1 },
+      fontSize: { xs: '0.75rem', sm: '0.875rem' },
+    };
 
     if (DataLoader.isMeleeWeapon(weapon)) {
-              return (
-          <TableRow key={weapon.id}>
-            <TableCell>
-              <Box>
-                <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-                  {weapon.name}{mount && ` (${mount})`}
-                </Typography>
-                <Typography variant="caption" color="text.secondary">
-                  {source} {isOptional && '(Optional)'}
-                </Typography>
-              </Box>
-            </TableCell>
-            <TableCell>
-              {weapon.initiativeModifier === 'I'
-                ? 'I'
-                : `${typeof weapon.initiativeModifier === 'number' && weapon.initiativeModifier > 0 ? '+' : ''}${weapon.initiativeModifier}`}
-            </TableCell>
-            <TableCell>
-              {weapon.attackModifier === 'A'
-                ? 'A'
-                : `${typeof weapon.attackModifier === 'number' && weapon.attackModifier > 0 ? '+' : ''}${weapon.attackModifier}`}
-            </TableCell>
-            <TableCell>
-              {weapon.strengthModifier === 'S'
-                ? 'S'
-                : `${typeof weapon.strengthModifier === 'number' && weapon.strengthModifier > 0 ? '+' : ''}${weapon.strengthModifier}`}
-            </TableCell>
-            <TableCell>{weapon.ap}</TableCell>
-            <TableCell>{weapon.damage}</TableCell>
-            <TableCell>
-              {formatSpecialRules(weapon.specialRules || [], weapon.specialRuleValues)}
-            </TableCell>
-            <TableCell>{weapon.traits?.join(', ') || '-'}</TableCell>
-          </TableRow>
-        );
+      return (
+        <TableRow key={weapon.id}>
+          <TableCell sx={cellStyle}>
+            <Box>
+              <Typography
+                variant="body2"
+                sx={{
+                  fontWeight: 'bold',
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                {weapon.name}
+                {mount && ` (${mount})`}
+              </Typography>
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                sx={{
+                  fontSize: { xs: '0.75rem', sm: '0.75rem' },
+                }}
+              >
+                {source} {isOptional && '(Optional)'}
+              </Typography>
+            </Box>
+          </TableCell>
+          <TableCell sx={cellStyle}>
+            {weapon.initiativeModifier === 'I'
+              ? 'I'
+              : `${typeof weapon.initiativeModifier === 'number' && weapon.initiativeModifier > 0 ? '+' : ''}${weapon.initiativeModifier}`}
+          </TableCell>
+          <TableCell sx={cellStyle}>
+            {weapon.attackModifier === 'A'
+              ? 'A'
+              : `${typeof weapon.attackModifier === 'number' && weapon.attackModifier > 0 ? '+' : ''}${weapon.attackModifier}`}
+          </TableCell>
+          <TableCell sx={cellStyle}>
+            {weapon.strengthModifier === 'S'
+              ? 'S'
+              : `${typeof weapon.strengthModifier === 'number' && weapon.strengthModifier > 0 ? '+' : ''}${weapon.strengthModifier}`}
+          </TableCell>
+          <TableCell sx={cellStyle}>{weapon.ap}</TableCell>
+          <TableCell sx={cellStyle}>{weapon.damage}</TableCell>
+          <TableCell sx={cellStyle}>
+            {formatSpecialRules(
+              weapon.specialRules || [],
+              weapon.specialRuleValues
+            )}
+          </TableCell>
+          <TableCell sx={cellStyle}>
+            {weapon.traits?.join(', ') || '-'}
+          </TableCell>
+        </TableRow>
+      );
     }
     return null;
   };
@@ -484,81 +616,312 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
       onClose={onClose}
       maxWidth="xl"
       fullWidth
+      fullScreen={isMobile}
       PaperProps={{
         sx: {
-          maxHeight: '90vh',
+          maxHeight: isMobile ? '100vh' : '90vh',
+          height: isMobile ? '100vh' : 'auto',
         },
       }}
     >
-      <DialogTitle>
-        <Typography variant="h5" component="h2">
+      <DialogTitle
+        sx={{
+          p: { xs: 2, sm: 3 },
+          pb: { xs: 1, sm: 2 },
+        }}
+      >
+        <Typography
+          variant="h5"
+          component="h2"
+          sx={{
+            fontSize: { xs: '1.25rem', sm: '1.5rem' },
+          }}
+        >
           {unit.name}
         </Typography>
         <Chip
           label={unit.battlefieldRole}
           color="primary"
           variant="outlined"
-          sx={{ mt: 1 }}
+          size={isMobile ? 'small' : 'small'}
+          sx={{
+            mt: { xs: 0.5, sm: 1 },
+            fontSize: { xs: '0.75rem', sm: '0.875rem' },
+          }}
         />
       </DialogTitle>
 
-      <DialogContent>
-        <Box sx={{ mb: 3 }}>
-          <Typography variant="body1" color="text.secondary" paragraph>
+      <DialogContent
+        sx={{
+          p: { xs: 2, sm: 3 },
+        }}
+      >
+        <Box sx={{ mb: { xs: 2, sm: 3 } }}>
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            paragraph
+            sx={{
+              fontSize: { xs: '0.875rem', sm: '1rem' },
+            }}
+          >
             {unit.description}
           </Typography>
         </Box>
 
-        <Divider sx={{ my: 2 }} />
+        <Divider sx={{ my: { xs: 1.5, sm: 2 } }} />
 
-        <Box sx={{ mb: 3 }}>
-          <Typography variant="h6" gutterBottom>
+        <Box sx={{ mb: { xs: 2, sm: 3 } }}>
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{
+              fontSize: { xs: '1.125rem', sm: '1.25rem' },
+            }}
+          >
             Unit Details
           </Typography>
-          <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-            <Chip label={`Size: ${unit.minSize}-${unit.maxSize} models`} />
-            <Chip label={`Points: ${unit.points} pts`} color="primary" />
+          <Box
+            sx={{ display: 'flex', gap: { xs: 1, sm: 2 }, flexWrap: 'wrap' }}
+          >
+            <Chip
+              label={`Size: ${unit.minSize}-${unit.maxSize} models`}
+              size={isMobile ? 'small' : 'small'}
+              sx={{
+                fontSize: { xs: '0.75rem', sm: '0.875rem' },
+              }}
+            />
+            <Chip
+              label={`Points: ${unit.points} pts`}
+              color="primary"
+              size={isMobile ? 'small' : 'small'}
+              sx={{
+                fontSize: { xs: '0.75rem', sm: '0.875rem' },
+              }}
+            />
           </Box>
         </Box>
 
-        <Divider sx={{ my: 2 }} />
+        <Divider sx={{ my: { xs: 1.5, sm: 2 } }} />
 
         {/* Model Characteristics Table */}
-        <Box sx={{ mb: 4 }}>
-          <Typography variant="h6" gutterBottom>
+        <Box sx={{ mb: { xs: 3, sm: 4 } }}>
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{
+              fontSize: { xs: '1.125rem', sm: '1.25rem' },
+            }}
+          >
             Model Characteristics
           </Typography>
           <TableContainer component={Paper}>
-            <Table size="small">
+            <Table size={isMobile ? 'small' : 'small'}>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ fontWeight: 'bold' }}>Model</TableCell>
+                  <TableCell
+                    sx={{
+                      fontWeight: 'bold',
+                      p: { xs: 0.5, sm: 1 },
+                      fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                    }}
+                  >
+                    Model
+                  </TableCell>
                   {hasVehicleModels ? (
                     <>
-                      <TableCell sx={{ fontWeight: 'bold' }}>M</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>BS</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>FA</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>SA</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>RA</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>HP</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>TC</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Inv</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Special Rules</TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        M
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        BS
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        FA
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        SA
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        RA
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        HP
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        TC
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        Inv
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        Special Rules
+                      </TableCell>
                     </>
                   ) : (
                     <>
-                      <TableCell sx={{ fontWeight: 'bold' }}>M</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>WS</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>BS</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>S</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>T</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>W</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>I</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>A</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Ld</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Sv</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Inv</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Special Rules</TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        M
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        WS
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        BS
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        S
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        T
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        W
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        I
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        A
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        Ld
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        Sv
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        Inv
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          fontWeight: 'bold',
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        Special Rules
+                      </TableCell>
                     </>
                   )}
                 </TableRow>
@@ -578,24 +941,92 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
 
         {/* Ranged Weapons Table */}
         {allWeapons.some(w => DataLoader.isRangedWeapon(w.weapon)) && (
-          <Box sx={{ mb: 4 }}>
-            <Typography variant="h6" gutterBottom>
+          <Box sx={{ mb: { xs: 3, sm: 4 } }}>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{
+                fontSize: { xs: '1.125rem', sm: '1.25rem' },
+              }}
+            >
               Ranged Weapons
             </Typography>
             <TableContainer component={Paper}>
-              <Table size="small">
+              <Table size={isMobile ? 'small' : 'small'}>
                 <TableHead>
                   <TableRow>
-                    <TableCell sx={{ fontWeight: 'bold' }}>Weapon</TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>Range</TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>Firepower</TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>Strength</TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>AP</TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>Damage</TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      Weapon
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      Range
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      Firepower
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      Strength
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      AP
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      Damage
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
                       Special Rules
                     </TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>Traits</TableCell>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      Traits
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -610,30 +1041,92 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
 
         {/* Melee Weapons Table */}
         {allWeapons.some(w => DataLoader.isMeleeWeapon(w.weapon)) && (
-          <Box sx={{ mb: 4 }}>
-            <Typography variant="h6" gutterBottom>
+          <Box sx={{ mb: { xs: 3, sm: 4 } }}>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{
+                fontSize: { xs: '1.125rem', sm: '1.25rem' },
+              }}
+            >
               Melee Weapons
             </Typography>
             <TableContainer component={Paper}>
-              <Table size="small">
+              <Table size={isMobile ? 'small' : 'small'}>
                 <TableHead>
                   <TableRow>
-                    <TableCell sx={{ fontWeight: 'bold' }}>Weapon</TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      Weapon
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
                       Initiative Mod
                     </TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
                       Attack Mod
                     </TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
                       Strength Mod
                     </TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>AP</TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>Damage</TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      AP
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      Damage
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
                       Special Rules
                     </TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>Traits</TableCell>
+                    <TableCell
+                      sx={{
+                        fontWeight: 'bold',
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      Traits
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -646,27 +1139,47 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
           </Box>
         )}
 
-        <Divider sx={{ my: 3 }} />
+        <Divider sx={{ my: { xs: 2, sm: 3 } }} />
 
         {/* Weapon Special Rules */}
         {allWeaponSpecialRules.length > 0 && (
           <Accordion defaultExpanded={false}>
-            <AccordionSummary expandIcon={<ExpandMore />}>
-              <Typography variant="h6">
+            <AccordionSummary
+              expandIcon={<ExpandMore />}
+              sx={{
+                p: { xs: 1, sm: 2 },
+              }}
+            >
+              <Typography
+                variant="h6"
+                sx={{
+                  fontSize: { xs: '1.125rem', sm: '1.25rem' },
+                }}
+              >
                 Weapon Special Rules ({allWeaponSpecialRules.length})
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails
+              sx={{
+                p: { xs: 1, sm: 2 },
+              }}
+            >
               <Box>
                 {allWeaponSpecialRules.map(({ rule }) => (
-                  <Accordion key={rule.id} expanded={expandedWeaponRules.has(rule.id)}>
+                  <Accordion
+                    key={rule.id}
+                    expanded={expandedWeaponRules.has(rule.id)}
+                  >
                     <AccordionSummary
                       expandIcon={
                         <IconButton
-                          size="small"
+                          size={isMobile ? 'medium' : 'small'}
                           onClick={e => {
                             e.stopPropagation();
                             toggleWeaponRuleExpansion(rule.id);
+                          }}
+                          sx={{
+                            p: { xs: 0.5, sm: 0.25 },
                           }}
                         >
                           {expandedWeaponRules.has(rule.id) ? (
@@ -676,20 +1189,44 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
                           )}
                         </IconButton>
                       }
+                      sx={{
+                        p: { xs: 1, sm: 2 },
+                      }}
                     >
-                      <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          fontStyle: 'italic',
+                          fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                        }}
+                      >
                         {rule.description}
                       </Typography>
                     </AccordionSummary>
-                    <AccordionDetails>
+                    <AccordionDetails
+                      sx={{
+                        p: { xs: 1, sm: 2 },
+                      }}
+                    >
                       <Box>
                         <Typography
                           variant="body2"
-                          sx={{ fontWeight: 'bold', mb: 1 }}
+                          sx={{
+                            fontWeight: 'bold',
+                            mb: { xs: 0.5, sm: 1 },
+                            fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                          }}
                         >
                           {rule.shortText}
                         </Typography>
-                        <Typography variant="body2">{rule.longText}</Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                          }}
+                        >
+                          {rule.longText}
+                        </Typography>
                       </Box>
                     </AccordionDetails>
                   </Accordion>
@@ -699,12 +1236,18 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
           </Accordion>
         )}
 
-        <Divider sx={{ my: 3 }} />
+        <Divider sx={{ my: { xs: 2, sm: 3 } }} />
 
         {/* Special Rules */}
         {allSpecialRules.length > 0 && (
-          <Box sx={{ mb: 4 }}>
-            <Typography variant="h6" gutterBottom>
+          <Box sx={{ mb: { xs: 3, sm: 4 } }}>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{
+                fontSize: { xs: '1.125rem', sm: '1.25rem' },
+              }}
+            >
               Special Rules
             </Typography>
             {allSpecialRules.map(({ rule }) => (
@@ -712,10 +1255,13 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
                 <AccordionSummary
                   expandIcon={
                     <IconButton
-                      size="small"
+                      size={isMobile ? 'medium' : 'small'}
                       onClick={e => {
                         e.stopPropagation();
                         toggleRuleExpansion(rule.id);
+                      }}
+                      sx={{
+                        p: { xs: 0.5, sm: 0.25 },
                       }}
                     >
                       {expandedRules.has(rule.id) ? (
@@ -725,20 +1271,44 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
                       )}
                     </IconButton>
                   }
+                  sx={{
+                    p: { xs: 1, sm: 2 },
+                  }}
                 >
-                  <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontStyle: 'italic',
+                      fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                    }}
+                  >
                     {rule.description}
                   </Typography>
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails
+                  sx={{
+                    p: { xs: 1, sm: 2 },
+                  }}
+                >
                   <Box>
                     <Typography
                       variant="body2"
-                      sx={{ fontWeight: 'bold', mb: 1 }}
+                      sx={{
+                        fontWeight: 'bold',
+                        mb: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                      }}
                     >
                       {rule.shortText}
                     </Typography>
-                    <Typography variant="body2">{rule.longText}</Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {rule.longText}
+                    </Typography>
                   </Box>
                 </AccordionDetails>
               </Accordion>
@@ -746,12 +1316,18 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
           </Box>
         )}
 
-        <Divider sx={{ my: 3 }} />
+        <Divider sx={{ my: { xs: 2, sm: 3 } }} />
 
         {/* Wargear */}
         {allWargear.length > 0 && (
-          <Box sx={{ mb: 4 }}>
-            <Typography variant="h6" gutterBottom>
+          <Box sx={{ mb: { xs: 3, sm: 4 } }}>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{
+                fontSize: { xs: '1.125rem', sm: '1.25rem' },
+              }}
+            >
               Wargear
             </Typography>
             {allWargear.map(({ rule, source }) => (
@@ -759,10 +1335,13 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
                 <AccordionSummary
                   expandIcon={
                     <IconButton
-                      size="small"
+                      size={isMobile ? 'medium' : 'small'}
                       onClick={e => {
                         e.stopPropagation();
                         toggleWargearExpansion(rule.id);
+                      }}
+                      sx={{
+                        p: { xs: 0.5, sm: 0.25 },
                       }}
                     >
                       {expandedWargear.has(rule.id) ? (
@@ -772,6 +1351,9 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
                       )}
                     </IconButton>
                   }
+                  sx={{
+                    p: { xs: 1, sm: 2 },
+                  }}
                 >
                   <Box
                     sx={{
@@ -781,21 +1363,49 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
                       width: '100%',
                     }}
                   >
-                    <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontStyle: 'italic',
+                        fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                      }}
+                    >
                       {rule.description}
                     </Typography>
-                    <Chip label={source} size="small" variant="outlined" />
+                    <Chip
+                      label={source}
+                      size={isMobile ? 'small' : 'small'}
+                      variant="outlined"
+                      sx={{
+                        fontSize: { xs: '0.75rem', sm: '0.75rem' },
+                      }}
+                    />
                   </Box>
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails
+                  sx={{
+                    p: { xs: 1, sm: 2 },
+                  }}
+                >
                   <Box>
                     <Typography
                       variant="body2"
-                      sx={{ fontWeight: 'bold', mb: 1 }}
+                      sx={{
+                        fontWeight: 'bold',
+                        mb: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                      }}
                     >
                       {rule.shortText}
                     </Typography>
-                    <Typography variant="body2">{rule.longText}</Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {rule.longText}
+                    </Typography>
                   </Box>
                 </AccordionDetails>
               </Accordion>
@@ -804,8 +1414,20 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
         )}
       </DialogContent>
 
-      <DialogActions>
-        <Button onClick={onClose} color="primary">
+      <DialogActions
+        sx={{
+          p: { xs: 2, sm: 3 },
+          pt: { xs: 1, sm: 2 },
+        }}
+      >
+        <Button
+          onClick={onClose}
+          color="primary"
+          fullWidth={isMobile}
+          sx={{
+            fontSize: { xs: '0.875rem', sm: '0.875rem' },
+          }}
+        >
           Close
         </Button>
       </DialogActions>

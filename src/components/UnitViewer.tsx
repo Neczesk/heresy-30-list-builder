@@ -13,6 +13,8 @@ import {
   Paper,
   Chip,
   Alert,
+  useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import { DataLoader } from '../utils/dataLoader';
 import { UpgradeValidator } from '../utils/upgradeValidator';
@@ -37,7 +39,10 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
   armyUnit,
   selectedUpgrades = [],
 }) => {
-    const modelCompositions = armyUnit
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  const modelCompositions = armyUnit
     ? DataLoader.getModelsForUnitInstance(unit.id, armyUnit)
     : DataLoader.getModelsForUnit(unit.id);
 
@@ -63,9 +68,14 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
       // Create effective model with updated weapons and wargear
       const effectiveModel: Model = {
         ...model,
-        weapons: effectiveWeapons.length > 0
-          ? effectiveWeapons.map(w => ({ id: w.weaponId, mount: w.mount, count: w.count }))
-          : model.weapons, // Fallback to original weapons if calculation fails
+        weapons:
+          effectiveWeapons.length > 0
+            ? effectiveWeapons.map(w => ({
+                id: w.weaponId,
+                mount: w.mount,
+                count: w.count,
+              }))
+            : model.weapons, // Fallback to original weapons if calculation fails
         wargear: effectiveWargear,
       };
 
@@ -73,23 +83,28 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
     });
   };
 
-      const effectiveModelCompositions = getEffectiveModelCompositions();
+  const effectiveModelCompositions = getEffectiveModelCompositions();
 
-    // Helper function to format special rules with names and values
-  const formatSpecialRules = (ruleIds: string[], specialRuleValues?: { [key: string]: any }): string => {
+  // Helper function to format special rules with names and values
+  const formatSpecialRules = (
+    ruleIds: string[],
+    specialRuleValues?: { [key: string]: any }
+  ): string => {
     if (!ruleIds || ruleIds.length === 0) return '-';
 
-    return ruleIds.map(ruleId => {
-      const rule = DataLoader.getSpecialRuleById(ruleId);
-      const ruleName = rule?.name || ruleId;
+    return ruleIds
+      .map(ruleId => {
+        const rule = DataLoader.getSpecialRuleById(ruleId);
+        const ruleName = rule?.name || ruleId;
 
-      // Check if there's a value for this rule
-      if (specialRuleValues && specialRuleValues[ruleId] !== undefined) {
-        return `${ruleName} (${specialRuleValues[ruleId]})`;
-      }
+        // Check if there's a value for this rule
+        if (specialRuleValues && specialRuleValues[ruleId] !== undefined) {
+          return `${ruleName} (${specialRuleValues[ruleId]})`;
+        }
 
-      return ruleName;
-    }).join(', ');
+        return ruleName;
+      })
+      .join(', ');
   };
 
   const renderCharacteristicsTable = (
@@ -102,27 +117,123 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
     if (isVehicle) {
       return (
         <TableContainer component={Paper} variant="outlined">
-          <Table size="small">
+          <Table size={isMobile ? 'small' : 'small'}>
             <TableHead>
               <TableRow>
-                <TableCell>Model</TableCell>
-                <TableCell align="center">M</TableCell>
-                <TableCell align="center">BS</TableCell>
-                <TableCell align="center" colSpan={3} sx={{ bgcolor: 'primary.main', color: 'white' }}>
+                <TableCell
+                  sx={{
+                    p: { xs: 1, sm: 2 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  Model
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  M
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  BS
+                </TableCell>
+                <TableCell
+                  align="center"
+                  colSpan={3}
+                  sx={{
+                    bgcolor: 'primary.main',
+                    color: 'white',
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
                   Vehicle Armor
                 </TableCell>
-                <TableCell align="center">HP</TableCell>
-                <TableCell align="center">TC</TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  HP
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  TC
+                </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell></TableCell>
-                <TableCell align="center"></TableCell>
-                <TableCell align="center"></TableCell>
-                <TableCell align="center">FA</TableCell>
-                <TableCell align="center">SA</TableCell>
-                <TableCell align="center">RA</TableCell>
-                <TableCell align="center"></TableCell>
-                <TableCell align="center"></TableCell>
+                <TableCell sx={{ p: { xs: 1, sm: 2 } }}></TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                ></TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                ></TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  FA
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  SA
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  RA
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                ></TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                ></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -132,14 +243,77 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
                   count > 1 ? `${model.name} x${count}` : model.name;
                 return (
                   <TableRow key={model.id} hover>
-                    <TableCell>{displayName}</TableCell>
-                    <TableCell align="center">{characteristics.movement}"</TableCell>
-                    <TableCell align="center">{characteristics.ballisticSkill}+</TableCell>
-                    <TableCell align="center">{characteristics.frontArmour}+</TableCell>
-                    <TableCell align="center">{characteristics.sideArmour}+</TableCell>
-                    <TableCell align="center">{characteristics.rearArmour}+</TableCell>
-                    <TableCell align="center">{characteristics.hullPoints}</TableCell>
-                    <TableCell align="center">{characteristics.transportCapacity || '-'}</TableCell>
+                    <TableCell
+                      sx={{
+                        p: { xs: 1, sm: 2 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {displayName}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.movement}"
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.ballisticSkill}+
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.frontArmour}+
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.sideArmour}+
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.rearArmour}+
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.hullPoints}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.transportCapacity || '-'}
+                    </TableCell>
                   </TableRow>
                 );
               })}
@@ -150,22 +324,124 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
     } else {
       return (
         <TableContainer component={Paper} variant="outlined">
-          <Table size="small">
+          <Table size={isMobile ? 'small' : 'small'}>
             <TableHead>
               <TableRow>
-                <TableCell>Model</TableCell>
-                <TableCell align="center">M</TableCell>
-                <TableCell align="center">WS</TableCell>
-                <TableCell align="center">BS</TableCell>
-                <TableCell align="center">S</TableCell>
-                <TableCell align="center">T</TableCell>
-                <TableCell align="center">W</TableCell>
-                <TableCell align="center">I</TableCell>
-                <TableCell align="center">A</TableCell>
-                <TableCell align="center">Ld</TableCell>
-                <TableCell align="center">Sv</TableCell>
-                <TableCell align="center">Inv</TableCell>
-                <TableCell>Special Rules</TableCell>
+                <TableCell
+                  sx={{
+                    p: { xs: 1, sm: 2 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  Model
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  M
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  WS
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  BS
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  S
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  T
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  W
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  I
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  A
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  Ld
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  Sv
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{
+                    p: { xs: 0.5, sm: 1 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  Inv
+                </TableCell>
+                <TableCell
+                  sx={{
+                    p: { xs: 1, sm: 2 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  Special Rules
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -175,19 +451,123 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
                   count > 1 ? `${model.name} x${count}` : model.name;
                 return (
                   <TableRow key={model.id} hover>
-                    <TableCell>{displayName}</TableCell>
-                    <TableCell align="center">{characteristics.movement}"</TableCell>
-                    <TableCell align="center">{characteristics.weaponSkill}+</TableCell>
-                    <TableCell align="center">{characteristics.ballisticSkill}+</TableCell>
-                    <TableCell align="center">{characteristics.strength}</TableCell>
-                    <TableCell align="center">{characteristics.toughness}</TableCell>
-                    <TableCell align="center">{characteristics.wounds}</TableCell>
-                    <TableCell align="center">{characteristics.initiative}</TableCell>
-                    <TableCell align="center">{characteristics.attacks}</TableCell>
-                    <TableCell align="center">{characteristics.leadership}</TableCell>
-                    <TableCell align="center">{characteristics.armourSave}+</TableCell>
-                    <TableCell align="center">{characteristics.invulnerableSave ? `${characteristics.invulnerableSave}+` : '-'}</TableCell>
-                    <TableCell>{model.specialRules && model.specialRules.length > 0 ? model.specialRules.join(', ') : '-'}</TableCell>
+                    <TableCell
+                      sx={{
+                        p: { xs: 1, sm: 2 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {displayName}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.movement}"
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.weaponSkill}+
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.ballisticSkill}+
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.strength}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.toughness}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.wounds}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.initiative}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.attacks}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.leadership}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.armourSave}+
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        p: { xs: 0.5, sm: 1 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {characteristics.invulnerableSave
+                        ? `${characteristics.invulnerableSave}+`
+                        : '-'}
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        p: { xs: 1, sm: 2 },
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                      }}
+                    >
+                      {formatSpecialRules(model.specialRules || [])}
+                    </TableCell>
                   </TableRow>
                 );
               })}
@@ -198,11 +578,13 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
     }
   };
 
-    const renderRangedWeaponsTable = (
+  const renderRangedWeaponsTable = (
     modelCompositions: { model: Model; count: number }[]
   ) => {
     // Check if this is a vehicle unit
-    const isVehicle = modelCompositions.some(({ model }) => model.type === 'Vehicle');
+    const isVehicle = modelCompositions.some(
+      ({ model }) => model.type === 'Vehicle'
+    );
 
     const weaponMap = new Map<
       string,
@@ -218,9 +600,12 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
     modelCompositions.forEach(({ model, count }) => {
       model.weapons?.forEach(weaponEntry => {
         // Handle both string format and object format
-        const weaponId = typeof weaponEntry === 'string' ? weaponEntry : weaponEntry.id;
-        const mount = typeof weaponEntry === 'string' ? undefined : weaponEntry.mount;
-        const weaponCount = typeof weaponEntry === 'string' ? 1 : (weaponEntry.count || 1);
+        const weaponId =
+          typeof weaponEntry === 'string' ? weaponEntry : weaponEntry.id;
+        const mount =
+          typeof weaponEntry === 'string' ? undefined : weaponEntry.mount;
+        const weaponCount =
+          typeof weaponEntry === 'string' ? 1 : weaponEntry.count || 1;
         const weapon = DataLoader.getWeaponById(weaponId);
 
         // For vehicles, include mount in the key to separate different mounts of the same weapon
@@ -238,9 +623,10 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
           } else {
             weaponMap.set(key, {
               weaponId: weaponId,
-              models: [isVehicle
-                ? model.name
-                : `${model.name}${count > 1 ? ` x${count}` : ''}`
+              models: [
+                isVehicle
+                  ? model.name
+                  : `${model.name}${count > 1 ? ` x${count}` : ''}`,
               ],
               weapon: weapon as RangedWeapon,
               mount,
@@ -257,19 +643,98 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
 
     return (
       <TableContainer component={Paper} variant="outlined">
-        <Table size="small">
+        <Table size={isMobile ? 'small' : 'small'}>
           <TableHead>
             <TableRow>
-              {!isVehicle && <TableCell>Models</TableCell>}
-              {isVehicle && <TableCell>Mount</TableCell>}
-              <TableCell>Weapon</TableCell>
-              <TableCell align="center">Range</TableCell>
-              <TableCell align="center">Firepower</TableCell>
-              <TableCell align="center">S</TableCell>
-              <TableCell align="center">AP</TableCell>
-              <TableCell align="center">D</TableCell>
-              <TableCell>Special Rules</TableCell>
-              <TableCell>Traits</TableCell>
+              {!isVehicle && (
+                <TableCell
+                  sx={{
+                    p: { xs: 1, sm: 2 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  Models
+                </TableCell>
+              )}
+              {isVehicle && (
+                <TableCell
+                  sx={{
+                    p: { xs: 1, sm: 2 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  Mount
+                </TableCell>
+              )}
+              <TableCell
+                sx={{
+                  p: { xs: 1, sm: 2 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                Weapon
+              </TableCell>
+              <TableCell
+                align="center"
+                sx={{
+                  p: { xs: 0.5, sm: 1 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                Range
+              </TableCell>
+              <TableCell
+                align="center"
+                sx={{
+                  p: { xs: 0.5, sm: 1 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                Firepower
+              </TableCell>
+              <TableCell
+                align="center"
+                sx={{
+                  p: { xs: 0.5, sm: 1 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                S
+              </TableCell>
+              <TableCell
+                align="center"
+                sx={{
+                  p: { xs: 0.5, sm: 1 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                AP
+              </TableCell>
+              <TableCell
+                align="center"
+                sx={{
+                  p: { xs: 0.5, sm: 1 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                D
+              </TableCell>
+              <TableCell
+                sx={{
+                  p: { xs: 1, sm: 2 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                Special Rules
+              </TableCell>
+              <TableCell
+                sx={{
+                  p: { xs: 1, sm: 2 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                Traits
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -278,10 +743,44 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
                 if (!weapon) {
                   return (
                     <TableRow key={`${weaponId}-${index}`} hover>
-                      {!isVehicle && <TableCell>{models.join(', ')}</TableCell>}
-                      {isVehicle && <TableCell>{mount || '-'}</TableCell>}
-                      <TableCell>{weaponId}</TableCell>
-                      <TableCell colSpan={7} align="center">Weapon not found</TableCell>
+                      {!isVehicle && (
+                        <TableCell
+                          sx={{
+                            p: { xs: 1, sm: 2 },
+                            fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                          }}
+                        >
+                          {models.join(', ')}
+                        </TableCell>
+                      )}
+                      {isVehicle && (
+                        <TableCell
+                          sx={{
+                            p: { xs: 1, sm: 2 },
+                            fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                          }}
+                        >
+                          {mount || '-'}
+                        </TableCell>
+                      )}
+                      <TableCell
+                        sx={{
+                          p: { xs: 1, sm: 2 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        {weaponId}
+                      </TableCell>
+                      <TableCell
+                        colSpan={7}
+                        align="center"
+                        sx={{
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        Weapon not found
+                      </TableCell>
                     </TableRow>
                   );
                 }
@@ -296,14 +795,27 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
                       key={`${weaponId}-header`}
                       sx={{ backgroundColor: 'action.hover' }}
                     >
-                      {!isVehicle && <TableCell rowSpan={weapon.profiles.length + 1}>{models.join(', ')}</TableCell>}
-                      {isVehicle && <TableCell rowSpan={weapon.profiles.length + 1}>{mount || '-'}</TableCell>}
+                      {!isVehicle && (
+                        <TableCell rowSpan={weapon.profiles.length + 1}>
+                          {models.join(', ')}
+                        </TableCell>
+                      )}
+                      {isVehicle && (
+                        <TableCell rowSpan={weapon.profiles.length + 1}>
+                          {mount || '-'}
+                        </TableCell>
+                      )}
                       <TableCell rowSpan={weapon.profiles.length + 1}>
                         {weapon.name}
-                        {weaponCount && weaponCount > 1 ? ` x${weaponCount}` : ''}
+                        {weaponCount && weaponCount > 1
+                          ? ` x${weaponCount}`
+                          : ''}
                       </TableCell>
                       <TableCell colSpan={7} align="center">
-                        <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
+                        <Typography
+                          variant="subtitle2"
+                          sx={{ fontWeight: 'bold' }}
+                        >
                           Multiple Profiles
                         </Typography>
                       </TableCell>
@@ -317,18 +829,87 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
                       const rangedProfile = profileWeapon as RangedWeapon;
                       rows.push(
                         <TableRow key={`${weaponId}-${profileIndex}`}>
-                          <TableCell sx={{ pl: 4 }}>
-                            <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
+                          <TableCell
+                            sx={{
+                              pl: { xs: 2, sm: 4 },
+                              p: { xs: 0.5, sm: 1 },
+                              fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                            }}
+                          >
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                fontStyle: 'italic',
+                                fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                              }}
+                            >
                               {rangedProfile.name}
                             </Typography>
                           </TableCell>
-                          <TableCell align="center">{rangedProfile.range}"</TableCell>
-                          <TableCell align="center">{rangedProfile.firepower}</TableCell>
-                          <TableCell align="center">{rangedProfile.rangedStrength}</TableCell>
-                          <TableCell align="center">{rangedProfile.ap}</TableCell>
-                          <TableCell align="center">{rangedProfile.damage}</TableCell>
-                          <TableCell>{formatSpecialRules(rangedProfile.specialRules || [], rangedProfile.specialRuleValues)}</TableCell>
-                          <TableCell>{rangedProfile.traits?.join(', ') || '-'}</TableCell>
+                          <TableCell
+                            align="center"
+                            sx={{
+                              p: { xs: 0.5, sm: 1 },
+                              fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                            }}
+                          >
+                            {rangedProfile.range}"
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            sx={{
+                              p: { xs: 0.5, sm: 1 },
+                              fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                            }}
+                          >
+                            {rangedProfile.firepower}
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            sx={{
+                              p: { xs: 0.5, sm: 1 },
+                              fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                            }}
+                          >
+                            {rangedProfile.rangedStrength}
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            sx={{
+                              p: { xs: 0.5, sm: 1 },
+                              fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                            }}
+                          >
+                            {rangedProfile.ap}
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            sx={{
+                              p: { xs: 0.5, sm: 1 },
+                              fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                            }}
+                          >
+                            {rangedProfile.damage}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              p: { xs: 1, sm: 2 },
+                              fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                            }}
+                          >
+                            {formatSpecialRules(
+                              rangedProfile.specialRules || [],
+                              rangedProfile.specialRuleValues
+                            )}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              p: { xs: 1, sm: 2 },
+                              fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                            }}
+                          >
+                            {rangedProfile.traits?.join(', ') || '-'}
+                          </TableCell>
                         </TableRow>
                       );
                     }
@@ -339,19 +920,101 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
                   // Single profile weapon (backward compatibility)
                   return (
                     <TableRow key={`${weaponId}-${index}`} hover>
-                      {!isVehicle && <TableCell>{models.join(', ')}</TableCell>}
-                      {isVehicle && <TableCell>{mount || '-'}</TableCell>}
-                      <TableCell>
+                      {!isVehicle && (
+                        <TableCell
+                          sx={{
+                            p: { xs: 1, sm: 2 },
+                            fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                          }}
+                        >
+                          {models.join(', ')}
+                        </TableCell>
+                      )}
+                      {isVehicle && (
+                        <TableCell
+                          sx={{
+                            p: { xs: 1, sm: 2 },
+                            fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                          }}
+                        >
+                          {mount || '-'}
+                        </TableCell>
+                      )}
+                      <TableCell
+                        sx={{
+                          p: { xs: 1, sm: 2 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
                         {weapon.name}
-                        {weaponCount && weaponCount > 1 ? ` x${weaponCount}` : ''}
+                        {weaponCount && weaponCount > 1
+                          ? ` x${weaponCount}`
+                          : ''}
                       </TableCell>
-                      <TableCell align="center">{weapon.range}"</TableCell>
-                      <TableCell align="center">{weapon.firepower}</TableCell>
-                      <TableCell align="center">{weapon.rangedStrength}</TableCell>
-                      <TableCell align="center">{weapon.ap}</TableCell>
-                      <TableCell align="center">{weapon.damage}</TableCell>
-                      <TableCell>{formatSpecialRules(weapon.specialRules || [], weapon.specialRuleValues)}</TableCell>
-                      <TableCell>{weapon.traits?.join(', ') || '-'}</TableCell>
+                      <TableCell
+                        align="center"
+                        sx={{
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        {weapon.range}"
+                      </TableCell>
+                      <TableCell
+                        align="center"
+                        sx={{
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        {weapon.firepower}
+                      </TableCell>
+                      <TableCell
+                        align="center"
+                        sx={{
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        {weapon.rangedStrength}
+                      </TableCell>
+                      <TableCell
+                        align="center"
+                        sx={{
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        {weapon.ap}
+                      </TableCell>
+                      <TableCell
+                        align="center"
+                        sx={{
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        {weapon.damage}
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          p: { xs: 1, sm: 2 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        {formatSpecialRules(
+                          weapon.specialRules || [],
+                          weapon.specialRuleValues
+                        )}
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          p: { xs: 1, sm: 2 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        {weapon.traits?.join(', ') || '-'}
+                      </TableCell>
                     </TableRow>
                   );
                 }
@@ -367,7 +1030,9 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
     modelCompositions: { model: Model; count: number }[]
   ) => {
     // Check if this is a vehicle unit
-    const isVehicle = modelCompositions.some(({ model }) => model.type === 'Vehicle');
+    const isVehicle = modelCompositions.some(
+      ({ model }) => model.type === 'Vehicle'
+    );
 
     const weaponMap = new Map<
       string,
@@ -383,9 +1048,12 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
     modelCompositions.forEach(({ model, count }) => {
       model.weapons?.forEach(weaponEntry => {
         // Handle both string format and object format
-        const weaponId = typeof weaponEntry === 'string' ? weaponEntry : weaponEntry.id;
-        const mount = typeof weaponEntry === 'string' ? undefined : weaponEntry.mount;
-        const weaponCount = typeof weaponEntry === 'string' ? 1 : (weaponEntry.count || 1);
+        const weaponId =
+          typeof weaponEntry === 'string' ? weaponEntry : weaponEntry.id;
+        const mount =
+          typeof weaponEntry === 'string' ? undefined : weaponEntry.mount;
+        const weaponCount =
+          typeof weaponEntry === 'string' ? 1 : weaponEntry.count || 1;
         const weapon = DataLoader.getWeaponById(weaponId);
 
         // For vehicles, include mount in the key to separate different mounts of the same weapon
@@ -403,9 +1071,10 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
           } else {
             weaponMap.set(key, {
               weaponId: weaponId,
-              models: [isVehicle
-                ? model.name
-                : `${model.name}${count > 1 ? ` x${count}` : ''}`
+              models: [
+                isVehicle
+                  ? model.name
+                  : `${model.name}${count > 1 ? ` x${count}` : ''}`,
               ],
               weapon: weapon as MeleeWeapon,
               mount,
@@ -422,19 +1091,98 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
 
     return (
       <TableContainer component={Paper} variant="outlined">
-        <Table size="small">
+        <Table size={isMobile ? 'small' : 'small'}>
           <TableHead>
             <TableRow>
-              {!isVehicle && <TableCell>Models</TableCell>}
-              {isVehicle && <TableCell>Mount</TableCell>}
-              <TableCell>Weapon</TableCell>
-              <TableCell align="center">Attack Modifier</TableCell>
-              <TableCell align="center">Strength Modifier</TableCell>
-              <TableCell align="center">Initiative Modifier</TableCell>
-              <TableCell align="center">AP</TableCell>
-              <TableCell align="center">D</TableCell>
-              <TableCell>Special Rules</TableCell>
-              <TableCell>Traits</TableCell>
+              {!isVehicle && (
+                <TableCell
+                  sx={{
+                    p: { xs: 1, sm: 2 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  Models
+                </TableCell>
+              )}
+              {isVehicle && (
+                <TableCell
+                  sx={{
+                    p: { xs: 1, sm: 2 },
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  }}
+                >
+                  Mount
+                </TableCell>
+              )}
+              <TableCell
+                sx={{
+                  p: { xs: 1, sm: 2 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                Weapon
+              </TableCell>
+              <TableCell
+                align="center"
+                sx={{
+                  p: { xs: 0.5, sm: 1 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                Attack Modifier
+              </TableCell>
+              <TableCell
+                align="center"
+                sx={{
+                  p: { xs: 0.5, sm: 1 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                Strength Modifier
+              </TableCell>
+              <TableCell
+                align="center"
+                sx={{
+                  p: { xs: 0.5, sm: 1 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                Initiative Modifier
+              </TableCell>
+              <TableCell
+                align="center"
+                sx={{
+                  p: { xs: 0.5, sm: 1 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                AP
+              </TableCell>
+              <TableCell
+                align="center"
+                sx={{
+                  p: { xs: 0.5, sm: 1 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                D
+              </TableCell>
+              <TableCell
+                sx={{
+                  p: { xs: 1, sm: 2 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                Special Rules
+              </TableCell>
+              <TableCell
+                sx={{
+                  p: { xs: 1, sm: 2 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                Traits
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -446,7 +1194,9 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
                       {!isVehicle && <TableCell>{models.join(', ')}</TableCell>}
                       {isVehicle && <TableCell>{mount || '-'}</TableCell>}
                       <TableCell>{weaponId}</TableCell>
-                      <TableCell colSpan={7} align="center">Weapon not found</TableCell>
+                      <TableCell colSpan={7} align="center">
+                        Weapon not found
+                      </TableCell>
                     </TableRow>
                   );
                 }
@@ -461,14 +1211,55 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
                       key={`${weaponId}-header`}
                       sx={{ backgroundColor: 'action.hover' }}
                     >
-                      {!isVehicle && <TableCell rowSpan={weapon.profiles.length + 1}>{models.join(', ')}</TableCell>}
-                      {isVehicle && <TableCell rowSpan={weapon.profiles.length + 1}>{mount || '-'}</TableCell>}
-                      <TableCell rowSpan={weapon.profiles.length + 1}>
+                      {!isVehicle && (
+                        <TableCell
+                          rowSpan={weapon.profiles.length + 1}
+                          sx={{
+                            p: { xs: 1, sm: 2 },
+                            fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                          }}
+                        >
+                          {models.join(', ')}
+                        </TableCell>
+                      )}
+                      {isVehicle && (
+                        <TableCell
+                          rowSpan={weapon.profiles.length + 1}
+                          sx={{
+                            p: { xs: 1, sm: 2 },
+                            fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                          }}
+                        >
+                          {mount || '-'}
+                        </TableCell>
+                      )}
+                      <TableCell
+                        rowSpan={weapon.profiles.length + 1}
+                        sx={{
+                          p: { xs: 1, sm: 2 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
                         {weapon.name}
-                        {weaponCount && weaponCount > 1 ? ` x${weaponCount}` : ''}
+                        {weaponCount && weaponCount > 1
+                          ? ` x${weaponCount}`
+                          : ''}
                       </TableCell>
-                      <TableCell colSpan={7} align="center">
-                        <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
+                      <TableCell
+                        colSpan={7}
+                        align="center"
+                        sx={{
+                          p: { xs: 0.5, sm: 1 },
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        }}
+                      >
+                        <Typography
+                          variant="subtitle2"
+                          sx={{
+                            fontWeight: 'bold',
+                            fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                          }}
+                        >
                           Multiple Profiles
                         </Typography>
                       </TableCell>
@@ -483,7 +1274,10 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
                       rows.push(
                         <TableRow key={`${weaponId}-${profileIndex}`}>
                           <TableCell sx={{ pl: 4 }}>
-                            <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
+                            <Typography
+                              variant="body2"
+                              sx={{ fontStyle: 'italic' }}
+                            >
                               {meleeProfile.name}
                             </Typography>
                           </TableCell>
@@ -502,10 +1296,21 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
                               ? 'I'
                               : `${typeof meleeProfile.initiativeModifier === 'number' && meleeProfile.initiativeModifier > 0 ? '+' : ''}${meleeProfile.initiativeModifier}`}
                           </TableCell>
-                          <TableCell align="center">{meleeProfile.ap}</TableCell>
-                          <TableCell align="center">{meleeProfile.damage}</TableCell>
-                          <TableCell>{formatSpecialRules(meleeProfile.specialRules || [], meleeProfile.specialRuleValues)}</TableCell>
-                          <TableCell>{meleeProfile.traits?.join(', ') || '-'}</TableCell>
+                          <TableCell align="center">
+                            {meleeProfile.ap}
+                          </TableCell>
+                          <TableCell align="center">
+                            {meleeProfile.damage}
+                          </TableCell>
+                          <TableCell>
+                            {formatSpecialRules(
+                              meleeProfile.specialRules || [],
+                              meleeProfile.specialRuleValues
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            {meleeProfile.traits?.join(', ') || '-'}
+                          </TableCell>
                         </TableRow>
                       );
                     }
@@ -520,14 +1325,27 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
                       {isVehicle && <TableCell>{mount || '-'}</TableCell>}
                       <TableCell>
                         {weapon.name}
-                        {weaponCount && weaponCount > 1 ? ` x${weaponCount}` : ''}
+                        {weaponCount && weaponCount > 1
+                          ? ` x${weaponCount}`
+                          : ''}
                       </TableCell>
-                      <TableCell align="center">{weapon.attackModifier || '-'}</TableCell>
-                      <TableCell align="center">{weapon.strengthModifier || '-'}</TableCell>
-                      <TableCell align="center">{weapon.initiativeModifier || '-'}</TableCell>
+                      <TableCell align="center">
+                        {weapon.attackModifier || '-'}
+                      </TableCell>
+                      <TableCell align="center">
+                        {weapon.strengthModifier || '-'}
+                      </TableCell>
+                      <TableCell align="center">
+                        {weapon.initiativeModifier || '-'}
+                      </TableCell>
                       <TableCell align="center">{weapon.ap}</TableCell>
                       <TableCell align="center">{weapon.damage}</TableCell>
-                      <TableCell>{formatSpecialRules(weapon.specialRules || [], weapon.specialRuleValues)}</TableCell>
+                      <TableCell>
+                        {formatSpecialRules(
+                          weapon.specialRules || [],
+                          weapon.specialRuleValues
+                        )}
+                      </TableCell>
                       <TableCell>{weapon.traits?.join(', ') || '-'}</TableCell>
                     </TableRow>
                   );
@@ -545,7 +1363,12 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
   ) => {
     const rulesMap = new Map<
       string,
-      { ruleId: string; sources: string[]; rule: any; specialRuleValues?: { [key: string]: any } }
+      {
+        ruleId: string;
+        sources: string[];
+        rule: any;
+        specialRuleValues?: { [key: string]: any };
+      }
     >();
 
     // Add unit-level special rules
@@ -596,7 +1419,8 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
     // Add weapon-level special rules
     modelCompositions.forEach(({ model }) => {
       model.weapons?.forEach(weaponEntry => {
-        const weaponId = typeof weaponEntry === 'string' ? weaponEntry : weaponEntry.id;
+        const weaponId =
+          typeof weaponEntry === 'string' ? weaponEntry : weaponEntry.id;
         const weapon = DataLoader.getWeaponById(weaponId);
 
         if (weapon && weapon.specialRules && weapon.specialRules.length > 0) {
@@ -626,13 +1450,17 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
         if (weapon && weapon.profiles && weapon.profiles.length > 0) {
           const profileWeapons = DataLoader.getProfileWeapons(weapon);
           profileWeapons.forEach(profileWeapon => {
-            if (profileWeapon.specialRules && profileWeapon.specialRules.length > 0) {
+            if (
+              profileWeapon.specialRules &&
+              profileWeapon.specialRules.length > 0
+            ) {
               profileWeapon.specialRules.forEach(ruleId => {
                 const rule = DataLoader.getSpecialRuleById(ruleId);
                 const key = ruleId;
 
                 if (!rule || rule.type === 'special-rule') {
-                  const profileValue = profileWeapon.specialRuleValues?.[ruleId];
+                  const profileValue =
+                    profileWeapon.specialRuleValues?.[ruleId];
                   const profileDisplay = `${weapon.name} - ${profileWeapon.name} (${model.name})${profileValue ? ` (${profileValue})` : ''}`;
                   if (rulesMap.has(key)) {
                     const existing = rulesMap.get(key)!;
@@ -667,16 +1495,14 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
             </TableRow>
           </TableHead>
           <TableBody>
-            {Array.from(rulesMap.values()).map(
-              ({ ruleId, rule }, index) => {
-                return (
-                  <TableRow key={`${ruleId}-${index}`} hover>
-                    <TableCell>{rule?.name || ruleId}</TableCell>
-                    <TableCell>{rule?.shortText || '-'}</TableCell>
-                  </TableRow>
-                );
-              }
-            )}
+            {Array.from(rulesMap.values()).map(({ ruleId, rule }, index) => {
+              return (
+                <TableRow key={`${ruleId}-${index}`} hover>
+                  <TableCell>{rule?.name || ruleId}</TableCell>
+                  <TableCell>{rule?.shortText || '-'}</TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>
@@ -702,7 +1528,9 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
         if (!wargear || wargear.type === 'wargear') {
           if (wargearMap.has(key)) {
             const existing = wargearMap.get(key)!;
-            existing.models.push(`${model.name}${count > 1 ? ` x${count}` : ''}`);
+            existing.models.push(
+              `${model.name}${count > 1 ? ` x${count}` : ''}`
+            );
           } else {
             wargearMap.set(key, {
               wargearId: wargearId,
@@ -748,11 +1576,16 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
 
   return (
     <Box sx={{ maxWidth: 1200, mx: 'auto' }}>
-
       {/* Characteristics Section */}
-      <Card sx={{ mb: 3 }}>
-        <CardContent>
-          <Typography variant="h6" gutterBottom>
+      <Card sx={{ mb: { xs: 2, sm: 3 } }}>
+        <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{
+              fontSize: { xs: '1.125rem', sm: '1.25rem' },
+            }}
+          >
             Characteristics
           </Typography>
           {renderCharacteristicsTable(effectiveModelCompositions)}
@@ -760,9 +1593,15 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
       </Card>
 
       {/* Ranged Weapons Section */}
-      <Card sx={{ mb: 3 }}>
-        <CardContent>
-          <Typography variant="h6" gutterBottom>
+      <Card sx={{ mb: { xs: 2, sm: 3 } }}>
+        <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{
+              fontSize: { xs: '1.125rem', sm: '1.25rem' },
+            }}
+          >
             Ranged Weapons
           </Typography>
           {renderRangedWeaponsTable(effectiveModelCompositions)}
@@ -770,9 +1609,15 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
       </Card>
 
       {/* Melee Weapons Section */}
-      <Card sx={{ mb: 3 }}>
-        <CardContent>
-          <Typography variant="h6" gutterBottom>
+      <Card sx={{ mb: { xs: 2, sm: 3 } }}>
+        <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{
+              fontSize: { xs: '1.125rem', sm: '1.25rem' },
+            }}
+          >
             Melee Weapons
           </Typography>
           {renderMeleeWeaponsTable(effectiveModelCompositions)}
@@ -780,9 +1625,15 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
       </Card>
 
       {/* Special Rules Section */}
-      <Card sx={{ mb: 3 }}>
-        <CardContent>
-          <Typography variant="h6" gutterBottom>
+      <Card sx={{ mb: { xs: 2, sm: 3 } }}>
+        <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{
+              fontSize: { xs: '1.125rem', sm: '1.25rem' },
+            }}
+          >
             Special Rules
           </Typography>
           {renderSpecialRulesTable(effectiveModelCompositions)}
@@ -790,9 +1641,15 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
       </Card>
 
       {/* Wargear Section */}
-      <Card sx={{ mb: 3 }}>
-        <CardContent>
-          <Typography variant="h6" gutterBottom>
+      <Card sx={{ mb: { xs: 2, sm: 3 } }}>
+        <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{
+              fontSize: { xs: '1.125rem', sm: '1.25rem' },
+            }}
+          >
             Wargear
           </Typography>
           {renderWargearTable(effectiveModelCompositions)}
@@ -801,9 +1658,15 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
 
       {/* Traits Section */}
       {unit.traits && unit.traits.length > 0 && (
-        <Card sx={{ mb: 3 }}>
-          <CardContent>
-            <Typography variant="h6" gutterBottom>
+        <Card sx={{ mb: { xs: 2, sm: 3 } }}>
+          <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{
+                fontSize: { xs: '1.125rem', sm: '1.25rem' },
+              }}
+            >
               Traits
             </Typography>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -823,27 +1686,51 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
 
       {/* Prime Advantages Section */}
       {armyUnit?.primeAdvantages && armyUnit.primeAdvantages.length > 0 && (
-        <Card sx={{ mb: 3 }}>
-          <CardContent>
-            <Typography variant="h6" gutterBottom>
+        <Card sx={{ mb: { xs: 2, sm: 3 } }}>
+          <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{
+                fontSize: { xs: '1.125rem', sm: '1.25rem' },
+              }}
+            >
               Prime Advantages
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: { xs: 1, sm: 2 },
+              }}
+            >
               {armyUnit.primeAdvantages.map((advantage, index) => (
                 <Box
                   key={index}
                   sx={{
-                    p: 2,
+                    p: { xs: 1.5, sm: 2 },
                     bgcolor: 'warning.light',
                     border: 1,
                     borderColor: 'warning.main',
                     borderRadius: 1,
                   }}
                 >
-                  <Typography variant="subtitle2" color="warning.dark" gutterBottom>
+                  <Typography
+                    variant="subtitle2"
+                    color="warning.dark"
+                    gutterBottom
+                    sx={{
+                      fontSize: { xs: '0.875rem', sm: '1rem' },
+                    }}
+                  >
                     {advantage.description}
                   </Typography>
-                  <Typography variant="body2">
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontSize: { xs: '0.875rem', sm: '1rem' },
+                    }}
+                  >
                     {advantage.effect}
                   </Typography>
                 </Box>

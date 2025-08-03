@@ -6,6 +6,8 @@ import {
   CardContent,
   Button,
   Chip,
+  useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import { ArrowBack } from '@mui/icons-material';
 import { DataLoader } from '../utils/dataLoader';
@@ -26,6 +28,9 @@ const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
   onDetachmentSelected,
   onCancel,
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
   const [selectedFaction, setSelectedFaction] = useState<Faction | null>(null);
   const [selectedAllegiance, setSelectedAllegiance] =
     useState<Allegiance>('Loyalist');
@@ -94,41 +99,99 @@ const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
 
   const renderFactionStep = () => (
     <Box>
-      <Typography variant="h4" component="h3" gutterBottom>
+      <Typography
+        variant={isMobile ? 'h5' : 'h4'}
+        component="h3"
+        gutterBottom
+        sx={{
+          fontSize: { xs: '1.5rem', sm: '2rem' },
+          textAlign: { xs: 'center', sm: 'left' },
+        }}
+      >
         Select Faction
       </Typography>
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+      <Typography
+        variant="body1"
+        color="text.secondary"
+        sx={{
+          mb: { xs: 3, sm: 4 },
+          textAlign: { xs: 'center', sm: 'left' },
+          fontSize: { xs: '0.875rem', sm: '1rem' },
+        }}
+      >
         Choose your army's faction.
       </Typography>
 
-      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: 3 }}>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: {
+            xs: '1fr',
+            sm: 'repeat(2, 1fr)',
+            md: 'repeat(3, 1fr)',
+          },
+          gap: { xs: 2, sm: 3 },
+          maxWidth: { xs: '100%', sm: 'auto' },
+        }}
+      >
         {mainFactions.map(faction => (
           <Box key={faction.id}>
             <Card
-              variant={selectedFaction?.id === faction.id ? 'elevation' : 'outlined'}
+              variant={
+                selectedFaction?.id === faction.id ? 'elevation' : 'outlined'
+              }
               elevation={selectedFaction?.id === faction.id ? 4 : 1}
               sx={{
                 cursor: 'pointer',
                 height: '100%',
+                minHeight: { xs: '120px', sm: 'auto' },
                 ...(selectedFaction?.id === faction.id && {
                   borderColor: 'primary.main',
                 }),
               }}
               onClick={() => handleFactionSelect(faction)}
             >
-              <CardContent>
-                <Typography variant="h6" component="h4" gutterBottom>
+              <CardContent
+                sx={{
+                  p: { xs: 2, sm: 3 },
+                  textAlign: { xs: 'center', sm: 'left' },
+                }}
+              >
+                <Typography
+                  variant={isMobile ? 'h6' : 'h6'}
+                  component="h4"
+                  gutterBottom
+                  sx={{
+                    fontSize: { xs: '1.125rem', sm: '1.25rem' },
+                    textAlign: { xs: 'center', sm: 'left' },
+                  }}
+                >
                   {faction.name}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{
+                    mb: 2,
+                    fontSize: { xs: '0.875rem', sm: '1rem' },
+                    textAlign: { xs: 'center', sm: 'left' },
+                  }}
+                >
                   {faction.description}
                 </Typography>
-                <Chip
-                  label={faction.type}
-                  color="primary"
-                  size="small"
-                  variant="outlined"
-                />
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: { xs: 'center', sm: 'flex-start' },
+                  }}
+                >
+                  <Chip
+                    label={faction.type}
+                    color="primary"
+                    size={isMobile ? 'small' : 'medium'}
+                    variant="outlined"
+                  />
+                </Box>
               </CardContent>
             </Card>
           </Box>
@@ -139,41 +202,99 @@ const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
 
   const renderSubFactionStep = () => (
     <Box>
-      <Typography variant="h4" component="h3" gutterBottom>
+      <Typography
+        variant={isMobile ? 'h5' : 'h4'}
+        component="h3"
+        gutterBottom
+        sx={{
+          fontSize: { xs: '1.5rem', sm: '2rem' },
+          textAlign: { xs: 'center', sm: 'left' },
+        }}
+      >
         Select Legion
       </Typography>
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+      <Typography
+        variant="body1"
+        color="text.secondary"
+        sx={{
+          mb: { xs: 3, sm: 4 },
+          textAlign: { xs: 'center', sm: 'left' },
+          fontSize: { xs: '0.875rem', sm: '1rem' },
+        }}
+      >
         Choose your Space Marine Legion.
       </Typography>
 
-      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: 3 }}>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: {
+            xs: '1fr',
+            sm: 'repeat(2, 1fr)',
+            md: 'repeat(3, 1fr)',
+          },
+          gap: { xs: 2, sm: 3 },
+          maxWidth: { xs: '100%', sm: 'auto' },
+        }}
+      >
         {legionSubFactions.map(subFaction => (
           <Box key={subFaction.id}>
             <Card
-              variant={selectedFaction?.id === subFaction.id ? 'elevation' : 'outlined'}
+              variant={
+                selectedFaction?.id === subFaction.id ? 'elevation' : 'outlined'
+              }
               elevation={selectedFaction?.id === subFaction.id ? 4 : 1}
               sx={{
                 cursor: 'pointer',
                 height: '100%',
+                minHeight: { xs: '120px', sm: 'auto' },
                 ...(selectedFaction?.id === subFaction.id && {
                   borderColor: 'primary.main',
                 }),
               }}
               onClick={() => handleSubFactionSelect(subFaction)}
             >
-              <CardContent>
-                <Typography variant="h6" component="h4" gutterBottom>
+              <CardContent
+                sx={{
+                  p: { xs: 2, sm: 3 },
+                  textAlign: { xs: 'center', sm: 'left' },
+                }}
+              >
+                <Typography
+                  variant={isMobile ? 'h6' : 'h6'}
+                  component="h4"
+                  gutterBottom
+                  sx={{
+                    fontSize: { xs: '1.125rem', sm: '1.25rem' },
+                    textAlign: { xs: 'center', sm: 'left' },
+                  }}
+                >
                   {subFaction.name}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{
+                    mb: 2,
+                    fontSize: { xs: '0.875rem', sm: '1rem' },
+                    textAlign: { xs: 'center', sm: 'left' },
+                  }}
+                >
                   {subFaction.description}
                 </Typography>
-                <Chip
-                  label={subFaction.type}
-                  color="primary"
-                  size="small"
-                  variant="outlined"
-                />
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: { xs: 'center', sm: 'flex-start' },
+                  }}
+                >
+                  <Chip
+                    label={subFaction.type}
+                    color="primary"
+                    size={isMobile ? 'small' : 'medium'}
+                    variant="outlined"
+                  />
+                </Box>
               </CardContent>
             </Card>
           </Box>
@@ -196,21 +317,38 @@ const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
   };
 
   return (
-    <Box sx={{ maxWidth: 1200, mx: 'auto', p: 4 }}>
+    <Box
+      sx={{
+        maxWidth: { xs: '100%', sm: 1200 },
+        mx: 'auto',
+        p: { xs: 2, sm: 4 },
+        width: '100%',
+      }}
+    >
       <Box
         sx={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          mb: 4,
+          mb: { xs: 3, sm: 4 },
+          flexDirection: { xs: 'column', sm: 'row' },
+          gap: { xs: 2, sm: 0 },
         }}
       >
-        <Typography variant="h3" component="h2">
+        <Typography
+          variant={isMobile ? 'h4' : 'h3'}
+          component="h2"
+          sx={{
+            fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' },
+            textAlign: { xs: 'center', sm: 'left' },
+          }}
+        >
           {getCurrentStepTitle()}
         </Typography>
         <Button
           variant="outlined"
           startIcon={<ArrowBack />}
+          size={isMobile ? 'small' : 'medium'}
           onClick={handleBack}
         >
           Back

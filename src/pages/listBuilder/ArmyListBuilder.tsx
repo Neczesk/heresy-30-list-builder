@@ -16,8 +16,10 @@ import {
   TextField,
   AppBar,
   Toolbar,
+  useTheme,
+  useMediaQuery,
 } from '@mui/material';
-import { ArrowBack, Add, Save } from '@mui/icons-material';
+import { ArrowBack, Add, Save, Edit } from '@mui/icons-material';
 import { DataLoader } from '../../utils/dataLoader';
 import { removeDetachmentsTriggeredByUnit } from '../../utils/detachmentUtils';
 import AddDetachmentModal from '../../components/modals/AddDetachmentModal';
@@ -49,6 +51,9 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
   initialArmyList,
 }) => {
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isSmallMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [armyList, setArmyList] = useState<Army>(
     initialArmyList || {
       id: `army-${Date.now()}`,
@@ -136,7 +141,17 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
       // Clear saving indicator after a short delay
       setTimeout(() => setIsSaving(false), 1000);
     }
-  }, [armyList.id, armyList.name, armyList.faction, armyList.allegiance, armyList.pointsLimit, armyList.totalPoints, armyList.detachments, armyList.updatedAt, hasInitialized]);
+  }, [
+    armyList.id,
+    armyList.name,
+    armyList.faction,
+    armyList.allegiance,
+    armyList.pointsLimit,
+    armyList.totalPoints,
+    armyList.detachments,
+    armyList.updatedAt,
+    hasInitialized,
+  ]);
 
   // Mark as initialized after first render
   useEffect(() => {
@@ -181,7 +196,7 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     }, 0);
   };
 
-    const calculateDetachmentPoints = (detachment: ArmyDetachment): number => {
+  const calculateDetachmentPoints = (detachment: ArmyDetachment): number => {
     return detachment.units.reduce((total, unit) => {
       // unit.points already includes upgrade points from handleUnitUpdated
       return total + unit.points;
@@ -307,7 +322,11 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     }));
   };
 
-  const handleDetachmentPrompt = (roleId: string, slotIndex: number, knownDetachmentId?: string) => {
+  const handleDetachmentPrompt = (
+    roleId: string,
+    slotIndex: number,
+    knownDetachmentId?: string
+  ) => {
     // Find the detachment that has a unit in the specified slot
     let triggeringDetachmentId = knownDetachmentId || '';
 
@@ -339,8 +358,6 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     const triggeringUnit = triggeringDetachment?.units.find(
       unit => unit.slotId === triggeringSlotId
     );
-
-
 
     // Create new army detachment
     const newArmyDetachment: ArmyDetachment = {
@@ -388,8 +405,6 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
           unit => unit.slotId === slotId
         );
 
-
-
         // Remove the unit from its detachment
         const updatedDetachments = prev.detachments.map(detachment => {
           if (detachment.id === detachmentId) {
@@ -401,11 +416,14 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
           return detachment;
         });
 
-                // Remove any detachments triggered by this unit
+        // Remove any detachments triggered by this unit
         let finalDetachments = updatedDetachments;
         if (unitBeingRemoved) {
           const updatedArmy = { ...prev, detachments: updatedDetachments };
-          finalDetachments = removeDetachmentsTriggeredByUnit(updatedArmy, unitBeingRemoved.id).detachments;
+          finalDetachments = removeDetachmentsTriggeredByUnit(
+            updatedArmy,
+            unitBeingRemoved.id
+          ).detachments;
         }
 
         return {
@@ -443,7 +461,11 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
         customName: isCustomUnit ? customUnit!.name : undefined,
         size: 1,
         points: isCustomUnit
-          ? unit.points + customUnit!.upgrades.reduce((total, upgrade) => total + (upgrade.points * upgrade.count), 0)
+          ? unit.points +
+            customUnit!.upgrades.reduce(
+              (total, upgrade) => total + upgrade.points * upgrade.count,
+              0
+            )
           : unit.points || 0,
         slotId: slotId,
         models: { ...unit.models }, // Copy the models from the base unit
@@ -454,8 +476,12 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
         specialRules: [],
         specialRuleValues: {},
         modelModifications: {},
-        modelInstanceWeaponChanges: isCustomUnit ? customUnit!.modelInstanceWeaponChanges : {},
-        modelInstanceWargearChanges: isCustomUnit ? customUnit!.modelInstanceWargearChanges : {},
+        modelInstanceWeaponChanges: isCustomUnit
+          ? customUnit!.modelInstanceWeaponChanges
+          : {},
+        modelInstanceWargearChanges: isCustomUnit
+          ? customUnit!.modelInstanceWargearChanges
+          : {},
         originalCustomUnitId: isCustomUnit ? customUnit!.id : undefined,
       };
 
@@ -496,7 +522,7 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     }
   };
 
-    const recalculateDetachmentSlots = (
+  const recalculateDetachmentSlots = (
     detachment: ArmyDetachment
   ): ArmyDetachment => {
     const modifiedSlots = [...detachment.baseSlots];
@@ -521,7 +547,7 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     return { ...detachment, modifiedSlots };
   };
 
-    const handleUnitUpdated = (slotId: string, updatedUnit: ArmyUnit) => {
+  const handleUnitUpdated = (slotId: string, updatedUnit: ArmyUnit) => {
     setArmyList(prev => {
       const updatedArmyList = {
         ...prev,
@@ -529,9 +555,12 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
           const updatedUnits = detachment.units.map(unit => {
             if (unit.slotId === slotId) {
               // Calculate total points including upgrades
-              const upgradePoints = updatedUnit.upgrades.reduce((total, upgrade) => {
-                return total + (upgrade.points * upgrade.count);
-              }, 0);
+              const upgradePoints = updatedUnit.upgrades.reduce(
+                (total, upgrade) => {
+                  return total + upgrade.points * upgrade.count;
+                },
+                0
+              );
 
               const baseUnit = DataLoader.getUnitById(updatedUnit.unitId);
               const basePoints = baseUnit?.points || 0;
@@ -540,7 +569,7 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
               return {
                 ...updatedUnit,
                 slotId, // Ensure slotId is preserved
-                points: totalPoints // Update points to include upgrades
+                points: totalPoints, // Update points to include upgrades
               };
             }
             return unit;
@@ -584,7 +613,9 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     // Load custom unit data if this unit was created from a custom unit
     let customUnitData = undefined;
     if (unit.originalCustomUnitId) {
-      const customUnit = CustomUnitStorage.getCustomUnit(unit.originalCustomUnitId);
+      const customUnit = CustomUnitStorage.getCustomUnit(
+        unit.originalCustomUnitId
+      );
       if (customUnit) {
         customUnitData = {
           id: customUnit.id,
@@ -709,107 +740,172 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     setDetachmentToLoad(null);
   };
 
-  const handleDebugTest = () => {
-    console.log('Current Army List:', armyList);
-    console.log('Primary Faction:', primaryFaction);
-    console.log('Available Detachments:', availableDetachments);
-  };
-
   return (
     <Box>
       {/* Header */}
-      <AppBar position="static" color="default" elevation={1}>
-        <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            onClick={() => navigate('/')}
-            sx={{ mr: 2 }}
+      <AppBar position="sticky" color="default" elevation={1}>
+        <Toolbar
+          sx={{
+            flexDirection: { xs: 'column', sm: 'row' },
+            alignItems: { xs: 'stretch', sm: 'center' },
+            gap: { xs: 1, sm: 0 },
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              width: { xs: '100%', sm: 'auto' },
+              justifyContent: { xs: 'space-between', sm: 'flex-start' },
+            }}
           >
-            <ArrowBack />
-          </IconButton>
-          <Box sx={{ flexGrow: 1 }}>
-            <Typography variant="h5" component="h1">
-              {armyList.name}
-            </Typography>
-            <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-              <Chip label={primaryFaction?.name || 'Unknown'} color="primary" />
-              <Typography variant="body2">
-                {armyList.totalPoints} / {armyList.pointsLimit} pts
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={() => navigate('/')}
+              sx={{ mr: { xs: 0, sm: 2 } }}
+            >
+              <ArrowBack />
+            </IconButton>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: 'flex',
+                flexDirection: { xs: 'column', sm: 'row' },
+                alignItems: { xs: 'flex-start', sm: 'center' },
+                gap: { xs: 0.5, sm: 2 },
+              }}
+            >
+              <Typography
+                variant={isMobile ? 'h6' : 'h5'}
+                component="h1"
+                sx={{
+                  fontSize: { xs: '1.1rem', sm: '1.25rem', md: '1.5rem' },
+                }}
+              >
+                {armyList.name}
               </Typography>
-              <Typography variant="body2">
-                {armyList.detachments.length} detachments
-              </Typography>
-              {armyList.isNamed && (
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  {isSaving ? (
-                    <Chip
-                      icon={<Save />}
-                      label="Saving..."
-                      size="small"
-                      color="info"
-                      variant="outlined"
-                    />
-                  ) : (
-                    <Chip
-                      icon={<Save />}
-                      label="Auto-saved"
-                      size="small"
-                      color="success"
-                      variant="outlined"
-                    />
-                  )}
-                </Box>
-              )}
+              <Box
+                sx={{
+                  display: 'flex',
+                  gap: { xs: 1, sm: 2 },
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                }}
+              >
+                <Chip
+                  label={primaryFaction?.name || 'Unknown'}
+                  color="primary"
+                  size={isMobile ? 'small' : 'medium'}
+                />
+                <Typography
+                  variant="body2"
+                  sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}
+                >
+                  {armyList.totalPoints} / {armyList.pointsLimit} pts
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}
+                >
+                  {armyList.detachments.length} detachments
+                </Typography>
+                {armyList.isNamed && (
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    {isSaving ? (
+                      <Chip
+                        icon={<Save />}
+                        label="Saving..."
+                        size="small"
+                        color="info"
+                        variant="outlined"
+                      />
+                    ) : (
+                      <Chip
+                        icon={<Save />}
+                        label="Auto-saved"
+                        size="small"
+                        color="success"
+                        variant="outlined"
+                      />
+                    )}
+                  </Box>
+                )}
+              </Box>
             </Box>
           </Box>
-          <Box sx={{ display: 'flex', gap: 1 }}>
-            {!armyList.isNamed && (
+          <Box
+            sx={{
+              display: 'flex',
+              gap: { xs: 0.5, sm: 1 },
+              flexWrap: 'wrap',
+              justifyContent: { xs: 'center', sm: 'flex-end' },
+              width: { xs: '100%', sm: 'auto' },
+            }}
+          >
+            {!armyList.isNamed ? (
               <Button
                 variant="outlined"
                 color="info"
+                size={isMobile ? 'small' : 'medium'}
                 onClick={() => setShowNameDialog(true)}
               >
-                Name List
+                {isSmallMobile ? 'Name' : 'Name List'}
+              </Button>
+            ) : (
+              <Button
+                variant="outlined"
+                color="info"
+                size={isMobile ? 'small' : 'medium'}
+                startIcon={<Edit />}
+                onClick={() => setShowNameDialog(true)}
+              >
+                {isSmallMobile ? 'Rename' : 'Rename List'}
               </Button>
             )}
             <Button
               variant="outlined"
               color="info"
+              size={isMobile ? 'small' : 'medium'}
               onClick={() => {
                 setTempPointsLimit(armyList.pointsLimit.toString());
                 setShowPointsLimitInput(true);
               }}
             >
-              Set Points Limit
+              {isSmallMobile ? 'Points' : 'Set Points Limit'}
             </Button>
             {availableDetachments.length > 0 && (
               <Button
                 variant="contained"
                 color="success"
                 startIcon={<Add />}
+                size={isMobile ? 'small' : 'medium'}
                 onClick={() => setShowAddDetachmentModal(true)}
               >
-                Add Detachment
+                {isSmallMobile ? 'Add' : 'Add Detachment'}
               </Button>
             )}
-            <Button
-              variant="outlined"
-              color="warning"
-              size="small"
-              onClick={handleDebugTest}
-            >
-              Debug
-            </Button>
           </Box>
         </Toolbar>
       </AppBar>
 
       {/* Main Content */}
-      <Container maxWidth="lg" sx={{ py: 3 }}>
+      <Container
+        maxWidth={isMobile ? false : 'lg'}
+        sx={{
+          py: { xs: 2, sm: 3 },
+          px: { xs: 0, sm: 3 },
+          width: { xs: '100%', sm: 'auto' },
+        }}
+      >
         {!showFactionSelection && (
           <Box>
-            <Typography variant="h4" component="h2" gutterBottom>
+            <Typography
+              variant={isMobile ? 'h5' : 'h4'}
+              component="h2"
+              gutterBottom
+              sx={{ mb: { xs: 2, sm: 3 } }}
+            >
               Detachments
             </Typography>
             {armyList.detachments.length === 0 ? (
@@ -821,7 +917,14 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
                 </CardContent>
               </Card>
             ) : (
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: { xs: 2, sm: 3 },
+                  width: '100%',
+                }}
+              >
                 {armyList.detachments.map((armyDetachment, index) => (
                   <DetachmentCard
                     key={index}
@@ -849,6 +952,7 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
         onClose={() => setShowPointsLimitInput(false)}
         maxWidth="sm"
         fullWidth
+        fullScreen={isMobile}
       >
         <DialogTitle>Set Points Limit</DialogTitle>
         <DialogContent>
@@ -893,6 +997,7 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
         onClose={() => setShowNameDialog(false)}
         maxWidth="sm"
         fullWidth
+        fullScreen={isMobile}
       >
         <DialogTitle>Name Your Army List</DialogTitle>
         <DialogContent>
@@ -909,10 +1014,7 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
           />
         </DialogContent>
         <DialogActions>
-          <Button
-            variant="outlined"
-            onClick={() => setShowNameDialog(false)}
-          >
+          <Button variant="outlined" onClick={() => setShowNameDialog(false)}>
             Cancel
           </Button>
           <Button
@@ -940,7 +1042,9 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
         roleId={detachmentPromptInfo?.roleId || ''}
         slotIndex={detachmentPromptInfo?.slotIndex || 0}
         armyList={armyList}
-        triggeringDetachmentId={detachmentPromptInfo?.triggeringDetachmentId || ''}
+        triggeringDetachmentId={
+          detachmentPromptInfo?.triggeringDetachmentId || ''
+        }
         onClose={() => {
           setShowDetachmentPrompt(false);
           setDetachmentPromptInfo(null);
@@ -998,7 +1102,10 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
       <FactionSelectionModal
         isOpen={showFactionSelection}
         onDetachmentSelected={handleFactionSelectionComplete}
-        onCancel={() => setShowFactionSelection(false)}
+        onCancel={() => {
+          setShowFactionSelection(false);
+          navigate('/');
+        }}
       />
 
       {/* Unit Selection Modal */}
