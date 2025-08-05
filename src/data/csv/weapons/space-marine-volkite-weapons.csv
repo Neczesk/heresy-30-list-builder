@@ -1,0 +1,11 @@
+id,name,type,description,range,firepower,rangedStrength,ap,damage,attackModifier,strengthModifier,initiativeModifier,specialRules,specialRuleValues,traits,profiles
+rad-grenades,Rad grenades,ranged,Dangerous weapons that hurt those who are impacted permanently,8,1,4,3,1,,,,"[""poisoned"",""phage""]","{""poisoned"":2,""phage"":""T""}","[""Rad""]",
+concussive-resonator,Concussive resonator,ranged,Damage through sound,Template,2,6,5,1,,,,"[""template"",""overload"",""stun""]","{""overload"":1,""stun"":2}","[""Assault"",""Sonic""]",
+overcharged-volkite-serpenta,Overcharged volkite serpenta,ranged,Overcharged volkite pistol,10,4,6,5,1,,,,"[""pistol"",""deflagrate"",""overload""]","{""deflagrate"":5,""overload"":1}","[""Assault"",""Volkite""]",
+twin-volkite-charger,Twin volkite charger,ranged,Twin volkite chargers,15,3,5,5,1,,,,"[""deflagrate""]","{""deflagrate"":5}","[""Assault"",""Volkite""]",
+twin-volkite-caliver,Twin volkite caliver,ranged,Twin calivers,30,3,6,5,1,,,,"[""heavy"",""deflagrate""]","{""heavy"":""FP"",""deflagrate"":6}","[""Volkite""]",
+twin-volkite-culverin,Twin volkite culverin,ranged,Twin culverins,45,6,6,5,1,,,,"[""heavy"",""deflagrate""]","{""heavy"":""FP"",""deflagrate"":6}","[""Volkite""]",
+volkite-falconet,Volkite falconet,ranged,Heavy volkite weapon,45,10,7,5,1,,,,"[""deflagrate"",""pinning""]","{""deflagrate"":7,""pinning"":2}","[""Volkite""]",
+volkite-saker,Volkite saker,ranged,Smaller cannon,25,6,6,5,1,,,,"[""deflagrate""]","{""deflagrate"":6}","[""Volkite""]",
+volkite-carronade,Volkite carronade,ranged,Heaviest volkite cannon,45,12,8,3,2,,,,"[""deflagrate""]","{""deflagrate"":8}","[""Volkite""]",
+volkite-cardanelle,Volkite carrondate,ranged,Volkite heavy gun,45,12,7,5,2,,,,"[""deflagrate"",""suppressive""]","{""deflagrate"":7,""suppressive"":1}","[""Volkite""]",

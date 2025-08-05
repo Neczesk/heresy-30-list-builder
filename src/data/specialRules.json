@@ -566,6 +566,33 @@
       "longText": "Shock represents the ability of a weapon to cause shock effects, potentially stunning, disorienting, or otherwise affecting enemy units.",
       "shortText": "This weapon can cause shock effects.",
       "type": "special-rule"
+    },
+    {
+      "id": "phage",
+      "name": "Phage",
+      "description": "Reduce a characteristic for the rest of the battle",
+      "shortText": "Reduce the value of the characteristic in brackets by 1 for the rest of the battle after an unsaved wound from this weapon.",
+      "longText": "Reduce that value motherfucker",
+      "hasValue": false,
+      "type": "special-rule"
+    },
+    {
+      "id": "skyfire",
+      "name": "Skyfire",
+      "description": "Shooty shooty airplanes",
+      "shortText": "A weapon with this special rule hits flyers at its normal to hit roll.",
+      "longText": "Zooooooom bang",
+      "hasValue": false,
+      "type": "special-rule"
+    },
+    {
+      "id": "rapid-tracking",
+      "name": "Rapid Tracking",
+      "description": "Not sure what this does",
+      "shortText": "Not sure what this does",
+      "longText": "Still not sure what this does",
+      "hasValue": false,
+      "type": "special-rule"
     }
   ]
 }

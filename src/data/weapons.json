@@ -1037,28 +1037,6 @@
       "type": "ranged"
     },
     {
-      "id": "laser-destroyer",
-      "name": "Laser Destroyer",
-      "ap": 2,
-      "damage": 2,
-      "description": "Heavy laser weapon with armourbane capability.",
-      "firepower": 2,
-      "profiles": [],
-      "range": 36,
-      "rangedStrength": 10,
-      "specialRules": [
-        "heavy",
-        "armourbane"
-      ],
-      "specialRuleValues": {
-        "heavy": "D"
-      },
-      "traits": [
-        "Las"
-      ],
-      "type": "ranged"
-    },
-    {
       "id": "gravis-heavy-bolter-battery",
       "name": "Gravis Heavy Bolter Battery",
       "ap": 4,
@@ -1364,6 +1342,1796 @@
         "Auto"
       ],
       "type": "ranged"
+    },
+    {
+      "id": "grenade-harness",
+      "name": "Grenade harness",
+      "type": "ranged",
+      "description": "terminator grenade harness",
+      "range": 6,
+      "firepower": 1,
+      "rangedStrength": 5,
+      "ap": 6,
+      "damage": 1,
+      "specialRules": [
+        "blast",
+        "limited"
+      ],
+      "specialRuleValues": {
+        "blast": 3,
+        "limited": 1
+      },
+      "traits": [],
+      "profiles": []
+    },
+    {
+      "id": "lascutter",
+      "name": "Lascutter",
+      "type": "ranged",
+      "description": "Weld his face open",
+      "range": 8,
+      "firepower": 1,
+      "rangedStrength": 10,
+      "ap": 2,
+      "damage": 2,
+      "specialRules": [
+        "ordnance",
+        "armourbane"
+      ],
+      "specialRuleValues": {
+        "ordnance": "D"
+      },
+      "traits": [],
+      "profiles": []
+    },
+    {
+      "id": "flamer",
+      "name": "Flamer",
+      "type": "ranged",
+      "description": "Basic flamer weapon",
+      "range": "Template",
+      "firepower": 1,
+      "rangedStrength": 4,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": [
+        "template",
+        "panic"
+      ],
+      "specialRuleValues": {
+        "panic": 1
+      },
+      "traits": [
+        "Flame"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "twin-heavy-flamer",
+      "name": "Twin heavy flamer",
+      "type": "ranged",
+      "description": "Double the bbq",
+      "range": "Template",
+      "firepower": 1,
+      "rangedStrength": 5,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [
+        "template",
+        "panic"
+      ],
+      "specialRuleValues": {},
+      "traits": [
+        "Flame"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "flamestorm-cannon",
+      "name": "Flamestorm cannon",
+      "type": "ranged",
+      "description": "Tank flamer",
+      "range": "Template",
+      "firepower": 1,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": [
+        "template",
+        "panic"
+      ],
+      "specialRuleValues": {
+        "panic": 2
+      },
+      "traits": [
+        "Flame"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "photonic-incinerator",
+      "name": "Photonic Incinerator",
+      "type": "ranged",
+      "description": "Photonic incinerator?",
+      "range": "Template",
+      "firepower": 1,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [
+        "template",
+        "panic"
+      ],
+      "specialRuleValues": {
+        "panic": 2
+      },
+      "traits": [
+        "Assault",
+        "Flame"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "lascannon-array",
+      "name": "Lascannon array",
+      "type": "ranged",
+      "description": "Spartan sponson",
+      "range": 48,
+      "firepower": 2,
+      "rangedStrength": 9,
+      "ap": 2,
+      "damage": 3,
+      "specialRules": [
+        "armourbane"
+      ],
+      "specialRuleValues": {},
+      "traits": [
+        "Las"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "arachnus-heavy-lascannon-battery",
+      "name": "Arachnus heavy lascannon battery",
+      "type": "ranged",
+      "description": "Turret lascannon",
+      "range": 48,
+      "firepower": 2,
+      "rangedStrength": 9,
+      "ap": 2,
+      "damage": 4,
+      "specialRules": [
+        "heavy",
+        "armourbane",
+        "skyfire"
+      ],
+      "specialRuleValues": {
+        "heavy": "RS"
+      },
+      "traits": [
+        "Las"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "laser-destroyer",
+      "name": "Laser destroyer",
+      "type": "ranged",
+      "description": "Heavy artillery laser",
+      "range": 36,
+      "firepower": 2,
+      "rangedStrength": 10,
+      "ap": 2,
+      "damage": 2,
+      "specialRules": [
+        "heavy",
+        "armourbane"
+      ],
+      "specialRuleValues": {
+        "heavy": "D"
+      },
+      "traits": [
+        "Las"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "magna-laser-destroyer",
+      "name": "Magna Laser Destroyer",
+      "type": "ranged",
+      "description": "Laser destroyer",
+      "range": 36,
+      "firepower": 2,
+      "rangedStrength": 10,
+      "ap": 2,
+      "damage": 3,
+      "specialRules": [
+        "ordnance",
+        "armourbane"
+      ],
+      "specialRuleValues": {
+        "ordnance": "D"
+      },
+      "traits": [
+        "Las"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "neutron-blaster",
+      "name": "Neutron blaster",
+      "type": "ranged",
+      "description": "neutron blaster for sabres",
+      "range": 24,
+      "firepower": 1,
+      "rangedStrength": 9,
+      "ap": 2,
+      "damage": 3,
+      "specialRules": [
+        "ordnance",
+        "shock",
+        "overload"
+      ],
+      "specialRuleValues": {
+        "ordnance": "D",
+        "shock": "Suppressed",
+        "overload": 1
+      },
+      "traits": [
+        "Las"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "neutron-laser-battery",
+      "name": "Neutron laser battery",
+      "type": "ranged",
+      "description": "Neutron",
+      "range": 72,
+      "firepower": 3,
+      "rangedStrength": 10,
+      "ap": 2,
+      "damage": 3,
+      "specialRules": [
+        "ordnance",
+        "shock",
+        "armourbane",
+        "overload"
+      ],
+      "specialRuleValues": {
+        "ordnance": "D",
+        "shock": "Suppressed",
+        "overload": 1
+      },
+      "traits": [
+        "Las"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "neutron-wave-cannon",
+      "name": "Neutron-wave cannon",
+      "type": "ranged",
+      "description": "Heaviest neutron",
+      "range": 120,
+      "firepower": 2,
+      "rangedStrength": 12,
+      "ap": 2,
+      "damage": 4,
+      "specialRules": [
+        "ordnance",
+        "armourbane",
+        "shock"
+      ],
+      "specialRuleValues": {
+        "ordnance": "D",
+        "shock": "Stunned"
+      },
+      "traits": [
+        "Las"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "turbo-laser-destructor",
+      "name": "Turbo-laser destructor",
+      "type": "ranged",
+      "description": "Turbo",
+      "range": 96,
+      "firepower": 1,
+      "rangedStrength": 12,
+      "ap": 2,
+      "damage": 6,
+      "specialRules": [
+        "blast",
+        "armourbane"
+      ],
+      "specialRuleValues": {
+        "blast": 3
+      },
+      "traits": [
+        "armourbane"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "morbus-he-shell",
+      "name": "HE",
+      "type": "ranged-profile",
+      "description": "Heavy HE shell for anti-infantry work",
+      "range": 36,
+      "firepower": 1,
+      "rangedStrength": 9,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [
+        "ordnance",
+        "blast",
+        "barrage",
+        "breaching",
+        "pinning"
+      ],
+      "specialRuleValues": {
+        "ordnance": "D",
+        "blast": 5,
+        "barrage": 2,
+        "breaching": 6,
+        "pinning": 1
+      },
+      "traits": [],
+      "profiles": []
+    },
+    {
+      "id": "morbus-phosphex-shell",
+      "name": "Phosphex Shell",
+      "type": "ranged-profile",
+      "description": "Incendiary Shell",
+      "range": 24,
+      "firepower": 1,
+      "rangedStrength": 5,
+      "ap": 3,
+      "damage": 1,
+      "specialRules": [
+        "blast",
+        "barrage",
+        "poisoned",
+        "panic",
+        "breaching"
+      ],
+      "specialRuleValues": {
+        "blast": 5,
+        "barrage": 1,
+        "poisoned": 3,
+        "panic": 3,
+        "breaching": 5
+      },
+      "traits": [
+        "Phosphex"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "phosphex-canister-shot",
+      "name": "Phosphex Canister Shot",
+      "type": "ranged-profile",
+      "description": "Incendiary canister shot",
+      "range": 24,
+      "firepower": 1,
+      "rangedStrength": 5,
+      "ap": 3,
+      "damage": 1,
+      "specialRules": [
+        "blast",
+        "barrage",
+        "poisoned",
+        "panic",
+        "breaching"
+      ],
+      "specialRuleValues": {
+        "blast": 3,
+        "barrage": 1,
+        "poisoned": 3,
+        "panic": 3,
+        "breaching": 5
+      },
+      "traits": [
+        "Phosphex"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "dreadhammer-siege-cannon",
+      "name": "Dreadhammer Siege Cannon",
+      "type": "ranged",
+      "description": "Heavy siege weapon",
+      "range": 24,
+      "firepower": 1,
+      "rangedStrength": 12,
+      "ap": 3,
+      "damage": 3,
+      "specialRules": [
+        "ordnance",
+        "blast",
+        "breaching",
+        "stun"
+      ],
+      "specialRuleValues": {
+        "ordnance": "D",
+        "blast": 5,
+        "breaching": 5,
+        "stun": 1
+      },
+      "traits": [],
+      "profiles": []
+    },
+    {
+      "id": "meltagun",
+      "name": "Meltagun",
+      "type": "ranged",
+      "description": "Basic melta gun",
+      "range": 12,
+      "firepower": 1,
+      "rangedStrength": 8,
+      "ap": 2,
+      "damage": 3,
+      "specialRules": [
+        "melta"
+      ],
+      "specialRuleValues": {
+        "melta": 6
+      },
+      "traits": [
+        "Melta"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "multi-melta",
+      "name": "Multi-melta",
+      "type": "ranged",
+      "description": "Heavy melta weapon",
+      "range": 24,
+      "firepower": 1,
+      "rangedStrength": 8,
+      "ap": 2,
+      "damage": 3,
+      "specialRules": [
+        "heavy",
+        "melta"
+      ],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "melta": 8
+      },
+      "traits": [
+        "Melta"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "twin-multi-melta",
+      "name": "Twin Multi-Melta",
+      "type": "ranged",
+      "description": "Twin multi-melta",
+      "range": 24,
+      "firepower": 1,
+      "rangedStrength": 9,
+      "ap": 2,
+      "damage": 3,
+      "specialRules": [
+        "heavy",
+        "melta"
+      ],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "melta": 8
+      },
+      "traits": [
+        "Melta"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "gravis-melta-cannon",
+      "name": "Gravis Melta Cannon",
+      "type": "ranged",
+      "description": "Heavier melta cannon",
+      "range": 24,
+      "firepower": 1,
+      "rangedStrength": 9,
+      "ap": 2,
+      "damage": 4,
+      "specialRules": [
+        "heavy",
+        "melta"
+      ],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "melta": 8
+      },
+      "traits": [
+        "Melta"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "magna-melta-cannon",
+      "name": "Magna Melta Cannon",
+      "type": "ranged",
+      "description": "Tank mounted melta",
+      "range": 36,
+      "firepower": 1,
+      "rangedStrength": 9,
+      "ap": 2,
+      "damage": 4,
+      "specialRules": [
+        "heavy",
+        "melta"
+      ],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "melta": 12
+      },
+      "traits": [
+        "Melta"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "cyclonic-melta-lance",
+      "name": "Cyclonic Melta Lance",
+      "type": "ranged",
+      "description": "Leviathan borne melta weapon",
+      "range": 12,
+      "firepower": 3,
+      "rangedStrength": 8,
+      "ap": 2,
+      "damage": 4,
+      "specialRules": [
+        "heavy",
+        "melta"
+      ],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "melta": 8
+      },
+      "traits": [
+        "Melta"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "siege-melta-array",
+      "name": "Siege Melta Array",
+      "type": "ranged",
+      "description": "Siege melta gun",
+      "range": 12,
+      "firepower": 1,
+      "rangedStrength": 10,
+      "ap": 2,
+      "damage": 4,
+      "specialRules": [
+        "heavy",
+        "blast",
+        "melta"
+      ],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "blast": 5,
+        "melta": 6
+      },
+      "traits": [
+        "Melta"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "melta-cutters",
+      "name": "Melta Cutters",
+      "type": "ranged",
+      "description": "Melta cutters",
+      "range": 6,
+      "firepower": 1,
+      "rangedStrength": 8,
+      "ap": 2,
+      "damage": 3,
+      "specialRules": [
+        "heavy",
+        "blast",
+        "melta"
+      ],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "blast": 3,
+        "melta": 3
+      },
+      "traits": [
+        "Melta"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "melta-blast-gun",
+      "name": "Melta blast-gun",
+      "type": "ranged",
+      "description": "Boarding melta cannon",
+      "range": 36,
+      "firepower": 2,
+      "rangedStrength": 9,
+      "ap": 2,
+      "damage": 4,
+      "specialRules": [
+        "heavy",
+        "melta"
+      ],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "melta": 24
+      },
+      "traits": [
+        "Melta"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "sentry-melta-array",
+      "name": "Sentry Melta Array",
+      "type": "ranged",
+      "description": "Turret melta weapon",
+      "range": 18,
+      "firepower": 2,
+      "rangedStrength": 8,
+      "ap": 2,
+      "damage": 2,
+      "specialRules": [
+        "heavy",
+        "melta"
+      ],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "melta": 8
+      },
+      "traits": [
+        "Melta"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "frag-missile",
+      "name": "Frag",
+      "type": "ranged",
+      "description": "Frag missile",
+      "range": 48,
+      "firepower": 1,
+      "rangedStrength": 4,
+      "ap": 6,
+      "damage": 1,
+      "specialRules": [
+        "heavy",
+        "blast"
+      ],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "blast": 3
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "krak-missile",
+      "name": "Krak",
+      "type": "ranged",
+      "description": "krak missile",
+      "range": 48,
+      "firepower": 1,
+      "rangedStrength": 8,
+      "ap": 3,
+      "damage": 1,
+      "specialRules": [
+        "heavy"
+      ],
+      "specialRuleValues": {
+        "heavy": "D"
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "flak-missile",
+      "name": "Flak",
+      "type": "ranged",
+      "description": "flak missile",
+      "range": 48,
+      "firepower": 1,
+      "rangedStrength": 8,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [
+        "heavy",
+        "skyfire"
+      ],
+      "specialRuleValues": {
+        "heavy": "D"
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "vengeance-launcher",
+      "name": "Vengeance Launcher",
+      "type": "ranged",
+      "description": "Air launched anti-personnel weapon",
+      "range": 48,
+      "firepower": 1,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [
+        "blast"
+      ],
+      "specialRuleValues": {
+        "blast": 5
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "havoc-launcher",
+      "name": "Havoc Launcher",
+      "type": "ranged",
+      "description": "Multiple rocket launcher mounted on lighter vehicles",
+      "range": 48,
+      "firepower": 1,
+      "rangedStrength": 5,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": [
+        "blast",
+        "stun"
+      ],
+      "specialRuleValues": {
+        "blast": 3,
+        "stun": 1
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "hellstrike-missile",
+      "name": "Hellstrike missile",
+      "type": "ranged",
+      "description": "Heavy AT missile",
+      "range": 48,
+      "firepower": 1,
+      "rangedStrength": 9,
+      "ap": 3,
+      "damage": 3,
+      "specialRules": [
+        "armourbane",
+        "limited"
+      ],
+      "specialRuleValues": {
+        "limited": 1
+      },
+      "traits": [
+        "Guided Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "deathstorm-missile-launcher",
+      "name": "Deathstorm missile launcher",
+      "type": "ranged",
+      "description": "Drop pod launch anti-personnel missile",
+      "range": 18,
+      "firepower": 3,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [
+        "pinning"
+      ],
+      "specialRuleValues": {
+        "pinning": 1
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "kharybdis-missile-launcher",
+      "name": "Kharybdis Missile Launcher",
+      "type": "ranged",
+      "description": "Kharybdis missile system",
+      "range": 18,
+      "firepower": 5,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [
+        "pinning"
+      ],
+      "specialRuleValues": {
+        "pinning": 1
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "rotary-missile-launcher",
+      "name": "Rotary Missile Launcher",
+      "type": "ranged",
+      "description": "Xiphon missile",
+      "range": 48,
+      "firepower": 3,
+      "rangedStrength": 8,
+      "ap": 2,
+      "damage": 2,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "sabre-missile",
+      "name": "Sabre Missile",
+      "type": "ranged",
+      "description": "Sabre one time missile",
+      "range": 36,
+      "firepower": 1,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": [
+        "breaching",
+        "limited"
+      ],
+      "specialRuleValues": {
+        "breaching": 6,
+        "limited": 1
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "tempest-rocket",
+      "name": "Tempest Rocket",
+      "type": "ranged",
+      "description": "Air launched light armour killing missile",
+      "range": 48,
+      "firepower": 1,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 3,
+      "specialRules": [
+        "armourbane",
+        "limited"
+      ],
+      "specialRuleValues": {
+        "limited": 1
+      },
+      "traits": [
+        "Guided Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "aiolos-missile-launcher",
+      "name": "Aiolos Missile Launcher",
+      "type": "ranged",
+      "description": "Deredeo missile weapon",
+      "range": 60,
+      "firepower": 1,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [
+        "heavy",
+        "blast",
+        "barrage"
+      ],
+      "specialRuleValues": {
+        "heavy": "FP",
+        "blast": 3,
+        "barrage": 1
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "boreas-air-defence-missile",
+      "name": "Boreas air defence missile",
+      "type": "ranged",
+      "description": "Anti air deredeo missile",
+      "range": 48,
+      "firepower": 1,
+      "rangedStrength": 8,
+      "ap": 2,
+      "damage": 3,
+      "specialRules": [
+        "limited",
+        "skyfire",
+        "rapid-tracking"
+      ],
+      "specialRuleValues": {
+        "limited": 1
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "spicula-rocket-system",
+      "name": "Spicula rocket system",
+      "type": "ranged",
+      "description": "missile spam",
+      "range": 72,
+      "firepower": 1,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [
+        "blast",
+        "barrage",
+        "suppressive"
+      ],
+      "specialRuleValues": {
+        "blast": 7,
+        "barrage": 2,
+        "suppressive": 1
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "arcus-warheads",
+      "name": "Arcus warheads",
+      "type": "ranged",
+      "description": "Heavy missiles",
+      "range": 36,
+      "firepower": 5,
+      "rangedStrength": 8,
+      "ap": 2,
+      "damage": 2,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "skyspear-warheads",
+      "name": "Skyspear warheads",
+      "type": "ranged",
+      "description": "Anti air missile",
+      "range": 36,
+      "firepower": 3,
+      "rangedStrength": 8,
+      "ap": 2,
+      "damage": 2,
+      "specialRules": [
+        "skyfire",
+        "armourbane",
+        "rapid-tracking"
+      ],
+      "specialRuleValues": {},
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "pyrax-warheads",
+      "name": "Pyrax warheads",
+      "type": "ranged",
+      "description": "Suppressive missile",
+      "range": 36,
+      "firepower": 1,
+      "rangedStrength": 5,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [
+        "blast",
+        "panic"
+      ],
+      "specialRuleValues": {
+        "blast": 5,
+        "panic": 1
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "neutron-flux-warheads",
+      "name": "Neutron-flux warheads",
+      "type": "ranged",
+      "description": "anti-automata warhead",
+      "range": 36,
+      "firepower": 3,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [
+        "shock"
+      ],
+      "specialRuleValues": {
+        "shock": "Suppressed"
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "cyclone-frag-missile",
+      "name": "Frag",
+      "type": "ranged",
+      "description": "Frag missile",
+      "range": 48,
+      "firepower": 1,
+      "rangedStrength": 4,
+      "ap": 6,
+      "damage": 1,
+      "specialRules": [
+        "heavy",
+        "blast"
+      ],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "blast": 5
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "cyclone-krak-missile",
+      "name": "Krak",
+      "type": "ranged",
+      "description": "AT missile",
+      "range": 48,
+      "firepower": 2,
+      "rangedStrength": 8,
+      "ap": 3,
+      "damage": 1,
+      "specialRules": [
+        "heavy"
+      ],
+      "specialRuleValues": {
+        "heavy": "D"
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "cyclone-flak-missile",
+      "name": "Flak",
+      "type": "ranged",
+      "description": "Anti-Air missile",
+      "range": 48,
+      "firepower": 2,
+      "rangedStrength": 8,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [
+        "heavy",
+        "skyfire"
+      ],
+      "specialRuleValues": {
+        "heavy": "D"
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "scorpius-missile-launcher",
+      "name": "Scorpius missile launcher",
+      "type": "ranged",
+      "description": "Heavy infantry killer",
+      "range": 48,
+      "firepower": 1,
+      "rangedStrength": 8,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [
+        "heavy",
+        "blast",
+        "barrage",
+        "breaching"
+      ],
+      "specialRuleValues": {
+        "heavy": "FP",
+        "blast": 3,
+        "barrage": 2,
+        "breaching": 5
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "hyperios-missile-launcher",
+      "name": "Hyperios missile launcher",
+      "type": "ranged",
+      "description": "Anti-air missile",
+      "range": 48,
+      "firepower": 3,
+      "rangedStrength": 7,
+      "ap": 3,
+      "damage": 2,
+      "specialRules": [
+        "skyfire",
+        "rapid-tracking"
+      ],
+      "specialRuleValues": {},
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "orias-frag-missile",
+      "name": "Orias frag missile",
+      "type": "ranged",
+      "description": "Orias missile",
+      "range": 48,
+      "firepower": 1,
+      "rangedStrength": 6,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": [
+        "barrage",
+        "blast",
+        "limited"
+      ],
+      "specialRuleValues": {
+        "barrage": 3,
+        "blast": 5,
+        "limited": 1
+      },
+      "traits": [
+        "Missile"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "rad-grenades",
+      "name": "Rad grenades",
+      "type": "ranged",
+      "description": "Dangerous weapons that hurt those who are impacted permanently",
+      "range": 8,
+      "firepower": 1,
+      "rangedStrength": 4,
+      "ap": 3,
+      "damage": 1,
+      "specialRules": [
+        "poisoned",
+        "phage"
+      ],
+      "specialRuleValues": {
+        "poisoned": 2,
+        "phage": "T"
+      },
+      "traits": [
+        "Rad"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "concussive-resonator",
+      "name": "Concussive resonator",
+      "type": "ranged",
+      "description": "Damage through sound",
+      "range": "Template",
+      "firepower": 2,
+      "rangedStrength": 6,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": [
+        "template",
+        "overload",
+        "stun"
+      ],
+      "specialRuleValues": {
+        "overload": 1,
+        "stun": 2
+      },
+      "traits": [
+        "Assault",
+        "Sonic"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "overcharged-volkite-serpenta",
+      "name": "Overcharged volkite serpenta",
+      "type": "ranged",
+      "description": "Overcharged volkite pistol",
+      "range": 10,
+      "firepower": 4,
+      "rangedStrength": 6,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": [
+        "pistol",
+        "deflagrate",
+        "overload"
+      ],
+      "specialRuleValues": {
+        "deflagrate": 5,
+        "overload": 1
+      },
+      "traits": [
+        "Assault",
+        "Volkite"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "twin-volkite-charger",
+      "name": "Twin volkite charger",
+      "type": "ranged",
+      "description": "Twin volkite chargers",
+      "range": 15,
+      "firepower": 3,
+      "rangedStrength": 5,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": [
+        "deflagrate"
+      ],
+      "specialRuleValues": {
+        "deflagrate": 5
+      },
+      "traits": [
+        "Assault",
+        "Volkite"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "twin-volkite-caliver",
+      "name": "Twin volkite caliver",
+      "type": "ranged",
+      "description": "Twin calivers",
+      "range": 30,
+      "firepower": 3,
+      "rangedStrength": 6,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": [
+        "heavy",
+        "deflagrate"
+      ],
+      "specialRuleValues": {
+        "heavy": "FP",
+        "deflagrate": 6
+      },
+      "traits": [
+        "Volkite"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "twin-volkite-culverin",
+      "name": "Twin volkite culverin",
+      "type": "ranged",
+      "description": "Twin culverins",
+      "range": 45,
+      "firepower": 6,
+      "rangedStrength": 6,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": [
+        "heavy",
+        "deflagrate"
+      ],
+      "specialRuleValues": {
+        "heavy": "FP",
+        "deflagrate": 6
+      },
+      "traits": [
+        "Volkite"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "volkite-falconet",
+      "name": "Volkite falconet",
+      "type": "ranged",
+      "description": "Heavy volkite weapon",
+      "range": 45,
+      "firepower": 10,
+      "rangedStrength": 7,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": [
+        "deflagrate",
+        "pinning"
+      ],
+      "specialRuleValues": {
+        "deflagrate": 7,
+        "pinning": 2
+      },
+      "traits": [
+        "Volkite"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "volkite-saker",
+      "name": "Volkite saker",
+      "type": "ranged",
+      "description": "Smaller cannon",
+      "range": 25,
+      "firepower": 6,
+      "rangedStrength": 6,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": [
+        "deflagrate"
+      ],
+      "specialRuleValues": {
+        "deflagrate": 6
+      },
+      "traits": [
+        "Volkite"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "volkite-carronade",
+      "name": "Volkite carronade",
+      "type": "ranged",
+      "description": "Heaviest volkite cannon",
+      "range": 45,
+      "firepower": 12,
+      "rangedStrength": 8,
+      "ap": 3,
+      "damage": 2,
+      "specialRules": [
+        "deflagrate"
+      ],
+      "specialRuleValues": {
+        "deflagrate": 8
+      },
+      "traits": [
+        "Volkite"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "volkite-cardanelle",
+      "name": "Volkite carrondate",
+      "type": "ranged",
+      "description": "Volkite heavy gun",
+      "range": 45,
+      "firepower": 12,
+      "rangedStrength": 7,
+      "ap": 5,
+      "damage": 2,
+      "specialRules": [
+        "deflagrate",
+        "suppressive"
+      ],
+      "specialRuleValues": {
+        "deflagrate": 7,
+        "suppressive": 1
+      },
+      "traits": [
+        "Volkite"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "disintegrator-pistol",
+      "name": "Disintegrator pistol",
+      "type": "ranged",
+      "description": "di",
+      "range": 12,
+      "firepower": 1,
+      "rangedStrength": 4,
+      "ap": 3,
+      "damage": 2,
+      "specialRules": [
+        "pistol",
+        "overload"
+      ],
+      "specialRuleValues": {
+        "overload": 1
+      },
+      "traits": [
+        "Assault",
+        "Disintegrator"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "disintegrator-rifle",
+      "name": "Disintegrator rifle",
+      "type": "ranged",
+      "description": "disintegrator rifle",
+      "range": 24,
+      "firepower": 1,
+      "rangedStrength": 4,
+      "ap": 3,
+      "damage": 2,
+      "specialRules": [
+        "overload"
+      ],
+      "specialRuleValues": {
+        "overload": 1
+      },
+      "traits": [
+        "Disintegrator"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "disintegrator-blaster",
+      "name": "Disintegrator blaster",
+      "type": "ranged",
+      "description": "Disintigreator",
+      "range": 18,
+      "firepower": 1,
+      "rangedStrength": 5,
+      "ap": 2,
+      "damage": 2,
+      "specialRules": [
+        "overload"
+      ],
+      "specialRuleValues": {
+        "overload": 1
+      },
+      "traits": [
+        "Disintegrator"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "heavy-disintegrator",
+      "name": "Heavy disintegrator",
+      "type": "ranged",
+      "description": "OVERLOAD",
+      "range": 24,
+      "firepower": 1,
+      "rangedStrength": 6,
+      "ap": 2,
+      "damage": 2,
+      "specialRules": [
+        "overload"
+      ],
+      "specialRuleValues": {
+        "overload": 2
+      },
+      "traits": [
+        "Disintegrator"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "twin-heavy-disintegrator",
+      "name": "Twin Heavy disintegrator",
+      "type": "ranged",
+      "description": "OVERLOAD",
+      "range": 24,
+      "firepower": 2,
+      "rangedStrength": 7,
+      "ap": 2,
+      "damage": 2,
+      "specialRules": [
+        "overload"
+      ],
+      "specialRuleValues": {
+        "overload": 2
+      },
+      "traits": [
+        "Disintegrator"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "disintegrator-cannon",
+      "name": "Disintegrator cannon",
+      "type": "ranged",
+      "description": "OVERLOAD",
+      "range": 24,
+      "firepower": 2,
+      "rangedStrength": 9,
+      "ap": 2,
+      "damage": 3,
+      "specialRules": [
+        "overload"
+      ],
+      "specialRuleValues": {
+        "overload": 2
+      },
+      "traits": [
+        "Disintegrator"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "graviton-gun",
+      "name": "Graviton fun",
+      "type": "ranged",
+      "description": "gravity",
+      "range": 18,
+      "firepower": 1,
+      "rangedStrength": 8,
+      "ap": 3,
+      "damage": 1,
+      "specialRules": [
+        "blast",
+        "breaching",
+        "shock",
+        "pinning"
+      ],
+      "specialRuleValues": {
+        "blast": 3,
+        "breaching": 6,
+        "shock": "Pinned",
+        "pinning": 1
+      },
+      "traits": [
+        "Graviton"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "graviton-cannon",
+      "name": "Graviton cannon",
+      "type": "ranged",
+      "description": "Gravity",
+      "range": 36,
+      "firepower": 1,
+      "rangedStrength": 8,
+      "ap": 3,
+      "damage": 1,
+      "specialRules": [
+        "heavy",
+        "blast",
+        "breaching",
+        "shock",
+        "pinning"
+      ],
+      "specialRuleValues": {
+        "heavy": "D",
+        "blast": 3,
+        "breaching": 6,
+        "shock": "Pinned",
+        "pinning": 2
+      },
+      "traits": [
+        "Graviton"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "graviton-charge-cannon",
+      "name": "Graviton-charge cannon",
+      "type": "ranged",
+      "description": "gravity",
+      "range": 24,
+      "firepower": 1,
+      "rangedStrength": 9,
+      "ap": 3,
+      "damage": 2,
+      "specialRules": [
+        "heavy",
+        "blast",
+        "barrage",
+        "breaching",
+        "shock",
+        "pinning"
+      ],
+      "specialRuleValues": {
+        "heavy": "D",
+        "blast": 5,
+        "breaching": 6,
+        "barrage": 1,
+        "shock": "Pinned",
+        "pinning": 1
+      },
+      "traits": [
+        "Graviton"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "grav-flux-bombard",
+      "name": "Grav-flux bombard",
+      "type": "ranged",
+      "description": "gravity",
+      "range": 18,
+      "firepower": 1,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [
+        "heavy",
+        "blast",
+        "breaching",
+        "shock",
+        "pinning"
+      ],
+      "specialRuleValues": {
+        "heavy": "D",
+        "blast": 5,
+        "shock": "Pinned",
+        "breaching": 6,
+        "pinning": 2
+      },
+      "traits": [
+        "Graviton"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "graviton-pulveriser",
+      "name": "Graviton pulveriser",
+      "type": "ranged",
+      "description": "gravity",
+      "range": 18,
+      "firepower": 1,
+      "rangedStrength": 9,
+      "ap": 3,
+      "damage": 3,
+      "specialRules": [
+        "heavy",
+        "blast",
+        "breaching",
+        "shock",
+        "pinning"
+      ],
+      "specialRuleValues": {
+        "heavy": "D",
+        "blast": 5,
+        "breaching": 6,
+        "shock": "Pinned",
+        "pinning": 3
+      },
+      "traits": [
+        "Graviton"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "particle-shredder",
+      "name": "Particle shredder",
+      "type": "ranged",
+      "description": "particle",
+      "range": "Template",
+      "firepower": 1,
+      "rangedStrength": 6,
+      "ap": 3,
+      "damage": 1,
+      "specialRules": [
+        "template",
+        "breaching",
+        "overload"
+      ],
+      "specialRuleValues": {
+        "breaching": 6,
+        "overload": 1
+      },
+      "traits": [
+        "Assault",
+        "Particle"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "heavy-particle-shredder",
+      "name": "Heavy particle shredder",
+      "type": "ranged",
+      "description": "heavy particles",
+      "range": "Template",
+      "firepower": 1,
+      "rangedStrength": 6,
+      "ap": 3,
+      "damage": 2,
+      "specialRules": [
+        "template",
+        "breaching",
+        "overload"
+      ],
+      "specialRuleValues": {
+        "breaching": 5,
+        "overload": 1
+      },
+      "traits": [
+        "Assault",
+        "Particle"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "phosphex-bomb",
+      "name": "Phosphex bomb",
+      "type": "ranged",
+      "description": "phos",
+      "range": 6,
+      "firepower": 1,
+      "rangedStrength": 5,
+      "ap": 3,
+      "damage": 1,
+      "specialRules": [
+        "blast",
+        "poisoned",
+        "panic",
+        "breaching"
+      ],
+      "specialRuleValues": {
+        "blast": 3,
+        "poisoned": 3,
+        "panic": 3,
+        "breaching": 5
+      },
+      "traits": [
+        "Phosphex"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "phosphex-discharger",
+      "name": "Phosphex discharger",
+      "type": "ranged",
+      "description": "phos",
+      "range": 18,
+      "firepower": 1,
+      "rangedStrength": 5,
+      "ap": 3,
+      "damage": 1,
+      "specialRules": [
+        "blast",
+        "limited",
+        "poisoned",
+        "panic",
+        "breaching"
+      ],
+      "specialRuleValues": {
+        "blast": 3,
+        "limited": 3,
+        "poisoned": 3,
+        "panic": 3,
+        "breaching": 5
+      },
+      "traits": [
+        "Phosphex"
+      ],
+      "profiles": []
     }
   ]
 }

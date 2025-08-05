@@ -47,7 +47,6 @@ charonite-claws,Charonite Claws,3,A,2,Powerful close combat weapon with breachin
 earthshaker-cannon,Earthshaker Cannon,4,,2,Heavy artillery cannon with long range and devastating blast radius.,1,,,240,5,"[""ordnance"",""blast"",""barrage"",""breaching"",""pinning""]","{""blast"":5,""barrage"":2,""breaching"":6,""pinning"":1,""ordnance"":""RS""}",,"[]",ranged
 medusa-mortar,Medusa Mortar,4,,2,Heavy mortar with devastating close-range bombardment capability.,1,,,36,5,"[""ordnance"",""blast"",""barrage"",""breaching"",""pinning""]","{""blast"":5,""barrage"":2,""breaching"":5,""pinning"":2,""ordnance"":""RS""}",,"[]",ranged
 gravis-multi-laser-battery,Gravis Multi-Laser Battery,6,,2,Heavy multi-laser battery with suppressive fire capability.,6,,,36,6,"[""suppressive""]","{""suppressive"":1}",,"[""Las""]",ranged
-laser-destroyer,Laser Destroyer,2,,2,Heavy laser weapon with armourbane capability.,2,,,36,10,"[""heavy"",""armourbane""]","{""heavy"":""D""}",,"[""Las""]",ranged
 gravis-heavy-bolter-battery,Gravis Heavy Bolter Battery,4,,1,Heavy bolter battery with breaching capability.,8,,,36,5,"[""suppressive""]","{""suppressive"":2}",,"[""Bolt""]",ranged
 aethon-missile-battery,Aethon Missile Battery,5,,2,Heavy missile battery with blast and stun capabilities.,1,,,30,4,"[""blast"",""barrage"",""stun""]","{""blast"":5,""barrage"":1,""stun"":1}",,"[""Missile""]",ranged
 melta-lance,Melta Lance,2,,4,Heavy melta lance with armourbane capability.,1,,,18,9,"[""heavy"",""armourbane""]","{""heavy"":""RS""}",,"[""Melta""]",ranged
