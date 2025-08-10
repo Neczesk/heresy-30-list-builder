@@ -155,7 +155,7 @@ const UnitBrowser: React.FC = () => {
               >
                 Models:
               </Typography>
-              {unit.modelsWithData.map(({ model, count }, index) => (
+              {unit.modelsWithData.map(({ model, count }) => (
                 <Typography
                   key={model.id}
                   variant="caption"

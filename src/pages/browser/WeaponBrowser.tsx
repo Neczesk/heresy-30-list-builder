@@ -203,7 +203,7 @@ const WeaponBrowser: React.FC = () => {
   };
 
   const handleGroupingChange = (
-    event: React.MouseEvent<HTMLElement>,
+    _event: React.MouseEvent<HTMLElement>,
     newGrouping: boolean | null
   ) => {
     if (newGrouping !== null) {

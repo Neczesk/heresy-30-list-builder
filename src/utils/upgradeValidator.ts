@@ -1,5 +1,5 @@
 import { DataLoader } from './dataLoader';
-import { TraitReplacer } from './traitReplacer';
+
 import type { UnitUpgrade, ArmyUpgrade, Allegiance } from '../types/army';
 
 export interface UpgradeValidationContext {
@@ -465,34 +465,6 @@ export class UpgradeValidator {
     }
 
     return false;
-  }
-
-  /**
-   * Check if a model has the required weapons (base weapons only)
-   */
-  private static modelHasRequiredWeapons(
-    model: any,
-    requiredWeapons: string[]
-  ): boolean {
-    if (!model.weapons) return false;
-
-    // Convert model weapons to a flat array of weapon IDs
-    const modelWeaponIds: string[] = [];
-
-    if (Array.isArray(model.weapons)) {
-      model.weapons.forEach((weapon: any) => {
-        if (typeof weapon === 'string') {
-          modelWeaponIds.push(weapon);
-        } else if (weapon.id) {
-          modelWeaponIds.push(weapon.id);
-        }
-      });
-    }
-
-    // Check if the model has any of the required weapons
-    return requiredWeapons.some(requiredWeapon =>
-      modelWeaponIds.includes(requiredWeapon)
-    );
   }
 
   /**
