@@ -64,6 +64,17 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
       ? DataLoader.getUnitById(triggeringUnit.unitId)
       : null;
 
+    // Debug: Check what Apex detachments exist
+    const apexDetachments = allDetachments.filter(d => d.type === 'Apex');
+    console.log('=== Apex Detachment Debug ===');
+    console.log('Role ID:', roleId);
+    console.log('Apex detachments found:', apexDetachments.length);
+    apexDetachments.forEach(d => {
+      console.log(
+        `- ${d.name}: triggers=${d.triggers?.map(t => t.type).join(', ')}`
+      );
+    });
+
     return allDetachments.filter(detachment => {
       // Check if detachment is available based on role filled
       if (roleId === 'command') {
@@ -79,6 +90,9 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
 
       // Check if this detachment has triggers and if they match
       if (detachment.triggers && detachment.triggers.length > 0) {
+        console.log(
+          `  Checking triggers for ${detachment.name}: ${detachment.triggers.map(t => t.type).join(', ')}`
+        );
         let hasMatchingTrigger = false;
 
         for (const trigger of detachment.triggers) {
@@ -86,12 +100,14 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
             trigger.type === 'command-filled' &&
             (roleId === 'command' || roleId === 'high-command')
           ) {
+            console.log(`    ✅ command-filled trigger matched`);
             hasMatchingTrigger = true;
             break;
           } else if (
             trigger.type === 'high-command-filled' &&
             roleId === 'high-command'
           ) {
+            console.log(`    ✅ high-command-filled trigger matched`);
             hasMatchingTrigger = true;
             break;
           } else if (trigger.type === 'specific-unit') {
@@ -118,10 +134,12 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
 
             // Both unit and slot must match for specific-unit triggers
             if (unitMatches && slotMatches) {
+              console.log(`    ✅ specific-unit trigger matched`);
               hasMatchingTrigger = true;
               break;
             }
           } else if (trigger.type === 'always-available') {
+            console.log(`    ✅ always-available trigger matched`);
             hasMatchingTrigger = true;
             break;
           }
@@ -129,8 +147,11 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
 
         // If the detachment has triggers but none match, exclude it
         if (!hasMatchingTrigger) {
+          console.log(`    ❌ No matching triggers found`);
           return false;
         }
+      } else {
+        console.log(`  No triggers required for ${detachment.name}`);
       }
 
       // Special handling for detachments with specific unit triggers
@@ -274,6 +295,13 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
   };
 
   const availableDetachments = getAvailableDetachments();
+  console.log(`\n=== Final Result ===`);
+  console.log(`Available detachments: ${availableDetachments.length}`);
+  console.log(
+    `Available detachment names: ${availableDetachments.map(d => d.name).join(', ')}`
+  );
+  console.log(`=== End Debug ===\n`);
+
   const roleName = DataLoader.getBattlefieldRoleById(roleId)?.name || 'Command';
   const triggerType =
     roleId === 'high-command' ? 'Apex or Auxiliary' : 'Auxiliary';
