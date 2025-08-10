@@ -27,7 +27,7 @@ const AppRouter: React.FC<RouterProps> = ({
   };
 
   return (
-    <BrowserRouter basename="/heresy-30-list-builder/">
+    <BrowserRouter basename="/">
       <Routes>
         {/* Main menu route */}
         <Route

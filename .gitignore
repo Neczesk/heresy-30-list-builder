@@ -124,3 +124,7 @@ Thumbs.db
 # Misc
 *.tgz
 *.tar.gz
+
+# Firebase
+.firebase/
+.firebaserc
