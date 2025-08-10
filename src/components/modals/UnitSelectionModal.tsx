@@ -93,12 +93,20 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
       if (unit.faction && unit.faction !== 'universal') {
         // Direct faction match
         if (unit.faction === primaryFaction) {
+          // If unit has a subfaction, check if it matches the army's subfaction
+          if (unit.subfaction) {
+            return unit.subfaction === armyList.subfaction;
+          }
           return true;
         }
 
         // Check if current faction is a subfaction of the unit's faction
         const currentFactionData = DataLoader.getFactionById(primaryFaction);
         if (currentFactionData?.parentFaction === unit.faction) {
+          // If unit has a subfaction, check if it matches the army's subfaction
+          if (unit.subfaction) {
+            return unit.subfaction === armyList.subfaction;
+          }
           return true;
         }
 
@@ -108,6 +116,10 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
           unitFactionData?.isMainFaction &&
           currentFactionData?.parentFaction === unit.faction
         ) {
+          // If unit has a subfaction, check if it matches the army's subfaction
+          if (unit.subfaction) {
+            return unit.subfaction === armyList.subfaction;
+          }
           return true;
         }
 
@@ -170,12 +182,20 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
         if (customUnit.faction && customUnit.faction !== 'universal') {
           // Direct faction match
           if (customUnit.faction === primaryFaction) {
+            // If custom unit has a subfaction, check if it matches the army's subfaction
+            if (customUnit.subfaction) {
+              return customUnit.subfaction === armyList.subfaction;
+            }
             return true;
           }
 
           // Check if current faction is a subfaction of the custom unit's faction
           const currentFactionData = DataLoader.getFactionById(primaryFaction);
           if (currentFactionData?.parentFaction === customUnit.faction) {
+            // If custom unit has a subfaction, check if it matches the army's subfaction
+            if (customUnit.subfaction) {
+              return customUnit.subfaction === armyList.subfaction;
+            }
             return true;
           }
 
@@ -187,6 +207,10 @@ const UnitSelectionModal: React.FC<UnitSelectionModalProps> = ({
             customUnitFactionData?.isMainFaction &&
             currentFactionData?.parentFaction === customUnit.faction
           ) {
+            // If custom unit has a subfaction, check if it matches the army's subfaction
+            if (customUnit.subfaction) {
+              return customUnit.subfaction === armyList.subfaction;
+            }
             return true;
           }
 

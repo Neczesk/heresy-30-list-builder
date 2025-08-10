@@ -19,12 +19,34 @@ const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const DATA_DIR = path.join(__dirname, 'src', 'data');
 const BACKUP_DIR = path.join(__dirname, 'backup', 'original-jsons');
 
-function convertValueToCSV(value: any): string {
+function convertValueToCSV(value: any, fieldName?: string): string {
   if (value === null) {
     return 'null';
   }
   if (value === undefined) {
     return '';
+  }
+  if (Array.isArray(value)) {
+    // Convert arrays to comma-separated strings for certain fields
+    if (
+      fieldName &&
+      [
+        'subType',
+        'modelTypes',
+        'targetModelTypes',
+        'traits',
+        'specialRules',
+        'profiles',
+        'upgrades',
+      ].includes(fieldName)
+    ) {
+      const csvValue = value.join(',');
+      // Wrap in quotes if it contains commas (which it will for multi-item arrays)
+      return csvValue.includes(',') ? `"${csvValue}"` : csvValue;
+    }
+    // For other arrays, use JSON stringification
+    const jsonStr = JSON.stringify(value);
+    return `"${jsonStr.replace(/"/g, '""')}"`;
   }
   if (typeof value === 'object') {
     // For complex objects, use a more robust JSON stringification
@@ -94,7 +116,7 @@ async function convertJSONToCSV(type: string) {
   // Create CSV content
   const csvHeader = fields.join(',');
   const csvRows = dataArray.map(item => {
-    return fields.map(field => convertValueToCSV(item[field])).join(',');
+    return fields.map(field => convertValueToCSV(item[field], field)).join(',');
   });
 
   const csvContent = [csvHeader, ...csvRows].join('\n');

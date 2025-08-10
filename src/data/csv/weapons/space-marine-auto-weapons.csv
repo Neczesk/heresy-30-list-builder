@@ -1,0 +1,21 @@
+id,name,type,description,range,firepower,rangedStrength,ap,damage,attackModifier,strengthModifier,initiativeModifier,specialRules,specialRuleValues,traits,profiles
+astartes-shotgun,Astartes shotgun,ranged,Slug thrower,12,2,4,,1,,,,"[""stun""]","{""stun"":0}","[""Auto""]",
+rotor-cannon,Rotor cannon,ranged,Slug thrower,24,3,3,,1,,,,"[""heavy"",""suppressive""]","{""heavy"":""FP"",""suppressive"":1}","[""Auto""]",
+reaper-autocannon,Reaper autocannon,ranged,Slug thrower,36,2,6,4,2,,,,"[""heavy"",""breaching""]","{""heavy"":""FP"",""breaching"":6}","[""Auto""]",
+kheres-assault-cannon,Kheres assault cannon,ranged,Slug thrower,24,5,6,4,1,,,,"[""breaching"",""heavy""]","{""heavy"":""FP"",""breaching"":6}","[""Auto""]",
+gravis-autocannon-battery,Gravis autocannon battery,ranged,Slug thrower,48,5,8,4,2,,,,"[""breaching"",""heavy""]","{""heavy"":""FP"",""breaching"":6}","[""Auto""]",
+predator-cannon,Predator cannon,ranged,Slug thrower,48,3,8,4,2,,,,"[""heavy"",""breaching""]","{""heavy"":""FP"",""breaching"":6}","[""Auto""]",
+punisher-rotary-cannon,Punisher rotary cannon,ranged,Slug thrower,36,8,6,4,1,,,,"[""ordnance"",""suppressive""]","{""ordnance"":""FP"",""suppressive"":2}","[""Auto""]",
+twin-accelerator-autocannon,Twin accelerator autocannon,ranged,Slug thrower,48,6,7,4,2,,,,"[""breaching"",""rapid-tracking"",""skyfire""]","{""breaching"":6}","[""Auto""]",
+quad-accelerator-autocannon,Quad accelerator autocannon,ranged,Slug thrower,48,10,7,4,2,,,,"[""breaching"",""skyfire"",""rapid-tracking""]","{""breaching"":6}","[""Auto""]",
+fellblade-accelerator-cannon,Fellblade accelerator cannon,ranged,Slug thrower,0,0,0,0,0,,,,,,"[""Auto""]","[""fellblade-accelerator-cannon-he-shell"",""fellblade-accelerator-cannon-ae-shell""]"
+fellblade-accelerator-cannon-he-shell,HE shell,ranged,Slug thrower,100,1,8,3,2,,,,"[""blast"",""stun""]","{""blast"":5,""stun"":2}","[""Auto""]",
+fellblade-accelerator-cannon-ae-shell,AE shell,ranged,Slug thrower,100,1,12,2,3,,,,"[""blast"",""ordnance""]","{""blast"":3,""ordnance"":""D""}","[""Auto""]",
+skyreaper-battery,Skyreaper battery,ranged,Slug thrower,48,6,7,4,2,,,,"[""rapid-tracking"",""skyfire""]",{},"[""Auto""]",
+anvilus-autocannon-battery,Anvilus autocannon battery,ranged,Slug thrower,48,6,8,4,2,,,,"[""breaching"",""rapid-tracking"",""skyfire""]","{""breaching"":5}","[""Auto""]",
+anvilus-snub-autocannon,Anvilus snub autocannon,ranged,Slug thrower,24,3,7,4,2,,,,"[""breaching""]","{""breaching"":5}","[""Auto""]",
+leviathan-storm-cannon,Leviathan storm cannon,ranged,Slug thrower,36,4,7,4,2,,,,"[""heavy"",""breaching""]","{""heavy"":""FP"",""breaching"":5}","[""Auto""]",
+kratos-battlecannon,Kratos battlecannon,ranged,Slug thrower,0,0,0,0,0,,,,,,"[""Auto""]","[""kratos-battlecannon-he"",""kratos-battlecannon-ap"",""kratos-battlecannon-flashburn""]"
+kratos-battlecannon-he,HE shells,ranged-profile,Slug thrower,36,1,8,4,1,,,,"[""ordnance"",""stun"",""blast""]","{""ordnance"":""D"",""stun"":1,""blast"":5}","[""Auto""]",
+kratos-battlecannon-ap,AP shells,ranged-profile,Slug thrower,36,1,8,2,2,,,,"[""ordnance"",""armourbane""]","{""ordnance"":""D""}","[""Auto""]",
+kratos-battlecannon-flashburn,Flashburn shells,ranged-profile,Slug thrower,24,1,9,2,3,,,,"[""ordnance"",""armourbane"",""overload""]","{""ordnance"":""D"",""overload"":1}","[""Auto""]",

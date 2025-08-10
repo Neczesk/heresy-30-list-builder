@@ -573,7 +573,7 @@
       "description": "Reduce a characteristic for the rest of the battle",
       "shortText": "Reduce the value of the characteristic in brackets by 1 for the rest of the battle after an unsaved wound from this weapon.",
       "longText": "Reduce that value motherfucker",
-      "hasValue": false,
+      "hasValue": true,
       "type": "special-rule"
     },
     {
@@ -582,7 +582,7 @@
       "description": "Shooty shooty airplanes",
       "shortText": "A weapon with this special rule hits flyers at its normal to hit roll.",
       "longText": "Zooooooom bang",
-      "hasValue": false,
+      "hasValue": true,
       "type": "special-rule"
     },
     {
@@ -591,7 +591,430 @@
       "description": "Not sure what this does",
       "shortText": "Not sure what this does",
       "longText": "Still not sure what this does",
+      "hasValue": true,
+      "type": "special-rule"
+    },
+    {
+      "id": "combi",
+      "name": "Combi",
+      "description": "Secondary weapon system",
+      "shortText": "This is a secondary profile that can be fired at the same time as the main system",
+      "longText": "Fire them all",
       "hasValue": false,
+      "type": "special-rule"
+    },
+    {
+      "id": "precision",
+      "name": "Precision",
+      "description": "This weapon can hit specific targets in the heat of battle.",
+      "shortText": "Fuck that guy in particular.",
+      "longText": "No really, fuck that guy IN PARTICULAR",
+      "hasValue": false,
+      "type": "special-rule"
+    },
+    {
+      "id": "shot-selector",
+      "name": "Shot Selector",
+      "description": "This weapon can fire various kinds of ammo",
+      "shortText": "This weapon chooses a special rule to gain before firing",
+      "longText": "This weapon can choose one of the following special rules before firing",
+      "hasValue": false,
+      "type": "special-rule"
+    },
+    {
+      "id": "reaping-blow",
+      "name": "Reaping Blow",
+      "description": "This weapon is more effective when fighting multiple opponents",
+      "shortText": "This weapon gains +1D4 when fighting multiple opponents.",
+      "longText": "This weapon can hit multiple targets at once.",
+      "hasValue": false,
+      "type": "special-rule"
+    },
+    {
+      "id": "force",
+      "name": "Force",
+      "description": "This weapon is more effective when fighting with a force weapon",
+      "shortText": "This weapon gains +1D4 when fighting with a force weapon.",
+      "longText": "This weapon makes life as a Space Marine more difficult.",
+      "hasValue": false,
+      "type": "special-rule"
+    },
+    {
+      "id": "deep-strike",
+      "name": "Deep Strike",
+      "description": "This unit can be deployed via deep strike",
+      "hasValue": false,
+      "longText": "Deep Strike represents the ability of a unit to be deployed via teleportation, drop pods, or other rapid deployment methods. Units with this rule can arrive on the battlefield from reserves using special deployment rules, allowing them to appear in unexpected locations and catch the enemy off guard. Deep Strike units are typically elite forces that can be deployed precisely where they are needed most.",
+      "shortText": "This unit can be deployed via deep strike.",
+      "type": "special-rule"
+    },
+    {
+      "id": "nuncio-vox",
+      "name": "Nuncio-vox",
+      "description": "Advanced communications relay system for coordinating orbital support and long-range communications",
+      "hasValue": false,
+      "longText": "Nuncio-vox represents an advanced communications relay system that allows units to coordinate orbital support, artillery strikes, and long-range communications with other forces. Units with this equipment can call in precision bombardments, request reinforcements, and coordinate complex tactical maneuvers across vast distances. The Nuncio-vox is a sophisticated piece of equipment that requires specialized training to operate effectively, making it typically available only to officers and specialized communication personnel.",
+      "shortText": "This unit has advanced communication capabilities for coordinating support and artillery.",
+      "type": "wargear"
+    },
+    {
+      "id": "cyber-familiar",
+      "name": "Cyber-familiar",
+      "description": "Advanced servo-skull companion that provides tactical assistance and battlefield awareness",
+      "hasValue": false,
+      "longText": "Cyber-familiar represents an advanced servo-skull companion that provides tactical assistance and enhanced battlefield awareness to its master. This sophisticated mechanical construct is equipped with advanced sensors, data processing capabilities, and tactical analysis systems that can assist in combat coordination, target identification, and strategic planning. The cyber-familiar hovers near its master, providing real-time battlefield intelligence and tactical recommendations that enhance their combat effectiveness and decision-making abilities.",
+      "shortText": "This unit is accompanied by a cyber-familiar that provides tactical assistance and enhanced awareness.",
+      "type": "wargear"
+    },
+    {
+      "id": "thermal-diffraction-field",
+      "name": "Thermal Diffraction Field",
+      "description": "Advanced energy field system that provides enhanced protection against energy-based attacks",
+      "hasValue": false,
+      "longText": "Thermal Diffraction Field represents an advanced energy field generator integrated into Saturnine Terminator armour systems. This sophisticated defensive technology creates a localized field that diffracts and disperses incoming energy-based attacks, significantly reducing their effectiveness. The field operates by manipulating thermal and electromagnetic radiation, creating a protective barrier that can deflect las-weapons, plasma bolts, and other energy-based projectiles. This technology is extremely rare and power-intensive, making it available only to the most elite and well-equipped warriors.",
+      "shortText": "This unit is protected by a thermal diffraction field that provides enhanced defense against energy weapons.",
+      "type": "wargear"
+    },
+    {
+      "id": "saturnine-teleportation-transponder",
+      "name": "Saturnine Teleportation Transponder",
+      "description": "Ultra-rare teleportation technology that allows precise battlefield deployment via deep strike",
+      "hasValue": false,
+      "longText": "Saturnine Teleportation Transponder represents the pinnacle of Mechanicum teleportation technology, integrated into the most advanced patterns of Terminator armour. This extremely rare and valuable piece of equipment creates a localized teleportation field that can transport the wearer and nearby allies directly onto the battlefield with pinpoint accuracy. The transponder synchronizes with orbital or ground-based teleportation arrays, allowing for tactical deployment behind enemy lines or rapid repositioning during critical moments. The technology is so advanced and resource-intensive that only the highest-ranking commanders have access to such equipment.",
+      "shortText": "This unit and any unit it has joined can deploy via deep strike using advanced teleportation technology.",
+      "type": "wargear"
+    },
+    {
+      "id": "vexilla",
+      "name": "Vexilla",
+      "description": "A ceremonial banner or standard that serves as a rallying point and symbol of authority on the battlefield",
+      "hasValue": false,
+      "longText": "Vexilla represents a ceremonial banner, standard, or heraldic device carried by officers and elite troops to serve as a rallying point for their forces. These elaborately decorated standards bear the colors, symbols, and honors of the unit, serving both practical and morale purposes on the battlefield. The vexilla acts as a visible marker of command presence, helping troops maintain formation and providing inspiration during combat. Beyond its tactical utility, the vexilla represents the pride, tradition, and fighting spirit of the unit, making it a powerful symbol that can boost morale and coordinate battlefield movements.",
+      "shortText": "This unit carries a vexilla that serves as a rallying point and symbol of authority.",
+      "type": "wargear"
+    },
+    {
+      "id": "biomancy",
+      "name": "Biomancy",
+      "description": "The psychic discipline of Biomancy focuses on the manipulation of living flesh and biological processes.",
+      "hasValue": false,
+      "longText": "Biomancy is one of the most potent and feared psychic disciplines, allowing the practitioner to manipulate living tissue, accelerate healing, enhance physical capabilities, or cause grievous harm through direct biological manipulation. Masters of Biomancy can knit wounds closed with a thought, enhance their own physical prowess to superhuman levels, or cause enemies to suffer catastrophic cellular breakdown. This discipline requires exceptional mental discipline and understanding of biological processes.",
+      "shortText": "Psychic discipline focused on biological manipulation and enhancement.",
+      "type": "wargear"
+    },
+    {
+      "id": "pyromancy",
+      "name": "Pyromancy",
+      "description": "The psychic discipline of Pyromancy harnesses the power of fire and heat.",
+      "hasValue": false,
+      "longText": "Pyromancy is the psychic discipline that allows the manipulation of fire, heat, and combustion. Practitioners can conjure flames from thin air, project devastating fire-based attacks, control existing fires, or even manipulate the thermal energy within objects and beings. While considered one of the more straightforward psychic disciplines, mastery of Pyromancy requires careful control to prevent the psyker from being consumed by their own flames. The discipline is particularly effective against armored targets and clustered enemies.",
+      "shortText": "Psychic discipline focused on fire and thermal manipulation.",
+      "type": "wargear"
+    },
+    {
+      "id": "telekinesis",
+      "name": "Telekinesis",
+      "description": "The psychic discipline of Telekinesis allows the manipulation of matter through mental force.",
+      "hasValue": false,
+      "longText": "Telekinesis is perhaps the most versatile of the psychic disciplines, allowing practitioners to manipulate physical matter through the power of thought alone. Masters of Telekinesis can lift and hurl objects with tremendous force, create protective barriers of psychic energy, crush enemies with invisible pressure, or even manipulate the battlefield itself. The discipline requires exceptional mental focus and spatial awareness, as the psyker must maintain precise control over multiple variables simultaneously.",
+      "shortText": "Psychic discipline focused on matter manipulation through mental force.",
+      "type": "wargear"
+    },
+    {
+      "id": "divination",
+      "name": "Divination",
+      "description": "The psychic discipline of Divination grants foresight and enhanced perception.",
+      "hasValue": false,
+      "longText": "Divination is the psychic discipline that allows practitioners to perceive beyond the normal constraints of time and space. Masters of Divination can glimpse possible futures, detect hidden enemies, enhance their allies' accuracy and reflexes, or even manipulate probability itself. This discipline is highly valued by commanders and strategists, as it provides tactical advantages that can turn the tide of battle. However, peering into the future comes with risks, as the Warp shows not just one possible outcome but countless potential realities.",
+      "shortText": "Psychic discipline focused on foresight and enhanced perception.",
+      "type": "wargear"
+    },
+    {
+      "id": "thaumaturgy",
+      "name": "Thaumaturgy",
+      "description": "The fundamental psychic discipline encompassing basic psychic arts and techniques.",
+      "hasValue": false,
+      "longText": "Thaumaturgy represents the foundation of all psychic arts, encompassing the basic techniques and principles that underlie more specialized disciplines. Practitioners learn fundamental skills such as psychic communication, basic energy manipulation, mental shielding, and simple matter alteration. While not as dramatic as the specialized disciplines, Thaumaturgy provides essential skills that form the bedrock of psychic training. Most psykers begin their studies with Thaumaturgy before progressing to more advanced disciplines.",
+      "shortText": "Fundamental psychic discipline encompassing basic psychic arts.",
+      "type": "wargear"
+    },
+    {
+      "id": "telepathy",
+      "name": "Telepathy",
+      "description": "The psychic discipline of Telepathy focuses on mental communication and mind control.",
+      "hasValue": false,
+      "longText": "Telepathy is the psychic discipline that deals with direct mental contact and manipulation of consciousness. Practitioners can communicate across vast distances without speaking, read surface thoughts, implant suggestions or commands, create mental illusions, or even dominate weaker minds completely. While extremely useful for coordination and intelligence gathering, Telepathy is also one of the most ethically questionable disciplines, as it involves direct violation of mental privacy and autonomy. Skilled telepaths must maintain strict mental discipline to avoid being overwhelmed by the thoughts of others.",
+      "shortText": "Psychic discipline focused on mental communication and mind control.",
+      "type": "wargear"
+    },
+    {
+      "id": "never-back-down",
+      "name": "Never Back Down",
+      "description": "Champions exemplify the honour of their Legion, fearlessly crossing blades with the greatest warriors their foe has to offer.",
+      "hasValue": false,
+      "longText": "Never Back Down represents the unwavering courage and honor code of elite champions who seek out single combat with enemy leaders and heroes. A Model with this Special Rule must take part in a Challenge if able. During the Challenge Sub-Phase, if a Model with this Special Rule is eligible, it must be declared as the Challenger or to accept a Challenge. If more than one Model with this Special Rule is eligible to be the Challenger or to accept a Challenge, the Controlling Player may select which one will be declared as the Challenger or to accept a Challenge. This rule reflects the champion's duty to seek out the enemy's greatest warriors and defeat them in honorable single combat, upholding their Legion's reputation and martial prowess.",
+      "shortText": "Must take part in Challenges if able. Must be declared as Challenger when eligible.",
+      "type": "special-rule"
+    },
+    {
+      "id": "infiltrate",
+      "name": "Infiltrate",
+      "description": "This unit can deploy in advanced positions using stealth and reconnaissance skills.",
+      "hasValue": true,
+      "longText": "Infiltrate represents the ability of specially trained units to deploy in advanced positions using stealth, reconnaissance skills, and knowledge of terrain. Units with Infiltrate can be deployed in unexpected locations, behind enemy lines, or in concealed positions that provide tactical advantages. The numerical value associated with Infiltrate indicates the unit's proficiency level, with higher values representing greater skill in reconnaissance, stealth movement, and advanced deployment techniques. This ability is particularly valuable for scouts, snipers, and reconnaissance specialists who need to gather intelligence or strike from concealed positions.",
+      "shortText": "Can deploy in advanced positions using stealth and reconnaissance skills.",
+      "type": "special-rule"
+    },
+    {
+      "id": "anathemata-discipline",
+      "name": "Anathemata Discipline",
+      "description": "The forbidden psychic discipline of the Anathemata, dealing with the dark powers of the Warp and daemonic entities.",
+      "hasValue": false,
+      "longText": "The Anathemata Discipline represents the most forbidden and dangerous form of psychic knowledge, dealing directly with the raw powers of the Warp and the entities that dwell within it. Those who study the Anathemata delve into knowledge that was meant to remain hidden, learning to summon forth the denizens of the Warp and binding them to their cause. This discipline encompasses the darkest arts of daemonology, warp manipulation, and the corruption of reality itself. The practitioners of Anathemata walk a dangerous path, for while they gain tremendous power, they risk their very souls in the process. Many who study these forbidden arts are eventually consumed by the very forces they seek to control.",
+      "shortText": "Forbidden psychic discipline dealing with dark Warp powers and daemonic entities.",
+      "type": "wargear"
+    },
+    {
+      "id": "anathemata",
+      "name": "Anathemata",
+      "description": "Bearer of forbidden knowledge and dark secrets that should not be known by mortal minds.",
+      "hasValue": false,
+      "longText": "Anathemata represents the state of being marked by forbidden knowledge, having delved into secrets and lore that were meant to remain hidden from mortal understanding. Those who bear the Anathemata trait have studied the darkest aspects of the Warp, learned the true names of daemonic entities, and uncovered truths that can drive lesser minds to madness. This knowledge grants them tremendous power but also marks them as outcasts and heretics in the eyes of their former brothers. The Anathemata is both a blessing and a curse, providing access to abilities beyond normal comprehension while forever separating the bearer from the light of the Emperor.",
+      "shortText": "Marked by forbidden knowledge and dark secrets.",
+      "type": "special-rule"
+    },
+    {
+      "id": "feel-no-pain",
+      "name": "Feel No Pain",
+      "description": "This unit has enhanced pain tolerance and damage resistance, allowing it to ignore some wounds.",
+      "hasValue": true,
+      "longText": "Feel No Pain represents enhanced damage tolerance, whether through cybernetic augmentation, chemical enhancement, psychic conditioning, or fanatical determination. Models with this special rule can ignore wounds that would normally incapacitate them, continuing to fight despite grievous injuries. The numerical value indicates the dice roll required to ignore each wound suffered - for example, Feel No Pain (5+) means that on a roll of 5 or 6, the wound is ignored. This ability represents everything from advanced medical implants and pain suppressors to psychic numbing and sheer bloody-minded determination to continue fighting regardless of physical damage.",
+      "shortText": "Can ignore wounds on specified dice roll.",
+      "type": "special-rule"
+    },
+    {
+      "id": "master-of-automata",
+      "name": "Master of Automata",
+      "description": "This model is skilled in the control and coordination of battle-automata, allowing them to command robotic forces alongside organic troops.",
+      "hasValue": false,
+      "longText": "Master of Automata represents specialized training in the control and coordination of battle-automata. Praevians stride to battle flanked by imposing automata, which provide a potent bodyguard as well as allowing the Praevian more direct control over their actions, directing their deadly firepower with a gesture. This Special Rule allows a Praevian to be accompanied by a Unit of Battle-automata. When a Model with this Special Rule is included in a Detachment, one additional Force Organisation Slot is added to that Detachment. This Slot can only be filled with one Castellax Battle Maniple or Castellax Destructor Maniple Unit selected from Liber Mechanicum. When such a Unit is included in this way, its Cybernetica Trait is replaced with 'Bonded Automata', and the Unit can be included even though it does not have the same Faction Trait as the other Units in that Detachment. In addition, a Model with this Special Rule may join a Friendly Unit that includes Models with the Automata Type. If a Model with this Special Rule joins a Unit with the Automata Type, the Leadership and Cool Characteristics of Models in that Unit are not reduced as a result of this, but may be modified by other rules as normal.",
+      "shortText": "Can control battle-automata and adds Force Organisation Slot for Mechanicum automata units.",
+      "type": "special-rule"
+    },
+    {
+      "id": "firestorm",
+      "name": "Firestorm",
+      "description": "This model can unleash devastating rapid fire attacks, overwhelming enemies with a storm of shots.",
+      "hasValue": false,
+      "longText": "Firestorm represents the ability to unleash devastating rapid fire attacks, typically through dual-wielding specialized weapons or advanced firing techniques. Models with this special rule can generate multiple shots in rapid succession, creating a storm of fire that can overwhelm enemy positions. This ability is particularly associated with lone killers and assassins who specialize in eliminating multiple targets quickly through superior firepower and shooting techniques. The Firestorm ability allows the model to make additional shooting attacks or enhance their existing ranged weapons' effectiveness, representing their mastery of rapid engagement tactics.",
+      "shortText": "Can unleash devastating rapid fire attacks with enhanced shooting capability.",
+      "type": "special-rule"
+    },
+    {
+      "id": "cognis-signum",
+      "name": "Cognis-signum",
+      "description": "This advanced targeting cogitator enhances the bearer's ability to direct artillery fire and coordinate heavy weapons attacks.",
+      "hasValue": false,
+      "longText": "A cognis-signum is an advanced targeting cogitator that integrates battlefield data streams and weapons telemetry to provide enhanced fire control capabilities. Originally developed by the Mechanicum for artillery coordination, these devices allow the bearer to analyze target trajectories, calculate firing solutions, and coordinate multiple weapon systems with precision. Siege Breakers and other artillery specialists rely on cognis-signums to direct the devastating firepower of heavy weapons batteries, ensuring maximum effectiveness against fortified positions and strategic targets. The device's cogitator spirit processes vast amounts of tactical data, providing real-time targeting adjustments and fire coordination that can mean the difference between a glancing blow and total devastation.",
+      "shortText": "Advanced targeting cogitator for artillery fire coordination and weapons guidance.",
+      "type": "wargear"
+    },
+    {
+      "id": "master-of-auxilia",
+      "name": "Master of Auxilia",
+      "description": "This model is skilled in the command and integration of auxiliary forces, allowing them to coordinate non-Legion troops with Legion formations.",
+      "hasValue": false,
+      "longText": "Master of Auxilia represents specialized training in the command and integration of auxiliary forces into Legion operations. Overseers often join the ranks of those under their jurisdiction, ensuring their fealty through inspirational words or barbed threats. This expertise allows them to coordinate indentured soldiery, local militia, and allied formations with Legion strike forces, maintaining discipline and effectiveness across diverse military units. Overseers can join some Allied Units without penalty to some Characteristics - specifically, if a Model with this Special Rule joins a Unit with the Solar Auxilia Trait, the Leadership and Cool Characteristics of Models in that Unit are not reduced as a result of this, but may be modified by other rules as normal. This represents their ability to maintain auxiliary unit cohesion while providing Legion-level tactical coordination.",
+      "shortText": "Can coordinate auxiliary forces and join Allied units without characteristic penalties.",
+      "type": "special-rule"
+    },
+    {
+      "id": "icon-of-allegiance",
+      "name": "Icon of Allegiance",
+      "description": "This sacred banner represents the highest authority and favor, carried proudly at the forefront of Legion forces to inspire allies and intimidate enemies.",
+      "hasValue": false,
+      "longText": "Carried aloft at the forefront of the Legion hosts during the Great Crusade, these sigils denoted that the bearer carried the authority of Emperor himself. Since the outbreak of the Heresy, those who turned against him cast these aside, taking up icons of the Traitor Warmaster instead. A Model with an Icon of Allegiance immediately gains 1 Honour Point each time: That Model is the winner of a Challenge, or That Model is part of a Combat that included at least one enemy Model that does not have the Vehicle Type, of which the Controlling Player is declared the winner. All Honour Points gained by a Model are lost when: That Model is Removed as a Casualty, or That Model is part of a Unit in which any Model gains the Disgraced Tactical Status. During the Decide Victor Step, at the end of the Battle, the Controlling Player of any Models with an Icon of Allegiance scores a number of Victory Points equal to the amount of Honour Points that any one of those Models, selected by the Controlling Player, currently has.",
+      "shortText": "Sacred banner that grants Honor Points for victories and converts them to Victory Points at battle end.",
+      "type": "wargear"
+    },
+    {
+      "id": "firing-protocols",
+      "name": "Firing Protocols",
+      "description": "Enhanced targeting and shooting capability when remaining stationary.",
+      "hasValue": true,
+      "longText": "Firing Protocols represents the enhanced targeting and shooting capability available to units equipped with advanced targeting systems when they remain stationary. This special rule allows models to achieve superior accuracy and rate of fire by dedicating all their computational resources to targeting rather than movement. The numerical value indicates the level of enhancement, with higher values representing more sophisticated targeting protocols and greater improvements to shooting accuracy and effectiveness.",
+      "shortText": "Enhanced targeting and shooting capability when remaining stationary.",
+      "type": "special-rule"
+    },
+    {
+      "id": "occulix-targeting-auspex",
+      "name": "Occulix Targeting Auspex",
+      "description": "Advanced targeting system that allows tracking multiple heavy weapon systems simultaneously.",
+      "hasValue": false,
+      "longText": "An occulix targeting auspex is an advanced targeting system that incorporates a potent machine spirit, allowing the wearer to track targets for multiple heavy weapon systems at once, at the cost of mobility. When a Model with an occulix targeting auspex is selected to make a Shooting Attack, if that Model's Unit remained Stationary in the Controlling Player's preceding Movement Phase, that Model gains the Firing Protocols (2) Special Rule until the Shooting Attack is fully resolved. This sophisticated device represents the pinnacle of targeting technology, providing unparalleled accuracy for stationary heavy weapons platforms.",
+      "shortText": "Advanced targeting system providing Firing Protocols (2) when stationary.",
+      "type": "wargear"
+    },
+    {
+      "id": "assault-vehicle",
+      "name": "Assault Vehicle",
+      "description": "Vehicle designed for rapid deployment and assault operations, allowing embarked units to assault after disembarking.",
+      "hasValue": false,
+      "longText": "An assault vehicle is specifically designed and equipped for rapid deployment and assault operations. These vehicles feature enhanced access points, shock-resistant interiors, and tactical systems that allow embarked units to quickly disembark and immediately engage in close combat. The vehicle's design includes specialized equipment such as assault ramps, stabilized platforms, and communication systems that coordinate the assault. Units disembarking from an assault vehicle are able to maintain their momentum and tactical cohesion, allowing them to charge directly into combat rather than being forced to regroup after disembarkation.",
+      "shortText": "Allows embarked units to assault after disembarking.",
+      "type": "special-rule"
+    },
+    {
+      "id": "dreadnought-transport",
+      "name": "Dreadnought Transport",
+      "description": "Specialized transport vehicle designed specifically for deploying dreadnoughts to the battlefield.",
+      "hasValue": false,
+      "longText": "Dreadnought Transport represents a specialized transport vehicle that has eschewed the tactical consoles and individual harnesses of standard drop pod patterns, instead relying on the Dreadnought's innate sturdy frame to stabilise it upon impact with the battlefield. These vehicles are specifically designed to transport dreadnoughts and cannot accommodate other unit types. Only one Model may be Embarked on a Model with this Special Rule, and the Embarking Model must have the Walker Type. The Embarked Model cannot have the Bulky (X) Special Rule with a value of greater than Bulky (7). This restriction ensures that only appropriately sized dreadnoughts can be transported safely.",
+      "shortText": "Specialized transport for dreadnoughts only, with Walker type and Bulky restrictions.",
+      "type": "special-rule"
+    },
+    {
+      "id": "drop-transport",
+      "name": "Drop Transport",
+      "description": "Flexible transport vehicle capable of carrying various types of units or a single walker to the battlefield.",
+      "hasValue": false,
+      "longText": "Drop Transport represents a flexible transport vehicle that utilised a variety of harness and bracing systems, flexible enough to accommodate a number of different occupants, from standard power armoured Legionaries, to the bulkier Terminator-equipped troops, up to even larger combatants such as Contemptor Dreadnoughts or even the Primarchs themselves. These vehicles can transport a variety of Units to the Battlefield. Instead of one of the Units that would normally be eligible to Embark within a Model with this Special Rule, one Model with the Walker Type can instead be Embarked upon it. The Embarked Model cannot have the Bulky (X) Special Rule with a value of greater than Bulky (6). This flexibility makes drop transport vehicles valuable for diverse tactical operations.",
+      "shortText": "Flexible transport for various units or single walker, with Bulky (6) limit.",
+      "type": "special-rule"
+    },
+    {
+      "id": "heavy-drop-transport",
+      "name": "Heavy Drop Transport",
+      "description": "Large transport vehicle designed to deliver substantial strike forces directly into enemy territory.",
+      "hasValue": false,
+      "longText": "Heavy Drop Transport represents a large transport vehicle that was primarily utilised to deliver large strike forces directly into enemy spacefaring vessels. The vehicle's interior was capable of housing large squads in a variety of configurations and even some of the more bulky Dreadnought chassis. These vehicles can transport large Units to the Battlefield. Instead of one of the Units that would normally be eligible to Embark within a Model with this Special Rule, one Model with the Walker Type can instead be Embarked upon it. The Embarked Model cannot have the Bulky (X) Special Rule with a value of greater than Bulky (7). This enhanced capacity makes heavy drop transport vehicles invaluable for major assault operations.",
+      "shortText": "Large transport for substantial forces or single walker, with Bulky (7) limit.",
+      "type": "special-rule"
+    },
+    {
+      "id": "automated-fire-protocols",
+      "name": "Automated Fire Protocols",
+      "description": "Autonomous targeting and engagement systems that operate without direct crew control.",
+      "hasValue": false,
+      "longText": "Automated Fire Protocols represents sophisticated targeting and engagement systems that allow the unit to operate autonomously without direct crew control. These systems utilize advanced machine spirits and targeting algorithms to identify, track, and engage enemy targets based on pre-programmed parameters. The automated systems can operate continuously without fatigue or morale concerns, making them ideal for defensive positions and area denial. However, the inflexibility of automated systems means they cannot adapt to rapidly changing tactical situations as effectively as crewed weapons.",
+      "shortText": "Autonomous targeting and engagement without crew control.",
+      "type": "special-rule"
+    },
+    {
+      "id": "independent-sentries",
+      "name": "Independent Sentries",
+      "description": "Operates independently without requiring command structure or coordination.",
+      "hasValue": false,
+      "longText": "Independent Sentries represents the ability of automated defense systems to operate completely independently of command structures or coordination requirements. These systems are programmed with standing orders and engagement protocols that allow them to function effectively without ongoing tactical direction. Each sentry operates according to its own programming, making independent targeting decisions and threat assessments. This independence allows them to continue functioning even when communication links are severed or command structures are compromised, but also means they cannot be easily redirected or coordinated for complex tactical maneuvers.",
+      "shortText": "Operates independently without command structure requirements.",
+      "type": "special-rule"
+    },
+    {
+      "id": "expendable",
+      "name": "Expendable",
+      "description": "This unit is considered expendable and can be sacrificed for tactical advantage.",
+      "hasValue": true,
+      "longText": "Expendable represents units that are considered disposable assets, designed to be sacrificed for tactical advantage rather than preserved. These units are often deployed in high-risk situations where their loss is acceptable in exchange for achieving strategic objectives. The numerical value indicates the level of expendability, with higher values representing units that are more readily sacrificed. Expendable units may be deployed in suicidal missions, used as bait to draw enemy fire, or positioned in locations where they are likely to be destroyed but can delay or damage enemy forces.",
+      "shortText": "This unit is considered expendable and can be sacrificed for tactical advantage.",
+      "type": "special-rule"
+    },
+    {
+      "id": "sire-of-the-iron-warriors",
+      "name": "Sire of the Iron Warriors",
+      "description": "Perturabo's mastery of the Iron Warriors Legion and his tactical genius.",
+      "hasValue": false,
+      "longText": "Sire of the Iron Warriors represents Perturabo's absolute mastery of the Iron Warriors Legion and his unparalleled tactical genius. As the Primarch of the Iron Warriors, Perturabo has complete command over his Legion's forces and can coordinate complex battlefield operations with devastating efficiency. This rule reflects his ability to analyze and deconstruct enemy strategies, adapt to changing battlefield conditions, and execute brutal but effective campaigns that bring worlds to heel.",
+      "shortText": "Perturabo's mastery of the Iron Warriors Legion and tactical genius.",
+      "type": "special-rule"
+    },
+    {
+      "id": "battlesmith",
+      "name": "Battlesmith",
+      "description": "Master of technological warfare and siege craft.",
+      "hasValue": true,
+      "longText": "Battlesmith represents mastery of technological warfare and siege craft. Units with this rule have extensive knowledge of battlefield technology, allowing them to repair and modify equipment, coordinate complex technological systems, and exploit technological weaknesses in enemy forces. The numerical value indicates the level of expertise, with higher values representing greater mastery of technological warfare.",
+      "shortText": "Master of technological warfare and siege craft.",
+      "type": "special-rule"
+    },
+    {
+      "id": "breaker",
+      "name": "The Breaker",
+      "description": "Perturabo's ability to break down and analyze any campaign or strategy.",
+      "hasValue": false,
+      "longText": "The Breaker represents Perturabo's unique ability to deconstruct and analyze any campaign or strategy, finding its weaknesses and exploiting them with brutal efficiency. This rule reflects his analytical mind and his capacity to break down complex tactical situations into their component parts, allowing him to identify and exploit the smallest flaws in enemy plans. The Breaker allows Perturabo to adapt to any battlefield situation and turn enemy strengths into weaknesses.",
+      "shortText": "Perturabo's ability to break down and analyze any campaign or strategy.",
+      "type": "special-rule"
+    },
+    {
+      "id": "eternal-warrior",
+      "name": "Eternal Warrior",
+      "description": "This unit is nearly impossible to kill through conventional means.",
+      "hasValue": true,
+      "longText": "Eternal Warrior represents units that are nearly impossible to kill through conventional means. These units possess extraordinary resilience, regeneration capabilities, or other supernatural protections that make them incredibly difficult to destroy. The numerical value indicates the level of protection, with higher values representing greater resistance to death and destruction. Eternal Warrior units can survive wounds that would kill lesser beings and continue fighting even when severely damaged.",
+      "shortText": "This unit is nearly impossible to kill through conventional means.",
+      "type": "special-rule"
+    },
+    {
+      "id": "cortex-controller",
+      "name": "Cortex Controller",
+      "description": "Advanced neural interface system for controlling technological systems.",
+      "hasValue": false,
+      "longText": "A cortex controller is an advanced neural interface system that allows the user to directly control and coordinate complex technological systems. This sophisticated device integrates with the user's neural pathways, providing direct mental control over weapons systems, communications networks, and other technological assets. The cortex controller allows for unprecedented coordination and efficiency in technological warfare, enabling the user to manage multiple systems simultaneously with perfect precision.",
+      "shortText": "Advanced neural interface system for controlling technological systems.",
+      "type": "wargear"
+    },
+    {
+      "id": "servo-arm",
+      "name": "Servo-arm",
+      "description": "Mechanical arm that provides additional combat capabilities and utility.",
+      "hasValue": false,
+      "longText": "A servo-arm is a mechanical appendage that provides additional combat capabilities and utility to its wielder. These sophisticated mechanical arms are equipped with various tools, weapons, or manipulators that can be used for combat, repair work, or other specialized tasks. Servo-arms are commonly used by Techmarines, Warsmiths, and other specialists who require additional mechanical assistance in their duties.",
+      "shortText": "Mechanical arm that provides additional combat capabilities and utility.",
+      "type": "wargear"
+    },
+    {
+      "id": "omni-scope",
+      "name": "Omni-scope",
+      "description": "A sophisticated cogitator-slaved optical scanner integrated into modified Terminator armour.",
+      "hasValue": false,
+      "longText": "An omni-scope is a sophisticated cogitator-slaved optical scanner integrated into the modified Terminator armour of the squad's Siege Master. The omni-scope allows for precise targeting solutions to be formulated in the blink of an eye. With weapons slaved to this device, the Tyrants of the Iron Warriors are deadly combatants on any battlefield. When a Shooting Attack made by a Unit that includes any Models with an omni-scope inflicts any Hits (excluding Hits from attacks made as Snap Shots), Cover Saving Throws cannot be made against those Hits.",
+      "shortText": "A sophisticated cogitator-slaved optical scanner integrated into modified Terminator armour.",
+      "type": "wargear"
+    },
+    {
+      "id": "karceri-battle-shield",
+      "name": "Karceri Battle Shield",
+      "description": "A massive battle shield designed for the Iron Circle automata.",
+      "hasValue": false,
+      "longText": "The Karceri Battle Shield is a massive, reinforced shield designed specifically for the Iron Circle automata. It provides exceptional protection and can be used both defensively and offensively in combat.",
+      "shortText": "A massive battle shield designed for the Iron Circle automata.",
+      "type": "wargear"
+    },
+    {
+      "id": "shield-of-the-iron-tyrant",
+      "name": "Shield of the Iron Tyrant",
+      "description": "Special rule for Iron Circle automata.",
+      "hasValue": false,
+      "longText": "The Shield of the Iron Tyrant represents the protective capabilities and tactical advantages of the Iron Circle automata in battle.",
+      "shortText": "Special rule for Iron Circle automata.",
+      "type": "special-rule"
+    },
+    {
+      "id": "firestorm",
+      "name": "Firestorm",
+      "description": "Special rule for Iron Circle automata.",
+      "hasValue": false,
+      "longText": "Firestorm represents the devastating firepower and area denial capabilities of the Iron Circle automata.",
+      "shortText": "Special rule for Iron Circle automata.",
+      "type": "special-rule"
+    },
+    {
+      "id": "ferrum-occularis",
+      "name": "Ferrum Occularis",
+      "description": "Specialized targeting arrays for Iron Havocs.",
+      "hasValue": false,
+      "longText": "In addition to the integrated systems afforded by their power armour, Iron Havoc squads utilise additional, specialised targeting arrays that overlay data feeds, atmospheric influences and predictive target movements based on previous battlefield data to allow them to select targets with exacting precision. Wounds caused by a Model with this Special Rule may ignore Cover Saves. Cover Saves may not be taken against unsaved wounds caused by a Shooting Attack made by a Model with this Special Rule, if the Model with this Special Rule was part of a Unit that remained Stationary in its Controlling Player's previous Movement Phase.",
+      "shortText": "Specialized targeting arrays for Iron Havocs.",
       "type": "special-rule"
     }
   ]

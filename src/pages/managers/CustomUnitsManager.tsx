@@ -20,10 +20,14 @@ import {
   Toolbar,
 } from '@mui/material';
 import { ArrowBack, Edit, Delete, Save, Close } from '@mui/icons-material';
-import { CustomUnitStorage } from '../../utils/customUnitStorage';
+import { EnhancedCustomUnitStorage } from '../../utils/enhancedCustomUnitStorage';
 import { DataLoader } from '../../utils/dataLoader';
 import UnitManagementModal from '../listBuilder/UnitManagementModal';
-import type { CustomUnit, CustomUnitMetadata, ArmyUnit } from '../../types/army';
+import type {
+  CustomUnit,
+  CustomUnitMetadata,
+  ArmyUnit,
+} from '../../types/army';
 
 const CustomUnitsManager: React.FC = () => {
   const navigate = useNavigate();
@@ -43,12 +47,12 @@ const CustomUnitsManager: React.FC = () => {
   }, []);
 
   const loadCustomUnits = () => {
-    const units = CustomUnitStorage.getAllCustomUnitMetadata();
+    const units = EnhancedCustomUnitStorage.getAllCustomUnitMetadata();
     setCustomUnits(units);
   };
 
   const handleEditUnit = (unitId: string) => {
-    const customUnit = CustomUnitStorage.getCustomUnit(unitId);
+    const customUnit = EnhancedCustomUnitStorage.getCustomUnit(unitId);
     if (customUnit) {
       setEditingUnit(customUnit);
       setShowUnitManagementModal(true);
@@ -61,7 +65,7 @@ const CustomUnitsManager: React.FC = () => {
 
   const handleConfirmDelete = () => {
     if (deleteConfirmUnit) {
-      CustomUnitStorage.deleteCustomUnit(deleteConfirmUnit.id);
+      EnhancedCustomUnitStorage.deleteCustomUnit(deleteConfirmUnit.id);
       setDeleteConfirmUnit(null);
       loadCustomUnits();
     }
@@ -77,16 +81,23 @@ const CustomUnitsManager: React.FC = () => {
 
   const handleSaveRename = () => {
     if (renamingUnit) {
-      const customUnit = CustomUnitStorage.getCustomUnit(renamingUnit.id);
+      const customUnit = EnhancedCustomUnitStorage.getCustomUnit(
+        renamingUnit.id
+      );
       if (customUnit) {
         // Check if new name conflicts with existing units
-        if (CustomUnitStorage.isNameTaken(renamingUnit.name, renamingUnit.id)) {
+        if (
+          EnhancedCustomUnitStorage.isNameTaken(
+            renamingUnit.name,
+            renamingUnit.id
+          )
+        ) {
           alert('A custom unit with this name already exists.');
           return;
         }
 
         // Update the custom unit with new name and ID
-        const newId = CustomUnitStorage.generateId(renamingUnit.name);
+        const newId = EnhancedCustomUnitStorage.generateId(renamingUnit.name);
         const updatedUnit: CustomUnit = {
           ...customUnit,
           id: newId,
@@ -95,8 +106,8 @@ const CustomUnitsManager: React.FC = () => {
         };
 
         // Delete old unit and save new one
-        CustomUnitStorage.deleteCustomUnit(renamingUnit.id);
-        CustomUnitStorage.saveCustomUnit(updatedUnit);
+        EnhancedCustomUnitStorage.deleteCustomUnit(renamingUnit.id);
+        EnhancedCustomUnitStorage.saveCustomUnit(updatedUnit);
 
         setRenamingUnit(null);
         loadCustomUnits();
@@ -139,7 +150,7 @@ const CustomUnitsManager: React.FC = () => {
         updatedAt: new Date().toISOString(),
       };
 
-      CustomUnitStorage.saveCustomUnit(updatedCustomUnit);
+      EnhancedCustomUnitStorage.saveCustomUnit(updatedCustomUnit);
       setShowUnitManagementModal(false);
       setEditingUnit(null);
       loadCustomUnits();
@@ -197,7 +208,8 @@ const CustomUnitsManager: React.FC = () => {
                 No custom units saved yet.
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Create custom units by configuring units in your army lists and saving them.
+                Create custom units by configuring units in your army lists and
+                saving them.
               </Typography>
             </CardContent>
           </Card>
@@ -206,10 +218,19 @@ const CustomUnitsManager: React.FC = () => {
             {customUnits.map(unit => (
               <Card key={unit.id}>
                 <CardContent>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'flex-start',
+                      mb: 2,
+                    }}
+                  >
                     <Box sx={{ flex: 1 }}>
                       {renamingUnit?.id === unit.id ? (
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <Box
+                          sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+                        >
                           <TextField
                             value={renamingUnit.name}
                             onChange={handleRenameInputChange}
@@ -234,18 +255,31 @@ const CustomUnitsManager: React.FC = () => {
                           </IconButton>
                         </Box>
                       ) : (
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <Box
+                          sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+                        >
                           <Typography variant="h6" component="h3">
                             {unit.name}
                           </Typography>
-                          <Chip label="Custom" size="small" color="primary" variant="outlined" />
+                          <Chip
+                            label="Custom"
+                            size="small"
+                            color="primary"
+                            variant="outlined"
+                          />
                         </Box>
                       )}
                     </Box>
                   </Box>
 
                   <Stack spacing={1} sx={{ mb: 2 }}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                      }}
+                    >
                       <Typography variant="body2" color="text.secondary">
                         Base Unit:
                       </Typography>
@@ -253,7 +287,13 @@ const CustomUnitsManager: React.FC = () => {
                         {getBaseUnitName(unit.baseUnitId)}
                       </Typography>
                     </Box>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                      }}
+                    >
                       <Typography variant="body2" color="text.secondary">
                         Faction:
                       </Typography>
@@ -262,7 +302,13 @@ const CustomUnitsManager: React.FC = () => {
                       </Typography>
                     </Box>
                     {unit.subfaction && (
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
+                      >
                         <Typography variant="body2" color="text.secondary">
                           Subfaction:
                         </Typography>
@@ -271,7 +317,13 @@ const CustomUnitsManager: React.FC = () => {
                         </Typography>
                       </Box>
                     )}
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                      }}
+                    >
                       <Typography variant="body2" color="text.secondary">
                         Created:
                       </Typography>
@@ -279,7 +331,13 @@ const CustomUnitsManager: React.FC = () => {
                         {formatDate(unit.createdAt)}
                       </Typography>
                     </Box>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                      }}
+                    >
                       <Typography variant="body2" color="text.secondary">
                         Updated:
                       </Typography>
@@ -288,11 +346,20 @@ const CustomUnitsManager: React.FC = () => {
                       </Typography>
                     </Box>
                     {unit.description && (
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'flex-start',
+                        }}
+                      >
                         <Typography variant="body2" color="text.secondary">
                           Description:
                         </Typography>
-                        <Typography variant="body2" sx={{ maxWidth: '60%', textAlign: 'right' }}>
+                        <Typography
+                          variant="body2"
+                          sx={{ maxWidth: '60%', textAlign: 'right' }}
+                        >
                           {unit.description}
                         </Typography>
                       </Box>
@@ -347,14 +414,10 @@ const CustomUnitsManager: React.FC = () => {
           <Typography variant="body1" sx={{ mb: 1 }}>
             Are you sure you want to delete "{deleteConfirmUnit?.name}"?
           </Typography>
-          <Alert severity="warning">
-            This action cannot be undone.
-          </Alert>
+          <Alert severity="warning">This action cannot be undone.</Alert>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCancelDelete}>
-            Cancel
-          </Button>
+          <Button onClick={handleCancelDelete}>Cancel</Button>
           <Button
             variant="contained"
             color="error"
@@ -384,8 +447,7 @@ const CustomUnitsManager: React.FC = () => {
             specialRules: [],
             specialRuleValues: {},
             modelModifications: {},
-            modelInstanceWeaponChanges:
-              editingUnit.modelInstanceWeaponChanges,
+            modelInstanceWeaponChanges: editingUnit.modelInstanceWeaponChanges,
             modelInstanceWargearChanges:
               editingUnit.modelInstanceWargearChanges,
           }}

@@ -1,0 +1,5 @@
+id,name,type,range,firepower,rangedStrength,ap,damage,description,specialRules,specialRuleValues,traits,profiles
+test-boltgun,Boltgun,ranged,24,2,4,5,1,Standard bolt weapon.,["rapid-fire"],"","[""Bolt""]",""
+test-plasma-pistol,Plasma Pistol,ranged,12,1,7,3,1,Plasma weapon with two firing modes.,["pistol","breaching"],"","[""Plasma""]",""
+test-plasma-sustained,Plasma Pistol - Sustained Fire,ranged-profile,12,2,7,3,1,Sustained fire mode for Plasma Pistol.,["pistol","breaching"],"","[""Plasma""]",""
+test-plasma-maximal,Plasma Pistol - Maximal Fire,ranged-profile,12,1,8,2,2,Maximal fire mode for Plasma Pistol.,["pistol","breaching","overload"],"","[""Plasma""]",""

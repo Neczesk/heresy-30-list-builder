@@ -19,8 +19,7 @@ export function getDetachmentsTriggeredByUnit(
 ): ArmyDetachment[] {
   return armyList.detachments.filter(
     detachment =>
-      detachment.triggeredBy &&
-      detachment.triggeredBy.unitInstanceId === unitId
+      detachment.triggeredBy && detachment.triggeredBy.unitInstanceId === unitId
   );
 }
 
@@ -109,7 +108,9 @@ export function removeDetachmentsTriggeredBySlot(
 /**
  * Get all detachment relationships in an army list
  */
-export function getAllDetachmentRelationships(armyList: Army): DetachmentRelationship[] {
+export function getAllDetachmentRelationships(
+  armyList: Army
+): DetachmentRelationship[] {
   const relationships: DetachmentRelationship[] = [];
 
   armyList.detachments.forEach(detachment => {
@@ -150,7 +151,9 @@ export function validateDetachmentRelationships(armyList: Army): string[] {
       );
 
       if (!triggeringDetachment) {
-        errors.push(`Detachment ${detachment.id} references non-existent triggering detachment ${detachment.triggeredBy.detachmentId}`);
+        errors.push(
+          `Detachment ${detachment.id} references non-existent triggering detachment ${detachment.triggeredBy.detachmentId}`
+        );
       } else {
         // Check if triggering unit exists
         const triggeringUnit = triggeringDetachment.units.find(
@@ -158,11 +161,35 @@ export function validateDetachmentRelationships(armyList: Army): string[] {
         );
 
         if (!triggeringUnit) {
-          errors.push(`Detachment ${detachment.id} references non-existent triggering unit ${detachment.triggeredBy.unitInstanceId}`);
+          errors.push(
+            `Detachment ${detachment.id} references non-existent triggering unit ${detachment.triggeredBy.unitInstanceId}`
+          );
         }
       }
     }
   });
 
   return errors;
+}
+
+/**
+ * Get the effective faction for a detachment
+ * Uses detachment faction if specified, otherwise falls back to army faction
+ */
+export function getEffectiveFaction(
+  army: Army,
+  detachment: ArmyDetachment
+): string {
+  return detachment.faction || army.faction;
+}
+
+/**
+ * Get the effective subfaction for a detachment
+ * Uses detachment subfaction if specified, otherwise falls back to army subfaction
+ */
+export function getEffectiveSubfaction(
+  army: Army,
+  detachment: ArmyDetachment
+): string | undefined {
+  return detachment.subfaction || army.subfaction;
 }

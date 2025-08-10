@@ -19,24 +19,13 @@
         "armourSave": 5
       },
       "description": "Standard infantry troops equipped with lasrifles and basic combat gear.",
-      "specialRules": [
-        "rapid-fire",
-        "first-rank-fire-second-rank-fire"
-      ],
+      "specialRules": ["rapid-fire", "first-rank-fire-second-rank-fire"],
       "specialRuleValues": "",
-      "subType": [
-        "Light"
-      ],
+      "subType": ["Light"],
       "type": "Infantry",
       "upgradeGroups": "",
-      "wargear": [
-        "flak-armor"
-      ],
-      "weapons": [
-        "lasrifle",
-        "laspistol",
-        "frag-grenades"
-      ]
+      "wargear": ["flak-armor"],
+      "weapons": ["lasrifle", "laspistol", "frag-grenades"]
     },
     {
       "id": "leman-russ-strike-model",
@@ -53,9 +42,7 @@
       "description": "A versatile main battle tank armed with a battle cannon for general combat.",
       "specialRules": [],
       "specialRuleValues": "",
-      "subType": [
-        "Heavy"
-      ],
+      "subType": ["Heavy"],
       "type": "Vehicle",
       "upgradeGroups": [
         {
@@ -64,9 +51,7 @@
           "description": "Replace the Battle Cannon with different turret weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "leman-russ-strike-turret-weapon-upgrade"
-          ]
+          "upgrades": ["leman-russ-strike-turret-weapon-upgrade"]
         },
         {
           "id": "leman-russ-strike-hull-weapon-upgrade-group",
@@ -74,9 +59,7 @@
           "description": "Replace the Hull Heavy Bolter with different hull weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "leman-russ-strike-hull-weapon-upgrade"
-          ]
+          "upgrades": ["leman-russ-strike-hull-weapon-upgrade"]
         },
         {
           "id": "leman-russ-strike-pintle-weapon-upgrade-group",
@@ -84,9 +67,7 @@
           "description": "Add pintle mounted weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "leman-russ-strike-pintle-weapon-upgrade"
-          ]
+          "upgrades": ["leman-russ-strike-pintle-weapon-upgrade"]
         },
         {
           "id": "leman-russ-strike-wargear-upgrade-group",
@@ -128,9 +109,7 @@
       "description": "A heavily armored assault tank armed with volkite macro-saker for close-range combat.",
       "specialRules": [],
       "specialRuleValues": "",
-      "subType": [
-        "Heavy"
-      ],
+      "subType": ["Heavy"],
       "type": "Vehicle",
       "upgradeGroups": [
         {
@@ -139,9 +118,7 @@
           "description": "Replace the Volkite Macro-saker with different turret weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "leman-russ-assault-turret-weapon-upgrade"
-          ]
+          "upgrades": ["leman-russ-assault-turret-weapon-upgrade"]
         },
         {
           "id": "leman-russ-assault-hull-weapon-upgrade-group",
@@ -149,9 +126,7 @@
           "description": "Replace the Hull Heavy Bolter with different hull weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "leman-russ-assault-hull-weapon-upgrade"
-          ]
+          "upgrades": ["leman-russ-assault-hull-weapon-upgrade"]
         },
         {
           "id": "leman-russ-assault-pintle-weapon-upgrade-group",
@@ -159,9 +134,7 @@
           "description": "Add pintle mounted weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "leman-russ-assault-pintle-weapon-upgrade"
-          ]
+          "upgrades": ["leman-russ-assault-pintle-weapon-upgrade"]
         },
         {
           "id": "leman-russ-assault-wargear-upgrade-group",
@@ -208,15 +181,11 @@
         "invulnerableSave": 5
       },
       "description": "A Legatine Marshall commanding the Legatine Command Section.",
-      "specialRules": [
-        "line"
-      ],
+      "specialRules": ["line"],
       "specialRuleValues": {
         "line": 2
       },
-      "subType": [
-        "Command"
-      ],
+      "subType": ["Command"],
       "type": "Infantry",
       "upgradeGroups": [
         {
@@ -225,9 +194,7 @@
           "description": "Replace the Charnabal Sabre with different melee weapons",
           "collapsible": true,
           "defaultCollapsed": false,
-          "upgrades": [
-            "legatine-marshall-weapon-upgrade"
-          ]
+          "upgrades": ["legatine-marshall-weapon-upgrade"]
         },
         {
           "id": "legatine-marshall-pistol-options",
@@ -235,9 +202,7 @@
           "description": "Replace the Las Pistol with different pistol weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "legatine-marshall-pistol-upgrade"
-          ]
+          "upgrades": ["legatine-marshall-pistol-upgrade"]
         }
       ],
       "wargear": [],
@@ -268,15 +233,11 @@
         "invulnerableSave": 5
       },
       "description": "A Lifeward bodyguard in the Legatine Command Section.",
-      "specialRules": [
-        "line"
-      ],
+      "specialRules": ["line"],
       "specialRuleValues": {
         "line": 2
       },
-      "subType": [
-        "Heavy"
-      ],
+      "subType": ["Heavy"],
       "type": "Infantry",
       "upgradeGroups": [
         {
@@ -298,9 +259,7 @@
           "description": "Replace the Charnabal Sabre with different melee weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "lifeward-sabre-upgrade"
-          ]
+          "upgrades": ["lifeward-sabre-upgrade"]
         },
         {
           "id": "lifeward-pistol-options",
@@ -308,9 +267,7 @@
           "description": "Replace the Lasrifle with different pistol weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "lifeward-pistol-upgrade"
-          ]
+          "upgrades": ["lifeward-pistol-upgrade"]
         },
         {
           "id": "lifeward-wargear-options",
@@ -326,11 +283,7 @@
         }
       ],
       "wargear": [],
-      "weapons": [
-        "lasrifle",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "auxilia-captain-model",
@@ -352,17 +305,11 @@
         "invulnerableSave": 5
       },
       "description": "An Auxilia Captain leading a Tactical Command Section.",
-      "specialRules": [
-        "line",
-        "officer-of-the-line"
-      ],
+      "specialRules": ["line"],
       "specialRuleValues": {
-        "line": 1,
-        "officer-of-the-line": 2
+        "line": 1
       },
-      "subType": [
-        "Command"
-      ],
+      "subType": ["Command"],
       "type": "Infantry",
       "upgradeGroups": [
         {
@@ -371,9 +318,7 @@
           "description": "Replace the Charnabal Sabre with different melee weapons",
           "collapsible": true,
           "defaultCollapsed": false,
-          "upgrades": [
-            "auxilia-captain-weapon-upgrade"
-          ]
+          "upgrades": ["auxilia-captain-weapon-upgrade"]
         },
         {
           "id": "auxilia-captain-pistol-options",
@@ -381,9 +326,7 @@
           "description": "Replace the Las Pistol with different pistol weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "auxilia-captain-pistol-upgrade"
-          ]
+          "upgrades": ["auxilia-captain-pistol-upgrade"]
         }
       ],
       "wargear": [],
@@ -414,15 +357,11 @@
         "invulnerableSave": 5
       },
       "description": "A Companion in the Tactical Command Section.",
-      "specialRules": [
-        "line"
-      ],
+      "specialRules": ["line"],
       "specialRuleValues": {
         "line": 1
       },
-      "subType": [
-        "Heavy"
-      ],
+      "subType": ["Heavy"],
       "type": "Infantry",
       "upgradeGroups": [
         {
@@ -431,9 +370,7 @@
           "description": "Replace the Lasrifle with different weapon combinations",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "companion-weapon-upgrade"
-          ]
+          "upgrades": ["companion-weapon-upgrade"]
         },
         {
           "id": "companion-sabre-upgrade-group",
@@ -441,9 +378,7 @@
           "description": "Replace the Charnabal Sabre with different melee weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "companion-sabre-upgrade"
-          ]
+          "upgrades": ["companion-sabre-upgrade"]
         },
         {
           "id": "companion-pistol-options",
@@ -451,9 +386,7 @@
           "description": "Replace the Lasrifle with different pistol weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "companion-pistol-upgrade"
-          ]
+          "upgrades": ["companion-pistol-upgrade"]
         },
         {
           "id": "companion-weapon-additions",
@@ -481,11 +414,7 @@
         }
       ],
       "wargear": [],
-      "weapons": [
-        "lasrifle",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "troop-master-model",
@@ -507,15 +436,11 @@
         "invulnerableSave": null
       },
       "description": "A Troop Master leading a Line Command Section.",
-      "specialRules": [
-        "close-order"
-      ],
+      "specialRules": ["close-order"],
       "specialRuleValues": {
         "close-order": 1
       },
-      "subType": [
-        "Sergeant"
-      ],
+      "subType": ["Sergeant"],
       "type": "Infantry",
       "upgradeGroups": [
         {
@@ -524,9 +449,7 @@
           "description": "Replace the Lasrifle with different weapon combinations",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "troop-master-weapon-upgrade"
-          ]
+          "upgrades": ["troop-master-weapon-upgrade"]
         },
         {
           "id": "troop-master-pistol-options",
@@ -534,9 +457,7 @@
           "description": "Replace the Lasrifle with different pistol weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "troop-master-pistol-upgrade"
-          ]
+          "upgrades": ["troop-master-pistol-upgrade"]
         },
         {
           "id": "troop-master-weapon-additions",
@@ -564,11 +485,7 @@
         }
       ],
       "wargear": [],
-      "weapons": [
-        "lasrifle",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "veteran-model",
@@ -601,9 +518,7 @@
           "description": "Replace the Lasrifle with different weapon combinations",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "veteran-weapon-upgrade"
-          ]
+          "upgrades": ["veteran-weapon-upgrade"]
         },
         {
           "id": "veteran-sabre-upgrade-group",
@@ -611,9 +526,7 @@
           "description": "Replace the Charnabal Sabre with different melee weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "veteran-sabre-upgrade"
-          ]
+          "upgrades": ["veteran-sabre-upgrade"]
         },
         {
           "id": "veteran-pistol-options",
@@ -621,9 +534,7 @@
           "description": "Replace the Lasrifle with different pistol weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "veteran-pistol-upgrade"
-          ]
+          "upgrades": ["veteran-pistol-upgrade"]
         },
         {
           "id": "veteran-weapon-additions",
@@ -675,11 +586,7 @@
         }
       ],
       "wargear": [],
-      "weapons": [
-        "lasrifle",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "first-prime-model",
@@ -701,16 +608,11 @@
         "invulnerableSave": null
       },
       "description": "A First Prime leading a Veletaris Command Section.",
-      "specialRules": [
-        "hold-the-line"
-      ],
+      "specialRules": ["hold-the-line"],
       "specialRuleValues": {
         "hold-the-line": 1
       },
-      "subType": [
-        "Champion",
-        "Sergeant"
-      ],
+      "subType": ["Champion", "Sergeant"],
       "type": "Infantry",
       "upgradeGroups": [
         {
@@ -719,9 +621,7 @@
           "description": "Replace the Volkite Charger with different weapon combinations",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "first-prime-weapon-upgrade"
-          ]
+          "upgrades": ["first-prime-weapon-upgrade"]
         },
         {
           "id": "first-prime-tabar-upgrade-group",
@@ -729,9 +629,7 @@
           "description": "Replace the Charnabal Tabar with different melee weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "first-prime-tabar-upgrade"
-          ]
+          "upgrades": ["first-prime-tabar-upgrade"]
         },
         {
           "id": "first-prime-pistol-options",
@@ -739,17 +637,11 @@
           "description": "Replace the Laspistol with different pistol weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "first-prime-pistol-upgrade"
-          ]
+          "upgrades": ["first-prime-pistol-upgrade"]
         }
       ],
       "wargear": [],
-      "weapons": [
-        "volkite-charger",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["volkite-charger", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "veletarii-model",
@@ -782,9 +674,7 @@
           "description": "Replace the Volkite Charger with different weapon combinations",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "veletarii-weapon-upgrade"
-          ]
+          "upgrades": ["veletarii-weapon-upgrade"]
         },
         {
           "id": "veletarii-wargear-options",
@@ -800,11 +690,7 @@
         }
       ],
       "wargear": [],
-      "weapons": [
-        "volkite-charger",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["volkite-charger", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "veletarii-vanguard-model",
@@ -837,9 +723,7 @@
           "description": "Vox options for Veletaris Vanguard Section",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "veletaris-vanguard-vox-upgrade"
-          ]
+          "upgrades": ["veletaris-vanguard-vox-upgrade"]
         },
         {
           "id": "veletaris-vanguard-vexilla-upgrade-group",
@@ -847,17 +731,11 @@
           "description": "Vexilla options for Veletaris Vanguard Section",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "veletaris-vanguard-vexilla-upgrade"
-          ]
+          "upgrades": ["veletaris-vanguard-vexilla-upgrade"]
         }
       ],
       "wargear": [],
-      "weapons": [
-        "heavy-flamer",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["heavy-flamer", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "veletarii-prime-model",
@@ -881,9 +759,7 @@
       "description": "A Veletarii Prime leading a Veletaris Storm Section.",
       "specialRules": [],
       "specialRuleValues": {},
-      "subType": [
-        "Sergeant"
-      ],
+      "subType": ["Sergeant"],
       "type": "Infantry",
       "upgradeGroups": [
         {
@@ -892,9 +768,7 @@
           "description": "Replace the Volkite Charger with different weapon combinations",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "veletarii-prime-weapon-upgrade"
-          ]
+          "upgrades": ["veletarii-prime-weapon-upgrade"]
         },
         {
           "id": "veletarii-prime-tabar-upgrade-group",
@@ -902,9 +776,7 @@
           "description": "Replace the Charnabal Tabar with different melee weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "veletarii-prime-tabar-upgrade"
-          ]
+          "upgrades": ["veletarii-prime-tabar-upgrade"]
         },
         {
           "id": "veletarii-prime-pistol-options",
@@ -912,17 +784,11 @@
           "description": "Replace the Laspistol with different pistol weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "veletarii-prime-pistol-upgrade"
-          ]
+          "upgrades": ["veletarii-prime-pistol-upgrade"]
         }
       ],
       "wargear": [],
-      "weapons": [
-        "volkite-charger",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["volkite-charger", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "veletarii-vanguard-prime-model",
@@ -946,9 +812,7 @@
       "description": "A Veletarii Prime leading a Veletaris Vanguard Section.",
       "specialRules": [],
       "specialRuleValues": {},
-      "subType": [
-        "Sergeant"
-      ],
+      "subType": ["Sergeant"],
       "type": "Infantry",
       "upgradeGroups": [
         {
@@ -957,9 +821,7 @@
           "description": "Replace the Heavy Flamer with different weapon combinations",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "veletarii-vanguard-prime-weapon-upgrade"
-          ]
+          "upgrades": ["veletarii-vanguard-prime-weapon-upgrade"]
         },
         {
           "id": "veletarii-vanguard-prime-tabar-upgrade-group",
@@ -967,9 +829,7 @@
           "description": "Replace the Charnabal Tabar with different melee weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "veletarii-vanguard-prime-tabar-upgrade"
-          ]
+          "upgrades": ["veletarii-vanguard-prime-tabar-upgrade"]
         },
         {
           "id": "veletarii-vanguard-prime-pistol-options",
@@ -977,17 +837,11 @@
           "description": "Replace the Laspistol with different pistol weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "veletarii-vanguard-prime-pistol-upgrade"
-          ]
+          "upgrades": ["veletarii-vanguard-prime-pistol-upgrade"]
         }
       ],
       "wargear": [],
-      "weapons": [
-        "heavy-flamer",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["heavy-flamer", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "auxilia-sergeant-model",
@@ -1011,9 +865,7 @@
       "description": "An Auxilia Sergeant leading a Lasrifle Section.",
       "specialRules": [],
       "specialRuleValues": {},
-      "subType": [
-        "Sergeant"
-      ],
+      "subType": ["Sergeant"],
       "type": "Infantry",
       "upgradeGroups": [
         {
@@ -1022,9 +874,7 @@
           "description": "Replace the Lasrifle with different weapon combinations",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "auxilia-sergeant-weapon-upgrade"
-          ]
+          "upgrades": ["auxilia-sergeant-weapon-upgrade"]
         },
         {
           "id": "auxilia-sergeant-pistol-options",
@@ -1032,9 +882,7 @@
           "description": "Replace the Lasrifle with different pistol weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "auxilia-sergeant-pistol-upgrade"
-          ]
+          "upgrades": ["auxilia-sergeant-pistol-upgrade"]
         },
         {
           "id": "auxilia-sergeant-weapon-additions",
@@ -1050,11 +898,7 @@
         }
       ],
       "wargear": [],
-      "weapons": [
-        "lasrifle",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "auxiliary-model",
@@ -1098,18 +942,11 @@
           "description": "Wargear options for Auxiliaries",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "auxiliary-vox-upgrade",
-            "auxiliary-vexilla-upgrade"
-          ]
+          "upgrades": ["auxiliary-vox-upgrade", "auxiliary-vexilla-upgrade"]
         }
       ],
       "wargear": [],
-      "weapons": [
-        "lasrifle",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "hermes-veletaris-sentinel-model",
@@ -1150,17 +987,11 @@
           "description": "Replace the Volkite Caliver with different weapon options",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "hermes-veletaris-sentinel-weapon-upgrade"
-          ]
+          "upgrades": ["hermes-veletaris-sentinel-weapon-upgrade"]
         }
       ],
       "wargear": [],
-      "weapons": [
-        "volkite-caliver",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["volkite-caliver", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "basilisk-model",
@@ -1186,9 +1017,7 @@
           "description": "Add pintle-mounted weapons to the vehicle",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "basilisk-pintle-weapon-upgrade"
-          ]
+          "upgrades": ["basilisk-pintle-weapon-upgrade"]
         },
         {
           "id": "basilisk-wargear-upgrade-group",
@@ -1235,9 +1064,7 @@
           "description": "Add pintle-mounted weapons to the vehicle",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "medusa-pintle-weapon-upgrade"
-          ]
+          "upgrades": ["medusa-pintle-weapon-upgrade"]
         },
         {
           "id": "medusa-wargear-upgrade-group",
@@ -1280,25 +1107,15 @@
         "invulnerableSave": null
       },
       "description": "A Rapier Gunner in the Rapier Section.",
-      "specialRules": [
-        "slow-and-purposeful",
-        "support-unit",
-        "rapier-section"
-      ],
+      "specialRules": ["slow-and-purposeful", "support-unit", "rapier-section"],
       "specialRuleValues": {
         "support-unit": 1
       },
-      "subType": [
-        "Sergeant"
-      ],
+      "subType": ["Sergeant"],
       "type": "Infantry",
       "upgradeGroups": [],
       "wargear": [],
-      "weapons": [
-        "lasrifle",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "rapier-carrier-model",
@@ -1339,15 +1156,11 @@
           "description": "Replace the Gravis Multi-Laser Battery with different weapon options",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "rapier-carrier-weapon-upgrade"
-          ]
+          "upgrades": ["rapier-carrier-weapon-upgrade"]
         }
       ],
       "wargear": [],
-      "weapons": [
-        "gravis-multi-laser-battery"
-      ]
+      "weapons": ["gravis-multi-laser-battery"]
     },
     {
       "id": "charonite-ogryn-model",
@@ -1383,15 +1196,11 @@
         "feel-no-pain": 5,
         "impact": "A"
       },
-      "subType": [
-        "Skirmish"
-      ],
+      "subType": ["Skirmish"],
       "type": "Infantry",
       "upgradeGroups": [],
       "wargear": [],
-      "weapons": [
-        "charonite-claws"
-      ]
+      "weapons": ["charonite-claws"]
     },
     {
       "id": "hermes-lead-model",
@@ -1423,10 +1232,7 @@
       "specialRuleValues": {
         "bulky": 2
       },
-      "subType": [
-        "Sergeant",
-        "Light"
-      ],
+      "subType": ["Sergeant", "Light"],
       "type": "Cavalry",
       "upgradeGroups": [
         {
@@ -1435,17 +1241,11 @@
           "description": "Replace the Multi-laser with different weapon options",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "hermes-weapon-upgrade"
-          ]
+          "upgrades": ["hermes-weapon-upgrade"]
         }
       ],
       "wargear": [],
-      "weapons": [
-        "multi-laser",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["multi-laser", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "hermes-pathfinder-model",
@@ -1476,9 +1276,7 @@
       "specialRuleValues": {
         "bulky": 2
       },
-      "subType": [
-        "Light"
-      ],
+      "subType": ["Light"],
       "type": "Cavalry",
       "upgradeGroups": [
         {
@@ -1487,17 +1285,11 @@
           "description": "Replace the Multi-laser with different weapon options",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "hermes-pathfinder-weapon-upgrade"
-          ]
+          "upgrades": ["hermes-pathfinder-weapon-upgrade"]
         }
       ],
       "wargear": [],
-      "weapons": [
-        "multi-laser",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["multi-laser", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "ordnance-master-model",
@@ -1519,13 +1311,9 @@
         "invulnerableSave": null
       },
       "description": "An Ordnance Master in the Artillery Command Section.",
-      "specialRules": [
-        "precision-bombardment"
-      ],
+      "specialRules": ["precision-bombardment"],
       "specialRuleValues": "",
-      "subType": [
-        "Sergeant"
-      ],
+      "subType": ["Sergeant"],
       "type": "Infantry",
       "upgradeGroups": [
         {
@@ -1534,9 +1322,7 @@
           "description": "Replace the Lasrifle with different weapon combinations",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "ordnance-master-weapon-upgrade"
-          ]
+          "upgrades": ["ordnance-master-weapon-upgrade"]
         },
         {
           "id": "ordnance-master-pistol-options",
@@ -1544,9 +1330,7 @@
           "description": "Replace the Laspistol with different pistol weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "ordnance-master-pistol-upgrade"
-          ]
+          "upgrades": ["ordnance-master-pistol-upgrade"]
         },
         {
           "id": "ordnance-master-weapon-additions",
@@ -1561,11 +1345,7 @@
         }
       ],
       "wargear": [],
-      "weapons": [
-        "lasrifle",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["lasrifle", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "command-tank-model",
@@ -1580,10 +1360,7 @@
         "transportCapacity": null
       },
       "description": "A Command Tank in the Armoured Command Section.",
-      "specialRules": [
-        "armoured-warfare",
-        "auto-repair"
-      ],
+      "specialRules": ["armoured-warfare", "auto-repair"],
       "specialRuleValues": {
         "auto-repair": 4
       },
@@ -1596,9 +1373,7 @@
           "description": "Replace the Battlecannon with different turret-mounted weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "command-tank-turret-weapon-upgrade"
-          ]
+          "upgrades": ["command-tank-turret-weapon-upgrade"]
         },
         {
           "id": "command-tank-hull-weapon-upgrade-group",
@@ -1606,9 +1381,7 @@
           "description": "Replace the Heavy Bolter with different hull-mounted weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "command-tank-hull-weapon-upgrade"
-          ]
+          "upgrades": ["command-tank-hull-weapon-upgrade"]
         },
         {
           "id": "command-tank-pintle-weapon-upgrade-group",
@@ -1616,9 +1389,7 @@
           "description": "Add pintle-mounted weapons to the vehicle",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "command-tank-pintle-weapon-upgrade"
-          ]
+          "upgrades": ["command-tank-pintle-weapon-upgrade"]
         },
         {
           "id": "command-tank-hunter-killer-missile-upgrade-group",
@@ -1626,9 +1397,7 @@
           "description": "Add a Hunter-Killer Missile to the vehicle",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "command-tank-hunter-killer-missile-upgrade"
-          ]
+          "upgrades": ["command-tank-hunter-killer-missile-upgrade"]
         },
         {
           "id": "command-tank-wargear-upgrade-group",
@@ -1636,9 +1405,7 @@
           "description": "Add various wargear options to the vehicle",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "command-tank-wargear-upgrade"
-          ]
+          "upgrades": ["command-tank-wargear-upgrade"]
         }
       ],
       "wargear": [],
@@ -1673,16 +1440,11 @@
         "invulnerableSave": null
       },
       "description": "A heavily armed and armored walker designed for heavy support and anti-armor operations.",
-      "specialRules": [
-        "bulky",
-        "slow-and-purposeful"
-      ],
+      "specialRules": ["bulky", "slow-and-purposeful"],
       "specialRuleValues": {
         "bulky": 6
       },
-      "subType": [
-        "Skirmish"
-      ],
+      "subType": ["Skirmish"],
       "type": "Walker",
       "upgradeGroups": [
         {
@@ -1691,9 +1453,7 @@
           "description": "Replace the Multi-Laser with different weapon options",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "aethon-heavy-sentinel-multi-laser-upgrade"
-          ]
+          "upgrades": ["aethon-heavy-sentinel-multi-laser-upgrade"]
         },
         {
           "id": "aethon-heavy-sentinel-missile-battery-upgrade-group",
@@ -1701,16 +1461,11 @@
           "description": "Replace the Aethon Missile Battery with different weapon options",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "aethon-heavy-sentinel-missile-battery-upgrade"
-          ]
+          "upgrades": ["aethon-heavy-sentinel-missile-battery-upgrade"]
         }
       ],
       "wargear": [],
-      "weapons": [
-        "multi-laser",
-        "aethon-missile-battery"
-      ]
+      "weapons": ["multi-laser", "aethon-missile-battery"]
     },
     {
       "id": "arvus-lighter-model",
@@ -1725,14 +1480,9 @@
         "transportCapacity": 12
       },
       "description": "A light transport aircraft designed for rapid deployment and extraction.",
-      "specialRules": [
-        "light-transport"
-      ],
+      "specialRules": ["light-transport"],
       "specialRuleValues": "",
-      "subType": [
-        "Transport",
-        "Flyer"
-      ],
+      "subType": ["Transport", "Flyer"],
       "type": "Vehicle",
       "upgradeGroups": [
         {
@@ -1741,9 +1491,7 @@
           "description": "Add a Hull (Rear) mounted weapon to the vehicle",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "arvus-lighter-hull-weapon-upgrade"
-          ]
+          "upgrades": ["arvus-lighter-hull-weapon-upgrade"]
         },
         {
           "id": "arvus-lighter-wargear-upgrade-group",
@@ -1751,14 +1499,10 @@
           "description": "Add various wargear options to the vehicle",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "arvus-lighter-wargear-upgrade"
-          ]
+          "upgrades": ["arvus-lighter-wargear-upgrade"]
         }
       ],
-      "wargear": [
-        "searchlights"
-      ],
+      "wargear": ["searchlights"],
       "weapons": []
     },
     {
@@ -1774,13 +1518,9 @@
         "transportCapacity": 22
       },
       "description": "A heavily armored transport vehicle designed for troop deployment and battlefield support.",
-      "specialRules": [
-        "light-transport"
-      ],
+      "specialRules": ["light-transport"],
       "specialRuleValues": "",
-      "subType": [
-        "Transport"
-      ],
+      "subType": ["Transport"],
       "type": "Vehicle",
       "upgradeGroups": [
         {
@@ -1789,9 +1529,7 @@
           "description": "Replace the Twin Lascannon with different hull-mounted weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "dracosan-hull-weapon-upgrade"
-          ]
+          "upgrades": ["dracosan-hull-weapon-upgrade"]
         },
         {
           "id": "dracosan-pintle-weapon-upgrade-group",
@@ -1799,9 +1537,7 @@
           "description": "Add pintle-mounted weapons to the vehicle",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "dracosan-pintle-weapon-upgrade"
-          ]
+          "upgrades": ["dracosan-pintle-weapon-upgrade"]
         },
         {
           "id": "dracosan-hunter-killer-missile-upgrade-group",
@@ -1809,9 +1545,7 @@
           "description": "Add Hull (Front) mounted Hunter-Killer Missiles to the vehicle",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "dracosan-hunter-killer-missile-upgrade"
-          ]
+          "upgrades": ["dracosan-hunter-killer-missile-upgrade"]
         },
         {
           "id": "dracosan-wargear-upgrade-group",
@@ -1819,9 +1553,7 @@
           "description": "Add various wargear options to the vehicle",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "dracosan-wargear-upgrade"
-          ]
+          "upgrades": ["dracosan-wargear-upgrade"]
         }
       ],
       "wargear": [],
@@ -1861,9 +1593,7 @@
       "specialRuleValues": {
         "bulky": 2
       },
-      "subType": [
-        "Light"
-      ],
+      "subType": ["Light"],
       "type": "Cavalry",
       "upgradeGroups": [
         {
@@ -1872,17 +1602,11 @@
           "description": "Replace the Multi-Laser with different weapon options",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "hermes-light-sentinel-weapon-upgrade"
-          ]
+          "upgrades": ["hermes-light-sentinel-weapon-upgrade"]
         }
       ],
       "wargear": [],
-      "weapons": [
-        "multi-laser",
-        "frag-grenades",
-        "krak-grenades"
-      ]
+      "weapons": ["multi-laser", "frag-grenades", "krak-grenades"]
     },
     {
       "id": "primaris-lightning-model",
@@ -1899,9 +1623,7 @@
       "description": "A fast strike fighter designed for aerial combat and ground attack missions.",
       "specialRules": [],
       "specialRuleValues": "",
-      "subType": [
-        "Flyer"
-      ],
+      "subType": ["Flyer"],
       "type": "Vehicle",
       "upgradeGroups": [],
       "wargear": [],
@@ -1932,9 +1654,7 @@
       "description": "A heavy fighter aircraft designed for aerial combat and ground attack missions.",
       "specialRules": [],
       "specialRuleValues": "",
-      "subType": [
-        "Flyer"
-      ],
+      "subType": ["Flyer"],
       "type": "Vehicle",
       "upgradeGroups": [],
       "wargear": [],
@@ -1963,9 +1683,7 @@
         "transportCapacity": null
       },
       "description": "A heavy tank designed for battlefield dominance and firepower projection.",
-      "specialRules": [
-        "independent-fire"
-      ],
+      "specialRules": ["independent-fire"],
       "specialRuleValues": "",
       "subType": [],
       "type": "Vehicle",
@@ -1976,9 +1694,7 @@
           "description": "Replace the Battlecannon with different turret-mounted weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "malcador-turret-weapon-upgrade"
-          ]
+          "upgrades": ["malcador-turret-weapon-upgrade"]
         },
         {
           "id": "malcador-hull-weapon-upgrade-group",
@@ -1986,9 +1702,7 @@
           "description": "Replace the Heavy Bolter with different hull-mounted weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "malcador-hull-weapon-upgrade"
-          ]
+          "upgrades": ["malcador-hull-weapon-upgrade"]
         },
         {
           "id": "malcador-pintle-weapon-upgrade-group",
@@ -1996,9 +1710,7 @@
           "description": "Add pintle-mounted weapons to the vehicle",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "malcador-pintle-weapon-upgrade"
-          ]
+          "upgrades": ["malcador-pintle-weapon-upgrade"]
         },
         {
           "id": "malcador-wargear-upgrade-group",
@@ -2006,9 +1718,7 @@
           "description": "Add various wargear options to the vehicle",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "malcador-wargear-upgrade"
-          ]
+          "upgrades": ["malcador-wargear-upgrade"]
         },
         {
           "id": "malcador-sponson-weapon-upgrade-group",
@@ -2016,9 +1726,7 @@
           "description": "Replace the Sponson Multi-lasers with different sponson-mounted weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "malcador-sponson-weapon-upgrade"
-          ]
+          "upgrades": ["malcador-sponson-weapon-upgrade"]
         }
       ],
       "wargear": [],
@@ -2051,15 +1759,11 @@
         "transportCapacity": null
       },
       "description": "A special weapons tank armed with an infernus cannon and sponson weapons.",
-      "specialRules": [
-        "explodes"
-      ],
+      "specialRules": ["explodes"],
       "specialRuleValues": {
         "explodes": 3
       },
-      "subType": [
-        "Heavy"
-      ],
+      "subType": ["Heavy"],
       "type": "Vehicle",
       "upgradeGroups": [
         {
@@ -2068,9 +1772,7 @@
           "description": "Replace the Sponson Multi-lasers with different sponson weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "malcador-infernus-sponson-weapon-upgrade"
-          ]
+          "upgrades": ["malcador-infernus-sponson-weapon-upgrade"]
         },
         {
           "id": "malcador-infernus-pintle-weapon-upgrade-group",
@@ -2078,9 +1780,7 @@
           "description": "Add pintle mounted weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "malcador-infernus-pintle-weapon-upgrade"
-          ]
+          "upgrades": ["malcador-infernus-pintle-weapon-upgrade"]
         },
         {
           "id": "malcador-infernus-wargear-upgrade-group",
@@ -2122,15 +1822,11 @@
         "transportCapacity": null
       },
       "description": "A specialized tank destroyer armed with a neutron beam laser for anti-armour operations.",
-      "specialRules": [
-        "explodes"
-      ],
+      "specialRules": ["explodes"],
       "specialRuleValues": {
         "explodes": 5
       },
-      "subType": [
-        "Heavy"
-      ],
+      "subType": ["Heavy"],
       "type": "Vehicle",
       "upgradeGroups": [
         {
@@ -2139,9 +1835,7 @@
           "description": "Replace the Sponson (Right) Multi-laser with different sponson weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "valdor-sponson-weapon-upgrade"
-          ]
+          "upgrades": ["valdor-sponson-weapon-upgrade"]
         },
         {
           "id": "valdor-pintle-weapon-upgrade-group",
@@ -2149,9 +1843,7 @@
           "description": "Add pintle mounted weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "valdor-pintle-weapon-upgrade"
-          ]
+          "upgrades": ["valdor-pintle-weapon-upgrade"]
         },
         {
           "id": "valdor-wargear-upgrade-group",
@@ -2194,9 +1886,7 @@
       "description": "A super-heavy assault tank armed with multiple weapons for devastating firepower.",
       "specialRules": [],
       "specialRuleValues": "",
-      "subType": [
-        "Super-Heavy"
-      ],
+      "subType": ["Super-Heavy"],
       "type": "Vehicle",
       "upgradeGroups": [
         {
@@ -2205,9 +1895,7 @@
           "description": "Replace the Hull (Front) Multi-laser with different weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "stormhammer-hull-front-weapon-upgrade"
-          ]
+          "upgrades": ["stormhammer-hull-front-weapon-upgrade"]
         },
         {
           "id": "stormhammer-hull-side-weapon-upgrade-group",
@@ -2215,9 +1903,7 @@
           "description": "Replace the Hull (Left) and Hull (Right) Multi-lasers with different weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "stormhammer-hull-side-weapon-upgrade"
-          ]
+          "upgrades": ["stormhammer-hull-side-weapon-upgrade"]
         },
         {
           "id": "stormhammer-pintle-weapon-upgrade-group",
@@ -2225,9 +1911,7 @@
           "description": "Add pintle mounted weapons",
           "collapsible": true,
           "defaultCollapsed": true,
-          "upgrades": [
-            "stormhammer-pintle-weapon-upgrade"
-          ]
+          "upgrades": ["stormhammer-pintle-weapon-upgrade"]
         },
         {
           "id": "stormhammer-wargear-upgrade-group",
@@ -2271,6 +1955,4330 @@
           "count": 3
         }
       ]
+    },
+    {
+      "id": "praetor-model",
+      "name": "Praetor",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 5,
+        "attacks": 5,
+        "wounds": 4,
+        "weaponSkill": 6,
+        "ballisticSkill": 5,
+        "leadership": 10,
+        "willpower": 9,
+        "cool": 9,
+        "intelligence": 9,
+        "armourSave": 2,
+        "invulnerableSave": 4
+      },
+      "description": "A Praetor, a high-ranking commander of the Legiones Astartes.",
+      "specialRules": [],
+      "specialRuleValues": "",
+      "subType": ["Command"],
+      "type": "Infantry",
+      "modelTypes": ["legion-officer-model", "legion-combi-weapon-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "praetor-jump-pack-model",
+      "name": "Praetor with Jump Pack",
+      "characteristics": {
+        "movement": 12,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 5,
+        "attacks": 5,
+        "wounds": 4,
+        "weaponSkill": 6,
+        "ballisticSkill": 5,
+        "leadership": 10,
+        "willpower": 9,
+        "cool": 9,
+        "intelligence": 9,
+        "armourSave": 2,
+        "invulnerableSave": 4
+      },
+      "description": "A Praetor equipped with a jump pack for enhanced mobility.",
+      "specialRules": ["bulky", "deep-strike"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "subType": ["Command", "Antigrav"],
+      "type": "Infantry",
+      "modelTypes": ["legion-officer-model", "legion-combi-weapon-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "cataphractii-praetor-model",
+      "name": "Cataphractii Praetor",
+      "characteristics": {
+        "movement": 6,
+        "strength": 4,
+        "toughness": 5,
+        "initiative": 5,
+        "attacks": 5,
+        "wounds": 5,
+        "weaponSkill": 6,
+        "ballisticSkill": 5,
+        "leadership": 10,
+        "willpower": 9,
+        "cool": 9,
+        "intelligence": 9,
+        "armourSave": 2,
+        "invulnerableSave": 4
+      },
+      "description": "A Praetor equipped with Cataphractii Terminator armour for maximum protection.",
+      "specialRules": ["bulky", "implacable-advance", "slow-and-purposeful"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "subType": ["Command", "Heavy"],
+      "type": "Infantry",
+      "modelTypes": ["legion-terminator", "legion-combi-weapon-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "combi-bolter",
+        "power-sword",
+        "frag-grenades",
+        "krak-grenades"
+      ]
+    },
+    {
+      "id": "tartaros-praetor-model",
+      "name": "Tartaros Praetor",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 5,
+        "initiative": 5,
+        "attacks": 5,
+        "wounds": 5,
+        "weaponSkill": 6,
+        "ballisticSkill": 5,
+        "leadership": 10,
+        "willpower": 9,
+        "cool": 9,
+        "intelligence": 9,
+        "armourSave": 2,
+        "invulnerableSave": 4
+      },
+      "description": "A Praetor equipped with Tartaros Terminator armour for enhanced mobility.",
+      "specialRules": ["bulky", "implacable-advance"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "subType": ["Command"],
+      "type": "Infantry",
+      "modelTypes": ["legion-terminator", "legion-combi-weapon-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "combi-bolter",
+        "power-sword",
+        "frag-grenades",
+        "krak-grenades"
+      ]
+    },
+    {
+      "id": "saturnine-praetor-model",
+      "name": "Saturnine Praetor",
+      "characteristics": {
+        "movement": 5,
+        "strength": 4,
+        "toughness": 6,
+        "initiative": 4,
+        "attacks": 4,
+        "wounds": 6,
+        "weaponSkill": 6,
+        "ballisticSkill": 5,
+        "leadership": 10,
+        "willpower": 9,
+        "cool": 9,
+        "intelligence": 9,
+        "armourSave": 2,
+        "invulnerableSave": 4
+      },
+      "description": "A Praetor equipped with the ultra-rare Saturnine Terminator armour for maximum protection and firepower.",
+      "specialRules": ["bulky", "implacable-advance", "slow-and-purposeful"],
+      "specialRuleValues": {
+        "bulky": 4
+      },
+      "subType": ["Command", "Heavy"],
+      "type": "Infantry",
+      "modelTypes": ["legion-terminator"],
+      "upgradeGroups": [],
+      "wargear": ["thermal-diffraction-field"],
+      "weapons": [
+        "saturnine-war-axe",
+        "saturnine-disruption-fist",
+        "frag-grenades",
+        "krak-grenades"
+      ]
+    },
+    {
+      "id": "centurion-model",
+      "name": "Centurion",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 5,
+        "attacks": 4,
+        "wounds": 3,
+        "weaponSkill": 5,
+        "ballisticSkill": 5,
+        "leadership": 9,
+        "willpower": 8,
+        "cool": 8,
+        "intelligence": 8,
+        "armourSave": 2,
+        "invulnerableSave": 5
+      },
+      "description": "A Centurion, a mid-ranking officer of the Legiones Astartes with field command authority.",
+      "specialRules": [],
+      "specialRuleValues": "",
+      "subType": ["Command"],
+      "type": "Infantry",
+      "modelTypes": ["legion-officer-model", "legion-combi-weapon-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "centurion-jump-pack-model",
+      "name": "Centurion with Jump Pack",
+      "characteristics": {
+        "movement": 12,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 5,
+        "attacks": 4,
+        "wounds": 3,
+        "weaponSkill": 5,
+        "ballisticSkill": 5,
+        "leadership": 9,
+        "willpower": 8,
+        "cool": 8,
+        "intelligence": 8,
+        "armourSave": 2,
+        "invulnerableSave": 5
+      },
+      "description": "A Centurion equipped with a jump pack for enhanced mobility and tactical flexibility.",
+      "specialRules": ["bulky", "deep-strike"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "subType": ["Command", "Antigrav"],
+      "type": "Infantry",
+      "modelTypes": ["legion-officer-model", "legion-combi-weapon-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "cataphractii-centurion-model",
+      "name": "Cataphractii Centurion",
+      "characteristics": {
+        "movement": 6,
+        "strength": 4,
+        "toughness": 5,
+        "initiative": 5,
+        "attacks": 4,
+        "wounds": 4,
+        "weaponSkill": 5,
+        "ballisticSkill": 5,
+        "leadership": 9,
+        "willpower": 8,
+        "cool": 8,
+        "intelligence": 8,
+        "armourSave": 2,
+        "invulnerableSave": 4
+      },
+      "description": "A Centurion equipped with Cataphractii Terminator armour for enhanced protection.",
+      "specialRules": ["bulky", "implacable-advance", "slow-and-purposeful"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "subType": ["Command", "Heavy"],
+      "type": "Infantry",
+      "modelTypes": ["legion-terminator", "legion-combi-weapon-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "combi-bolter",
+        "power-sword",
+        "frag-grenades",
+        "krak-grenades"
+      ]
+    },
+    {
+      "id": "tartaros-centurion-model",
+      "name": "Tartaros Centurion",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 5,
+        "initiative": 5,
+        "attacks": 4,
+        "wounds": 4,
+        "weaponSkill": 5,
+        "ballisticSkill": 5,
+        "leadership": 9,
+        "willpower": 8,
+        "cool": 8,
+        "intelligence": 8,
+        "armourSave": 2,
+        "invulnerableSave": 5
+      },
+      "description": "A Centurion equipped with Tartaros Terminator armour for enhanced mobility.",
+      "specialRules": ["bulky", "implacable-advance"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "subType": ["Command"],
+      "type": "Infantry",
+      "modelTypes": ["legion-terminator", "legion-combi-weapon-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "combi-bolter",
+        "power-sword",
+        "frag-grenades",
+        "krak-grenades"
+      ]
+    },
+    {
+      "id": "optae-model",
+      "name": "Optae",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 5,
+        "attacks": 3,
+        "wounds": 2,
+        "weaponSkill": 5,
+        "ballisticSkill": 4,
+        "leadership": 9,
+        "willpower": 8,
+        "cool": 8,
+        "intelligence": 8,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "An Optae, a junior officer of the Legiones Astartes responsible for squad-level command.",
+      "specialRules": [],
+      "specialRuleValues": "",
+      "subType": ["Command"],
+      "type": "Infantry",
+      "modelTypes": ["legion-sergeant"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "optae-jump-pack-model",
+      "name": "Optae with Jump Pack",
+      "characteristics": {
+        "movement": 12,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 5,
+        "attacks": 3,
+        "wounds": 2,
+        "weaponSkill": 5,
+        "ballisticSkill": 4,
+        "leadership": 9,
+        "willpower": 8,
+        "cool": 8,
+        "intelligence": 8,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "An Optae equipped with a jump pack for enhanced mobility and tactical deployment.",
+      "specialRules": ["bulky", "deep-strike"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "subType": ["Command", "Antigrav"],
+      "type": "Infantry",
+      "modelTypes": ["legion-sergeant"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "legionary-model",
+      "name": "Legionary",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 1,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 7,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "A Legionary, a standard Space Marine warrior forming the backbone of the Legiones Astartes.",
+      "specialRules": [],
+      "specialRuleValues": "",
+      "subType": [],
+      "type": "Infantry",
+      "modelTypes": ["legion-basic-marine"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "tactical-sergeant-model",
+      "name": "Tactical Sergeant",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 1,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "A Tactical Sergeant leading a Tactical Squad with enhanced leadership capabilities.",
+      "specialRules": [],
+      "specialRuleValues": "",
+      "subType": ["Sergeant"],
+      "type": "Infantry",
+      "modelTypes": ["legion-sergeant", "legion-combi-weapon-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "despoiler-legionary-model",
+      "name": "Despoiler Legionary",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 2,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 7,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "A Despoiler Legionary, a close-quarters specialist trained for boarding actions and assault warfare.",
+      "specialRules": [],
+      "specialRuleValues": "",
+      "subType": [],
+      "type": "Infantry",
+      "modelTypes": ["legion-assault-marine"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolt-pistol", "chainsword", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "despoiler-sergeant-model",
+      "name": "Despoiler Sergeant",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 2,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "A Despoiler Sergeant leading a Despoiler Squad with enhanced leadership and close-quarters expertise.",
+      "specialRules": [],
+      "specialRuleValues": "",
+      "subType": ["Sergeant"],
+      "type": "Infantry",
+      "modelTypes": ["legion-sergeant"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolt-pistol", "chainsword", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "assault-legionary-model",
+      "name": "Assault Legionary",
+      "characteristics": {
+        "movement": 12,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 2,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 7,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "An Assault Legionary equipped with a jump pack for rapid deployment and close-quarters assault tactics.",
+      "specialRules": ["bulky", "deep-strike", "vanguard"],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 2
+      },
+      "subType": ["Antigrav"],
+      "type": "Infantry",
+      "modelTypes": ["legion-assault-marine"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolt-pistol", "chainsword", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "assault-sergeant-model",
+      "name": "Assault Sergeant",
+      "characteristics": {
+        "movement": 12,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 2,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "An Assault Sergeant leading an Assault Squad with jump pack mobility and enhanced leadership capabilities.",
+      "specialRules": ["bulky", "deep-strike", "vanguard"],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 2
+      },
+      "subType": ["Sergeant", "Antigrav"],
+      "type": "Infantry",
+      "modelTypes": ["legion-sergeant"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolt-pistol", "chainsword", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "breacher-legionary-model",
+      "name": "Breacher Legionary",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 1,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 7,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": 5
+      },
+      "description": "A Breacher Legionary equipped with boarding shields and specialized wargear for fortress assault and boarding actions.",
+      "specialRules": ["line"],
+      "specialRuleValues": {
+        "line": 1
+      },
+      "subType": ["Heavy"],
+      "type": "Infantry",
+      "modelTypes": ["legion-breacher-marine"],
+      "upgradeGroups": [],
+      "wargear": ["boarding-shield"],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "breacher-sergeant-model",
+      "name": "Breacher Sergeant",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 1,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": 5
+      },
+      "description": "A Breacher Sergeant leading a Breacher Squad with enhanced leadership and specialized boarding assault capabilities.",
+      "specialRules": ["line"],
+      "specialRuleValues": {
+        "line": 1
+      },
+      "subType": ["Sergeant", "Heavy"],
+      "type": "Infantry",
+      "modelTypes": ["legion-sergeant", "legion-combi-weapon-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": ["boarding-shield"],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "tactical-support-legionary-model",
+      "name": "Tactical Support Legionary",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 1,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 7,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "A Tactical Support Legionary specialized in providing fire support with heavy weapons and specialized equipment.",
+      "specialRules": [],
+      "specialRuleValues": "",
+      "subType": [],
+      "type": "Infantry",
+      "modelTypes": ["legion-support-marine"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolt-pistol", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "tactical-support-sergeant-model",
+      "name": "Tactical Support Sergeant",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 1,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "A Tactical Support Sergeant leading a fire support squad with enhanced leadership and tactical coordination.",
+      "specialRules": [],
+      "specialRuleValues": "",
+      "subType": ["Sergeant"],
+      "type": "Infantry",
+      "modelTypes": ["legion-sergeant"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolt-pistol", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "heavy-support-legionary-model",
+      "name": "Heavy Support Legionary",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 1,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 7,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "A Heavy Support Legionary specialized in operating heavy weapons to provide devastating fire support against armored targets.",
+      "specialRules": ["support-unit"],
+      "specialRuleValues": {
+        "support-unit": 1
+      },
+      "subType": [],
+      "type": "Infantry",
+      "modelTypes": ["legion-heavy-support-marine"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolt-pistol", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "heavy-support-sergeant-model",
+      "name": "Heavy Support Sergeant",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 1,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 8,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "A Heavy Support Sergeant leading a heavy weapons team with enhanced leadership and tactical coordination for heavy fire support.",
+      "specialRules": ["support-unit"],
+      "specialRuleValues": {
+        "support-unit": 1
+      },
+      "subType": ["Sergeant"],
+      "type": "Infantry",
+      "modelTypes": ["legion-sergeant"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolt-pistol", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "legion-rapier-gunner-model",
+      "name": "Legion Rapier Gunner",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 1,
+        "wounds": 1,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 7,
+        "willpower": 7,
+        "cool": 8,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "A Legion Rapier Gunner operating a Rapier Carrier as part of a specialized artillery crew.",
+      "specialRules": ["rapier-crew", "slow-and-purposeful", "support-unit"],
+      "specialRuleValues": {
+        "support-unit": 1
+      },
+      "subType": ["Sergeant"],
+      "type": "Infantry",
+      "modelTypes": ["legion-rapier-crew"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "legion-rapier-carrier-model",
+      "name": "Legion Rapier Carrier",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 6,
+        "initiative": 1,
+        "attacks": 0,
+        "wounds": 2,
+        "weaponSkill": 1,
+        "ballisticSkill": 4,
+        "leadership": 1,
+        "willpower": 1,
+        "cool": 1,
+        "intelligence": 1,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "A Legion Rapier Carrier, a semi-automated weapons platform operated by Legionaries for heavy fire support.",
+      "specialRules": [
+        "rapier-crew",
+        "bulky",
+        "slow-and-purposeful",
+        "support-unit"
+      ],
+      "specialRuleValues": {
+        "bulky": 3,
+        "support-unit": 1
+      },
+      "subType": [],
+      "type": "Infantry",
+      "modelTypes": ["legion-rapier-platform"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["gravis-heavy-bolter-battery"]
+    },
+    {
+      "id": "apothecary-model",
+      "name": "Apothecary",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 2,
+        "wounds": 2,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 7,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 8,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "A Legion Apothecary, a specialized medical officer responsible for battlefield healing and gene-seed recovery.",
+      "specialRules": ["medic"],
+      "specialRuleValues": {
+        "medic": 4
+      },
+      "subType": ["Specialist"],
+      "type": "Infantry",
+      "modelTypes": ["legion-apothecary"],
+      "upgradeGroups": [],
+      "wargear": ["narthecium"],
+      "weapons": ["bolt-pistol", "chainsword", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "techmarine-model",
+      "name": "Techmarine",
+      "characteristics": {
+        "movement": 7,
+        "strength": 4,
+        "toughness": 4,
+        "initiative": 4,
+        "attacks": 2,
+        "wounds": 2,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 7,
+        "willpower": 7,
+        "cool": 7,
+        "intelligence": 8,
+        "armourSave": 2,
+        "invulnerableSave": null
+      },
+      "description": "A Legion Techmarine, a specialist member marked for induction into the Mechanicum, responsible for maintaining wargear and vehicles.",
+      "specialRules": ["battlesmith"],
+      "specialRuleValues": {
+        "battlesmith": 2
+      },
+      "subType": ["Specialist"],
+      "type": "Infantry",
+      "modelTypes": ["legion-techmarine"],
+      "upgradeGroups": [],
+      "wargear": ["servo-arm"],
+      "weapons": ["bolt-pistol", "power-axe", "frag-grenades", "krak-grenades"]
+    },
+    {
+      "id": "contemptor-dreadnought-model",
+      "name": "Contemptor Dreadnought",
+      "characteristics": {
+        "movement": 8,
+        "strength": 7,
+        "toughness": 7,
+        "initiative": 4,
+        "attacks": 4,
+        "wounds": 6,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 12,
+        "willpower": 7,
+        "cool": 10,
+        "intelligence": 5,
+        "armourSave": 2,
+        "invulnerableSave": 5
+      },
+      "description": "A Contemptor Dreadnought, incorporating Dreadnought technologies and arcane systems from the ancient lore of the Legio Cybernetica.",
+      "specialRules": ["bulky", "explodes", "implacable-advance"],
+      "specialRuleValues": {
+        "bulky": 6,
+        "explodes": 5
+      },
+      "subType": [],
+      "type": "Walker",
+      "modelTypes": ["legion-contemptor-dreadnought"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": []
+    },
+    {
+      "id": "deredeo-dreadnought-model",
+      "name": "Deredeo Dreadnought",
+      "characteristics": {
+        "movement": 7,
+        "strength": 6,
+        "toughness": 7,
+        "initiative": 4,
+        "attacks": 2,
+        "wounds": 6,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 12,
+        "willpower": 7,
+        "cool": 10,
+        "intelligence": 5,
+        "armourSave": 2,
+        "invulnerableSave": 5
+      },
+      "description": "A Deredeo Dreadnought, a heavy weapons platform designed to combine superior firepower with the flexibility and durability of a Dreadnought chassis.",
+      "specialRules": ["bulky", "explodes"],
+      "specialRuleValues": {
+        "bulky": 7,
+        "explodes": 5
+      },
+      "subType": ["Heavy"],
+      "type": "Walker",
+      "modelTypes": ["legion-deredeo-dreadnought"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "anvilus-autocannon-battery",
+        "twin-heavy-bolter",
+        "aiolos-missile-launcher"
+      ]
+    },
+    {
+      "id": "leviathan-dreadnought-model",
+      "name": "Leviathan Dreadnought",
+      "characteristics": {
+        "movement": 6,
+        "strength": 8,
+        "toughness": 8,
+        "initiative": 4,
+        "attacks": 4,
+        "wounds": 7,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 12,
+        "willpower": 7,
+        "cool": 10,
+        "intelligence": 5,
+        "armourSave": 2,
+        "invulnerableSave": 5
+      },
+      "description": "A Leviathan Dreadnought, an alternative development of the Contemptor that places an ultimately lethal strain upon its occupant for the destruction they wrought.",
+      "specialRules": ["bulky", "explodes", "implacable-advance"],
+      "specialRuleValues": {
+        "bulky": 7,
+        "explodes": 5
+      },
+      "subType": ["Heavy"],
+      "type": "Walker",
+      "modelTypes": ["legion-leviathan-dreadnought"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["heavy-flamer", "heavy-flamer"]
+    },
+    {
+      "id": "saturnine-dreadnought-model",
+      "name": "Saturnine Dreadnought",
+      "characteristics": {
+        "movement": 6,
+        "strength": 8,
+        "toughness": 8,
+        "initiative": 3,
+        "attacks": 2,
+        "wounds": 8,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "leadership": 12,
+        "willpower": 7,
+        "cool": 10,
+        "intelligence": 5,
+        "armourSave": 2,
+        "invulnerableSave": 5
+      },
+      "description": "A Saturnine Dreadnought, an extension of the technology utilized to develop the standardised Saturnine Terminator armour, requiring vast generators to power its potent weaponry.",
+      "specialRules": ["bulky", "explodes"],
+      "specialRuleValues": {
+        "bulky": 8,
+        "explodes": 4
+      },
+      "subType": ["Heavy"],
+      "type": "Walker",
+      "modelTypes": ["legion-saturnine-dreadnought"],
+      "upgradeGroups": [],
+      "wargear": ["thermal-diffraction-field"],
+      "weapons": [
+        "disintegrator-cannon",
+        "heavy-plasma-bombard",
+        "photonic-incinerator",
+        "photonic-incinerator"
+      ]
+    },
+    {
+      "id": "rhino-model",
+      "name": "Rhino",
+      "characteristics": {
+        "movement": 12,
+        "strength": null,
+        "toughness": null,
+        "initiative": null,
+        "attacks": null,
+        "wounds": null,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "leadership": null,
+        "willpower": null,
+        "cool": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 12,
+        "sideArmor": 11,
+        "rearArmor": 10,
+        "hullPoints": 5
+      },
+      "description": "A Rhino armoured personnel carrier, the most widely used transport in the Imperium, based on ancient STC technology.",
+      "specialRules": ["light-transport", "auto-repair"],
+      "specialRuleValues": {
+        "auto-repair": 4
+      },
+      "subType": ["Transport"],
+      "type": "Vehicle",
+      "modelTypes": ["legion-transport-vehicle"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["pintle-mounted-bolter", "pintle-mounted-bolter"],
+      "transportCapacity": 12,
+      "accessPoints": ["Side Facings", "Rear Facing"]
+    },
+    {
+      "id": "drop-pod-model",
+      "name": "Drop Pod",
+      "characteristics": {
+        "movement": null,
+        "strength": null,
+        "toughness": null,
+        "initiative": null,
+        "attacks": null,
+        "wounds": null,
+        "weaponSkill": null,
+        "ballisticSkill": 2,
+        "leadership": null,
+        "willpower": null,
+        "cool": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 12,
+        "sideArmor": 12,
+        "rearArmor": 12,
+        "hullPoints": 4
+      },
+      "description": "A Drop Pod, a self-contained orbital descent capsule designed for surprise attacks and combat drops into active war zones.",
+      "specialRules": [
+        "light-transport",
+        "orbital-assault-vehicle",
+        "impact-reactive-doors"
+      ],
+      "specialRuleValues": {},
+      "subType": ["Transport"],
+      "type": "Vehicle",
+      "modelTypes": ["legion-orbital-assault-vehicle"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["pintle-mounted-combi-bolter"],
+      "transportCapacity": 10,
+      "accessPoints": ["All Facings"]
+    },
+    {
+      "id": "termite-model",
+      "name": "Termite",
+      "characteristics": {
+        "movement": 6,
+        "strength": null,
+        "toughness": null,
+        "initiative": null,
+        "attacks": null,
+        "wounds": null,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "leadership": null,
+        "willpower": null,
+        "cool": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 12,
+        "sideArmor": 12,
+        "rearArmor": 10,
+        "hullPoints": 5
+      },
+      "description": "A Termite assault drill, originally designed for rooting out burrowing xenos species, now used for underground assault operations beneath enemy bastions.",
+      "specialRules": ["light-transport", "deep-strike"],
+      "specialRuleValues": {},
+      "subType": ["Transport"],
+      "type": "Vehicle",
+      "modelTypes": ["legion-underground-assault-vehicle"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "pintle-mounted-combi-bolter",
+        "pintle-mounted-combi-bolter",
+        "centreline-mounted-melta-cutters"
+      ],
+      "transportCapacity": 12,
+      "accessPoints": ["Side Facings"]
+    },
+    {
+      "id": "damocles-command-rhino-model",
+      "name": "Damocles Command Rhino",
+      "characteristics": {
+        "movement": 12,
+        "strength": null,
+        "toughness": null,
+        "initiative": null,
+        "attacks": null,
+        "wounds": null,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "leadership": null,
+        "willpower": null,
+        "cool": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 12,
+        "sideArmor": 11,
+        "rearArmor": 10,
+        "hullPoints": 5
+      },
+      "description": "A Damocles Command Rhino, equipped with advanced communication systems and command equipment to serve as a mobile command and control vehicle.",
+      "specialRules": [
+        "light-transport",
+        "auto-repair",
+        "mobile-command-vehicle"
+      ],
+      "specialRuleValues": {
+        "auto-repair": 5
+      },
+      "subType": ["Transport"],
+      "type": "Vehicle",
+      "modelTypes": ["legion-command-vehicle"],
+      "upgradeGroups": [],
+      "wargear": ["command-vox-relay"],
+      "weapons": ["pintle-mounted-bolter", "pintle-mounted-bolter"],
+      "transportCapacity": 6,
+      "accessPoints": ["Side Facings", "Rear Facing"]
+    },
+    {
+      "id": "librarian-model",
+      "name": "Librarian",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 5,
+        "ballisticSkill": 5,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 3,
+        "initiative": 5,
+        "attacks": 4,
+        "leadership": 8,
+        "cool": 7,
+        "willpower": 9,
+        "intelligence": 8,
+        "armourSave": 2,
+        "invulnerableSave": 5,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "A Space Marine Librarian, a battle-psyker who has fused esoteric psychic powers with superhuman physical prowess and tactical acumen.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": ["Command"],
+      "type": "Infantry",
+      "modelTypes": ["legion-psyker", "legion-pistol-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "force-weapon",
+        "bolt-pistol",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "legion-champion-model",
+      "name": "Legion Champion",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 6,
+        "ballisticSkill": 5,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 3,
+        "initiative": 5,
+        "attacks": 5,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 8,
+        "intelligence": 8,
+        "armourSave": 2,
+        "invulnerableSave": 5,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "A Legion Champion, chosen from the best blades of the Legion, each champion bears the honour of their chapter or company in battle, and is armed and armoured in the finest panoply of war.",
+      "specialRules": ["never-back-down"],
+      "specialRuleValues": {},
+      "subType": ["Command"],
+      "type": "Infantry",
+      "modelTypes": ["legion-champion"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "paragon-blade",
+        "volkite-serpenta",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "vigilator-model",
+      "name": "Vigilator",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 4,
+        "ballisticSkill": 7,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 3,
+        "initiative": 5,
+        "attacks": 3,
+        "leadership": 9,
+        "cool": 8,
+        "willpower": 8,
+        "intelligence": 8,
+        "armourSave": 2,
+        "invulnerableSave": 5,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Highly skilled as watchers and hunters among their brethren, Vigilators are the eyes of their Legion on the ground, their wisdom paramount in scouting out the foe's disposition and strength, and determining the best place to strike.",
+      "specialRules": ["infiltrate"],
+      "specialRuleValues": {
+        "infiltrate": 9
+      },
+      "subType": ["Command"],
+      "type": "Infantry",
+      "modelTypes": ["legion-vigilator"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "nemesis-rifle",
+        "bolt-pistol",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "esoterist-model",
+      "name": "Esoterist",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 5,
+        "ballisticSkill": 5,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 3,
+        "initiative": 5,
+        "attacks": 4,
+        "leadership": 7,
+        "cool": 8,
+        "willpower": 10,
+        "intelligence": 8,
+        "armourSave": 2,
+        "invulnerableSave": 5,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "A Legion Esoterist, one who has delved into the forbidden lore and dark knowledge of the Warp, gaining tremendous but dangerous power through their study of the Anathemata discipline.",
+      "specialRules": ["anathemata-discipline"],
+      "specialRuleValues": {},
+      "subType": ["Command"],
+      "type": "Infantry",
+      "modelTypes": ["legion-esoterist"],
+      "upgradeGroups": [],
+      "wargear": ["anathemata-discipline"],
+      "weapons": [
+        "force-weapon",
+        "archaeotech-pistol",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "master-of-signals-model",
+      "name": "Master of Signals",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 5,
+        "ballisticSkill": 5,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 3,
+        "initiative": 5,
+        "attacks": 4,
+        "leadership": 8,
+        "cool": 7,
+        "willpower": 7,
+        "intelligence": 10,
+        "armourSave": 2,
+        "invulnerableSave": 5,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "A vital link between those desperately fighting and supporting elements of the Legion in battle, the Master of Signals is a strategic and communications specialist carrying a command vox relay, receiving constant positional updates from forces in the vicinity.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": ["Command"],
+      "type": "Infantry",
+      "modelTypes": ["legion-master-of-signals", "legion-pistol-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": ["command-vox-relay"],
+      "weapons": ["bolt-pistol", "frag-grenades", "krak-grenades"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "praevian-model",
+      "name": "Praevian",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 5,
+        "ballisticSkill": 5,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 3,
+        "initiative": 5,
+        "attacks": 4,
+        "leadership": 9,
+        "cool": 8,
+        "willpower": 8,
+        "intelligence": 9,
+        "armourSave": 2,
+        "invulnerableSave": 5,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Praevians are the keeper of the Legion's bound automata, those soulless machines sworn to the Legion's service and inducted into their ranks as honorary Legionaries after decades of service. Initiated into the rites of the Mechanicum's Cybernetica Tech-arcana, these officers oversee the maintenance and programming of their charges.",
+      "specialRules": ["battlesmith", "feel-no-pain", "master-of-automata"],
+      "specialRuleValues": {
+        "battlesmith": 1,
+        "feel-no-pain": 5
+      },
+      "subType": ["Command"],
+      "type": "Infantry",
+      "modelTypes": ["legion-praevian", "legion-pistol-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": ["cortex-controller", "cyber-familiar"],
+      "weapons": ["bolt-pistol", "frag-grenades", "krak-grenades"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "moritat-model",
+      "name": "Moritat",
+      "characteristics": {
+        "movement": 12,
+        "weaponSkill": 4,
+        "ballisticSkill": 6,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 3,
+        "initiative": 5,
+        "attacks": 3,
+        "leadership": 8,
+        "cool": 9,
+        "willpower": 8,
+        "intelligence": 8,
+        "armourSave": 2,
+        "invulnerableSave": 5,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Said by some to be no less than death incarnate, and by others to be dishonourable murderers with no place in the Imperium's order of battle, moritates are lone killers operating outside the Legion's usual command structures at the behest, or at least sufferance, of its high commanders.",
+      "specialRules": ["bulky", "deep-strike", "firestorm"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "subType": ["Specialist", "Antigrav"],
+      "type": "Infantry",
+      "modelTypes": ["legion-moritat"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "overcharged-volkite-serpenta",
+        "overcharged-volkite-serpenta",
+        "frag-grenades",
+        "krak-grenades",
+        "rad-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "siege-breaker-model",
+      "name": "Siege Breaker",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 5,
+        "ballisticSkill": 5,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 3,
+        "initiative": 5,
+        "attacks": 4,
+        "leadership": 9,
+        "cool": 9,
+        "willpower": 8,
+        "intelligence": 8,
+        "armourSave": 2,
+        "invulnerableSave": 5,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "The wreckers of cities, the bringers-down of fortress walls and the shatterers of strongholds, Siege Breakers are officers of the Legion whose specialty is precisely applied destruction against strategic targets. Demonstrating an eye for detail, such warriors appraise all data available to them, identifying structural weaknesses and directing the heavy guns under their charge accordingly.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": ["Command", "Heavy"],
+      "type": "Infantry",
+      "modelTypes": ["legion-siege-breaker", "legion-pistol-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": ["cognis-signum", "augury-scanner"],
+      "weapons": [
+        "bolt-pistol",
+        "thunder-hammer",
+        "frag-grenades",
+        "krak-grenades",
+        "phosphex-bombs"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "overseer-model",
+      "name": "Overseer",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 5,
+        "ballisticSkill": 5,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 3,
+        "initiative": 5,
+        "attacks": 4,
+        "leadership": 9,
+        "cool": 9,
+        "willpower": 8,
+        "intelligence": 8,
+        "armourSave": 2,
+        "invulnerableSave": 5,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Overseers allowed for the integration of formations drawn from indentured soldiery into Legion strike forces. In some cases, such an act was carried out in honour of a newly formed alliance or to demonstrate the fealty of such forces to the Legion. In other situations, local militia would be pressed into service, allowing Legions to achieve their objectives at a minimal cost in Legionary lives.",
+      "specialRules": ["fear", "master-of-auxilia"],
+      "specialRuleValues": {
+        "fear": 1
+      },
+      "subType": ["Command"],
+      "type": "Infantry",
+      "modelTypes": ["legion-overseer", "legion-pistol-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "bolt-pistol",
+        "power-lash",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "herald-model",
+      "name": "Herald",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 5,
+        "ballisticSkill": 5,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 3,
+        "initiative": 5,
+        "attacks": 4,
+        "leadership": 9,
+        "cool": 9,
+        "willpower": 8,
+        "intelligence": 8,
+        "armourSave": 2,
+        "invulnerableSave": 5,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "As the wars of the Horus Heresy spread to consume the galaxy, billions fought and died under the banners of warlords they had never seen or heard first-hand, and even among those such as the Legiones Astartes, near-religious fervour became common for those artefacts touched by Primarch, Warmaster or Regent. On warfronts across the galaxy, Heralds stood proud and unwavering at the head of the Legion forces, carrying high icons given as a sign of authority and favour, and all knew that the words and deeds of these emissaries carried the highest authority.",
+      "specialRules": ["fear"],
+      "specialRuleValues": {
+        "fear": 1
+      },
+      "subType": ["Command"],
+      "type": "Infantry",
+      "modelTypes": ["legion-herald"],
+      "upgradeGroups": [],
+      "wargear": ["icon-of-allegiance"],
+      "weapons": [
+        "power-sword",
+        "bolt-pistol",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "chaplain-model",
+      "name": "Chaplain",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 5,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 3,
+        "initiative": 5,
+        "attacks": 4,
+        "leadership": 9,
+        "cool": 10,
+        "willpower": 8,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": 5,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "The Chaplain Order, established towards the end of the Great Crusade, was intended to create a cadre of fearsome veteran warriors who would enforce a cohesion of doctrine and belief in the scattered and increasingly idiosyncratic Legions far from Terra. Their was a mortuary symbol of sacrifice graven in the form of an ornate staff, mace or axe: the Crozius Arcanum, which served as both a badge of office and a deadly weapon.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": ["Command"],
+      "type": "Infantry",
+      "modelTypes": ["legion-chaplain", "legion-pistol-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "bolt-pistol",
+        "crozius-arcanum",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "chosen-champion-model",
+      "name": "Chosen Champion",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 5,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 4,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Chosen Champions are the leaders of elite Praetorian Command Squads, veteran warriors selected for their exceptional skill and unwavering loyalty to serve as bodyguards for Space Marine commanders and champions.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": ["Champion", "Sergeant"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-chosen-champion",
+        "legion-sergeant-upgradeable",
+        "legion-pistol-upgradeable",
+        "legion-combi-weapon-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "chosen-model",
+      "name": "Chosen",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 5,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 3,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Chosen are elite warriors selected to serve in Praetorian Command Squads, highly disciplined and worthy warriors entrusted with the finest wargear available to the Legion's rank and file, serving as both bodyguards and standard bearers.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": [],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-chosen",
+        "legion-sergeant-upgradeable",
+        "legion-pistol-upgradeable",
+        "legion-combi-weapon-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "chosen-champion-jump-pack-model",
+      "name": "Chosen Champion with Jump Pack",
+      "characteristics": {
+        "movement": 12,
+        "weaponSkill": 5,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 4,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Chosen Champions with Jump Packs lead mobile Praetorian Command Squads, utilizing additional mobility to seek out enemy warlords and champions, descending upon them with the finest weapons available to the Legion armoury.",
+      "specialRules": ["bulky", "deep-strike"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "subType": ["Champion", "Sergeant", "Antigrav"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-chosen-champion-jump-pack",
+        "legion-sergeant-upgradeable",
+        "legion-pistol-upgradeable",
+        "legion-combi-weapon-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "chosen-jump-pack-model",
+      "name": "Chosen with Jump Pack",
+      "characteristics": {
+        "movement": 12,
+        "weaponSkill": 5,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 3,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Chosen with Jump Packs are exemplary mobile warriors who provide a martial example for their brethren to aspire to as they strike down their foes, before planting the colours of their Legion over the shattered corpses.",
+      "specialRules": ["bulky", "deep-strike"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "subType": ["Antigrav"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-chosen-jump-pack",
+        "legion-sergeant-upgradeable",
+        "legion-pistol-upgradeable",
+        "legion-combi-weapon-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "veteran-champion-model",
+      "name": "Veteran Champion",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 5,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 3,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Veteran Champions lead Centurion Command Squads, experienced warriors who have served decades of warfare and provide personal protection as well as fulfilling adjutant and advisory roles for lower-ranking officers.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": ["Champion", "Sergeant"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-veteran-champion",
+        "legion-sergeant-upgradeable",
+        "legion-pistol-upgradeable",
+        "legion-combi-weapon-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "veteran-model",
+      "name": "Veteran",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 5,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 3,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Veterans are trusted warriors from their company who accompany lower-ranking officers into battle, representing some of the finest unsung units of the Horus Heresy with decades of warfare experience.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": [],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-veteran",
+        "legion-sergeant-upgradeable",
+        "legion-pistol-upgradeable",
+        "legion-combi-weapon-upgradeable",
+        "legion-equipment-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "tartaros-chosen-champion-model",
+      "name": "Tartaros Chosen Champion",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 5,
+        "ballisticSkill": 4,
+        "strength": 5,
+        "toughness": 5,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 4,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": 5,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Tartaros Chosen Champions lead elite Terminator command squads when both speed and survivability are required. Clad in the most technologically advanced Terminator armor variant, they provide swift and decisive leadership in the most critical engagements.",
+      "specialRules": ["bulky", "implacable-advance"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "subType": ["Champion", "Sergeant"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-tartaros-chosen-champion",
+        "legion-terminator",
+        "legion-combi-weapon-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["combi-bolter", "power-weapon"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "tartaros-chosen-model",
+      "name": "Tartaros Chosen",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 5,
+        "ballisticSkill": 4,
+        "strength": 5,
+        "toughness": 5,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 3,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": 5,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Tartaros Chosen are elite warriors equipped with the most advanced Terminator armor patterns. They deploy where speed and protection are both required, ensuring that swift blows can be dealt to secure victory in the most demanding engagements.",
+      "specialRules": ["bulky", "implacable-advance"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "subType": [],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-tartaros-chosen",
+        "legion-terminator",
+        "legion-combi-weapon-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["combi-bolter", "power-weapon"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "cataphractii-chosen-champion-model",
+      "name": "Cataphractii Chosen Champion",
+      "characteristics": {
+        "movement": 6,
+        "weaponSkill": 5,
+        "ballisticSkill": 4,
+        "strength": 5,
+        "toughness": 5,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 4,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": 4,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Cataphractii Chosen Champions lead heavy Terminator command squads, using their sheer bulk and durability to protect the life of their commander. Able to withstand even the most vicious blows and bearing the finest weaponry in the Legion's armoury, they embody the finest qualities of the Legiones Astartes.",
+      "specialRules": ["bulky", "implacable-advance", "slow-and-purposeful"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "subType": ["Champion", "Sergeant", "Heavy"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-cataphractii-chosen-champion",
+        "legion-terminator",
+        "legion-combi-weapon-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["volkite-charger", "power-weapon"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "cataphractii-chosen-model",
+      "name": "Cataphractii Chosen",
+      "characteristics": {
+        "movement": 6,
+        "weaponSkill": 5,
+        "ballisticSkill": 4,
+        "strength": 5,
+        "toughness": 5,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 3,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": 4,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Cataphractii Chosen are exemplary warriors who embody the finest qualities of the Legiones Astartes, valiantly spearheading assaults into the most hazardous of war zones holding the Legion's banners high. Many veteran Legionaries prefer the familiarity of this earliest mark of Terminator armour.",
+      "specialRules": ["bulky", "implacable-advance", "slow-and-purposeful"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "subType": ["Heavy"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-cataphractii-chosen",
+        "legion-terminator",
+        "legion-combi-weapon-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["volkite-charger", "power-weapon"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "veteran-sergeant-model",
+      "name": "Veteran Sergeant",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 4,
+        "ballisticSkill": 5,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 2,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Veteran Sergeants lead experienced tactical squads, warriors who have served since the early days of the Great Crusade and refuse to succumb to the brutality of their methodology of war. They apply deadly firepower where it is required, setting an example to their less-experienced brethren.",
+      "specialRules": ["line"],
+      "specialRuleValues": {
+        "line": 1
+      },
+      "subType": ["Sergeant"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-veteran-sergeant",
+        "legion-sergeant-upgradeable",
+        "legion-pistol-upgradeable",
+        "legion-combi-weapon-upgradeable",
+        "legion-equipment-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "veteran-tactical-model",
+      "name": "Veteran",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 4,
+        "ballisticSkill": 5,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 2,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Veterans are experienced warriors who form the cadre of tactical squads, those who have served since the early days of the Great Crusade. They refuse to succumb to the brutality of war and are permitted to carry specialist or more dangerous weapons, applying deadly firepower where required.",
+      "specialRules": ["line"],
+      "specialRuleValues": {
+        "line": 1
+      },
+      "subType": [],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-veteran-tactical",
+        "legion-sergeant-upgradeable",
+        "legion-pistol-upgradeable",
+        "legion-combi-weapon-upgradeable",
+        "legion-equipment-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["bolter", "bolt-pistol", "frag-grenades", "krak-grenades"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "veteran-assault-sergeant-model",
+      "name": "Veteran Assault Sergeant",
+      "characteristics": {
+        "movement": 12,
+        "weaponSkill": 5,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 3,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Veteran Assault Sergeants lead exceptional and experienced fighters within the ranks of the Space Marine Legions, elite units to which other warriors aspire to ascend and from which future commanders are drawn. With the pick of the armoury and Warhawk jump packs, they deploy at the spearhead of assaults.",
+      "specialRules": ["bulky", "deep-strike", "vanguard"],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 3
+      },
+      "subType": ["Sergeant", "Antigrav"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-veteran-assault-sergeant",
+        "legion-sergeant-upgradeable",
+        "legion-pistol-upgradeable",
+        "legion-assault-marine"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "bolt-pistol",
+        "chainsword",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "assault-veteran-model",
+      "name": "Assault Veteran",
+      "characteristics": {
+        "movement": 12,
+        "weaponSkill": 5,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 3,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Assault Veterans are exceptional and experienced fighters able to select from a wide variety of killing tools and Warhawk jump packs, allowing them to best leverage their skill at arms. Given a degree of tactical freedom, they seek out the most steadfast foes and break enemy defensive positions.",
+      "specialRules": ["bulky", "deep-strike", "vanguard"],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 3
+      },
+      "subType": ["Antigrav"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-assault-veteran",
+        "legion-sergeant-upgradeable",
+        "legion-pistol-upgradeable",
+        "legion-assault-marine"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "bolt-pistol",
+        "chainsword",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "seeker-sergeant-model",
+      "name": "Seeker Sergeant",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 4,
+        "ballisticSkill": 5,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 1,
+        "initiative": 4,
+        "attacks": 1,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Seeker Sergeants lead specialised sniper units whose principal task is to identify an enemy's command structure and slay them with well-placed shots. The Alpha Legion are said to have first crystallised this tactic, chosen primarily on pure merit as the best shots in their Legion.",
+      "specialRules": ["infiltrate"],
+      "specialRuleValues": {
+        "infiltrate": 9
+      },
+      "subType": ["Sergeant", "Skirmish"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-seeker-sergeant",
+        "legion-sergeant-upgradeable",
+        "legion-pistol-upgradeable",
+        "legion-combi-weapon-upgradeable",
+        "legion-equipment-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "kraken-bolter",
+        "bolt-pistol",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "seeker-model",
+      "name": "Seeker",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 4,
+        "ballisticSkill": 5,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 1,
+        "initiative": 4,
+        "attacks": 1,
+        "leadership": 7,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Seekers are specialised snipers equipped with special issue ammunition to better deal with their chosen victims. They are chosen primarily on pure merit as the best shots in their Legion, tasked with identifying warlords, officers, priests, and demagogues to eliminate with precision fire.",
+      "specialRules": ["infiltrate"],
+      "specialRuleValues": {
+        "infiltrate": 9
+      },
+      "subType": ["Skirmish"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-seeker",
+        "legion-sergeant-upgradeable",
+        "legion-pistol-upgradeable",
+        "legion-combi-weapon-upgradeable",
+        "legion-equipment-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "kraken-bolter",
+        "bolt-pistol",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "cataphractii-terminator-sergeant-model",
+      "name": "Cataphractii Terminator Sergeant",
+      "characteristics": {
+        "movement": 6,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 5,
+        "toughness": 5,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 3,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": 4,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Cataphractii Terminator Sergeants lead heavy assault squads clad in one of the first issued Tactical Dreadnought Armour patterns. These suits are heavily protected with slablike ceramite pauldrons housing additional shield generators, augmenting the toughness of even a Legiones Astartes warrior.",
+      "specialRules": [
+        "bulky",
+        "implacable-advance",
+        "slow-and-purposeful",
+        "vanguard"
+      ],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 3
+      },
+      "subType": ["Sergeant", "Heavy"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-cataphractii-terminator-sergeant",
+        "legion-terminator",
+        "legion-combi-weapon-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["volkite-charger", "power-weapon"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "cataphractii-terminator-model",
+      "name": "Cataphractii Terminator",
+      "characteristics": {
+        "movement": 6,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 5,
+        "toughness": 5,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 2,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": 4,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Cataphractii Terminators are warriors clad in heavily protected Tactical Dreadnought Armour with slablike ceramite pauldrons and additional shield generators. The armour's design has the unfortunate side effect of overstraining its exoskeleton and slowing the wearer considerably, yet all Legions maintained significant numbers among their ranks.",
+      "specialRules": [
+        "bulky",
+        "implacable-advance",
+        "slow-and-purposeful",
+        "vanguard"
+      ],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 3
+      },
+      "subType": ["Heavy"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-cataphractii-terminator",
+        "legion-terminator",
+        "legion-combi-weapon-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["volkite-charger", "power-weapon"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "tartaros-terminator-sergeant-model",
+      "name": "Tartaros Terminator Sergeant",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 5,
+        "toughness": 5,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 3,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": 5,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Tartaros Terminator Sergeants lead mobile heavy assault squads clad in the ultimate advance in personal armour technology. Perhaps the most advanced form of Terminator armour ever designed, Tartaros armour offers greater durability and protection than power armour while sacrificing none of the latter's mobility.",
+      "specialRules": ["bulky", "implacable-advance", "vanguard"],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 3
+      },
+      "subType": ["Sergeant"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-tartaros-terminator-sergeant",
+        "legion-terminator",
+        "legion-combi-weapon-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["combi-bolter", "power-weapon"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "tartaros-terminator-model",
+      "name": "Tartaros Terminator",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 5,
+        "toughness": 5,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 2,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": 5,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Tartaros Terminators are warriors equipped with the most advanced Terminator armour technology. These suits are particularly valuable in heavy close-quarter fighting, such as battles fought in the deep confines of hive cities or in starship boarding actions, where mobility is as crucial as protection.",
+      "specialRules": ["bulky", "implacable-advance", "vanguard"],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 3
+      },
+      "subType": [],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-tartaros-terminator",
+        "legion-terminator",
+        "legion-combi-weapon-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": ["combi-bolter", "power-weapon"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "saturnine-terminator-sergeant-model",
+      "name": "Saturnine Terminator Sergeant",
+      "characteristics": {
+        "movement": 5,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 6,
+        "wounds": 3,
+        "initiative": 3,
+        "attacks": 2,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": 4,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Saturnine Terminator Sergeants lead ultra-heavy assault squads clad in the most ponderous and advanced Terminator armor. First seen in numbers on the black sands of Isstvan V, this pattern of Saturnine armour was developed by Vulkan and stands bulkier and more ponderous than the more widely-utilised Cataphractii and Tartaros patterns.",
+      "specialRules": [
+        "bulky",
+        "explodes",
+        "implacable-advance",
+        "slow-and-purposeful"
+      ],
+      "specialRuleValues": {
+        "bulky": 4,
+        "explodes": 6
+      },
+      "subType": ["Sergeant", "Heavy"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-saturnine-terminator-sergeant",
+        "legion-terminator"
+      ],
+      "upgradeGroups": [],
+      "wargear": ["occulix-targeting-auspex", "thermal-diffraction-field"],
+      "weapons": ["plasma-bombard", "saturnine-disruption-fist"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "saturnine-terminator-model",
+      "name": "Saturnine Terminator",
+      "characteristics": {
+        "movement": 5,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 6,
+        "wounds": 3,
+        "initiative": 1,
+        "attacks": 2,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": 4,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Saturnine Terminators are warriors encased in the most advanced and ponderous Terminator armor ever created. Mounting an array of fearsome energy weapons, combined with complex and potent energy shielding, those warriors capable of wearing such armour see the already legendary resilience of a Legionary improved significantly, allowing them to stride through the fires of battle with impunity.",
+      "specialRules": [
+        "bulky",
+        "explodes",
+        "implacable-advance",
+        "slow-and-purposeful"
+      ],
+      "specialRuleValues": {
+        "bulky": 4,
+        "explodes": 6
+      },
+      "subType": ["Heavy"],
+      "type": "Infantry",
+      "modelTypes": ["legion-saturnine-terminator", "legion-terminator"],
+      "upgradeGroups": [],
+      "wargear": ["occulix-targeting-auspex", "thermal-diffraction-field"],
+      "weapons": ["plasma-bombard", "saturnine-disruption-fist"],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "land-raider-carrier-model",
+      "name": "Land Raider Carrier",
+      "characteristics": {
+        "movement": 10,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 14,
+        "sideArmor": 14,
+        "rearArmor": 14,
+        "hullPoints": 8
+      },
+      "description": "The Land Raider is a masterwork that heralds back to the lost Dark Age of Technology, and since the rediscovery of its STC in the vaults of Mars, several patterns have been established in widespread use varying the balance of its battlefield role from armoured explorer, command and control vehicle, to assault carrier. Despite maintaining many aspects of the original design, some of these variants displeased the Forge Lords that oversaw their production, in particular the assault carrier variants, which were viewed as incorporating aberrant diversions that detracted from the purity of the original template.",
+      "specialRules": ["assault-vehicle", "auto-repair"],
+      "specialRuleValues": {
+        "auto-repair": 5
+      },
+      "subType": ["Transport"],
+      "type": "Vehicle",
+      "modelTypes": [
+        "legion-land-raider-carrier",
+        "legion-vehicle",
+        "legion-transport"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "twin-lascannon",
+          "mount": "Left Sponson Mounted"
+        },
+        {
+          "id": "twin-lascannon",
+          "mount": "Right Sponson Mounted"
+        },
+        {
+          "id": "twin-heavy-bolter",
+          "mount": "Hull (Front) Mounted"
+        }
+      ],
+      "transportCapacity": 12,
+      "accessPoints": ["Side Facings", "Front Facing"]
+    },
+    {
+      "id": "spartan-model",
+      "name": "Spartan",
+      "characteristics": {
+        "movement": 10,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 14,
+        "sideArmor": 14,
+        "rearArmor": 14,
+        "hullPoints": 10
+      },
+      "description": "The Spartan is a huge armoured conveyor whose purpose is to carry a large contingent of troops into the heart of the enemy, weathering weapons fire that would be the death of any lesser vehicle. Its armament is potent, with most bearing quad lascannon or laser destroyers, while the Prometheus variant mounts quad heavy bolter arrays to devastate enemy infantry. The Spartan takes pride of place in the armouries of many Legions, although it is far less common than the Land Raider in operations.",
+      "specialRules": ["assault-vehicle", "auto-repair"],
+      "specialRuleValues": {
+        "auto-repair": 4
+      },
+      "subType": ["Transport"],
+      "type": "Vehicle",
+      "modelTypes": ["legion-spartan", "legion-vehicle", "legion-transport"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "lascannon-array",
+          "mount": "Left Sponson Mounted"
+        },
+        {
+          "id": "lascannon-array",
+          "mount": "Right Sponson Mounted"
+        },
+        {
+          "id": "twin-heavy-bolter",
+          "mount": "Hull (Front) Mounted"
+        }
+      ],
+      "transportCapacity": 26,
+      "accessPoints": ["Side Facings", "Front Facing"]
+    },
+    {
+      "id": "dreadnought-drop-pod-model",
+      "name": "Dreadnought Drop Pod",
+      "characteristics": {
+        "movement": null,
+        "weaponSkill": null,
+        "ballisticSkill": 2,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 12,
+        "sideArmor": 12,
+        "rearArmor": 12,
+        "hullPoints": 5
+      },
+      "description": "Developed alongside the more common Legion drop pod in general service, specifically designed Dreadnought drop pods are somewhat larger than the standard drop pods of the Legiones Astartes and have a more powerful engine, allowing for a dangerously meteoric descent to the battlefield. This serves to protect their cargo during approach and allow it to strike with unprecedented speed. The stresses involved, however, are such that only the heavily armoured and protected shell of a Dreadnought could hope to survive the descent and impact with the ground without being wrecked or pulverised.",
+      "specialRules": [
+        "dreadnought-transport",
+        "orbital-assault-vehicle",
+        "impact-reactive-doors"
+      ],
+      "specialRuleValues": {},
+      "subType": ["Transport"],
+      "type": "Vehicle",
+      "modelTypes": [
+        "legion-dreadnought-drop-pod",
+        "legion-vehicle",
+        "legion-transport"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [],
+      "transportCapacity": 7,
+      "accessPoints": ["All Facings"]
+    },
+    {
+      "id": "dreadclaw-drop-pod-model",
+      "name": "Dreadclaw Drop Pod",
+      "characteristics": {
+        "movement": 15,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 12,
+        "sideArmor": 12,
+        "rearArmor": 12,
+        "hullPoints": 5
+      },
+      "description": "The Dreadclaw drop pod serves primarily to insert Legion Space Marine boarding forces onto enemy void craft in the midst of battle. Latching onto the hull of an enemy vessel, a series of melta cutters trigger, blasting a hole through even the thickest armour before its occupants storm forth through its raised aperture. Unlike some earlier boarding craft, the Dreadclaw is also fully capable of operating as an independent dropship. Indeed, many Legions favour using them in this role, dropping from the sky like a flaming comet before disembarking the assault troops contained within.",
+      "specialRules": ["drop-transport"],
+      "specialRuleValues": {},
+      "subType": ["Flyer", "Transport"],
+      "type": "Vehicle",
+      "modelTypes": [
+        "legion-dreadclaw-drop-pod",
+        "legion-vehicle",
+        "legion-transport",
+        "legion-flyer"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [],
+      "transportCapacity": 12,
+      "accessPoints": ["All Facings"]
+    },
+    {
+      "id": "kharybdis-assault-claw-model",
+      "name": "Kharybdis Assault Claw",
+      "characteristics": {
+        "movement": 14,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 12,
+        "sideArmor": 12,
+        "rearArmor": 12,
+        "hullPoints": 8
+      },
+      "description": "Employed by many Legions as their primary ship-to-ship assault craft, the Kharybdis is a monstrous drop pod capable of carrying large assault forces through the void and mounting significant firepower to blast a path through defending small craft. The arrival of a flight of these ominous craft, boarding hooks extended as they approach their target, signals the end for the crew of any vessel that dares oppose the Legiones Astartes. Outside of void war, the Kharybdis also serves as a drop ship, capable of both controlled descent and powered take-off from a planetary surface.",
+      "specialRules": ["heavy-drop-transport"],
+      "specialRuleValues": {},
+      "subType": ["Flyer", "Transport"],
+      "type": "Vehicle",
+      "modelTypes": [
+        "legion-kharybdis-assault-claw",
+        "legion-vehicle",
+        "legion-transport",
+        "legion-flyer"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "kharybdis-missile-launcher",
+          "mount": "Turret Mounted"
+        }
+      ],
+      "transportCapacity": 22,
+      "accessPoints": ["All Facings"]
+    },
+    {
+      "id": "recon-sergeant-model",
+      "name": "Recon Sergeant",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 1,
+        "initiative": 4,
+        "attacks": 1,
+        "leadership": 8,
+        "cool": 7,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Recon Sergeants lead reconnaissance squads formed from experienced Space Marines expert in operating behind enemy lines, sudden flanking manoeuvres and infiltration attacks in support of their main force. They serve as the eyes and ears of the Legion in the field, coordinating intelligence gathering and tactical reconnaissance operations.",
+      "specialRules": ["infiltrate", "move-through-cover", "support-unit"],
+      "specialRuleValues": {
+        "infiltrate": 9,
+        "support-unit": 2
+      },
+      "subType": ["Sergeant", "Skirmish"],
+      "type": "Infantry",
+      "modelTypes": [
+        "legion-recon-sergeant",
+        "legion-sergeant-upgradeable",
+        "legion-pistol-upgradeable",
+        "legion-equipment-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "astartes-shotgun",
+        "bolt-pistol",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "recon-legionary-model",
+      "name": "Recon Legionary",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 1,
+        "initiative": 4,
+        "attacks": 1,
+        "leadership": 7,
+        "cool": 7,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Recon Legionaries are experienced Space Marines armed and equipped with a variety of specialised wargear including long range weaponry, sensor auspex and stealth gear. They serve the Legion as pickets, saboteurs, raiders and snipers where needed, as well as intelligence gatherers, identifying targets and gathering information on enemy movements and strengths.",
+      "specialRules": ["infiltrate", "move-through-cover", "support-unit"],
+      "specialRuleValues": {
+        "infiltrate": 9,
+        "support-unit": 2
+      },
+      "subType": ["Skirmish"],
+      "type": "Infantry",
+      "modelTypes": ["legion-recon-legionary", "legion-equipment-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "astartes-shotgun",
+        "bolt-pistol",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "sabre-model",
+      "name": "Sabre",
+      "characteristics": {
+        "movement": 16,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 12,
+        "sideArmor": 11,
+        "rearArmor": 10,
+        "hullPoints": 4
+      },
+      "description": "Fast, rugged and heavily armed, the Sabre serves as a strike tank, attacking key enemy targets and destroying them long before they can pose a threat. Fitted with a number of advanced weapons systems, from rapid fire autocannon to exotic beam weapons, there were few foes that could resist the firepower of these swift hunters. Once the foe is annihilated, the speed of these fleet vehicles allows them to evade any counter-attack and reposition to strike at the vulnerable flanks of the enemy army, keeping the heavy armour suppressed as the Space Marine infantry advances to crush the foes of the Emperor.",
+      "specialRules": ["outflank"],
+      "specialRuleValues": {},
+      "subType": ["Rapid"],
+      "type": "Vehicle",
+      "modelTypes": ["legion-sabre", "legion-vehicle-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "anvilus-snub-autocannon",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Hull (Front) Mounted"
+        }
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "outrider-sergeant-model",
+      "name": "Outrider Sergeant",
+      "characteristics": {
+        "movement": 14,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 1,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 6,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Outrider Sergeants lead mechanised Space Marine reconnaissance squads who take to the field mounted on ruggedly constructed, all-terrain armoured ground bikes and scramblers. Used for scouting missions as well as rapid encirclement and hit-and-run attacks behind enemy lines, the chief advantage of the Outriders is speed, their bikes enabling them to cover ground far quicker than infantry and go where heavier vehicles cannot.",
+      "specialRules": [
+        "bulky",
+        "vanguard",
+        "firestorm",
+        "implacable-advance",
+        "outflank"
+      ],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 1
+      },
+      "subType": ["Sergeant"],
+      "type": "Cavalry",
+      "modelTypes": [
+        "legion-outrider-sergeant",
+        "legion-sergeant-upgradeable",
+        "legion-pistol-upgradeable",
+        "legion-equipment-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "twin-bolter",
+        "bolt-pistol",
+        "chainsword",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "outrider-model",
+      "name": "Outrider",
+      "characteristics": {
+        "movement": 14,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 1,
+        "leadership": 7,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 6,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Outriders are mechanised Space Marine reconnaissance specialists mounted on ruggedly constructed, all-terrain armoured ground bikes and scramblers. Rather than precision long ranged weaponry, Outriders mount rapid-fire weaponry, destroying their foes in devastating swift attacks. Their bikes enable them to cover ground far quicker than infantry and go where heavier vehicles cannot, making them ideal for scouting missions as well as rapid encirclement and hit-and-run attacks behind enemy lines.",
+      "specialRules": [
+        "bulky",
+        "vanguard",
+        "firestorm",
+        "implacable-advance",
+        "outflank"
+      ],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 1
+      },
+      "subType": [],
+      "type": "Cavalry",
+      "modelTypes": [
+        "legion-outrider",
+        "legion-pistol-upgradeable",
+        "legion-equipment-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        "twin-bolter",
+        "bolt-pistol",
+        "chainsword",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "land-raider-explorator-model",
+      "name": "Land Raider Explorator",
+      "characteristics": {
+        "movement": 12,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 14,
+        "sideArmor": 14,
+        "rearArmor": 14,
+        "hullPoints": 8
+      },
+      "description": "During the lost days of Mankind's Golden Age, the Land Raider, armoured and equipped for exploration, was used to scout at the most hostile of alien worlds. It was only in later, more warlike times that it would be converted into one of the most potent war machines in the Imperium, and in the Proteus Explorator variant there lingers the influence of its origins. Fitted with a more confined and less accessible transport bay in order to mount an array of scanners and navigational augurs, the Explorator mounts a more focused array of weapons, operating instead as an unmatched pathfinder for any mechanised task force.",
+      "specialRules": ["auto-repair", "outflank"],
+      "specialRuleValues": {
+        "auto-repair": 5
+      },
+      "subType": ["Transport"],
+      "type": "Vehicle",
+      "modelTypes": [
+        "legion-land-raider-explorator",
+        "legion-vehicle-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": ["dozer-blade"],
+      "weapons": [
+        {
+          "id": "twin-lascannon",
+          "mount": "Sponson Mounted"
+        },
+        {
+          "id": "twin-lascannon",
+          "mount": "Sponson Mounted"
+        }
+      ],
+      "transportCapacity": 10,
+      "accessPoints": ["Side Facings"]
+    },
+    {
+      "id": "tarantula-sentry-gun-model",
+      "name": "Tarantula Sentry Gun",
+      "characteristics": {
+        "movement": null,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 10,
+        "sideArmor": 10,
+        "rearArmor": 10,
+        "hullPoints": 2
+      },
+      "description": "The Space Marine Legions, in particular, make use of Tarantulas in a forward deployment role and see them as entirely disposable assets, often utilising them in the thick of battle to defend a forward position, draw out enemy forces for attack or even to guard a withdrawal or pin an enemy force during a feint. Tarantulas may be dropped into forward positions on the battlelines immediately prior to suspected engagement via hovering servo-carriers or placed by reconnaissance forces under concealment to provide an unpleasant surprise for an attacker.",
+      "specialRules": [
+        "expendable",
+        "infiltrate",
+        "automated-fire-protocols",
+        "independent-sentries"
+      ],
+      "specialRuleValues": {
+        "expendable": 3,
+        "infiltrate": 9
+      },
+      "subType": [],
+      "type": "Vehicle",
+      "modelTypes": [
+        "legion-tarantula-sentry-gun",
+        "legion-vehicle-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "twin-heavy-bolter",
+          "mount": "Turret Mounted"
+        }
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "xiphon-interceptor-model",
+      "name": "Xiphon Interceptor",
+      "characteristics": {
+        "movement": 20,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 11,
+        "sideArmor": 11,
+        "rearArmor": 11,
+        "hullPoints": 5
+      },
+      "description": "The Xiphon Interceptor is a void/atmospheric combat craft with an ancient lineage with examples of its predecessors having been found in use by lost human enclaves. The performance of the variants that found use in the Legions generated such extreme gravitic forces in flight that the enhanced physiology of a Space Marine was a prerequisite of a pilot. Although armed with a specific and specialised combination of armaments, the Xiphon's strictly defined combat role as an air-to-air interceptor called for little else.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": ["Flyer"],
+      "type": "Vehicle",
+      "modelTypes": ["legion-xiphon-interceptor"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "twin-lascannon",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "twin-lascannon",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "rotary-missile-launcher",
+          "mount": "Centreline Mounted"
+        }
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "storm-eagle-model",
+      "name": "Storm Eagle",
+      "characteristics": {
+        "movement": 18,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 12,
+        "sideArmor": 12,
+        "rearArmor": 12,
+        "hullPoints": 6
+      },
+      "description": "The Storm Eagle is a rugged and durable assault gunship, heavily armed for its size. Despite lacking the speed and maneuverability of true fighters, the Storm Eagle's flexibility makes it a valuable asset for orbital assault deployment, low-level ground attack, long-range transport, orbital shuttle, scout, and interceptor roles.",
+      "specialRules": ["assault-vehicle"],
+      "specialRuleValues": {},
+      "subType": ["Stable", "Transport", "Flyer"],
+      "type": "Vehicle",
+      "modelTypes": ["legion-storm-eagle", "legion-vehicle-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "twin-heavy-bolter",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "vengeance-launcher",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "tempest-rocket",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "tempest-rocket",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "tempest-rocket",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "tempest-rocket",
+          "mount": "Centreline Mounted"
+        }
+      ],
+      "transportCapacity": 16,
+      "accessPoints": ["All Facings"]
+    },
+    {
+      "id": "fire-raptor-model",
+      "name": "Fire Raptor",
+      "characteristics": {
+        "movement": 18,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 12,
+        "sideArmor": 12,
+        "rearArmor": 12,
+        "hullPoints": 6
+      },
+      "description": "A variant of the Storm Eagle, the Fire Raptor gunship was created with the aim of providing overwhelming aerial firepower to Legiones Astartes assault forces. In addition to twin nose mounted Avenger bolt cannon and an array of rockets or missiles, the Fire Raptor replaces the capacious transport bay of the Storm Eagle with ammunition and targeting cogitators for two independent ball turrets. Each of these sophisticated turrets is equipped with a gyroscopic array and crewed by a dedicated Space Marine gunner, allowing each to strike separate targets with pinpoint precision even while the gunship moves at flank speed.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": ["Stable", "Flyer"],
+      "type": "Vehicle",
+      "modelTypes": ["legion-fire-raptor", "legion-vehicle-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "twin-avenger-bolt-cannon",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "gravis-heavy-bolter-battery",
+          "mount": "Sponson Mounted"
+        },
+        {
+          "id": "gravis-heavy-bolter-battery",
+          "mount": "Sponson Mounted"
+        },
+        {
+          "id": "tempest-rocket",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "tempest-rocket",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "tempest-rocket",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "tempest-rocket",
+          "mount": "Centreline Mounted"
+        }
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "scimitar-hunter-model",
+      "name": "Scimitar Hunter",
+      "characteristics": {
+        "movement": 16,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 1,
+        "leadership": 7,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "A Scimitar Hunter is a Space Marine mounted on a sophisticated jetbike, using grav-impellor assisted jet engines for extended low-altitude flight. These craft are more akin to compact aircraft than ground bikes and are able to maintain great speeds for extended periods.",
+      "specialRules": ["bulky-3", "deep-strike"],
+      "specialRuleValues": {},
+      "subType": ["Antigrav"],
+      "type": "Cavalry",
+      "modelTypes": ["legion-scimitar-hunter", "legion-cavalry-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [
+        "bolt-pistol",
+        "chainsword",
+        "heavy-bolter",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "weapons": [],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "scimitar-sergeant-model",
+      "name": "Scimitar Sergeant",
+      "characteristics": {
+        "movement": 16,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 1,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "A Scimitar Sergeant leads a jetbike squadron from his sophisticated jetbike, using grav-impellor assisted jet engines for extended low-altitude flight. These craft are more akin to compact aircraft than ground bikes and are able to maintain great speeds for extended periods.",
+      "specialRules": ["bulky-3", "deep-strike"],
+      "specialRuleValues": {},
+      "subType": ["Sergeant", "Antigrav"],
+      "type": "Cavalry",
+      "modelTypes": ["legion-scimitar-sergeant", "legion-cavalry-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [
+        "bolt-pistol",
+        "chainsword",
+        "heavy-bolter",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "weapons": [],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "land-speeder-model",
+      "name": "Land Speeder",
+      "characteristics": {
+        "movement": 16,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 5,
+        "wounds": 3,
+        "initiative": 4,
+        "attacks": 2,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "Land Speeders are high-speed reconnaissance and rapid-attack skimmers that utilise antigravity technology to achieve extraordinary battlefield mobility and speed. As lightly armoured two-man craft, they rely more on their extreme manoeuvrability and speed for survival than durability, and provide a Space Marine force with a flexible core of rapidly deployable firepower and make for highly able tank hunters and close air support units. As a result, formations of Land Speeders are often called upon to operate as a rapid-reaction force, held in reserve to quickly intercept enemy counter-attacks.",
+      "specialRules": ["bulky-4", "deep-strike", "firing-protocols-2"],
+      "specialRuleValues": {},
+      "subType": ["Skirmish", "Antigrav"],
+      "type": "Cavalry",
+      "modelTypes": ["legion-land-speeder", "legion-cavalry-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": ["heavy-bolter", "augury-scanner"],
+      "weapons": [],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "javelin-model",
+      "name": "Javelin",
+      "characteristics": {
+        "movement": 14,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 6,
+        "wounds": 4,
+        "initiative": 4,
+        "attacks": 2,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null,
+        "frontArmor": null,
+        "sideArmor": null,
+        "rearArmor": null,
+        "hullPoints": null
+      },
+      "description": "The Javelin is a fast, durable, and highly customizable anti-grav vehicle, capable of deep striking and providing significant firepower. Its enhanced toughness and wounds make it quite resilient for a Fast Attack choice, while its weapon options allow it to be tailored for anti-infantry or anti-tank roles.",
+      "specialRules": ["bulky-5", "deep-strike", "firing-protocols-3"],
+      "specialRuleValues": {},
+      "subType": ["Skirmish", "Antigrav"],
+      "type": "Cavalry",
+      "modelTypes": ["legion-javelin", "legion-cavalry-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": ["heavy-bolter", "cyclone-missile-launcher"],
+      "weapons": [],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "predator-model",
+      "name": "Predator",
+      "characteristics": {
+        "movement": 12,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 13,
+        "sideArmor": 12,
+        "rearArmor": 10,
+        "hullPoints": 5
+      },
+      "description": "Perhaps the best known and most widespread variant of the basic Rhino chassis, the Predator is equipped with superior armour protection and firepower, but sacrificing the Rhino's troop transport capacity entirely. It is an effective and versatile medium tank, with a good balance of speed, firepower and protection and whose robust design can field a wide variety of armament configurations. The standard among these is a rapid-firing turret mounted autocannon, but it is also able to mount a number of deadly energy or flame weapons, allowing it to engage a range of targets, along with defensive sponsons.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": ["Stable"],
+      "type": "Vehicle",
+      "modelTypes": ["legion-predator", "legion-vehicle-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "predator-cannon",
+          "mount": "Turret Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Sponson Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Sponson Mounted"
+        }
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "sicaran-model",
+      "name": "Sicaran",
+      "characteristics": {
+        "movement": 14,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 13,
+        "sideArmor": 12,
+        "rearArmor": 12,
+        "hullPoints": 6
+      },
+      "description": "The Sicaran is a fast, durable tank with excellent firepower options, designed for high-performance armored warfare. Its enhanced speed and durability make it an exceptional choice for the Armour battlefield role, while its weapon options allow it to be tailored for various combat scenarios.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": ["Stable"],
+      "type": "Vehicle",
+      "modelTypes": ["legion-sicaran", "legion-vehicle-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "twin-accelerator-autocannon",
+          "mount": "Turret Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Hull (Front) Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Sponson Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Sponson Mounted"
+        }
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "sicaran-venator-model",
+      "name": "Sicaran Venator",
+      "characteristics": {
+        "movement": 14,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 13,
+        "sideArmor": 12,
+        "rearArmor": 12,
+        "hullPoints": 6
+      },
+      "description": "The Sicaran Venator replaces the turret mounted armaments of the Sicaran with a powerful neutron laser, which, when utilised with the speed and manoeuvrability provided by the advanced chassis and drivetrain of the chassis, results in a formidable tank destroyer weapon. Despite the relative rarity of the vehicles, their capabilities ensured they were ever in great demand as Legion commanders came to rely on their potent combination of durability, speed and firepower to prevail where lesser Predators or Vindicators could not.",
+      "specialRules": ["explodes-5"],
+      "specialRuleValues": {},
+      "subType": ["Stable"],
+      "type": "Vehicle",
+      "modelTypes": ["legion-sicaran-venator", "legion-vehicle-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "neutron-beam-laser",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Turret Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Sponson Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Sponson Mounted"
+        }
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "kratos-assault-tank-model",
+      "name": "Kratos Assault Tank",
+      "characteristics": {
+        "movement": 8,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 14,
+        "sideArmor": 14,
+        "rearArmor": 14,
+        "hullPoints": 10
+      },
+      "description": "The Kratos is based on an Ancient Terran pattern, used in large numbers during the Unification of Old Earth. After the Emperor's treaty was signed with the Lords of Mars, the Kratos was redesigned to serve as the spearhead of the Great Crusade, a line-breaker and foe hammer. Though slow, it is all but impervious to enemy weapons fire and its steady advance was the core of many Space Marine victories during the long years of the Great Crusade. In latter years, the Kratos fell out of favour as the Legions embraced a more mobile style of war, though the ancient war engine lost none of its legendary tenacity.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": ["Stable"],
+      "type": "Vehicle",
+      "modelTypes": [
+        "legion-kratos-assault-tank",
+        "legion-vehicle-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "kratos-battlecannon",
+          "mount": "Turret Mounted"
+        },
+        {
+          "id": "autocannon",
+          "mount": "Co-axial (Kratos battlecannon) Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Hull (Front, Left) Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Hull (Front, Right) Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Sponson Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Sponson Mounted"
+        }
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "vindicator-siege-tank-model",
+      "name": "Vindicator Siege Tank",
+      "characteristics": {
+        "movement": 10,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 13,
+        "sideArmor": 13,
+        "rearArmor": 10,
+        "hullPoints": 6
+      },
+      "description": "The Vindicator is a dedicated siege tank, heavily armoured and armed with a devastating cannon. It is deployed to breach enemy fortifications and destroy the heaviest enemy vehicles, moving to point-blank range before unleashing a devastating salvo of demolisher shells capable of sundering any armour. These vehicles are especially useful in confined terrain like cities or other enclosed battlefields, where their short range is less of a disadvantage. Its demolisher cannon can smash buildings into broken ruins to forge a path through otherwise impassable obstacles.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": ["Stable"],
+      "type": "Vehicle",
+      "modelTypes": [
+        "legion-vindicator-siege-tank",
+        "legion-vehicle-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "demolisher-cannon",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "combi-bolter",
+          "mount": "Hull (Front) Mounted"
+        }
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "scorpius-missile-tank-model",
+      "name": "Scorpius Missile Tank",
+      "characteristics": {
+        "movement": 10,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 12,
+        "sideArmor": 11,
+        "rearArmor": 10,
+        "hullPoints": 5
+      },
+      "description": "The Scorpius was a pattern of armoured vehicle that had entered service during the Great Crusade, having been created at the behest of the Space Wolves Legion to provide indirect fire support for assault actions via its advanced missile launcher systems. Fighting alongside Legion Predators, with which it shares many common armour and drive systems, the Scorpius proved itself well-suited to such high intensity operations and had been approved for service across the entire Legiones Astartes before the outbreak of the Horus Heresy.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": ["Stable"],
+      "type": "Vehicle",
+      "modelTypes": [
+        "legion-scorpius-missile-tank",
+        "legion-vehicle-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "scorpius-missile-launcher",
+          "mount": "Turret Mounted"
+        },
+        {
+          "id": "pintle-mounted-bolter",
+          "mount": "Pintle Mounted"
+        },
+        {
+          "id": "pintle-mounted-bolter",
+          "mount": "Pintle Mounted"
+        }
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "arquitor-bombard-model",
+      "name": "Arquitor Bombard",
+      "characteristics": {
+        "movement": 8,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 13,
+        "sideArmor": 12,
+        "rearArmor": 10,
+        "hullPoints": 6
+      },
+      "description": "The Arquitor Bombard is an artillery platform designed to operate at the forefront of a Legiones Astartes advance. Built upon a reinforced chassis and equipped with weapon systems that provide brutal short-range firepower, its variants are called upon to break the most stubborn of fortifications or to annihilate massed enemy infantry and armour. As an infantry support platform, the Arquitor lacks the sheer speed of some of the other heavy armour employed by the Legiones Astartes, an intentional feature of the vehicle that keeps it locked in formation with the infantry it supports.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": ["Stable"],
+      "type": "Vehicle",
+      "modelTypes": ["legion-arquitor-bombard", "legion-vehicle-upgradeable"],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "morbus-he-shell",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Sponson Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Sponson Mounted"
+        }
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "cerberus-heavy-tank-destroyer-model",
+      "name": "Cerberus Heavy Tank Destroyer",
+      "characteristics": {
+        "movement": 10,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 14,
+        "sideArmor": 14,
+        "rearArmor": 13,
+        "hullPoints": 12
+      },
+      "description": "The Cerberus is described as mounting a neutron laser battery, requiring sizable atomantic arc-reactors and radiation shielding. Despite proper shielding, each shot floods the interior with exotic radiation, leading to short crew lifespespans and requiring extensive augmetic reconstruction. Despite these drawbacks, the neutron laser is one of the most effective anti-tank weapons available to the Space Marine Legions, capable of damaging even titan-class targets.",
+      "specialRules": ["explodes"],
+      "specialRuleValues": {
+        "explodes": 4
+      },
+      "subType": ["Stable"],
+      "type": "Vehicle",
+      "modelTypes": [
+        "legion-cerberus-heavy-tank-destroyer",
+        "legion-vehicle-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "neutron-laser-battery",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Sponson Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Sponson Mounted"
+        }
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "typhon-heavy-siege-tank-model",
+      "name": "Typhon Heavy Siege Tank",
+      "characteristics": {
+        "movement": 10,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 14,
+        "sideArmor": 14,
+        "rearArmor": 13,
+        "hullPoints": 12
+      },
+      "description": "The Typhon is a mobile gun platform of prodigious strength and carrying capacity designed to operate a single massive piece of siege artillery – the Dreadhammer cannon. The design itself was created in response to a request for a war machine that could rapidly deploy such fortress-breaking firepower to the battle line at speeds greater than the slow crawl of the Imperial Army's heavy batteries. Many observers have labelled it as little more than an 'upscaled' Vindicator in design, and while in some ways this may be true, few can deny its utterly brutal effectiveness in action.",
+      "specialRules": ["explodes"],
+      "specialRuleValues": {
+        "explodes": 5
+      },
+      "subType": ["Stable"],
+      "type": "Vehicle",
+      "modelTypes": [
+        "legion-typhon-heavy-siege-tank",
+        "legion-vehicle-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "dreadhammer-siege-cannon",
+          "mount": "Centreline Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Sponson Mounted"
+        },
+        {
+          "id": "heavy-bolter",
+          "mount": "Sponson Mounted"
+        }
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "glaive-super-heavy-special-weapons-tank-model",
+      "name": "Glaive Super-Heavy Special Weapons Tank",
+      "characteristics": {
+        "movement": 10,
+        "weaponSkill": null,
+        "ballisticSkill": 4,
+        "strength": null,
+        "toughness": null,
+        "wounds": null,
+        "initiative": null,
+        "attacks": null,
+        "leadership": null,
+        "cool": null,
+        "willpower": null,
+        "intelligence": null,
+        "armourSave": null,
+        "invulnerableSave": null,
+        "frontArmor": 14,
+        "sideArmor": 13,
+        "rearArmor": 12,
+        "hullPoints": 18
+      },
+      "description": "The Glaive is a super-heavy tank pattern based on the Fellblade, outfitted with a potent volkite carronade, a device of the Mechanicum whose design is said to have originated on Mars during the wars of the Age of Strife. It was not without acrimony that the Forge Lords agreed to the Emperor's demand for a Legion tank to be created that utilised this weapon. The effort of constructing practicable numbers of super-heavy tanks around the volkite carronade is considered well worth the expenditure in resources required, for multiple targets are struck down by its ravening beam before even a portion of its energy is dissipated.",
+      "specialRules": [],
+      "specialRuleValues": {},
+      "subType": ["Stable"],
+      "type": "Vehicle",
+      "modelTypes": [
+        "legion-glaive-super-heavy-special-weapons-tank",
+        "legion-vehicle-upgradeable"
+      ],
+      "upgradeGroups": [],
+      "wargear": [],
+      "weapons": [
+        {
+          "id": "volkite-carronade",
+          "mount": "Turret Mounted"
+        },
+        {
+          "id": "twin-heavy-bolter",
+          "mount": "Hull (Front) Mounted"
+        },
+        {
+          "id": "lascannon-array",
+          "mount": "Sponson Mounted"
+        },
+        {
+          "id": "lascannon-array",
+          "mount": "Sponson Mounted"
+        }
+      ],
+      "transportCapacity": null,
+      "accessPoints": []
+    },
+    {
+      "id": "perturabo-model",
+      "name": "Perturabo",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 7,
+        "ballisticSkill": 7,
+        "strength": 6,
+        "toughness": 7,
+        "wounds": 6,
+        "initiative": 5,
+        "attacks": 6,
+        "leadership": 12,
+        "cool": 10,
+        "willpower": 10,
+        "intelligence": 10,
+        "armourSave": 2,
+        "invulnerableSave": 4
+      },
+      "description": "Perturabo, Primarch of the Iron Warriors, is a grim warrior and master of technological arcana from Olympia. Taciturn and analytical, he possesses the ability to deconstruct campaigns and find their weaknesses, executing brutal but effective strategies that brought many worlds into the Imperium but left them shattered. After the Dropsite Massacre, Perturabo abandoned his oaths to the Imperium, taking his fallen brother's hammer as a token of allegiance to Horus.",
+      "specialRules": [
+        "sire-of-the-iron-warriors",
+        "bulky",
+        "battlesmith",
+        "breaker",
+        "eternal-warrior"
+      ],
+      "specialRuleValues": {
+        "bulky": 6,
+        "battlesmith": 3,
+        "eternal-warrior": 2
+      },
+      "subType": ["Unique"],
+      "type": "Paragon",
+      "modelTypes": ["primarch-model", "iron-warriors-model"],
+      "upgradeGroups": [
+        {
+          "id": "perturabo-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Perturabo may exchange his weapons",
+          "collapsible": true,
+          "defaultCollapsed": false,
+          "upgrades": ["perturabo-forgebreaker-upgrade"]
+        }
+      ],
+      "wargear": ["logos-array", "cortex-controller", "cognis-signum"],
+      "weapons": ["logos-array"]
+    },
+    {
+      "id": "warsmith-model",
+      "name": "Warsmith",
+      "characteristics": {
+        "movement": 6,
+        "weaponSkill": 6,
+        "ballisticSkill": 5,
+        "strength": 4,
+        "toughness": 5,
+        "wounds": 5,
+        "initiative": 5,
+        "attacks": 5,
+        "leadership": 10,
+        "cool": 9,
+        "willpower": 9,
+        "intelligence": 10,
+        "armourSave": 2,
+        "invulnerableSave": 4
+      },
+      "description": "The Iron Warriors were widely renowned for their siegecraft and combat-engineering skills. The foremost practitioners of these arts were the Warsmiths, whose knowledge of the workings of war engines and automata was second only to the Magi of the Mechanicum. Raised to such a rank by Perturabo himself, each was a peerless planner and warrior within their Legion.",
+      "specialRules": [
+        "bulky",
+        "battlesmith",
+        "implacable-advance",
+        "slow-and-purposeful"
+      ],
+      "specialRuleValues": {
+        "bulky": 2,
+        "battlesmith": 2
+      },
+      "subType": ["Command", "Heavy"],
+      "type": "Infantry",
+      "modelTypes": ["iron-warriors-model", "legion-command-model"],
+      "upgradeGroups": [
+        {
+          "id": "warsmith-wargear-upgrade-group",
+          "name": "Wargear Options",
+          "description": "The Warsmith may have additional wargear",
+          "collapsible": true,
+          "defaultCollapsed": false,
+          "upgrades": ["warsmith-cyber-familiar-upgrade"]
+        }
+      ],
+      "wargear": [
+        "graviton-crusher",
+        "combi-grav",
+        "servo-arm",
+        "cortex-controller",
+        "cognis-signum"
+      ],
+      "weapons": ["graviton-crusher", "combi-grav"]
+    },
+    {
+      "id": "tyrant-model",
+      "name": "Tyrant",
+      "characteristics": {
+        "movement": 6,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 5,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 2,
+        "leadership": 8,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": 4
+      },
+      "description": "Clad in Cataphractii plate and unleashing hails of Swarmer or Breaker missiles from their armour mounted rocket launchers, these implacable warriors are fortress-breakers of unparalleled skill.",
+      "specialRules": [
+        "bulky",
+        "implacable-advance",
+        "slow-and-purposeful",
+        "firing-protocols",
+        "support-unit"
+      ],
+      "specialRuleValues": {
+        "bulky": 2,
+        "firing-protocols": 2,
+        "support-unit": 1
+      },
+      "subType": ["Heavy"],
+      "type": "Infantry",
+      "modelTypes": ["iron-warriors-model", "terminator-model"],
+      "upgradeGroups": [
+        {
+          "id": "tyrant-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Any Tyrant may exchange their combi-bolter",
+          "collapsible": true,
+          "defaultCollapsed": false,
+          "upgrades": ["tyrant-combi-weapon-upgrade"]
+        }
+      ],
+      "wargear": ["tyrant-rocket-launcher", "combi-bolter", "power-fist"],
+      "weapons": ["tyrant-rocket-launcher", "combi-bolter", "power-fist"]
+    },
+    {
+      "id": "siege-master-model",
+      "name": "Siege Master",
+      "characteristics": {
+        "movement": 6,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 5,
+        "wounds": 2,
+        "initiative": 4,
+        "attacks": 2,
+        "leadership": 9,
+        "cool": 8,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 2,
+        "invulnerableSave": 4
+      },
+      "description": "The Siege Master leads the Tyrant Siege Terminator Squad, coordinating their devastating rocket barrages and tactical movements.",
+      "specialRules": [
+        "bulky",
+        "implacable-advance",
+        "slow-and-purposeful",
+        "firing-protocols",
+        "support-unit"
+      ],
+      "specialRuleValues": {
+        "bulky": 2,
+        "firing-protocols": 2,
+        "support-unit": 1
+      },
+      "subType": ["Sergeant", "Heavy"],
+      "type": "Infantry",
+      "modelTypes": [
+        "iron-warriors-model",
+        "terminator-model",
+        "sergeant-model"
+      ],
+      "upgradeGroups": [
+        {
+          "id": "siege-master-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "The Siege Master may exchange their combi-bolter",
+          "collapsible": true,
+          "defaultCollapsed": false,
+          "upgrades": ["siege-master-combi-weapon-upgrade"]
+        },
+        {
+          "id": "siege-master-wargear-upgrade-group",
+          "name": "Wargear Options",
+          "description": "The Siege Master may have additional wargear",
+          "collapsible": true,
+          "defaultCollapsed": false,
+          "upgrades": ["siege-master-omni-scope-upgrade"]
+        }
+      ],
+      "wargear": ["tyrant-rocket-launcher", "combi-bolter", "power-fist"],
+      "weapons": ["tyrant-rocket-launcher", "combi-bolter", "power-fist"]
+    },
+    {
+      "id": "domitar-ferrum-model",
+      "name": "Domitar-ferrum",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 7,
+        "toughness": 7,
+        "wounds": 4,
+        "initiative": 3,
+        "attacks": 3,
+        "leadership": 8,
+        "cool": 12,
+        "willpower": 5,
+        "intelligence": 5,
+        "armourSave": 2,
+        "invulnerableSave": 5
+      },
+      "description": "Of the most visible fruits of Perturabo's genius, developed after he was unshackled from the Emperor's strict dictates, were the Iron Circle, or the Domitar-Ferrum as they became known, first deployed as a bodyguard for their Primarch after the Battle of Phall, where he judged his own sons had failed him.",
+      "specialRules": [
+        "shield-of-the-iron-tyrant",
+        "bulky",
+        "implacable-advance",
+        "impact",
+        "firestorm"
+      ],
+      "specialRuleValues": {
+        "bulky": 4,
+        "impact": "A"
+      },
+      "subType": ["Heavy"],
+      "type": "Automata",
+      "modelTypes": ["iron-warriors-model", "automata-model"],
+      "upgradeGroups": [],
+      "wargear": [
+        "graviton-crusher",
+        "twin-shrapnel-cannon",
+        "karceri-battle-shield"
+      ],
+      "weapons": ["graviton-crusher", "twin-shrapnel-cannon"]
+    },
+    {
+      "id": "iron-havoc-model",
+      "name": "Iron Havoc",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 1,
+        "initiative": 4,
+        "attacks": 1,
+        "leadership": 7,
+        "cool": 7,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "An elite formation of the IVth Legion, renowned for their precision in heavy support and siege warfare.",
+      "specialRules": ["ferrum-occularis", "support-unit"],
+      "specialRuleValues": {
+        "support-unit": 1
+      },
+      "subType": [],
+      "type": "Infantry",
+      "modelTypes": ["iron-warriors-model", "heavy-weapon-model"],
+      "upgradeGroups": [
+        {
+          "id": "iron-havoc-weapon-upgrade-group",
+          "name": "Weapon Options",
+          "description": "Every Iron Havoc may have their shrapnel cannon replaced",
+          "collapsible": true,
+          "defaultCollapsed": false,
+          "upgrades": ["iron-havoc-weapon-replacement-upgrade"]
+        },
+        {
+          "id": "iron-havoc-equipment-upgrade-group",
+          "name": "Equipment Options",
+          "description": "Up to two Iron Havocs may have equipment",
+          "collapsible": true,
+          "defaultCollapsed": false,
+          "upgrades": ["iron-havoc-equipment-upgrade"]
+        },
+        {
+          "id": "iron-havoc-vexilla-upgrade-group",
+          "name": "Vexilla Options",
+          "description": "One Iron Havoc may have a vexilla",
+          "collapsible": true,
+          "defaultCollapsed": false,
+          "upgrades": ["iron-havoc-vexilla-upgrade"]
+        }
+      ],
+      "wargear": [
+        "shrapnel-cannon",
+        "bolt-pistol",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "weapons": ["shrapnel-cannon", "bolt-pistol"]
+    },
+    {
+      "id": "iron-havoc-sergeant-model",
+      "name": "Iron Havoc Sergeant",
+      "characteristics": {
+        "movement": 7,
+        "weaponSkill": 4,
+        "ballisticSkill": 4,
+        "strength": 4,
+        "toughness": 4,
+        "wounds": 1,
+        "initiative": 4,
+        "attacks": 1,
+        "leadership": 8,
+        "cool": 7,
+        "willpower": 7,
+        "intelligence": 7,
+        "armourSave": 3,
+        "invulnerableSave": null
+      },
+      "description": "The Iron Havoc Sergeant leads the squad with precision and tactical expertise.",
+      "specialRules": ["ferrum-occularis", "support-unit"],
+      "specialRuleValues": {
+        "support-unit": 1
+      },
+      "subType": ["Sergeant"],
+      "type": "Infantry",
+      "modelTypes": [
+        "iron-warriors-model",
+        "heavy-weapon-model",
+        "sergeant-model"
+      ],
+      "upgradeGroups": [
+        {
+          "id": "iron-havoc-sergeant-melee-upgrade-group",
+          "name": "Melee Weapon Options",
+          "description": "The Iron Havoc Sergeant may have a melee weapon",
+          "collapsible": true,
+          "defaultCollapsed": false,
+          "upgrades": ["iron-havoc-sergeant-melee-upgrade"]
+        }
+      ],
+      "wargear": [
+        "shrapnel-cannon",
+        "bolt-pistol",
+        "frag-grenades",
+        "krak-grenades"
+      ],
+      "weapons": ["shrapnel-cannon", "bolt-pistol"]
     }
   ]
 }

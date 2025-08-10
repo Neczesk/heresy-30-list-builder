@@ -1,4 +1,0 @@
-id,name,description,shortText,longText,hasValue,type
-phage,Phage,Reduce a characteristic for the rest of the battle,Reduce the value of the characteristic in brackets by 1 for the rest of the battle after an unsaved wound from this weapon.,Reduce that value motherfucker,TRUE,special-rule
-skyfire,Skyfire,Shooty shooty airplanes,A weapon with this special rule hits flyers at its normal to hit roll.,Zooooooom bang,TRUE,special-rule
-rapid-tracking,Rapid Tracking,Not sure what this does,Not sure what this does,Still not sure what this does,TRUE,special-rule

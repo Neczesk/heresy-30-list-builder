@@ -22,16 +22,41 @@ const AppRouter: React.FC<RouterProps> = ({
     setCurrentArmyList(armyList);
   };
 
+  const handleClearCurrentArmyList = () => {
+    setCurrentArmyList(null);
+  };
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/heresy-30-list-builder">
       <Routes>
         {/* Main menu route */}
-        <Route path="/" element={<MainMenu />} />
+        <Route
+          path="/"
+          element={
+            <MainMenu onClearCurrentArmyList={handleClearCurrentArmyList} />
+          }
+        />
 
-        {/* Army list builder route */}
+        {/* Army list builder route - for creating new lists */}
         <Route
           path="/army-builder"
-          element={<ArmyListBuilder initialArmyList={currentArmyList} />}
+          element={
+            <ArmyListBuilder
+              initialArmyList={null}
+              onClearCurrentArmyList={handleClearCurrentArmyList}
+            />
+          }
+        />
+
+        {/* Army list builder route - for editing existing lists */}
+        <Route
+          path="/army-builder/edit"
+          element={
+            <ArmyListBuilder
+              initialArmyList={currentArmyList}
+              onClearCurrentArmyList={handleClearCurrentArmyList}
+            />
+          }
         />
 
         {/* Load army list route */}

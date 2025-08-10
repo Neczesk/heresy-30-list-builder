@@ -1,0 +1,9 @@
+id,name,description,shortText,longText,hasValue,type
+phage,Phage,Reduce a characteristic for the rest of the battle,Reduce the value of the characteristic in brackets by 1 for the rest of the battle after an unsaved wound from this weapon.,Reduce that value motherfucker,true,special-rule
+skyfire,Skyfire,Shooty shooty airplanes,A weapon with this special rule hits flyers at its normal to hit roll.,Zooooooom bang,true,special-rule
+rapid-tracking,Rapid Tracking,Not sure what this does,Not sure what this does,Still not sure what this does,true,special-rule
+combi,Combi,Secondary weapon system,This is a secondary profile that can be fired at the same time as the main system,Fire them all,FALSE,special-rule
+precision,Precision,This weapon can hit specific targets in the heat of battle.,Fuck that guy in particular.,"No really, fuck that guy IN PARTICULAR",TRUE,special-rule
+shot-selector,Shot Selector,This weapon can fire various kinds of ammo,This weapon chooses a special rule to gain before firing,This weapon can choose one of the following special rules before firing,FALSE,special-rule
+reaping-blow,Reaping Blow,This weapon is more effective when fighting multiple opponents,This weapon gains +1D4 when fighting multiple opponents.,This weapon can hit multiple targets at once.,TRUE,special-rule
+force,Force,This weapon is more effective when fighting with a force weapon,This weapon gains +1D4 when fighting with a force weapon.,This weapon makes life as a Space Marine more difficult.,TRUE,special-rule

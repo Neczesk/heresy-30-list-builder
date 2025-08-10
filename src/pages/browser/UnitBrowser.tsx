@@ -146,6 +146,56 @@ const UnitBrowser: React.FC = () => {
               {unit.description}
             </Typography>
 
+            {/* Show model composition */}
+            <Box sx={{ mb: 2 }}>
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                display="block"
+              >
+                Models:
+              </Typography>
+              {unit.modelsWithData.map(({ model, count }, index) => (
+                <Typography
+                  key={model.id}
+                  variant="caption"
+                  color="text.secondary"
+                  sx={{ display: 'block', ml: 1 }}
+                >
+                  {count}x {model.name}
+                </Typography>
+              ))}
+
+              {/* Show available upgrades */}
+              {unit.upgrades.length > 0 && (
+                <>
+                  <Typography
+                    variant="caption"
+                    color="text.secondary"
+                    display="block"
+                    sx={{ mt: 1 }}
+                  >
+                    Upgrades:
+                  </Typography>
+                  {unit.upgrades.map(upgradeId => {
+                    const upgrade = DataLoader.getUpgrades().find(
+                      u => u.id === upgradeId
+                    );
+                    return upgrade ? (
+                      <Typography
+                        key={upgrade.id}
+                        variant="caption"
+                        color="text.secondary"
+                        sx={{ display: 'block', ml: 1 }}
+                      >
+                        {upgrade.name}
+                      </Typography>
+                    ) : null;
+                  })}
+                </>
+              )}
+            </Box>
+
             <Box
               sx={{
                 display: 'flex',

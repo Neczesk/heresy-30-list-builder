@@ -103,6 +103,10 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
     'infantry'
   );
 
+  // Target model types states
+  const [targetModelTypes, setTargetModelTypes] = useState<string[]>([]);
+  const [newTargetModelType, setNewTargetModelType] = useState('');
+
   useEffect(() => {
     if (open) {
       setEntry({
@@ -110,10 +114,12 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
         type: 'model',
         maxCount: '1',
         targetModelType: '',
+        targetModelTypes: [],
         options: [],
         ...initialEntry,
       });
       setUpgradeOptions(initialEntry?.options || []);
+      setTargetModelTypes(initialEntry?.targetModelTypes || []);
     }
   }, [open, initialEntry]);
 
@@ -247,10 +253,26 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
     );
   };
 
+  // Target Model Types management
+  const addTargetModelType = () => {
+    if (
+      newTargetModelType.trim() &&
+      !targetModelTypes.includes(newTargetModelType.trim())
+    ) {
+      setTargetModelTypes([...targetModelTypes, newTargetModelType.trim()]);
+      setNewTargetModelType('');
+    }
+  };
+
+  const removeTargetModelType = (index: number) => {
+    setTargetModelTypes(targetModelTypes.filter((_, i) => i !== index));
+  };
+
   const handleSave = () => {
     onSave(
       {
         ...entry,
+        targetModelTypes,
         options: upgradeOptions,
       },
       editingIndex
@@ -330,6 +352,39 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
             fullWidth
             placeholder="e.g., Infantry, Vehicle"
           />
+          <Box>
+            <Typography variant="subtitle2" gutterBottom>
+              Target Model Types (for multiple targeting)
+            </Typography>
+            <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
+              <TextField
+                size="small"
+                placeholder="Model Type ID"
+                value={newTargetModelType}
+                onChange={e => setNewTargetModelType(e.target.value)}
+                sx={{ flex: 1 }}
+              />
+              <Button
+                size="small"
+                onClick={addTargetModelType}
+                disabled={!newTargetModelType.trim()}
+              >
+                Add
+              </Button>
+            </Box>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+              {targetModelTypes.map((type, idx) => (
+                <Chip
+                  key={idx}
+                  label={type}
+                  onDelete={() => removeTargetModelType(idx)}
+                  size="small"
+                  color="primary"
+                  variant="outlined"
+                />
+              ))}
+            </Box>
+          </Box>
         </Box>
 
         {/* Upgrade Options */}

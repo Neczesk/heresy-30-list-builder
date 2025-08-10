@@ -18,8 +18,20 @@ import {
   Toolbar,
   useTheme,
   useMediaQuery,
+  Switch,
+  FormControlLabel,
+  Alert,
 } from '@mui/material';
-import { ArrowBack, Add, Save, Edit } from '@mui/icons-material';
+import {
+  ArrowBack,
+  Add,
+  Save,
+  Edit,
+  CloudSync,
+  CloudOff,
+} from '@mui/icons-material';
+import { useAuth } from '../../contexts/AuthContext';
+import { useAutoSync } from '../../hooks/useAutoSync';
 import { DataLoader } from '../../utils/dataLoader';
 import { removeDetachmentsTriggeredByUnit } from '../../utils/detachmentUtils';
 import AddDetachmentModal from '../../components/modals/AddDetachmentModal';
@@ -40,20 +52,30 @@ import type {
   Unit,
   CustomUnit,
 } from '../../types/army';
-import { CustomUnitStorage } from '../../utils/customUnitStorage';
+import { EnhancedCustomUnitStorage } from '../../utils/enhancedCustomUnitStorage';
 import { ArmyListStorage } from '../../utils/armyListStorage';
 
 interface ArmyListBuilderProps {
   initialArmyList?: Army | null;
+  onClearCurrentArmyList?: () => void;
 }
 
 const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
   initialArmyList,
+  onClearCurrentArmyList,
 }) => {
   const navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const isSmallMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const { currentUser } = useAuth();
+
+  // Auto-sync state
+  const [autoSyncEnabled, setAutoSyncEnabled] = useState(false);
+  const { isSyncing, lastSyncTime, syncError, manualSync } = useAutoSync({
+    enabled: autoSyncEnabled && !!currentUser,
+    intervalMs: 60000, // 1 minute
+  });
   const [armyList, setArmyList] = useState<Army>(
     initialArmyList || {
       id: `army-${Date.now()}`,
@@ -72,6 +94,13 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
 
   const [showAddDetachmentModal, setShowAddDetachmentModal] = useState(false);
   const [showFactionSelection, setShowFactionSelection] = useState(false);
+
+  // Update armyList when initialArmyList changes
+  useEffect(() => {
+    if (initialArmyList) {
+      setArmyList(initialArmyList);
+    }
+  }, [initialArmyList]);
 
   // Show faction selection for new army lists
   useEffect(() => {
@@ -443,7 +472,7 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     if (isCustomUnit) {
       // Load custom unit data
       const customUnitId = unitId.replace('custom:', '');
-      customUnit = CustomUnitStorage.getCustomUnit(customUnitId);
+      customUnit = EnhancedCustomUnitStorage.getCustomUnit(customUnitId);
       if (customUnit) {
         unit = DataLoader.getUnitById(customUnit.baseUnitId) || null;
       }
@@ -613,7 +642,7 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
     // Load custom unit data if this unit was created from a custom unit
     let customUnitData = undefined;
     if (unit.originalCustomUnitId) {
-      const customUnit = CustomUnitStorage.getCustomUnit(
+      const customUnit = EnhancedCustomUnitStorage.getCustomUnit(
         unit.originalCustomUnitId
       );
       if (customUnit) {
@@ -762,7 +791,10 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
             <IconButton
               edge="start"
               color="inherit"
-              onClick={() => navigate('/')}
+              onClick={() => {
+                onClearCurrentArmyList?.();
+                navigate('/');
+              }}
               sx={{ mr: { xs: 0, sm: 2 } }}
             >
               <ArrowBack />
@@ -827,6 +859,17 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
                         size="small"
                         color="success"
                         variant="outlined"
+                      />
+                    )}
+                    {currentUser && (
+                      <Chip
+                        icon={isSyncing ? <CloudSync /> : <CloudOff />}
+                        label={isSyncing ? 'Syncing...' : 'Cloud Sync'}
+                        size="small"
+                        color={autoSyncEnabled ? 'primary' : 'default'}
+                        variant={autoSyncEnabled ? 'filled' : 'outlined'}
+                        onClick={() => setAutoSyncEnabled(!autoSyncEnabled)}
+                        sx={{ cursor: 'pointer' }}
                       />
                     )}
                   </Box>
@@ -898,6 +941,51 @@ const ArmyListBuilder: React.FC<ArmyListBuilderProps> = ({
           width: { xs: '100%', sm: 'auto' },
         }}
       >
+        {/* Sync Status */}
+        {currentUser && (
+          <Box sx={{ mb: 2 }}>
+            {syncError && (
+              <Alert severity="error" sx={{ mb: 1 }}>
+                Sync error: {syncError}
+              </Alert>
+            )}
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 2,
+                flexWrap: 'wrap',
+              }}
+            >
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={autoSyncEnabled}
+                    onChange={e => setAutoSyncEnabled(e.target.checked)}
+                    color="primary"
+                  />
+                }
+                label="Auto-sync to cloud"
+              />
+              {lastSyncTime && (
+                <Typography variant="body2" color="text.secondary">
+                  Last synced: {lastSyncTime.toLocaleTimeString()}
+                </Typography>
+              )}
+              {autoSyncEnabled && (
+                <Button
+                  variant="outlined"
+                  size="small"
+                  startIcon={<CloudSync />}
+                  onClick={manualSync}
+                  disabled={isSyncing}
+                >
+                  {isSyncing ? 'Syncing...' : 'Sync Now'}
+                </Button>
+              )}
+            </Box>
+          </Box>
+        )}
         {!showFactionSelection && (
           <Box>
             <Typography

@@ -1,0 +1,30 @@
+id,name,ap,attackModifier,damage,description,firepower,initiativeModifier,profiles,range,rangedStrength,specialRules,specialRuleValues,strengthModifier,traits,type
+chainsword,Chainsword,5,A,1,Description placeholder.,,+1,,,,"[""shred""]","{""shred"": 6}",S,"[""Chain""]",melee
+heavy-chainaxe,Heavy chainaxe,4,A,1,Description placeholder.,,-2,,,,"[""shred""]","{""shred"": 6}",+3,"[""Chain""]",melee
+heavy-chainsword,Heavy chainsword,4,A,1,Description placeholder.,,-1,,,,"[""shred""]","{""shred"": 6}",+2,"[""Chain""]",melee
+chainaxe,Chainaxe,5,A,1,Description placeholder.,,-1,,,,"[""shred""]","{""shred"": 6}",+1,"[""Chain""]",melee
+chainfist,Chainfist,2,1,2,Description placeholder.,,-3,,,,"[""armourbane"", ""shred""]","{""shred"": 6}",+6,"[""Chain""]",melee
+gravis-chainfist,Gravis chainfist,2,A,3,Description placeholder.,,-1,,,,"[""armourbane"", ""shred""]","{""shred"": 6}",+4,"[""Chain""]",melee
+paired-gravis-chainfists,Paired Gravis chainfists,2,A,4,Description placeholder.,,-1,,,,"[""armourbane"", ""shred""]","{""shred"": 6}",+4,"[""Chain""]",melee
+chain-bayonet,Chain bayonet,5,A,1,Description placeholder.,,+1,,,,"[""shred""]","{""shred"": 6}",S,"[""Bayonet"", ""Chain""]",melee
+force-sword,Force sword,3,A,1,Description placeholder.,,+1,,,,"[""force""]",{},+1,"[""Psychic""]",melee
+force-axe,Force axe,2,A,1,Description placeholder.,,-1,,,,"[""force""]",{},+2,"[""Psychic""]",melee
+force-maul,Force maul,3,A,1,Description placeholder.,,+1,,,,"[""force""]",{},+3,"[""Psychic""]",melee
+force-staff,Force staff,4,A,1,Description placeholder.,,+1,,,,"[""force""]",{},+2,"[""Psychic""]",melee
+power-axe,Power axe,3,A,1,Description placeholder.,,-1,,,,"[""breaching""]","{""breaching"": 5}",+1,"[""Power""]",melee
+power-maul,Power maul,3,A,1,Description placeholder.,,-1,,,,"[""breaching""]","{""breaching"": 6}",+2,"[""Power""]",melee
+power-lance,Power lance,3,A,1,Description placeholder.,,+1,,,,"[""precision""]","{""precision"": 6}",S,"[""Power""]",melee
+gravis-power-fist,Gravis power fist,2,A,3,Description placeholder.,,+1,,,,[],{},+3,"[""Power""]",melee
+paired-gravis-power-fists,Paired Gravis power fists,2,+1,3,Description placeholder.,,+1,,,,[],{},+3,"[""Power""]",melee
+crozious-arcanum,Crozious Arcanum,3,A,2,Description placeholder.,,+1,,,,"[""breaching""]","{""breaching"": 6}",+2,"[""Power""]",melee
+lightning-claw,Lightning claw,3,A,1,Description placeholder.,,+1,,,,"[""rending"", ""breaching""]","{""rending"": 6, ""breaching"": 6}",S,"[""Power""]",melee
+pair-of-lightning-claws,Pair of lightning claws,3,+2,1,Description placeholder.,,+1,,,,"[""rending"", ""breaching""]","{""rending"": 6, ""breaching"": 6}",S,"[""Power""]",melee
+saturnine-war-axe,Saturnine war axe,2,A,2,Description placeholder.,,+1,,,,"[""reaping-blow""]","{""reaping-blow"": 2}",+1,"[""Power""]",melee
+saturnine-concussion-hammer,Saturnine concussion hammer,2,A,3,Description placeholder.,,-3,,,,"[""critical-hit""]","{""critical-hit"": 6}",x2,"[""Power""]",melee
+saturnine-disruption-fist,Saturnine disruption fist,2,A,3,Description placeholder.,,-2,,,,[],{},+2,"[""Power""]",melee
+krak-grenades-melee,Krak grenades (Melee),4,+1,2,Description placeholder.,,-3,,,,"[""detonation""]",{},+6,[],melee
+melta-bombs,Melta bombs,2,+1,4,Description placeholder.,,-3,,,,"[""armourbane"", ""detonation""]",{},+9,[],melee
+leviathan-siege-claw,Leviathan siege claw,2,A,3,Description placeholder.,,+1,,,,[],{},+2,[],melee
+paired-leviathan-siege-claws,Paired Leviathan siege claws,2,+1,3,Description placeholder.,,+1,,,,[],{},+2,[],melee
+leviathan-siege-drill,Leviathan siege drill,2,A,3,Description placeholder.,,-2,,,,"[""armourbane""]",{},+4,[],melee
+paired-leviathan-siege-drills,Paired Leviathan siege drills,2,A,4,Description placeholder.,,-2,,,,"[""armourbane""]",{},+4,[],melee

@@ -15,7 +15,7 @@ import {
   Chip,
 } from '@mui/material';
 import { Close, Save } from '@mui/icons-material';
-import { CustomUnitStorage } from '../../utils/customUnitStorage';
+import { EnhancedCustomUnitStorage } from '../../utils/enhancedCustomUnitStorage';
 import type { ArmyUnit } from '../../types/army';
 
 interface SaveCustomUnitModalProps {
@@ -54,7 +54,7 @@ const SaveCustomUnitModal: React.FC<SaveCustomUnitModalProps> = ({
   // Check if name is taken when name changes
   useEffect(() => {
     if (name.trim()) {
-      const taken = CustomUnitStorage.isNameTaken(name.trim());
+      const taken = EnhancedCustomUnitStorage.isNameTaken(name.trim());
       setIsNameTaken(taken);
     } else {
       setIsNameTaken(false);
@@ -76,7 +76,7 @@ const SaveCustomUnitModal: React.FC<SaveCustomUnitModalProps> = ({
     setError('');
 
     try {
-      const customUnit = CustomUnitStorage.createCustomUnitFromArmyUnit(
+      const customUnit = EnhancedCustomUnitStorage.createCustomUnitFromArmyUnit(
         name.trim(),
         unit,
         faction,
@@ -84,7 +84,7 @@ const SaveCustomUnitModal: React.FC<SaveCustomUnitModalProps> = ({
         description.trim() || undefined
       );
 
-      CustomUnitStorage.saveCustomUnit(customUnit);
+      EnhancedCustomUnitStorage.saveCustomUnit(customUnit);
 
       if (onSaved) {
         onSaved(customUnit.id);
@@ -116,7 +116,13 @@ const SaveCustomUnitModal: React.FC<SaveCustomUnitModalProps> = ({
       }}
     >
       <DialogTitle>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
           <Typography variant="h5" component="h3">
             Save Custom Unit
           </Typography>
@@ -136,10 +142,12 @@ const SaveCustomUnitModal: React.FC<SaveCustomUnitModalProps> = ({
           <TextField
             label="Unit Name *"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={e => setName(e.target.value)}
             placeholder="Enter a name for your custom unit"
             error={isNameTaken}
-            helperText={isNameTaken ? 'A custom unit with this name already exists' : ''}
+            helperText={
+              isNameTaken ? 'A custom unit with this name already exists' : ''
+            }
             disabled={isSaving}
             fullWidth
           />
@@ -148,7 +156,7 @@ const SaveCustomUnitModal: React.FC<SaveCustomUnitModalProps> = ({
           <TextField
             label="Description (Optional)"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={e => setDescription(e.target.value)}
             placeholder="Add a description for your custom unit"
             multiline
             rows={3}
@@ -163,33 +171,51 @@ const SaveCustomUnitModal: React.FC<SaveCustomUnitModalProps> = ({
                 Unit Preview
               </Typography>
               <Stack spacing={1}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
                   <Typography variant="body2" color="text.secondary">
                     Base Unit:
                   </Typography>
-                  <Typography variant="body2">
-                    {unit.unitId}
-                  </Typography>
+                  <Typography variant="body2">{unit.unitId}</Typography>
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
                   <Typography variant="body2" color="text.secondary">
                     Faction:
                   </Typography>
-                  <Typography variant="body2">
-                    {faction}
-                  </Typography>
+                  <Typography variant="body2">{faction}</Typography>
                 </Box>
                 {subfaction && (
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                    }}
+                  >
                     <Typography variant="body2" color="text.secondary">
                       Subfaction:
                     </Typography>
-                    <Typography variant="body2">
-                      {subfaction}
-                    </Typography>
+                    <Typography variant="body2">{subfaction}</Typography>
                   </Box>
                 )}
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
                   <Typography variant="body2" color="text.secondary">
                     Upgrades:
                   </Typography>
@@ -197,11 +223,17 @@ const SaveCustomUnitModal: React.FC<SaveCustomUnitModalProps> = ({
                     label={`${unit.upgrades?.length || 0} applied`}
                     size="small"
                     variant="outlined"
-                    color={unit.upgrades?.length > 0 ? "primary" : "default"}
+                    color={unit.upgrades?.length > 0 ? 'primary' : 'default'}
                   />
                 </Box>
                 {unit.primeAdvantages && unit.primeAdvantages.length > 0 && (
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                    }}
+                  >
                     <Typography variant="body2" color="text.secondary">
                       Prime Advantages:
                     </Typography>
@@ -217,19 +249,12 @@ const SaveCustomUnitModal: React.FC<SaveCustomUnitModalProps> = ({
           </Card>
 
           {/* Error Message */}
-          {error && (
-            <Alert severity="error">
-              {error}
-            </Alert>
-          )}
+          {error && <Alert severity="error">{error}</Alert>}
         </Stack>
       </DialogContent>
 
       <DialogActions>
-        <Button
-          onClick={handleCancel}
-          disabled={isSaving}
-        >
+        <Button onClick={handleCancel} disabled={isSaving}>
           Cancel
         </Button>
         <Button

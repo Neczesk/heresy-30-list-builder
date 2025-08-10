@@ -8,6 +8,8 @@ A React-based web application for building and managing army lists for the Horus
 - **Custom Units & Detachments**: Create and manage custom units and detachments
 - **Rules Browser**: Browse game rules, units, weapons, and special rules
 - **Data Management**: Save and load army lists locally
+- **Cloud Sync**: Sync your data to Firebase Firestore for cross-device access
+- **Google Authentication**: Sign in with Google to enable cloud features
 - **React Router**: Clean URL-based navigation between different sections
 
 ## Tech Stack
@@ -16,6 +18,7 @@ A React-based web application for building and managing army lists for the Horus
 - **Vite** for fast development and building
 - **React Router** for navigation
 - **Material-UI** for UI components
+- **Firebase** for authentication and cloud data storage
 - **ESLint + Prettier** for code quality and formatting
 
 ## Development Setup
@@ -30,6 +33,41 @@ A React-based web application for building and managing army lists for the Horus
 ```bash
 npm install
 ```
+
+### Firebase Setup
+
+To enable cloud sync and authentication features, you need to set up Firebase:
+
+1. **Create a Firebase Project**:
+   - Go to [Firebase Console](https://console.firebase.google.com/)
+   - Create a new project or select an existing one
+
+2. **Enable Authentication**:
+   - In the Firebase Console, go to Authentication > Sign-in method
+   - Enable Google sign-in provider
+
+3. **Set up Firestore Database**:
+   - Go to Firestore Database in the Firebase Console
+   - Create a database in test mode (for development)
+   - Set up security rules to allow authenticated users to read/write their data
+
+4. **Get Firebase Configuration**:
+   - Go to Project Settings > General
+   - Scroll down to "Your apps" section
+   - Click "Add app" and select Web
+   - Copy the Firebase configuration object
+
+5. **Set Environment Variables**:
+   - Copy `env.example` to `.env.local`
+   - Fill in your Firebase configuration values:
+   ```env
+   VITE_FIREBASE_API_KEY=your_api_key_here
+   VITE_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
+   VITE_FIREBASE_PROJECT_ID=your_project_id
+   VITE_FIREBASE_STORAGE_BUCKET=your_project_id.appspot.com
+   VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+   VITE_FIREBASE_APP_ID=your_app_id
+   ```
 
 ### Development
 
@@ -75,6 +113,7 @@ The project includes VS Code configuration for automatic formatting and linting:
 #### Current Linting Status
 
 The project currently has:
+
 - ✅ **0 errors** - All critical issues resolved
 - ⚠️ **77 warnings** - Mostly TypeScript `any` type usage (acceptable for development)
 

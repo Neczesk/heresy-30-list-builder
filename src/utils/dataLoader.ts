@@ -64,8 +64,8 @@ export class DataLoader {
   }
 
   static getModelsBySubType(subType: string): Model[] {
-    return ((modelsData as any).models as Model[]).filter(
-      model => model.subType.includes(subType as any)
+    return ((modelsData as any).models as Model[]).filter(model =>
+      model.subType.includes(subType as any)
     );
   }
 
@@ -121,7 +121,9 @@ export class DataLoader {
     ) as MeleeWeapon[];
   }
 
-  static getWeaponsByType(type: 'ranged' | 'melee' | 'ranged-profile' | 'melee-profile'): Weapon[] {
+  static getWeaponsByType(
+    type: 'ranged' | 'melee' | 'ranged-profile' | 'melee-profile'
+  ): Weapon[] {
     return ((weaponsData as any).weapons as Weapon[]).filter(
       weapon => weapon.type === type
     );
@@ -596,6 +598,23 @@ export class DataLoader {
       unit =>
         unit.faction === factionId &&
         (unit.allegiance === allegiance || unit.allegiance === 'Universal')
+    );
+  }
+
+  static getUnitsBySubfaction(subfactionId: string): Unit[] {
+    return ((unitsData as any).units as Unit[]).filter(
+      unit => unit.subfaction === subfactionId
+    );
+  }
+
+  static getUnitsByFactionAndSubfaction(
+    factionId: string,
+    subfactionId?: string
+  ): Unit[] {
+    return ((unitsData as any).units as Unit[]).filter(
+      unit =>
+        unit.faction === factionId &&
+        (!subfactionId || unit.subfaction === subfactionId || !unit.subfaction)
     );
   }
 

@@ -56,7 +56,7 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({ onLoadList }) => {
     const armyList = ArmyListStorage.loadArmyList(id);
     if (armyList) {
       onLoadList(armyList);
-      navigate('/army-builder');
+      navigate('/army-builder/edit');
     }
   };
 
@@ -162,7 +162,14 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({ onLoadList }) => {
 
   if (isLoading) {
     return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '50vh',
+        }}
+      >
         <CircularProgress />
         <Typography variant="body1" sx={{ ml: 2 }}>
           Loading army lists...
@@ -207,11 +214,17 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({ onLoadList }) => {
             </CardContent>
           </Card>
         ) : (
-          <Box sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' },
-            gap: 3
-          }}>
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: {
+                xs: '1fr',
+                sm: 'repeat(2, 1fr)',
+                lg: 'repeat(3, 1fr)',
+              },
+              gap: 3,
+            }}
+          >
             {armyLists.map(list => (
               <Card
                 key={list.id}
@@ -226,14 +239,21 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({ onLoadList }) => {
                 onClick={() => handleLoadList(list.id)}
               >
                 <CardContent>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'flex-start',
+                      mb: 2,
+                    }}
+                  >
                     <Typography variant="h6" component="h3" sx={{ flex: 1 }}>
                       {list.name}
                     </Typography>
                     <Box sx={{ display: 'flex', gap: 1 }}>
                       <IconButton
                         size="small"
-                        onClick={(e) => handleDuplicateList(list, e)}
+                        onClick={e => handleDuplicateList(list, e)}
                         title="Duplicate army list"
                         sx={{ color: 'info.main' }}
                       >
@@ -241,7 +261,7 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({ onLoadList }) => {
                       </IconButton>
                       <IconButton
                         size="small"
-                        onClick={(e) => handleDeleteList(list.id, e)}
+                        onClick={e => handleDeleteList(list.id, e)}
                         title="Delete army list"
                         sx={{ color: 'error.main' }}
                       >
@@ -251,15 +271,25 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({ onLoadList }) => {
                   </Box>
 
                   <Stack spacing={1}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                      }}
+                    >
                       <Typography variant="body2" color="text.secondary">
                         Faction:
                       </Typography>
-                      <Typography variant="body2">
-                        {list.faction}
-                      </Typography>
+                      <Typography variant="body2">{list.faction}</Typography>
                     </Box>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                      }}
+                    >
                       <Typography variant="body2" color="text.secondary">
                         Allegiance:
                       </Typography>
@@ -270,7 +300,13 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({ onLoadList }) => {
                         variant="outlined"
                       />
                     </Box>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                      }}
+                    >
                       <Typography variant="body2" color="text.secondary">
                         Points:
                       </Typography>
@@ -278,7 +314,13 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({ onLoadList }) => {
                         {list.totalPoints} / {list.pointsLimit}
                       </Typography>
                     </Box>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                      }}
+                    >
                       <Typography variant="body2" color="text.secondary">
                         Status:
                       </Typography>
@@ -289,7 +331,13 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({ onLoadList }) => {
                         variant="outlined"
                       />
                     </Box>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                      }}
+                    >
                       <Typography variant="body2" color="text.secondary">
                         Updated:
                       </Typography>
@@ -313,10 +361,14 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({ onLoadList }) => {
         fullWidth
       >
         <DialogTitle>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography variant="h6">
-              Duplicate Army List
-            </Typography>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <Typography variant="h6">Duplicate Army List</Typography>
             <IconButton onClick={handleCancelDuplicate} size="small">
               <Close />
             </IconButton>
@@ -329,8 +381,8 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({ onLoadList }) => {
           <TextField
             fullWidth
             value={newListName}
-            onChange={(e) => setNewListName(e.target.value)}
-            onKeyDown={(e) => {
+            onChange={e => setNewListName(e.target.value)}
+            onKeyDown={e => {
               if (e.key === 'Enter' && newListName.trim()) {
                 handleConfirmDuplicate();
               }
@@ -347,7 +399,13 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({ onLoadList }) => {
                   Original List Details:
                 </Typography>
                 <Stack spacing={1}>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                    }}
+                  >
                     <Typography variant="body2" color="text.secondary">
                       Name:
                     </Typography>
@@ -355,7 +413,13 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({ onLoadList }) => {
                       {duplicatingList.name}
                     </Typography>
                   </Box>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                    }}
+                  >
                     <Typography variant="body2" color="text.secondary">
                       Faction:
                     </Typography>
@@ -363,12 +427,19 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({ onLoadList }) => {
                       {duplicatingList.faction}
                     </Typography>
                   </Box>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                    }}
+                  >
                     <Typography variant="body2" color="text.secondary">
                       Points:
                     </Typography>
                     <Typography variant="body2">
-                      {duplicatingList.totalPoints} / {duplicatingList.pointsLimit}
+                      {duplicatingList.totalPoints} /{' '}
+                      {duplicatingList.pointsLimit}
                     </Typography>
                   </Box>
                 </Stack>
@@ -377,9 +448,7 @@ const LoadArmyList: React.FC<LoadArmyListProps> = ({ onLoadList }) => {
           )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCancelDuplicate}>
-            Cancel
-          </Button>
+          <Button onClick={handleCancelDuplicate}>Cancel</Button>
           <Button
             variant="contained"
             color="warning"

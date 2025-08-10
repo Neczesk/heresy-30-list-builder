@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 import { DataLoader } from '../utils/dataLoader';
 import { UpgradeValidator } from '../utils/upgradeValidator';
+import { TraitReplacer } from '../utils/traitReplacer';
 import type {
   Unit,
   Model,
@@ -25,6 +26,7 @@ import type {
   MeleeWeapon,
   ArmyUnit,
   ArmyUpgrade,
+  Allegiance,
 } from '../types/army';
 
 interface UnitViewerProps {
@@ -32,12 +34,16 @@ interface UnitViewerProps {
   armyUnit?: ArmyUnit; // Optional army unit instance for modifications
   selectedUpgrades?: ArmyUpgrade[]; // Optional selected upgrades to apply
   onClose?: () => void;
+  allegiance?: Allegiance; // Army allegiance for trait replacement
+  legion?: string; // Legion ID for trait replacement
 }
 
 export const UnitViewer: React.FC<UnitViewerProps> = ({
   unit,
   armyUnit,
   selectedUpgrades = [],
+  allegiance,
+  legion,
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -1670,7 +1676,11 @@ export const UnitViewer: React.FC<UnitViewerProps> = ({
               Traits
             </Typography>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-              {unit.traits.map((trait, index) => (
+              {TraitReplacer.replaceTraits(
+                unit.traits,
+                allegiance || 'Universal',
+                legion
+              ).map((trait, index) => (
                 <Chip
                   key={index}
                   label={trait}

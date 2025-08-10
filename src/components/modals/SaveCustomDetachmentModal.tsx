@@ -15,7 +15,7 @@ import {
   CardContent,
 } from '@mui/material';
 import { Close } from '@mui/icons-material';
-import { CustomDetachmentStorage } from '../../utils/customDetachmentStorage';
+import { EnhancedCustomDetachmentStorage } from '../../utils/enhancedCustomDetachmentStorage';
 import type { ArmyDetachment } from '../../types/army';
 
 interface SaveCustomDetachmentModalProps {
@@ -51,18 +51,19 @@ const SaveCustomDetachmentModal: React.FC<SaveCustomDetachmentModalProps> = ({
     }
 
     try {
-      const customDetachment = CustomDetachmentStorage.createCustomDetachment(
-        name.trim(),
-        detachment.detachmentId,
-        faction,
-        subfaction,
-        detachment.customName,
-        description.trim(),
-        detachment.units,
-        detachment.primeAdvantages
-      );
+      const customDetachment =
+        EnhancedCustomDetachmentStorage.createCustomDetachment(
+          name.trim(),
+          detachment.detachmentId,
+          faction,
+          subfaction,
+          detachment.customName,
+          description.trim(),
+          detachment.units,
+          detachment.primeAdvantages
+        );
 
-      CustomDetachmentStorage.saveCustomDetachment(customDetachment);
+      EnhancedCustomDetachmentStorage.saveCustomDetachment(customDetachment);
       onSaved(customDetachment.id);
     } catch (error) {
       console.error('Error saving custom detachment:', error);
@@ -77,17 +78,16 @@ const SaveCustomDetachmentModal: React.FC<SaveCustomDetachmentModalProps> = ({
   };
 
   return (
-    <Dialog
-      open={isOpen}
-      onClose={onClose}
-      maxWidth="md"
-      fullWidth
-    >
+    <Dialog open={isOpen} onClose={onClose} maxWidth="md" fullWidth>
       <DialogTitle>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="h6">
-            Save Custom Detachment
-          </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant="h6">Save Custom Detachment</Typography>
           <IconButton onClick={onClose} size="small">
             <Close />
           </IconButton>
@@ -99,7 +99,7 @@ const SaveCustomDetachmentModal: React.FC<SaveCustomDetachmentModalProps> = ({
             fullWidth
             label="Detachment Name"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={e => setName(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Enter a name for your custom detachment"
             inputProps={{ maxLength: 50 }}
@@ -109,18 +109,14 @@ const SaveCustomDetachmentModal: React.FC<SaveCustomDetachmentModalProps> = ({
             fullWidth
             label="Description"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={e => setDescription(e.target.value)}
             placeholder="Describe your custom detachment configuration"
             multiline
             rows={4}
             inputProps={{ maxLength: 500 }}
           />
 
-          {error && (
-            <Alert severity="error">
-              {error}
-            </Alert>
-          )}
+          {error && <Alert severity="error">{error}</Alert>}
 
           <Card variant="outlined">
             <CardContent>
@@ -128,7 +124,13 @@ const SaveCustomDetachmentModal: React.FC<SaveCustomDetachmentModalProps> = ({
                 Detachment Preview
               </Typography>
               <Stack spacing={1}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
                   <Typography variant="body2" color="text.secondary">
                     Base Detachment:
                   </Typography>
@@ -136,25 +138,39 @@ const SaveCustomDetachmentModal: React.FC<SaveCustomDetachmentModalProps> = ({
                     {detachment.detachmentId}
                   </Typography>
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
                   <Typography variant="body2" color="text.secondary">
                     Faction:
                   </Typography>
-                  <Typography variant="body2">
-                    {faction}
-                  </Typography>
+                  <Typography variant="body2">{faction}</Typography>
                 </Box>
                 {subfaction && (
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                    }}
+                  >
                     <Typography variant="body2" color="text.secondary">
                       Subfaction:
                     </Typography>
-                    <Typography variant="body2">
-                      {subfaction}
-                    </Typography>
+                    <Typography variant="body2">{subfaction}</Typography>
                   </Box>
                 )}
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
                   <Typography variant="body2" color="text.secondary">
                     Units:
                   </Typography>
@@ -162,7 +178,13 @@ const SaveCustomDetachmentModal: React.FC<SaveCustomDetachmentModalProps> = ({
                     {detachment.units.length}
                   </Typography>
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
                   <Typography variant="body2" color="text.secondary">
                     Prime Advantages:
                   </Typography>
@@ -176,14 +198,8 @@ const SaveCustomDetachmentModal: React.FC<SaveCustomDetachmentModalProps> = ({
         </Stack>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>
-          Cancel
-        </Button>
-        <Button
-          variant="contained"
-          color="success"
-          onClick={handleSave}
-        >
+        <Button onClick={onClose}>Cancel</Button>
+        <Button variant="contained" color="success" onClick={handleSave}>
           Save Custom Detachment
         </Button>
       </DialogActions>

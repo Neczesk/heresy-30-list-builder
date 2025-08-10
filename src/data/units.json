@@ -13,24 +13,14 @@
         "hermes-pathfinder-model": 1
       },
       "modelUpgrades": {
-        "hermes-lead-model": [
-          "hermes-lead-weapon-upgrade-group"
-        ],
-        "hermes-pathfinder-model": [
-          "hermes-pathfinder-weapon-upgrade-group"
-        ]
+        "hermes-lead-model": ["hermes-lead-weapon-upgrade-group"],
+        "hermes-pathfinder-model": ["hermes-pathfinder-weapon-upgrade-group"]
       },
       "points": 75,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia",
-        "Scout Tercio"
-      ],
-      "upgrades": [
-        "additional-hermes-pathfinders-upgrade"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia", "Scout Tercio"],
+      "upgrades": ["additional-hermes-pathfinders-upgrade"],
       "wargear": [],
       "minSize": 0,
       "maxSize": 0
@@ -55,13 +45,8 @@
       "points": 60,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia"
-      ],
-      "upgrades": [
-        "additional-aethon-heavy-sentinels-upgrade"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia"],
+      "upgrades": ["additional-aethon-heavy-sentinels-upgrade"],
       "wargear": [],
       "minSize": 0,
       "maxSize": 0
@@ -86,10 +71,7 @@
       "points": 75,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia"],
       "upgrades": [],
       "wargear": [],
       "minSize": 0,
@@ -117,11 +99,7 @@
       "points": 140,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia",
-        "Smokescreen"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia", "Smokescreen"],
       "upgrades": [],
       "wargear": [],
       "minSize": 0,
@@ -154,20 +132,12 @@
         ]
       },
       "points": 75,
-      "specialRules": [
-        "vanguard"
-      ],
+      "specialRules": ["vanguard"],
       "specialRuleValues": {
         "vanguard": 3
       },
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia",
-        "Veletaris Tercio"
-      ],
-      "upgrades": [
-        "additional-veletarii-upgrade"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia", "Veletaris Tercio"],
+      "upgrades": ["additional-veletarii-upgrade"],
       "wargear": [],
       "minSize": 0,
       "maxSize": 0
@@ -197,19 +167,12 @@
         ]
       },
       "points": 90,
-      "specialRules": [
-        "vanguard"
-      ],
+      "specialRules": ["vanguard"],
       "specialRuleValues": {
         "vanguard": 3
       },
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia"
-      ],
-      "upgrades": [
-        "additional-veletaris-storm-veletarii-upgrade"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia"],
+      "upgrades": ["additional-veletaris-storm-veletarii-upgrade"],
       "wargear": [],
       "minSize": 0,
       "maxSize": 0
@@ -238,20 +201,12 @@
         ]
       },
       "points": 100,
-      "specialRules": [
-        "vanguard",
-        "implacable-advance"
-      ],
+      "specialRules": ["vanguard", "implacable-advance"],
       "specialRuleValues": {
         "vanguard": 3
       },
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia"
-      ],
-      "upgrades": [
-        "additional-veletaris-vanguard-veletarii-upgrade"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia"],
+      "upgrades": ["additional-veletaris-vanguard-veletarii-upgrade"],
       "wargear": [],
       "minSize": 0,
       "maxSize": 0
@@ -273,13 +228,8 @@
       "points": 120,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia"
-      ],
-      "upgrades": [
-        "additional-charonite-ogryn-upgrade"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia"],
+      "upgrades": ["additional-charonite-ogryn-upgrade"],
       "wargear": [],
       "minSize": 0,
       "maxSize": 0
@@ -303,13 +253,8 @@
       "points": 40,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia"
-      ],
-      "upgrades": [
-        "additional-hermes-veletaris-sentinels-upgrade"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia"],
+      "upgrades": ["additional-hermes-veletaris-sentinels-upgrade"],
       "wargear": [],
       "minSize": 0,
       "maxSize": 0
@@ -334,11 +279,7 @@
       "points": 120,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia",
-        "Smokescreen"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia", "Smokescreen"],
       "upgrades": [],
       "wargear": [],
       "minSize": 0,
@@ -374,13 +315,8 @@
       "points": 65,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia"
-      ],
-      "upgrades": [
-        "additional-veterans-upgrade"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia"],
+      "upgrades": ["additional-veterans-upgrade"],
       "wargear": [],
       "minSize": 0,
       "maxSize": 0
@@ -409,20 +345,12 @@
         ]
       },
       "points": 50,
-      "specialRules": [
-        "line"
-      ],
+      "specialRules": ["line"],
       "specialRuleValues": {
         "line": 1
       },
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia",
-        "Infantry Tercio"
-      ],
-      "upgrades": [
-        "additional-auxiliaries-upgrade"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia", "Infantry Tercio"],
+      "upgrades": ["additional-auxiliaries-upgrade"],
       "wargear": [],
       "minSize": 0,
       "maxSize": 0
@@ -446,13 +374,8 @@
       "points": 32,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia"
-      ],
-      "upgrades": [
-        "additional-hermes-light-sentinels-upgrade"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia"],
+      "upgrades": ["additional-hermes-light-sentinels-upgrade"],
       "wargear": [],
       "minSize": 0,
       "maxSize": 0
@@ -474,11 +397,7 @@
       "points": 160,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia",
-        "Interceptor"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia", "Interceptor"],
       "upgrades": [],
       "wargear": [],
       "minSize": 0,
@@ -501,10 +420,7 @@
       "points": 120,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia"],
       "upgrades": [],
       "wargear": [],
       "minSize": 0,
@@ -533,11 +449,7 @@
       "points": 180,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia",
-        "Smokescreen"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia", "Smokescreen"],
       "upgrades": [],
       "wargear": [],
       "minSize": 0,
@@ -564,11 +476,7 @@
       "points": 215,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia",
-        "Smokescreen"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia", "Smokescreen"],
       "upgrades": [],
       "wargear": [],
       "minSize": 0,
@@ -595,11 +503,7 @@
       "points": 190,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia",
-        "Smokescreen"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia", "Smokescreen"],
       "upgrades": [],
       "wargear": [],
       "minSize": 0,
@@ -627,11 +531,7 @@
       "points": 500,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia",
-        "Smokescreen"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia", "Smokescreen"],
       "upgrades": [],
       "wargear": [],
       "minSize": 0,
@@ -651,20 +551,13 @@
       },
       "modelUpgrades": {
         "rapier-gunner-model": [],
-        "rapier-carrier-model": [
-          "rapier-carrier-weapon-upgrade-group"
-        ]
+        "rapier-carrier-model": ["rapier-carrier-weapon-upgrade-group"]
       },
       "points": 30,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia"
-      ],
-      "upgrades": [
-        "additional-rapier-crews-upgrade"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia"],
+      "upgrades": ["additional-rapier-crews-upgrade"],
       "wargear": [],
       "minSize": 0,
       "maxSize": 0
@@ -689,11 +582,7 @@
       "points": 140,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia",
-        "Smokescreen"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia", "Smokescreen"],
       "upgrades": [],
       "wargear": [],
       "minSize": 0,
@@ -721,11 +610,7 @@
       "points": 140,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia",
-        "Smokescreen"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia", "Smokescreen"],
       "upgrades": [],
       "wargear": [],
       "minSize": 0,
@@ -753,11 +638,7 @@
       "points": 140,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia",
-        "Smokescreen"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia", "Smokescreen"],
       "upgrades": [],
       "wargear": [],
       "minSize": 0,
@@ -789,14 +670,8 @@
       "points": 65,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia",
-        "Artillery Tercio"
-      ],
-      "upgrades": [
-        "additional-artillery-veterans-upgrade"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia", "Artillery Tercio"],
+      "upgrades": ["additional-artillery-veterans-upgrade"],
       "wargear": [],
       "minSize": 0,
       "maxSize": 0
@@ -862,14 +737,8 @@
       "points": 125,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia",
-        "Cohort Supreme Command"
-      ],
-      "upgrades": [
-        "additional-lifewards-upgrade"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia", "Cohort Supreme Command"],
+      "upgrades": ["additional-lifewards-upgrade"],
       "wargear": [],
       "minSize": 0,
       "maxSize": 0
@@ -900,22 +769,2396 @@
         ]
       },
       "points": 100,
-      "specialRules": [
-        "officer-of-the-line"
-      ],
+      "specialRules": ["officer-of-the-line"],
       "specialRuleValues": {
         "officer-of-the-line": 2
       },
-      "traits": [
-        "[Allegiance]",
-        "Solar Auxilia"
-      ],
-      "upgrades": [
-        "additional-companions-upgrade"
-      ],
+      "traits": ["[Allegiance]", "Solar Auxilia"],
+      "upgrades": ["additional-companions-upgrade"],
       "wargear": [],
       "minSize": 0,
       "maxSize": 0
+    },
+    {
+      "id": "praetor",
+      "name": "Praetor",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "High Command",
+      "description": "A Praetor, a high-ranking commander of the Legiones Astartes.",
+      "faction": "legiones-astartes",
+      "models": {
+        "praetor-model": 1
+      },
+      "modelUpgrades": {
+        "praetor-model": [
+          "legion-officer-wargear-bolt-pistol",
+          "legion-officer-wargear-bolter",
+          "legion-combi-weapons",
+          "praetor-bolt-pistol-replacements",
+          "praetor-bolter-replacements",
+          "praetor-lightning-claws",
+          "praetor-additional-weapons",
+          "praetor-bayonets",
+          "praetor-cyber-familiar"
+        ]
+      },
+      "points": 120,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["[Allegiance]", "[Legiones Astartes]", "Master of the Legion"],
+      "upgrades": ["praetor-jump-pack-upgrade"],
+      "wargear": [],
+      "minSize": 0,
+      "maxSize": 0
+    },
+    {
+      "id": "praetor-terminator-armour",
+      "name": "Praetor in Terminator Armour",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "High Command",
+      "description": "A Praetor equipped with Terminator armour for enhanced protection and firepower.",
+      "faction": "legiones-astartes",
+      "models": {
+        "cataphractii-praetor-model": 1
+      },
+      "modelUpgrades": {
+        "cataphractii-praetor-model": [
+          "terminator-praetor-power-weapon-options",
+          "terminator-praetor-combi-bolter-replacements",
+          "terminator-praetor-power-weapon-upgrades",
+          "legion-terminator-melee-weapons",
+          "terminator-praetor-lightning-claws"
+        ],
+        "tartaros-praetor-model": [
+          "terminator-praetor-power-weapon-options",
+          "terminator-praetor-combi-bolter-replacements",
+          "terminator-praetor-power-weapon-upgrades",
+          "legion-terminator-melee-weapons",
+          "terminator-praetor-lightning-claws"
+        ]
+      },
+      "points": 145,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["[Allegiance]", "Legiones Astartes", "Master of the Legion"],
+      "upgrades": ["terminator-praetor-model-replacement"],
+      "wargear": [],
+      "minSize": 0,
+      "maxSize": 0
+    },
+    {
+      "id": "praetor-saturnine-terminator-armour",
+      "name": "Praetor in Saturnine Terminator Armour",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "High Command",
+      "description": "A Praetor equipped with the ultra-rare Saturnine Terminator armour for maximum protection and devastating firepower.",
+      "faction": "legiones-astartes",
+      "models": {
+        "saturnine-praetor-model": 1
+      },
+      "modelUpgrades": {
+        "saturnine-praetor-model": [
+          "saturnine-praetor-weapon-replacements",
+          "saturnine-praetor-additional-weapons",
+          "saturnine-praetor-teleportation-upgrade"
+        ]
+      },
+      "points": 200,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["[Allegiance]", "Legiones Astartes", "Master of the Legion"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 0,
+      "maxSize": 0
+    },
+    {
+      "id": "centurion",
+      "name": "Centurion",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Command",
+      "description": "A Centurion, a mid-ranking officer of the Legiones Astartes responsible for field command and tactical coordination.",
+      "faction": "legiones-astartes",
+      "models": {
+        "centurion-model": 1
+      },
+      "modelUpgrades": {
+        "centurion-model": [
+          "legion-officer-wargear-bolt-pistol",
+          "legion-officer-wargear-bolter",
+          "legion-combi-weapons",
+          "centurion-bolt-pistol-replacements",
+          "centurion-bolter-replacements",
+          "centurion-lightning-claws",
+          "centurion-additional-weapons",
+          "centurion-bayonets",
+          "centurion-vexilla",
+          "centurion-cyber-familiar"
+        ],
+        "centurion-jump-pack-model": [
+          "legion-officer-wargear-bolt-pistol",
+          "legion-officer-wargear-bolter",
+          "legion-combi-weapons",
+          "centurion-bolt-pistol-replacements",
+          "centurion-bolter-replacements",
+          "centurion-lightning-claws",
+          "centurion-additional-weapons",
+          "centurion-bayonets"
+        ]
+      },
+      "points": 80,
+      "specialRules": ["officer-of-the-line"],
+      "specialRuleValues": {
+        "officer-of-the-line": 2
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": ["centurion-model-replacement"],
+      "wargear": [],
+      "minSize": 0,
+      "maxSize": 0
+    },
+    {
+      "id": "centurion-terminator-armour",
+      "name": "Centurion in Terminator Armour",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Command",
+      "description": "A Centurion equipped with Terminator armour for enhanced protection and firepower.",
+      "faction": "legiones-astartes",
+      "models": {
+        "cataphractii-centurion-model": 1
+      },
+      "modelUpgrades": {
+        "cataphractii-centurion-model": [
+          "terminator-centurion-power-weapon-options",
+          "terminator-centurion-combi-bolter-replacements",
+          "legion-terminator-melee-weapons",
+          "terminator-centurion-lightning-claws"
+        ],
+        "tartaros-centurion-model": [
+          "terminator-centurion-power-weapon-options",
+          "terminator-centurion-combi-bolter-replacements",
+          "legion-terminator-melee-weapons",
+          "terminator-centurion-lightning-claws"
+        ]
+      },
+      "points": 100,
+      "specialRules": ["officer-of-the-line"],
+      "specialRuleValues": {
+        "officer-of-the-line": 2
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": ["terminator-centurion-model-replacement"],
+      "wargear": [],
+      "minSize": 0,
+      "maxSize": 0
+    },
+    {
+      "id": "optae",
+      "name": "Optae",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Command",
+      "description": "An Optae, a junior officer of the Legiones Astartes responsible for squad-level command and tactical leadership.",
+      "faction": "legiones-astartes",
+      "models": {
+        "optae-model": 1
+      },
+      "modelUpgrades": {
+        "optae-model": [
+          "legion-sergeant-melee-weapons",
+          "legion-pistol-upgrades",
+          "optae-bolter-replacements",
+          "optae-bolt-pistol-replacements",
+          "optae-lightning-claws",
+          "optae-additional-weapons",
+          "optae-bayonets"
+        ],
+        "optae-jump-pack-model": [
+          "legion-sergeant-melee-weapons",
+          "legion-pistol-upgrades",
+          "optae-bolter-replacements",
+          "optae-bolt-pistol-replacements",
+          "optae-lightning-claws",
+          "optae-additional-weapons",
+          "optae-bayonets"
+        ]
+      },
+      "points": 50,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": ["optae-model-replacement"],
+      "wargear": [],
+      "minSize": 0,
+      "maxSize": 0
+    },
+    {
+      "id": "tactical-squad",
+      "name": "Tactical Squad",
+      "allegiance": "Universal",
+      "baseSize": 10,
+      "battlefieldRole": "Troops",
+      "description": "A Tactical Squad forms the backbone of any Legiones Astartes force, providing flexible infantry support and objective control.",
+      "faction": "legiones-astartes",
+      "models": {
+        "tactical-sergeant-model": 1,
+        "legionary-model": 9
+      },
+      "modelUpgrades": {
+        "tactical-sergeant-model": [
+          "legion-sergeant-melee-weapons",
+          "legion-pistol-upgrades",
+          "legion-combi-weapons",
+          "tactical-squad-melta-bombs"
+        ],
+        "legionary-model": ["legion-equipment", "tactical-squad-vexilla"]
+      },
+      "points": 100,
+      "specialRules": ["fury-of-the-legion", "line"],
+      "specialRuleValues": {
+        "line": 2
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "tactical-squad-additional-legionaries",
+        "tactical-squad-bayonets"
+      ],
+      "wargear": [],
+      "minSize": 10,
+      "maxSize": 20
+    },
+    {
+      "id": "despoiler-squad",
+      "name": "Despoiler Squad",
+      "allegiance": "Universal",
+      "baseSize": 10,
+      "battlefieldRole": "Troops",
+      "description": "A Despoiler Squad specializes in close-quarters combat, excelling at boarding actions and assault warfare.",
+      "faction": "legiones-astartes",
+      "models": {
+        "despoiler-sergeant-model": 1,
+        "despoiler-legionary-model": 9
+      },
+      "modelUpgrades": {
+        "despoiler-sergeant-model": [
+          "legion-sergeant-melee-weapons",
+          "legion-pistol-upgrades",
+          "despoiler-sergeant-lightning-claws",
+          "despoiler-sergeant-melta-bombs"
+        ],
+        "despoiler-legionary-model": [
+          "legion-equipment",
+          "despoiler-squad-vexilla"
+        ]
+      },
+      "points": 100,
+      "specialRules": ["line"],
+      "specialRuleValues": {
+        "line": 2
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "despoiler-squad-additional-legionaries",
+        "despoiler-legionary-chainsword-upgrades",
+        "despoiler-legionary-pistol-upgrades"
+      ],
+      "wargear": [],
+      "minSize": 10,
+      "maxSize": 20
+    },
+    {
+      "id": "assault-squad",
+      "name": "Assault Squad",
+      "allegiance": "Universal",
+      "baseSize": 10,
+      "battlefieldRole": "Troops",
+      "description": "Jump pack-equipped assault squads are rapid-attack forces optimized for close-quarters fighting and hit-and-run tactics.",
+      "faction": "legiones-astartes",
+      "models": {
+        "assault-sergeant-model": 1,
+        "assault-legionary-model": 9
+      },
+      "modelUpgrades": {
+        "assault-sergeant-model": [
+          "legion-sergeant-melee-weapons",
+          "assault-sergeant-disintegrator-pistol",
+          "assault-sergeant-lightning-claws",
+          "assault-sergeant-combat-shield-combo",
+          "assault-sergeant-melta-bombs"
+        ],
+        "assault-legionary-model": []
+      },
+      "points": 140,
+      "specialRules": ["vanguard"],
+      "specialRuleValues": {
+        "vanguard": 2
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "assault-squad-additional-legionaries",
+        "assault-squad-combat-shields",
+        "assault-squad-chainaxes",
+        "assault-legionary-chainsword-upgrades",
+        "assault-legionary-heavy-chainaxes",
+        "assault-legionary-pistol-upgrades"
+      ],
+      "wargear": [],
+      "minSize": 10,
+      "maxSize": 20
+    },
+    {
+      "id": "breacher-squad",
+      "name": "Breacher Squad",
+      "allegiance": "Universal",
+      "baseSize": 10,
+      "battlefieldRole": "Troops",
+      "description": "Breacher squads are specialized in fortress assault and boarding actions, equipped with boarding shields and heavy ablative armor for maximum survivability.",
+      "faction": "legiones-astartes",
+      "models": {
+        "breacher-sergeant-model": 1,
+        "breacher-legionary-model": 9
+      },
+      "modelUpgrades": {
+        "breacher-sergeant-model": [
+          "legion-sergeant-melee-weapons",
+          "legion-combi-weapons",
+          "legion-pistol-upgrades",
+          "breacher-sergeant-melta-bombs"
+        ],
+        "breacher-legionary-model": [
+          "legion-equipment",
+          "breacher-squad-vexilla"
+        ]
+      },
+      "points": 140,
+      "specialRules": ["line"],
+      "specialRuleValues": {
+        "line": 1
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes", "Shield"],
+      "upgrades": [
+        "breacher-squad-additional-legionaries",
+        "breacher-legionary-special-weapons"
+      ],
+      "wargear": [],
+      "minSize": 10,
+      "maxSize": 20
+    },
+    {
+      "id": "tactical-support-squad",
+      "name": "Tactical Support Squad",
+      "allegiance": "Universal",
+      "baseSize": 5,
+      "battlefieldRole": "Support",
+      "description": "Tactical support squads are mobile fire support units that replace the utilitarian bolter with more specialized weapons, providing versatile battlefield support.",
+      "faction": "legiones-astartes",
+      "models": {
+        "tactical-support-sergeant-model": 1,
+        "tactical-support-legionary-model": 4
+      },
+      "modelUpgrades": {
+        "tactical-support-sergeant-model": [
+          "legion-sergeant-melee-weapons",
+          "tactical-support-sergeant-melta-bombs"
+        ],
+        "tactical-support-legionary-model": [
+          "legion-equipment",
+          "tactical-support-squad-vexilla"
+        ]
+      },
+      "points": 40,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "tactical-support-squad-additional-legionaries",
+        "tactical-support-mandatory-special-weapons"
+      ],
+      "wargear": [],
+      "minSize": 5,
+      "maxSize": 10
+    },
+    {
+      "id": "heavy-support-squad",
+      "name": "Heavy Support Squad",
+      "allegiance": "Universal",
+      "baseSize": 5,
+      "battlefieldRole": "Support",
+      "description": "Heavy support squads provide devastating mobile firepower sufficient to bring down hordes of enemy troops or smash armored vehicles apart in withering hails of weapons fire.",
+      "faction": "legiones-astartes",
+      "models": {
+        "heavy-support-sergeant-model": 1,
+        "heavy-support-legionary-model": 4
+      },
+      "modelUpgrades": {
+        "heavy-support-sergeant-model": ["legion-sergeant-melee-weapons"],
+        "heavy-support-legionary-model": [
+          "legion-equipment",
+          "heavy-support-squad-vexilla"
+        ]
+      },
+      "points": 50,
+      "specialRules": ["support-unit"],
+      "specialRuleValues": {
+        "support-unit": 1
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "heavy-support-squad-additional-legionaries",
+        "heavy-support-mandatory-heavy-weapons"
+      ],
+      "wargear": [],
+      "minSize": 5,
+      "maxSize": 10
+    },
+    {
+      "id": "legion-rapier-battery",
+      "name": "Rapier Battery",
+      "allegiance": "Universal",
+      "baseSize": 3,
+      "battlefieldRole": "Support",
+      "description": "Rapier carriers are semi-automated tracked weapons carriers with on-board targeting systems and power generators, providing mobile fire support for Legion forces.",
+      "faction": "legiones-astartes",
+      "models": {
+        "legion-rapier-gunner-model": 2,
+        "legion-rapier-carrier-model": 1
+      },
+      "modelUpgrades": {
+        "legion-rapier-gunner-model": [],
+        "legion-rapier-carrier-model": [
+          "legion-rapier-carrier-weapon-upgrades",
+          "legion-rapier-phosphex-canister-shot"
+        ]
+      },
+      "points": 40,
+      "specialRules": ["rapier-crew", "slow-and-purposeful", "support-unit"],
+      "specialRuleValues": {
+        "support-unit": 1
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": ["legion-rapier-battery-additional-crews"],
+      "wargear": [],
+      "minSize": 3,
+      "maxSize": 12
+    },
+    {
+      "id": "apothecary",
+      "name": "Apothecary",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Support",
+      "description": "Legion Apothecaries carry the most sacred trusts - the care of the fallen and the promise of future generations of Space Marines.",
+      "faction": "legiones-astartes",
+      "models": {
+        "apothecary-model": 1
+      },
+      "modelUpgrades": {
+        "apothecary-model": [
+          "legion-sergeant-melee-weapons",
+          "legion-pistol-upgrades"
+        ]
+      },
+      "points": 30,
+      "specialRules": ["medic"],
+      "specialRuleValues": {
+        "medic": 4
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "techmarine",
+      "name": "Techmarine",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Support",
+      "description": "Techmarines are specialist members of the Legion whose intelligence and aptitude marked them for induction into the rites and secrets of the Mechanicum.",
+      "faction": "legiones-astartes",
+      "models": {
+        "techmarine-model": 1
+      },
+      "modelUpgrades": {
+        "techmarine-model": [
+          "legion-pistol-upgrades",
+          "techmarine-melta-bombs",
+          "techmarine-cyber-familiar"
+        ]
+      },
+      "points": 50,
+      "specialRules": ["battlesmith"],
+      "specialRuleValues": {
+        "battlesmith": 2
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "contemptor-dreadnought",
+      "name": "Contemptor Dreadnought",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "War Engine",
+      "description": "A Contemptor was a relatively recent design that incorporated not only traditional Dreadnought technologies, but arcane systems drawn from the ancient lore of the Legio Cybernetica.",
+      "faction": "legiones-astartes",
+      "models": {
+        "contemptor-dreadnought-model": 1
+      },
+      "modelUpgrades": {
+        "contemptor-dreadnought-model": [
+          "contemptor-mandatory-weapon-configuration",
+          "contemptor-combi-bolter-replacements",
+          "contemptor-havoc-launcher"
+        ]
+      },
+      "points": 150,
+      "specialRules": ["bulky", "explodes", "implacable-advance"],
+      "specialRuleValues": {
+        "bulky": 6,
+        "explodes": 5
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "deredeo-dreadnought",
+      "name": "Deredeo Dreadnought",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "War Engine",
+      "description": "The Deredeo pattern Dreadnought was an expansion of the same project which gave birth to the first Legiones Astartes Dreadnoughts, intended as a heavy weapons platform.",
+      "faction": "legiones-astartes",
+      "models": {
+        "deredeo-dreadnought-model": 1
+      },
+      "modelUpgrades": {
+        "deredeo-dreadnought-model": [
+          "deredeo-anvilus-autocannon-replacements",
+          "deredeo-aiolos-missile-replacements",
+          "deredeo-twin-heavy-bolter-replacements"
+        ]
+      },
+      "points": 190,
+      "specialRules": ["bulky", "explodes"],
+      "specialRuleValues": {
+        "bulky": 7,
+        "explodes": 5
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "leviathan-dreadnought",
+      "name": "Leviathan Dreadnought",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "War Engine",
+      "description": "Developed in the highest secrecy not on Mars, but on Terra, the Leviathan is an alternative development of the highly successful Contemptor.",
+      "faction": "legiones-astartes",
+      "models": {
+        "leviathan-dreadnought-model": 1
+      },
+      "modelUpgrades": {
+        "leviathan-dreadnought-model": [
+          "leviathan-mandatory-weapon-configuration",
+          "leviathan-heavy-flamer-replacements",
+          "leviathan-phosphex-discharger"
+        ]
+      },
+      "points": 220,
+      "specialRules": ["bulky", "explodes", "implacable-advance"],
+      "specialRuleValues": {
+        "bulky": 7,
+        "explodes": 5
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "saturnine-dreadnought",
+      "name": "Saturnine Dreadnought",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "War Engine",
+      "description": "An extension of the technology utilised to develop the standardised Saturnine Terminator armour, this Dreadnought chassis requires vast generators to power its potent weaponry and complex energy shielding.",
+      "faction": "legiones-astartes",
+      "models": {
+        "saturnine-dreadnought-model": 1
+      },
+      "modelUpgrades": {
+        "saturnine-dreadnought-model": [
+          "saturnine-heavy-plasma-bombard-replacements",
+          "saturnine-disintegrator-cannon-replacements",
+          "saturnine-photonic-incinerator-replacements"
+        ]
+      },
+      "points": 340,
+      "specialRules": ["bulky", "explodes"],
+      "specialRuleValues": {
+        "bulky": 8,
+        "explodes": 4
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "rhino",
+      "name": "Rhino",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Transport",
+      "description": "The Rhino is the most widely used armoured personnel carrier in the Imperium. Based on ancient STC technology, its design is robust, reliable and easy to maintain.",
+      "faction": "legiones-astartes",
+      "models": {
+        "rhino-model": 1
+      },
+      "modelUpgrades": {
+        "rhino-model": [
+          "rhino-pintle-mounted-combi-bolter-upgrades",
+          "rhino-legion-pintle-weapons",
+          "rhino-additional-equipment"
+        ]
+      },
+      "points": 60,
+      "specialRules": ["light-transport", "auto-repair"],
+      "specialRuleValues": {
+        "auto-repair": 4
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "drop-pod",
+      "name": "Drop Pod",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Transport",
+      "description": "Drop pods are self-contained, recoverable orbital descent capsules, each designed to carry a squad of Space Marines into active war zones for surprise attacks and combat drops.",
+      "faction": "legiones-astartes",
+      "models": {
+        "drop-pod-model": 1
+      },
+      "modelUpgrades": {
+        "drop-pod-model": []
+      },
+      "points": 50,
+      "specialRules": [
+        "light-transport",
+        "orbital-assault-vehicle",
+        "impact-reactive-doors"
+      ],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "termite",
+      "name": "Termite",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Transport",
+      "description": "Originally designed on Terra for rooting out burrowing xenos species, canny commanders quickly found use for the Termite assault drill for emerging beneath enemy bastions to lay waste to their defenders.",
+      "faction": "legiones-astartes",
+      "models": {
+        "termite-model": 1
+      },
+      "modelUpgrades": {
+        "termite-model": ["termite-combi-bolter-replacements"]
+      },
+      "points": 80,
+      "specialRules": ["light-transport", "deep-strike"],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "damocles-command-rhino",
+      "name": "Damocles Command Rhino",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Command",
+      "description": "Equipped with advanced communication, cognis analysis and tracking equipment, the Damocles is designed principally as a command and control vehicle to serve as a direct link between a Space Marine Legion formation in the field and their brethren elsewhere within the war zone.",
+      "faction": "legiones-astartes",
+      "models": {
+        "damocles-command-rhino-model": 1
+      },
+      "modelUpgrades": {
+        "damocles-command-rhino-model": [
+          "damocles-pintle-mounted-combi-bolter-upgrades",
+          "damocles-legion-pintle-weapons",
+          "damocles-additional-equipment"
+        ]
+      },
+      "points": 120,
+      "specialRules": [
+        "light-transport",
+        "auto-repair",
+        "mobile-command-vehicle"
+      ],
+      "specialRuleValues": {
+        "auto-repair": 5
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "librarian",
+      "name": "Librarian",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Command",
+      "description": "For many years the Legions maintained cadres of battle-psykers in their ranks, warriors who fused these esoteric powers with a Space Marine's superhuman physical power. Despite prohibition and persecution, many took it upon themselves to unleash their powers in times of need.",
+      "faction": "legiones-astartes",
+      "models": {
+        "librarian-model": 1
+      },
+      "modelUpgrades": {
+        "librarian-model": ["librarian-psychic-disciplines"]
+      },
+      "points": 85,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes", "Psyker"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "legion-champion",
+      "name": "Legion Champion",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Command",
+      "description": "Chosen from the best blades of the Legion, each champion bears the honour of their chapter or company in battle, and is armed and armoured in the finest panoply of war. When a single warrior was required for a matter of honour or to fight single combat in the name of their Legion or even the Imperium, it was to these that the duty fell.",
+      "faction": "legiones-astartes",
+      "models": {
+        "legion-champion-model": 1
+      },
+      "modelUpgrades": {
+        "legion-champion-model": [
+          "legion-champion-weapon-upgrades",
+          "legion-champion-melta-bombs"
+        ]
+      },
+      "points": 105,
+      "specialRules": ["never-back-down"],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "vigilator",
+      "name": "Vigilator",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Command",
+      "description": "Highly skilled as watchers and hunters among their brethren, Vigilators are the eyes of their Legion on the ground, their wisdom paramount in scouting out the foe's disposition and strength, and determining the best place to strike. Often selected from Reconnaissance Squads, these peerless shots are able to operate with these formations, or conduct their operations individually.",
+      "faction": "legiones-astartes",
+      "models": {
+        "vigilator-model": 1
+      },
+      "modelUpgrades": {
+        "vigilator-model": []
+      },
+      "points": 95,
+      "specialRules": ["infiltrate"],
+      "specialRuleValues": {
+        "infiltrate": 9
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "esoterist",
+      "name": "Esoterist",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Command",
+      "description": "The Legion Esoterists were a late occurrence among many of the armies embroiled in the Horus Heresy, as members of the Librarius returned to their studies with or without the blessing of their Primarchs, and delved into the forbidden lore that saw common use on the battlefields of that dark age. Many saw the power that could be gained from treating with the powers of the Warp, summoning forth its denizens and binding them to their cause.",
+      "faction": "legiones-astartes",
+      "models": {
+        "esoterist-model": 1
+      },
+      "modelUpgrades": {
+        "esoterist-model": []
+      },
+      "points": 95,
+      "specialRules": ["anathemata-discipline"],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes", "Psyker", "Anathemata"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "master-of-signals",
+      "name": "Master of Signals",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Command",
+      "description": "A vital link between those desperately fighting and supporting elements of the Legion in battle, the Master of Signals is a strategic and communications specialist. Carrying a command vox relay, this warrior receives constant positional updates from forces in the vicinity, and directs them with a logistical skill that is second to none. Many officers have noted that they have been able to commit themselves to the fighting knowing that a Master of Signals will coordinate on their behalf, signalling priority objectives and ensuring that weak spots in an enemy line are exploited.",
+      "faction": "legiones-astartes",
+      "models": {
+        "master-of-signals-model": 1
+      },
+      "modelUpgrades": {
+        "master-of-signals-model": []
+      },
+      "points": 115,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "praevian",
+      "name": "Praevian",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Command",
+      "description": "Praevians are the keeper of the Legion's bound automata, those soulless machines sworn to the Legion's service and inducted into their ranks as honorary Legionaries after decades of service. Initiated into the rites of the Mechanicum's Cybernetica Tech-arcana, these officers oversee the maintenance and programming of their charges and ensure that loyalty to the Legion and its traditions are enshrined in their core logic. On the field of battle, they march at the forefront of the inducted maniples, guiding them in the correct prosecution of war and acting as examples of true sons of the Legion.",
+      "faction": "legiones-astartes",
+      "models": {
+        "praevian-model": 1
+      },
+      "modelUpgrades": {
+        "praevian-model": ["praevian-melta-bombs"]
+      },
+      "points": 95,
+      "specialRules": ["battlesmith", "feel-no-pain", "master-of-automata"],
+      "specialRuleValues": {
+        "battlesmith": 1,
+        "feel-no-pain": 5
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "moritat",
+      "name": "Moritat",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Command",
+      "description": "Said by some to be no less than death incarnate, and by others to be dishonourable murderers with no place in the Imperium's order of battle, moritates are lone killers operating outside the Legion's usual command structures at the behest, or at least sufferance, of its high commanders. Regarded usually as dangerously unstable outcasts - perhaps created by some seldom-exposed flaw of gene-seed or indoctrination - they operate alongside the Destroyer cadres, honing their superhuman reflexes to gun down the foe at close-quarters.",
+      "faction": "legiones-astartes",
+      "models": {
+        "moritat-model": 1
+      },
+      "modelUpgrades": {
+        "moritat-model": ["moritat-weapon-upgrades", "moritat-melta-bombs"]
+      },
+      "points": 95,
+      "specialRules": ["bulky", "deep-strike", "firestorm"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "siege-breaker",
+      "name": "Siege Breaker",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Command",
+      "description": "The wreckers of cities, the bringers-down of fortress walls and the shatterers of strongholds, Siege Breakers are officers of the Legion whose specialty is precisely applied destruction against strategic targets. Demonstrating an eye for detail, such warriors appraise all data available to them, identifying structural weaknesses and directing the heavy guns under their charge accordingly. Placed often in command of frontline artillery units, they prefer to closely observe their work, rather than sit back behind the lines, and so are deadly efficient in adapting their force's attack patterns from moment to moment.",
+      "faction": "legiones-astartes",
+      "models": {
+        "siege-breaker-model": 1
+      },
+      "modelUpgrades": {
+        "siege-breaker-model": [
+          "siege-breaker-pistol-upgrades",
+          "siege-breaker-melta-bombs"
+        ]
+      },
+      "points": 115,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "overseer",
+      "name": "Overseer",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Command",
+      "description": "Overseers allowed for the integration of formations drawn from indentured soldiery into Legion strike forces. In some cases, such an act was carried out in honour of a newly formed alliance or to demonstrate the fealty of such forces to the Legion. In other situations, local militia would be pressed into service, allowing Legions to achieve their objectives at a minimal cost in Legionary lives. While casualty rates among such indentured forces were often deemed of secondary importance, Overseers were entrusted to ensure that the conduct of Auxilia or Militia troops met the expectations of the higher Legion command.",
+      "faction": "legiones-astartes",
+      "models": {
+        "overseer-model": 1
+      },
+      "modelUpgrades": {
+        "overseer-model": [
+          "overseer-power-weapon-upgrades",
+          "overseer-vexilla",
+          "overseer-melta-bombs"
+        ]
+      },
+      "points": 85,
+      "specialRules": ["fear", "master-of-auxilia"],
+      "specialRuleValues": {
+        "fear": 1
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "herald",
+      "name": "Herald",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Command",
+      "description": "As the wars of the Horus Heresy spread to consume the galaxy, billions fought and died under the banners of warlords they had never seen or heard first-hand, and even among those such as the Legiones Astartes, near-religious fervour became common for those artefacts touched by Primarch, Warmaster or Regent. On warfronts across the galaxy, Heralds stood proud and unwavering at the head of the Legion forces, carrying high icons given as a sign of authority and favour, and all knew that the words and deeds of these emissaries carried the highest authority.",
+      "faction": "legiones-astartes",
+      "models": {
+        "herald-model": 1
+      },
+      "modelUpgrades": {
+        "herald-model": ["herald-power-weapon-upgrades", "herald-melta-bombs"]
+      },
+      "points": 100,
+      "specialRules": ["fear"],
+      "specialRuleValues": {
+        "fear": 1
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "chaplain",
+      "name": "Chaplain",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Command",
+      "description": "The Chaplain Order, established towards the end of the Great Crusade, was intended to create a cadre of fearsome veteran warriors who would enforce a cohesion of doctrine and belief in the scattered and increasingly idiosyncratic Legions far from Terra. Theirs was a mortuary symbol of sacrifice graven in the form of an ornate staff, mace or axe: the Crozius Arcanum, which served as both a badge of office and a deadly weapon. On battlefields innumerable, such warriors stood firm in even the most dire circumstances reminding their forces of the expectations of their brethren and their Primarch.",
+      "faction": "legiones-astartes",
+      "models": {
+        "chaplain-model": 1
+      },
+      "modelUpgrades": {
+        "chaplain-model": ["chaplain-melta-bombs"]
+      },
+      "points": 80,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "praetorian-command-squad",
+      "name": "Praetorian Command Squad",
+      "allegiance": "Universal",
+      "baseSize": 5,
+      "battlefieldRole": "Retinue",
+      "description": "It is common for Space Marine commanders and champions to be accompanied in battle by a squad of highly disciplined and worthy warriors. They serve both as a bodyguard for their commander and are entrusted to carry out the Legion's great standards, making them a rallying point on the battlefield for the Legion's troops. These chosen Space Marines have access to the finest wargear available to the Legion's rank and file, entrusted with the most esoteric at the discretion of their commander, though in reality, few doubted the skill of these elite warriors, each of whom embodied the Legion's honour in war.",
+      "faction": "legiones-astartes",
+      "models": {
+        "chosen-champion-model": 1,
+        "chosen-model": 4
+      },
+      "modelUpgrades": {
+        "chosen-champion-model": ["praetorian-champion-disintegrator-pistol"],
+        "chosen-model": ["praetorian-legion-standard"]
+      },
+      "points": 130,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "praetorian-ranged-weapon-upgrades",
+        "praetorian-combat-shield-upgrades",
+        "praetorian-lightning-claws",
+        "praetorian-bayonets"
+      ],
+      "wargear": [],
+      "minSize": 5,
+      "maxSize": 10
+    },
+    {
+      "id": "praetorian-command-squad-jump-packs",
+      "name": "Praetorian Command Squad with Jump Packs",
+      "allegiance": "Universal",
+      "baseSize": 5,
+      "battlefieldRole": "Retinue",
+      "description": "When their commander chooses to go to war bearing a jump pack, his chosen praetorians will likewise requisition such equipment. Leading the Legion from the front, these exemplary warriors utilise the additional mobility provided to seek out enemy warlords and champions, descending upon them with the finest weapons available to the Legion armoury. Each chosen is also aware of their role within their company or chapter, providing a martial example for their brethren to aspire to as they strike down their foes, before planting the colours of their Legion over the shattered corpses.",
+      "faction": "legiones-astartes",
+      "models": {
+        "chosen-champion-jump-pack-model": 1,
+        "chosen-jump-pack-model": 4
+      },
+      "modelUpgrades": {
+        "chosen-champion-jump-pack-model": [
+          "praetorian-jump-pack-champion-disintegrator-pistol"
+        ],
+        "chosen-jump-pack-model": ["praetorian-jump-pack-legion-standard"]
+      },
+      "points": 160,
+      "specialRules": ["bulky", "deep-strike"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "praetorian-jump-pack-ranged-weapon-upgrades",
+        "praetorian-jump-pack-combat-shield-upgrades",
+        "praetorian-jump-pack-lightning-claws",
+        "praetorian-jump-pack-bayonets"
+      ],
+      "wargear": [],
+      "minSize": 5,
+      "maxSize": 10
+    },
+    {
+      "id": "centurion-command-squad",
+      "name": "Centurion Command Squad",
+      "allegiance": "Universal",
+      "baseSize": 5,
+      "battlefieldRole": "Retinue",
+      "description": "Many lower-ranking officers were accompanied into battle by a cadre of trusted warriors from their company. Some chose to utilise their most experienced veteran squads in this role, while others might keep a close circle of experienced warriors by their side on a more permanent posting. Such warriors were expected to provide personal protection, as well as fulfilling adjutant and advisory roles. Many of the finest unsung units of the Horus Heresy took on this duty, adding this honour to a record of reliable service spanning decades of warfare.",
+      "faction": "legiones-astartes",
+      "models": {
+        "veteran-champion-model": 1,
+        "veteran-model": 4
+      },
+      "modelUpgrades": {
+        "veteran-champion-model": ["centurion-champion-disintegrator-pistol"],
+        "veteran-model": ["centurion-vexilla", "centurion-company-standard"]
+      },
+      "points": 85,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "centurion-ranged-weapon-upgrades",
+        "centurion-combat-shield-upgrades",
+        "centurion-lightning-claws",
+        "centurion-bayonets"
+      ],
+      "wargear": [],
+      "minSize": 5,
+      "maxSize": 10
+    },
+    {
+      "id": "tartaros-terminator-command-squad",
+      "name": "Tartaros Terminator Command Squad",
+      "allegiance": "Universal",
+      "baseSize": 3,
+      "battlefieldRole": "Retinue",
+      "description": "When both speed and survivability are required, a command squad will march to war clad in Tartaros Terminator armour. More technologically advanced than the Terminator armour marks it was developed alongside, Tartaros plate was initially a rarity compared to Cataphractii pattern armour, though towards the end of the Great Crusade this disparity was significantly reduced. As such, Legion commanders equip their most worthy warriors with it and deploy them at the very forefront of battle, where the speed and protection afforded by such armour assures a swift blow can be dealt to secure victory.",
+      "faction": "legiones-astartes",
+      "models": {
+        "tartaros-chosen-champion-model": 1,
+        "tartaros-chosen-model": 2
+      },
+      "modelUpgrades": {
+        "tartaros-chosen-champion-model": ["tartaros-champion-grenade-harness"],
+        "tartaros-chosen-model": ["tartaros-legion-standard"]
+      },
+      "points": 140,
+      "specialRules": ["bulky", "implacable-advance"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "tartaros-combi-bolter-upgrades",
+        "tartaros-power-weapon-upgrades",
+        "tartaros-lightning-claws-dual"
+      ],
+      "wargear": [],
+      "minSize": 3,
+      "maxSize": 10
+    },
+    {
+      "id": "cataphractii-terminator-command-squad",
+      "name": "Cataphractii Terminator Command Squad",
+      "allegiance": "Universal",
+      "baseSize": 3,
+      "battlefieldRole": "Retinue",
+      "description": "Many command squads go to war clad in Cataphractii Terminator armour, using its sheer bulk and durability to protect the life of their commander. Able to withstand even the most vicious blows and bearing the finest weaponry in the Legion's armoury, these exemplary warriors embody the finest qualities of the Legiones Astartes, valiantly spearheading assaults into the most hazardous of war zones holding the Legion's banners high. As one of the earliest marks of Terminator armour to be issued to the Legions, many veteran Legionaries prefer the familiarity of this mark in battle over more recent introductions.",
+      "faction": "legiones-astartes",
+      "models": {
+        "cataphractii-chosen-champion-model": 1,
+        "cataphractii-chosen-model": 2
+      },
+      "modelUpgrades": {
+        "cataphractii-chosen-champion-model": [
+          "cataphractii-champion-grenade-harness"
+        ],
+        "cataphractii-chosen-model": ["cataphractii-legion-standard"]
+      },
+      "points": 140,
+      "specialRules": ["bulky", "implacable-advance", "slow-and-purposeful"],
+      "specialRuleValues": {
+        "bulky": 2
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "cataphractii-volkite-charger-upgrades",
+        "cataphractii-power-weapon-upgrades",
+        "cataphractii-lightning-claws-dual"
+      ],
+      "wargear": [],
+      "minSize": 3,
+      "maxSize": 12
+    },
+    {
+      "id": "veteran-tactical-squad",
+      "name": "Veteran Tactical Squad",
+      "allegiance": "Universal",
+      "baseSize": 5,
+      "battlefieldRole": "Elite",
+      "description": "Every chapter and company within the Space Marine Legions contains a cadre of experienced veteran warriors. In some Legions, this will often be those who have served since the early days of the Great Crusade, while in those whose tactics draw more from attrition, it may simply be those warriors who refuse to succumb to the brutality of their methodology of war. Many of these units will be permitted to carry specialist or more dangerous or rare weaponry, allowing them to apply deadly firepower where it is required, and setting an example to their less-experienced brethren.",
+      "faction": "legiones-astartes",
+      "models": {
+        "veteran-sergeant-model": 1,
+        "veteran-tactical-model": 4
+      },
+      "modelUpgrades": {
+        "veteran-sergeant-model": [
+          "veteran-tactical-sergeant-melee-upgrades",
+          "veteran-tactical-sergeant-pistol-upgrades"
+        ],
+        "veteran-tactical-model": [
+          "veteran-tactical-vexilla",
+          "veteran-tactical-equipment"
+        ]
+      },
+      "points": 85,
+      "specialRules": ["line"],
+      "specialRuleValues": {
+        "line": 1
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "veteran-tactical-ranged-weapon-upgrades",
+        "veteran-tactical-special-heavy-weapons",
+        "veteran-tactical-bayonets"
+      ],
+      "wargear": [],
+      "minSize": 5,
+      "maxSize": 10
+    },
+    {
+      "id": "veteran-assault-squad",
+      "name": "Veteran Assault Squad",
+      "allegiance": "Universal",
+      "baseSize": 5,
+      "battlefieldRole": "Elite",
+      "description": "Exceptional and experienced fighters within the ranks of the Space Marine Legions are often banded together to form elite units, to which other warriors can aspire to ascend to, and from which future commanders are drawn. These warriors often have their pick of the armoury, able to select from a wide variety of killing tools, as well as Warhawk jump packs, allowing them to best leverage their skill at arms. Deployed at the spearhead of assaults, such veterans are given a degree of tactical freedom, allowing them to seek out the most steadfast foes, break enemy defensive positions or overrun isolated pockets of enemy combatants.",
+      "faction": "legiones-astartes",
+      "models": {
+        "veteran-assault-sergeant-model": 1,
+        "assault-veteran-model": 4
+      },
+      "modelUpgrades": {
+        "veteran-assault-sergeant-model": [
+          "veteran-assault-sergeant-pistol-upgrades",
+          "veteran-assault-sergeant-melta-bombs"
+        ],
+        "assault-veteran-model": ["veteran-assault-proportional-pistols"]
+      },
+      "points": 120,
+      "specialRules": ["bulky", "deep-strike", "vanguard"],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 3
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "veteran-assault-melee-upgrades",
+        "veteran-assault-pistol-shield-upgrades",
+        "veteran-assault-lightning-claws",
+        "veteran-assault-heavy-weapons"
+      ],
+      "wargear": [],
+      "minSize": 5,
+      "maxSize": 10
+    },
+    {
+      "id": "seeker-squad",
+      "name": "Seeker Squad",
+      "allegiance": "Universal",
+      "baseSize": 5,
+      "battlefieldRole": "Elite",
+      "description": "Seeker squads are specialised units whose principal task on the battlefield is to identify an enemy's command structure - its warlords, officers, priests, demagogues - and slay them with a well-placed shot. The Alpha Legion are said to have first crystallised this tactic and squad configuration which has since, with the Emperor's approval, spread to the other Legions, although its use sits poorly within the combat doctrine of some. Chosen primarily on pure merit as the best shots in their Legion, Seeker squads are usually equipped with special issue ammunition to better deal with their chosen victims.",
+      "faction": "legiones-astartes",
+      "models": {
+        "seeker-sergeant-model": 1,
+        "seeker-model": 4
+      },
+      "modelUpgrades": {
+        "seeker-sergeant-model": [
+          "seeker-sergeant-melee-upgrades",
+          "seeker-sergeant-pistol-upgrades",
+          "seeker-sergeant-melta-bombs"
+        ],
+        "seeker-model": ["seeker-equipment"]
+      },
+      "points": 105,
+      "specialRules": ["infiltrate"],
+      "specialRuleValues": {
+        "infiltrate": 9
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": ["seeker-kraken-bolter-upgrades", "seeker-bayonets"],
+      "wargear": [],
+      "minSize": 5,
+      "maxSize": 10
+    },
+    {
+      "id": "cataphractii-terminator-squad",
+      "name": "Cataphractii Terminator Squad",
+      "allegiance": "Universal",
+      "baseSize": 5,
+      "battlefieldRole": "Heavy Assault",
+      "description": "One of the first issued Tactical Dreadnought Armour patterns, Cataphractii suits are heavily protected with slablike ceramite pauldrons housing additional shield generators, augmenting the toughness of even a Legiones Astartes warrior. The armour's design has the unfortunate side effect of overstraining its exoskeleton and slowing the wearer considerably. This deficiency is seen as a weakness by some Legions and has led to the pattern's declining use in their ranks. Yet, at the outbreak of the Horus Heresy, all Legions still maintained significant numbers of Cataphractii Terminators among their ranks.",
+      "faction": "legiones-astartes",
+      "models": {
+        "cataphractii-terminator-sergeant-model": 1,
+        "cataphractii-terminator-model": 4
+      },
+      "modelUpgrades": {
+        "cataphractii-terminator-sergeant-model": [
+          "cataphractii-terminator-sergeant-grenade-harness"
+        ],
+        "cataphractii-terminator-model": [
+          "cataphractii-terminator-heavy-weapons"
+        ]
+      },
+      "points": 150,
+      "specialRules": [
+        "bulky",
+        "implacable-advance",
+        "slow-and-purposeful",
+        "vanguard"
+      ],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 3
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "cataphractii-terminator-volkite-charger-upgrades",
+        "cataphractii-terminator-power-weapon-upgrades",
+        "cataphractii-terminator-lightning-claws-dual"
+      ],
+      "wargear": [],
+      "minSize": 5,
+      "maxSize": 12
+    },
+    {
+      "id": "tartaros-terminator-squad",
+      "name": "Tartaros Terminator Squad",
+      "allegiance": "Universal",
+      "baseSize": 5,
+      "battlefieldRole": "Heavy Assault",
+      "description": "The fruition of the Tactical Dreadnought Armour project, Terminator suits are the ultimate advance in personal armour technology the Imperium has developed. Terminator armour-equipped units are particularly valuable in heavy close-quarter fighting, such as battles fought in the deep confines of hive cities or in starship boarding actions. Perhaps the most advanced form of Terminator armour ever designed, Tartaros armour offers greater durability and protection than power armour while sacrificing none of the latter's mobility.",
+      "faction": "legiones-astartes",
+      "models": {
+        "tartaros-terminator-sergeant-model": 1,
+        "tartaros-terminator-model": 4
+      },
+      "modelUpgrades": {
+        "tartaros-terminator-sergeant-model": [
+          "tartaros-terminator-sergeant-grenade-harness"
+        ],
+        "tartaros-terminator-model": ["tartaros-terminator-heavy-weapons"]
+      },
+      "points": 150,
+      "specialRules": ["bulky", "implacable-advance", "vanguard"],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 3
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "tartaros-terminator-combi-bolter-upgrades",
+        "tartaros-terminator-power-weapon-upgrades",
+        "tartaros-terminator-lightning-claws-dual"
+      ],
+      "wargear": [],
+      "minSize": 5,
+      "maxSize": 10
+    },
+    {
+      "id": "saturnine-terminator-squad",
+      "name": "Saturnine Terminator Squad",
+      "allegiance": "Universal",
+      "baseSize": 3,
+      "battlefieldRole": "Heavy Assault",
+      "description": "First seen in numbers on the black sands of Isstvan V, the pattern of Saturnine armour developed by Vulkan stands bulkier and more ponderous than the more widely-utilised Cataphractii and Tartaros patterns of Tactical Dreadnought armour. Mounting an array of fearsome energy weapons, combined with complex and potent energy shielding, those warriors capable of wearing such armour see the already legendary resilience of a Legionary improved significantly, allowing them to stride through the fires of battle with impunity.",
+      "faction": "legiones-astartes",
+      "models": {
+        "saturnine-terminator-sergeant-model": 1,
+        "saturnine-terminator-model": 2
+      },
+      "modelUpgrades": {},
+      "points": 200,
+      "specialRules": [
+        "bulky",
+        "explodes",
+        "implacable-advance",
+        "slow-and-purposeful"
+      ],
+      "specialRuleValues": {
+        "bulky": 4,
+        "explodes": 6
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "saturnine-disruption-fist-upgrades",
+        "saturnine-plasma-bombard-upgrades",
+        "saturnine-particle-shredder"
+      ],
+      "wargear": [],
+      "minSize": 3,
+      "maxSize": 6
+    },
+    {
+      "id": "land-raider-carrier",
+      "name": "Land Raider Carrier",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Heavy Transport",
+      "description": "The Land Raider is a masterwork that heralds back to the lost Dark Age of Technology, and since the rediscovery of its STC in the vaults of Mars, several patterns have been established in widespread use varying the balance of its battlefield role from armoured explorer, command and control vehicle, to assault carrier. Despite maintaining many aspects of the original design, some of these variants displeased the Forge Lords that oversaw their production, in particular the assault carrier variants, which were viewed as incorporating aberrant diversions that detracted from the purity of the original template.",
+      "faction": "legiones-astartes",
+      "models": {
+        "land-raider-carrier-model": 1
+      },
+      "modelUpgrades": {
+        "land-raider-carrier-model": [
+          "land-raider-carrier-hull-weapon-upgrades",
+          "land-raider-carrier-pintle-weapons",
+          "land-raider-carrier-hunter-killer-missile",
+          "land-raider-carrier-searchlights"
+        ]
+      },
+      "points": 265,
+      "specialRules": ["assault-vehicle", "auto-repair"],
+      "specialRuleValues": {
+        "auto-repair": 5
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "spartan",
+      "name": "Spartan",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Heavy Transport",
+      "description": "The Spartan is a huge armoured conveyor whose purpose is to carry a large contingent of troops into the heart of the enemy, weathering weapons fire that would be the death of any lesser vehicle. Its armament is potent, with most bearing quad lascannon or laser destroyers, while the Prometheus variant mounts quad heavy bolter arrays to devastate enemy infantry. The Spartan takes pride of place in the armouries of many Legions, although it is far less common than the Land Raider in operations.",
+      "faction": "legiones-astartes",
+      "models": {
+        "spartan-model": 1
+      },
+      "modelUpgrades": {
+        "spartan-model": [
+          "spartan-sponson-weapon-upgrades",
+          "spartan-hull-weapon-upgrades",
+          "spartan-pintle-weapons",
+          "spartan-hunter-killer-missile",
+          "spartan-searchlights"
+        ]
+      },
+      "points": 400,
+      "specialRules": ["assault-vehicle", "auto-repair"],
+      "specialRuleValues": {
+        "auto-repair": 4
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "dreadnought-drop-pod",
+      "name": "Dreadnought Drop Pod",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Heavy Transport",
+      "description": "Developed alongside the more common Legion drop pod in general service, specifically designed Dreadnought drop pods are somewhat larger than the standard drop pods of the Legiones Astartes and have a more powerful engine, allowing for a dangerously meteoric descent to the battlefield. This serves to protect their cargo during approach and allow it to strike with unprecedented speed. The stresses involved, however, are such that only the heavily armoured and protected shell of a Dreadnought could hope to survive the descent and impact with the ground without being wrecked or pulverised.",
+      "faction": "legiones-astartes",
+      "models": {
+        "dreadnought-drop-pod-model": 1
+      },
+      "modelUpgrades": {},
+      "points": 100,
+      "specialRules": [
+        "dreadnought-transport",
+        "orbital-assault-vehicle",
+        "impact-reactive-doors"
+      ],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "dreadclaw-drop-pod",
+      "name": "Dreadclaw Drop Pod",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Heavy Transport",
+      "description": "The Dreadclaw drop pod serves primarily to insert Legion Space Marine boarding forces onto enemy void craft in the midst of battle. Latching onto the hull of an enemy vessel, a series of melta cutters trigger, blasting a hole through even the thickest armour before its occupants storm forth through its raised aperture. Unlike some earlier boarding craft, the Dreadclaw is also fully capable of operating as an independent dropship. Indeed, many Legions favour using them in this role, dropping from the sky like a flaming comet before disembarking the assault troops contained within.",
+      "faction": "legiones-astartes",
+      "models": {
+        "dreadclaw-drop-pod-model": 1
+      },
+      "modelUpgrades": {},
+      "points": 115,
+      "specialRules": ["drop-transport"],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "kharybdis-assault-claw",
+      "name": "Kharybdis Assault Claw",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Heavy Transport",
+      "description": "Employed by many Legions as their primary ship-to-ship assault craft, the Kharybdis is a monstrous drop pod capable of carrying large assault forces through the void and mounting significant firepower to blast a path through defending small craft. The arrival of a flight of these ominous craft, boarding hooks extended as they approach their target, signals the end for the crew of any vessel that dares oppose the Legiones Astartes. Outside of void war, the Kharybdis also serves as a drop ship, capable of both controlled descent and powered take-off from a planetary surface.",
+      "faction": "legiones-astartes",
+      "models": {
+        "kharybdis-assault-claw-model": 1
+      },
+      "modelUpgrades": {},
+      "points": 235,
+      "specialRules": ["heavy-drop-transport"],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "reconnaissance-squad",
+      "name": "Reconnaissance Squad",
+      "allegiance": "Universal",
+      "baseSize": 5,
+      "battlefieldRole": "Recon",
+      "description": "The eyes and ears of the Legion in the field, reconnaissance squads are formed from experienced Space Marines expert in operating behind enemy lines, sudden flanking manoeuvres and infiltration attacks in support of their main force. They are armed and equipped with a variety of specialised wargear including long range weaponry, sensor auspex and stealth gear. They also serve the Legion as pickets, saboteurs, raiders and snipers where needed, as well as intelligence gatherers, identifying targets and gathering information on enemy movements and strengths.",
+      "faction": "legiones-astartes",
+      "models": {
+        "recon-sergeant-model": 1,
+        "recon-legionary-model": 4
+      },
+      "modelUpgrades": {
+        "recon-sergeant-model": [
+          "recon-sergeant-melee-upgrades",
+          "recon-sergeant-pistol-upgrades",
+          "recon-sergeant-melta-bombs"
+        ],
+        "recon-legionary-model": ["recon-legionary-equipment"]
+      },
+      "points": 110,
+      "specialRules": ["infiltrate", "move-through-cover", "support-unit"],
+      "specialRuleValues": {
+        "infiltrate": 9,
+        "support-unit": 2
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": ["recon-nemesis-bolter-upgrades"],
+      "wargear": [],
+      "minSize": 5,
+      "maxSize": 10
+    },
+    {
+      "id": "sabre",
+      "name": "Sabre",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Recon",
+      "description": "Fast, rugged and heavily armed, the Sabre serves as a strike tank, attacking key enemy targets and destroying them long before they can pose a threat. Fitted with a number of advanced weapons systems, from rapid fire autocannon to exotic beam weapons, there were few foes that could resist the firepower of these swift hunters. Once the foe is annihilated, the speed of these fleet vehicles allows them to evade any counter-attack and reposition to strike at the vulnerable flanks of the enemy army, keeping the heavy armour suppressed as the Space Marine infantry advances to crush the foes of the Emperor.",
+      "faction": "legiones-astartes",
+      "models": {
+        "sabre-model": 1
+      },
+      "modelUpgrades": {
+        "sabre-model": [
+          "sabre-centreline-weapon-upgrades",
+          "sabre-hull-weapon-upgrades",
+          "sabre-pintle-weapons",
+          "sabre-searchlights",
+          "sabre-missiles"
+        ]
+      },
+      "points": 80,
+      "specialRules": ["outflank"],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "outrider-squadron",
+      "name": "Outrider Squadron",
+      "allegiance": "Universal",
+      "baseSize": 3,
+      "battlefieldRole": "Recon",
+      "description": "Outriders are mechanised Space Marine reconnaissance squads who take to the field mounted on ruggedly constructed, all-terrain armoured ground bikes and scramblers. Used for scouting missions as well as rapid encirclement and hit-and-run attacks behind enemy lines, the chief advantage of the Outriders is speed, their bikes enabling them to cover ground far quicker than infantry and go where heavier vehicles cannot. Rather than precision long ranged weaponry, Outriders mount rapid-fire weaponry, destroying their foes in devastating swift attacks.",
+      "faction": "legiones-astartes",
+      "models": {
+        "outrider-sergeant-model": 1,
+        "outrider-model": 2
+      },
+      "modelUpgrades": {
+        "outrider-sergeant-model": ["outrider-sergeant-melee-upgrades"],
+        "outrider-model": ["outrider-legionary-equipment"]
+      },
+      "points": 85,
+      "specialRules": [
+        "bulky",
+        "vanguard",
+        "firestorm",
+        "implacable-advance",
+        "outflank"
+      ],
+      "specialRuleValues": {
+        "bulky": 2,
+        "vanguard": 1
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "outrider-pistol-upgrades",
+        "outrider-twin-plasma-gun-upgrades",
+        "outrider-astartes-shotgun-upgrades"
+      ],
+      "wargear": [],
+      "minSize": 3,
+      "maxSize": 10
+    },
+    {
+      "id": "land-raider-explorator",
+      "name": "Land Raider Explorator",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Recon",
+      "description": "During the lost days of Mankind's Golden Age, the Land Raider, armoured and equipped for exploration, was used to scout at the most hostile of alien worlds. It was only in later, more warlike times that it would be converted into one of the most potent war machines in the Imperium, and in the Proteus Explorator variant there lingers the influence of its origins. Fitted with a more confined and less accessible transport bay in order to mount an array of scanners and navigational augurs, the Explorator mounts a more focused array of weapons, operating instead as an unmatched pathfinder for any mechanised task force.",
+      "faction": "legiones-astartes",
+      "models": {
+        "land-raider-explorator-model": 1
+      },
+      "modelUpgrades": {
+        "land-raider-explorator-model": [
+          "land-raider-explorator-pintle-weapons",
+          "land-raider-explorator-hull-weapon-upgrades",
+          "land-raider-explorator-hunter-killer-missile",
+          "land-raider-explorator-searchlights"
+        ]
+      },
+      "points": 220,
+      "specialRules": ["auto-repair", "outflank"],
+      "specialRuleValues": {
+        "auto-repair": 5
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "tarantula-battery",
+      "name": "Tarantula Battery",
+      "allegiance": "Universal",
+      "baseSize": 2,
+      "battlefieldRole": "Recon",
+      "description": "The Space Marine Legions, in particular, make use of Tarantulas in a forward deployment role and see them as entirely disposable assets, often utilising them in the thick of battle to defend a forward position, draw out enemy forces for attack or even to guard a withdrawal or pin an enemy force during a feint. Tarantulas may be dropped into forward positions on the battlelines immediately prior to suspected engagement via hovering servo-carriers or placed by reconnaissance forces under concealment to provide an unpleasant surprise for an attacker.",
+      "faction": "legiones-astartes",
+      "models": {
+        "tarantula-sentry-gun-model": 2
+      },
+      "modelUpgrades": {
+        "tarantula-sentry-gun-model": []
+      },
+      "points": 45,
+      "specialRules": [
+        "expendable",
+        "infiltrate",
+        "automated-fire-protocols",
+        "independent-sentries"
+      ],
+      "specialRuleValues": {
+        "expendable": 3,
+        "infiltrate": 9
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        "tarantula-turret-weapon-upgrades",
+        "tarantula-missile-upgrades"
+      ],
+      "wargear": [],
+      "minSize": 2,
+      "maxSize": 2
+    },
+    {
+      "id": "xiphon-interceptor",
+      "name": "Xiphon Interceptor",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Fast Attack",
+      "description": "The Xiphon Interceptor is a void/atmospheric combat craft with an ancient lineage with examples of its predecessors having been found in use by lost human enclaves. The performance of the variants that found use in the Legions generated such extreme gravitic forces in flight that the enhanced physiology of a Space Marine was a prerequisite of a pilot. Although armed with a specific and specialised combination of armaments, the Xiphon's strictly defined combat role as an air-to-air interceptor called for little else.",
+      "faction": "legiones-astartes",
+      "models": {
+        "xiphon-interceptor-model": 1
+      },
+      "modelUpgrades": {
+        "xiphon-interceptor-model": []
+      },
+      "points": 120,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes", "Interceptor"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "storm-eagle",
+      "name": "Storm Eagle",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Fast Attack",
+      "description": "The Storm Eagle is a rugged and durable assault gunship, heavily armed for its size. Despite lacking the speed and maneuverability of true fighters, the Storm Eagle's flexibility makes it a valuable asset for orbital assault deployment, low-level ground attack, long-range transport, orbital shuttle, scout, and interceptor roles.",
+      "faction": "legiones-astartes",
+      "models": {
+        "storm-eagle-model": 1
+      },
+      "modelUpgrades": {
+        "storm-eagle-model": [
+          "storm-eagle-heavy-bolter-upgrades",
+          "storm-eagle-tempest-rocket-upgrades"
+        ]
+      },
+      "points": 200,
+      "specialRules": ["assault-vehicle"],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "fire-raptor",
+      "name": "Fire Raptor",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Fast Attack",
+      "description": "A variant of the Storm Eagle, the Fire Raptor gunship was created with the aim of providing overwhelming aerial firepower to Legiones Astartes assault forces. In addition to twin nose mounted Avenger bolt cannon and an array of rockets or missiles, the Fire Raptor replaces the capacious transport bay of the Storm Eagle with ammunition and targeting cogitators for two independent ball turrets. Each of these sophisticated turrets is equipped with a gyroscopic array and crewed by a dedicated Space Marine gunner, allowing each to strike separate targets with pinpoint precision even while the gunship moves at flank speed.",
+      "faction": "legiones-astartes",
+      "models": {
+        "fire-raptor-model": 1
+      },
+      "modelUpgrades": {
+        "fire-raptor-model": [
+          "fire-raptor-sponson-weapon-upgrades",
+          "fire-raptor-rocket-upgrades"
+        ]
+      },
+      "points": 220,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "scimitar-jetbike-squadron",
+      "name": "Scimitar Jetbike Squadron",
+      "allegiance": "Universal",
+      "baseSize": 3,
+      "battlefieldRole": "Fast Attack",
+      "description": "Scimitar jetbike squadrons are feared strike units which use sophisticated and powerful jetbikes as mounts. These grav-impellor assisted, jet engine-propelled craft are more akin to compact aircraft than ground bikes and are able to maintain great speeds for extended periods of low-altitude flight. Their lift-strength is sufficient not only to carry a heavily armoured Space Marine and his wargear aloft, but also a variety of heavy weapons mounts and stocks of ammunition, giving these swift hunters extremely potent firepower.",
+      "faction": "legiones-astartes",
+      "models": {
+        "scimitar-sergeant-model": 1,
+        "scimitar-hunter-model": 2
+      },
+      "modelUpgrades": {
+        "scimitar-sergeant-model": [
+          "scimitar-sergeant-melee-upgrades",
+          "scimitar-pistol-upgrades",
+          "scimitar-heavy-weapon-upgrades"
+        ],
+        "scimitar-hunter-model": [
+          "scimitar-augury-scanner-upgrade",
+          "scimitar-pistol-upgrades",
+          "scimitar-heavy-weapon-upgrades"
+        ]
+      },
+      "points": 95,
+      "specialRules": ["bulky-3", "deep-strike"],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        {
+          "id": "additional-scimitar-hunters",
+          "name": "Additional Scimitar Hunters",
+          "description": "May include up to 7 additional Scimitar Hunters at +30 Points per Model.",
+          "maxCount": 7,
+          "options": [
+            {
+              "id": "additional-scimitar-hunter",
+              "name": "Additional Scimitar Hunter",
+              "description": "Add one Scimitar Hunter to the unit",
+              "points": 30,
+              "addModel": "scimitar-hunter-model"
+            }
+          ],
+          "points": null,
+          "requiresUpgrade": "",
+          "targetModel": "",
+          "targetModels": "",
+          "targetModelType": "",
+          "targetModelTypes": [],
+          "type": "model-count"
+        }
+      ],
+      "wargear": [],
+      "minSize": 3,
+      "maxSize": 10
+    },
+    {
+      "id": "land-speeder-squadron",
+      "name": "Land Speeder Squadron",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Fast Attack",
+      "description": "Land Speeders are high-speed reconnaissance and rapid-attack skimmers that utilise antigravity technology to achieve extraordinary battlefield mobility and speed. As lightly armoured two-man craft, they rely more on their extreme manoeuvrability and speed for survival than durability, and provide a Space Marine force with a flexible core of rapidly deployable firepower and make for highly able tank hunters and close air support units. As a result, formations of Land Speeders are often called upon to operate as a rapid-reaction force, held in reserve to quickly intercept enemy counter-attacks.",
+      "faction": "legiones-astartes",
+      "models": {
+        "land-speeder-model": 1
+      },
+      "modelUpgrades": {
+        "land-speeder-model": [
+          "land-speeder-heavy-bolter-upgrades",
+          "land-speeder-augury-scanner-upgrades",
+          "land-speeder-hunter-killer-missiles"
+        ]
+      },
+      "points": 50,
+      "specialRules": ["bulky-4", "deep-strike", "firing-protocols-2"],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        {
+          "id": "additional-land-speeders",
+          "name": "Additional Land Speeders",
+          "description": "May include up to 4 additional Land Speeders at +50 Points per Model.",
+          "maxCount": 4,
+          "options": [
+            {
+              "id": "additional-land-speeder",
+              "name": "Additional Land Speeder",
+              "description": "Add one Land Speeder to the unit",
+              "points": 50,
+              "addModel": "land-speeder-model"
+            }
+          ],
+          "points": null,
+          "requiresUpgrade": "",
+          "targetModel": "",
+          "targetModels": "",
+          "targetModelType": "",
+          "targetModelTypes": [],
+          "type": "model-count"
+        }
+      ],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 5
+    },
+    {
+      "id": "javelin-squadron",
+      "name": "Javelin Squadron",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Fast Attack",
+      "description": "The Javelin Squadron is a fast, durable, and highly customizable anti-grav vehicle formation, capable of deep striking and providing significant firepower. Its enhanced toughness and wounds make it quite resilient for a Fast Attack choice, while its weapon options allow it to be tailored for anti-infantry or anti-tank roles.",
+      "faction": "legiones-astartes",
+      "models": {
+        "javelin-model": 1
+      },
+      "modelUpgrades": {
+        "javelin-model": ["javelin-cyclone-missile-launcher-upgrades"]
+      },
+      "points": 75,
+      "specialRules": ["bulky-5", "deep-strike", "firing-protocols-3"],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes"],
+      "upgrades": [
+        {
+          "id": "additional-javelins",
+          "name": "Additional Javelins",
+          "description": "May include up to 2 additional Javelins at +75 Points per Model.",
+          "maxCount": 2,
+          "options": [
+            {
+              "id": "additional-javelin",
+              "name": "Additional Javelin",
+              "description": "Add one Javelin to the unit",
+              "points": 75,
+              "addModel": "javelin-model"
+            }
+          ],
+          "points": null,
+          "requiresUpgrade": "",
+          "targetModel": "",
+          "targetModels": "",
+          "targetModelType": "",
+          "targetModelTypes": [],
+          "type": "model-count"
+        }
+      ],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 3
+    },
+    {
+      "id": "predator",
+      "name": "Predator",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Armour",
+      "description": "Perhaps the best known and most widespread variant of the basic Rhino chassis, the Predator is equipped with superior armour protection and firepower, but sacrificing the Rhino's troop transport capacity entirely. It is an effective and versatile medium tank, with a good balance of speed, firepower and protection and whose robust design can field a wide variety of armament configurations. The standard among these is a rapid-firing turret mounted autocannon, but it is also able to mount a number of deadly energy or flame weapons, allowing it to engage a range of targets, along with defensive sponsons.",
+      "faction": "legiones-astartes",
+      "models": {
+        "predator-model": 1
+      },
+      "modelUpgrades": {
+        "predator-model": [
+          "predator-turret-weapon-upgrades",
+          "predator-sponson-weapon-upgrades",
+          "predator-pintle-weapon-upgrades",
+          "predator-wargear-upgrades"
+        ]
+      },
+      "points": 100,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "sicaran",
+      "name": "Sicaran",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Armour",
+      "description": "The Sicaran is a fast, durable tank with excellent firepower options, designed for high-performance armored warfare. Its enhanced speed and durability make it an exceptional choice for the Armour battlefield role, while its weapon options allow it to be tailored for various combat scenarios.",
+      "faction": "legiones-astartes",
+      "models": {
+        "sicaran-model": 1
+      },
+      "modelUpgrades": {
+        "sicaran-model": [
+          "sicaran-turret-weapon-upgrades",
+          "sicaran-sponson-weapon-upgrades",
+          "sicaran-pintle-weapon-upgrades",
+          "sicaran-wargear-upgrades"
+        ]
+      },
+      "points": 160,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "sicaran-venator",
+      "name": "Sicaran Venator",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Armour",
+      "description": "The Sicaran Venator replaces the turret mounted armaments of the Sicaran with a powerful neutron laser, which, when utilised with the speed and manoeuvrability provided by the advanced chassis and drivetrain of the chassis, results in a formidable tank destroyer weapon. Despite the relative rarity of the vehicles, their capabilities ensured they were ever in great demand as Legion commanders came to rely on their potent combination of durability, speed and firepower to prevail where lesser Predators or Vindicators could not.",
+      "faction": "legiones-astartes",
+      "models": {
+        "sicaran-venator-model": 1
+      },
+      "modelUpgrades": {
+        "sicaran-venator-model": [
+          "sicaran-venator-sponson-weapon-upgrades",
+          "sicaran-venator-pintle-weapon-upgrades",
+          "sicaran-venator-wargear-upgrades"
+        ]
+      },
+      "points": 170,
+      "specialRules": ["explodes-5"],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "kratos-assault-tank",
+      "name": "Kratos Assault Tank",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Armour",
+      "description": "The Kratos is based on an Ancient Terran pattern, used in large numbers during the Unification of Old Earth. After the Emperor's treaty was signed with the Lords of Mars, the Kratos was redesigned to serve as the spearhead of the Great Crusade, a line-breaker and foe hammer. Though slow, it is all but impervious to enemy weapons fire and its steady advance was the core of many Space Marine victories during the long years of the Great Crusade. In latter years, the Kratos fell out of favour as the Legions embraced a more mobile style of war, though the ancient war engine lost none of its legendary tenacity.",
+      "faction": "legiones-astartes",
+      "models": {
+        "kratos-assault-tank-model": 1
+      },
+      "modelUpgrades": {
+        "kratos-assault-tank-model": [
+          "kratos-turret-weapon-upgrades",
+          "kratos-hull-weapon-upgrades",
+          "kratos-sponson-weapon-upgrades",
+          "kratos-pintle-weapon-upgrades",
+          "kratos-wargear-upgrades"
+        ]
+      },
+      "points": 280,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "vindicator-siege-tank",
+      "name": "Vindicator Siege Tank",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Armour",
+      "description": "The Vindicator is a dedicated siege tank, heavily armoured and armed with a devastating cannon. It is deployed to breach enemy fortifications and destroy the heaviest enemy vehicles, moving to point-blank range before unleashing a devastating salvo of demolisher shells capable of sundering any armour. These vehicles are especially useful in confined terrain like cities or other enclosed battlefields, where their short range is less of a disadvantage. Its demolisher cannon can smash buildings into broken ruins to forge a path through otherwise impassable obstacles.",
+      "faction": "legiones-astartes",
+      "models": {
+        "vindicator-siege-tank-model": 1
+      },
+      "modelUpgrades": {
+        "vindicator-siege-tank-model": [
+          "vindicator-demolisher-cannon-upgrades",
+          "vindicator-pintle-weapon-upgrades",
+          "vindicator-wargear-upgrades"
+        ]
+      },
+      "points": 140,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "scorpius-missile-tank",
+      "name": "Scorpius Missile Tank",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Armour",
+      "description": "The Scorpius was a pattern of armoured vehicle that had entered service during the Great Crusade, having been created at the behest of the Space Wolves Legion to provide indirect fire support for assault actions via its advanced missile launcher systems. Fighting alongside Legion Predators, with which it shares many common armour and drive systems, the Scorpius proved itself well-suited to such high intensity operations and had been approved for service across the entire Legiones Astartes before the outbreak of the Horus Heresy.",
+      "faction": "legiones-astartes",
+      "models": {
+        "scorpius-missile-tank-model": 1
+      },
+      "modelUpgrades": {
+        "scorpius-missile-tank-model": [
+          "scorpius-pintle-weapon-upgrades",
+          "scorpius-wargear-upgrades"
+        ]
+      },
+      "points": 120,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "arquitor-bombard",
+      "name": "Arquitor Bombard",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Armour",
+      "description": "The Arquitor Bombard is an artillery platform designed to operate at the forefront of a Legiones Astartes advance. Built upon a reinforced chassis and equipped with weapon systems that provide brutal short-range firepower, its variants are called upon to break the most stubborn of fortifications or to annihilate massed enemy infantry and armour. As an infantry support platform, the Arquitor lacks the sheer speed of some of the other heavy armour employed by the Legiones Astartes, an intentional feature of the vehicle that keeps it locked in formation with the infantry it supports.",
+      "faction": "legiones-astartes",
+      "models": {
+        "arquitor-bombard-model": 1
+      },
+      "modelUpgrades": {
+        "arquitor-bombard-model": [
+          "arquitor-morbus-shell-upgrades",
+          "arquitor-centreline-weapon-upgrades",
+          "arquitor-sponson-weapon-upgrades",
+          "arquitor-pintle-weapon-upgrades",
+          "arquitor-wargear-upgrades"
+        ]
+      },
+      "points": 150,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "cerberus-heavy-tank-destroyer",
+      "name": "Cerberus Heavy Tank Destroyer",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Lord of War",
+      "description": "The Cerberus is described as mounting a neutron laser battery, requiring sizable atomantic arc-reactors and radiation shielding. Despite proper shielding, each shot floods the interior with exotic radiation, leading to short crew lifespespans and requiring extensive augmetic reconstruction. Despite these drawbacks, the neutron laser is one of the most effective anti-tank weapons available to the Space Marine Legions, capable of damaging even titan-class targets.",
+      "faction": "legiones-astartes",
+      "models": {
+        "cerberus-heavy-tank-destroyer-model": 1
+      },
+      "modelUpgrades": {
+        "cerberus-heavy-tank-destroyer-model": [
+          "cerberus-sponson-weapon-upgrades",
+          "cerberus-pintle-weapon-upgrades",
+          "cerberus-wargear-upgrades"
+        ]
+      },
+      "points": 400,
+      "specialRules": ["explodes"],
+      "specialRuleValues": {
+        "explodes": 4
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "typhon-heavy-siege-tank",
+      "name": "Typhon Heavy Siege Tank",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Lord of War",
+      "description": "The Typhon is a mobile gun platform of prodigious strength and carrying capacity designed to operate a single massive piece of siege artillery – the Dreadhammer cannon. The design itself was created in response to a request for a war machine that could rapidly deploy such fortress-breaking firepower to the battle line at speeds greater than the slow crawl of the Imperial Army's heavy batteries. Many observers have labelled it as little more than an 'upscaled' Vindicator in design, and while in some ways this may be true, few can deny its utterly brutal effectiveness in action.",
+      "faction": "legiones-astartes",
+      "models": {
+        "typhon-heavy-siege-tank-model": 1
+      },
+      "modelUpgrades": {
+        "typhon-heavy-siege-tank-model": [
+          "typhon-sponson-weapon-upgrades",
+          "typhon-pintle-weapon-upgrades",
+          "typhon-wargear-upgrades"
+        ]
+      },
+      "points": 400,
+      "specialRules": ["explodes"],
+      "specialRuleValues": {
+        "explodes": 5
+      },
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "glaive-super-heavy-special-weapons-tank",
+      "name": "Glaive Super-Heavy Special Weapons Tank",
+      "allegiance": "Universal",
+      "baseSize": 1,
+      "battlefieldRole": "Lord of War",
+      "description": "The Glaive is a super-heavy tank pattern based on the Fellblade, outfitted with a potent volkite carronade, a device of the Mechanicum whose design is said to have originated on Mars during the wars of the Age of Strife. It was not without acrimony that the Forge Lords agreed to the Emperor's demand for a Legion tank to be created that utilised this weapon. The effort of constructing practicable numbers of super-heavy tanks around the volkite carronade is considered well worth the expenditure in resources required, for multiple targets are struck down by its ravening beam before even a portion of its energy is dissipated.",
+      "faction": "legiones-astartes",
+      "models": {
+        "glaive-super-heavy-special-weapons-tank-model": 1
+      },
+      "modelUpgrades": {
+        "glaive-super-heavy-special-weapons-tank-model": [
+          "glaive-hull-weapon-upgrades",
+          "glaive-sponson-weapon-upgrades",
+          "glaive-pintle-weapon-upgrades",
+          "glaive-wargear-upgrades"
+        ]
+      },
+      "points": 650,
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["[Allegiance]", "Legiones Astartes", "Smokescreen"],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "perturabo",
+      "name": "Perturabo",
+      "allegiance": "Traitor",
+      "baseSize": 1,
+      "battlefieldRole": "Paragon",
+      "description": "Perturabo, Primarch of the Iron Warriors, is a grim warrior and master of technological arcana from Olympia. Taciturn and analytical, he possesses the ability to deconstruct campaigns and find their weaknesses, executing brutal but effective strategies that brought many worlds into the Imperium but left them shattered. After the Dropsite Massacre, Perturabo abandoned his oaths to the Imperium, taking his fallen brother's hammer as a token of allegiance to Horus.",
+      "faction": "legiones-astartes",
+      "subfaction": "iron-warriors",
+      "models": {
+        "perturabo-model": 1
+      },
+      "modelUpgrades": {
+        "perturabo-model": ["perturabo-weapon-upgrade-group"]
+      },
+      "points": 425,
+      "specialRules": [
+        "sire-of-the-iron-warriors",
+        "bulky",
+        "battlesmith",
+        "breaker",
+        "eternal-warrior"
+      ],
+      "specialRuleValues": {
+        "bulky": 6,
+        "battlesmith": 3,
+        "eternal-warrior": 2
+      },
+      "traits": [
+        "[Allegiance]",
+        "[Legiones Astartes]",
+        "Iron Warriors",
+        "Master of the Legion"
+      ],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "warsmith",
+      "name": "Warsmith",
+      "allegiance": "Traitor",
+      "baseSize": 1,
+      "battlefieldRole": "High Command",
+      "description": "The Iron Warriors were widely renowned for their siegecraft and combat-engineering skills. The foremost practitioners of these arts were the Warsmiths, whose knowledge of the workings of war engines and automata was second only to the Magi of the Mechanicum. Raised to such a rank by Perturabo himself, each was a peerless planner and warrior within their Legion.",
+      "faction": "legiones-astartes",
+      "subfaction": "iron-warriors",
+      "models": {
+        "warsmith-model": 1
+      },
+      "modelUpgrades": {
+        "warsmith-model": ["warsmith-wargear-upgrade-group"]
+      },
+      "points": 165,
+      "specialRules": [
+        "bulky",
+        "battlesmith",
+        "implacable-advance",
+        "slow-and-purposeful"
+      ],
+      "specialRuleValues": {
+        "bulky": 2,
+        "battlesmith": 2
+      },
+      "traits": [
+        "[Allegiance]",
+        "[Legiones Astartes]",
+        "Iron Warriors",
+        "Master of the Legion"
+      ],
+      "upgrades": [],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 1
+    },
+    {
+      "id": "tyrant-siege-terminator-squad",
+      "name": "Tyrant Siege Terminator Squad",
+      "allegiance": "Traitor",
+      "baseSize": 5,
+      "battlefieldRole": "Heavy Assault",
+      "description": "Clad in Cataphractii plate and unleashing hails of Swarmer or Breaker missiles from their armour mounted rocket launchers, these implacable warriors are fortress-breakers of unparalleled skill. The bleak spectacle of these warriors upon the battlefield, surmounting any obstacle before them, became synonymous with Perturabo's wrath unleashed.",
+      "faction": "legiones-astartes",
+      "subfaction": "iron-warriors",
+      "models": {
+        "siege-master-model": 1,
+        "tyrant-model": 4
+      },
+      "modelUpgrades": {
+        "siege-master-model": [
+          "siege-master-weapon-upgrade-group",
+          "siege-master-wargear-upgrade-group"
+        ],
+        "tyrant-model": ["tyrant-weapon-upgrade-group"]
+      },
+      "points": 300,
+      "specialRules": [
+        "bulky",
+        "implacable-advance",
+        "slow-and-purposeful",
+        "firing-protocols",
+        "support-unit"
+      ],
+      "specialRuleValues": {
+        "bulky": 2,
+        "firing-protocols": 2,
+        "support-unit": 1
+      },
+      "traits": ["[Allegiance]", "[Legiones Astartes]", "Iron Warriors"],
+      "upgrades": ["additional-tyrants-upgrade"],
+      "wargear": [],
+      "minSize": 5,
+      "maxSize": 10
+    },
+    {
+      "id": "iron-circle-maniple",
+      "name": "Iron Circle Maniple",
+      "allegiance": "Traitor",
+      "baseSize": 1,
+      "battlefieldRole": "Retinue",
+      "description": "Of the most visible fruits of Perturabo's genius, developed after he was unshackled from the Emperor's strict dictates, were the Iron Circle, or the Domitar-Ferrum as they became known, first deployed as a bodyguard for their Primarch after the Battle of Phall, where he judged his own sons had failed him. Variants of the Domitar/Conqueror pattern, they were built as unyielding instruments of their creator's will and designed for the kind of warfare their master favoured most.",
+      "faction": "legiones-astartes",
+      "subfaction": "iron-warriors",
+      "models": {
+        "domitar-ferrum-model": 1
+      },
+      "modelUpgrades": {
+        "domitar-ferrum-model": []
+      },
+      "points": 150,
+      "specialRules": [
+        "shield-of-the-iron-tyrant",
+        "bulky",
+        "implacable-advance",
+        "impact",
+        "firestorm"
+      ],
+      "specialRuleValues": {
+        "bulky": 4,
+        "impact": "A"
+      },
+      "traits": ["[Allegiance]", "Iron Warriors", "Shield"],
+      "upgrades": ["additional-domitar-ferrum-upgrade"],
+      "wargear": [],
+      "minSize": 1,
+      "maxSize": 6
+    },
+    {
+      "id": "iron-warriors-iron-havocs",
+      "name": "Iron Warriors Iron Havocs",
+      "allegiance": "Traitor",
+      "baseSize": 5,
+      "battlefieldRole": "Support",
+      "description": "An elite formation of the IVth Legion, renowned for their precision in heavy support and siege warfare. They are the finest marksmen who clear fortifications and strongpoints with murderous efficiency.",
+      "faction": "legiones-astartes",
+      "subfaction": "iron-warriors",
+      "models": {
+        "iron-havoc-sergeant-model": 1,
+        "iron-havoc-model": 4
+      },
+      "modelUpgrades": {
+        "iron-havoc-sergeant-model": [
+          "iron-havoc-sergeant-melee-upgrade-group"
+        ],
+        "iron-havoc-model": [
+          "iron-havoc-weapon-upgrade-group",
+          "iron-havoc-equipment-upgrade-group",
+          "iron-havoc-vexilla-upgrade-group"
+        ]
+      },
+      "points": 135,
+      "specialRules": ["ferrum-occularis", "support-unit"],
+      "specialRuleValues": {
+        "support-unit": 1
+      },
+      "traits": ["[Allegiance]", "Iron Warriors"],
+      "upgrades": ["additional-iron-havocs-upgrade"],
+      "wargear": [],
+      "minSize": 5,
+      "maxSize": 10
     }
   ]
 }

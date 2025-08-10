@@ -10,15 +10,11 @@
       "profiles": [],
       "range": 36,
       "rangedStrength": 6,
-      "specialRules": [
-        "suppressive"
-      ],
+      "specialRules": ["suppressive"],
       "specialRuleValues": {
         "suppressive": 1
       },
-      "traits": [
-        "Las"
-      ],
+      "traits": ["Las"],
       "type": "ranged"
     },
     {
@@ -30,16 +26,12 @@
       "description": "Elegant energy sword.",
       "initiativeModifier": "I",
       "profiles": [],
-      "specialRules": [
-        "breaching"
-      ],
+      "specialRules": ["breaching"],
       "specialRuleValues": {
         "breaching": 6
       },
       "strengthModifier": "S",
-      "traits": [
-        "Power"
-      ],
+      "traits": ["Power"],
       "type": "melee"
     },
     {
@@ -54,9 +46,7 @@
       "specialRules": [],
       "specialRuleValues": "",
       "strengthModifier": 4,
-      "traits": [
-        "Power"
-      ],
+      "traits": ["Power"],
       "type": "melee"
     },
     {
@@ -69,9 +59,7 @@
       "profiles": [],
       "range": 8,
       "rangedStrength": 3,
-      "specialRules": [
-        "indirect-fire"
-      ],
+      "specialRules": ["indirect-fire"],
       "specialRuleValues": "",
       "traits": [],
       "type": "ranged"
@@ -100,18 +88,13 @@
       "description": "Elegant duelling weapon of the Solar Auxilia.",
       "initiativeModifier": 1,
       "profiles": [],
-      "specialRules": [
-        "breaching",
-        "duellists-edge"
-      ],
+      "specialRules": ["breaching", "duellists-edge"],
       "specialRuleValues": {
         "breaching": 6,
         "duellists-edge": 1
       },
       "strengthModifier": "S",
-      "traits": [
-        "Charnabal"
-      ],
+      "traits": ["Charnabal"],
       "type": "melee"
     },
     {
@@ -123,14 +106,29 @@
       "description": "A master-crafted blade of exceptional quality.",
       "initiativeModifier": "I",
       "profiles": [],
-      "specialRules": [
-        "critical-hit"
-      ],
+      "specialRules": ["critical-hit"],
       "specialRuleValues": {
         "critical-hit": 6
       },
       "strengthModifier": "S",
       "traits": [],
+      "type": "melee"
+    },
+    {
+      "id": "graviton-crusher",
+      "name": "Graviton Crusher",
+      "ap": 2,
+      "attackModifier": "A",
+      "damage": 2,
+      "description": "Iron Warriors legion-specific weapon that can replace thunder hammers for Champion and Command models",
+      "initiativeModifier": -2,
+      "profiles": [],
+      "specialRules": ["armourbane", "shock"],
+      "specialRuleValues": {
+        "shock": "Pinned"
+      },
+      "strengthModifier": 4,
+      "traits": ["Graviton"],
       "type": "melee"
     },
     {
@@ -145,9 +143,7 @@
       "specialRules": [],
       "specialRuleValues": "",
       "strengthModifier": 3,
-      "traits": [
-        "Power"
-      ],
+      "traits": ["Power"],
       "type": "melee"
     },
     {
@@ -160,17 +156,11 @@
       "profiles": [],
       "range": 10,
       "rangedStrength": 5,
-      "specialRules": [
-        "pistol",
-        "deflagrate"
-      ],
+      "specialRules": ["pistol", "deflagrate"],
       "specialRuleValues": {
         "deflagrate": 5
       },
-      "traits": [
-        "Assault",
-        "Volkite"
-      ],
+      "traits": ["Assault", "Volkite"],
       "type": "ranged"
     },
     {
@@ -180,10 +170,7 @@
       "damage": null,
       "description": "Compact plasma weapon with multiple firing modes.",
       "firepower": null,
-      "profiles": [
-        "plasma-pistol-sustained",
-        "plasma-pistol-maximal"
-      ],
+      "profiles": ["plasma-pistol-sustained", "plasma-pistol-maximal"],
       "range": null,
       "rangedStrength": null,
       "specialRules": [],
@@ -201,17 +188,11 @@
       "profiles": [],
       "range": 12,
       "rangedStrength": 6,
-      "specialRules": [
-        "pistol",
-        "breaching"
-      ],
+      "specialRules": ["pistol", "breaching"],
       "specialRuleValues": {
         "breaching": 6
       },
-      "traits": [
-        "Assault",
-        "Plasma"
-      ],
+      "traits": ["Assault", "Plasma"],
       "type": "ranged-profile"
     },
     {
@@ -224,19 +205,12 @@
       "profiles": [],
       "range": 12,
       "rangedStrength": 7,
-      "specialRules": [
-        "pistol",
-        "breaching",
-        "overload"
-      ],
+      "specialRules": ["pistol", "breaching", "overload"],
       "specialRuleValues": {
         "breaching": 5,
         "overload": 1
       },
-      "traits": [
-        "Assault",
-        "Plasma"
-      ],
+      "traits": ["Assault", "Plasma"],
       "type": "ranged-profile"
     },
     {
@@ -249,17 +223,11 @@
       "profiles": [],
       "range": 6,
       "rangedStrength": 8,
-      "specialRules": [
-        "pistol",
-        "melta"
-      ],
+      "specialRules": ["pistol", "melta"],
       "specialRuleValues": {
         "melta": 6
       },
-      "traits": [
-        "Assault",
-        "Melta"
-      ],
+      "traits": ["Assault", "Melta"],
       "type": "ranged"
     },
     {
@@ -272,16 +240,11 @@
       "profiles": [],
       "range": 12,
       "rangedStrength": 6,
-      "specialRules": [
-        "pistol",
-        "breaching"
-      ],
+      "specialRules": ["pistol", "breaching"],
       "specialRuleValues": {
         "breaching": 3
       },
-      "traits": [
-        "Assault"
-      ],
+      "traits": ["Assault"],
       "type": "ranged"
     },
     {
@@ -294,19 +257,12 @@
       "profiles": [],
       "range": 12,
       "rangedStrength": 2,
-      "specialRules": [
-        "poisoned",
-        "pistol",
-        "pinning"
-      ],
+      "specialRules": ["poisoned", "pistol", "pinning"],
       "specialRuleValues": {
         "poisoned": 3,
         "pinning": 1
       },
-      "traits": [
-        "Assault",
-        "Needle"
-      ],
+      "traits": ["Assault", "Needle"],
       "type": "ranged"
     },
     {
@@ -319,19 +275,12 @@
       "profiles": [],
       "range": 9,
       "rangedStrength": 4,
-      "specialRules": [
-        "pistol",
-        "rending",
-        "shred"
-      ],
+      "specialRules": ["pistol", "rending", "shred"],
       "specialRuleValues": {
         "rending": 6,
         "shred": 6
       },
-      "traits": [
-        "Assault",
-        "Las"
-      ],
+      "traits": ["Assault", "Las"],
       "type": "ranged"
     },
     {
@@ -344,15 +293,9 @@
       "profiles": [],
       "range": "Template",
       "rangedStrength": 3,
-      "specialRules": [
-        "template",
-        "pistol"
-      ],
+      "specialRules": ["template", "pistol"],
       "specialRuleValues": "",
-      "traits": [
-        "Assault",
-        "Flame"
-      ],
+      "traits": ["Assault", "Flame"],
       "type": "ranged"
     },
     {
@@ -367,9 +310,7 @@
       "specialRules": [],
       "specialRuleValues": "",
       "strengthModifier": "S",
-      "traits": [
-        "Bayonet"
-      ],
+      "traits": ["Bayonet"],
       "type": "melee"
     },
     {
@@ -382,17 +323,12 @@
       "profiles": [],
       "range": 18,
       "rangedStrength": 4,
-      "specialRules": [
-        "rending",
-        "shred"
-      ],
+      "specialRules": ["rending", "shred"],
       "specialRuleValues": {
         "rending": 6,
         "shred": 6
       },
-      "traits": [
-        "Las"
-      ],
+      "traits": ["Las"],
       "type": "ranged"
     },
     {
@@ -404,10 +340,7 @@
       "description": "Explosive anti-armor weapon for close combat.",
       "initiativeModifier": -3,
       "profiles": [],
-      "specialRules": [
-        "armourbane",
-        "detonation"
-      ],
+      "specialRules": ["armourbane", "detonation"],
       "specialRuleValues": "",
       "strengthModifier": 9,
       "traits": [],
@@ -423,15 +356,11 @@
       "profiles": [],
       "range": 15,
       "rangedStrength": 5,
-      "specialRules": [
-        "deflagrate"
-      ],
+      "specialRules": ["deflagrate"],
       "specialRuleValues": {
         "deflagrate": 5
       },
-      "traits": [
-        "Volkite"
-      ],
+      "traits": ["Volkite"],
       "type": "ranged"
     },
     {
@@ -443,18 +372,13 @@
       "description": "Elite melee weapon with enhanced dueling capabilities.",
       "initiativeModifier": "I",
       "profiles": [],
-      "specialRules": [
-        "breaching",
-        "duellists-edge"
-      ],
+      "specialRules": ["breaching", "duellists-edge"],
       "specialRuleValues": {
         "breaching": 6,
         "duellists-edge": 1
       },
       "strengthModifier": 1,
-      "traits": [
-        "Charnabal"
-      ],
+      "traits": ["Charnabal"],
       "type": "melee"
     },
     {
@@ -466,18 +390,13 @@
       "description": "Powerful melee weapon with enhanced armor penetration.",
       "initiativeModifier": -1,
       "profiles": [],
-      "specialRules": [
-        "breaching",
-        "shred"
-      ],
+      "specialRules": ["breaching", "shred"],
       "specialRuleValues": {
         "breaching": 5,
         "shred": 5
       },
       "strengthModifier": 2,
-      "traits": [
-        "Power"
-      ],
+      "traits": ["Power"],
       "type": "melee"
     },
     {
@@ -490,15 +409,11 @@
       "profiles": [],
       "range": 30,
       "rangedStrength": 6,
-      "specialRules": [
-        "deflagrate"
-      ],
+      "specialRules": ["deflagrate"],
       "specialRuleValues": {
         "deflagrate": 6
       },
-      "traits": [
-        "Volkite"
-      ],
+      "traits": ["Volkite"],
       "type": "ranged"
     },
     {
@@ -511,16 +426,11 @@
       "profiles": [],
       "range": "Template",
       "rangedStrength": 5,
-      "specialRules": [
-        "template",
-        "panic"
-      ],
+      "specialRules": ["template", "panic"],
       "specialRuleValues": {
         "panic": 1
       },
-      "traits": [
-        "Flame"
-      ],
+      "traits": ["Flame"],
       "type": "ranged"
     },
     {
@@ -551,10 +461,7 @@
       "profiles": [],
       "range": 18,
       "rangedStrength": 3,
-      "specialRules": [
-        "blast",
-        "stun"
-      ],
+      "specialRules": ["blast", "stun"],
       "specialRuleValues": {
         "blast": 3,
         "stun": 1
@@ -587,19 +494,13 @@
       "profiles": [],
       "range": 48,
       "rangedStrength": 8,
-      "specialRules": [
-        "heavy",
-        "blast",
-        "pinning"
-      ],
+      "specialRules": ["heavy", "blast", "pinning"],
       "specialRuleValues": {
         "heavy": "AP",
         "blast": 3,
         "pinning": 1
       },
-      "traits": [
-        "Auto"
-      ],
+      "traits": ["Auto"],
       "type": "ranged"
     },
     {
@@ -612,19 +513,13 @@
       "profiles": [],
       "range": 48,
       "rangedStrength": 8,
-      "specialRules": [
-        "heavy",
-        "blast",
-        "pinning"
-      ],
+      "specialRules": ["heavy", "blast", "pinning"],
       "specialRuleValues": {
         "heavy": "AP",
         "blast": 3,
         "pinning": 1
       },
-      "traits": [
-        "Auto"
-      ],
+      "traits": ["Auto"],
       "type": "ranged"
     },
     {
@@ -637,17 +532,12 @@
       "profiles": [],
       "range": 36,
       "rangedStrength": 8,
-      "specialRules": [
-        "heavy",
-        "breaching"
-      ],
+      "specialRules": ["heavy", "breaching"],
       "specialRuleValues": {
         "heavy": "D",
         "breaching": 6
       },
-      "traits": [
-        "Auto"
-      ],
+      "traits": ["Auto"],
       "type": "ranged"
     },
     {
@@ -660,16 +550,11 @@
       "profiles": [],
       "range": 48,
       "rangedStrength": 9,
-      "specialRules": [
-        "heavy",
-        "armourbane"
-      ],
+      "specialRules": ["heavy", "armourbane"],
       "specialRuleValues": {
         "heavy": "D"
       },
-      "traits": [
-        "Las"
-      ],
+      "traits": ["Las"],
       "type": "ranged"
     },
     {
@@ -682,17 +567,12 @@
       "profiles": [],
       "range": 72,
       "rangedStrength": 10,
-      "specialRules": [
-        "heavy",
-        "critical-hit"
-      ],
+      "specialRules": ["heavy", "critical-hit"],
       "specialRuleValues": {
         "heavy": "D",
         "critical-hit": 6
       },
-      "traits": [
-        "Auto"
-      ],
+      "traits": ["Auto"],
       "type": "ranged"
     },
     {
@@ -707,9 +587,7 @@
       "rangedStrength": 4,
       "specialRules": [],
       "specialRuleValues": {},
-      "traits": [
-        "Auto"
-      ],
+      "traits": ["Auto"],
       "type": "ranged"
     },
     {
@@ -722,21 +600,14 @@
       "profiles": [],
       "range": 24,
       "rangedStrength": 12,
-      "specialRules": [
-        "ordnance",
-        "blast",
-        "stun",
-        "breaching"
-      ],
+      "specialRules": ["ordnance", "blast", "stun", "breaching"],
       "specialRuleValues": {
         "ordnance": "D",
         "blast": 3,
         "stun": 1,
         "breaching": 5
       },
-      "traits": [
-        "Auto"
-      ],
+      "traits": ["Auto"],
       "type": "ranged"
     },
     {
@@ -752,15 +623,11 @@
       ],
       "range": null,
       "rangedStrength": null,
-      "specialRules": [
-        "heavy"
-      ],
+      "specialRules": ["heavy"],
       "specialRuleValues": {
         "heavy": "AP"
       },
-      "traits": [
-        "Plasma"
-      ],
+      "traits": ["Plasma"],
       "type": "ranged"
     },
     {
@@ -773,17 +640,12 @@
       "profiles": [],
       "range": 36,
       "rangedStrength": 8,
-      "specialRules": [
-        "blast",
-        "breaching"
-      ],
+      "specialRules": ["blast", "breaching"],
       "specialRuleValues": {
         "blast": 5,
         "breaching": 5
       },
-      "traits": [
-        "Plasma"
-      ],
+      "traits": ["Plasma"],
       "type": "ranged-profile"
     },
     {
@@ -796,19 +658,13 @@
       "profiles": [],
       "range": 36,
       "rangedStrength": 8,
-      "specialRules": [
-        "blast",
-        "breaching",
-        "overload"
-      ],
+      "specialRules": ["blast", "breaching", "overload"],
       "specialRuleValues": {
         "blast": 5,
         "breaching": 4,
         "overload": 1
       },
-      "traits": [
-        "Plasma"
-      ],
+      "traits": ["Plasma"],
       "type": "ranged-profile"
     },
     {
@@ -818,10 +674,7 @@
       "damage": null,
       "description": "Quad-linked autocannon with high rate of fire.",
       "firepower": null,
-      "profiles": [
-        "quad-launcher-frag",
-        "quad-launcher-krak"
-      ],
+      "profiles": ["quad-launcher-frag", "quad-launcher-krak"],
       "range": null,
       "rangedStrength": null,
       "specialRules": [],
@@ -839,11 +692,7 @@
       "profiles": [],
       "range": 60,
       "rangedStrength": 5,
-      "specialRules": [
-        "blast",
-        "barrage",
-        "heavy"
-      ],
+      "specialRules": ["blast", "barrage", "heavy"],
       "specialRuleValues": {
         "blast": 5,
         "barrage": 2,
@@ -862,10 +711,7 @@
       "profiles": [],
       "range": 36,
       "rangedStrength": 7,
-      "specialRules": [
-        "heavy",
-        "armourbane"
-      ],
+      "specialRules": ["heavy", "armourbane"],
       "specialRuleValues": {
         "heavy": "D"
       },
@@ -882,17 +728,12 @@
       "profiles": [],
       "range": 48,
       "rangedStrength": 7,
-      "specialRules": [
-        "heavy",
-        "breaching"
-      ],
+      "specialRules": ["heavy", "breaching"],
       "specialRuleValues": {
         "heavy": "FP",
         "breaching": 6
       },
-      "traits": [
-        "Auto"
-      ],
+      "traits": ["Auto"],
       "type": "ranged"
     },
     {
@@ -905,17 +746,12 @@
       "profiles": [],
       "range": 45,
       "rangedStrength": 6,
-      "specialRules": [
-        "heavy",
-        "deflagrate"
-      ],
+      "specialRules": ["heavy", "deflagrate"],
       "specialRuleValues": {
         "heavy": "AP",
         "deflagrate": 6
       },
-      "traits": [
-        "Volkite"
-      ],
+      "traits": ["Volkite"],
       "type": "ranged"
     },
     {
@@ -928,16 +764,11 @@
       "profiles": [],
       "range": 48,
       "rangedStrength": 9,
-      "specialRules": [
-        "limited",
-        "armourbane"
-      ],
+      "specialRules": ["limited", "armourbane"],
       "specialRuleValues": {
         "limited": 1
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "type": "ranged"
     },
     {
@@ -949,16 +780,12 @@
       "description": "Powerful close combat weapon with breaching capability.",
       "initiativeModifier": "I",
       "profiles": [],
-      "specialRules": [
-        "breaching"
-      ],
+      "specialRules": ["breaching"],
       "specialRuleValues": {
         "breaching": 5
       },
       "strengthModifier": 2,
-      "traits": [
-        "Power"
-      ],
+      "traits": ["Power"],
       "type": "melee"
     },
     {
@@ -971,13 +798,7 @@
       "profiles": [],
       "range": 240,
       "rangedStrength": 5,
-      "specialRules": [
-        "ordnance",
-        "blast",
-        "barrage",
-        "breaching",
-        "pinning"
-      ],
+      "specialRules": ["ordnance", "blast", "barrage", "breaching", "pinning"],
       "specialRuleValues": {
         "blast": 5,
         "barrage": 2,
@@ -998,13 +819,7 @@
       "profiles": [],
       "range": 36,
       "rangedStrength": 5,
-      "specialRules": [
-        "ordnance",
-        "blast",
-        "barrage",
-        "breaching",
-        "pinning"
-      ],
+      "specialRules": ["ordnance", "blast", "barrage", "breaching", "pinning"],
       "specialRuleValues": {
         "blast": 5,
         "barrage": 2,
@@ -1025,15 +840,11 @@
       "profiles": [],
       "range": 36,
       "rangedStrength": 6,
-      "specialRules": [
-        "suppressive"
-      ],
+      "specialRules": ["suppressive"],
       "specialRuleValues": {
         "suppressive": 1
       },
-      "traits": [
-        "Las"
-      ],
+      "traits": ["Las"],
       "type": "ranged"
     },
     {
@@ -1046,15 +857,11 @@
       "profiles": [],
       "range": 36,
       "rangedStrength": 5,
-      "specialRules": [
-        "suppressive"
-      ],
+      "specialRules": ["suppressive"],
       "specialRuleValues": {
         "suppressive": 2
       },
-      "traits": [
-        "Bolt"
-      ],
+      "traits": ["Bolt"],
       "type": "ranged"
     },
     {
@@ -1067,19 +874,13 @@
       "profiles": [],
       "range": 30,
       "rangedStrength": 4,
-      "specialRules": [
-        "blast",
-        "barrage",
-        "stun"
-      ],
+      "specialRules": ["blast", "barrage", "stun"],
       "specialRuleValues": {
         "blast": 5,
         "barrage": 1,
         "stun": 1
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "type": "ranged"
     },
     {
@@ -1092,16 +893,11 @@
       "profiles": [],
       "range": 18,
       "rangedStrength": 9,
-      "specialRules": [
-        "heavy",
-        "armourbane"
-      ],
+      "specialRules": ["heavy", "armourbane"],
       "specialRuleValues": {
         "heavy": "RS"
       },
-      "traits": [
-        "Melta"
-      ],
+      "traits": ["Melta"],
       "type": "ranged"
     },
     {
@@ -1114,16 +910,11 @@
       "profiles": [],
       "range": 48,
       "rangedStrength": 9,
-      "specialRules": [
-        "limited",
-        "armourbane"
-      ],
+      "specialRules": ["limited", "armourbane"],
       "specialRuleValues": {
         "limited": 2
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "type": "ranged"
     },
     {
@@ -1136,16 +927,11 @@
       "profiles": [],
       "range": 48,
       "rangedStrength": 9,
-      "specialRules": [
-        "heavy",
-        "armourbane"
-      ],
+      "specialRules": ["heavy", "armourbane"],
       "specialRuleValues": {
         "heavy": "D"
       },
-      "traits": [
-        "Las"
-      ],
+      "traits": ["Las"],
       "type": "ranged"
     },
     {
@@ -1158,17 +944,12 @@
       "profiles": [],
       "range": 45,
       "rangedStrength": 6,
-      "specialRules": [
-        "heavy",
-        "deflagrate"
-      ],
+      "specialRules": ["heavy", "deflagrate"],
       "specialRuleValues": {
         "heavy": "FP",
         "deflagrate": 6
       },
-      "traits": [
-        "Volkite"
-      ],
+      "traits": ["Volkite"],
       "type": "ranged"
     },
     {
@@ -1181,18 +962,12 @@
       "profiles": [],
       "range": "Template",
       "rangedStrength": 6,
-      "specialRules": [
-        "template",
-        "panic",
-        "shred"
-      ],
+      "specialRules": ["template", "panic", "shred"],
       "specialRuleValues": {
         "panic": 1,
         "shred": 4
       },
-      "traits": [
-        "Flame"
-      ],
+      "traits": ["Flame"],
       "type": "ranged"
     },
     {
@@ -1205,16 +980,11 @@
       "profiles": [],
       "range": 48,
       "rangedStrength": 9,
-      "specialRules": [
-        "armourbane",
-        "limited"
-      ],
+      "specialRules": ["armourbane", "limited"],
       "specialRuleValues": {
         "limited": 1
       },
-      "traits": [
-        "Guided Missile"
-      ],
+      "traits": ["Guided Missile"],
       "type": "ranged"
     },
     {
@@ -1227,15 +997,11 @@
       "profiles": [],
       "range": 36,
       "rangedStrength": 5,
-      "specialRules": [
-        "heavy"
-      ],
+      "specialRules": ["heavy"],
       "specialRuleValues": {
         "heavy": "FP"
       },
-      "traits": [
-        "Bolt"
-      ],
+      "traits": ["Bolt"],
       "type": "ranged"
     },
     {
@@ -1250,9 +1016,7 @@
       "rangedStrength": 3,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "Las"
-      ],
+      "traits": ["Las"],
       "type": "ranged"
     },
     {
@@ -1267,9 +1031,7 @@
       "rangedStrength": 3,
       "specialRules": [],
       "specialRuleValues": "",
-      "traits": [
-        "Las"
-      ],
+      "traits": ["Las"],
       "type": "ranged"
     },
     {
@@ -1282,18 +1044,12 @@
       "profiles": [],
       "range": "Template (Hellstorm)",
       "rangedStrength": 6,
-      "specialRules": [
-        "template-hellstorm",
-        "panic",
-        "heavy"
-      ],
+      "specialRules": ["template-hellstorm", "panic", "heavy"],
       "specialRuleValues": {
         "panic": 2,
         "heavy": "AP"
       },
-      "traits": [
-        "Flame"
-      ],
+      "traits": ["Flame"],
       "type": "ranged"
     },
     {
@@ -1306,18 +1062,12 @@
       "profiles": [],
       "range": 36,
       "rangedStrength": 10,
-      "specialRules": [
-        "armourbane",
-        "ordnance",
-        "shock"
-      ],
+      "specialRules": ["armourbane", "ordnance", "shock"],
       "specialRuleValues": {
         "ordnance": "D",
         "shock": "Suppressed"
       },
-      "traits": [
-        "Las"
-      ],
+      "traits": ["Las"],
       "type": "ranged"
     },
     {
@@ -1330,18 +1080,644 @@
       "profiles": [],
       "range": 72,
       "rangedStrength": 9,
-      "specialRules": [
-        "blast",
-        "stun"
-      ],
+      "specialRules": ["blast", "stun"],
       "specialRuleValues": {
         "blast": 5,
         "stun": 2
       },
-      "traits": [
-        "Auto"
-      ],
+      "traits": ["Auto"],
       "type": "ranged"
+    },
+    {
+      "id": "astartes-shotgun",
+      "name": "Astartes shotgun",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 12,
+      "firepower": 2,
+      "rangedStrength": 4,
+      "ap": null,
+      "damage": 1,
+      "specialRules": ["stun"],
+      "specialRuleValues": {
+        "stun": 0
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "rotor-cannon",
+      "name": "Rotor cannon",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 24,
+      "firepower": 3,
+      "rangedStrength": 3,
+      "ap": null,
+      "damage": 1,
+      "specialRules": ["heavy", "suppressive"],
+      "specialRuleValues": {
+        "heavy": "FP",
+        "suppressive": 1
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "reaper-autocannon",
+      "name": "Reaper autocannon",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 36,
+      "firepower": 2,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["heavy", "breaching"],
+      "specialRuleValues": {
+        "heavy": "FP",
+        "breaching": 6
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "kheres-assault-cannon",
+      "name": "Kheres assault cannon",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 24,
+      "firepower": 5,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["breaching", "heavy"],
+      "specialRuleValues": {
+        "heavy": "FP",
+        "breaching": 6
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "gravis-autocannon-battery",
+      "name": "Gravis autocannon battery",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 48,
+      "firepower": 5,
+      "rangedStrength": 8,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["breaching", "heavy"],
+      "specialRuleValues": {
+        "heavy": "FP",
+        "breaching": 6
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "predator-cannon",
+      "name": "Predator cannon",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 48,
+      "firepower": 3,
+      "rangedStrength": 8,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["heavy", "breaching"],
+      "specialRuleValues": {
+        "heavy": "FP",
+        "breaching": 6
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "punisher-rotary-cannon",
+      "name": "Punisher rotary cannon",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 36,
+      "firepower": 8,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["ordnance", "suppressive"],
+      "specialRuleValues": {
+        "ordnance": "FP",
+        "suppressive": 2
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "twin-accelerator-autocannon",
+      "name": "Twin accelerator autocannon",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 48,
+      "firepower": 6,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["breaching", "rapid-tracking", "skyfire"],
+      "specialRuleValues": {
+        "breaching": 6
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "quad-accelerator-autocannon",
+      "name": "Quad accelerator autocannon",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 48,
+      "firepower": 10,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["breaching", "skyfire", "rapid-tracking"],
+      "specialRuleValues": {
+        "breaching": 6
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "fellblade-accelerator-cannon",
+      "name": "Fellblade accelerator cannon",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 0,
+      "firepower": 0,
+      "rangedStrength": 0,
+      "ap": 0,
+      "damage": 0,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["Auto"],
+      "profiles": [
+        "fellblade-accelerator-cannon-he-shell",
+        "fellblade-accelerator-cannon-ae-shell"
+      ]
+    },
+    {
+      "id": "fellblade-accelerator-cannon-he-shell",
+      "name": "HE shell",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 100,
+      "firepower": 1,
+      "rangedStrength": 8,
+      "ap": 3,
+      "damage": 2,
+      "specialRules": ["blast", "stun"],
+      "specialRuleValues": {
+        "blast": 5,
+        "stun": 2
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "fellblade-accelerator-cannon-ae-shell",
+      "name": "AE shell",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 100,
+      "firepower": 1,
+      "rangedStrength": 12,
+      "ap": 2,
+      "damage": 3,
+      "specialRules": ["blast", "ordnance"],
+      "specialRuleValues": {
+        "blast": 3,
+        "ordnance": "D"
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "skyreaper-battery",
+      "name": "Skyreaper battery",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 48,
+      "firepower": 6,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["rapid-tracking", "skyfire"],
+      "specialRuleValues": {},
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "anvilus-autocannon-battery",
+      "name": "Anvilus autocannon battery",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 48,
+      "firepower": 6,
+      "rangedStrength": 8,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["breaching", "rapid-tracking", "skyfire"],
+      "specialRuleValues": {
+        "breaching": 5
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "anvilus-snub-autocannon",
+      "name": "Anvilus snub autocannon",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 24,
+      "firepower": 3,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["breaching"],
+      "specialRuleValues": {
+        "breaching": 5
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "leviathan-storm-cannon",
+      "name": "Leviathan storm cannon",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 36,
+      "firepower": 4,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["heavy", "breaching"],
+      "specialRuleValues": {
+        "heavy": "FP",
+        "breaching": 5
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "kratos-battlecannon",
+      "name": "Kratos battlecannon",
+      "type": "ranged",
+      "description": "Slug thrower",
+      "range": 0,
+      "firepower": 0,
+      "rangedStrength": 0,
+      "ap": 0,
+      "damage": 0,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["Auto"],
+      "profiles": [
+        "kratos-battlecannon-he",
+        "kratos-battlecannon-ap",
+        "kratos-battlecannon-flashburn"
+      ]
+    },
+    {
+      "id": "kratos-battlecannon-he",
+      "name": "HE shells",
+      "type": "ranged-profile",
+      "description": "Slug thrower",
+      "range": 36,
+      "firepower": 1,
+      "rangedStrength": 8,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["ordnance", "stun", "blast"],
+      "specialRuleValues": {
+        "ordnance": "D",
+        "stun": 1,
+        "blast": 5
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "kratos-battlecannon-ap",
+      "name": "AP shells",
+      "type": "ranged-profile",
+      "description": "Slug thrower",
+      "range": 36,
+      "firepower": 1,
+      "rangedStrength": 8,
+      "ap": 2,
+      "damage": 2,
+      "specialRules": ["ordnance", "armourbane"],
+      "specialRuleValues": {
+        "ordnance": "D"
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "kratos-battlecannon-flashburn",
+      "name": "Flashburn shells",
+      "type": "ranged-profile",
+      "description": "Slug thrower",
+      "range": 24,
+      "firepower": 1,
+      "rangedStrength": 9,
+      "ap": 2,
+      "damage": 3,
+      "specialRules": ["ordnance", "armourbane", "overload"],
+      "specialRuleValues": {
+        "ordnance": "D",
+        "overload": 1
+      },
+      "traits": ["Auto"],
+      "profiles": []
+    },
+    {
+      "id": "bolt-pistol",
+      "name": "Bolt pistol",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": 12,
+      "firepower": 1,
+      "rangedStrength": 4,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": ["pistol"],
+      "specialRuleValues": "",
+      "traits": ["Assault", "Bolt"],
+      "profiles": []
+    },
+    {
+      "id": "bolter",
+      "name": "Bolter",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": 24,
+      "firepower": 2,
+      "rangedStrength": 4,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["Bolt"],
+      "profiles": []
+    },
+    {
+      "id": "twin-bolter",
+      "name": "Twin bolter",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": 24,
+      "firepower": 4,
+      "rangedStrength": 4,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["Bolt"],
+      "profiles": []
+    },
+    {
+      "id": "combi-bolter",
+      "name": "Combi bolter",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": 24,
+      "firepower": 4,
+      "rangedStrength": 4,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["Bolt"],
+      "profiles": []
+    },
+    {
+      "id": "kraken-bolter",
+      "name": "Kraken bolter",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": 30,
+      "firepower": 2,
+      "rangedStrength": 4,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["precision", "shot-selector"],
+      "specialRuleValues": {
+        "precision": 4
+      },
+      "traits": ["Bolt"],
+      "profiles": []
+    },
+    {
+      "id": "nemesis-bolter",
+      "name": "Nemesis bolter",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": 48,
+      "firepower": 1,
+      "rangedStrength": 4,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": ["heavy", "breaching", "pinning", "precision"],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "breaching": 5,
+        "pinning": 1,
+        "precision": 4
+      },
+      "traits": ["Bolt"],
+      "profiles": []
+    },
+    {
+      "id": "twin-heavy-bolter",
+      "name": "Twin heavy bolter",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": 36,
+      "firepower": 6,
+      "rangedStrength": 5,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["Bolt"],
+      "profiles": []
+    },
+    {
+      "id": "gravis-bolt-cannon",
+      "name": "Gravis bolt cannon",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": 36,
+      "firepower": 6,
+      "rangedStrength": 5,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["heavy"],
+      "specialRuleValues": {
+        "heavy": 5
+      },
+      "traits": ["Bolt"],
+      "profiles": []
+    },
+    {
+      "id": "twin-avenger-bolt-cannon",
+      "name": "Twin avenger bolt cannon",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": 36,
+      "firepower": 10,
+      "rangedStrength": 6,
+      "ap": 3,
+      "damage": 2,
+      "specialRules": ["suppressive"],
+      "specialRuleValues": {
+        "suppressive": 2
+      },
+      "traits": ["Bolt"],
+      "profiles": []
+    },
+    {
+      "id": "flamer-secondary",
+      "name": "Flamer (secondary)",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": "Template",
+      "firepower": 1,
+      "rangedStrength": 4,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": ["template", "panic", "limited", "combi"],
+      "specialRuleValues": {
+        "panic": 1,
+        "limited": 1
+      },
+      "traits": ["Flame"],
+      "profiles": []
+    },
+    {
+      "id": "meltagun-secondary",
+      "name": "Meltagun (secondary)",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": 12,
+      "firepower": 1,
+      "rangedStrength": 8,
+      "ap": 2,
+      "damage": 3,
+      "specialRules": ["melta", "limited", "combi"],
+      "specialRuleValues": {
+        "melta": 6,
+        "limited": 1
+      },
+      "traits": ["Melta"],
+      "profiles": []
+    },
+    {
+      "id": "plasma-gun-secondary",
+      "name": "Plasma gun (secondary)",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": 24,
+      "firepower": 2,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["breaching", "limited", "combi"],
+      "specialRuleValues": {
+        "breaching": 6,
+        "limited": 1
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "volkite-charger-secondary",
+      "name": "Volkite charger (secondary)",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": 15,
+      "firepower": 2,
+      "rangedStrength": 5,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": ["deflagrate", "combi"],
+      "specialRuleValues": {
+        "deflagrate": 5
+      },
+      "traits": ["Volkite"],
+      "profiles": []
+    },
+    {
+      "id": "grenade-launcher-secondary",
+      "name": "Grenade launcher (secondary)",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": 24,
+      "firepower": 1,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["combi"],
+      "specialRuleValues": "",
+      "traits": [],
+      "profiles": []
+    },
+    {
+      "id": "disintegrator-secondary",
+      "name": "Disintegrator (secondary)",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": 24,
+      "firepower": 1,
+      "rangedStrength": 4,
+      "ap": 3,
+      "damage": 2,
+      "specialRules": ["overload", "limited", "combi"],
+      "specialRuleValues": {
+        "overload": 1,
+        "limited": 1
+      },
+      "traits": ["Disintegrator"],
+      "profiles": []
+    },
+    {
+      "id": "graviton-secondary",
+      "name": "Graviton gun (secondary)",
+      "type": "ranged",
+      "description": "SPESS MEHREEN",
+      "range": 18,
+      "firepower": 1,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": [
+        "blast",
+        "breaching",
+        "shock",
+        "pinning",
+        "limited",
+        "combi"
+      ],
+      "specialRuleValues": {
+        "blast": 3,
+        "breaching": 6,
+        "shock": "Pinned",
+        "pinning": 1,
+        "limited": 1
+      },
+      "traits": ["Graviton"],
+      "profiles": []
     },
     {
       "id": "grenade-harness",
@@ -1353,10 +1729,7 @@
       "rangedStrength": 5,
       "ap": 6,
       "damage": 1,
-      "specialRules": [
-        "blast",
-        "limited"
-      ],
+      "specialRules": ["blast", "limited"],
       "specialRuleValues": {
         "blast": 3,
         "limited": 1
@@ -1374,10 +1747,7 @@
       "rangedStrength": 10,
       "ap": 2,
       "damage": 2,
-      "specialRules": [
-        "ordnance",
-        "armourbane"
-      ],
+      "specialRules": ["ordnance", "armourbane"],
       "specialRuleValues": {
         "ordnance": "D"
       },
@@ -1394,16 +1764,11 @@
       "rangedStrength": 4,
       "ap": 5,
       "damage": 1,
-      "specialRules": [
-        "template",
-        "panic"
-      ],
+      "specialRules": ["template", "panic"],
       "specialRuleValues": {
         "panic": 1
       },
-      "traits": [
-        "Flame"
-      ],
+      "traits": ["Flame"],
       "profiles": []
     },
     {
@@ -1416,14 +1781,9 @@
       "rangedStrength": 5,
       "ap": 4,
       "damage": 1,
-      "specialRules": [
-        "template",
-        "panic"
-      ],
+      "specialRules": ["template", "panic"],
       "specialRuleValues": {},
-      "traits": [
-        "Flame"
-      ],
+      "traits": ["Flame"],
       "profiles": []
     },
     {
@@ -1436,16 +1796,11 @@
       "rangedStrength": 6,
       "ap": 4,
       "damage": 2,
-      "specialRules": [
-        "template",
-        "panic"
-      ],
+      "specialRules": ["template", "panic"],
       "specialRuleValues": {
         "panic": 2
       },
-      "traits": [
-        "Flame"
-      ],
+      "traits": ["Flame"],
       "profiles": []
     },
     {
@@ -1458,17 +1813,11 @@
       "rangedStrength": 6,
       "ap": 4,
       "damage": 1,
-      "specialRules": [
-        "template",
-        "panic"
-      ],
+      "specialRules": ["template", "panic"],
       "specialRuleValues": {
         "panic": 2
       },
-      "traits": [
-        "Assault",
-        "Flame"
-      ],
+      "traits": ["Assault", "Flame"],
       "profiles": []
     },
     {
@@ -1481,13 +1830,9 @@
       "rangedStrength": 9,
       "ap": 2,
       "damage": 3,
-      "specialRules": [
-        "armourbane"
-      ],
+      "specialRules": ["armourbane"],
       "specialRuleValues": {},
-      "traits": [
-        "Las"
-      ],
+      "traits": ["Las"],
       "profiles": []
     },
     {
@@ -1500,17 +1845,11 @@
       "rangedStrength": 9,
       "ap": 2,
       "damage": 4,
-      "specialRules": [
-        "heavy",
-        "armourbane",
-        "skyfire"
-      ],
+      "specialRules": ["heavy", "armourbane", "skyfire"],
       "specialRuleValues": {
         "heavy": "RS"
       },
-      "traits": [
-        "Las"
-      ],
+      "traits": ["Las"],
       "profiles": []
     },
     {
@@ -1523,16 +1862,11 @@
       "rangedStrength": 10,
       "ap": 2,
       "damage": 2,
-      "specialRules": [
-        "heavy",
-        "armourbane"
-      ],
+      "specialRules": ["heavy", "armourbane"],
       "specialRuleValues": {
         "heavy": "D"
       },
-      "traits": [
-        "Las"
-      ],
+      "traits": ["Las"],
       "profiles": []
     },
     {
@@ -1545,16 +1879,11 @@
       "rangedStrength": 10,
       "ap": 2,
       "damage": 3,
-      "specialRules": [
-        "ordnance",
-        "armourbane"
-      ],
+      "specialRules": ["ordnance", "armourbane"],
       "specialRuleValues": {
         "ordnance": "D"
       },
-      "traits": [
-        "Las"
-      ],
+      "traits": ["Las"],
       "profiles": []
     },
     {
@@ -1567,19 +1896,13 @@
       "rangedStrength": 9,
       "ap": 2,
       "damage": 3,
-      "specialRules": [
-        "ordnance",
-        "shock",
-        "overload"
-      ],
+      "specialRules": ["ordnance", "shock", "overload"],
       "specialRuleValues": {
         "ordnance": "D",
         "shock": "Suppressed",
         "overload": 1
       },
-      "traits": [
-        "Las"
-      ],
+      "traits": ["Las"],
       "profiles": []
     },
     {
@@ -1592,20 +1915,13 @@
       "rangedStrength": 10,
       "ap": 2,
       "damage": 3,
-      "specialRules": [
-        "ordnance",
-        "shock",
-        "armourbane",
-        "overload"
-      ],
+      "specialRules": ["ordnance", "shock", "armourbane", "overload"],
       "specialRuleValues": {
         "ordnance": "D",
         "shock": "Suppressed",
         "overload": 1
       },
-      "traits": [
-        "Las"
-      ],
+      "traits": ["Las"],
       "profiles": []
     },
     {
@@ -1618,18 +1934,12 @@
       "rangedStrength": 12,
       "ap": 2,
       "damage": 4,
-      "specialRules": [
-        "ordnance",
-        "armourbane",
-        "shock"
-      ],
+      "specialRules": ["ordnance", "armourbane", "shock"],
       "specialRuleValues": {
         "ordnance": "D",
         "shock": "Stunned"
       },
-      "traits": [
-        "Las"
-      ],
+      "traits": ["Las"],
       "profiles": []
     },
     {
@@ -1642,17 +1952,481 @@
       "rangedStrength": 12,
       "ap": 2,
       "damage": 6,
-      "specialRules": [
-        "blast",
-        "armourbane"
-      ],
+      "specialRules": ["blast", "armourbane"],
       "specialRuleValues": {
         "blast": 3
       },
-      "traits": [
-        "armourbane"
-      ],
+      "traits": ["armourbane"],
       "profiles": []
+    },
+    {
+      "id": "chainsword",
+      "name": "Chainsword",
+      "ap": 5,
+      "attackModifier": "A",
+      "damage": 1,
+      "description": "Description placeholder.",
+      "initiativeModifier": 1,
+      "profiles": [],
+      "specialRules": ["shred"],
+      "specialRuleValues": {
+        "shred": 6
+      },
+      "strengthModifier": "S",
+      "traits": ["Chain"],
+      "type": "melee"
+    },
+    {
+      "id": "heavy-chainaxe",
+      "name": "Heavy chainaxe",
+      "ap": 4,
+      "attackModifier": "A",
+      "damage": 1,
+      "description": "Description placeholder.",
+      "initiativeModifier": -2,
+      "profiles": [],
+      "specialRules": ["shred"],
+      "specialRuleValues": {
+        "shred": 6
+      },
+      "strengthModifier": 3,
+      "traits": ["Chain"],
+      "type": "melee"
+    },
+    {
+      "id": "heavy-chainsword",
+      "name": "Heavy chainsword",
+      "ap": 4,
+      "attackModifier": "A",
+      "damage": 1,
+      "description": "Description placeholder.",
+      "initiativeModifier": -1,
+      "profiles": [],
+      "specialRules": ["shred"],
+      "specialRuleValues": {
+        "shred": 6
+      },
+      "strengthModifier": 2,
+      "traits": ["Chain"],
+      "type": "melee"
+    },
+    {
+      "id": "chainaxe",
+      "name": "Chainaxe",
+      "ap": 5,
+      "attackModifier": "A",
+      "damage": 1,
+      "description": "Description placeholder.",
+      "initiativeModifier": -1,
+      "profiles": [],
+      "specialRules": ["shred"],
+      "specialRuleValues": {
+        "shred": 6
+      },
+      "strengthModifier": 1,
+      "traits": ["Chain"],
+      "type": "melee"
+    },
+    {
+      "id": "chainfist",
+      "name": "Chainfist",
+      "ap": 2,
+      "attackModifier": 1,
+      "damage": 2,
+      "description": "Description placeholder.",
+      "initiativeModifier": -3,
+      "profiles": [],
+      "specialRules": ["armourbane", "shred"],
+      "specialRuleValues": {
+        "shred": 6
+      },
+      "strengthModifier": 6,
+      "traits": ["Chain"],
+      "type": "melee"
+    },
+    {
+      "id": "gravis-chainfist",
+      "name": "Gravis chainfist",
+      "ap": 2,
+      "attackModifier": "A",
+      "damage": 3,
+      "description": "Description placeholder.",
+      "initiativeModifier": -1,
+      "profiles": [],
+      "specialRules": ["armourbane", "shred"],
+      "specialRuleValues": {
+        "shred": 6
+      },
+      "strengthModifier": 4,
+      "traits": ["Chain"],
+      "type": "melee"
+    },
+    {
+      "id": "paired-gravis-chainfists",
+      "name": "Paired Gravis chainfists",
+      "ap": 2,
+      "attackModifier": "A",
+      "damage": 4,
+      "description": "Description placeholder.",
+      "initiativeModifier": -1,
+      "profiles": [],
+      "specialRules": ["armourbane", "shred"],
+      "specialRuleValues": {
+        "shred": 6
+      },
+      "strengthModifier": 4,
+      "traits": ["Chain"],
+      "type": "melee"
+    },
+    {
+      "id": "chain-bayonet",
+      "name": "Chain bayonet",
+      "ap": 5,
+      "attackModifier": "A",
+      "damage": 1,
+      "description": "Description placeholder.",
+      "initiativeModifier": 1,
+      "profiles": [],
+      "specialRules": ["shred"],
+      "specialRuleValues": {
+        "shred": 6
+      },
+      "strengthModifier": "S",
+      "traits": ["Bayonet", "Chain"],
+      "type": "melee"
+    },
+    {
+      "id": "force-sword",
+      "name": "Force sword",
+      "ap": 3,
+      "attackModifier": "A",
+      "damage": 1,
+      "description": "Description placeholder.",
+      "initiativeModifier": 1,
+      "profiles": [],
+      "specialRules": ["force"],
+      "specialRuleValues": {},
+      "strengthModifier": 1,
+      "traits": ["Psychic"],
+      "type": "melee"
+    },
+    {
+      "id": "force-axe",
+      "name": "Force axe",
+      "ap": 2,
+      "attackModifier": "A",
+      "damage": 1,
+      "description": "Description placeholder.",
+      "initiativeModifier": -1,
+      "profiles": [],
+      "specialRules": ["force"],
+      "specialRuleValues": {},
+      "strengthModifier": 2,
+      "traits": ["Psychic"],
+      "type": "melee"
+    },
+    {
+      "id": "force-maul",
+      "name": "Force maul",
+      "ap": 3,
+      "attackModifier": "A",
+      "damage": 1,
+      "description": "Description placeholder.",
+      "initiativeModifier": 1,
+      "profiles": [],
+      "specialRules": ["force"],
+      "specialRuleValues": {},
+      "strengthModifier": 3,
+      "traits": ["Psychic"],
+      "type": "melee"
+    },
+    {
+      "id": "force-staff",
+      "name": "Force staff",
+      "ap": 4,
+      "attackModifier": "A",
+      "damage": 1,
+      "description": "Description placeholder.",
+      "initiativeModifier": 1,
+      "profiles": [],
+      "specialRules": ["force"],
+      "specialRuleValues": {},
+      "strengthModifier": 2,
+      "traits": ["Psychic"],
+      "type": "melee"
+    },
+    {
+      "id": "power-axe",
+      "name": "Power axe",
+      "ap": 3,
+      "attackModifier": "A",
+      "damage": 1,
+      "description": "Description placeholder.",
+      "initiativeModifier": -1,
+      "profiles": [],
+      "specialRules": ["breaching"],
+      "specialRuleValues": {
+        "breaching": 5
+      },
+      "strengthModifier": 1,
+      "traits": ["Power"],
+      "type": "melee"
+    },
+    {
+      "id": "power-maul",
+      "name": "Power maul",
+      "ap": 3,
+      "attackModifier": "A",
+      "damage": 1,
+      "description": "Description placeholder.",
+      "initiativeModifier": -1,
+      "profiles": [],
+      "specialRules": ["breaching"],
+      "specialRuleValues": {
+        "breaching": 6
+      },
+      "strengthModifier": 2,
+      "traits": ["Power"],
+      "type": "melee"
+    },
+    {
+      "id": "power-lance",
+      "name": "Power lance",
+      "ap": 3,
+      "attackModifier": "A",
+      "damage": 1,
+      "description": "Description placeholder.",
+      "initiativeModifier": 1,
+      "profiles": [],
+      "specialRules": ["precision"],
+      "specialRuleValues": {
+        "precision": 6
+      },
+      "strengthModifier": "S",
+      "traits": ["Power"],
+      "type": "melee"
+    },
+    {
+      "id": "gravis-power-fist",
+      "name": "Gravis power fist",
+      "ap": 2,
+      "attackModifier": "A",
+      "damage": 3,
+      "description": "Description placeholder.",
+      "initiativeModifier": 1,
+      "profiles": [],
+      "specialRules": [],
+      "specialRuleValues": {},
+      "strengthModifier": 3,
+      "traits": ["Power"],
+      "type": "melee"
+    },
+    {
+      "id": "paired-gravis-power-fists",
+      "name": "Paired Gravis power fists",
+      "ap": 2,
+      "attackModifier": 1,
+      "damage": 3,
+      "description": "Description placeholder.",
+      "initiativeModifier": 1,
+      "profiles": [],
+      "specialRules": [],
+      "specialRuleValues": {},
+      "strengthModifier": 3,
+      "traits": ["Power"],
+      "type": "melee"
+    },
+    {
+      "id": "crozious-arcanum",
+      "name": "Crozious Arcanum",
+      "ap": 3,
+      "attackModifier": "A",
+      "damage": 2,
+      "description": "Description placeholder.",
+      "initiativeModifier": 1,
+      "profiles": [],
+      "specialRules": ["breaching"],
+      "specialRuleValues": {
+        "breaching": 6
+      },
+      "strengthModifier": 2,
+      "traits": ["Power"],
+      "type": "melee"
+    },
+    {
+      "id": "lightning-claw",
+      "name": "Lightning claw",
+      "ap": 3,
+      "attackModifier": "A",
+      "damage": 1,
+      "description": "Description placeholder.",
+      "initiativeModifier": 1,
+      "profiles": [],
+      "specialRules": ["rending", "breaching"],
+      "specialRuleValues": {
+        "rending": 6,
+        "breaching": 6
+      },
+      "strengthModifier": "S",
+      "traits": ["Power"],
+      "type": "melee"
+    },
+    {
+      "id": "pair-of-lightning-claws",
+      "name": "Pair of lightning claws",
+      "ap": 3,
+      "attackModifier": 2,
+      "damage": 1,
+      "description": "Description placeholder.",
+      "initiativeModifier": 1,
+      "profiles": [],
+      "specialRules": ["rending", "breaching"],
+      "specialRuleValues": {
+        "rending": 6,
+        "breaching": 6
+      },
+      "strengthModifier": "S",
+      "traits": ["Power"],
+      "type": "melee"
+    },
+    {
+      "id": "saturnine-war-axe",
+      "name": "Saturnine war axe",
+      "ap": 2,
+      "attackModifier": "A",
+      "damage": 2,
+      "description": "Description placeholder.",
+      "initiativeModifier": 1,
+      "profiles": [],
+      "specialRules": ["reaping-blow"],
+      "specialRuleValues": {
+        "reaping-blow": 2
+      },
+      "strengthModifier": 1,
+      "traits": ["Power"],
+      "type": "melee"
+    },
+    {
+      "id": "saturnine-concussion-hammer",
+      "name": "Saturnine concussion hammer",
+      "ap": 2,
+      "attackModifier": "A",
+      "damage": 3,
+      "description": "Description placeholder.",
+      "initiativeModifier": -3,
+      "profiles": [],
+      "specialRules": ["critical-hit"],
+      "specialRuleValues": {
+        "critical-hit": 6
+      },
+      "strengthModifier": "x2",
+      "traits": ["Power"],
+      "type": "melee"
+    },
+    {
+      "id": "saturnine-disruption-fist",
+      "name": "Saturnine disruption fist",
+      "ap": 2,
+      "attackModifier": "A",
+      "damage": 3,
+      "description": "Description placeholder.",
+      "initiativeModifier": -2,
+      "profiles": [],
+      "specialRules": [],
+      "specialRuleValues": {},
+      "strengthModifier": 2,
+      "traits": ["Power"],
+      "type": "melee"
+    },
+    {
+      "id": "krak-grenades-melee",
+      "name": "Krak grenades (Melee)",
+      "ap": 4,
+      "attackModifier": 1,
+      "damage": 2,
+      "description": "Description placeholder.",
+      "initiativeModifier": -3,
+      "profiles": [],
+      "specialRules": ["detonation"],
+      "specialRuleValues": {},
+      "strengthModifier": 6,
+      "traits": [],
+      "type": "melee"
+    },
+    {
+      "id": "melta-bombs",
+      "name": "Melta bombs",
+      "ap": 2,
+      "attackModifier": 1,
+      "damage": 4,
+      "description": "Description placeholder.",
+      "initiativeModifier": -3,
+      "profiles": [],
+      "specialRules": ["armourbane", "detonation"],
+      "specialRuleValues": {},
+      "strengthModifier": 9,
+      "traits": [],
+      "type": "melee"
+    },
+    {
+      "id": "leviathan-siege-claw",
+      "name": "Leviathan siege claw",
+      "ap": 2,
+      "attackModifier": "A",
+      "damage": 3,
+      "description": "Description placeholder.",
+      "initiativeModifier": 1,
+      "profiles": [],
+      "specialRules": [],
+      "specialRuleValues": {},
+      "strengthModifier": 2,
+      "traits": [],
+      "type": "melee"
+    },
+    {
+      "id": "paired-leviathan-siege-claws",
+      "name": "Paired Leviathan siege claws",
+      "ap": 2,
+      "attackModifier": 1,
+      "damage": 3,
+      "description": "Description placeholder.",
+      "initiativeModifier": 1,
+      "profiles": [],
+      "specialRules": [],
+      "specialRuleValues": {},
+      "strengthModifier": 2,
+      "traits": [],
+      "type": "melee"
+    },
+    {
+      "id": "leviathan-siege-drill",
+      "name": "Leviathan siege drill",
+      "ap": 2,
+      "attackModifier": "A",
+      "damage": 3,
+      "description": "Description placeholder.",
+      "initiativeModifier": -2,
+      "profiles": [],
+      "specialRules": ["armourbane"],
+      "specialRuleValues": {},
+      "strengthModifier": 4,
+      "traits": [],
+      "type": "melee"
+    },
+    {
+      "id": "paired-leviathan-siege-drills",
+      "name": "Paired Leviathan siege drills",
+      "ap": 2,
+      "attackModifier": "A",
+      "damage": 4,
+      "description": "Description placeholder.",
+      "initiativeModifier": -2,
+      "profiles": [],
+      "specialRules": ["armourbane"],
+      "specialRuleValues": {},
+      "strengthModifier": 4,
+      "traits": [],
+      "type": "melee"
     },
     {
       "id": "morbus-he-shell",
@@ -1664,13 +2438,7 @@
       "rangedStrength": 9,
       "ap": 4,
       "damage": 1,
-      "specialRules": [
-        "ordnance",
-        "blast",
-        "barrage",
-        "breaching",
-        "pinning"
-      ],
+      "specialRules": ["ordnance", "blast", "barrage", "breaching", "pinning"],
       "specialRuleValues": {
         "ordnance": "D",
         "blast": 5,
@@ -1691,13 +2459,7 @@
       "rangedStrength": 5,
       "ap": 3,
       "damage": 1,
-      "specialRules": [
-        "blast",
-        "barrage",
-        "poisoned",
-        "panic",
-        "breaching"
-      ],
+      "specialRules": ["blast", "barrage", "poisoned", "panic", "breaching"],
       "specialRuleValues": {
         "blast": 5,
         "barrage": 1,
@@ -1705,9 +2467,7 @@
         "panic": 3,
         "breaching": 5
       },
-      "traits": [
-        "Phosphex"
-      ],
+      "traits": ["Phosphex"],
       "profiles": []
     },
     {
@@ -1720,13 +2480,7 @@
       "rangedStrength": 5,
       "ap": 3,
       "damage": 1,
-      "specialRules": [
-        "blast",
-        "barrage",
-        "poisoned",
-        "panic",
-        "breaching"
-      ],
+      "specialRules": ["blast", "barrage", "poisoned", "panic", "breaching"],
       "specialRuleValues": {
         "blast": 3,
         "barrage": 1,
@@ -1734,9 +2488,7 @@
         "panic": 3,
         "breaching": 5
       },
-      "traits": [
-        "Phosphex"
-      ],
+      "traits": ["Phosphex"],
       "profiles": []
     },
     {
@@ -1749,12 +2501,7 @@
       "rangedStrength": 12,
       "ap": 3,
       "damage": 3,
-      "specialRules": [
-        "ordnance",
-        "blast",
-        "breaching",
-        "stun"
-      ],
+      "specialRules": ["ordnance", "blast", "breaching", "stun"],
       "specialRuleValues": {
         "ordnance": "D",
         "blast": 5,
@@ -1774,15 +2521,11 @@
       "rangedStrength": 8,
       "ap": 2,
       "damage": 3,
-      "specialRules": [
-        "melta"
-      ],
+      "specialRules": ["melta"],
       "specialRuleValues": {
         "melta": 6
       },
-      "traits": [
-        "Melta"
-      ],
+      "traits": ["Melta"],
       "profiles": []
     },
     {
@@ -1795,17 +2538,12 @@
       "rangedStrength": 8,
       "ap": 2,
       "damage": 3,
-      "specialRules": [
-        "heavy",
-        "melta"
-      ],
+      "specialRules": ["heavy", "melta"],
       "specialRuleValues": {
         "heavy": "RS",
         "melta": 8
       },
-      "traits": [
-        "Melta"
-      ],
+      "traits": ["Melta"],
       "profiles": []
     },
     {
@@ -1818,17 +2556,12 @@
       "rangedStrength": 9,
       "ap": 2,
       "damage": 3,
-      "specialRules": [
-        "heavy",
-        "melta"
-      ],
+      "specialRules": ["heavy", "melta"],
       "specialRuleValues": {
         "heavy": "RS",
         "melta": 8
       },
-      "traits": [
-        "Melta"
-      ],
+      "traits": ["Melta"],
       "profiles": []
     },
     {
@@ -1841,17 +2574,12 @@
       "rangedStrength": 9,
       "ap": 2,
       "damage": 4,
-      "specialRules": [
-        "heavy",
-        "melta"
-      ],
+      "specialRules": ["heavy", "melta"],
       "specialRuleValues": {
         "heavy": "RS",
         "melta": 8
       },
-      "traits": [
-        "Melta"
-      ],
+      "traits": ["Melta"],
       "profiles": []
     },
     {
@@ -1864,17 +2592,12 @@
       "rangedStrength": 9,
       "ap": 2,
       "damage": 4,
-      "specialRules": [
-        "heavy",
-        "melta"
-      ],
+      "specialRules": ["heavy", "melta"],
       "specialRuleValues": {
         "heavy": "RS",
         "melta": 12
       },
-      "traits": [
-        "Melta"
-      ],
+      "traits": ["Melta"],
       "profiles": []
     },
     {
@@ -1887,17 +2610,12 @@
       "rangedStrength": 8,
       "ap": 2,
       "damage": 4,
-      "specialRules": [
-        "heavy",
-        "melta"
-      ],
+      "specialRules": ["heavy", "melta"],
       "specialRuleValues": {
         "heavy": "RS",
         "melta": 8
       },
-      "traits": [
-        "Melta"
-      ],
+      "traits": ["Melta"],
       "profiles": []
     },
     {
@@ -1910,19 +2628,13 @@
       "rangedStrength": 10,
       "ap": 2,
       "damage": 4,
-      "specialRules": [
-        "heavy",
-        "blast",
-        "melta"
-      ],
+      "specialRules": ["heavy", "blast", "melta"],
       "specialRuleValues": {
         "heavy": "RS",
         "blast": 5,
         "melta": 6
       },
-      "traits": [
-        "Melta"
-      ],
+      "traits": ["Melta"],
       "profiles": []
     },
     {
@@ -1935,19 +2647,13 @@
       "rangedStrength": 8,
       "ap": 2,
       "damage": 3,
-      "specialRules": [
-        "heavy",
-        "blast",
-        "melta"
-      ],
+      "specialRules": ["heavy", "blast", "melta"],
       "specialRuleValues": {
         "heavy": "RS",
         "blast": 3,
         "melta": 3
       },
-      "traits": [
-        "Melta"
-      ],
+      "traits": ["Melta"],
       "profiles": []
     },
     {
@@ -1960,17 +2666,12 @@
       "rangedStrength": 9,
       "ap": 2,
       "damage": 4,
-      "specialRules": [
-        "heavy",
-        "melta"
-      ],
+      "specialRules": ["heavy", "melta"],
       "specialRuleValues": {
         "heavy": "RS",
         "melta": 24
       },
-      "traits": [
-        "Melta"
-      ],
+      "traits": ["Melta"],
       "profiles": []
     },
     {
@@ -1983,17 +2684,12 @@
       "rangedStrength": 8,
       "ap": 2,
       "damage": 2,
-      "specialRules": [
-        "heavy",
-        "melta"
-      ],
+      "specialRules": ["heavy", "melta"],
       "specialRuleValues": {
         "heavy": "RS",
         "melta": 8
       },
-      "traits": [
-        "Melta"
-      ],
+      "traits": ["Melta"],
       "profiles": []
     },
     {
@@ -2006,17 +2702,12 @@
       "rangedStrength": 4,
       "ap": 6,
       "damage": 1,
-      "specialRules": [
-        "heavy",
-        "blast"
-      ],
+      "specialRules": ["heavy", "blast"],
       "specialRuleValues": {
         "heavy": "RS",
         "blast": 3
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2029,15 +2720,11 @@
       "rangedStrength": 8,
       "ap": 3,
       "damage": 1,
-      "specialRules": [
-        "heavy"
-      ],
+      "specialRules": ["heavy"],
       "specialRuleValues": {
         "heavy": "D"
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2050,16 +2737,11 @@
       "rangedStrength": 8,
       "ap": 4,
       "damage": 1,
-      "specialRules": [
-        "heavy",
-        "skyfire"
-      ],
+      "specialRules": ["heavy", "skyfire"],
       "specialRuleValues": {
         "heavy": "D"
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2072,15 +2754,11 @@
       "rangedStrength": 7,
       "ap": 4,
       "damage": 1,
-      "specialRules": [
-        "blast"
-      ],
+      "specialRules": ["blast"],
       "specialRuleValues": {
         "blast": 5
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2093,17 +2771,12 @@
       "rangedStrength": 5,
       "ap": 5,
       "damage": 1,
-      "specialRules": [
-        "blast",
-        "stun"
-      ],
+      "specialRules": ["blast", "stun"],
       "specialRuleValues": {
         "blast": 3,
         "stun": 1
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2116,16 +2789,11 @@
       "rangedStrength": 9,
       "ap": 3,
       "damage": 3,
-      "specialRules": [
-        "armourbane",
-        "limited"
-      ],
+      "specialRules": ["armourbane", "limited"],
       "specialRuleValues": {
         "limited": 1
       },
-      "traits": [
-        "Guided Missile"
-      ],
+      "traits": ["Guided Missile"],
       "profiles": []
     },
     {
@@ -2138,15 +2806,11 @@
       "rangedStrength": 6,
       "ap": 4,
       "damage": 1,
-      "specialRules": [
-        "pinning"
-      ],
+      "specialRules": ["pinning"],
       "specialRuleValues": {
         "pinning": 1
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2159,15 +2823,11 @@
       "rangedStrength": 6,
       "ap": 4,
       "damage": 1,
-      "specialRules": [
-        "pinning"
-      ],
+      "specialRules": ["pinning"],
       "specialRuleValues": {
         "pinning": 1
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2182,9 +2842,7 @@
       "damage": 2,
       "specialRules": [],
       "specialRuleValues": {},
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2197,17 +2855,12 @@
       "rangedStrength": 7,
       "ap": 4,
       "damage": 2,
-      "specialRules": [
-        "breaching",
-        "limited"
-      ],
+      "specialRules": ["breaching", "limited"],
       "specialRuleValues": {
         "breaching": 6,
         "limited": 1
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2220,16 +2873,11 @@
       "rangedStrength": 7,
       "ap": 4,
       "damage": 3,
-      "specialRules": [
-        "armourbane",
-        "limited"
-      ],
+      "specialRules": ["armourbane", "limited"],
       "specialRuleValues": {
         "limited": 1
       },
-      "traits": [
-        "Guided Missile"
-      ],
+      "traits": ["Guided Missile"],
       "profiles": []
     },
     {
@@ -2242,19 +2890,13 @@
       "rangedStrength": 6,
       "ap": 4,
       "damage": 1,
-      "specialRules": [
-        "heavy",
-        "blast",
-        "barrage"
-      ],
+      "specialRules": ["heavy", "blast", "barrage"],
       "specialRuleValues": {
         "heavy": "FP",
         "blast": 3,
         "barrage": 1
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2267,17 +2909,11 @@
       "rangedStrength": 8,
       "ap": 2,
       "damage": 3,
-      "specialRules": [
-        "limited",
-        "skyfire",
-        "rapid-tracking"
-      ],
+      "specialRules": ["limited", "skyfire", "rapid-tracking"],
       "specialRuleValues": {
         "limited": 1
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2290,19 +2926,13 @@
       "rangedStrength": 7,
       "ap": 4,
       "damage": 1,
-      "specialRules": [
-        "blast",
-        "barrage",
-        "suppressive"
-      ],
+      "specialRules": ["blast", "barrage", "suppressive"],
       "specialRuleValues": {
         "blast": 7,
         "barrage": 2,
         "suppressive": 1
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2317,9 +2947,7 @@
       "damage": 2,
       "specialRules": [],
       "specialRuleValues": {},
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2332,15 +2960,9 @@
       "rangedStrength": 8,
       "ap": 2,
       "damage": 2,
-      "specialRules": [
-        "skyfire",
-        "armourbane",
-        "rapid-tracking"
-      ],
+      "specialRules": ["skyfire", "armourbane", "rapid-tracking"],
       "specialRuleValues": {},
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2353,17 +2975,12 @@
       "rangedStrength": 5,
       "ap": 4,
       "damage": 1,
-      "specialRules": [
-        "blast",
-        "panic"
-      ],
+      "specialRules": ["blast", "panic"],
       "specialRuleValues": {
         "blast": 5,
         "panic": 1
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2376,15 +2993,11 @@
       "rangedStrength": 7,
       "ap": 4,
       "damage": 1,
-      "specialRules": [
-        "shock"
-      ],
+      "specialRules": ["shock"],
       "specialRuleValues": {
         "shock": "Suppressed"
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2397,17 +3010,12 @@
       "rangedStrength": 4,
       "ap": 6,
       "damage": 1,
-      "specialRules": [
-        "heavy",
-        "blast"
-      ],
+      "specialRules": ["heavy", "blast"],
       "specialRuleValues": {
         "heavy": "RS",
         "blast": 5
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2420,15 +3028,11 @@
       "rangedStrength": 8,
       "ap": 3,
       "damage": 1,
-      "specialRules": [
-        "heavy"
-      ],
+      "specialRules": ["heavy"],
       "specialRuleValues": {
         "heavy": "D"
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2441,16 +3045,11 @@
       "rangedStrength": 8,
       "ap": 4,
       "damage": 1,
-      "specialRules": [
-        "heavy",
-        "skyfire"
-      ],
+      "specialRules": ["heavy", "skyfire"],
       "specialRuleValues": {
         "heavy": "D"
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2463,21 +3062,14 @@
       "rangedStrength": 8,
       "ap": 4,
       "damage": 1,
-      "specialRules": [
-        "heavy",
-        "blast",
-        "barrage",
-        "breaching"
-      ],
+      "specialRules": ["heavy", "blast", "barrage", "breaching"],
       "specialRuleValues": {
         "heavy": "FP",
         "blast": 3,
         "barrage": 2,
         "breaching": 5
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2490,14 +3082,9 @@
       "rangedStrength": 7,
       "ap": 3,
       "damage": 2,
-      "specialRules": [
-        "skyfire",
-        "rapid-tracking"
-      ],
+      "specialRules": ["skyfire", "rapid-tracking"],
       "specialRuleValues": {},
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
     },
     {
@@ -2510,20 +3097,504 @@
       "rangedStrength": 6,
       "ap": 5,
       "damage": 1,
-      "specialRules": [
-        "barrage",
-        "blast",
-        "limited"
-      ],
+      "specialRules": ["barrage", "blast", "limited"],
       "specialRuleValues": {
         "barrage": 3,
         "blast": 5,
         "limited": 1
       },
-      "traits": [
-        "Missile"
-      ],
+      "traits": ["Missile"],
       "profiles": []
+    },
+    {
+      "id": "overcharged-plasma-pistol",
+      "name": "Overcharged plasma pistol",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 12,
+      "firepower": 3,
+      "rangedStrength": 8,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["pistol", "breaching", "overload"],
+      "specialRuleValues": {
+        "breaching": 4,
+        "overload": 1
+      },
+      "traits": ["Assault", "Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "plasma-gun-sustained-fire",
+      "name": "Sustained fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 24,
+      "firepower": 2,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["breaching"],
+      "specialRuleValues": {
+        "breaching": 6
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "plasma-gun-maximal-fire",
+      "name": "Maximal fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 24,
+      "firepower": 2,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["breaching", "overload"],
+      "specialRuleValues": {
+        "breaching": 5,
+        "overload": 1
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "twin-plasma-gun-sustained-fire",
+      "name": "Sustained fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 24,
+      "firepower": 2,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["breaching"],
+      "specialRuleValues": {
+        "breaching": 5
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "twin-plasma-gun-maximal-fire",
+      "name": "Maximal fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 24,
+      "firepower": 2,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["breaching", "overload"],
+      "specialRuleValues": {
+        "breaching": 4
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "plasma-bombard-sustained-fire",
+      "name": "Sustained fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 24,
+      "firepower": 1,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["blast", "barrage", "breaching"],
+      "specialRuleValues": {
+        "blast": 3,
+        "breaching": 6,
+        "barrage": 1
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "plasma-bombard-maximal-fire",
+      "name": "Maximal fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 24,
+      "firepower": 1,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["blast", "barrage", "breaching", "overload"],
+      "specialRuleValues": {
+        "blast": 3,
+        "barrage": 1,
+        "breaching": 5,
+        "overload": 2
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "heavy-plasma-bombard-sustained-fire",
+      "name": "Sustained fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 36,
+      "firepower": 1,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["blast", "barrage", "breaching"],
+      "specialRuleValues": {
+        "blast": 5,
+        "barrage": 1,
+        "breaching": 6
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "heavy-plasma-bombard-maximal-fire",
+      "name": "Maximal fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 36,
+      "firepower": 1,
+      "rangedStrength": 8,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["blast", "barrage", "breaching", "overload"],
+      "specialRuleValues": {
+        "blast": 5,
+        "barrage": 1,
+        "breaching": 5,
+        "overload": 1
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "plasma-cannon-sustained-fire",
+      "name": "Sustained fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 36,
+      "firepower": 1,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["heavy", "blast", "breaching"],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "blast": 3,
+        "breaching": 6
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "plasma-cannon-maximal-fire",
+      "name": "Maximal fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 36,
+      "firepower": 1,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["heavy", "blast", "breaching", "overload"],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "blast": 3,
+        "breaching": 5,
+        "overload": 2
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "gravis-plasma-cannon-sustained-fire",
+      "name": "Sustained fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 36,
+      "firepower": 1,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["heavy", "blast", "breaching"],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "blast": 5,
+        "breaching": 6
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "gravis-plasma-cannon-maximal-fire",
+      "name": "Maximal fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 36,
+      "firepower": 1,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["heavy", "blast", "breaching", "overload"],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "blast": 5,
+        "breaching": 5,
+        "overload": 1
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "plasma-blaster-sustained-fire",
+      "name": "Sustained fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 18,
+      "firepower": 2,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["breaching"],
+      "specialRuleValues": {
+        "breaching": 6
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "plasma-blaster-maximal-fire",
+      "name": "Maximal fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 18,
+      "firepower": 2,
+      "rangedStrength": 8,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["breaching", "overload"],
+      "specialRuleValues": {
+        "breaching": 5,
+        "overload": 1
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "hellfire-plasma-cannonade-sustained-fire",
+      "name": "Maximal fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 36,
+      "firepower": 6,
+      "rangedStrength": 6,
+      "ap": 4,
+      "damage": 1,
+      "specialRules": ["heavy", "breaching"],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "breaching": 5
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "hellfire-plasma-cannonade-maximal-fire",
+      "name": "Sustained fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 36,
+      "firepower": 1,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["heavy", "blast", "breaching", "overload"],
+      "specialRuleValues": {
+        "heavy": "RS",
+        "blast": 5,
+        "breaching": 4,
+        "overload": 1
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "omega-plasma-array-sustained-fire",
+      "name": "Maximal fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 36,
+      "firepower": 6,
+      "rangedStrength": 7,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["breaching"],
+      "specialRuleValues": {
+        "breaching": 5
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "omega-plasma-array-maximal-fire",
+      "name": "Sustained fire",
+      "type": "ranged-profile",
+      "description": "Plasma shooty shooty",
+      "range": 36,
+      "firepower": 1,
+      "rangedStrength": 8,
+      "ap": 4,
+      "damage": 2,
+      "specialRules": ["blast", "breaching", "overload"],
+      "specialRuleValues": {
+        "blast": 5,
+        "overload": 1,
+        "breaching": 4
+      },
+      "traits": ["Plasma"],
+      "profiles": []
+    },
+    {
+      "id": "plasma-gun",
+      "name": "Plasma gun",
+      "type": "ranged",
+      "description": "Plasma shooty shooty",
+      "range": 0,
+      "firepower": 0,
+      "rangedStrength": 0,
+      "ap": 0,
+      "damage": 0,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["Plasma"],
+      "profiles": ["plasma-gun-sustained-fire", "plasma-gun-maximal-fire"]
+    },
+    {
+      "id": "twin-plasma-gun",
+      "name": "Twin plasma gun",
+      "type": "ranged",
+      "description": "Plasma shooty shooty",
+      "range": 0,
+      "firepower": 0,
+      "rangedStrength": 0,
+      "ap": 0,
+      "damage": 0,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["Plasma"],
+      "profiles": [
+        "twin-plasma-gun-sustained-fire",
+        "twin-plasma-gun-maximal-fire"
+      ]
+    },
+    {
+      "id": "plasma-bombard",
+      "name": "Plasma bombard",
+      "type": "ranged",
+      "description": "Plasma shooty shooty",
+      "range": 0,
+      "firepower": 0,
+      "rangedStrength": 0,
+      "ap": 0,
+      "damage": 0,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["Plasma"],
+      "profiles": [
+        "plasma-bombard-sustained-fire",
+        "plasma-bombard-maximal-fire"
+      ]
+    },
+    {
+      "id": "heavy-plasma-bombard",
+      "name": "Heavy plasma bombard",
+      "type": "ranged",
+      "description": "Plasma shooty shooty",
+      "range": 0,
+      "firepower": 0,
+      "rangedStrength": 0,
+      "ap": 0,
+      "damage": 0,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["Plasma"],
+      "profiles": [
+        "heavy-plasma-bombard-sustained-fire",
+        "heavy-plasma-bombard-maximal-fire"
+      ]
+    },
+    {
+      "id": "plasma-cannon",
+      "name": "Plasma cannon",
+      "type": "ranged",
+      "description": "Plasma shooty shooty",
+      "range": 0,
+      "firepower": 0,
+      "rangedStrength": 0,
+      "ap": 0,
+      "damage": 0,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["Plasma"],
+      "profiles": ["plasma-cannon-sustained-fire", "plasma-cannon-maximal-fire"]
+    },
+    {
+      "id": "gravis-plasma-cannon",
+      "name": "Gravis plasma cannon",
+      "type": "ranged",
+      "description": "Plasma shooty shooty",
+      "range": 0,
+      "firepower": 0,
+      "rangedStrength": 0,
+      "ap": 0,
+      "damage": 0,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["Plasma"],
+      "profiles": [
+        "gravis-plasma-cannon-sustained-fire",
+        "gravis-plasma-cannon-maximal-fire"
+      ]
+    },
+    {
+      "id": "hellfire-plasma-cannonade",
+      "name": "Hellfire plasma carronade",
+      "type": "ranged",
+      "description": "Plasma shooty shooty",
+      "range": 0,
+      "firepower": 0,
+      "rangedStrength": 0,
+      "ap": 0,
+      "damage": 0,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["Plasma"],
+      "profiles": [
+        "hellfire-plasma-cannonade-sustained-fire",
+        "hellfire-plasma-cannonade-maximal-fire"
+      ]
+    },
+    {
+      "id": "omega-plasma-array",
+      "name": "Omega plasma array",
+      "type": "ranged",
+      "description": "Plasma shooty shooty",
+      "range": 0,
+      "firepower": 0,
+      "rangedStrength": 0,
+      "ap": 0,
+      "damage": 0,
+      "specialRules": [],
+      "specialRuleValues": "",
+      "traits": ["Plasma"],
+      "profiles": [
+        "omega-plasma-array-sustained-fire",
+        "omega-plasma-array-maximal-fire"
+      ]
     },
     {
       "id": "rad-grenades",
@@ -2535,17 +3606,12 @@
       "rangedStrength": 4,
       "ap": 3,
       "damage": 1,
-      "specialRules": [
-        "poisoned",
-        "phage"
-      ],
+      "specialRules": ["poisoned", "phage"],
       "specialRuleValues": {
         "poisoned": 2,
         "phage": "T"
       },
-      "traits": [
-        "Rad"
-      ],
+      "traits": ["Rad"],
       "profiles": []
     },
     {
@@ -2558,19 +3624,12 @@
       "rangedStrength": 6,
       "ap": 5,
       "damage": 1,
-      "specialRules": [
-        "template",
-        "overload",
-        "stun"
-      ],
+      "specialRules": ["template", "overload", "stun"],
       "specialRuleValues": {
         "overload": 1,
         "stun": 2
       },
-      "traits": [
-        "Assault",
-        "Sonic"
-      ],
+      "traits": ["Assault", "Sonic"],
       "profiles": []
     },
     {
@@ -2583,19 +3642,12 @@
       "rangedStrength": 6,
       "ap": 5,
       "damage": 1,
-      "specialRules": [
-        "pistol",
-        "deflagrate",
-        "overload"
-      ],
+      "specialRules": ["pistol", "deflagrate", "overload"],
       "specialRuleValues": {
         "deflagrate": 5,
         "overload": 1
       },
-      "traits": [
-        "Assault",
-        "Volkite"
-      ],
+      "traits": ["Assault", "Volkite"],
       "profiles": []
     },
     {
@@ -2608,16 +3660,11 @@
       "rangedStrength": 5,
       "ap": 5,
       "damage": 1,
-      "specialRules": [
-        "deflagrate"
-      ],
+      "specialRules": ["deflagrate"],
       "specialRuleValues": {
         "deflagrate": 5
       },
-      "traits": [
-        "Assault",
-        "Volkite"
-      ],
+      "traits": ["Assault", "Volkite"],
       "profiles": []
     },
     {
@@ -2630,17 +3677,12 @@
       "rangedStrength": 6,
       "ap": 5,
       "damage": 1,
-      "specialRules": [
-        "heavy",
-        "deflagrate"
-      ],
+      "specialRules": ["heavy", "deflagrate"],
       "specialRuleValues": {
         "heavy": "FP",
         "deflagrate": 6
       },
-      "traits": [
-        "Volkite"
-      ],
+      "traits": ["Volkite"],
       "profiles": []
     },
     {
@@ -2653,17 +3695,12 @@
       "rangedStrength": 6,
       "ap": 5,
       "damage": 1,
-      "specialRules": [
-        "heavy",
-        "deflagrate"
-      ],
+      "specialRules": ["heavy", "deflagrate"],
       "specialRuleValues": {
         "heavy": "FP",
         "deflagrate": 6
       },
-      "traits": [
-        "Volkite"
-      ],
+      "traits": ["Volkite"],
       "profiles": []
     },
     {
@@ -2676,17 +3713,12 @@
       "rangedStrength": 7,
       "ap": 5,
       "damage": 1,
-      "specialRules": [
-        "deflagrate",
-        "pinning"
-      ],
+      "specialRules": ["deflagrate", "pinning"],
       "specialRuleValues": {
         "deflagrate": 7,
         "pinning": 2
       },
-      "traits": [
-        "Volkite"
-      ],
+      "traits": ["Volkite"],
       "profiles": []
     },
     {
@@ -2699,15 +3731,11 @@
       "rangedStrength": 6,
       "ap": 5,
       "damage": 1,
-      "specialRules": [
-        "deflagrate"
-      ],
+      "specialRules": ["deflagrate"],
       "specialRuleValues": {
         "deflagrate": 6
       },
-      "traits": [
-        "Volkite"
-      ],
+      "traits": ["Volkite"],
       "profiles": []
     },
     {
@@ -2720,15 +3748,11 @@
       "rangedStrength": 8,
       "ap": 3,
       "damage": 2,
-      "specialRules": [
-        "deflagrate"
-      ],
+      "specialRules": ["deflagrate"],
       "specialRuleValues": {
         "deflagrate": 8
       },
-      "traits": [
-        "Volkite"
-      ],
+      "traits": ["Volkite"],
       "profiles": []
     },
     {
@@ -2741,17 +3765,12 @@
       "rangedStrength": 7,
       "ap": 5,
       "damage": 2,
-      "specialRules": [
-        "deflagrate",
-        "suppressive"
-      ],
+      "specialRules": ["deflagrate", "suppressive"],
       "specialRuleValues": {
         "deflagrate": 7,
         "suppressive": 1
       },
-      "traits": [
-        "Volkite"
-      ],
+      "traits": ["Volkite"],
       "profiles": []
     },
     {
@@ -2764,17 +3783,11 @@
       "rangedStrength": 4,
       "ap": 3,
       "damage": 2,
-      "specialRules": [
-        "pistol",
-        "overload"
-      ],
+      "specialRules": ["pistol", "overload"],
       "specialRuleValues": {
         "overload": 1
       },
-      "traits": [
-        "Assault",
-        "Disintegrator"
-      ],
+      "traits": ["Assault", "Disintegrator"],
       "profiles": []
     },
     {
@@ -2787,15 +3800,11 @@
       "rangedStrength": 4,
       "ap": 3,
       "damage": 2,
-      "specialRules": [
-        "overload"
-      ],
+      "specialRules": ["overload"],
       "specialRuleValues": {
         "overload": 1
       },
-      "traits": [
-        "Disintegrator"
-      ],
+      "traits": ["Disintegrator"],
       "profiles": []
     },
     {
@@ -2808,15 +3817,11 @@
       "rangedStrength": 5,
       "ap": 2,
       "damage": 2,
-      "specialRules": [
-        "overload"
-      ],
+      "specialRules": ["overload"],
       "specialRuleValues": {
         "overload": 1
       },
-      "traits": [
-        "Disintegrator"
-      ],
+      "traits": ["Disintegrator"],
       "profiles": []
     },
     {
@@ -2829,15 +3834,11 @@
       "rangedStrength": 6,
       "ap": 2,
       "damage": 2,
-      "specialRules": [
-        "overload"
-      ],
+      "specialRules": ["overload"],
       "specialRuleValues": {
         "overload": 2
       },
-      "traits": [
-        "Disintegrator"
-      ],
+      "traits": ["Disintegrator"],
       "profiles": []
     },
     {
@@ -2850,15 +3851,11 @@
       "rangedStrength": 7,
       "ap": 2,
       "damage": 2,
-      "specialRules": [
-        "overload"
-      ],
+      "specialRules": ["overload"],
       "specialRuleValues": {
         "overload": 2
       },
-      "traits": [
-        "Disintegrator"
-      ],
+      "traits": ["Disintegrator"],
       "profiles": []
     },
     {
@@ -2871,15 +3868,11 @@
       "rangedStrength": 9,
       "ap": 2,
       "damage": 3,
-      "specialRules": [
-        "overload"
-      ],
+      "specialRules": ["overload"],
       "specialRuleValues": {
         "overload": 2
       },
-      "traits": [
-        "Disintegrator"
-      ],
+      "traits": ["Disintegrator"],
       "profiles": []
     },
     {
@@ -2892,21 +3885,14 @@
       "rangedStrength": 8,
       "ap": 3,
       "damage": 1,
-      "specialRules": [
-        "blast",
-        "breaching",
-        "shock",
-        "pinning"
-      ],
+      "specialRules": ["blast", "breaching", "shock", "pinning"],
       "specialRuleValues": {
         "blast": 3,
         "breaching": 6,
         "shock": "Pinned",
         "pinning": 1
       },
-      "traits": [
-        "Graviton"
-      ],
+      "traits": ["Graviton"],
       "profiles": []
     },
     {
@@ -2919,13 +3905,7 @@
       "rangedStrength": 8,
       "ap": 3,
       "damage": 1,
-      "specialRules": [
-        "heavy",
-        "blast",
-        "breaching",
-        "shock",
-        "pinning"
-      ],
+      "specialRules": ["heavy", "blast", "breaching", "shock", "pinning"],
       "specialRuleValues": {
         "heavy": "D",
         "blast": 3,
@@ -2933,9 +3913,7 @@
         "shock": "Pinned",
         "pinning": 2
       },
-      "traits": [
-        "Graviton"
-      ],
+      "traits": ["Graviton"],
       "profiles": []
     },
     {
@@ -2964,9 +3942,7 @@
         "shock": "Pinned",
         "pinning": 1
       },
-      "traits": [
-        "Graviton"
-      ],
+      "traits": ["Graviton"],
       "profiles": []
     },
     {
@@ -2979,13 +3955,7 @@
       "rangedStrength": 7,
       "ap": 4,
       "damage": 1,
-      "specialRules": [
-        "heavy",
-        "blast",
-        "breaching",
-        "shock",
-        "pinning"
-      ],
+      "specialRules": ["heavy", "blast", "breaching", "shock", "pinning"],
       "specialRuleValues": {
         "heavy": "D",
         "blast": 5,
@@ -2993,9 +3963,7 @@
         "breaching": 6,
         "pinning": 2
       },
-      "traits": [
-        "Graviton"
-      ],
+      "traits": ["Graviton"],
       "profiles": []
     },
     {
@@ -3008,13 +3976,7 @@
       "rangedStrength": 9,
       "ap": 3,
       "damage": 3,
-      "specialRules": [
-        "heavy",
-        "blast",
-        "breaching",
-        "shock",
-        "pinning"
-      ],
+      "specialRules": ["heavy", "blast", "breaching", "shock", "pinning"],
       "specialRuleValues": {
         "heavy": "D",
         "blast": 5,
@@ -3022,9 +3984,7 @@
         "shock": "Pinned",
         "pinning": 3
       },
-      "traits": [
-        "Graviton"
-      ],
+      "traits": ["Graviton"],
       "profiles": []
     },
     {
@@ -3037,19 +3997,12 @@
       "rangedStrength": 6,
       "ap": 3,
       "damage": 1,
-      "specialRules": [
-        "template",
-        "breaching",
-        "overload"
-      ],
+      "specialRules": ["template", "breaching", "overload"],
       "specialRuleValues": {
         "breaching": 6,
         "overload": 1
       },
-      "traits": [
-        "Assault",
-        "Particle"
-      ],
+      "traits": ["Assault", "Particle"],
       "profiles": []
     },
     {
@@ -3062,19 +4015,12 @@
       "rangedStrength": 6,
       "ap": 3,
       "damage": 2,
-      "specialRules": [
-        "template",
-        "breaching",
-        "overload"
-      ],
+      "specialRules": ["template", "breaching", "overload"],
       "specialRuleValues": {
         "breaching": 5,
         "overload": 1
       },
-      "traits": [
-        "Assault",
-        "Particle"
-      ],
+      "traits": ["Assault", "Particle"],
       "profiles": []
     },
     {
@@ -3087,21 +4033,14 @@
       "rangedStrength": 5,
       "ap": 3,
       "damage": 1,
-      "specialRules": [
-        "blast",
-        "poisoned",
-        "panic",
-        "breaching"
-      ],
+      "specialRules": ["blast", "poisoned", "panic", "breaching"],
       "specialRuleValues": {
         "blast": 3,
         "poisoned": 3,
         "panic": 3,
         "breaching": 5
       },
-      "traits": [
-        "Phosphex"
-      ],
+      "traits": ["Phosphex"],
       "profiles": []
     },
     {
@@ -3114,13 +4053,7 @@
       "rangedStrength": 5,
       "ap": 3,
       "damage": 1,
-      "specialRules": [
-        "blast",
-        "limited",
-        "poisoned",
-        "panic",
-        "breaching"
-      ],
+      "specialRules": ["blast", "limited", "poisoned", "panic", "breaching"],
       "specialRuleValues": {
         "blast": 3,
         "limited": 3,
@@ -3128,10 +4061,273 @@
         "panic": 3,
         "breaching": 5
       },
-      "traits": [
-        "Phosphex"
-      ],
+      "traits": ["Phosphex"],
       "profiles": []
+    },
+    {
+      "id": "combi-flamer",
+      "name": "Combi-flamer",
+      "type": "ranged-profile",
+      "description": "A combination weapon with both bolter and flamer capabilities",
+      "profiles": ["bolter", "flamer-secondary"],
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["Bolt", "Flame"]
+    },
+    {
+      "id": "combi-melta",
+      "name": "Combi-melta",
+      "type": "ranged-profile",
+      "description": "A combination weapon with both bolter and meltagun capabilities",
+      "profiles": ["bolter", "meltagun-secondary"],
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["Bolt", "Melta"]
+    },
+    {
+      "id": "combi-plasma",
+      "name": "Combi-plasma",
+      "type": "ranged-profile",
+      "description": "A combination weapon with both bolter and plasma gun capabilities",
+      "profiles": ["bolter", "plasma-gun-secondary"],
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["Bolt", "Plasma"]
+    },
+    {
+      "id": "combi-volkite",
+      "name": "Combi-volkite",
+      "type": "ranged-profile",
+      "description": "A combination weapon with both bolter and volkite charger capabilities",
+      "profiles": ["bolter", "volkite-charger-secondary"],
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["Bolt", "Volkite"]
+    },
+    {
+      "id": "combi-grenade",
+      "name": "Combi-grenade",
+      "type": "ranged-profile",
+      "description": "A combination weapon with both bolter and grenade launcher capabilities",
+      "profiles": ["bolter", "grenade-launcher-secondary"],
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["Bolt"]
+    },
+    {
+      "id": "combi-disintegrator",
+      "name": "Combi-disintegrator",
+      "type": "ranged-profile",
+      "description": "A combination weapon with both bolter and disintegrator capabilities",
+      "profiles": ["bolter", "disintegrator-secondary"],
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["Bolt", "Disintegrator"]
+    },
+    {
+      "id": "combi-grav",
+      "name": "Combi-grav",
+      "type": "ranged-profile",
+      "description": "A combination weapon with both bolter and graviton gun capabilities",
+      "profiles": ["bolter", "graviton-secondary"],
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["Bolt", "Graviton"]
+    },
+    {
+      "id": "nemesis-rifle",
+      "name": "Nemesis Rifle",
+      "type": "ranged-weapon",
+      "description": "Painstakingly crafted to sub-molecular tolerances and meeting the exacting specifications of each Vigilator, each of these masterworks of mechanical technology are calibrated to deliver hardened penetrator rounds with immeasurably little variance between the point of aim and the point of impact.",
+      "range": 48,
+      "firepower": 1,
+      "rateOfShot": 6,
+      "armorPenetration": 3,
+      "damage": 1,
+      "specialRules": ["heavy", "breaching", "pinning", "precision"],
+      "specialRuleValues": {
+        "heavy": "D",
+        "breaching": 5,
+        "pinning": 1,
+        "precision": 4
+      },
+      "traits": ["Bolt"]
+    },
+    {
+      "id": "phosphex-bombs",
+      "name": "Phosphex Bombs",
+      "description": "Specialized incendiary devices that burn with unquenchable phosphex fire, designed for siege warfare against fortified positions.",
+      "range": "8\"",
+      "strength": "4",
+      "ap": "2",
+      "type": "Assault 1",
+      "specialRules": ["Crawling Fire", "Poisoned (3+)", "Gets Hot"],
+      "points": 0,
+      "weaponType": "Grenade"
+    },
+    {
+      "id": "power-lash",
+      "name": "Power Lash",
+      "description": "Many Overseers take a more brutal approach to goading their charges forward into battle, lashing them with barbed whips. These implements are also employed against the overseer's foes, wrapping around limbs before delivering punishing blasts from its disruption field.",
+      "range": "+1",
+      "strength": "User",
+      "ap": "-1",
+      "type": "Melee",
+      "specialRules": ["Breaching (6+)"],
+      "traits": ["Power"],
+      "points": 0,
+      "weaponType": "Melee Weapon"
+    },
+    {
+      "id": "crozius-arcanum",
+      "name": "Crozius Arcanum",
+      "description": "A mortuary symbol of sacrifice graven in the form of an ornate staff, mace or axe, the Crozius Arcanum serves as both a badge of office and a deadly weapon for the Chaplain Order.",
+      "range": "Melee",
+      "strength": "+1",
+      "ap": "2",
+      "type": "Melee",
+      "specialRules": ["Master-crafted"],
+      "traits": ["Power"],
+      "points": 0,
+      "weaponType": "Melee Weapon"
+    },
+    {
+      "id": "logos-array",
+      "name": "The Logos Array",
+      "description": "Built into the arm systems of the Logos armour, these are custom-built bolt weapons using Olympia's shrapnel bolt technology, improved by Perturabo. They unleash a storm of shot effective even at point-blank range.",
+      "type": "ranged-profile",
+      "profiles": ["logos-array-ranged", "logos-array-melee"],
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["Bolt", "Assault", "Power"]
+    },
+    {
+      "id": "logos-array-ranged",
+      "name": "The Logos Array",
+      "description": "Built into the arm systems of the Logos armour, these are custom-built bolt weapons using Olympia's shrapnel bolt technology, improved by Perturabo. They unleash a storm of shot effective even at point-blank range.",
+      "type": "ranged",
+      "range": 30,
+      "firepower": 6,
+      "rangedStrength": 6,
+      "ap": 3,
+      "damage": 1,
+      "specialRules": ["shred", "suppressive"],
+      "specialRuleValues": {
+        "shred": 4,
+        "suppressive": 1
+      },
+      "traits": ["Bolt", "Assault"]
+    },
+    {
+      "id": "logos-array-melee",
+      "name": "The Logos Array",
+      "description": "Built into the arm systems of the Logos armour, these are custom-built bolt weapons using Olympia's shrapnel bolt technology, improved by Perturabo. They unleash a storm of shot effective even at point-blank range.",
+      "type": "melee",
+      "initiativeModifier": 1,
+      "attackModifier": 2,
+      "strengthModifier": 6,
+      "ap": 3,
+      "damage": 1,
+      "specialRules": ["shred"],
+      "specialRuleValues": {
+        "shred": 4
+      },
+      "traits": ["Power"]
+    },
+    {
+      "id": "forgebreaker-desecrated",
+      "name": "Forgebreaker Desecrated",
+      "description": "Originally wielded by Primarch Ferrus Manus, this weapon was taken as a trophy by his killer and presented to Perturabo by the Traitor Warmaster. It has become a horrific icon of darkness.",
+      "type": "melee",
+      "initiativeModifier": -2,
+      "attackModifier": 3,
+      "strengthModifier": 2,
+      "ap": 2,
+      "damage": 2,
+      "specialRules": ["critical-hit"],
+      "specialRuleValues": {
+        "critical-hit": 5
+      },
+      "traits": ["Power"]
+    },
+    {
+      "id": "tyrant-rocket-launcher",
+      "name": "Tyrant Rocket Launcher",
+      "description": "A compact rocket system, based on the design of the cyclone missile launcher, the Tyrant launcher is capable of delivering overwhelming salvos of unguided rockets. The Iron Warriors value the sheer firepower of the Tyrant system over the more controlled destruction of the larger cyclone system.",
+      "type": "ranged-profile",
+      "profiles": [
+        "tyrant-rocket-launcher-swarmer",
+        "tyrant-rocket-launcher-breaker"
+      ],
+      "specialRules": [],
+      "specialRuleValues": {},
+      "traits": ["Missile"]
+    },
+    {
+      "id": "tyrant-rocket-launcher-swarmer",
+      "name": "Tyrant Rocket Launcher - Swarmer",
+      "description": "A compact rocket system, based on the design of the cyclone missile launcher, the Tyrant launcher is capable of delivering overwhelming salvos of unguided rockets. The Iron Warriors value the sheer firepower of the Tyrant system over the more controlled destruction of the larger cyclone system.",
+      "type": "ranged",
+      "range": 48,
+      "firepower": 3,
+      "rangedStrength": 5,
+      "ap": 6,
+      "damage": 1,
+      "specialRules": ["heavy", "breaching"],
+      "specialRuleValues": {
+        "heavy": "FP",
+        "breaching": 6
+      },
+      "traits": ["Missile"]
+    },
+    {
+      "id": "tyrant-rocket-launcher-breaker",
+      "name": "Tyrant Rocket Launcher - Breaker",
+      "description": "A compact rocket system, based on the design of the cyclone missile launcher, the Tyrant launcher is capable of delivering overwhelming salvos of unguided rockets. The Iron Warriors value the sheer firepower of the Tyrant system over the more controlled destruction of the larger cyclone system.",
+      "type": "ranged",
+      "range": 48,
+      "firepower": 1,
+      "rangedStrength": 9,
+      "ap": 3,
+      "damage": 1,
+      "specialRules": ["heavy", "armourbane"],
+      "specialRuleValues": {
+        "heavy": "D"
+      },
+      "traits": ["Missile"]
+    },
+    {
+      "id": "twin-shrapnel-cannon",
+      "name": "Twin Shrapnel Cannon",
+      "description": "A devastating twin-linked weapon system designed to unleash barrages of shrapnel at enemy positions.",
+      "type": "ranged",
+      "range": 36,
+      "firepower": 4,
+      "rangedStrength": 6,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": ["heavy", "twin-linked"],
+      "specialRuleValues": {
+        "heavy": "FP"
+      },
+      "traits": ["Cannon"]
+    },
+    {
+      "id": "shrapnel-cannon",
+      "name": "Shrapnel Cannon",
+      "description": "A heavy weapon designed to unleash devastating barrages of shrapnel at enemy positions.",
+      "type": "ranged",
+      "range": 36,
+      "firepower": 3,
+      "rangedStrength": 5,
+      "ap": 5,
+      "damage": 1,
+      "specialRules": ["pinning", "shred"],
+      "specialRuleValues": {
+        "pinning": 0,
+        "shred": 6
+      },
+      "traits": ["Bolt"]
     }
   ]
 }

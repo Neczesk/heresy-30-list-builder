@@ -13,7 +13,9 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  OutlinedInput,
 } from '@mui/material';
+import { DataLoader } from '../../../utils/dataLoader';
 
 const WEAPON_TYPES = ['ranged', 'melee', 'ranged-profile', 'melee-profile'];
 
@@ -23,6 +25,7 @@ interface WeaponModalProps {
   onSave: (entry: any, editingIndex?: number | null) => void;
   initialEntry?: any;
   editingIndex?: number | null;
+  currentEntries?: any[]; // Add this prop to access current session weapons
 }
 
 export const WeaponModal: React.FC<WeaponModalProps> = ({
@@ -31,6 +34,7 @@ export const WeaponModal: React.FC<WeaponModalProps> = ({
   onSave,
   initialEntry = {},
   editingIndex = null,
+  currentEntries = [],
 }) => {
   const [entry, setEntry] = useState<any>({ id: '' });
   const [specialRules, setSpecialRules] = useState<string[]>([]);
@@ -38,6 +42,7 @@ export const WeaponModal: React.FC<WeaponModalProps> = ({
     [key: string]: any;
   }>({});
   const [traits, setTraits] = useState<string[]>([]);
+  const [selectedProfiles, setSelectedProfiles] = useState<string[]>([]);
   // Input states
   const [newSpecialRule, setNewSpecialRule] = useState('');
   const [selectedSpecialRuleForValue, setSelectedSpecialRuleForValue] =
@@ -48,12 +53,25 @@ export const WeaponModal: React.FC<WeaponModalProps> = ({
   const isRanged = entry.type === 'ranged' || entry.type === 'ranged-profile';
   const isMelee = entry.type === 'melee' || entry.type === 'melee-profile';
 
+  // Get available profile weapons (both from JSON and current session)
+  const getAvailableProfileWeapons = () => {
+    const existingProfiles = DataLoader.getWeaponsByType('ranged-profile');
+    const currentProfiles = currentEntries.filter(
+      weapon => weapon.type === 'ranged-profile' && weapon.id !== entry.id
+    );
+
+    return [...existingProfiles, ...currentProfiles];
+  };
+
+  const availableProfiles = getAvailableProfileWeapons();
+
   useEffect(() => {
     if (open) {
       setEntry(initialEntry || { id: '' });
       setSpecialRules(initialEntry?.specialRules || []);
       setSpecialRuleValues(initialEntry?.specialRuleValues || {});
       setTraits(initialEntry?.traits || []);
+      setSelectedProfiles(initialEntry?.profiles || []);
     }
   }, [open, initialEntry]);
 
@@ -108,6 +126,16 @@ export const WeaponModal: React.FC<WeaponModalProps> = ({
     setTraits(traits.filter(t => t !== trait));
   };
 
+  // Profiles
+  const handleProfileChange = (event: any) => {
+    const value = event.target.value;
+    setSelectedProfiles(typeof value === 'string' ? value.split(',') : value);
+  };
+
+  const removeProfile = (profileId: string) => {
+    setSelectedProfiles(selectedProfiles.filter(id => id !== profileId));
+  };
+
   const handleSave = () => {
     onSave(
       {
@@ -115,6 +143,7 @@ export const WeaponModal: React.FC<WeaponModalProps> = ({
         specialRules,
         specialRuleValues,
         traits,
+        profiles: selectedProfiles,
       },
       editingIndex
     );
@@ -265,6 +294,75 @@ export const WeaponModal: React.FC<WeaponModalProps> = ({
             minRows={2}
           />
         </Box>
+
+        {/* Profiles - only show for non-profile weapons */}
+        {(entry.type === 'ranged' || entry.type === 'melee') && (
+          <Box sx={{ mb: 3 }}>
+            <Typography variant="subtitle1" gutterBottom>
+              Weapon Profiles
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Select ranged-profile weapons that this weapon can use as firing
+              modes
+            </Typography>
+            <FormControl fullWidth>
+              <InputLabel>Select Profiles</InputLabel>
+              <Select
+                multiple
+                value={selectedProfiles}
+                onChange={handleProfileChange}
+                input={<OutlinedInput label="Select Profiles" />}
+                renderValue={selected => (
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                    {selected.map(value => {
+                      const profile = availableProfiles.find(
+                        p => p.id === value
+                      );
+                      return (
+                        <Chip
+                          key={value}
+                          label={profile?.name || value}
+                          size="small"
+                          onDelete={() => removeProfile(value)}
+                        />
+                      );
+                    })}
+                  </Box>
+                )}
+              >
+                {availableProfiles.map(profile => (
+                  <MenuItem key={profile.id} value={profile.id}>
+                    {profile.name} ({profile.id})
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            {selectedProfiles.length > 0 && (
+              <Box sx={{ mt: 2 }}>
+                <Typography variant="body2" color="text.secondary" gutterBottom>
+                  Selected Profiles:
+                </Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  {selectedProfiles.map(profileId => {
+                    const profile = availableProfiles.find(
+                      p => p.id === profileId
+                    );
+                    return (
+                      <Chip
+                        key={profileId}
+                        label={profile?.name || profileId}
+                        onDelete={() => removeProfile(profileId)}
+                        size="small"
+                        color="secondary"
+                        variant="outlined"
+                      />
+                    );
+                  })}
+                </Box>
+              </Box>
+            )}
+          </Box>
+        )}
 
         {/* Special Rules */}
         <Box sx={{ mb: 2 }}>

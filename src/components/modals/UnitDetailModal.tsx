@@ -186,6 +186,82 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
     );
   }, [unit]);
 
+  // Get all models including optional ones from upgrades
+  const allModels = useMemo(() => {
+    if (!unit) return [];
+
+    const modelMap = new Map<
+      string,
+      {
+        model: Model;
+        count: number;
+        isOptional: boolean;
+        source: string;
+      }
+    >();
+
+    // Helper function to add model to map
+    const addModelToMap = (
+      model: Model,
+      count: number,
+      source: string,
+      isOptional: boolean
+    ) => {
+      const existing = modelMap.get(model.id);
+
+      if (existing) {
+        // Add count to existing model
+        existing.count += count;
+        // If any source is optional, mark as optional
+        if (isOptional) {
+          existing.isOptional = true;
+        }
+      } else {
+        // Create new model entry
+        modelMap.set(model.id, {
+          model,
+          count,
+          isOptional,
+          source,
+        });
+      }
+    };
+
+    // Base models
+    unit.modelsWithData.forEach(({ model, count }) => {
+      addModelToMap(model, count, 'Base unit', false);
+    });
+
+    // Optional models from upgrades
+    const allUpgrades = DataLoader.getUpgrades();
+    unit.upgrades.forEach(upgradeId => {
+      const upgrade = allUpgrades.find(u => u.id === upgradeId);
+      if (upgrade) {
+        upgrade.options?.forEach(option => {
+          if (option.replaceModel) {
+            const replacementModel = DataLoader.getModelById(
+              option.replaceModel.to
+            );
+            if (replacementModel) {
+              // Find the count of the model being replaced
+              const replacedModelCount =
+                unit.models[option.replaceModel.from] || 0;
+              addModelToMap(
+                replacementModel,
+                replacedModelCount,
+                `Upgrade: ${upgrade.name} - ${option.name} (${option.points} pts)`,
+                true
+              );
+            }
+          }
+        });
+      }
+    });
+
+    // Convert map to array
+    return Array.from(modelMap.values());
+  }, [unit]);
+
   // Get all special rules
   const allSpecialRules = useMemo(() => {
     if (!unit) return [];
@@ -336,7 +412,13 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
       .join(', ');
   };
 
-  const renderModelCharacteristics = (model: Model) => {
+  const renderModelCharacteristics = (modelData: {
+    model: Model;
+    count: number;
+    isOptional: boolean;
+    source: string;
+  }) => {
+    const { model, count, isOptional, source } = modelData;
     const cellStyle = {
       p: { xs: 0.5, sm: 1 },
       fontSize: { xs: '0.75rem', sm: '0.875rem' },
@@ -345,8 +427,30 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
     if (DataLoader.isVehicleModel(model)) {
       const chars = model.characteristics as any;
       return (
-        <TableRow key={model.id}>
-          <TableCell sx={cellStyle}>{model.name}</TableCell>
+        <TableRow key={`${model.id}-${source}`}>
+          <TableCell sx={cellStyle}>
+            <Box>
+              <Typography
+                variant="body2"
+                sx={{
+                  fontWeight: 'bold',
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                {model.name}
+                {isOptional && ' (Optional)'}
+              </Typography>
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                sx={{
+                  fontSize: { xs: '0.75rem', sm: '0.75rem' },
+                }}
+              >
+                {count}x {source}
+              </Typography>
+            </Box>
+          </TableCell>
           <TableCell sx={cellStyle}>{chars.movement}"</TableCell>
           <TableCell sx={cellStyle}>{chars.ballisticSkill}+</TableCell>
           <TableCell sx={cellStyle}>{chars.frontArmour}+</TableCell>
@@ -370,8 +474,30 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
     } else {
       const chars = model.characteristics as any;
       return (
-        <TableRow key={model.id}>
-          <TableCell sx={cellStyle}>{model.name}</TableCell>
+        <TableRow key={`${model.id}-${source}`}>
+          <TableCell sx={cellStyle}>
+            <Box>
+              <Typography
+                variant="body2"
+                sx={{
+                  fontWeight: 'bold',
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                {model.name}
+                {isOptional && ' (Optional)'}
+              </Typography>
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                sx={{
+                  fontSize: { xs: '0.75rem', sm: '0.75rem' },
+                }}
+              >
+                {count}x {source}
+              </Typography>
+            </Box>
+          </TableCell>
           <TableCell sx={cellStyle}>{chars.movement}"</TableCell>
           <TableCell sx={cellStyle}>{chars.weaponSkill}+</TableCell>
           <TableCell sx={cellStyle}>{chars.ballisticSkill}+</TableCell>
@@ -606,7 +732,7 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
     return null;
   };
 
-  const hasVehicleModels = unit.modelsWithData.some(({ model }) =>
+  const hasVehicleModels = allModels.some(({ model }) =>
     DataLoader.isVehicleModel(model)
   );
 
@@ -701,6 +827,64 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
             />
           </Box>
         </Box>
+
+        <Divider sx={{ my: { xs: 1.5, sm: 2 } }} />
+
+        {/* Available Upgrades */}
+        {unit.upgrades.length > 0 && (
+          <Box sx={{ mb: { xs: 2, sm: 3 } }}>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{
+                fontSize: { xs: '1.125rem', sm: '1.25rem' },
+              }}
+            >
+              Available Upgrades
+            </Typography>
+            {unit.upgrades.map(upgradeId => {
+              const upgrade = DataLoader.getUpgrades().find(
+                u => u.id === upgradeId
+              );
+              return upgrade ? (
+                <Box key={upgrade.id} sx={{ mb: 1 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontWeight: 'bold',
+                      fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                    }}
+                  >
+                    {upgrade.name}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                    }}
+                  >
+                    {upgrade.description}
+                  </Typography>
+                  {upgrade.options?.map(option => (
+                    <Typography
+                      key={option.id}
+                      variant="caption"
+                      color="text.secondary"
+                      sx={{
+                        display: 'block',
+                        ml: 2,
+                        fontSize: { xs: '0.75rem', sm: '0.75rem' },
+                      }}
+                    >
+                      • {option.name}: {option.points} pts
+                    </Typography>
+                  ))}
+                </Box>
+              ) : null;
+            })}
+          </Box>
+        )}
 
         <Divider sx={{ my: { xs: 1.5, sm: 2 } }} />
 
@@ -927,10 +1111,8 @@ const UnitDetailModal: React.FC<UnitDetailModalProps> = ({
                 </TableRow>
               </TableHead>
               <TableBody>
-                {unit.modelsWithData.map(({ model, count }) =>
-                  Array.from({ length: count }, () =>
-                    renderModelCharacteristics(model)
-                  )
+                {allModels.map(modelData =>
+                  renderModelCharacteristics(modelData)
                 )}
               </TableBody>
             </Table>

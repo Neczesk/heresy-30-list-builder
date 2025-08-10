@@ -20,10 +20,13 @@ import {
   Toolbar,
 } from '@mui/material';
 import { ArrowBack, Edit, Delete, Save, Close } from '@mui/icons-material';
-import { CustomDetachmentStorage } from '../../utils/customDetachmentStorage';
+import { EnhancedCustomDetachmentStorage } from '../../utils/enhancedCustomDetachmentStorage';
 import { DataLoader } from '../../utils/dataLoader';
 import DetachmentEditorModal from '../../components/modals/DetachmentEditorModal';
-import type { CustomDetachment, CustomDetachmentMetadata } from '../../types/army';
+import type {
+  CustomDetachment,
+  CustomDetachmentMetadata,
+} from '../../types/army';
 
 const CustomDetachmentsManager: React.FC = () => {
   const navigate = useNavigate();
@@ -48,13 +51,13 @@ const CustomDetachmentsManager: React.FC = () => {
 
   const loadCustomDetachments = () => {
     const detachments =
-      CustomDetachmentStorage.getAllCustomDetachmentMetadata();
+      EnhancedCustomDetachmentStorage.getAllCustomDetachmentMetadata();
     setCustomDetachments(detachments);
   };
 
   const handleEditDetachment = (detachmentId: string) => {
     const customDetachment =
-      CustomDetachmentStorage.getCustomDetachment(detachmentId);
+      EnhancedCustomDetachmentStorage.getCustomDetachment(detachmentId);
     if (customDetachment) {
       setEditingDetachment(customDetachment);
       setShowDetachmentEditorModal(true);
@@ -67,7 +70,7 @@ const CustomDetachmentsManager: React.FC = () => {
 
   const handleConfirmDelete = () => {
     if (deleteConfirmDetachment) {
-      CustomDetachmentStorage.deleteCustomDetachment(
+      EnhancedCustomDetachmentStorage.deleteCustomDetachment(
         deleteConfirmDetachment.id
       );
       setDeleteConfirmDetachment(null);
@@ -85,7 +88,7 @@ const CustomDetachmentsManager: React.FC = () => {
   };
 
   const handleDetachmentEditorSave = (updatedDetachment: CustomDetachment) => {
-    CustomDetachmentStorage.saveCustomDetachment(updatedDetachment);
+    EnhancedCustomDetachmentStorage.saveCustomDetachment(updatedDetachment);
     setShowDetachmentEditorModal(false);
     setEditingDetachment(null);
     loadCustomDetachments();
@@ -97,13 +100,14 @@ const CustomDetachmentsManager: React.FC = () => {
 
   const handleSaveRename = () => {
     if (renamingDetachment) {
-      const customDetachment = CustomDetachmentStorage.getCustomDetachment(
-        renamingDetachment.id
-      );
+      const customDetachment =
+        EnhancedCustomDetachmentStorage.getCustomDetachment(
+          renamingDetachment.id
+        );
       if (customDetachment) {
         // Check if new name conflicts with existing detachments
         const existingDetachments =
-          CustomDetachmentStorage.getAllCustomDetachmentMetadata();
+          EnhancedCustomDetachmentStorage.getAllCustomDetachmentMetadata();
         const nameExists = existingDetachments.some(
           cd =>
             cd.name === renamingDetachment.name &&
@@ -123,7 +127,7 @@ const CustomDetachmentsManager: React.FC = () => {
         };
 
         // Save updated detachment
-        CustomDetachmentStorage.saveCustomDetachment(updatedDetachment);
+        EnhancedCustomDetachmentStorage.saveCustomDetachment(updatedDetachment);
 
         setRenamingDetachment(null);
         loadCustomDetachments();
@@ -204,7 +208,8 @@ const CustomDetachmentsManager: React.FC = () => {
                 No custom detachments saved yet.
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Create custom detachments by configuring detachments in your army lists and saving them.
+                Create custom detachments by configuring detachments in your
+                army lists and saving them.
               </Typography>
             </CardContent>
           </Card>
@@ -212,7 +217,9 @@ const CustomDetachmentsManager: React.FC = () => {
           <Stack spacing={2}>
             {customDetachments.map(detachment => {
               const fullDetachment =
-                CustomDetachmentStorage.getCustomDetachment(detachment.id);
+                EnhancedCustomDetachmentStorage.getCustomDetachment(
+                  detachment.id
+                );
               const totalPoints = fullDetachment
                 ? calculateDetachmentPoints(fullDetachment.units)
                 : 0;
@@ -220,10 +227,23 @@ const CustomDetachmentsManager: React.FC = () => {
               return (
                 <Card key={detachment.id}>
                   <CardContent>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'flex-start',
+                        mb: 2,
+                      }}
+                    >
                       <Box sx={{ flex: 1 }}>
                         {renamingDetachment?.id === detachment.id ? (
-                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 1,
+                            }}
+                          >
                             <TextField
                               value={renamingDetachment.name}
                               onChange={handleRenameInputChange}
@@ -248,18 +268,35 @@ const CustomDetachmentsManager: React.FC = () => {
                             </IconButton>
                           </Box>
                         ) : (
-                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 1,
+                            }}
+                          >
                             <Typography variant="h6" component="h3">
                               {detachment.name}
                             </Typography>
-                            <Chip label="Custom" size="small" color="primary" variant="outlined" />
+                            <Chip
+                              label="Custom"
+                              size="small"
+                              color="primary"
+                              variant="outlined"
+                            />
                           </Box>
                         )}
                       </Box>
                     </Box>
 
                     <Stack spacing={1} sx={{ mb: 2 }}>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
+                      >
                         <Typography variant="body2" color="text.secondary">
                           Base Detachment:
                         </Typography>
@@ -267,7 +304,13 @@ const CustomDetachmentsManager: React.FC = () => {
                           {getBaseDetachmentName(detachment.baseDetachmentId)}
                         </Typography>
                       </Box>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
+                      >
                         <Typography variant="body2" color="text.secondary">
                           Faction:
                         </Typography>
@@ -276,7 +319,13 @@ const CustomDetachmentsManager: React.FC = () => {
                         </Typography>
                       </Box>
                       {detachment.subfaction && (
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                          }}
+                        >
                           <Typography variant="body2" color="text.secondary">
                             Subfaction:
                           </Typography>
@@ -285,7 +334,13 @@ const CustomDetachmentsManager: React.FC = () => {
                           </Typography>
                         </Box>
                       )}
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
+                      >
                         <Typography variant="body2" color="text.secondary">
                           Units:
                         </Typography>
@@ -293,7 +348,13 @@ const CustomDetachmentsManager: React.FC = () => {
                           {fullDetachment?.units.length || 0} units
                         </Typography>
                       </Box>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
+                      >
                         <Typography variant="body2" color="text.secondary">
                           Total Points:
                         </Typography>
@@ -301,7 +362,13 @@ const CustomDetachmentsManager: React.FC = () => {
                           {totalPoints} pts
                         </Typography>
                       </Box>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
+                      >
                         <Typography variant="body2" color="text.secondary">
                           Created:
                         </Typography>
@@ -309,7 +376,13 @@ const CustomDetachmentsManager: React.FC = () => {
                           {formatDate(detachment.createdAt)}
                         </Typography>
                       </Box>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
+                      >
                         <Typography variant="body2" color="text.secondary">
                           Updated:
                         </Typography>
@@ -318,11 +391,20 @@ const CustomDetachmentsManager: React.FC = () => {
                         </Typography>
                       </Box>
                       {detachment.description && (
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'flex-start',
+                          }}
+                        >
                           <Typography variant="body2" color="text.secondary">
                             Description:
                           </Typography>
-                          <Typography variant="body2" sx={{ maxWidth: '60%', textAlign: 'right' }}>
+                          <Typography
+                            variant="body2"
+                            sx={{ maxWidth: '60%', textAlign: 'right' }}
+                          >
                             {detachment.description}
                           </Typography>
                         </Box>
@@ -378,14 +460,10 @@ const CustomDetachmentsManager: React.FC = () => {
           <Typography variant="body1" sx={{ mb: 1 }}>
             Are you sure you want to delete "{deleteConfirmDetachment?.name}"?
           </Typography>
-          <Alert severity="warning">
-            This action cannot be undone.
-          </Alert>
+          <Alert severity="warning">This action cannot be undone.</Alert>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCancelDelete}>
-            Cancel
-          </Button>
+          <Button onClick={handleCancelDelete}>Cancel</Button>
           <Button
             variant="contained"
             color="error"

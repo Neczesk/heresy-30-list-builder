@@ -9,6 +9,14 @@
         "Cannot add Titan slots",
         "Cannot add slots that would exceed detachment limits"
       ]
+    },
+    {
+      "id": "iron-warriors-unfavoured",
+      "name": "The Unfavoured",
+      "description": "Iron Warriors unit that is considered expendable by their commanders",
+      "effect": "The unit gains the Expendable (1) special rule",
+      "restrictions": [],
+      "subfaction": "iron-warriors"
     }
   ]
 }

@@ -2,7 +2,13 @@
 export const FIELD_DEFINITIONS: {
   [key: string]: {
     [field: string]: {
-      type: 'string' | 'number' | 'boolean' | 'array' | 'object';
+      type:
+        | 'string'
+        | 'number'
+        | 'boolean'
+        | 'array'
+        | 'object'
+        | 'string|number';
       required: boolean;
       description: string;
     };
@@ -77,7 +83,7 @@ export const FIELD_DEFINITIONS: {
       description: 'Description of the weapon',
     },
     range: {
-      type: 'string',
+      type: 'string|number',
       required: false,
       description: 'Range of the weapon (number or "Template")',
     },
@@ -576,6 +582,13 @@ export function validateCSVData(
           case 'number':
             isValid = typeof value === 'number' && !isNaN(value);
             if (!isValid) error = `Expected number, got ${typeof value}`;
+            break;
+          case 'string|number':
+            isValid =
+              typeof value === 'string' ||
+              (typeof value === 'number' && !isNaN(value));
+            if (!isValid)
+              error = `Expected string or number, got ${typeof value}`;
             break;
           case 'boolean':
             isValid = typeof value === 'boolean';

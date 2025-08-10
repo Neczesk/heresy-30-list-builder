@@ -4,7 +4,9 @@
       "id": "crusade-primary",
       "name": "Crusade Primary Detachment",
       "description": "The standard Primary Detachment for all factions",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": null,
       "requirements": [
         {
@@ -63,7 +65,9 @@
       "id": "warlord-detachment",
       "name": "Warlord Detachment",
       "description": "Special detachment for Primarchs and Warlords",
-      "faction": "legiones-astartes",
+      "faction": [
+        "legiones-astartes"
+      ],
       "maxCount": null,
       "requirements": [
         {
@@ -120,7 +124,9 @@
       "id": "lord-of-war-detachment",
       "name": "Lord of War Detachment",
       "description": "For Titan Legions and super-heavy units",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": null,
       "requirements": [
         {
@@ -165,7 +171,9 @@
       "id": "allied-detachment",
       "name": "Allied Detachment",
       "description": "Allied forces from a different faction",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": null,
       "requirements": [
         {
@@ -222,7 +230,9 @@
       "id": "elite-transport",
       "name": "Elite Transport Detachment",
       "description": "A detachment focused on elite transport capabilities",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": null,
       "requirements": [
         {
@@ -268,7 +278,9 @@
       "id": "armoured-fist",
       "name": "Armoured Fist",
       "description": "Heavy transports like the Land Raider, plus additional light transports",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": null,
       "requirements": [
         {
@@ -308,7 +320,9 @@
       "id": "tactical-support",
       "name": "Tactical Support",
       "description": "Additional Troops and Support slots",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": null,
       "requirements": [
         {
@@ -348,7 +362,9 @@
       "id": "armoured-support",
       "name": "Armoured Support",
       "description": "Armour slots which you can fill with tanks and other armoured vehicles",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": null,
       "requirements": [
         {
@@ -382,7 +398,9 @@
       "id": "heavy-support",
       "name": "Heavy Support",
       "description": "War-engine slots for Dreadnoughts and other war machines",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": null,
       "requirements": [
         {
@@ -416,7 +434,9 @@
       "id": "combat-pioneer",
       "name": "Combat Pioneer",
       "description": "Reconnaissance slots for light infantry and bikes",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": null,
       "requirements": [
         {
@@ -450,7 +470,9 @@
       "id": "shock-assault",
       "name": "Shock Assault",
       "description": "Heavy Assault slots for Terminators",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": null,
       "requirements": [
         {
@@ -484,7 +506,9 @@
       "id": "first-strike",
       "name": "First Strike",
       "description": "Fast Attack slots for aircraft, jetbikes and speeders",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": null,
       "requirements": [
         {
@@ -518,7 +542,9 @@
       "id": "combat-retinue",
       "name": "Combat Retinue",
       "description": "Command squads for officers",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": 1,
       "requirements": [
         {
@@ -552,7 +578,9 @@
       "id": "officer-cadre",
       "name": "Officer Cadre",
       "description": "Additional Command slots",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": 1,
       "requirements": [
         {
@@ -592,7 +620,9 @@
       "id": "army-vanguard",
       "name": "Army Vanguard",
       "description": "Elite units and specialists",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": 1,
       "requirements": [
         {
@@ -632,7 +662,9 @@
       "id": "scout-tercio",
       "name": "Scout Tercio",
       "description": "A specialized reconnaissance detachment that can only be commanded by a Hermes Command Section.",
-      "faction": "solar-auxilia",
+      "faction": [
+        "solar-auxilia"
+      ],
       "maxCount": 1,
       "requirements": [
         {
@@ -680,7 +712,9 @@
       "id": "veletaris-tercio",
       "name": "Veletaris Tercio",
       "description": "An elite infantry detachment that can only be commanded by a Veletaris Command Section.",
-      "faction": "solar-auxilia",
+      "faction": [
+        "solar-auxilia"
+      ],
       "maxCount": 1,
       "requirements": [
         {
@@ -745,7 +779,9 @@
       "id": "infantry-tercio",
       "name": "Infantry Tercio",
       "description": "A standard infantry detachment that can only be commanded by a Line Command Section.",
-      "faction": "solar-auxilia",
+      "faction": [
+        "solar-auxilia"
+      ],
       "maxCount": 1,
       "requirements": [
         {
@@ -808,7 +844,9 @@
       "id": "artillery-tercio",
       "name": "Artillery Tercio",
       "description": "A specialized artillery detachment providing heavy fire support.",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": 1,
       "requirements": [
         {
@@ -849,7 +887,9 @@
       "id": "armour-tercio",
       "name": "Armour Tercio",
       "description": "A specialized armored detachment providing heavy tank support.",
-      "faction": "universal",
+      "faction": [
+        "universal"
+      ],
       "maxCount": 1,
       "requirements": [
         {

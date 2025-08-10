@@ -68,6 +68,7 @@ export interface Model {
   name: string;
   type: ModelType;
   subType: ModelSubType[]; // Array of sub-types
+  modelTypes?: string[]; // Array of model type identifiers for upgrade targeting
   characteristics: InfantryModelCharacteristics | VehicleModelCharacteristics;
   specialRules: string[]; // IDs of special rules
   specialRuleValues?: { [ruleId: string]: number }; // Values for special rules that require them
@@ -198,6 +199,7 @@ export interface Unit {
   id: string;
   name: string;
   faction: string; // Faction ID
+  subfaction?: string; // Subfaction ID (e.g., 'iron-warriors', 'ultramarines')
   allegiance: Allegiance; // New field for traitor/loyalist/universal
   battlefieldRole: BattlefieldRoleType;
   points: number;
@@ -287,12 +289,18 @@ export interface UnitUpgrade {
     | 'weapon'
     | 'wargear'
     | 'model-count'
-    | 'model-group-count';
+    | 'model-group-count'
+    | 'model-replacement';
   maxCount?: number | 'dependent'; // Maximum number of times this upgrade can be applied
   requiresUpgrade?: string; // ID of upgrade that must be applied first
   targetModel?: string; // Model ID for model-count upgrades
   targetModels?: { [modelId: string]: number }; // Model ID to count mapping for model-group-count upgrades
-  targetModelType?: string; // Model ID for weapon/wargear upgrades
+  targetModelType?: string; // Single model type for backward compatibility
+  targetModelTypes?: string[]; // Array of model types for upgrade targeting
+  legionRestriction?: string; // Legion ID that this upgrade is restricted to
+  subTypeRestriction?: string | string[]; // Model subtypes that this upgrade is restricted to
+  requiredWeapons?: string[]; // Array of weapon IDs that the model must have to be eligible
+  subfaction?: string; // Subfaction this upgrade belongs to (e.g., 'iron-warriors')
   options?: UpgradeOption[];
 }
 
@@ -310,6 +318,10 @@ export interface UpgradeOption {
     addWeapon: string | { id: string; mount?: string; count?: number };
   }[]; // Multiple weapon replacements
   addWargear?: string; // Wargear ID to add
+  replaceModel?: {
+    from: string; // Model ID to replace
+    to: string; // Model ID to replace with
+  }; // Model replacement
   requiresUpgrade?: string; // ID of upgrade option that must be selected first
   maxCount?: number; // Maximum number of times this upgrade can be applied
 }
@@ -322,8 +334,8 @@ export interface Army {
   id: string;
   name: string;
   allegiance: Allegiance;
-  faction: string; // Main faction ID
-  subfaction?: string; // Subfaction ID (if applicable)
+  faction: string; // Main faction ID (for primary detachment)
+  subfaction?: string; // Subfaction ID (for primary detachment)
   pointsLimit: number;
   totalPoints: number;
   riteOfWar?: string;
@@ -344,6 +356,8 @@ export interface ArmyDetachment {
   modifiedSlots: DetachmentSlot[]; // Slots after modifications (prime advantages, etc.)
   primeAdvantages: PrimeAdvantage[]; // Prime advantages applied to this detachment
   units: ArmyUnit[]; // Units in this detachment
+  faction?: string; // Faction ID for this detachment (overrides army faction if specified)
+  subfaction?: string; // Subfaction ID for this detachment (overrides army subfaction if specified)
   triggeredBy?: {
     unitId: string; // ID of the unit that triggered this detachment (unit.id, not unit.unitId)
     slotId: string; // ID of the slot the triggering unit occupies
@@ -433,6 +447,8 @@ export interface PrimeAdvantageDefinition {
   description: string;
   effect: string;
   restrictions?: string[];
+  faction?: string; // Faction ID this prime advantage is restricted to
+  subfaction?: string; // Subfaction ID this prime advantage is restricted to
 }
 
 // Upgrade tracking

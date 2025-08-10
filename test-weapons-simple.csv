@@ -1,0 +1,3 @@
+id,name,type,range,firepower,rangedStrength,ap,damage,description,specialRules,specialRuleValues,traits,profiles
+test-boltgun,Boltgun,ranged,24,2,4,5,1,Standard bolt weapon,["rapid-fire"],"","[""Bolt""]",""
+test-plasma-pistol,Plasma Pistol,ranged,12,1,7,3,1,Plasma weapon,["pistol","breaching"],"","[""Plasma""]",""

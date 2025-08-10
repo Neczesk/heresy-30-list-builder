@@ -108,7 +108,7 @@ const DetachmentSlots: React.FC<DetachmentSlotsProps> = ({
         return '⚡'; // Lightning for Fast Attack
       case 'retinue':
         return '👤'; // Person for Retinue
-      case 'warlord':
+      case 'paragon':
         return '👑'; // Crown for Warlord
       case 'lord-of-war':
         return '☢️'; // Crown for Lord of War

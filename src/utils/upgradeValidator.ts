@@ -1,10 +1,13 @@
 import { DataLoader } from './dataLoader';
-import type { UnitUpgrade, ArmyUpgrade } from '../types/army';
+import { TraitReplacer } from './traitReplacer';
+import type { UnitUpgrade, ArmyUpgrade, Allegiance } from '../types/army';
 
 export interface UpgradeValidationContext {
   selectedUpgrades: ArmyUpgrade[];
   previewModels: { [modelId: string]: number };
   baseUnitData: any;
+  allegiance: Allegiance;
+  legion?: string; // Legion ID for the detachment
 }
 
 export class UpgradeValidator {
@@ -55,6 +58,27 @@ export class UpgradeValidator {
       return previewModels[upgrade.targetModel] || 0;
     }
 
+    // If no specific target is specified, check all models in the unit for weapon requirements
+    if (upgrade.requiredWeapons && upgrade.requiredWeapons.length > 0) {
+      let totalMaxCount = 0;
+
+      // Check all models in the unit for required weapons
+      for (const [modelId, count] of Object.entries(previewModels)) {
+        if (count > 0) {
+          // Calculate how many models of this type have the required weapons
+          const availableWeaponCount = this.calculateAvailableWeaponCount(
+            modelId,
+            upgrade.requiredWeapons,
+            context,
+            upgrade.id
+          );
+          totalMaxCount += availableWeaponCount;
+        }
+      }
+
+      return totalMaxCount;
+    }
+
     return 0;
   }
 
@@ -66,28 +90,42 @@ export class UpgradeValidator {
     context: UpgradeValidationContext
   ): number {
     const { previewModels } = context;
-    const targetModelId = upgrade.targetModelType!;
-    const totalModels = previewModels[targetModelId] || 0;
 
-    // Get the base model to understand what weapons it starts with
-    const baseModel = DataLoader.getModelById(targetModelId);
-    if (!baseModel) return 0;
+    // Get target model types - support both single and multiple types
+    const targetModelTypes =
+      upgrade.targetModelTypes ||
+      (upgrade.targetModelType ? [upgrade.targetModelType] : []);
 
-    // Check if this upgrade requires specific weapons to be available
-    const weaponRequirements = this.getWeaponRequirements(upgrade);
-    if (weaponRequirements.length === 0) {
-      // No specific weapon requirements, can be applied to any model of this type
-      return totalModels;
+    if (targetModelTypes.length === 0) return 0;
+
+    let totalMaxCount = 0;
+
+    // Calculate max count for each target model type
+    for (const targetModelId of targetModelTypes) {
+      const totalModels = previewModels[targetModelId] || 0;
+
+      // Get the base model to understand what weapons it starts with
+      const baseModel = DataLoader.getModelById(targetModelId);
+      if (!baseModel) continue;
+
+      // Check if this upgrade requires specific weapons to be available
+      const weaponRequirements = this.getWeaponRequirements(upgrade);
+      if (weaponRequirements.length === 0) {
+        // No specific weapon requirements, can be applied to any model of this type
+        totalMaxCount += totalModels;
+      } else {
+        // Calculate how many models still have the required weapons
+        // Exclude the current upgrade from the count to avoid double-counting
+        totalMaxCount += this.calculateAvailableWeaponCount(
+          targetModelId,
+          weaponRequirements,
+          context,
+          upgrade.id
+        );
+      }
     }
 
-    // Calculate how many models still have the required weapons
-    // Exclude the current upgrade from the count to avoid double-counting
-    return this.calculateAvailableWeaponCount(
-      targetModelId,
-      weaponRequirements,
-      context,
-      upgrade.id
-    );
+    return totalMaxCount;
   }
 
   /**
@@ -166,7 +204,13 @@ export class UpgradeValidator {
       }
 
       const upgradeData = DataLoader.getUpgradeById(upgrade.upgradeId);
-      if (upgradeData?.targetModelType === targetModelId && upgrade.optionId) {
+      if (!upgradeData) return;
+
+      const targetModelTypes =
+        upgradeData.targetModelTypes ||
+        (upgradeData.targetModelType ? [upgradeData.targetModelType] : []);
+
+      if (targetModelTypes.includes(targetModelId) && upgrade.optionId) {
         const option = upgradeData.options?.find(
           opt => opt.id === upgrade.optionId
         );
@@ -202,6 +246,30 @@ export class UpgradeValidator {
     context: UpgradeValidationContext
   ): boolean {
     const { selectedUpgrades } = context;
+
+    // Check legion restrictions
+    if (
+      upgrade.legionRestriction &&
+      !this.checkLegionRestriction(upgrade, context)
+    ) {
+      return false;
+    }
+
+    // Check subtype restrictions
+    if (
+      upgrade.subTypeRestriction &&
+      !this.checkSubTypeRestriction(upgrade, context)
+    ) {
+      return false;
+    }
+
+    // Check weapon requirements
+    if (
+      upgrade.requiredWeapons &&
+      !this.checkRequiredWeapons(upgrade, context)
+    ) {
+      return false;
+    }
 
     // Check if required upgrade is selected
     if (upgrade.requiresUpgrade) {
@@ -267,6 +335,195 @@ export class UpgradeValidator {
   }
 
   /**
+   * Check if an upgrade meets legion restrictions
+   */
+  private static checkLegionRestriction(
+    upgrade: UnitUpgrade,
+    context: UpgradeValidationContext
+  ): boolean {
+    if (!upgrade.legionRestriction) return true;
+
+    // Get the legion from the context
+    const legion = context.legion;
+
+    // If no legion is specified, check if the upgrade requires a specific legion
+    if (!legion) {
+      return false;
+    }
+
+    return legion === upgrade.legionRestriction;
+  }
+
+  /**
+   * Check if an upgrade meets subtype restrictions
+   */
+  private static checkSubTypeRestriction(
+    upgrade: UnitUpgrade,
+    context: UpgradeValidationContext
+  ): boolean {
+    if (!upgrade.subTypeRestriction) return true;
+
+    // Get target model types for this upgrade
+    const targetModelTypes =
+      upgrade.targetModelTypes ||
+      (upgrade.targetModelType ? [upgrade.targetModelType] : []);
+
+    // If no specific model types are targeted, check all models in the unit
+    if (targetModelTypes.length === 0) {
+      // Check all models in the unit for required subtypes
+      for (const [modelId, count] of Object.entries(context.previewModels)) {
+        if (count > 0) {
+          const model = DataLoader.getModelById(modelId);
+          if (model && model.subType) {
+            const modelSubTypes = Array.isArray(model.subType)
+              ? model.subType
+              : [model.subType];
+            const requiredSubTypes = Array.isArray(upgrade.subTypeRestriction)
+              ? upgrade.subTypeRestriction
+              : [upgrade.subTypeRestriction];
+
+            // Check if any of the model's subtypes match the required subtypes
+            if (
+              modelSubTypes.some(subType => requiredSubTypes.includes(subType))
+            ) {
+              return true;
+            }
+          }
+        }
+      }
+
+      return false;
+    }
+
+    // Check if any of the target models have the required subtypes
+    for (const modelType of targetModelTypes) {
+      const model = DataLoader.getModelById(modelType);
+      if (model && model.subType) {
+        const modelSubTypes = Array.isArray(model.subType)
+          ? model.subType
+          : [model.subType];
+        const requiredSubTypes = Array.isArray(upgrade.subTypeRestriction)
+          ? upgrade.subTypeRestriction
+          : [upgrade.subTypeRestriction];
+
+        // Check if any of the model's subtypes match the required subtypes
+        if (modelSubTypes.some(subType => requiredSubTypes.includes(subType))) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * Check if an upgrade meets weapon requirements
+   */
+  private static checkRequiredWeapons(
+    upgrade: UnitUpgrade,
+    context: UpgradeValidationContext
+  ): boolean {
+    if (!upgrade.requiredWeapons || upgrade.requiredWeapons.length === 0) {
+      return true;
+    }
+
+    // Get target model types for this upgrade
+    const targetModelTypes =
+      upgrade.targetModelTypes ||
+      (upgrade.targetModelType ? [upgrade.targetModelType] : []);
+
+    // If no specific model types are targeted, check all models in the unit
+    if (targetModelTypes.length === 0) {
+      // Check all models in the unit for required weapons
+      for (const [modelId, count] of Object.entries(context.previewModels)) {
+        if (count > 0) {
+          const hasWeapons = this.modelHasRequiredWeaponsWithUpgrades(
+            modelId,
+            upgrade.requiredWeapons!,
+            context
+          );
+
+          if (hasWeapons) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    // Check if any of the target models have the required weapons
+    for (const modelType of targetModelTypes) {
+      if (
+        this.modelHasRequiredWeaponsWithUpgrades(
+          modelType,
+          upgrade.requiredWeapons!,
+          context
+        )
+      ) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * Check if a model has the required weapons (base weapons only)
+   */
+  private static modelHasRequiredWeapons(
+    model: any,
+    requiredWeapons: string[]
+  ): boolean {
+    if (!model.weapons) return false;
+
+    // Convert model weapons to a flat array of weapon IDs
+    const modelWeaponIds: string[] = [];
+
+    if (Array.isArray(model.weapons)) {
+      model.weapons.forEach((weapon: any) => {
+        if (typeof weapon === 'string') {
+          modelWeaponIds.push(weapon);
+        } else if (weapon.id) {
+          modelWeaponIds.push(weapon.id);
+        }
+      });
+    }
+
+    // Check if the model has any of the required weapons
+    return requiredWeapons.some(requiredWeapon =>
+      modelWeaponIds.includes(requiredWeapon)
+    );
+  }
+
+  /**
+   * Check if a model has the required weapons (including weapons from upgrades)
+   */
+  private static modelHasRequiredWeaponsWithUpgrades(
+    modelId: string,
+    requiredWeapons: string[],
+    context: UpgradeValidationContext
+  ): boolean {
+    const model = DataLoader.getModelById(modelId);
+    if (!model) return false;
+
+    // Get the model's effective weapons after applying upgrades
+    const effectiveWeapons = this.calculateEffectiveWeapons(
+      modelId,
+      model.weapons || [],
+      context.selectedUpgrades,
+      1 // We only need to check if the weapon exists, not count
+    );
+
+    // Convert effective weapons to a flat array of weapon IDs
+    const effectiveWeaponIds = effectiveWeapons.map(weapon => weapon.weaponId);
+
+    // Check if the model has any of the required weapons
+    return requiredWeapons.some(requiredWeapon =>
+      effectiveWeaponIds.includes(requiredWeapon)
+    );
+  }
+
+  /**
    * Validate upgrade selection and return any validation errors
    */
   static validateUpgradeSelection(
@@ -296,7 +553,7 @@ export class UpgradeValidator {
     return errors;
   }
 
-      /**
+  /**
    * Calculate the effective weapons for a model after upgrades are applied
    */
   static calculateEffectiveWeapons(
@@ -308,9 +565,12 @@ export class UpgradeValidator {
     // If no upgrades, just return base weapons in the expected format
     if (selectedUpgrades.length === 0) {
       return baseWeapons.map(weaponEntry => {
-        const weaponId = typeof weaponEntry === 'string' ? weaponEntry : weaponEntry.id;
-        const mount = typeof weaponEntry === 'string' ? undefined : weaponEntry.mount;
-        const count = typeof weaponEntry === 'string' ? 1 : (weaponEntry.count || 1);
+        const weaponId =
+          typeof weaponEntry === 'string' ? weaponEntry : weaponEntry.id;
+        const mount =
+          typeof weaponEntry === 'string' ? undefined : weaponEntry.mount;
+        const count =
+          typeof weaponEntry === 'string' ? 1 : weaponEntry.count || 1;
         return { weaponId, count, mount };
       });
     }
@@ -320,15 +580,18 @@ export class UpgradeValidator {
 
     // Initialize with base weapons
     baseWeapons.forEach(weaponEntry => {
-      const weaponId = typeof weaponEntry === 'string' ? weaponEntry : weaponEntry.id;
-      const mount = typeof weaponEntry === 'string' ? undefined : weaponEntry.mount;
-      const count = typeof weaponEntry === 'string' ? 1 : (weaponEntry.count || 1);
+      const weaponId =
+        typeof weaponEntry === 'string' ? weaponEntry : weaponEntry.id;
+      const mount =
+        typeof weaponEntry === 'string' ? undefined : weaponEntry.mount;
+      const count =
+        typeof weaponEntry === 'string' ? 1 : weaponEntry.count || 1;
 
       // For base weapons, treat the entire string as the weapon ID
       const key = weaponId;
       weaponCounts.set(key, {
         count: (weaponCounts.get(key)?.count || 0) + count,
-        mount
+        mount,
       });
     });
 
@@ -338,10 +601,27 @@ export class UpgradeValidator {
       if (!upgradeData) return;
 
       // Check if this upgrade affects the target model
-      if (upgradeData.targetModelType === modelId || upgradeData.targetModel === modelId) {
+      const targetModelTypes =
+        upgradeData.targetModelTypes ||
+        (upgradeData.targetModelType ? [upgradeData.targetModelType] : []);
+
+      // Get the model to check its modelTypes
+      const model = DataLoader.getModelById(modelId);
+      const modelModelTypes = model?.modelTypes || [];
+
+      const affectsThisModel =
+        targetModelTypes.includes(modelId) ||
+        upgradeData.targetModel === modelId ||
+        targetModelTypes.some(targetType =>
+          modelModelTypes.includes(targetType)
+        );
+
+      if (affectsThisModel) {
         if (upgrade.optionId) {
           // Handle upgrade options
-          const option = upgradeData.options?.find(opt => opt.id === upgrade.optionId);
+          const option = upgradeData.options?.find(
+            opt => opt.id === upgrade.optionId
+          );
           if (option) {
             this.applyWeaponOption(option, weaponCounts, upgrade.count);
           }
@@ -353,13 +633,17 @@ export class UpgradeValidator {
     });
 
     // Convert back to array format and filter out weapons with 0 count
-    const effectiveWeapons: { weaponId: string; count: number; mount?: string }[] = [];
+    const effectiveWeapons: {
+      weaponId: string;
+      count: number;
+      mount?: string;
+    }[] = [];
     weaponCounts.forEach((value, key) => {
       if (value.count > 0) {
         effectiveWeapons.push({
           weaponId: key,
           count: value.count,
-          mount: value.mount
+          mount: value.mount,
         });
       }
     });
@@ -379,16 +663,28 @@ export class UpgradeValidator {
     if (option.replaceWeapon) {
       const key = option.replaceWeapon;
       const current = weaponCounts.get(key) || { count: 0 };
-      weaponCounts.set(key, { ...current, count: Math.max(0, current.count - upgradeCount) });
+      weaponCounts.set(key, {
+        ...current,
+        count: Math.max(0, current.count - upgradeCount),
+      });
     }
 
     // Handle weapon additions
     if (option.addWeapon) {
-      const weaponId = typeof option.addWeapon === 'string' ? option.addWeapon : option.addWeapon.id;
-      const mount = typeof option.addWeapon === 'string' ? undefined : option.addWeapon.mount;
+      const weaponId =
+        typeof option.addWeapon === 'string'
+          ? option.addWeapon
+          : option.addWeapon.id;
+      const mount =
+        typeof option.addWeapon === 'string'
+          ? undefined
+          : option.addWeapon.mount;
       const key = weaponId;
       const current = weaponCounts.get(key) || { count: 0, mount };
-      weaponCounts.set(key, { ...current, count: current.count + upgradeCount });
+      weaponCounts.set(key, {
+        ...current,
+        count: current.count + upgradeCount,
+      });
     }
 
     // Handle weapon replacements array
@@ -396,24 +692,45 @@ export class UpgradeValidator {
       option.weaponReplacements.forEach((replacement: any) => {
         const replaceKey = replacement.replaceWeapon;
         const current = weaponCounts.get(replaceKey) || { count: 0 };
-        weaponCounts.set(replaceKey, { ...current, count: Math.max(0, current.count - upgradeCount) });
+        weaponCounts.set(replaceKey, {
+          ...current,
+          count: Math.max(0, current.count - upgradeCount),
+        });
 
         // Check for addWeapon (correct field name)
         if (replacement.addWeapon) {
-          const weaponId = typeof replacement.addWeapon === 'string' ? replacement.addWeapon : replacement.addWeapon.id;
-          const mount = typeof replacement.addWeapon === 'string' ? undefined : replacement.addWeapon.mount;
+          const weaponId =
+            typeof replacement.addWeapon === 'string'
+              ? replacement.addWeapon
+              : replacement.addWeapon.id;
+          const mount =
+            typeof replacement.addWeapon === 'string'
+              ? undefined
+              : replacement.addWeapon.mount;
           const key = weaponId;
           const currentAdd = weaponCounts.get(key) || { count: 0, mount };
-          weaponCounts.set(key, { ...currentAdd, count: currentAdd.count + upgradeCount });
+          weaponCounts.set(key, {
+            ...currentAdd,
+            count: currentAdd.count + upgradeCount,
+          });
         }
 
         // Also check for withWeapon (old field name) for backward compatibility
         if (replacement.withWeapon) {
-          const weaponId = typeof replacement.withWeapon === 'string' ? replacement.withWeapon : replacement.withWeapon.id;
-          const mount = typeof replacement.withWeapon === 'string' ? undefined : replacement.withWeapon.mount;
+          const weaponId =
+            typeof replacement.withWeapon === 'string'
+              ? replacement.withWeapon
+              : replacement.withWeapon.id;
+          const mount =
+            typeof replacement.withWeapon === 'string'
+              ? undefined
+              : replacement.withWeapon.mount;
           const key = weaponId;
           const currentAdd = weaponCounts.get(key) || { count: 0, mount };
-          weaponCounts.set(key, { ...currentAdd, count: currentAdd.count + upgradeCount });
+          weaponCounts.set(key, {
+            ...currentAdd,
+            count: currentAdd.count + upgradeCount,
+          });
         }
       });
     }
@@ -431,16 +748,28 @@ export class UpgradeValidator {
     if (upgrade.replaceWeapon) {
       const key = upgrade.replaceWeapon;
       const current = weaponCounts.get(key) || { count: 0 };
-      weaponCounts.set(key, { ...current, count: Math.max(0, current.count - upgradeCount) });
+      weaponCounts.set(key, {
+        ...current,
+        count: Math.max(0, current.count - upgradeCount),
+      });
     }
 
     // Handle simple weapon additions
     if (upgrade.addWeapon) {
-      const weaponId = typeof upgrade.addWeapon === 'string' ? upgrade.addWeapon : upgrade.addWeapon.id;
-      const mount = typeof upgrade.addWeapon === 'string' ? undefined : upgrade.addWeapon.mount;
+      const weaponId =
+        typeof upgrade.addWeapon === 'string'
+          ? upgrade.addWeapon
+          : upgrade.addWeapon.id;
+      const mount =
+        typeof upgrade.addWeapon === 'string'
+          ? undefined
+          : upgrade.addWeapon.mount;
       const key = weaponId;
       const current = weaponCounts.get(key) || { count: 0, mount };
-      weaponCounts.set(key, { ...current, count: current.count + upgradeCount });
+      weaponCounts.set(key, {
+        ...current,
+        count: current.count + upgradeCount,
+      });
     }
   }
 
@@ -466,10 +795,27 @@ export class UpgradeValidator {
       if (!upgradeData) return;
 
       // Check if this upgrade affects the target model
-      if (upgradeData.targetModelType === modelId || upgradeData.targetModel === modelId) {
+      const targetModelTypes =
+        upgradeData.targetModelTypes ||
+        (upgradeData.targetModelType ? [upgradeData.targetModelType] : []);
+
+      // Get the model to check its modelTypes
+      const model = DataLoader.getModelById(modelId);
+      const modelModelTypes = model?.modelTypes || [];
+
+      const affectsThisModel =
+        targetModelTypes.includes(modelId) ||
+        upgradeData.targetModel === modelId ||
+        targetModelTypes.some(targetType =>
+          modelModelTypes.includes(targetType)
+        );
+
+      if (affectsThisModel) {
         if (upgrade.optionId) {
           // Handle upgrade options
-          const option = upgradeData.options?.find(opt => opt.id === upgrade.optionId);
+          const option = upgradeData.options?.find(
+            opt => opt.id === upgrade.optionId
+          );
           if (option) {
             this.applyWargearOption(option, wargearCounts, upgrade.count);
           }
@@ -504,12 +850,18 @@ export class UpgradeValidator {
     // Handle wargear replacements
     if (option.replaceWargear) {
       const current = wargearCounts.get(option.replaceWargear) || 0;
-      wargearCounts.set(option.replaceWargear, Math.max(0, current - upgradeCount));
+      wargearCounts.set(
+        option.replaceWargear,
+        Math.max(0, current - upgradeCount)
+      );
     }
 
     // Handle wargear additions
     if (option.addWargear) {
-      const wargearId = typeof option.addWargear === 'string' ? option.addWargear : option.addWargear.id;
+      const wargearId =
+        typeof option.addWargear === 'string'
+          ? option.addWargear
+          : option.addWargear.id;
       const current = wargearCounts.get(wargearId) || 0;
       wargearCounts.set(wargearId, current + upgradeCount);
     }
@@ -526,12 +878,18 @@ export class UpgradeValidator {
     // Handle simple wargear replacements
     if (upgrade.replaceWargear) {
       const current = wargearCounts.get(upgrade.replaceWargear) || 0;
-      wargearCounts.set(upgrade.replaceWargear, Math.max(0, current - upgradeCount));
+      wargearCounts.set(
+        upgrade.replaceWargear,
+        Math.max(0, current - upgradeCount)
+      );
     }
 
     // Handle simple wargear additions
     if (upgrade.addWargear) {
-      const wargearId = typeof upgrade.addWargear === 'string' ? upgrade.addWargear : upgrade.addWargear.id;
+      const wargearId =
+        typeof upgrade.addWargear === 'string'
+          ? upgrade.addWargear
+          : upgrade.addWargear.id;
       const current = wargearCounts.get(wargearId) || 0;
       wargearCounts.set(wargearId, current + upgradeCount);
     }

@@ -36,9 +36,11 @@ import { DataLoader } from '../../utils/dataLoader';
 import { CustomUnitStorage } from '../../utils/customUnitStorage';
 import { UpgradeValidator } from '../../utils/upgradeValidator';
 import type { UpgradeValidationContext } from '../../utils/upgradeValidator';
+import { TraitReplacer } from '../../utils/traitReplacer';
 import {
   getDetachmentsTriggeredByUnit,
   canTriggerMoreDetachments,
+  getEffectiveSubfaction,
 } from '../../utils/detachmentUtils';
 import { UnitViewer } from '../../components/UnitViewer';
 import SaveCustomUnitModal from '../../components/modals/SaveCustomUnitModal';
@@ -226,6 +228,27 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
           effectiveCounts[modelId] = currentCount + count * upgrade.count;
         });
       }
+
+      // Handle model-replacement upgrades
+      if (upgradeData.type === 'model-replacement' && upgrade.optionId) {
+        const option = upgradeData.options?.find(
+          opt => opt.id === upgrade.optionId
+        );
+        if (option?.replaceModel) {
+          const { from, to } = option.replaceModel;
+          const countToReplace = effectiveCounts[from] || 0;
+
+          // Remove the original model
+          if (effectiveCounts[from]) {
+            delete effectiveCounts[from];
+          }
+
+          // Add the replacement model
+          if (countToReplace > 0) {
+            effectiveCounts[to] = (effectiveCounts[to] || 0) + countToReplace;
+          }
+        }
+      }
     });
 
     return effectiveCounts;
@@ -237,6 +260,14 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
   const getUpgradeGroupsForModel = (modelType: string) => {
     const upgradeGroups = DataLoader.getUpgradeGroupsForModel(modelType);
     return upgradeGroups;
+  };
+
+  // Function to get all upgrades for a subfaction
+  const getUpgradesForSubfaction = (subfaction: string) => {
+    const allUpgrades = DataLoader.getUpgrades();
+    return allUpgrades.filter(
+      (upgrade: any) => upgrade.subfaction === subfaction
+    );
   };
 
   // Check if this unit is in a prime slot
@@ -694,6 +725,11 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                     models: effectiveModelCounts,
                   }}
                   selectedUpgrades={selectedUpgrades}
+                  allegiance={armyList.allegiance}
+                  legion={getEffectiveSubfaction(
+                    armyList,
+                    armyList.detachments.find(d => d.id === detachmentId)!
+                  )}
                 />
               </Box>
             )}
@@ -724,11 +760,20 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                           const upgrade = DataLoader.getUpgradeById(upgradeId);
                           if (!upgrade) return null;
 
+                          // Find detachment to get faction/subfaction information
+                          const detachment = armyList.detachments.find(
+                            d => d.id === detachmentId
+                          );
+
                           // Create validation context
                           const validationContext: UpgradeValidationContext = {
                             selectedUpgrades,
                             previewModels: effectiveModelCounts,
                             baseUnitData,
+                            allegiance: armyList.allegiance,
+                            legion: detachment
+                              ? getEffectiveSubfaction(armyList, detachment)
+                              : undefined,
                           };
 
                           const maxCount = UpgradeValidator.getMaxCount(
@@ -745,303 +790,694 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                             .reduce((sum, u) => sum + u.count, 0);
 
                           return (
-                            <Box
+                            <Card
                               key={upgrade.id}
                               sx={{
-                                p: 2,
-                                border: 1,
-                                borderColor: 'grey.300',
-                                borderRadius: 1,
-                                bgcolor: 'grey.50',
+                                mb: 2,
                               }}
                             >
-                              <Box
-                                sx={{
-                                  display: 'flex',
-                                  justifyContent: 'space-between',
-                                  alignItems: 'flex-start',
-                                }}
-                              >
-                                <Box sx={{ flex: 1 }}>
-                                  <Typography variant="subtitle1" gutterBottom>
-                                    {upgrade.name}
-                                  </Typography>
-                                  <Typography
-                                    variant="body2"
-                                    color="text.secondary"
-                                    sx={{ mb: 1 }}
-                                  >
-                                    {upgrade.description}
-                                  </Typography>
+                              <CardContent>
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'flex-start',
+                                  }}
+                                >
+                                  <Box sx={{ flex: 1 }}>
+                                    <Typography
+                                      variant="subtitle1"
+                                      gutterBottom
+                                    >
+                                      {upgrade.name}
+                                    </Typography>
+                                    <Typography
+                                      variant="body2"
+                                      color="text.secondary"
+                                      sx={{ mb: 1 }}
+                                    >
+                                      {upgrade.description}
+                                    </Typography>
 
-                                  {/* Upgrade Options */}
-                                  {upgrade.options &&
-                                  upgrade.options.length > 0 ? (
-                                    <Stack spacing={1}>
-                                      {upgrade.options.map(option => {
-                                        const optionCount = selectedUpgrades
-                                          .filter(
-                                            u =>
-                                              u.upgradeId === upgrade.id &&
-                                              u.optionId === option.id
-                                          )
-                                          .reduce((sum, u) => sum + u.count, 0);
+                                    {/* Upgrade Options */}
+                                    {upgrade.options &&
+                                    upgrade.options.length > 0 ? (
+                                      <Stack spacing={1}>
+                                        {upgrade.options.map(option => {
+                                          const optionCount = selectedUpgrades
+                                            .filter(
+                                              u =>
+                                                u.upgradeId === upgrade.id &&
+                                                u.optionId === option.id
+                                            )
+                                            .reduce(
+                                              (sum, u) => sum + u.count,
+                                              0
+                                            );
 
-                                        return (
-                                          <Box
-                                            key={option.id}
-                                            sx={{
-                                              p: 1,
-                                              border: 1,
-                                              borderColor: 'primary.main',
-                                              borderRadius: 1,
-                                              bgcolor: 'primary.50',
-                                            }}
-                                          >
-                                            <Box
+                                          return (
+                                            <Card
+                                              key={option.id}
                                               sx={{
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                alignItems: 'center',
+                                                mb: 1,
                                               }}
                                             >
-                                              <Box>
-                                                <Typography
-                                                  variant="body2"
-                                                  fontWeight="medium"
-                                                >
-                                                  {option.name}
-                                                </Typography>
-                                                <Typography
-                                                  variant="body2"
-                                                  color="text.secondary"
-                                                >
-                                                  {option.description}
-                                                </Typography>
-                                                <Typography
-                                                  variant="body2"
-                                                  color="primary"
-                                                >
-                                                  {option.points} points each
-                                                </Typography>
-                                              </Box>
-                                              <Box
-                                                sx={{
-                                                  display: 'flex',
-                                                  alignItems: 'center',
-                                                  gap: 1,
-                                                }}
+                                              <CardContent
+                                                sx={{ py: 1, px: 1 }}
                                               >
-                                                <IconButton
-                                                  size="small"
-                                                  disabled={
-                                                    !isAvailable ||
-                                                    optionCount <= 0
-                                                  }
-                                                  onClick={() => {
-                                                    const newUpgrades = [
-                                                      ...selectedUpgrades,
-                                                    ];
-                                                    const existingIndex =
-                                                      newUpgrades.findIndex(
-                                                        u =>
-                                                          u.upgradeId ===
-                                                            upgrade.id &&
-                                                          u.optionId ===
-                                                            option.id
-                                                      );
-                                                    if (existingIndex >= 0) {
-                                                      if (
-                                                        newUpgrades[
-                                                          existingIndex
-                                                        ].count > 1
-                                                      ) {
-                                                        newUpgrades[
-                                                          existingIndex
-                                                        ].count--;
-                                                      } else {
-                                                        newUpgrades.splice(
-                                                          existingIndex,
-                                                          1
-                                                        );
-                                                      }
-                                                    }
-                                                    setSelectedUpgrades(
-                                                      newUpgrades
-                                                    );
-                                                    saveUpgrades(newUpgrades);
-                                                  }}
-                                                >
-                                                  <Remove />
-                                                </IconButton>
-                                                <Typography
-                                                  variant="body2"
+                                                <Box
                                                   sx={{
-                                                    minWidth: 30,
-                                                    textAlign: 'center',
+                                                    display: 'flex',
+                                                    justifyContent:
+                                                      'space-between',
+                                                    alignItems: 'center',
                                                   }}
                                                 >
-                                                  {optionCount}
-                                                </Typography>
-                                                <IconButton
-                                                  size="small"
-                                                  disabled={
-                                                    !isAvailable ||
-                                                    optionCount >= maxCount
-                                                  }
-                                                  onClick={() => {
-                                                    const newUpgrades = [
-                                                      ...selectedUpgrades,
-                                                    ];
-                                                    const existingIndex =
-                                                      newUpgrades.findIndex(
-                                                        u =>
-                                                          u.upgradeId ===
-                                                            upgrade.id &&
-                                                          u.optionId ===
-                                                            option.id
-                                                      );
-                                                    if (existingIndex >= 0) {
-                                                      newUpgrades[existingIndex]
-                                                        .count++;
-                                                    } else {
-                                                      newUpgrades.push({
-                                                        upgradeId: upgrade.id,
-                                                        optionId: option.id,
-                                                        count: 1,
-                                                        points: option.points,
-                                                      });
-                                                    }
-                                                    setSelectedUpgrades(
-                                                      newUpgrades
-                                                    );
-                                                    saveUpgrades(newUpgrades);
-                                                  }}
-                                                >
-                                                  <Add />
-                                                </IconButton>
-                                              </Box>
-                                            </Box>
-                                          </Box>
-                                        );
-                                      })}
-                                    </Stack>
-                                  ) : (
-                                    /* Simple upgrade without options */
-                                    <Box
-                                      sx={{
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                        alignItems: 'center',
-                                      }}
-                                    >
-                                      <Typography
-                                        variant="body2"
-                                        color="primary"
-                                      >
-                                        {upgrade.maxCount === 'dependent'
-                                          ? 'Variable'
-                                          : upgrade.maxCount || 1}{' '}
-                                        available
-                                      </Typography>
+                                                  <Box>
+                                                    <Typography
+                                                      variant="body2"
+                                                      fontWeight="medium"
+                                                    >
+                                                      {option.name}
+                                                    </Typography>
+                                                    <Typography
+                                                      variant="body2"
+                                                      color="text.secondary"
+                                                    >
+                                                      {option.description}
+                                                    </Typography>
+                                                    <Typography
+                                                      variant="body2"
+                                                      color="primary"
+                                                    >
+                                                      {option.points} points
+                                                      each
+                                                    </Typography>
+                                                  </Box>
+                                                  <Box
+                                                    sx={{
+                                                      display: 'flex',
+                                                      alignItems: 'center',
+                                                      gap: 1,
+                                                    }}
+                                                  >
+                                                    <IconButton
+                                                      size="small"
+                                                      disabled={
+                                                        !isAvailable ||
+                                                        optionCount <= 0
+                                                      }
+                                                      onClick={() => {
+                                                        const newUpgrades = [
+                                                          ...selectedUpgrades,
+                                                        ];
+                                                        const existingIndex =
+                                                          newUpgrades.findIndex(
+                                                            u =>
+                                                              u.upgradeId ===
+                                                                upgrade.id &&
+                                                              u.optionId ===
+                                                                option.id
+                                                          );
+                                                        if (
+                                                          existingIndex >= 0
+                                                        ) {
+                                                          if (
+                                                            newUpgrades[
+                                                              existingIndex
+                                                            ].count > 1
+                                                          ) {
+                                                            newUpgrades[
+                                                              existingIndex
+                                                            ].count--;
+                                                          } else {
+                                                            newUpgrades.splice(
+                                                              existingIndex,
+                                                              1
+                                                            );
+                                                          }
+                                                        }
+                                                        setSelectedUpgrades(
+                                                          newUpgrades
+                                                        );
+                                                        saveUpgrades(
+                                                          newUpgrades
+                                                        );
+                                                      }}
+                                                    >
+                                                      <Remove />
+                                                    </IconButton>
+                                                    <Typography
+                                                      variant="body2"
+                                                      sx={{
+                                                        minWidth: 30,
+                                                        textAlign: 'center',
+                                                      }}
+                                                    >
+                                                      {optionCount}
+                                                    </Typography>
+                                                    <IconButton
+                                                      size="small"
+                                                      disabled={
+                                                        !isAvailable ||
+                                                        optionCount >= maxCount
+                                                      }
+                                                      onClick={() => {
+                                                        const newUpgrades = [
+                                                          ...selectedUpgrades,
+                                                        ];
+                                                        const existingIndex =
+                                                          newUpgrades.findIndex(
+                                                            u =>
+                                                              u.upgradeId ===
+                                                                upgrade.id &&
+                                                              u.optionId ===
+                                                                option.id
+                                                          );
+                                                        if (
+                                                          existingIndex >= 0
+                                                        ) {
+                                                          newUpgrades[
+                                                            existingIndex
+                                                          ].count++;
+                                                        } else {
+                                                          newUpgrades.push({
+                                                            upgradeId:
+                                                              upgrade.id,
+                                                            optionId: option.id,
+                                                            count: 1,
+                                                            points:
+                                                              option.points,
+                                                          });
+                                                        }
+                                                        setSelectedUpgrades(
+                                                          newUpgrades
+                                                        );
+                                                        saveUpgrades(
+                                                          newUpgrades
+                                                        );
+                                                      }}
+                                                    >
+                                                      <Add />
+                                                    </IconButton>
+                                                  </Box>
+                                                </Box>
+                                              </CardContent>
+                                            </Card>
+                                          );
+                                        })}
+                                      </Stack>
+                                    ) : (
+                                      /* Simple upgrade without options */
                                       <Box
                                         sx={{
                                           display: 'flex',
+                                          justifyContent: 'space-between',
                                           alignItems: 'center',
-                                          gap: 1,
                                         }}
                                       >
-                                        <IconButton
-                                          size="small"
-                                          disabled={
-                                            !isAvailable || currentCount <= 0
-                                          }
-                                          onClick={() => {
-                                            const newUpgrades = [
-                                              ...selectedUpgrades,
-                                            ];
-                                            const existingIndex =
-                                              newUpgrades.findIndex(
-                                                u => u.upgradeId === upgrade.id
-                                              );
-                                            if (existingIndex >= 0) {
-                                              if (
-                                                newUpgrades[existingIndex]
-                                                  .count > 1
-                                              ) {
-                                                newUpgrades[existingIndex]
-                                                  .count--;
-                                              } else {
-                                                newUpgrades.splice(
-                                                  existingIndex,
-                                                  1
-                                                );
-                                              }
-                                            }
-                                            setSelectedUpgrades(newUpgrades);
-                                            saveUpgrades(newUpgrades);
-                                          }}
-                                        >
-                                          <Remove />
-                                        </IconButton>
                                         <Typography
                                           variant="body2"
-                                          sx={{
-                                            minWidth: 30,
-                                            textAlign: 'center',
-                                          }}
+                                          color="primary"
                                         >
-                                          {currentCount}
+                                          {upgrade.maxCount === 'dependent'
+                                            ? 'Variable'
+                                            : upgrade.maxCount || 1}{' '}
+                                          available
                                         </Typography>
-                                        <IconButton
-                                          size="small"
-                                          disabled={
-                                            !isAvailable ||
-                                            currentCount >= maxCount
-                                          }
-                                          onClick={() => {
-                                            const newUpgrades = [
-                                              ...selectedUpgrades,
-                                            ];
-                                            const existingIndex =
-                                              newUpgrades.findIndex(
-                                                u => u.upgradeId === upgrade.id
-                                              );
-                                            if (existingIndex >= 0) {
-                                              newUpgrades[existingIndex]
-                                                .count++;
-                                            } else {
-                                              newUpgrades.push({
-                                                upgradeId: upgrade.id,
-                                                count: 1,
-                                                points: 0,
-                                              });
-                                            }
-                                            setSelectedUpgrades(newUpgrades);
-                                            saveUpgrades(newUpgrades);
+                                        <Box
+                                          sx={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: 1,
                                           }}
                                         >
-                                          <Add />
-                                        </IconButton>
+                                          <IconButton
+                                            size="small"
+                                            disabled={
+                                              !isAvailable || currentCount <= 0
+                                            }
+                                            onClick={() => {
+                                              const newUpgrades = [
+                                                ...selectedUpgrades,
+                                              ];
+                                              const existingIndex =
+                                                newUpgrades.findIndex(
+                                                  u =>
+                                                    u.upgradeId === upgrade.id
+                                                );
+                                              if (existingIndex >= 0) {
+                                                if (
+                                                  newUpgrades[existingIndex]
+                                                    .count > 1
+                                                ) {
+                                                  newUpgrades[existingIndex]
+                                                    .count--;
+                                                } else {
+                                                  newUpgrades.splice(
+                                                    existingIndex,
+                                                    1
+                                                  );
+                                                }
+                                              }
+                                              setSelectedUpgrades(newUpgrades);
+                                              saveUpgrades(newUpgrades);
+                                            }}
+                                          >
+                                            <Remove />
+                                          </IconButton>
+                                          <Typography
+                                            variant="body2"
+                                            sx={{
+                                              minWidth: 30,
+                                              textAlign: 'center',
+                                            }}
+                                          >
+                                            {currentCount}
+                                          </Typography>
+                                          <IconButton
+                                            size="small"
+                                            disabled={
+                                              !isAvailable ||
+                                              currentCount >= maxCount
+                                            }
+                                            onClick={() => {
+                                              const newUpgrades = [
+                                                ...selectedUpgrades,
+                                              ];
+                                              const existingIndex =
+                                                newUpgrades.findIndex(
+                                                  u =>
+                                                    u.upgradeId === upgrade.id
+                                                );
+                                              if (existingIndex >= 0) {
+                                                newUpgrades[existingIndex]
+                                                  .count++;
+                                              } else {
+                                                newUpgrades.push({
+                                                  upgradeId: upgrade.id,
+                                                  count: 1,
+                                                  points: 0,
+                                                });
+                                              }
+                                              setSelectedUpgrades(newUpgrades);
+                                              saveUpgrades(newUpgrades);
+                                            }}
+                                          >
+                                            <Add />
+                                          </IconButton>
+                                        </Box>
                                       </Box>
-                                    </Box>
-                                  )}
+                                    )}
+                                  </Box>
                                 </Box>
-                              </Box>
 
-                              {/* Availability Status */}
-                              {!isAvailable && (
-                                <Alert severity="warning" sx={{ mt: 1 }}>
-                                  This upgrade is not currently available.
-                                </Alert>
-                              )}
-                            </Box>
+                                {/* Availability Status */}
+                                {!isAvailable && (
+                                  <Alert severity="warning" sx={{ mt: 1 }}>
+                                    This upgrade is not currently available.
+                                  </Alert>
+                                )}
+                              </CardContent>
+                            </Card>
                           );
                         })}
                       </Stack>
                     </CardContent>
                   </Card>
                 )}
+
+                {/* Subfaction-Specific Upgrades */}
+                {(() => {
+                  const detachment = armyList.detachments.find(
+                    d => d.id === detachmentId
+                  );
+                  const effectiveSubfaction = detachment
+                    ? getEffectiveSubfaction(armyList, detachment)
+                    : undefined;
+
+                  if (!effectiveSubfaction) return null;
+
+                  const subfactionUpgrades =
+                    getUpgradesForSubfaction(effectiveSubfaction);
+
+                  const availableSubfactionUpgrades = subfactionUpgrades.filter(
+                    upgrade => {
+                      // Create validation context for this upgrade
+                      const validationContext: UpgradeValidationContext = {
+                        selectedUpgrades,
+                        previewModels: effectiveModelCounts,
+                        baseUnitData,
+                        allegiance: armyList.allegiance,
+                        legion: effectiveSubfaction,
+                      };
+
+                      return UpgradeValidator.isUpgradeAvailable(
+                        upgrade,
+                        validationContext
+                      );
+                    }
+                  );
+
+                  if (availableSubfactionUpgrades.length === 0) return null;
+                  return (
+                    <Card sx={{ mb: 3 }}>
+                      <CardContent>
+                        <Typography variant="h6" gutterBottom>
+                          {TraitReplacer.replaceTrait(
+                            '[Legiones Astartes]',
+                            armyList.allegiance,
+                            effectiveSubfaction
+                          )}{' '}
+                          Upgrades
+                        </Typography>
+                        <Stack spacing={2}>
+                          {availableSubfactionUpgrades.map(upgrade => {
+                            const maxCount = UpgradeValidator.getMaxCount(
+                              upgrade,
+                              {
+                                selectedUpgrades,
+                                previewModels: effectiveModelCounts,
+                                baseUnitData,
+                                allegiance: armyList.allegiance,
+                                legion: effectiveSubfaction,
+                              }
+                            );
+                            const currentCount = selectedUpgrades
+                              .filter(u => u.upgradeId === upgrade.id)
+                              .reduce((sum, u) => sum + u.count, 0);
+
+                            return (
+                              <Card
+                                key={upgrade.id}
+                                sx={{
+                                  mb: 2,
+                                }}
+                              >
+                                <CardContent>
+                                  <Box
+                                    sx={{
+                                      display: 'flex',
+                                      justifyContent: 'space-between',
+                                      alignItems: 'flex-start',
+                                    }}
+                                  >
+                                    <Box sx={{ flex: 1 }}>
+                                      <Typography
+                                        variant="subtitle1"
+                                        gutterBottom
+                                      >
+                                        {upgrade.name}
+                                      </Typography>
+                                      <Typography
+                                        variant="body2"
+                                        color="text.secondary"
+                                        sx={{ mb: 1 }}
+                                      >
+                                        {upgrade.description}
+                                      </Typography>
+
+                                      {/* Upgrade Options */}
+                                      {upgrade.options &&
+                                      upgrade.options.length > 0 ? (
+                                        <Stack spacing={1}>
+                                          {upgrade.options.map(option => {
+                                            const optionCount = selectedUpgrades
+                                              .filter(
+                                                u =>
+                                                  u.upgradeId === upgrade.id &&
+                                                  u.optionId === option.id
+                                              )
+                                              .reduce(
+                                                (sum, u) => sum + u.count,
+                                                0
+                                              );
+
+                                            return (
+                                              <Card
+                                                key={option.id}
+                                                sx={{
+                                                  mb: 1,
+                                                }}
+                                              >
+                                                <CardContent
+                                                  sx={{ py: 1, px: 1 }}
+                                                >
+                                                  <Box
+                                                    sx={{
+                                                      display: 'flex',
+                                                      justifyContent:
+                                                        'space-between',
+                                                      alignItems: 'center',
+                                                    }}
+                                                  >
+                                                    <Box>
+                                                      <Typography
+                                                        variant="body2"
+                                                        fontWeight="medium"
+                                                      >
+                                                        {option.name}
+                                                      </Typography>
+                                                      <Typography
+                                                        variant="body2"
+                                                        color="text.secondary"
+                                                      >
+                                                        {option.description}
+                                                      </Typography>
+                                                      <Typography
+                                                        variant="body2"
+                                                        color="primary"
+                                                      >
+                                                        {option.points} points
+                                                      </Typography>
+                                                    </Box>
+                                                    <Box
+                                                      sx={{
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: 1,
+                                                      }}
+                                                    >
+                                                      <IconButton
+                                                        size="small"
+                                                        disabled={
+                                                          optionCount === 0
+                                                        }
+                                                        onClick={() => {
+                                                          const newUpgrades = [
+                                                            ...selectedUpgrades,
+                                                          ];
+                                                          const existingIndex =
+                                                            newUpgrades.findIndex(
+                                                              u =>
+                                                                u.upgradeId ===
+                                                                  upgrade.id &&
+                                                                u.optionId ===
+                                                                  option.id
+                                                            );
+                                                          if (
+                                                            existingIndex >= 0
+                                                          ) {
+                                                            if (
+                                                              newUpgrades[
+                                                                existingIndex
+                                                              ].count > 1
+                                                            ) {
+                                                              newUpgrades[
+                                                                existingIndex
+                                                              ].count--;
+                                                            } else {
+                                                              newUpgrades.splice(
+                                                                existingIndex,
+                                                                1
+                                                              );
+                                                            }
+                                                          }
+                                                          setSelectedUpgrades(
+                                                            newUpgrades
+                                                          );
+                                                          saveUpgrades(
+                                                            newUpgrades
+                                                          );
+                                                        }}
+                                                      >
+                                                        <Remove />
+                                                      </IconButton>
+                                                      <Typography
+                                                        variant="body2"
+                                                        sx={{
+                                                          minWidth: 30,
+                                                          textAlign: 'center',
+                                                        }}
+                                                      >
+                                                        {optionCount}
+                                                      </Typography>
+                                                      <IconButton
+                                                        size="small"
+                                                        disabled={
+                                                          optionCount >=
+                                                          maxCount
+                                                        }
+                                                        onClick={() => {
+                                                          const newUpgrades = [
+                                                            ...selectedUpgrades,
+                                                          ];
+                                                          const existingIndex =
+                                                            newUpgrades.findIndex(
+                                                              u =>
+                                                                u.upgradeId ===
+                                                                  upgrade.id &&
+                                                                u.optionId ===
+                                                                  option.id
+                                                            );
+                                                          if (
+                                                            existingIndex >= 0
+                                                          ) {
+                                                            newUpgrades[
+                                                              existingIndex
+                                                            ].count++;
+                                                          } else {
+                                                            newUpgrades.push({
+                                                              upgradeId:
+                                                                upgrade.id,
+                                                              optionId:
+                                                                option.id,
+                                                              count: 1,
+                                                              points:
+                                                                option.points,
+                                                            });
+                                                          }
+                                                          setSelectedUpgrades(
+                                                            newUpgrades
+                                                          );
+                                                          saveUpgrades(
+                                                            newUpgrades
+                                                          );
+                                                        }}
+                                                      >
+                                                        <Add />
+                                                      </IconButton>
+                                                    </Box>
+                                                  </Box>
+                                                </CardContent>
+                                              </Card>
+                                            );
+                                          })}
+                                        </Stack>
+                                      ) : (
+                                        /* Simple upgrade without options */
+                                        <Box
+                                          sx={{
+                                            display: 'flex',
+                                            justifyContent: 'space-between',
+                                            alignItems: 'center',
+                                          }}
+                                        >
+                                          <Typography
+                                            variant="body2"
+                                            color="primary"
+                                          >
+                                            {upgrade.maxCount === 'dependent'
+                                              ? 'Variable'
+                                              : upgrade.maxCount || 1}{' '}
+                                            available
+                                          </Typography>
+                                          <Box
+                                            sx={{
+                                              display: 'flex',
+                                              alignItems: 'center',
+                                              gap: 1,
+                                            }}
+                                          >
+                                            <IconButton
+                                              size="small"
+                                              disabled={currentCount === 0}
+                                              onClick={() => {
+                                                const newUpgrades = [
+                                                  ...selectedUpgrades,
+                                                ];
+                                                const existingIndex =
+                                                  newUpgrades.findIndex(
+                                                    u =>
+                                                      u.upgradeId === upgrade.id
+                                                  );
+                                                if (existingIndex >= 0) {
+                                                  if (
+                                                    newUpgrades[existingIndex]
+                                                      .count > 1
+                                                  ) {
+                                                    newUpgrades[existingIndex]
+                                                      .count--;
+                                                  } else {
+                                                    newUpgrades.splice(
+                                                      existingIndex,
+                                                      1
+                                                    );
+                                                  }
+                                                }
+                                                setSelectedUpgrades(
+                                                  newUpgrades
+                                                );
+                                                saveUpgrades(newUpgrades);
+                                              }}
+                                            >
+                                              <Remove />
+                                            </IconButton>
+                                            <Typography
+                                              variant="body2"
+                                              sx={{
+                                                minWidth: 30,
+                                                textAlign: 'center',
+                                              }}
+                                            >
+                                              {currentCount}
+                                            </Typography>
+                                            <IconButton
+                                              size="small"
+                                              disabled={
+                                                currentCount >= maxCount
+                                              }
+                                              onClick={() => {
+                                                const newUpgrades = [
+                                                  ...selectedUpgrades,
+                                                ];
+                                                const existingIndex =
+                                                  newUpgrades.findIndex(
+                                                    u =>
+                                                      u.upgradeId === upgrade.id
+                                                  );
+                                                if (existingIndex >= 0) {
+                                                  newUpgrades[existingIndex]
+                                                    .count++;
+                                                } else {
+                                                  newUpgrades.push({
+                                                    upgradeId: upgrade.id,
+                                                    count: 1,
+                                                    points: 0,
+                                                  });
+                                                }
+                                                setSelectedUpgrades(
+                                                  newUpgrades
+                                                );
+                                                saveUpgrades(newUpgrades);
+                                              }}
+                                            >
+                                              <Add />
+                                            </IconButton>
+                                          </Box>
+                                        </Box>
+                                      )}
+                                    </Box>
+                                  </Box>
+                                </CardContent>
+                              </Card>
+                            );
+                          })}
+                        </Stack>
+                      </CardContent>
+                    </Card>
+                  );
+                })()}
 
                 {/* Model-Level Upgrades */}
                 {baseUnitData.modelUpgrades &&
@@ -1053,7 +1489,7 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                         </Typography>
                         <Stack spacing={1}>
                           {Object.entries(baseUnitData.modelUpgrades).map(
-                            ([modelId, _upgradeGroupIds]) => {
+                            ([modelId, upgradeGroupOrUpgradeIds]) => {
                               const model = DataLoader.getModelById(modelId);
                               const modelCount =
                                 effectiveModelCounts[modelId] || 0;
@@ -1062,6 +1498,35 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
 
                               const isModelExpanded =
                                 expandedModelSections[modelId] || false;
+
+                              // Get upgrade groups from the model itself
+                              const modelUpgradeGroups =
+                                getUpgradeGroupsForModel(modelId);
+
+                              // Check if we have direct upgrade IDs in modelUpgrades
+                              const directUpgradeIds =
+                                upgradeGroupOrUpgradeIds.filter(
+                                  id =>
+                                    DataLoader.getUpgradeById(id) !== undefined
+                                );
+
+                              // Check if we have upgrade group IDs in modelUpgrades
+                              const upgradeGroupIds =
+                                upgradeGroupOrUpgradeIds.filter(
+                                  id =>
+                                    !DataLoader.getUpgradeById(id) &&
+                                    DataLoader.getUpgradeGroupById &&
+                                    DataLoader.getUpgradeGroupById(id)
+                                );
+
+                              // If we have no upgrade groups or direct upgrades, skip this model
+                              if (
+                                modelUpgradeGroups.length === 0 &&
+                                directUpgradeIds.length === 0 &&
+                                upgradeGroupIds.length === 0
+                              ) {
+                                return null;
+                              }
 
                               return (
                                 <Accordion
@@ -1087,101 +1552,628 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                                   </AccordionSummary>
                                   <AccordionDetails>
                                     <Stack spacing={1}>
-                                      {getUpgradeGroupsForModel(modelId).map(
-                                        upgradeGroup => {
-                                          if (!upgradeGroup) return null;
+                                      {/* Render upgrade groups from the model */}
+                                      {modelUpgradeGroups.map(upgradeGroup => {
+                                        if (!upgradeGroup) return null;
 
-                                          const isUpgradeGroupExpanded =
-                                            expandedUpgradeGroups[
-                                              upgradeGroup.id
-                                            ] || false;
+                                        const isUpgradeGroupExpanded =
+                                          expandedUpgradeGroups[
+                                            upgradeGroup.id
+                                          ] || false;
 
-                                          return (
-                                            <Accordion
-                                              key={upgradeGroup.id}
-                                              expanded={isUpgradeGroupExpanded}
-                                              onChange={() =>
-                                                setExpandedUpgradeGroups(
-                                                  prev => ({
-                                                    ...prev,
-                                                    [upgradeGroup.id]:
-                                                      !isUpgradeGroupExpanded,
-                                                  })
-                                                )
-                                              }
-                                              sx={{
-                                                '&:before': { display: 'none' },
-                                                border: 1,
-                                                borderColor: 'grey.300',
-                                                bgcolor: 'white',
-                                              }}
+                                        return (
+                                          <Accordion
+                                            key={upgradeGroup.id}
+                                            expanded={isUpgradeGroupExpanded}
+                                            onChange={() =>
+                                              setExpandedUpgradeGroups(
+                                                prev => ({
+                                                  ...prev,
+                                                  [upgradeGroup.id]:
+                                                    !isUpgradeGroupExpanded,
+                                                })
+                                              )
+                                            }
+                                            sx={{
+                                              '&:before': { display: 'none' },
+                                              border: 1,
+                                              borderColor: 'grey.300',
+                                              bgcolor: 'white',
+                                            }}
+                                          >
+                                            <AccordionSummary
+                                              expandIcon={<ExpandMore />}
                                             >
-                                              <AccordionSummary
-                                                expandIcon={<ExpandMore />}
+                                              <Box
+                                                sx={{
+                                                  display: 'flex',
+                                                  justifyContent:
+                                                    'space-between',
+                                                  alignItems: 'center',
+                                                  width: '100%',
+                                                }}
                                               >
-                                                <Box
-                                                  sx={{
-                                                    display: 'flex',
-                                                    justifyContent:
-                                                      'space-between',
-                                                    alignItems: 'center',
-                                                    width: '100%',
-                                                  }}
-                                                >
-                                                  <Typography
-                                                    variant="body2"
-                                                    fontWeight="medium"
-                                                  >
-                                                    {upgradeGroup.name}
-                                                  </Typography>
-                                                </Box>
-                                              </AccordionSummary>
-                                              <AccordionDetails>
                                                 <Typography
                                                   variant="body2"
-                                                  color="text.secondary"
-                                                  sx={{ mb: 2 }}
+                                                  fontWeight="medium"
                                                 >
-                                                  {upgradeGroup.description}
+                                                  {upgradeGroup.name}
                                                 </Typography>
+                                              </Box>
+                                            </AccordionSummary>
+                                            <AccordionDetails>
+                                              <Typography
+                                                variant="body2"
+                                                color="text.secondary"
+                                                sx={{ mb: 2 }}
+                                              >
+                                                {upgradeGroup.description}
+                                              </Typography>
 
-                                                {/* Upgrades in this group */}
+                                              {/* Upgrades in this group */}
+                                              <Stack spacing={1}>
+                                                {upgradeGroup.upgrades.map(
+                                                  (upgradeId: string) => {
+                                                    const upgrade =
+                                                      DataLoader.getUpgradeById(
+                                                        upgradeId
+                                                      );
+                                                    if (!upgrade) return null;
+
+                                                    // Find detachment to get faction/subfaction information
+                                                    const detachment =
+                                                      armyList.detachments.find(
+                                                        d =>
+                                                          d.id === detachmentId
+                                                      );
+
+                                                    // Create validation context for this model
+                                                    const validationContext: UpgradeValidationContext =
+                                                      {
+                                                        selectedUpgrades,
+                                                        previewModels: {
+                                                          [modelId]: modelCount,
+                                                        },
+                                                        baseUnitData,
+                                                        allegiance:
+                                                          armyList.allegiance,
+                                                        legion: detachment
+                                                          ? getEffectiveSubfaction(
+                                                              armyList,
+                                                              detachment
+                                                            )
+                                                          : undefined,
+                                                      };
+
+                                                    const maxCount =
+                                                      UpgradeValidator.getMaxCount(
+                                                        upgrade,
+                                                        validationContext
+                                                      );
+                                                    const isAvailable =
+                                                      UpgradeValidator.isUpgradeAvailable(
+                                                        upgrade,
+                                                        validationContext
+                                                      );
+                                                    const currentCount =
+                                                      selectedUpgrades
+                                                        .filter(
+                                                          u =>
+                                                            u.upgradeId ===
+                                                            upgrade.id
+                                                        )
+                                                        .reduce(
+                                                          (sum, u) =>
+                                                            sum + u.count,
+                                                          0
+                                                        );
+
+                                                    return (
+                                                      <Box
+                                                        key={upgrade.id}
+                                                        sx={{
+                                                          p: 2,
+                                                          border: 1,
+                                                          borderColor:
+                                                            'primary.main',
+                                                          borderRadius: 1,
+                                                          bgcolor: 'primary.50',
+                                                        }}
+                                                      >
+                                                        <Typography
+                                                          variant="body2"
+                                                          fontWeight="medium"
+                                                          gutterBottom
+                                                        >
+                                                          {upgrade.name}
+                                                        </Typography>
+                                                        <Typography
+                                                          variant="body2"
+                                                          color="text.secondary"
+                                                          sx={{ mb: 1 }}
+                                                        >
+                                                          {upgrade.description}
+                                                        </Typography>
+
+                                                        {/* Upgrade Options */}
+                                                        {upgrade.options &&
+                                                        upgrade.options.length >
+                                                          0 ? (
+                                                          <Stack spacing={1}>
+                                                            {upgrade.options.map(
+                                                              option => {
+                                                                const optionCount =
+                                                                  selectedUpgrades
+                                                                    .filter(
+                                                                      u =>
+                                                                        u.upgradeId ===
+                                                                          upgrade.id &&
+                                                                        u.optionId ===
+                                                                          option.id
+                                                                    )
+                                                                    .reduce(
+                                                                      (
+                                                                        sum,
+                                                                        u
+                                                                      ) =>
+                                                                        sum +
+                                                                        u.count,
+                                                                      0
+                                                                    );
+
+                                                                return (
+                                                                  <Box
+                                                                    key={
+                                                                      option.id
+                                                                    }
+                                                                    sx={{
+                                                                      p: 1,
+                                                                      border: 1,
+                                                                      borderColor:
+                                                                        'secondary.main',
+                                                                      borderRadius: 1,
+                                                                      bgcolor:
+                                                                        'secondary.50',
+                                                                    }}
+                                                                  >
+                                                                    <Box
+                                                                      sx={{
+                                                                        display:
+                                                                          'flex',
+                                                                        justifyContent:
+                                                                          'space-between',
+                                                                        alignItems:
+                                                                          'center',
+                                                                      }}
+                                                                    >
+                                                                      <Box>
+                                                                        <Typography
+                                                                          variant="body2"
+                                                                          fontWeight="medium"
+                                                                        >
+                                                                          {
+                                                                            option.name
+                                                                          }
+                                                                        </Typography>
+                                                                        <Typography
+                                                                          variant="body2"
+                                                                          color="text.secondary"
+                                                                        >
+                                                                          {
+                                                                            option.description
+                                                                          }
+                                                                        </Typography>
+                                                                        <Typography
+                                                                          variant="body2"
+                                                                          color="primary"
+                                                                        >
+                                                                          {
+                                                                            option.points
+                                                                          }{' '}
+                                                                          points
+                                                                          each
+                                                                        </Typography>
+                                                                      </Box>
+                                                                      <Box
+                                                                        sx={{
+                                                                          display:
+                                                                            'flex',
+                                                                          alignItems:
+                                                                            'center',
+                                                                          gap: 1,
+                                                                        }}
+                                                                      >
+                                                                        <IconButton
+                                                                          size="small"
+                                                                          disabled={
+                                                                            !isAvailable ||
+                                                                            optionCount <=
+                                                                              0
+                                                                          }
+                                                                          onClick={() => {
+                                                                            const newUpgrades =
+                                                                              [
+                                                                                ...selectedUpgrades,
+                                                                              ];
+                                                                            const existingIndex =
+                                                                              newUpgrades.findIndex(
+                                                                                u =>
+                                                                                  u.upgradeId ===
+                                                                                    upgrade.id &&
+                                                                                  u.optionId ===
+                                                                                    option.id
+                                                                              );
+                                                                            if (
+                                                                              existingIndex >=
+                                                                              0
+                                                                            ) {
+                                                                              if (
+                                                                                newUpgrades[
+                                                                                  existingIndex
+                                                                                ]
+                                                                                  .count >
+                                                                                1
+                                                                              ) {
+                                                                                newUpgrades[
+                                                                                  existingIndex
+                                                                                ]
+                                                                                  .count--;
+                                                                              } else {
+                                                                                newUpgrades.splice(
+                                                                                  existingIndex,
+                                                                                  1
+                                                                                );
+                                                                              }
+                                                                            }
+                                                                            setSelectedUpgrades(
+                                                                              newUpgrades
+                                                                            );
+                                                                            saveUpgrades(
+                                                                              newUpgrades
+                                                                            );
+                                                                          }}
+                                                                        >
+                                                                          <Remove />
+                                                                        </IconButton>
+                                                                        <Typography
+                                                                          variant="body2"
+                                                                          sx={{
+                                                                            minWidth: 30,
+                                                                            textAlign:
+                                                                              'center',
+                                                                          }}
+                                                                        >
+                                                                          {
+                                                                            optionCount
+                                                                          }
+                                                                        </Typography>
+                                                                        <IconButton
+                                                                          size="small"
+                                                                          disabled={
+                                                                            !isAvailable ||
+                                                                            optionCount >=
+                                                                              maxCount
+                                                                          }
+                                                                          onClick={() => {
+                                                                            const newUpgrades =
+                                                                              [
+                                                                                ...selectedUpgrades,
+                                                                              ];
+                                                                            const existingIndex =
+                                                                              newUpgrades.findIndex(
+                                                                                u =>
+                                                                                  u.upgradeId ===
+                                                                                    upgrade.id &&
+                                                                                  u.optionId ===
+                                                                                    option.id
+                                                                              );
+                                                                            if (
+                                                                              existingIndex >=
+                                                                              0
+                                                                            ) {
+                                                                              newUpgrades[
+                                                                                existingIndex
+                                                                              ]
+                                                                                .count++;
+                                                                            } else {
+                                                                              newUpgrades.push(
+                                                                                {
+                                                                                  upgradeId:
+                                                                                    upgrade.id,
+                                                                                  optionId:
+                                                                                    option.id,
+                                                                                  count: 1,
+                                                                                  points:
+                                                                                    option.points,
+                                                                                }
+                                                                              );
+                                                                            }
+                                                                            setSelectedUpgrades(
+                                                                              newUpgrades
+                                                                            );
+                                                                            saveUpgrades(
+                                                                              newUpgrades
+                                                                            );
+                                                                          }}
+                                                                        >
+                                                                          <Add />
+                                                                        </IconButton>
+                                                                      </Box>
+                                                                    </Box>
+                                                                  </Box>
+                                                                );
+                                                              }
+                                                            )}
+                                                          </Stack>
+                                                        ) : (
+                                                          /* Simple upgrade without options */
+                                                          <Box
+                                                            sx={{
+                                                              display: 'flex',
+                                                              justifyContent:
+                                                                'space-between',
+                                                              alignItems:
+                                                                'center',
+                                                            }}
+                                                          >
+                                                            <Typography
+                                                              variant="body2"
+                                                              color="primary"
+                                                            >
+                                                              {upgrade.maxCount ===
+                                                              'dependent'
+                                                                ? 'Variable'
+                                                                : upgrade.maxCount ||
+                                                                  1}{' '}
+                                                              available
+                                                            </Typography>
+                                                            <Box
+                                                              sx={{
+                                                                display: 'flex',
+                                                                alignItems:
+                                                                  'center',
+                                                                gap: 1,
+                                                              }}
+                                                            >
+                                                              <IconButton
+                                                                size="small"
+                                                                disabled={
+                                                                  !isAvailable ||
+                                                                  currentCount <=
+                                                                    0
+                                                                }
+                                                                onClick={() => {
+                                                                  const newUpgrades =
+                                                                    [
+                                                                      ...selectedUpgrades,
+                                                                    ];
+                                                                  const existingIndex =
+                                                                    newUpgrades.findIndex(
+                                                                      u =>
+                                                                        u.upgradeId ===
+                                                                        upgrade.id
+                                                                    );
+                                                                  if (
+                                                                    existingIndex >=
+                                                                    0
+                                                                  ) {
+                                                                    if (
+                                                                      newUpgrades[
+                                                                        existingIndex
+                                                                      ].count >
+                                                                      1
+                                                                    ) {
+                                                                      newUpgrades[
+                                                                        existingIndex
+                                                                      ].count--;
+                                                                    } else {
+                                                                      newUpgrades.splice(
+                                                                        existingIndex,
+                                                                        1
+                                                                      );
+                                                                    }
+                                                                  }
+                                                                  setSelectedUpgrades(
+                                                                    newUpgrades
+                                                                  );
+                                                                  saveUpgrades(
+                                                                    newUpgrades
+                                                                  );
+                                                                }}
+                                                              >
+                                                                <Remove />
+                                                              </IconButton>
+                                                              <Typography
+                                                                variant="body2"
+                                                                sx={{
+                                                                  minWidth: 30,
+                                                                  textAlign:
+                                                                    'center',
+                                                                }}
+                                                              >
+                                                                {currentCount}
+                                                              </Typography>
+                                                              <IconButton
+                                                                size="small"
+                                                                disabled={
+                                                                  !isAvailable ||
+                                                                  currentCount >=
+                                                                    maxCount
+                                                                }
+                                                                onClick={() => {
+                                                                  const newUpgrades =
+                                                                    [
+                                                                      ...selectedUpgrades,
+                                                                    ];
+                                                                  const existingIndex =
+                                                                    newUpgrades.findIndex(
+                                                                      u =>
+                                                                        u.upgradeId ===
+                                                                        upgrade.id
+                                                                    );
+                                                                  if (
+                                                                    existingIndex >=
+                                                                    0
+                                                                  ) {
+                                                                    newUpgrades[
+                                                                      existingIndex
+                                                                    ].count++;
+                                                                  } else {
+                                                                    newUpgrades.push(
+                                                                      {
+                                                                        upgradeId:
+                                                                          upgrade.id,
+                                                                        count: 1,
+                                                                        points: 0,
+                                                                      }
+                                                                    );
+                                                                  }
+                                                                  setSelectedUpgrades(
+                                                                    newUpgrades
+                                                                  );
+                                                                  saveUpgrades(
+                                                                    newUpgrades
+                                                                  );
+                                                                }}
+                                                              >
+                                                                <Add />
+                                                              </IconButton>
+                                                            </Box>
+                                                          </Box>
+                                                        )}
+
+                                                        {/* Availability Status */}
+                                                        {!isAvailable && (
+                                                          <Alert
+                                                            severity="warning"
+                                                            sx={{ mt: 1 }}
+                                                          >
+                                                            This upgrade is not
+                                                            currently available.
+                                                          </Alert>
+                                                        )}
+                                                      </Box>
+                                                    );
+                                                  }
+                                                )}
+                                              </Stack>
+                                            </AccordionDetails>
+                                          </Accordion>
+                                        );
+                                      })}
+
+                                      {/* Render direct upgrade IDs from unit's modelUpgrades */}
+                                      {directUpgradeIds.map(upgradeId => {
+                                        const upgrade =
+                                          DataLoader.getUpgradeById(upgradeId);
+                                        if (!upgrade) return null;
+
+                                        // Find detachment to get faction/subfaction information
+                                        const detachment =
+                                          armyList.detachments.find(
+                                            d => d.id === detachmentId
+                                          );
+
+                                        // Create validation context for this model
+                                        const validationContext: UpgradeValidationContext =
+                                          {
+                                            selectedUpgrades,
+                                            previewModels: {
+                                              [modelId]: modelCount,
+                                            },
+                                            baseUnitData,
+                                            allegiance: armyList.allegiance,
+                                            legion: detachment
+                                              ? getEffectiveSubfaction(
+                                                  armyList,
+                                                  detachment
+                                                )
+                                              : undefined,
+                                          };
+
+                                        const maxCount =
+                                          UpgradeValidator.getMaxCount(
+                                            upgrade,
+                                            validationContext
+                                          );
+                                        const isAvailable =
+                                          UpgradeValidator.isUpgradeAvailable(
+                                            upgrade,
+                                            validationContext
+                                          );
+                                        const currentCount = selectedUpgrades
+                                          .filter(
+                                            u => u.upgradeId === upgrade.id
+                                          )
+                                          .reduce((sum, u) => sum + u.count, 0);
+
+                                        const isUpgradeExpanded =
+                                          expandedUpgradeGroups[upgrade.id] ||
+                                          false;
+
+                                        return (
+                                          <Accordion
+                                            key={upgrade.id}
+                                            expanded={isUpgradeExpanded}
+                                            onChange={() =>
+                                              setExpandedUpgradeGroups(
+                                                prev => ({
+                                                  ...prev,
+                                                  [upgrade.id]:
+                                                    !isUpgradeExpanded,
+                                                })
+                                              )
+                                            }
+                                            sx={{
+                                              '&:before': { display: 'none' },
+                                              border: 1,
+                                              borderColor: 'grey.300',
+                                              bgcolor: 'white',
+                                            }}
+                                          >
+                                            <AccordionSummary
+                                              expandIcon={<ExpandMore />}
+                                            >
+                                              <Box
+                                                sx={{
+                                                  display: 'flex',
+                                                  justifyContent:
+                                                    'space-between',
+                                                  alignItems: 'center',
+                                                  width: '100%',
+                                                }}
+                                              >
+                                                <Typography
+                                                  variant="body2"
+                                                  fontWeight="medium"
+                                                >
+                                                  {upgrade.name}
+                                                </Typography>
+                                              </Box>
+                                            </AccordionSummary>
+                                            <AccordionDetails>
+                                              <Typography
+                                                variant="body2"
+                                                color="text.secondary"
+                                                sx={{ mb: 2 }}
+                                              >
+                                                {upgrade.description}
+                                              </Typography>
+
+                                              {/* Upgrade Options */}
+                                              {upgrade.options &&
+                                              upgrade.options.length > 0 ? (
                                                 <Stack spacing={1}>
-                                                  {upgradeGroup.upgrades.map(
-                                                    (upgradeId: string) => {
-                                                      const upgrade =
-                                                        DataLoader.getUpgradeById(
-                                                          upgradeId
-                                                        );
-                                                      if (!upgrade) return null;
-
-                                                      // Create validation context for this model
-                                                      const validationContext: UpgradeValidationContext =
-                                                        {
-                                                          selectedUpgrades,
-                                                          previewModels: {
-                                                            [modelId]:
-                                                              modelCount,
-                                                          },
-                                                          baseUnitData,
-                                                        };
-
-                                                      const maxCount =
-                                                        UpgradeValidator.getMaxCount(
-                                                          upgrade,
-                                                          validationContext
-                                                        );
-                                                      const isAvailable =
-                                                        UpgradeValidator.isUpgradeAvailable(
-                                                          upgrade,
-                                                          validationContext
-                                                        );
-                                                      const currentCount =
+                                                  {upgrade.options.map(
+                                                    option => {
+                                                      const optionCount =
                                                         selectedUpgrades
                                                           .filter(
                                                             u =>
                                                               u.upgradeId ===
-                                                              upgrade.id
+                                                                upgrade.id &&
+                                                              u.optionId ===
+                                                                option.id
                                                           )
                                                           .reduce(
                                                             (sum, u) =>
@@ -1191,405 +2183,313 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
 
                                                       return (
                                                         <Box
-                                                          key={upgrade.id}
+                                                          key={option.id}
                                                           sx={{
-                                                            p: 2,
+                                                            p: 1,
                                                             border: 1,
                                                             borderColor:
-                                                              'primary.main',
+                                                              'secondary.main',
                                                             borderRadius: 1,
                                                             bgcolor:
-                                                              'primary.50',
+                                                              'secondary.50',
                                                           }}
                                                         >
-                                                          <Typography
-                                                            variant="body2"
-                                                            fontWeight="medium"
-                                                            gutterBottom
+                                                          <Box
+                                                            sx={{
+                                                              display: 'flex',
+                                                              justifyContent:
+                                                                'space-between',
+                                                              alignItems:
+                                                                'center',
+                                                            }}
                                                           >
-                                                            {upgrade.name}
-                                                          </Typography>
-                                                          <Typography
-                                                            variant="body2"
-                                                            color="text.secondary"
-                                                            sx={{ mb: 1 }}
-                                                          >
-                                                            {
-                                                              upgrade.description
-                                                            }
-                                                          </Typography>
-
-                                                          {/* Upgrade Options */}
-                                                          {upgrade.options &&
-                                                          upgrade.options
-                                                            .length > 0 ? (
-                                                            <Stack spacing={1}>
-                                                              {upgrade.options.map(
-                                                                option => {
-                                                                  const optionCount =
-                                                                    selectedUpgrades
-                                                                      .filter(
-                                                                        u =>
-                                                                          u.upgradeId ===
-                                                                            upgrade.id &&
-                                                                          u.optionId ===
-                                                                            option.id
-                                                                      )
-                                                                      .reduce(
-                                                                        (
-                                                                          sum,
-                                                                          u
-                                                                        ) =>
-                                                                          sum +
-                                                                          u.count,
-                                                                        0
-                                                                      );
-
-                                                                  return (
-                                                                    <Box
-                                                                      key={
-                                                                        option.id
-                                                                      }
-                                                                      sx={{
-                                                                        p: 1,
-                                                                        border: 1,
-                                                                        borderColor:
-                                                                          'secondary.main',
-                                                                        borderRadius: 1,
-                                                                        bgcolor:
-                                                                          'secondary.50',
-                                                                      }}
-                                                                    >
-                                                                      <Box
-                                                                        sx={{
-                                                                          display:
-                                                                            'flex',
-                                                                          justifyContent:
-                                                                            'space-between',
-                                                                          alignItems:
-                                                                            'center',
-                                                                        }}
-                                                                      >
-                                                                        <Box>
-                                                                          <Typography
-                                                                            variant="body2"
-                                                                            fontWeight="medium"
-                                                                          >
-                                                                            {
-                                                                              option.name
-                                                                            }
-                                                                          </Typography>
-                                                                          <Typography
-                                                                            variant="body2"
-                                                                            color="text.secondary"
-                                                                          >
-                                                                            {
-                                                                              option.description
-                                                                            }
-                                                                          </Typography>
-                                                                          <Typography
-                                                                            variant="body2"
-                                                                            color="primary"
-                                                                          >
-                                                                            {
-                                                                              option.points
-                                                                            }{' '}
-                                                                            points
-                                                                            each
-                                                                          </Typography>
-                                                                        </Box>
-                                                                        <Box
-                                                                          sx={{
-                                                                            display:
-                                                                              'flex',
-                                                                            alignItems:
-                                                                              'center',
-                                                                            gap: 1,
-                                                                          }}
-                                                                        >
-                                                                          <IconButton
-                                                                            size="small"
-                                                                            disabled={
-                                                                              !isAvailable ||
-                                                                              optionCount <=
-                                                                                0
-                                                                            }
-                                                                            onClick={() => {
-                                                                              const newUpgrades =
-                                                                                [
-                                                                                  ...selectedUpgrades,
-                                                                                ];
-                                                                              const existingIndex =
-                                                                                newUpgrades.findIndex(
-                                                                                  u =>
-                                                                                    u.upgradeId ===
-                                                                                      upgrade.id &&
-                                                                                    u.optionId ===
-                                                                                      option.id
-                                                                                );
-                                                                              if (
-                                                                                existingIndex >=
-                                                                                0
-                                                                              ) {
-                                                                                if (
-                                                                                  newUpgrades[
-                                                                                    existingIndex
-                                                                                  ]
-                                                                                    .count >
-                                                                                  1
-                                                                                ) {
-                                                                                  newUpgrades[
-                                                                                    existingIndex
-                                                                                  ]
-                                                                                    .count--;
-                                                                                } else {
-                                                                                  newUpgrades.splice(
-                                                                                    existingIndex,
-                                                                                    1
-                                                                                  );
-                                                                                }
-                                                                              }
-                                                                              setSelectedUpgrades(
-                                                                                newUpgrades
-                                                                              );
-                                                                              saveUpgrades(
-                                                                                newUpgrades
-                                                                              );
-                                                                            }}
-                                                                          >
-                                                                            <Remove />
-                                                                          </IconButton>
-                                                                          <Typography
-                                                                            variant="body2"
-                                                                            sx={{
-                                                                              minWidth: 30,
-                                                                              textAlign:
-                                                                                'center',
-                                                                            }}
-                                                                          >
-                                                                            {
-                                                                              optionCount
-                                                                            }
-                                                                          </Typography>
-                                                                          <IconButton
-                                                                            size="small"
-                                                                            disabled={
-                                                                              !isAvailable ||
-                                                                              optionCount >=
-                                                                                maxCount
-                                                                            }
-                                                                            onClick={() => {
-                                                                              const newUpgrades =
-                                                                                [
-                                                                                  ...selectedUpgrades,
-                                                                                ];
-                                                                              const existingIndex =
-                                                                                newUpgrades.findIndex(
-                                                                                  u =>
-                                                                                    u.upgradeId ===
-                                                                                      upgrade.id &&
-                                                                                    u.optionId ===
-                                                                                      option.id
-                                                                                );
-                                                                              if (
-                                                                                existingIndex >=
-                                                                                0
-                                                                              ) {
-                                                                                newUpgrades[
-                                                                                  existingIndex
-                                                                                ]
-                                                                                  .count++;
-                                                                              } else {
-                                                                                newUpgrades.push(
-                                                                                  {
-                                                                                    upgradeId:
-                                                                                      upgrade.id,
-                                                                                    optionId:
-                                                                                      option.id,
-                                                                                    count: 1,
-                                                                                    points:
-                                                                                      option.points,
-                                                                                  }
-                                                                                );
-                                                                              }
-                                                                              setSelectedUpgrades(
-                                                                                newUpgrades
-                                                                              );
-                                                                              saveUpgrades(
-                                                                                newUpgrades
-                                                                              );
-                                                                            }}
-                                                                          >
-                                                                            <Add />
-                                                                          </IconButton>
-                                                                        </Box>
-                                                                      </Box>
-                                                                    </Box>
-                                                                  );
+                                                            <Box>
+                                                              <Typography
+                                                                variant="body2"
+                                                                fontWeight="medium"
+                                                              >
+                                                                {option.name}
+                                                              </Typography>
+                                                              <Typography
+                                                                variant="body2"
+                                                                color="text.secondary"
+                                                              >
+                                                                {
+                                                                  option.description
                                                                 }
-                                                              )}
-                                                            </Stack>
-                                                          ) : (
-                                                            /* Simple upgrade without options */
-                                                            <Box
-                                                              sx={{
-                                                                display: 'flex',
-                                                                justifyContent:
-                                                                  'space-between',
-                                                                alignItems:
-                                                                  'center',
-                                                              }}
-                                                            >
+                                                              </Typography>
                                                               <Typography
                                                                 variant="body2"
                                                                 color="primary"
                                                               >
-                                                                {upgrade.maxCount ===
-                                                                'dependent'
-                                                                  ? 'Variable'
-                                                                  : upgrade.maxCount ||
-                                                                    1}{' '}
-                                                                available
+                                                                {option.points}{' '}
+                                                                points each
                                                               </Typography>
-                                                              <Box
-                                                                sx={{
-                                                                  display:
-                                                                    'flex',
-                                                                  alignItems:
-                                                                    'center',
-                                                                  gap: 1,
-                                                                }}
-                                                              >
-                                                                <IconButton
-                                                                  size="small"
-                                                                  disabled={
-                                                                    !isAvailable ||
-                                                                    currentCount <=
-                                                                      0
-                                                                  }
-                                                                  onClick={() => {
-                                                                    const newUpgrades =
-                                                                      [
-                                                                        ...selectedUpgrades,
-                                                                      ];
-                                                                    const existingIndex =
-                                                                      newUpgrades.findIndex(
-                                                                        u =>
-                                                                          u.upgradeId ===
-                                                                          upgrade.id
-                                                                      );
-                                                                    if (
-                                                                      existingIndex >=
-                                                                      0
-                                                                    ) {
-                                                                      if (
-                                                                        newUpgrades[
-                                                                          existingIndex
-                                                                        ]
-                                                                          .count >
-                                                                        1
-                                                                      ) {
-                                                                        newUpgrades[
-                                                                          existingIndex
-                                                                        ]
-                                                                          .count--;
-                                                                      } else {
-                                                                        newUpgrades.splice(
-                                                                          existingIndex,
-                                                                          1
-                                                                        );
-                                                                      }
-                                                                    }
-                                                                    setSelectedUpgrades(
-                                                                      newUpgrades
+                                                            </Box>
+                                                            <Box
+                                                              sx={{
+                                                                display: 'flex',
+                                                                alignItems:
+                                                                  'center',
+                                                                gap: 1,
+                                                              }}
+                                                            >
+                                                              <IconButton
+                                                                size="small"
+                                                                disabled={
+                                                                  !isAvailable ||
+                                                                  optionCount <=
+                                                                    0
+                                                                }
+                                                                onClick={() => {
+                                                                  const newUpgrades =
+                                                                    [
+                                                                      ...selectedUpgrades,
+                                                                    ];
+                                                                  const existingIndex =
+                                                                    newUpgrades.findIndex(
+                                                                      u =>
+                                                                        u.upgradeId ===
+                                                                          upgrade.id &&
+                                                                        u.optionId ===
+                                                                          option.id
                                                                     );
-                                                                    saveUpgrades(
-                                                                      newUpgrades
-                                                                    );
-                                                                  }}
-                                                                >
-                                                                  <Remove />
-                                                                </IconButton>
-                                                                <Typography
-                                                                  variant="body2"
-                                                                  sx={{
-                                                                    minWidth: 30,
-                                                                    textAlign:
-                                                                      'center',
-                                                                  }}
-                                                                >
-                                                                  {currentCount}
-                                                                </Typography>
-                                                                <IconButton
-                                                                  size="small"
-                                                                  disabled={
-                                                                    !isAvailable ||
-                                                                    currentCount >=
-                                                                      maxCount
-                                                                  }
-                                                                  onClick={() => {
-                                                                    const newUpgrades =
-                                                                      [
-                                                                        ...selectedUpgrades,
-                                                                      ];
-                                                                    const existingIndex =
-                                                                      newUpgrades.findIndex(
-                                                                        u =>
-                                                                          u.upgradeId ===
-                                                                          upgrade.id
-                                                                      );
+                                                                  if (
+                                                                    existingIndex >=
+                                                                    0
+                                                                  ) {
                                                                     if (
-                                                                      existingIndex >=
-                                                                      0
+                                                                      newUpgrades[
+                                                                        existingIndex
+                                                                      ].count >
+                                                                      1
                                                                     ) {
                                                                       newUpgrades[
                                                                         existingIndex
-                                                                      ].count++;
+                                                                      ].count--;
                                                                     } else {
-                                                                      newUpgrades.push(
-                                                                        {
-                                                                          upgradeId:
-                                                                            upgrade.id,
-                                                                          count: 1,
-                                                                          points: 0,
-                                                                        }
+                                                                      newUpgrades.splice(
+                                                                        existingIndex,
+                                                                        1
                                                                       );
                                                                     }
-                                                                    setSelectedUpgrades(
-                                                                      newUpgrades
+                                                                  }
+                                                                  setSelectedUpgrades(
+                                                                    newUpgrades
+                                                                  );
+                                                                  saveUpgrades(
+                                                                    newUpgrades
+                                                                  );
+                                                                }}
+                                                              >
+                                                                <Remove />
+                                                              </IconButton>
+                                                              <Typography
+                                                                variant="body2"
+                                                                sx={{
+                                                                  minWidth: 30,
+                                                                  textAlign:
+                                                                    'center',
+                                                                }}
+                                                              >
+                                                                {optionCount}
+                                                              </Typography>
+                                                              <IconButton
+                                                                size="small"
+                                                                disabled={
+                                                                  !isAvailable ||
+                                                                  optionCount >=
+                                                                    maxCount
+                                                                }
+                                                                onClick={() => {
+                                                                  const newUpgrades =
+                                                                    [
+                                                                      ...selectedUpgrades,
+                                                                    ];
+                                                                  const existingIndex =
+                                                                    newUpgrades.findIndex(
+                                                                      u =>
+                                                                        u.upgradeId ===
+                                                                          upgrade.id &&
+                                                                        u.optionId ===
+                                                                          option.id
                                                                     );
-                                                                    saveUpgrades(
-                                                                      newUpgrades
+                                                                  if (
+                                                                    existingIndex >=
+                                                                    0
+                                                                  ) {
+                                                                    newUpgrades[
+                                                                      existingIndex
+                                                                    ].count++;
+                                                                  } else {
+                                                                    newUpgrades.push(
+                                                                      {
+                                                                        upgradeId:
+                                                                          upgrade.id,
+                                                                        optionId:
+                                                                          option.id,
+                                                                        count: 1,
+                                                                        points:
+                                                                          option.points,
+                                                                      }
                                                                     );
-                                                                  }}
-                                                                >
-                                                                  <Add />
-                                                                </IconButton>
-                                                              </Box>
+                                                                  }
+                                                                  setSelectedUpgrades(
+                                                                    newUpgrades
+                                                                  );
+                                                                  saveUpgrades(
+                                                                    newUpgrades
+                                                                  );
+                                                                }}
+                                                              >
+                                                                <Add />
+                                                              </IconButton>
                                                             </Box>
-                                                          )}
-
-                                                          {/* Availability Status */}
-                                                          {!isAvailable && (
-                                                            <Alert
-                                                              severity="warning"
-                                                              sx={{ mt: 1 }}
-                                                            >
-                                                              This upgrade is
-                                                              not currently
-                                                              available.
-                                                            </Alert>
-                                                          )}
+                                                          </Box>
                                                         </Box>
                                                       );
                                                     }
                                                   )}
                                                 </Stack>
-                                              </AccordionDetails>
-                                            </Accordion>
-                                          );
-                                        }
-                                      )}
+                                              ) : (
+                                                /* Simple upgrade without options */
+                                                <Box
+                                                  sx={{
+                                                    display: 'flex',
+                                                    justifyContent:
+                                                      'space-between',
+                                                    alignItems: 'center',
+                                                  }}
+                                                >
+                                                  <Typography
+                                                    variant="body2"
+                                                    color="primary"
+                                                  >
+                                                    {upgrade.maxCount ===
+                                                    'dependent'
+                                                      ? 'Variable'
+                                                      : upgrade.maxCount ||
+                                                        1}{' '}
+                                                    available
+                                                  </Typography>
+                                                  <Box
+                                                    sx={{
+                                                      display: 'flex',
+                                                      alignItems: 'center',
+                                                      gap: 1,
+                                                    }}
+                                                  >
+                                                    <IconButton
+                                                      size="small"
+                                                      disabled={
+                                                        !isAvailable ||
+                                                        currentCount <= 0
+                                                      }
+                                                      onClick={() => {
+                                                        const newUpgrades = [
+                                                          ...selectedUpgrades,
+                                                        ];
+                                                        const existingIndex =
+                                                          newUpgrades.findIndex(
+                                                            u =>
+                                                              u.upgradeId ===
+                                                              upgrade.id
+                                                          );
+                                                        if (
+                                                          existingIndex >= 0
+                                                        ) {
+                                                          if (
+                                                            newUpgrades[
+                                                              existingIndex
+                                                            ].count > 1
+                                                          ) {
+                                                            newUpgrades[
+                                                              existingIndex
+                                                            ].count--;
+                                                          } else {
+                                                            newUpgrades.splice(
+                                                              existingIndex,
+                                                              1
+                                                            );
+                                                          }
+                                                        }
+                                                        setSelectedUpgrades(
+                                                          newUpgrades
+                                                        );
+                                                        saveUpgrades(
+                                                          newUpgrades
+                                                        );
+                                                      }}
+                                                    >
+                                                      <Remove />
+                                                    </IconButton>
+                                                    <Typography
+                                                      variant="body2"
+                                                      sx={{
+                                                        minWidth: 30,
+                                                        textAlign: 'center',
+                                                      }}
+                                                    >
+                                                      {currentCount}
+                                                    </Typography>
+                                                    <IconButton
+                                                      size="small"
+                                                      disabled={
+                                                        !isAvailable ||
+                                                        currentCount >= maxCount
+                                                      }
+                                                      onClick={() => {
+                                                        const newUpgrades = [
+                                                          ...selectedUpgrades,
+                                                        ];
+                                                        const existingIndex =
+                                                          newUpgrades.findIndex(
+                                                            u =>
+                                                              u.upgradeId ===
+                                                              upgrade.id
+                                                          );
+                                                        if (
+                                                          existingIndex >= 0
+                                                        ) {
+                                                          newUpgrades[
+                                                            existingIndex
+                                                          ].count++;
+                                                        } else {
+                                                          newUpgrades.push({
+                                                            upgradeId:
+                                                              upgrade.id,
+                                                            count: 1,
+                                                            points: 0,
+                                                          });
+                                                        }
+                                                        setSelectedUpgrades(
+                                                          newUpgrades
+                                                        );
+                                                        saveUpgrades(
+                                                          newUpgrades
+                                                        );
+                                                      }}
+                                                    >
+                                                      <Add />
+                                                    </IconButton>
+                                                  </Box>
+                                                </Box>
+                                              )}
+
+                                              {/* Availability Status */}
+                                              {!isAvailable && (
+                                                <Alert
+                                                  severity="warning"
+                                                  sx={{ mt: 1 }}
+                                                >
+                                                  This upgrade is not currently
+                                                  available.
+                                                </Alert>
+                                              )}
+                                            </AccordionDetails>
+                                          </Accordion>
+                                        );
+                                      })}
                                     </Stack>
                                   </AccordionDetails>
                                 </Accordion>
@@ -1630,11 +2530,37 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
 
                 {(() => {
                   const primeAdvantages = DataLoader.getPrimeAdvantages();
+
+                  // Get the effective faction and subfaction for this detachment
+                  const detachment = armyList.detachments.find(
+                    d => d.id === detachmentId
+                  );
+                  const effectiveFaction =
+                    detachment?.faction || armyList.faction;
+                  const effectiveSubfaction =
+                    detachment?.subfaction || armyList.subfaction;
+
                   const availableAdvantages = primeAdvantages.filter(
                     advantage => {
                       // Check restrictions based on unit's battlefield role
                       const baseUnit = DataLoader.getUnitById(unit.unitId);
                       if (!baseUnit) return false;
+
+                      // Check faction restrictions
+                      if (
+                        advantage.faction &&
+                        advantage.faction !== effectiveFaction
+                      ) {
+                        return false;
+                      }
+
+                      // Check subfaction restrictions
+                      if (
+                        advantage.subfaction &&
+                        advantage.subfaction !== effectiveSubfaction
+                      ) {
+                        return false;
+                      }
 
                       // Check role-based restrictions
                       if (advantage.restrictions) {
@@ -1698,13 +2624,32 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                                   );
                                 setSelectedPrimeAdvantages(newAdvantages);
 
-                                // Update the unit
-                                const updatedUnit = {
+                                // Apply special rule removal effects
+                                let updatedUnit = {
                                   ...unit,
                                   primeAdvantages: unit.primeAdvantages.filter(
                                     pa => pa.advantageId !== advantage.id
                                   ),
                                 };
+
+                                // Handle "The Unfavoured" - remove Expendable special rule
+                                if (
+                                  advantage.id === 'iron-warriors-unfavoured'
+                                ) {
+                                  updatedUnit = {
+                                    ...updatedUnit,
+                                    specialRules: (
+                                      updatedUnit.specialRules || []
+                                    ).filter(rule => rule !== 'expendable'),
+                                    specialRuleValues: {
+                                      ...(updatedUnit.specialRuleValues || {}),
+                                    },
+                                  };
+                                  // Remove the expendable value
+                                  delete updatedUnit.specialRuleValues
+                                    .expendable;
+                                }
+
                                 onUnitUpdated(slotId, updatedUnit);
                               } else {
                                 // Add the advantage
@@ -1728,14 +2673,32 @@ const UnitManagementModal: React.FC<UnitManagementModalProps> = ({
                                   }),
                                 };
 
-                                // Update the unit
-                                const updatedUnit = {
+                                // Apply special rule effects
+                                let updatedUnit = {
                                   ...unit,
                                   primeAdvantages: [
                                     ...(unit.primeAdvantages || []),
                                     primeAdvantage,
                                   ],
                                 };
+
+                                // Handle "The Unfavoured" - add Expendable special rule
+                                if (
+                                  advantage.id === 'iron-warriors-unfavoured'
+                                ) {
+                                  updatedUnit = {
+                                    ...updatedUnit,
+                                    specialRules: [
+                                      ...(updatedUnit.specialRules || []),
+                                      'expendable',
+                                    ],
+                                    specialRuleValues: {
+                                      ...(updatedUnit.specialRuleValues || {}),
+                                      expendable: 1,
+                                    },
+                                  };
+                                }
+
                                 onUnitUpdated(slotId, updatedUnit);
                               }
                             }}

@@ -5,4 +5,8 @@ import react from '@vitejs/plugin-react-swc';
 export default defineConfig({
   plugins: [react()],
   base: '/heresy-30-list-builder/',
+  define: {
+    // Expose environment variables to the client
+    'process.env': {},
+  },
 });

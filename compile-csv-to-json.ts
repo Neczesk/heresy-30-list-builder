@@ -34,7 +34,8 @@ async function readCSVsForType(type: string): Promise<any[]> {
     const filePath = path.join(csvDir, file);
     const rows: any[] = await new Promise((resolve, reject) => {
       const results: any[] = [];
-      fsSync.createReadStream(filePath)
+      fsSync
+        .createReadStream(filePath)
         .pipe(parse({ headers: true }))
         .on('error', reject)
         .on('data', row => results.push(row))
@@ -96,7 +97,10 @@ function convertStringBooleans(obj: any): any {
     } else {
       const result: any = {};
       for (const [key, value] of Object.entries(obj)) {
-        if (typeof value === 'string' && (value === 'true' || value === 'false')) {
+        if (
+          typeof value === 'string' &&
+          (value === 'true' || value === 'false')
+        ) {
           result[key] = value === 'true';
         } else if (typeof value === 'object' && value !== null) {
           result[key] = convertStringBooleans(value);
@@ -147,7 +151,24 @@ function convertStringNumbers(obj: any): any {
       for (const [key, value] of Object.entries(obj)) {
         if (typeof value === 'string') {
           // Convert numeric strings to numbers for specific fields
-          if (['points', 'maxCount', 'count', 'ap', 'damage', 'firepower', 'range', 'rangedStrength', 'strengthModifier', 'initiativeModifier', 'attackModifier', 'minSize', 'maxSize', 'baseSize'].includes(key)) {
+          if (
+            [
+              'points',
+              'maxCount',
+              'count',
+              'ap',
+              'damage',
+              'firepower',
+              'range',
+              'rangedStrength',
+              'strengthModifier',
+              'initiativeModifier',
+              'attackModifier',
+              'minSize',
+              'maxSize',
+              'baseSize',
+            ].includes(key)
+          ) {
             // Special handling for range field - can be string (template) or number
             if (key === 'range') {
               if (value.toLowerCase().includes('template')) {
@@ -202,7 +223,8 @@ function fillMissingNumericFields(obj: any): any {
       }
 
       // Ensure required fields exist for units
-      if (obj.id && (obj.faction || obj.battlefieldRole)) { // This looks like a unit
+      if (obj.id && (obj.faction || obj.battlefieldRole)) {
+        // This looks like a unit
         if (!('minSize' in result)) result.minSize = 0;
         if (!('maxSize' in result)) result.maxSize = 0;
         if (!('baseSize' in result)) result.baseSize = 0;
@@ -215,25 +237,37 @@ function fillMissingNumericFields(obj: any): any {
   return obj;
 }
 
-function convertSubTypes(obj: any): any {
+function convertArrayFields(obj: any): any {
   if (typeof obj === 'object' && obj !== null) {
     if (Array.isArray(obj)) {
-      return obj.map(convertSubTypes);
+      return obj.map(convertArrayFields);
     } else {
       const result: any = {};
       for (const [key, value] of Object.entries(obj)) {
-        if (key === 'subType' && typeof value === 'string') {
+        if (
+          (key === 'subType' ||
+            key === 'modelTypes' ||
+            key === 'targetModelTypes' ||
+            key === 'requiredWeapons' ||
+            key === 'subfaction' ||
+            key === 'faction' ||
+            key === 'legionSpecific') &&
+          typeof value === 'string'
+        ) {
           if (value === '') {
             result[key] = [];
           } else if (value.includes(',')) {
             // Convert comma-separated values to array
-            result[key] = value.split(',').map((s: string) => s.trim());
+            result[key] = value
+              .split(',')
+              .map((s: string) => s.trim())
+              .filter(s => s !== '');
           } else {
             // Single value becomes array with one element
             result[key] = [value];
           }
         } else if (typeof value === 'object' && value !== null) {
-          result[key] = convertSubTypes(value);
+          result[key] = convertArrayFields(value);
         } else {
           result[key] = value;
         }
@@ -252,8 +286,19 @@ function convertEmptyArrays(obj: any): any {
       const result: any = {};
       for (const [key, value] of Object.entries(obj)) {
         // Convert empty strings to empty arrays for array fields
-        if (typeof value === 'string' && value === '' &&
-            (key === 'traits' || key === 'specialRules' || key === 'profiles' || key === 'upgrades' || key === 'subType')) {
+        if (
+          typeof value === 'string' &&
+          value === '' &&
+          (key === 'traits' ||
+            key === 'specialRules' ||
+            key === 'profiles' ||
+            key === 'upgrades' ||
+            key === 'subType' ||
+            key === 'modelTypes' ||
+            key === 'targetModelTypes' ||
+            key === 'requiredWeapons' ||
+            key === 'legionSpecific')
+        ) {
           result[key] = [];
         } else if (typeof value === 'object' && value !== null) {
           result[key] = convertEmptyArrays(value);
@@ -283,7 +328,12 @@ function cleanWeaponObjects(data: any[]): any[] {
       return meleeWeapon;
     } else if (item.type === 'ranged' || item.type === 'ranged-profile') {
       // For ranged weapons, remove melee weapon fields but keep ranged-specific fields
-      const { initiativeModifier, attackModifier, strengthModifier, ...rangedWeapon } = cleaned;
+      const {
+        initiativeModifier,
+        attackModifier,
+        strengthModifier,
+        ...rangedWeapon
+      } = cleaned;
       return rangedWeapon;
     }
     return cleaned;
@@ -297,8 +347,8 @@ async function writeJSON(type: string, data: any[]) {
   const booleanConvertedData = convertStringBooleans(numberConvertedData);
   const hasValueConvertedData = convertHasValueFields(booleanConvertedData);
   const filledData = fillMissingNumericFields(hasValueConvertedData);
-  const subTypeConvertedData = convertSubTypes(filledData);
-  const arrayConvertedData = convertEmptyArrays(subTypeConvertedData);
+  const arrayFieldsConvertedData = convertArrayFields(filledData);
+  const arrayConvertedData = convertEmptyArrays(arrayFieldsConvertedData);
 
   // Clean weapon objects to have appropriate field structure
   let finalData = arrayConvertedData;
@@ -330,7 +380,9 @@ async function main() {
     console.log(`Wrote ${deduped.length} records to ${type}.json`);
   }
   if (hadErrors) {
-    console.error('Validation errors found. Please review and fix before proceeding.');
+    console.error(
+      'Validation errors found. Please review and fix before proceeding.'
+    );
     process.exit(1);
   }
 }

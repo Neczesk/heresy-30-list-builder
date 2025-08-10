@@ -28,7 +28,7 @@ const themeOptions: Array<{
 }> = [
   {
     name: 'light',
-    displayName: 'Neon Light',
+    displayName: 'Typed Orders',
     description: 'Cyan, Magenta, Yellow (Light Mode)',
     icon: <LightMode />,
   },

@@ -19,7 +19,9 @@
           "restrictions": []
         }
       ],
-      "faction": "legiones-astartes",
+      "faction": [
+        "legiones-astartes"
+      ],
       "id": "pride-of-the-legion",
       "name": "Pride of the Legion",
       "restrictions": [
@@ -51,7 +53,9 @@
           "restrictions": []
         }
       ],
-      "faction": "legiones-astartes",
+      "faction": [
+        "legiones-astartes"
+      ],
       "id": "armoured-spearhead",
       "name": "Armoured Spearhead",
       "restrictions": [
@@ -83,7 +87,9 @@
           "restrictions": []
         }
       ],
-      "faction": "legiones-astartes",
+      "faction": [
+        "legiones-astartes"
+      ],
       "id": "orbital-assault",
       "name": "Orbital Assault",
       "restrictions": [
@@ -115,7 +121,9 @@
           "restrictions": []
         }
       ],
-      "faction": "legiones-astartes",
+      "faction": [
+        "legiones-astartes"
+      ],
       "id": "sky-hunters",
       "name": "Sky Hunters",
       "restrictions": [
@@ -147,7 +155,9 @@
           "restrictions": []
         }
       ],
-      "faction": "legiones-astartes",
+      "faction": [
+        "legiones-astartes"
+      ],
       "id": "the-lords-of-war",
       "name": "The Lords of War",
       "restrictions": [
@@ -179,7 +189,9 @@
           "restrictions": []
         }
       ],
-      "faction": "legiones-astartes",
+      "faction": [
+        "legiones-astartes"
+      ],
       "id": "massive-onslaught",
       "name": "Massive Onslaught",
       "restrictions": [

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import {
   Container,
   Typography,
@@ -19,7 +19,14 @@ import {
   TableRow,
   Paper,
 } from '@mui/material';
-import { Help, Download, Save, CheckCircle, Error } from '@mui/icons-material';
+import {
+  Help,
+  Download,
+  Save,
+  CheckCircle,
+  Error,
+  Upload,
+} from '@mui/icons-material';
 import { HelpModal } from './components/HelpModal';
 import {
   validateCSVData,
@@ -58,6 +65,9 @@ const CSVCreator: React.FC = () => {
   const [editingEntry, setEditingEntry] = useState<CSVEntry | null>(null);
   const [validationResult, setValidationResult] = useState<any>(null);
   const [showHelpDialog, setShowHelpDialog] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [uploadSuccess, setUploadSuccess] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const fieldDefinitions = useMemo(() => {
     return selectedDataType ? FIELD_DEFINITIONS[selectedDataType] || {} : {};
@@ -454,14 +464,271 @@ const CSVCreator: React.FC = () => {
     );
   };
 
+  // CSV parsing function
+  const parseCSV = (csvText: string): CSVEntry[] => {
+    const lines = csvText.split('\n').filter(line => line.trim() !== '');
+    if (lines.length === 0) return [];
+
+    // Parse headers
+    const headers = parseCSVLine(lines[0]);
+    const entries: CSVEntry[] = [];
+
+    for (let i = 1; i < lines.length; i++) {
+      const line = lines[i];
+      const values = parseCSVLine(line);
+      const entry: CSVEntry = { id: '' };
+
+      headers.forEach((header, index) => {
+        if (values[index] !== undefined) {
+          let value: any = values[index];
+
+          // Handle null/empty values
+          if (value === 'null' || value === '') {
+            // For array fields, use empty array instead of null
+            const fieldDef = fieldDefinitions[header];
+            if (fieldDef && fieldDef.type === 'array') {
+              value = [];
+            } else {
+              value = null;
+            }
+          } else {
+            // Try to parse as JSON (for arrays and objects)
+            try {
+              const parsed = JSON.parse(value);
+              value = parsed;
+            } catch {
+              // If JSON parsing fails, try to fix common issues and retry
+              let fixedValue = value;
+
+              // Fix missing closing brackets/quotes for arrays
+              if (
+                header === 'traits' ||
+                header === 'profiles' ||
+                header === 'specialRules'
+              ) {
+                // Debug logging for traits parsing
+                if (header === 'traits') {
+                  console.log(`Original traits value: "${value}"`);
+                }
+
+                // If it looks like an array but is missing closing bracket
+                if (fixedValue.startsWith('[') && !fixedValue.endsWith(']')) {
+                  fixedValue = fixedValue + ']';
+                }
+                // If it looks like an array but is missing closing quote and bracket
+                if (fixedValue.startsWith('"[') && !fixedValue.endsWith(']"')) {
+                  fixedValue = fixedValue + '"]';
+                }
+
+                // Handle quoted JSON arrays with escaped quotes
+                // Convert "[“Assault”,“Plasma”]" to ["Assault","Plasma"]
+                if (fixedValue.startsWith('"[') && fixedValue.endsWith(']"')) {
+                  // Remove outer quotes and fix inner quotes
+                  fixedValue = fixedValue.slice(2, -2); // Remove "[" and "]"
+                  fixedValue = '[' + fixedValue + ']';
+                  // Replace escaped quotes with regular quotes
+                  fixedValue = fixedValue.replace(/"/g, '"');
+
+                  if (header === 'traits') {
+                    console.log(`Fixed quoted array: "${fixedValue}"`);
+                  }
+                }
+                // Handle unquoted JSON arrays with escaped quotes
+                // Convert ["Assault","Plasma"] to ["Assault","Plasma"]
+                else if (
+                  fixedValue.startsWith('[') &&
+                  fixedValue.endsWith(']')
+                ) {
+                  // Try to parse as-is first
+                  try {
+                    JSON.parse(fixedValue);
+                    // If it parses successfully, use it as-is
+                    if (header === 'traits') {
+                      console.log(`Valid JSON array: "${fixedValue}"`);
+                    }
+                  } catch {
+                    // If it fails, try to fix escaped quotes
+                    fixedValue = fixedValue.replace(/"/g, '"');
+                    if (header === 'traits') {
+                      console.log(`Fixed unquoted array: "${fixedValue}"`);
+                    }
+                  }
+                }
+              }
+
+              // Try parsing the fixed value
+              try {
+                const parsed = JSON.parse(fixedValue);
+                value = parsed;
+                if (header === 'traits') {
+                  console.log(`Successfully parsed traits:`, parsed);
+                }
+              } catch (parseError) {
+                if (header === 'traits') {
+                  console.log(`Failed to parse traits:`, parseError);
+                }
+
+                // If still failing, try other type conversions
+
+                // Try to parse as number if it looks like one
+                if (!isNaN(Number(value)) && value !== '') {
+                  value = Number(value);
+                }
+
+                // Handle boolean values
+                if (value === 'true') value = true;
+                if (value === 'false') value = false;
+              }
+            }
+          }
+
+          entry[header] = value;
+        }
+      });
+
+      // Only add entries that have an ID
+      if (entry.id) {
+        entries.push(entry);
+      }
+    }
+
+    return entries;
+  };
+
+  // Helper function to parse CSV line with proper quote handling
+  const parseCSVLine = (line: string): string[] => {
+    const result: string[] = [];
+    let current = '';
+    let inQuotes = false;
+    let i = 0;
+
+    while (i < line.length) {
+      const char = line[i];
+
+      if (char === '"') {
+        if (inQuotes && line[i + 1] === '"') {
+          // Escaped quote
+          current += '"';
+          i += 2;
+        } else {
+          // Toggle quote state
+          inQuotes = !inQuotes;
+          i++;
+        }
+      } else if (char === ',' && !inQuotes) {
+        // End of field
+        result.push(current.trim());
+        current = '';
+        i++;
+      } else {
+        current += char;
+        i++;
+      }
+    }
+
+    // Add the last field
+    result.push(current.trim());
+    return result;
+  };
+
+  // Handle file upload
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    setUploadError(null);
+    setUploadSuccess(null);
+
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        const csvText = e.target?.result as string;
+        console.log('CSV Text:', csvText); // Debug log
+
+        const parsedEntries = parseCSV(csvText);
+        console.log('Parsed Entries:', parsedEntries); // Debug log
+
+        // Debug: Check traits specifically
+        parsedEntries.forEach((entry, index) => {
+          if (entry.traits !== undefined) {
+            console.log(
+              `Entry ${index} (${entry.id}) traits:`,
+              entry.traits,
+              'Type:',
+              typeof entry.traits,
+              'IsArray:',
+              Array.isArray(entry.traits)
+            );
+          }
+        });
+
+        // Debug: Show raw CSV parsing for first few rows
+        console.log('Raw CSV parsing debug:');
+        const lines = csvText.split('\n').filter(line => line.trim() !== '');
+        const headers = parseCSVLine(lines[0]);
+        console.log('Headers:', headers);
+
+        for (let i = 1; i < Math.min(5, lines.length); i++) {
+          const line = lines[i];
+          const values = parseCSVLine(line);
+          console.log(`Row ${i}:`, values);
+
+          // Check traits specifically
+          const traitsIndex = headers.indexOf('traits');
+          if (traitsIndex >= 0 && values[traitsIndex]) {
+            console.log(`Row ${i} traits raw: "${values[traitsIndex]}"`);
+          }
+        }
+
+        if (parsedEntries.length === 0) {
+          setUploadError('No valid entries found in the CSV file.');
+          return;
+        }
+
+        // Validate the parsed entries
+        const validation = validateCSVData(selectedDataType, parsedEntries);
+        console.log('Validation Result:', validation); // Debug log
+
+        if (validation.isValid) {
+          setEntries(parsedEntries);
+          setUploadSuccess(
+            `Successfully uploaded ${parsedEntries.length} entries from CSV.`
+          );
+        } else {
+          setUploadError(
+            `CSV validation failed: ${validation.errors
+              .map(
+                (error: any) =>
+                  `Row ${error.row}, Field: ${error.field} - ${(error as any).message || 'Unknown error'}`
+              )
+              .join(', ')}`
+          );
+        }
+      } catch (error) {
+        setUploadError(
+          `Error parsing CSV file: ${(error as any).message || 'Unknown error'}`
+        );
+      }
+    };
+
+    reader.onerror = () => {
+      setUploadError('Error reading the file.');
+    };
+
+    reader.readAsText(file);
+
+    // Reset the file input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
   const handleDataTypeChange = (event: any) => {
-    const newDataType = event.target.value;
-    setSelectedDataType(newDataType);
+    setSelectedDataType(event.target.value);
     setEntries([]);
-    setEditingIndex(null);
-    setShowModal(false);
-    setEditingEntry(null);
     setValidationResult(null);
+    setUploadError(null);
+    setUploadSuccess(null);
   };
 
   const handleAddEntry = () => {
@@ -535,7 +802,7 @@ const CSVCreator: React.FC = () => {
       case 'models':
         return <ModelModal {...commonProps} />;
       case 'weapons':
-        return <WeaponModal {...commonProps} />;
+        return <WeaponModal {...commonProps} currentEntries={entries} />;
       case 'upgrades':
         return <UpgradeModal {...commonProps} />;
       default:
@@ -590,7 +857,7 @@ const CSVCreator: React.FC = () => {
           {/* Actions */}
           <Card sx={{ mb: 3 }}>
             <CardContent>
-              <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
+              <Box sx={{ display: 'flex', gap: 2, mb: 2, flexWrap: 'wrap' }}>
                 <Button
                   variant="contained"
                   startIcon={<Save />}
@@ -598,6 +865,24 @@ const CSVCreator: React.FC = () => {
                 >
                   Add Entry
                 </Button>
+
+                {/* Upload CSV Button */}
+                <Button
+                  variant="outlined"
+                  startIcon={<Upload />}
+                  onClick={() => fileInputRef.current?.click()}
+                  component="label"
+                >
+                  Upload CSV
+                </Button>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept=".csv"
+                  onChange={handleFileUpload}
+                  style={{ display: 'none' }}
+                />
+
                 <Button
                   variant="outlined"
                   startIcon={<Download />}
@@ -607,6 +892,27 @@ const CSVCreator: React.FC = () => {
                   Download CSV
                 </Button>
               </Box>
+
+              {/* Upload Status Messages */}
+              {uploadSuccess && (
+                <Alert
+                  severity="success"
+                  sx={{ mb: 2 }}
+                  onClose={() => setUploadSuccess(null)}
+                >
+                  {uploadSuccess}
+                </Alert>
+              )}
+
+              {uploadError && (
+                <Alert
+                  severity="error"
+                  sx={{ mb: 2 }}
+                  onClose={() => setUploadError(null)}
+                >
+                  {uploadError}
+                </Alert>
+              )}
 
               {/* Validation Status */}
               {validationResult && (

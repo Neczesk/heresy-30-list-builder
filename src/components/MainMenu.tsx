@@ -15,15 +15,24 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import { Menu as MenuIcon, Palette } from '@mui/icons-material';
+import { Menu as MenuIcon, Palette, CloudSync } from '@mui/icons-material';
 import ThemeSelector from './ThemeSelector';
+import { LoginButton } from './LoginButton';
+import { SyncManager } from './SyncManager';
+import { useAuth } from '../contexts/AuthContext';
 
-const MainMenu: React.FC = () => {
+interface MainMenuProps {
+  onClearCurrentArmyList?: () => void;
+}
+
+const MainMenu: React.FC<MainMenuProps> = ({ onClearCurrentArmyList }) => {
   const navigate = useNavigate();
+  const { currentUser } = useAuth();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [themeMenuAnchor, setThemeMenuAnchor] = useState<null | HTMLElement>(
     null
   );
+  const [syncManagerOpen, setSyncManagerOpen] = useState(false);
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -49,6 +58,7 @@ const MainMenu: React.FC = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Horus Heresy 3.0
           </Typography>
+          <LoginButton />
           <IconButton
             size="large"
             edge="end"
@@ -77,6 +87,14 @@ const MainMenu: React.FC = () => {
               </ListItemIcon>
               <ListItemText>Theme</ListItemText>
             </MenuItem>
+            {currentUser && (
+              <MenuItem onClick={() => setSyncManagerOpen(true)}>
+                <ListItemIcon>
+                  <CloudSync fontSize="small" />
+                </ListItemIcon>
+                <ListItemText>Cloud Sync</ListItemText>
+              </MenuItem>
+            )}
           </Menu>
 
           {/* Theme Selector Menu */}
@@ -124,7 +142,10 @@ const MainMenu: React.FC = () => {
                     color="primary"
                     size="large"
                     fullWidth
-                    onClick={() => navigate('/army-builder')}
+                    onClick={() => {
+                      onClearCurrentArmyList?.();
+                      navigate('/army-builder');
+                    }}
                   >
                     Create New Army List
                   </Button>
@@ -212,6 +233,12 @@ const MainMenu: React.FC = () => {
           </Typography>
         </Box>
       </Container>
+
+      {/* Sync Manager Dialog */}
+      <SyncManager
+        open={syncManagerOpen}
+        onClose={() => setSyncManagerOpen(false)}
+      />
     </>
   );
 };
