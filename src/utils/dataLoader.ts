@@ -448,10 +448,9 @@ export class DataLoader {
               return det?.type === 'Primary';
             });
             if (primaryDetachment) {
-              const primaryDet = this.getDetachmentById(
-                primaryDetachment.detachmentId
-              );
-              if (primaryDet && primaryDet.faction !== detachment.faction) {
+              // Use the faction from the army detachment instance, or fall back to the army's faction
+              const primaryFaction = primaryDetachment.faction || armyList.faction;
+              if (!detachment.faction.some(f => f === primaryFaction)) {
                 return false;
               }
             }
@@ -461,7 +460,7 @@ export class DataLoader {
           if (restriction.value === 'primary-faction') {
             // For Allied detachments with "universal" faction, they can always be added
             // The actual faction will be selected during the faction selection process
-            if (detachment.faction === 'universal') {
+            if (detachment.faction.includes('universal')) {
               continue;
             }
 
@@ -470,10 +469,9 @@ export class DataLoader {
               return det?.type === 'Primary';
             });
             if (primaryDetachment) {
-              const primaryDet = this.getDetachmentById(
-                primaryDetachment.detachmentId
-              );
-              if (primaryDet && primaryDet.faction === detachment.faction) {
+              // Use the faction from the army detachment instance, or fall back to the army's faction
+              const primaryFaction = primaryDetachment.faction || armyList.faction;
+              if (detachment.faction.some(f => f === primaryFaction)) {
                 return false;
               }
             }

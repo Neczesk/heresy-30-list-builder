@@ -173,31 +173,42 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
       }
 
       // Check faction compatibility
-      if (detachment.faction && detachment.faction !== 'universal') {
-        // Direct faction match
-        if (detachment.faction === primaryFaction) {
-          return true;
+      // If universal faction, allow it
+      if (detachment.faction.includes('universal')) {
+        // Universal detachments are always available
+      } else {
+        // Check if any of the detachment's factions match
+        let hasMatchingFaction = false;
+
+        for (const faction of detachment.faction) {
+          // Direct faction match
+          if (faction === primaryFaction) {
+            hasMatchingFaction = true;
+            break;
+          }
+
+          // Check if current faction is a subfaction of the detachment's faction
+          if (currentFactionData?.parentFaction === faction) {
+            hasMatchingFaction = true;
+            break;
+          }
+
+          // For Legion subfactions, allow detachments marked for legiones-astartes
+          if (isLegionSubfaction && faction === 'legiones-astartes') {
+            hasMatchingFaction = true;
+            break;
+          }
+
+          // Check if the detachment faction matches the triggering unit's faction
+          if (triggeringUnitData && triggeringUnitData.faction === faction) {
+            hasMatchingFaction = true;
+            break;
+          }
         }
 
-        // Check if current faction is a subfaction of the detachment's faction
-        if (currentFactionData?.parentFaction === detachment.faction) {
-          return true;
+        if (!hasMatchingFaction) {
+          return false;
         }
-
-        // For Legion subfactions, allow detachments marked for legiones-astartes
-        if (isLegionSubfaction && detachment.faction === 'legiones-astartes') {
-          return true;
-        }
-
-        // Check if the detachment faction matches the triggering unit's faction
-        if (
-          triggeringUnitData &&
-          triggeringUnitData.faction === detachment.faction
-        ) {
-          return true;
-        }
-
-        return false;
       }
 
       // Check requirements
@@ -231,14 +242,14 @@ const DetachmentPromptModal: React.FC<DetachmentPromptModalProps> = ({
           if (restriction.type === 'faction-must-match') {
             if (
               restriction.value === 'primary-faction' &&
-              detachment.faction !== primaryFaction
+              !detachment.faction.includes(primaryFaction)
             ) {
               return false;
             }
           } else if (restriction.type === 'faction-must-differ') {
             if (
               restriction.value === 'primary-faction' &&
-              detachment.faction === primaryFaction
+              detachment.faction.includes(primaryFaction)
             ) {
               return false;
             }

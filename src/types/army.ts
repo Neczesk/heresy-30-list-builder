@@ -151,7 +151,7 @@ export interface Detachment {
   id: string;
   name: string;
   type: 'Primary' | 'Auxiliary' | 'Apex' | 'Warlord' | 'Allied' | 'Universal';
-  faction: string; // Faction ID
+  faction: string[]; // Array of Faction IDs
   description: string;
   requirements: DetachmentRequirement[];
   slots: DetachmentSlot[];
